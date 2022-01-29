@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'Zenlytic', // Usually your GitHub org/user name.
-  projectName: 'metrics_layer', // Usually your repo name.
+  projectName: 'zenlytic-docs', // Usually your repo name.
   trailingSlash: false,
 
   presets: [
@@ -24,7 +24,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/Zenlytic/metrics_layer/docs/',
+          editUrl: 'https://github.com/Zenlytic/zenlytic-docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

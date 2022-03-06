@@ -101,7 +101,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Ex Quanta, Inc. Built with Docusaurus 🦕`,
+        copyright: `Copyright © ${new Date().getFullYear()} Ex Quanta, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,

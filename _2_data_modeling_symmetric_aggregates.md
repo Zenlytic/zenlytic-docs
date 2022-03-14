@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Access grants
+# Symmetric Aggregates
 
 Access grants are restrictions for certain users on the ability to see various fields and query them in the Zenlytic interface.
 

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Explores
+# Dashboards
 
 Explores are collections of tables (views) that can be joined together using foreign keys. They are specified in a model file under the `explores` property. Each explore uses its model's `connection` that it is defined in to get data.
 
@@ -17,8 +17,7 @@ Explores are collections of tables (views) that can be joined together using for
 `label`: The label of the explore is what shows up to the end users of your data model. If not specified it defaults to the name of the explore.
 
 `description`: This is the description of the explore. This is helpful to let business users know what data is referenced here.
-
-`fields`: This is an optional parameter that you can use to limit the fields that are visible in the explore. For syntax look at the documentation for [field syntax in sets](../2_data_modeling_set.md#field-syntax).
+`fields`: This is an optional parameter that you can use to limit the fields that are visible in the explore. For syntax look at the documentation for [sets](../2_data_modeling_sets.md).
 
 `join_for_analysis`: This is a list of [join](../_2_data_modeling_join.md) names which you would like to be automatically performed when running analysis like `Explain Change`. The list of joins is meant to balance query speed and depth of information searched. Lots of joins will search many variables, but the query will take a long time to run. Very few joins will mean the queries run faster but look at fewer variables.
 

@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Models
+# Field filters
 
 Models are collections of explores that contain exactly one connection to a database. That connection to the database is referenced by the model's `connection` property and it references the `name` property of the credentials specified in the Zenlytic interface.
 
@@ -12,7 +12,7 @@ Models, like all files in Zenlytic, are yaml text files.
 
 ### Properties
 
-Models only have a few core properties:
+Field filters have only two (2) properties:
 
 `type`: (Required) The type of the file. For these model files is should always be `model`.
 

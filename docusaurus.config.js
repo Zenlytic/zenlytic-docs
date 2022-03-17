@@ -9,7 +9,7 @@ const config = {
   title: 'Metrics Layer Documentation',
   tagline: 'The open source metrics layer',
   url: 'https://zenlytic.github.io',
-  baseUrl: '/metrics_layer/',
+  baseUrl: '/zenlytic-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

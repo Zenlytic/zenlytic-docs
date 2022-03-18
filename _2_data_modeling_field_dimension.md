@@ -30,6 +30,10 @@ Dimensions are references to a column in the database, or combinations of those 
 
 `tags`: This is a list of strings that tag a field with special meaning. For instance, the `customer` tag indicates that this field is the unique identifier for a customer and Zenlytic will use that to know throughout your queries what you mean when you say "Customer".
 
+`searchable`: A yes (or true) means that you want Zenlytic to index the categories of this dimension for use in natural language search. For example, if you indexed the column `state` you'd be able to search for states just by typing "New York" without having to mention the state field.
+
+`synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`.
+
 `required_access_grants`: This is a list of [access grant](../_2_data_modeling_access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
 `filters`: This is a list of [field filters](../_2_data_modeling_field_filter), which have two properties, `field` and `value`. For example, the below field filter equates to the SQL where clause `where channel != 'Paid'`.

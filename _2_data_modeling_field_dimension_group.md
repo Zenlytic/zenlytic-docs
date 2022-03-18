@@ -26,6 +26,8 @@ Dimension Groups are a special type of dimension used for timeframes (referencin
 
 `required_access_grants`: This is a list of [access grant](../_2_data_modeling_access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
+`synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`.
+
 `timeframes`: (Required, only for `type` = time) This property is only for dimension groups of type `time`. It's a list of values which you want to make available to the end user. The options are [listed below](_2_data_modeling_field_dimension_group.md#timeframes).
 
 `intervals`: (Required, only for `type` = duration) This property is only for dimension groups of type `duration`. It's a list of values which you want to make available to the end user. The options are [listed below](_2_data_modeling_field_dimension_group.md#intervals).

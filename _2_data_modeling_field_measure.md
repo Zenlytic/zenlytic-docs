@@ -28,6 +28,8 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `tags`: This is a list of strings that tag a field with special meaning. For instance, the `customer` tag indicates that this field is the unique identifier for a customer and Zenlytic will use that to know throughout your queries what you mean when you say "Customer".
 
+`synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`.
+
 `required_access_grants`: This is a list of [access grant](../_2_data_modeling_access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
 `sql_distinct_key`: This tells Zenlytic that the measure you are calculating here is duplicated, and what field or expression it is unique on. For example, if you have a sales amount that is tied to an order but present in a order lines table, you could set this value to `order_id` and the type to `sum_distinct` to correctly sum up the sales amount without double counting. See [symmetric aggregates](../_2_data_modeling_symmetric_aggregates.md) for more information.

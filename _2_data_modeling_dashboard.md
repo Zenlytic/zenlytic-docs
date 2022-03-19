@@ -4,40 +4,126 @@ sidebar_position: 1
 
 # Dashboards
 
-Explores are collections of tables (views) that can be joined together using foreign keys. They are specified in a model file under the `explores` property. Each explore uses its model's `connection` that it is defined in to get data.
+Dashboards are collections of dashboard elements. Dashboard elements are plots or tables created with a combination of measures and dimensions in an explore.
+
+Dashboards are specified in yaml files, like all files in Zenlytic.
 
 ---
 
-### Properties
+### Dashboard Properties
 
-`name`: (Required) The name of the explore. This can be the name of the [view](../_2_data_modeling_view.md) you want to create the explore from, or any name you choose. Note, if this name does not reference a view, you must specify the `from` parameter. If you reference this explore elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](../_2_data_modeling.md#naming-conventions)
+`type`: (Required) The type of the file. For these dashboard files is should always be `dashboard`.
 
-`from`: This is the [view](../_2_data_modeling_view.md) name to reference for the base of the explore. This parameter is optional, but it must be specified if the name of the explore does not reference a view.
+`name`: (Required) The name of the dashboard. This name is used to uniquely determine the dashboard and presented in the url, so it must be unique across dashboards in your project. If you reference this dashboard elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](../_2_data_modeling.md#naming-conventions)
 
-`label`: The label of the explore is what shows up to the end users of your data model. If not specified it defaults to the name of the explore.
+`label`: The label of the dashboard is what shows up to the end users of your data model. If not specified it defaults to the name of the dashboard.
 
-`description`: This is the description of the explore. This is helpful to let business users know what data is referenced here.
-`fields`: This is an optional parameter that you can use to limit the fields that are visible in the explore. For syntax look at the documentation for [sets](../2_data_modeling_sets.md).
+`description`: This is the description of the dashboard. This is helpful to let business users know what plots and tables to expect.
 
-`join_for_analysis`: This is a list of [join](../_2_data_modeling_join.md) names which you would like to be automatically performed when running analysis like `Explain Change`. The list of joins is meant to balance query speed and depth of information searched. Lots of joins will search many variables, but the query will take a long time to run. Very few joins will mean the queries run faster but look at fewer variables.
-
-`always_join`: This is a list of [join](../_2_data_modeling_join.md) names which you would like to always be joined in for queries to this explore, whether they are required by the query or not.
-
-`sql_always_where`: This a SQL `where` statement that will *always* be applied to queries run in this explore. This is not removable by the end users of the platform. A good example of the parameter's value is `"email not ilike %mycompanyname.com%"`.
-
-`required_access_grants`: This is a list of [access grant](../_2_data_modeling_access_grants.md) names that are required to access this explore. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this explore.
-
-`access_filter`: This field adds a dynamic SQL `where` clause to the query based on a [user attribute](../data_modeling_access_grants.md#user-attributes). The name of the user attribute is set in the Zenlytic interface, and the name of the field references the view the field is in, and the name of the field itself. Note that the `where` filter condition is always: the field `=` to the value of the user attribute. It is specified as a list with two properties in the list's elements, as follows.
+`filters`: This is a list of filters which follow the [field filter](../_2_data_modeling_field_filter) syntax. NOTE: In addition to that syntax you must add an additional `explore` property to each filter to specify which explore you want to use the field from. For example:
 ```
-  field: my_view_name.my_field_name
-  user_attribute: user_attribute_name
+  - field: orders.new_vs_repeat
+    value: New
+    explore: order_lines_all
+```
+`elements`: This is a list of dashboard elements, which are covered below.
+
+
+
+# Dashboard Elements
+
+Dashboard elements determine what to display for each element in the dashboard.
+
+### Dashboard Element Properties
+
+`model`: (Required) The name of the model you want to base this dashboard element from.
+
+`explore`: (Required) The name of the explore you want to base this dashboard element from.
+
+`metrics`: (Required) This is a list of metric names to display in the dashboard element. For example, `orders.total_revenue` would reference the `total_revenue` measure in the `orders` view.
+
+`slice_by`: This is a list of slices (dimensions or dimension_groups) to apply to the plot or table. For example, `orders.new_vs_repeat` references the `new_vs_repeat` dimension in the `orders` view, and `orders.order_month` references the dimension_group `order` using the `month` timeframe.
+
+`filters`: This is a list of filters that follow the standard [field filter](../_2_data_modeling_field_filter) syntax. For example, the following filter ensures that the `product_name` dimension in the `order_lines` view is not equal to "Handbag"
+```
+  - field: order_lines.product_name
+    value: -Handbag
 ```
 
-`always_filter`: This property is nested under another `filters` property and is a list of [field filters](../_2_data_modeling_field_filter), which have two properties, `field` and `value`. These filters will be applied to all queries on the explore by default, and they will be made visible to the user in the Zenlytic interface, with the option for the user to alter them there. This is an example of how to specify these parameters under the `always_filter` property.
+`cohort_by`: This is a dimension group of type `duration` that you would like to cohort the plot by.
+
+`time_period`: This is the time period for Zenlytic to apply to all metrics and slices in the query. The default value is `any_time`, which does not apply a time period filter. The options are:
+  `1_days`
+  `7_days`
+  `last_week`
+  `30_days`
+  `last_month`
+  `90_days`
+  `last_quarter`
+  `180_days`
+  `last_year`
+  `wtd` (week to date)
+  `mtd` (month to date)
+  `qtd` (quarter to date)
+  `ytd` (year to date)
+  `any_time` (or leaving the field blank)
+For more advanced, fine-grained controls over the time filters, use the [field filters](../_2_data_modeling_field_filter) under the `filters` property.
+
+## Examples
+
+Here is an example of a dashboard file for a retention dashboard with two elements (the second of which is a cohort plot). The time period applied to both plots means that the data will all be within the last 30 days.
+
 ```
+type: dashboard
+name: retention_dashboard
+label: Retention Dashboard
+description: Retention data broken out by various factors
+
+elements:
+  - model: demo
+    explore: orders
+    metrics: [orders.repeat_order_rate, orders.average_order_value]
+    slice_by: [orders.product]
+    time_period: 30_days
+
+  - model: demo
+    explore: orders
+    metrics: [orders.repeat_order_rate]
+    slice_by: [orders.product]
+    cohort_by: orders.weeks_duration_firstorder_thisorder
+    time_period: 30_days
+```
+
+Here is an example of a dashboard file with a filter at the dashboard level, and an additional filter applied to the second plot. The dashboard level filter will apply to both plots when the dashboard is run and/or when the filter is changed because both plots are in the explore `orders` and the dashboard filter is in the explore `orders`. The second of the two plots will have an additional filter applied which filters out the `CabinSummerVideo_TikTok` campaign from the results.
+
+
+```
+type: dashboard
+name: sales_dashboard
+label: Sales Dashboard (with campaigns)
+description: Sales data broken out by campaign and repurchasing behavior
 filters:
-    - field: field_name
-      value:  "value"
+  - field: orders.acquisition_channel
+    value: -Organic
+    explore: orders
+
+elements:
+  - model: demo
+    explore: orders
+    metric: orders.total_revenue
+    slice_by: [orders.new_vs_repeat, orders.product]
+    time_period: last_month
+
+  - model: demo
+    explore: orders
+    metrics:
+      - orders.total_revenue
+      - orders.average_order_value
+      - orders.number_of_orders
+    slice_by: [orders.campaign]
+    time_period: last_month
+    filters:
+     - field: campaign
+       value: -CabinSummerVideo_TikTok
 ```
 
-`extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`

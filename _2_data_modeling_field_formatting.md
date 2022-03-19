@@ -12,7 +12,7 @@ Passing the `value_format_name` parameter let's you easily format values in a wa
 
 There are several options. Broadly speaking, there is a format type followed by a number of decimal places. For example, `decimal_1` formats the number like a decimal and rounds to one decimal place.
 
-Vale Format Name | Unformatted Value | Formatted Value
+Value Format Name | Unformatted Value | Formatted Value
 ---|---|---
 decimal_0 | 12345.678 | 12,346
 decimal_1 | 12345.678 | 12,345.7

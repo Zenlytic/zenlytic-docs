@@ -34,7 +34,7 @@ Explores are collections of tables (views) that can be joined together using for
   user_attribute: user_attribute_name
 ```
 
-`always_filter`: This property is nested under another `filters` property and is a list of [field filters](../_2_data_modeling_field_filter), which have two properties, `field` and `value`. These filters will be applied to all queries on the explore by default, and they will be made visible to the user in the Zenlytic interface, with the option for the user to alter them there. This is an example of how to specify these parameters under the `always_filter` property.
+`always_filter`: This property is nested under another `filters` property and is a list of [field filters](../_2_data_modeling_field_filter), which have two properties, `field` and `value`. These filters will be applied to all queries on the explore by default. This is an example of how to specify these parameters under the `always_filter` property.
 ```
 filters:
     - field: field_name

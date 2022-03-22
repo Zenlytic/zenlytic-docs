@@ -6,15 +6,15 @@ sidebar_position: 1
 
 Joins are specified in explores, and they serve to define the mechanics of the join between the base view in the explore and the new view that is joined in as defined.
 
-Joins are quite flexible. They can handle complex join conditions using the `sql_on` parameter. They can also handle more difficult join relationships like "one to many", while still calculating your metrics correctly using [symmetric aggregates](../_2_data_modeling_symmetric_aggregates.md).
+Joins are quite flexible. They can handle complex join conditions using the `sql_on` parameter. They can also handle more difficult join relationships like "one to many", while still calculating your metrics correctly using [symmetric aggregates](96_symmetric_aggregates.md).
 
 ---
 
 ### Properties
 
-`name`: (Required) The name of the join. This can be the name of the [view](../_2_data_modeling_view.md) you want to join into the explore, or any name you choose. Note, if this name does not reference a view, you must specify the `from` parameter. If you reference this join elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](../_2_data_modeling.md#naming-conventions).
+`name`: (Required) The name of the join. This can be the name of the [view](6_view.md) you want to join into the explore, or any name you choose. Note, if this name does not reference a view, you must specify the `from` parameter. If you reference this join elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](1_data_modeling.md#naming-conventions).
 
-`from`: This is the [view](../_2_data_modeling_view.md) name to reference for joining into the explore. This parameter is optional, but it must be specified if the name of the join does not reference a view.
+`from`: This is the [view](6_view.md) name to reference for joining into the explore. This parameter is optional, but it must be specified if the name of the join does not reference a view.
 
 `type`: This is the type of the join. The options are `left_outer`, `inner`, or `full_outer`. You should determine the type of join by how you would join this view into the base view of the explore. The default is `left_outer`.
 
@@ -28,4 +28,4 @@ For example, if `order_lines` is the base view and you want to join `orders` int
 
 `foreign_key`: This is a single dimension name that is the same in both this view and the base view of the explore. For example, if the base view had a field `customer_id` and this table has a primary key `customer_id` you could use `customer_id` as the value for this property. Note that if both this property and `sql_on` are present your data model will throw an error.
 
-`required_access_grants`: This is a list of [access grant](../_2_data_modeling_access_grants.md) names that are required to access the fields joined into this explore from this join. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data from this join.
+`required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access the fields joined into this explore from this join. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data from this join.

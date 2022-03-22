@@ -90,7 +90,7 @@ Example | Description
 "before 2021-02-03" | This is any date on or before 2021-02-03
 "today" | This is any date that has the same day as current_date in your warehouse
 "yesterday" | This is any date that has the same day as the day before current_date in your warehouse
-"this week" | This is any date from the start of the current week (as defined in your [model](../_2_data_modeling_model.md)) to now
+"this week" | This is any date from the start of the current week (as defined in your [model](2_model.md)) to now
 "this month" | This is any date from the start of the current month to now
 "this quarter" | This is any date from the start of the current quarter to now
 "this year" | This is any date from the start of the current year to now
@@ -98,7 +98,7 @@ Example | Description
 "last month" | This is any date from the start of the last complete month to the beginning of the current month
 "last quarter" | This is any date from the start of the last complete quarter to the beginning of the current quarter
 "last year" | This is any date from the start of the last complete year to the beginning of the current year
-"week to date" | This is any date from the start of the current week (as defined in your [model](../_2_data_modeling_model.md)) to now
+"week to date" | This is any date from the start of the current week (as defined in your [model](2_model.md)) to now
 "month to date" | This is any date from the start of the current month to now
 "quarter to date" | This is any date from the start of the current quarter to now
 "year to date" | This is any date from the start of the current year to now

@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # Sets
 
-Sets are collections of [fields](../_2_data_modeling_field.md) that can be referenced throughout your data model. They're a convenient way to reference several fields over and over again, instead of having to re-type the names.
+Sets are collections of [fields](9_field.md) that can be referenced throughout your data model. They're a convenient way to reference several fields over and over again, instead of having to re-type the names.
 
-Sets are always and only defined in [views](../_2_data_modeling_view.md). Although they can contain fields that are outside of the view they're defined in, there must be a path to join the views together to be able to reference fields in other views in a single set.
+Sets are always and only defined in [views](6_view.md). Although they can contain fields that are outside of the view they're defined in, there must be a path to join the views together to be able to reference fields in other views in a single set.
 
 ---
 
@@ -14,7 +14,7 @@ Sets are always and only defined in [views](../_2_data_modeling_view.md). Althou
 
 Sets have only two properties:
 
-`name`: (Required) The name of the set. If you reference this set elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](../_2_data_modeling.md#naming-conventions)
+`name`: (Required) The name of the set. If you reference this set elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](1_data_modeling.md#naming-conventions)
 
 `fields`: This is a list of fields that make up the set. There is a flexible syntax you can use to define the fields included in sets, which is discussed below.
 

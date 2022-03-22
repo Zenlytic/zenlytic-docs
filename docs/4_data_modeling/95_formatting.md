@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Field formatting
 
-Passing the `value_format_name` parameter let's you easily format values in a way that's easy to read for business users.
+Passing the `value_format_name` parameter to your [field](9_field.md) let's you easily format values in a way that's easy to read for business users.
 
 ---
 

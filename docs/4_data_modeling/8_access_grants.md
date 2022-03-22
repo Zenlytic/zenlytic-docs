@@ -6,7 +6,7 @@ sidebar_position: 3
 
 Access grants are restrictions for certain users on the ability to see various fields and query them in the Zenlytic interface.
 
-They are specified in [model](../_2_data_modeling_model.md) files, like the following example:
+They are specified in [model](2_model.md) files, like the following example:
 
 ```
 access_grants:
@@ -20,7 +20,7 @@ access_grants:
 
 ### Properties
 
-`name`:  (Required) The name of the access grants. If you reference this access grants elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](../_2_data_modeling.md#naming-conventions).
+`name`:  (Required) The name of the access grants. If you reference this access grants elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](1_data_modeling.md#naming-conventions).
 
 `user_attribute`: This is the name of the user attribute to access for comparison with `allowed_values`. If you defined a user attribute in the Zenlytic UI named `department` it might have values like `finance`, `marketing`, or `ops` each assigned to an individual user. E.g. John Doe has a user attribute `department` which is `marketing` and Jane Doe has a user attribute `department` which is `finance`.
 

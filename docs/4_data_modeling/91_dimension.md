@@ -10,7 +10,7 @@ Dimensions are references to a column in the database, or combinations of those 
 
 ### Properties
 
-`name`: (Required) The name of the dimension. If you reference this dimension elsewhere in your data model you will use this value. Like all names, it follows [Zenlytic naming conventions](../_2_data_modeling.md#naming-conventions)
+`name`: (Required) The name of the dimension. If you reference this dimension elsewhere in your data model you will use this value. Like all names, it follows [Zenlytic naming conventions](1_data_modeling.md#naming-conventions)
 
 `field_type`: (Required) The field type of the field. For dimensions this is always `dimension`.
 
@@ -26,7 +26,7 @@ Dimensions are references to a column in the database, or combinations of those 
 
 `sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 'Yes' else 'No' end`.
 
-`value_format_name`: This is the format to use when displaying the field. Check out [field formatting](../_2_data_modeling_field_formatting.md) to see available options. The default is `decimal_1`, which formats `12543.5524` to `12,543.6`.
+`value_format_name`: This is the format to use when displaying the field. Check out [field formatting](95_formatting.md) to see available options. The default is `decimal_1`, which formats `12543.5524` to `12,543.6`.
 
 `tags`: This is a list of strings that tag a field with special meaning. For instance, the `customer` tag indicates that this field is the unique identifier for a customer and Zenlytic will use that to know throughout your queries what you mean when you say "Customer".
 
@@ -34,9 +34,9 @@ Dimensions are references to a column in the database, or combinations of those 
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`.
 
-`required_access_grants`: This is a list of [access grant](../_2_data_modeling_access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
+`required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
-`filters`: This is a list of [field filters](../_2_data_modeling_field_filter), which have two properties, `field` and `value`. For example, the below field filter equates to the SQL where clause `where channel != 'Paid'`.
+`filters`: This is a list of [field filters](94_field_filter.md), which have two properties, `field` and `value`. For example, the below field filter equates to the SQL where clause `where channel != 'Paid'`.
 ```
 - field: channel
   value: "-Paid"

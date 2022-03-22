@@ -14,13 +14,13 @@ Dashboards are specified in yaml files, like all files in Zenlytic.
 
 `type`: (Required) The type of the file. For these dashboard files is should always be `dashboard`.
 
-`name`: (Required) The name of the dashboard. This name is used to uniquely determine the dashboard and presented in the url, so it must be unique across dashboards in your project. If you reference this dashboard elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](../_2_data_modeling.md#naming-conventions)
+`name`: (Required) The name of the dashboard. This name is used to uniquely determine the dashboard and presented in the url, so it must be unique across dashboards in your project. If you reference this dashboard elsewhere this is the name you will use. Like all names, it follows [Zenlytic naming conventions](1_data_modeling.md#naming-conventions)
 
 `label`: The label of the dashboard is what shows up to the end users of your data model. If not specified it defaults to the name of the dashboard.
 
 `description`: This is the description of the dashboard. This is helpful to let business users know what plots and tables to expect.
 
-`filters`: This is a list of filters which follow the [field filter](../_2_data_modeling_field_filter) syntax. NOTE: In addition to that syntax you must add an additional `explore` property to each filter to specify which explore you want to use the field from. For example:
+`filters`: This is a list of filters which follow the [field filter](94_field_filter.md) syntax. NOTE: In addition to that syntax you must add an additional `explore` property to each filter to specify which explore you want to use the field from. For example:
 ```
   - field: orders.new_vs_repeat
     value: New
@@ -44,7 +44,7 @@ Dashboard elements determine what to display for each element in the dashboard.
 
 `slice_by`: This is a list of slices (dimensions or dimension_groups) to apply to the plot or table. For example, `orders.new_vs_repeat` references the `new_vs_repeat` dimension in the `orders` view, and `orders.order_month` references the dimension_group `order` using the `month` timeframe.
 
-`filters`: This is a list of filters that follow the standard [field filter](../_2_data_modeling_field_filter) syntax. For example, the following filter ensures that the `product_name` dimension in the `order_lines` view is not equal to "Handbag"
+`filters`: This is a list of filters that follow the standard [field filter](94_field_filter.md) syntax. For example, the following filter ensures that the `product_name` dimension in the `order_lines` view is not equal to "Handbag"
 ```
   - field: order_lines.product_name
     value: -Handbag
@@ -67,7 +67,7 @@ Dashboard elements determine what to display for each element in the dashboard.
   `qtd` (quarter to date)
   `ytd` (year to date)
   `any_time` (or leaving the field blank)
-For more advanced, fine-grained controls over the time filters, use the [field filters](../_2_data_modeling_field_filter) under the `filters` property.
+For more advanced, fine-grained controls over the time filters, use the [field filters](94_field_filter.md) under the `filters` property.
 
 ## Examples
 

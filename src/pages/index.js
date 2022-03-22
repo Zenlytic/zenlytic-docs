@@ -17,7 +17,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/getting_started">
-            Metrics Layer Tutorial - 2min ⏱️
+            Get Started
           </Link>
         </div>
       </div>
@@ -29,8 +29,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Metrics Layer - OSS Metrics Layer`}
-      description="Metrics Layer is the open source metrics layer. Keep your metrics consistent and governed, across all your tools.">
+      title={`Zenlytic - Modern self serve BI`}
+      description="Zenlytic is modern self serve BI, move from asking what to why, and keep your metrics consistent and governed">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -4,20 +4,22 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Natural language',
     description: (
       <>
-        Metrics Layer was designed from the ground up to be easily installed and
-        used to start querying your metrics as soon as possible.
+        Zenlytic lets you ask natural language questions of your data.
+        Business people can get the answers they need without having to
+        figure out every facet of the interface. That's true self-serve.
       </>
     ),
   },
   {
-    title: 'Fast',
+    title: 'Deeper questions',
     description: (
       <>
-        Metrics Layer resolves the correct query to run locally, then runs it
-        directly against your warehouse. It's an order of magnitude faster than the Looker SDK.
+        Zenlytic helps you answer deeper questions like "Why is my conversion
+        rate changing?" or "How are my TikTok customers different?"
+        You shouldn't have to spend hours to get the answers you need.
       </>
     ),
   },
@@ -25,8 +27,9 @@ const FeatureList = [
     title: 'Interoperable',
     description: (
       <>
-        Metrics Layer uses your existing data model. Just point it to your LookML or your data model specified in Metrics Layer yaml
-        and you'll have access to key metrics in python.
+        Zenlytic's metrics layer integrates directly with dbt. You can reference dbt models as
+        you define your metrics, and have validation that you didn't just break your
+        key dashboards with a dbt change.
       </>
     ),
   },

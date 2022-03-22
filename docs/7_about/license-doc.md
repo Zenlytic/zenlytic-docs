@@ -4,5 +4,4 @@ sidebar_position: 2
 
 # License
 
-Metrics Layer is open source with an Apache 2.0 license
-
+Zenlytic is a commercial product, but it's metrics layer is open source with an Apache 2.0 license

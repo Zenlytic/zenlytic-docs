@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Metrics Layer Documentation',
-  tagline: 'The open source metrics layer',
+  title: 'Zenlytic Docs',
+  tagline: 'Modern self-serve analytics',
   url: 'https://zenlytic.github.io',
   baseUrl: '/zenlytic-docs/',
   onBrokenLinks: 'throw',
@@ -37,23 +37,17 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Metrics Layer',
+        title: 'Zenlytic',
         logo: {
-          alt: 'Metrics Layer Logo',
-          src: 'img/metrics-layer-logo.png',
+          alt: 'Zenlytic Logo',
+          src: 'img/zenlytic-logo.jpeg',
         },
         items: [
           {
             type: 'doc',
-            docId: 'getting_started',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
-            type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Documentation',
+            label: 'Docs',
           },
           {
             href: 'https://github.com/Zenlytic/metrics_layer',
@@ -83,7 +77,7 @@ const config = {
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/metrics_layer',
+                href: 'https://stackoverflow.com/questions/tagged/zenlytic',
               },
               {
                 label: 'Twitter',

@@ -16,8 +16,6 @@ Joins are quite flexible. They can handle complex join conditions using the `sql
 
 `from`: This is the [view](../_2_data_modeling_view.md) name to reference for joining into the explore. This parameter is optional, but it must be specified if the name of the join does not reference a view.
 
-`label`: The label of the join is what shows up to the end users of your data model. If not specified it defaults to the name of the join.
-
 `type`: This is the type of the join. The options are `left_outer`, `inner`, or `full_outer`. You should determine the type of join by how you would join this view into the base view of the explore. The default is `left_outer`.
 
 `relationship`: This is the relationship of the join. The options are `many_to_one`, `one_to_one`, `one_to_many`, or `many_to_many`. You should determine the relationship of the join based on the logical result of the join between this view and the base view of the explore. The default is `many_to_one`.

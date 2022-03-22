@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Integrations
 
-Metrics Layer currently integrates with LookML and [its own data model](../5_data_model/1_data_model.md) as a data model. It will integrate with dbt once metrics support is added.
+The metrics layer (obviously) integrates with [Zenlytic's own data model](../4_data_modeling/1_data_modeling.md) as a data model. It also integrates with your LookML.
 
-It integrates with BigQuery and Snowflake for data warehouses.
+It integrates with BigQuery, Redshift, and Snowflake for data warehouses.
 

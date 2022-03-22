@@ -38,7 +38,7 @@ Foo,Bar | Equals "Foo" or "Bar" exactly, `field_name in ('Foo', 'Bar')`
 Foo% | Matches any string that starts with "Foo" (not case sensitive), e.g. matches 'food' does not match 'fast food', `field_name ilike 'Foo%'`
 %Foo | Matches any string that ends with "Foo" (not case sensitive), e.g. matches 'tofoo' does not match 'food', `field_name ilike '%Foo'`
 NULL | Value is null, `field_name is null`
--Foo | Not equal to "Foo" exactly, `field_name <> 'Foo'`
+-Foo | Not equal to "Foo" exactly, `field_name &lt;&gt; 'Foo'`
 -Foo,-Bar | Not equal to "Foo" or "Bar" exactly, `field_name not in ('Foo', 'Bar')`
 -NULL | Value is not null, `field_name is not null`
 -%Foo% | Does not match any string that contains "Foo" (not case sensitive), `field_name not ilike '%Foo%'`
@@ -51,11 +51,11 @@ NULL | Value is null, `field_name is null`
 Example | Description
 ---|---
 "=100" | Equals 100 exactly, `field_name = 100`
-"!=100","<>100" | Not equal to 100 exactly, `field_name <> 100`
-">=100" | Greater than or equal to 100 exactly, `field_name >= 100`
-"<=100" | Less than or equal to 100 exactly, `field_name <= 100`
-">100" | Greater than 100 exactly, `field_name > 100`
-"<100" | Less than 100 exactly, `field_name < 100`
+"!=100","&lt;&gt;100" | Not equal to 100 exactly, `field_name &lt;&gt; 100`
+">=100" | Greater than or equal to 100 exactly, `field_name &gt;= 100`
+"<=100" | Less than or equal to 100 exactly, `field_name &lt;= 100`
+">100" | Greater than 100 exactly, `field_name &gt; 100`
+"<100" | Less than 100 exactly, `field_name &lt; 100`
 NULL | Value is null, `field_name is null`
 -NULL | Value is not null, `field_name is not null`
 

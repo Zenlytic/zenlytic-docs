@@ -2,65 +2,26 @@
 sidebar_position: 1
 ---
 
-# What is Metrics Layer?
+# What is Zenlytic?
 
-Metrics Layer is an open source project with the goal of making access to metrics consistent throughout an organization. We believe you should be able to access consistent metrics from any tool you use to access data.
+Zenlytic is a self-serve analytics tool that helps you answer the deeper questions you have about your data. It helps you get to the "Why?" behind your data questions.
+
+Zenlytic also has a strong semantic layer, which means that the person in charge of data will model out the company's metrics explicitly defining things like revenue or conversion to what they need to be for that company. This means end users don't have to remember those definitions, and whenever the team uses data they're comparing apples-to-apples.
 
 ## How does it work?
 
-Right now, There are only two supported data models, Looker and Metrics Layer's yaml syntax. Metrics Layer will read your LookML or yaml directly and give you the ability to access those metrics and dimensions in a python client library, or through SQL with a special `MQL` tag.
+Zenlytic has a user interface that is accessible in any Chrome-based web browser. End users of Zenlytic can make queries to their data warehouse through that interface.
 
-The python client library looks like this:
-
-
-```
-from metrics_layer import MetricsLayerConnection
-
-# References a profile defining where to find the LookML (or yaml) and how to connect to the data warehouse
-conn = MetricsLayerConnection("demo")
-
-# Generates the SQL query and runs it against the warehouse, returns a pandas dataframe
-df = conn.query(
-    metrics=["total_revenue"],
-    dimensions=["order_month", "acquisition_channel"]
-)
-```
+The maintainers of Zenlytic will maintain their metric definitions in [yaml](https://www.redhat.com/en/topics/automation/what-is-yaml) files using a version control system like [GitHub](https://github.com).
 
 
-The SQL syntax looks like this:
+## Where do I go from here?
 
-```
-query = """
-    SELECT
-        channel_details.channel_name,
-        channel_details.channel_owner,
-        channel_revenue.total_revenue
-    FROM MQL(
-            total_revenue
-            BY
-            acquisition_channel
-        ) as channel_revenue
-        LEFT JOIN analytics.channel_details as channel_details
-            ON channel_revenue.acquisition_channel = channel_details.channel_name
-"""
+If you want to learn more about how to use the user interface and the different capabilities is has, check out the [documentation on the user interface](./3_zenlytic_ui/1_using_zenlytic.md)!
 
-df = conn.query(sql=query)
-```
+If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./4_data_modeling/1_data_modeling.md)
 
+If you'd like to learn about how to get everything set up for defining those metric definitions look at the [documentation on your metric development environment](./5_development_environment/1_development_environment.md)
 
-These queries reference the measures and dimensions by name just like you would in the Looker interface, but give you a greater ability to compose them with additional data and access them in more technical tools.
+As always, feel free to reach out to your Zenlytic contact if you have questions that aren't answered in the documentation!
 
-## What is the workflow like?
-
-Since Metrics Layer references existing resources, it's easy to set up.
-
-1. **[Install metrics_layer](./getting_started.md#installation)**
-2. **[Set up a profile](./getting_started.md#profile-set-up)** to connect to your data model and warehouse or **[set up a data model](./5_data_model/1_data_model.md)** if you don't already have one
-3. Execute commands in python
-
-
-## Who should use Metrics Layer?
-
-Metrics Layer is appropriate for anyone who wants to query consistent metrics defined in LookML or yaml using more technical tools like SQL or python.
-
-To make full use of Metrics Layer, it's helpful to be comfortable in either SQL or python.

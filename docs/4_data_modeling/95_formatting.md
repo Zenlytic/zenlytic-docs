@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 14
 ---
 
 # Field formatting
@@ -27,3 +27,17 @@ usd | 12345.678 | $12,345.68
 usd_0 | 12345.678 | $12,346
 usd_1 | 12345.678 | $12,345.7
 usd_2 | 12345.678 | $12,345.68
+
+
+### Examples
+
+Here's an examples of a field with `value_format_name` as a property.
+
+```
+- name: avg_price
+  field_type: measure
+  type: average
+  sql: ${price}
+  value_format_name: usd 
+```
+

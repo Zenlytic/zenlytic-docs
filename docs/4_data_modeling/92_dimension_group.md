@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 11
 ---
 
 # Dimension Groups
@@ -41,3 +41,46 @@ Dimension Groups are a special type of dimension used for timeframes (referencin
 `sql_end`: (Required, only for `type` = duration) This is the SQL expression that generates the field value for the end of the duration.
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
+
+### Examples
+
+This example shows two fields, the first of which is the table's primary key and the second of which is a dimension group for a date and the third of which is a duration dimension group. In the Zenlytic interface, you'll reference the dates defines in the second field like `order_date`, `order_month`, etc. You'll reference the third field like `days_between_first_order_and_this_order`, `months_between_first_order_and_this_order`, etc.
+
+```
+version: 1
+type: view
+name: order_lines
+
+sql_table_name: prod.order_lines
+default_date: order
+row_label: Order Line
+
+fields:
+- name: order_line_id
+  field_type: dimension
+  type: string
+  sql: ${TABLE}.order_line_id
+  primary_key: yes
+  hidden: yes
+
+- name: order
+  sql: ${TABLE}.order_at
+  field_type: dimension_group
+  type: time
+  timeframes:
+  - raw
+  - date
+  - week
+  - month
+  - quarter
+  - year
+  datatype: timestamp
+
+- name: between_first_order_and_this_order
+  field_type: dimension_group
+  type: duration
+  sql_start: ${TABLE}.first_order_date
+  sql_end: ${order_raw}
+  intervals: [day, week, month, quarter]
+```
+

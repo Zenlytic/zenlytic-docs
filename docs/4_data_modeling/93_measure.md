@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 12
 ---
 
 # Measures (or metrics)
@@ -42,3 +42,49 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
 
+## Examples
+
+
+The first measure takes the average of orice for every order lines row. The second measure, sums up the price value, but it performs the sum uniquely based on each unique order_id instead of every row in the table, which ensures there is no double counting.
+```
+version: 1
+type: view
+name: order_lines
+
+sql_table_name: prod.order_lines
+default_date: order
+row_label: Order Line
+
+fields:
+- name: order_line_id
+  field_type: dimension
+  type: string
+  sql: ${TABLE}.order_line_id
+  primary_key: yes
+  hidden: yes
+
+- name: order_id
+  field_type: dimension
+  type: string
+  sql: ${TABLE}.order_id
+  hidden: yes
+
+- name: price
+  field_type: dimension
+  type: number
+  sql: ${TABLE}.item_price
+  label: "Item price"
+  description: "The price we currently have on the item in Shopify"
+
+- name: avg_price
+  field_type: measure
+  type: average
+  # This references the "price" dimension above to calculate the average
+  sql: ${price} 
+
+- name: total_price_order_level
+  field_type: measure
+  type: sum_distinct
+  sql_distinct_key: ${order_id}
+  sql: ${price} 
+```

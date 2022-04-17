@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 6
 ---
 
 # Views
@@ -39,3 +39,37 @@ sql: "select *, row_number() over (partition by customer_id order by order_date)
 `required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will *always* be applied for this view in every explore it is present in.
 
 fields: This is a list of [fields](9_field.md). Each field must have all required parameters included.
+
+
+### Examples
+
+This is a basic view with just 2 dimensions and 1 measure, that explicitly references the `prod.order_lines` table.
+
+```
+version: 1
+type: view
+name: order_lines
+
+sql_table_name: prod.order_lines
+default_date: order
+row_label: Order Line
+
+fields:
+- name: order_line_id
+  field_type: dimension
+  type: string
+  sql: ${TABLE}.order_line_id
+  primary_key: yes
+  hidden: yes
+
+- name: price
+  field_type: dimension
+  type: number
+  sql: ${TABLE}.item_price
+
+- name: avg_price
+  field_type: measure
+  type: average
+  # This references the "price" dimension above to calculate the average
+  sql: ${price} 
+```

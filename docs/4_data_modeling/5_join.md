@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 5
 ---
 
 # Joins
@@ -29,3 +29,45 @@ For example, if `order_lines` is the base view and you want to join `orders` int
 `foreign_key`: This is a single dimension name that is the same in both this view and the base view of the explore. For example, if the base view had a field `customer_id` and this table has a primary key `customer_id` you could use `customer_id` as the value for this property. Note that if both this property and `sql_on` are present your data model will throw an error.
 
 `required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access the fields joined into this explore from this join. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data from this join.
+
+### Examples 
+
+Joins are specified like this in explores 
+
+```
+version: 1
+type: model
+name: my_model
+connection: my_connection
+explores:
+- name: order_lines
+
+  joins:
+    - name: customers
+      relationship: many_to_one
+      type: left_outer
+      sql_on: ${order_lines.customer_id}=${customers.customer_id}
+```
+
+You can have multiple joins in any explore, and the joins do not have to reference the original table at the base of the explore.
+
+```
+version: 1
+type: model
+name: my_model
+connection: my_connection
+explores:
+- name: order_lines
+
+  joins:
+    - name: customers
+      relationship: many_to_one
+      type: left_outer
+      sql_on: ${order_lines.customer_id}=${customers.customer_id}
+
+    - name: customer_acquisition
+      relationship: many_to_one
+      type: left_outer
+      sql_on: ${customers.first_channel_id}=${customer_acquisition.channel_id}
+
+```

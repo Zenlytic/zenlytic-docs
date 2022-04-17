@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 13
 ---
 
 # Field filters
@@ -111,3 +111,26 @@ Example | Description
 "2 years ago" | 2 years ago from the start of the current year to now
 "3 months" | 3 months ago from the start of the current month to now
 "30 days" | 30 days ago from the start of the current day to now
+
+
+### Examples 
+
+In a field you can optionally apply one or more of these filters. We see three filters applied here.
+
+The first filter sets the numeric `order_number` equal to `1`.  The second filter sets the string `first_order_source_category` *not* equal to `'Paid'`. The third filter sets the `order_date` to be in the `month to date` range.
+
+```
+- field_type: measure
+  name: number_of_organic_new_orders
+  type: count
+  sql: ${id}
+  description: The total number of orders that are new and organic
+  value_format_name: decimal_0
+  filters:
+    - field: order_number
+      value: =1
+    - field: first_order_source_category
+      value: -Paid
+    - field: order_date
+      value: month to date
+```

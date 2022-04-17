@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 8
 ---
 
 # Access grants
@@ -30,3 +30,28 @@ access_grants:
 # User attributes
 
 You can set user attributes by going to the "Team Members" section of the workspace settings and adding user attributes there under the "User Attributes" header, for each team member.
+
+
+### Examples
+
+Access grants are defined and applied as follows. They're defined in models, and can be applied to any explore, join, view, or field using the `required_access_grants` property. If you specify multiple access grants in that property they must *all* be true for that user to have access.
+
+```
+version: 1
+type: model
+name: demo
+
+# This defines the access grant
+access_grants:
+  - name: restrict_dept
+    user_attribute: department
+    allowed_values: ["Marketing"]
+
+explores:
+  - name: orders
+    required_access_grants: [restrict_dept]
+
+    access_filters:
+      - field: orders.product
+        user_attribute: 'owned_product'
+```

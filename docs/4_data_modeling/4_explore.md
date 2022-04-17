@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 # Explores
@@ -22,6 +22,8 @@ Explores are collections of tables (views) that can be joined together using for
 
 `join_for_analysis`: This is a list of [join](5_join.md) names which you would like to be automatically performed when running analysis like `Explain Change`. The list of joins is meant to balance query speed and depth of information searched. Lots of joins will search many variables, but the query will take a long time to run. Very few joins will mean the queries run faster but look at fewer variables.
 
+`fields_for_analysis`: This acts as the default search space for deeper questions like the [Explain Change question](../3_zenlytic_ui/6_explain_change.md). Specifying this value helps decrease runtime of the question, and make sure attributes relevant to the business are displayed in the results. This is just the default value for the search space, end users can alter it in the UI. 
+
 `always_join`: This is a list of [join](5_join.md) names which you would like to always be joined in for queries to this explore, whether they are required by the query or not.
 
 `sql_always_where`: This a SQL `where` statement that will *always* be applied to queries run in this explore. This is not removable by the end users of the platform. A good example of the parameter's value is `"email not ilike %mycompanyname.com%"`.
@@ -42,3 +44,44 @@ filters:
 ```
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
+
+
+### Examples 
+
+The simplest example of an explore is how it's defined in a model when it's referencing only one view, in this case the `orders` view.
+
+```
+version: 1
+type: model
+name: demo
+
+explores:
+  - name: orders
+  ```
+
+  Explores can be extended by defining joins related to the explore and the search space refined by specifying the `fields_for_analysis` property.
+
+```
+version: 1
+type: model
+name: my_model
+connection: my_connection
+explores:
+- name: order_lines
+
+  fields_for_analysis: 
+    - product_title
+    - product_type
+    - sku
+    - new_vs_repeat
+    - source
+    - medium
+    - acquisition_channel
+
+  joins:
+    - name: customers
+      relationship: many_to_one
+      type: left_outer
+      sql_on: ${order_lines.customer_id}=${customers.customer_id}
+```
+

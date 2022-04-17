@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 10
 ---
 
 # Dimensions
@@ -45,3 +45,34 @@ Dimensions are references to a column in the database, or combinations of those 
 `tiers`: For dimensions of type `tier`, specify the breakpoints for the various tiers. For example you might have a dimension `age` which you want to break into tiers, using `[0, 20, 30, 40, 50]` would partition the `age` dimension into groups depending in which range the age fell into between the buckets `[0,20)`, `[20,30)`, `[30,40)`, `[40,50)`, `50+`.
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
+
+
+### Examples
+
+
+This example shows two fields, the first of which is the table's primary key and the second of which is a numeric column, with a label and description.
+
+```
+version: 1
+type: view
+name: order_lines
+
+sql_table_name: prod.order_lines
+default_date: order
+row_label: Order Line
+
+fields:
+- name: order_line_id
+  field_type: dimension
+  type: string
+  sql: ${TABLE}.order_line_id
+  primary_key: yes
+  hidden: yes
+
+- name: price
+  field_type: dimension
+  type: number
+  sql: ${TABLE}.item_price
+  label: "Item price"
+  description: "The price we currently have on the item in Shopify"
+```

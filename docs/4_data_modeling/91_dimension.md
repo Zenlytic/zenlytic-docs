@@ -50,7 +50,7 @@ Dimensions are references to a column in the database, or combinations of those 
 ### Examples
 
 
-This example shows two fields, the first of which is the table's primary key and the second of which is a numeric column, with a label and description.
+This example shows three fields, the first of which is the table's primary key, the second of which is the order id with a special tag to denote to Zenlytic that it is an "order", and the third of which is a numeric column, with a label and description.
 
 ```
 version: 1
@@ -68,6 +68,13 @@ fields:
   sql: ${TABLE}.order_line_id
   primary_key: yes
   hidden: yes
+
+- name: order_id
+  field_type: dimension
+  type: number
+  sql: ${TABLE}.order_id
+  hidden: yes
+  tags: ['orders']
 
 - name: price
   field_type: dimension

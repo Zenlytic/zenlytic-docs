@@ -4,17 +4,17 @@ sidebar_position: 1
 
 # Exploring the Data model
 
-There are several options in Metrics Layer for exploring a data model. Here are some examples of their usage:
+There are several options in python for exploring a data model. Here are some examples of their usage:
 
 
 ### Explores
 
-When listing explores, the default is to return a list of `Explore` [objects](../6_project/3_explore.md). If you're not very familiar with the concept of an explore, it is essentially a grouping of tables that can be joined together. More information is available in Looker's [docs](https://docs.looker.com/reference/explore-params/explore).
+When listing explores, the default is to return a list of `Explore` [objects](../6_project/3_explore.md). If you're not very familiar with the concept of an explore, it is essentially a grouping of tables that can be joined together. More information is available in the [explore section](../../4_data_modeling/4_explore.md) of the docs
 
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection("demo_connection")
+conn = MetricsLayerConnection()
 
 # Lists of *all* the explores in your data model
 explores = conn.list_explores()
@@ -31,7 +31,7 @@ When listing metrics, the default is to return a list of `Field` [objects](../6_
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection("demo_connection")
+conn = MetricsLayerConnection()
 
 # Lists of *all* the metrics in your data model
 metrics = conn.list_metrics()

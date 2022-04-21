@@ -17,9 +17,9 @@ Metrics Layer gets this information by looking for the same `profiles.yml` file 
 
 ### Local repo
 
-This is the best method when the repo with your LookML or [zenlytic data model](../4_data_modeling/1_data_modeling.md) is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
+This is the best method when the repo with your LookML or [zenlytic data model](../../4_data_modeling/1_data_modeling.md) is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
 
-The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](../4_data_modeling/2_model.md#properties) property in your model file.
+The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](../../4_data_modeling/2_model.md#properties) property in your model file.
 
 ```
 demo_connection:  # This references the connection property in the LookML or yaml model
@@ -49,7 +49,7 @@ df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])
 
 ### Explicitly passed values
 
-This method is used in the example for [getting started](../getting_started.md), and a similar syntax as the `profiles.yml` file. This is the best method for connecting if you're using a local jupyter notebook, or similar. If you're using a hosted notebook solution, you'll need to reference the github repo, not a local folder. To do that, replace the `repo_path` property with two properties `repo_url: https://{YOUR_GITHUB_USERNAME}:{YOUR_GITHUB_ACCESS_TOKEN}@github.com/my_company/my_company_data_model` and `branch: dev`.
+This is the best method for connecting if you're using a local jupyter notebook, or similar. If you're using a hosted notebook solution, you'll need to reference the github repo, not a local folder. To do that, replace the `repo_path` property with two properties `repo_url: https://{YOUR_GITHUB_USERNAME}:{YOUR_GITHUB_ACCESS_TOKEN}@github.com/my_company/my_company_data_model` and `branch: dev`.
 
 ```
 from metrics_layer import MetricsLayerConnection

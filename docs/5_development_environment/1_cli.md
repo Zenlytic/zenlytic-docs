@@ -2,43 +2,7 @@
 sidebar_position: 1
 ---
 
-# Data Model Intro
-
-There are two supported types of data models LookML and Metrics Layer's own yaml format. We'll go over that format and how to create a data model using this yaml format.
-
-
-### Modeling concepts
-
-There are a few concepts that are helpful in data modeling
-
-1. The Project
-
-The project is pretty simple. It's just the collection of all the models, explores, views and fields.
-
-2. Model
-
-The model's purpose is to connect data warehouses with explores. A model has a connection to a data warehouse and serves as a container for explores, so the metrics layer knows what data warehouse to use when querying data in that explore.
-
-3. Explore
-
-The explore is a group of views that can be (optionally) joined together from a set of rules. Explores have a base view (similar to a table), and then rules in yaml for specifying the nature of the join relationship and how to execute the join. They do exciting things like allow you to connect one to many tables and see correctly calculated metrics by otherwise difficult relationships.
-
-4. View
-
-The view represents a table. It serves as a translation from a table with rows and columns to a set of metrics (or measures) amd dimensions. More on that distinction below.
-
-5. Field (metric / measure or dimension)
-
-Fields are either metrics (a.k.a measures), dimensions, or dimension_groups
-
-Metrics are aggregated columns. Conceptually, they are how you map the idea "Number of orders" to the sql statement `count(distinct order_id)` repeatedly and correctly, even when complicated joins happen inside the explore.
-
-Dimensions are columns in the database. You can reference these in metrics, in each other and use them to `group by` the table that the view is referencing.
-
-Dimension Groups also reference columns in the database, but they have a grouping of methods you would apply to the same column. For example, the most common dimension group is a date column with timeframes like `[date, week, month, year]` each group in that list corresponds to a `date_trunc` operation on the date column referenced. It helps to keep those consistent and organized for later reference.
-
-
-### Development
+# Command Line Interface
 
 There are a few cli methods Metrics Layer provides using its cli `ml`.
 

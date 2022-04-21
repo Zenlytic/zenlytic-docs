@@ -21,7 +21,7 @@ Here's an example of specifying metrics and dimensions to query:
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection("demo")
+conn = MetricsLayerConnection()
 
 # Generates the SQL query and returns it as a string
 sql_query = conn.get_sql_query(

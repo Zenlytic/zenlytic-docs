@@ -45,7 +45,7 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 ## Examples
 
 
-The first measure takes the average of orice for every order lines row. The second measure, sums up the price value, but it performs the sum uniquely based on each unique order_id instead of every row in the table, which ensures there is no double counting.
+The first measure takes the average of price for every order lines row. The second measure, sums up the price value, but it performs the sum uniquely based on each unique order_id instead of every row in the table, which ensures there is no double counting.
 ```
 version: 1
 type: view

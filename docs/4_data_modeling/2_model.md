@@ -32,7 +32,7 @@ explores: This is a list of [explores](4_explore.md). Each explore must have all
 
 ### Examples 
 
-Here is an example of a model with a single explore and a single join in that explore, which also specifies the `fields_for_analysis` to limit the default search space for deper questions.
+Here is an example of a model with a single explore and a single join in that explore, which also specifies the `fields_for_analysis` to limit the default search space for deeper questions.
 
 ```
 version: 1

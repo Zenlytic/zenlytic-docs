@@ -9,7 +9,7 @@ const config = {
   title: 'Zenlytic Docs',
   tagline: 'Modern self-serve analytics',
   url: 'https://zenlytic.github.io',
-  baseUrl: '/zenlytic-docs/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

@@ -22,7 +22,7 @@ Explores are collections of tables (views) that can be joined together using for
 
 `join_for_analysis`: This is a list of [join](5_join.md) names which you would like to be automatically performed when running analysis like `Explain Change`. The list of joins is meant to balance query speed and depth of information searched. Lots of joins will search many variables, but the query will take a long time to run. Very few joins will mean the queries run faster but look at fewer variables.
 
-`fields_for_analysis`: This acts as the default search space for deeper questions like the [Explain Change question](../3_zenlytic_ui/6_explain_change.md). Specifying this value helps decrease runtime of the question, and make sure attributes relevant to the business are displayed in the results. This is just the default value for the search space, end users can alter it in the UI. 
+`fields_for_analysis`: This acts as the default search space for deeper questions like the [Explain Change question](../3_zenlytic_ui/3_explain_change.md). Specifying this value helps decrease runtime of the question, and make sure attributes relevant to the business are displayed in the results. This is just the default value for the search space, end users can alter it in the UI. 
 
 `always_join`: This is a list of [join](5_join.md) names which you would like to always be joined in for queries to this explore, whether they are required by the query or not.
 

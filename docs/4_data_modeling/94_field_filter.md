@@ -108,7 +108,8 @@ Example | Description
 "1 year ago to date" |  This is any date from the start of the 1 year ago to same number of complete days from the start of that year that have been completed in the current year
 "1 year ago for 3 months" | This is any date from the start of the 1 year ago to the end of 3 months from the start of that year
 "1 year ago for 30 days" | This is any date from the start of the 1 year ago to the end of 30 days from the start of that year
-"2 years ago" | 2 years ago from the start of the current year to now
+"2 years ago" | 2 years ago from the start of the current year until one year after that date
+"3 months ago" | 3 months ago from the start of the current month until one month after that date
 "3 months" | 3 months ago from the start of the current month to now
 "30 days" | 30 days ago from the start of the current day to now
 

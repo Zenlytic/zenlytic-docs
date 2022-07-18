@@ -7,20 +7,20 @@ sidebar_position: 1
 There are several options in python for exploring a data model. Here are some examples of their usage:
 
 
-### Explores
+### Views
 
-When listing explores, the default is to return a list of `Explore` [objects](../6_project/3_explore.md). If you're not very familiar with the concept of an explore, it is essentially a grouping of tables that can be joined together. More information is available in the [explore section](../../4_data_modeling/4_explore.md) of the docs
+When listing views, the default is to return a list of `View` [objects](../6_project/4_view.md). More information is available in the [view section](../../4_data_modeling/6_view.md) of the docs
 
 ```
 from metrics_layer import MetricsLayerConnection
 
 conn = MetricsLayerConnection()
 
-# Lists of *all* the explores in your data model
-explores = conn.list_explores()
+# Lists of *all* the views in your data model
+views = conn.list_views()
 
-# You can also get a single explore based on it's name.
-explore = conn.get_explore("order_lines")
+# You can also get a single view based on it's name.
+view = conn.get_view("order_lines")
 ```
 
 
@@ -36,11 +36,8 @@ conn = MetricsLayerConnection()
 # Lists of *all* the metrics in your data model
 metrics = conn.list_metrics()
 
-# List of metrics in this explore
-metrics_in_orders = conn.list_metrics(explore_name="orders")
-
-# List of metrics in this explore, specifically in this view
-metrics_in_orders_customers_view = conn.list_metrics(explore_name="orders", view_name="customers")
+# List of metrics in this view
+metrics_in_orders_customers_view = conn.list_metrics(view_name="customers")
 
 # You can also get a single metric based on it's name.
 # The below three calls return the same thing
@@ -50,9 +47,6 @@ metric = conn.get_metric("total_revenue")
 
 # View and metric name
 metric = conn.get_metric("orders.total_revenue")
-
-# Explore, view and metric name
-metric = conn.get_metric("order_lines.orders.total_revenue")
 ```
 
 
@@ -64,11 +58,9 @@ When listing dimensions, like listing metrics, the default is to return a list o
 # Lists of *all* the dimensions in your data model
 dimensions = conn.list_dimensions()
 
-# List of dimensions in this explore
-dimensions_in_orders = conn.list_dimensions(explore_name="orders")
 
-# List of dimensions in this explore, specifically in this view
-dimensions_in_orders_customers_view = conn.list_dimensions(explore_name="orders", view_name="customers")
+# List of dimensions in this view
+dimensions_in_orders_customers_view = conn.list_dimensions(view_name="customers")
 
 # You can also get a single dimension based on it's name.
 # The below three calls return the same thing
@@ -79,6 +71,4 @@ dimension = conn.get_dimension("total_revenue")
 # View and dimension name
 dimension = conn.get_dimension("orders.total_revenue")
 
-# Explore, view and dimension name
-dimension = conn.get_dimension("order_lines.orders.total_revenue")
 ```

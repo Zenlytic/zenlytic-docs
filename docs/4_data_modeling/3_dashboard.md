@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Dashboards
 
-Dashboards are collections of dashboard elements. Dashboard elements are plots or tables created with a combination of measures and dimensions in an explore.
+Dashboards are collections of dashboard elements. Dashboard elements are plots or tables created with a combination of measures and dimensions that can be joined together.
 
 Dashboards are specified in yaml files, like all files in Zenlytic.
 
@@ -20,11 +20,10 @@ Dashboards are specified in yaml files, like all files in Zenlytic.
 
 `description`: This is the description of the dashboard. This is helpful to let business users know what plots and tables to expect.
 
-`filters`: This is a list of filters which follow the [field filter](94_field_filter.md) syntax. NOTE: In addition to that syntax you must add an additional `explore` property to each filter to specify which explore you want to use the field from. For example:
+`filters`: This is a list of filters which follow the [field filter](94_field_filter.md) syntax.
 ```
   - field: orders.new_vs_repeat
     value: New
-    explore: order_lines_all
 ```
 `elements`: This is a list of dashboard elements, which are covered below.
 
@@ -37,8 +36,6 @@ Dashboard elements determine what to display for each element in the dashboard.
 ### Dashboard Element Properties
 
 `model`: (Required) The name of the model you want to base this dashboard element from.
-
-`explore`: (Required) The name of the explore you want to base this dashboard element from.
 
 `metrics`: (Required) This is a list of metric names to display in the dashboard element. For example, `orders.total_revenue` would reference the `total_revenue` measure in the `orders` view.
 
@@ -81,20 +78,18 @@ description: Retention data broken out by various factors
 
 elements:
   - model: demo
-    explore: orders
     metrics: [orders.repeat_order_rate, orders.average_order_value]
     slice_by: [orders.product]
     time_period: 30_days
 
   - model: demo
-    explore: orders
     metrics: [orders.repeat_order_rate]
     slice_by: [orders.product]
     cohort_by: orders.weeks_duration_firstorder_thisorder
     time_period: 30_days
 ```
 
-Here is an example of a dashboard file with a filter at the dashboard level, and an additional filter applied to the second plot. The dashboard level filter will apply to both plots when the dashboard is run and/or when the filter is changed because both plots are in the explore `orders` and the dashboard filter is in the explore `orders`. The second of the two plots will have an additional filter applied which filters out the `CabinSummerVideo_TikTok` campaign from the results.
+Here is an example of a dashboard file with a filter at the dashboard level, and an additional filter applied to the second plot. The dashboard level filter will apply to both plots when the dashboard is run and/or when the filter is changed. The second of the two plots will have an additional filter applied which filters out the `CabinSummerVideo_TikTok` campaign from the results.
 
 
 ```
@@ -105,17 +100,14 @@ description: Sales data broken out by campaign and repurchasing behavior
 filters:
   - field: orders.acquisition_channel
     value: -Organic
-    explore: orders
 
 elements:
   - model: demo
-    explore: orders
     metric: orders.total_revenue
     slice_by: [orders.new_vs_repeat, orders.product]
     time_period: last_month
 
   - model: demo
-    explore: orders
     metrics:
       - orders.total_revenue
       - orders.average_order_value

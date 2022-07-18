@@ -4,7 +4,7 @@ sidebar_position: 13
 
 # Field filters
 
-Field filters can be attached to objects in several contexts. They can be used on fields (measures, dimensions, dimension groups), dashboards (at the whole-dashboard level or at the element level), and as pre-set filters for an explore.
+Field filters can be attached to objects in several contexts. They can be used on fields (measures, dimensions, dimension groups), and dashboards (at the whole-dashboard level or at the element level).
 
 Their syntax is not completely straightforward, but is quite powerful.
 
@@ -17,8 +17,6 @@ Field filters have only two (2) properties, with an optional third:
 `field`: (Required) The name of the field to reference. If you reference this field inside a view, you do not need to use the syntax `view_name.field_name` but otherwise you will need to use that syntax to disambiguate the field.
 
 `value`: (Required) This is the value used to determine the comparison the filter will use (equal to, greater than, etc) and the value tom compare against. The syntax is discussed in depth below.
-
-`explore` This property is required ONLY for whole-dashboard level filters. It is ignored for all other filter types. It references the explore to use when applying the filter by name.
 
 
 ### Syntax + Examples

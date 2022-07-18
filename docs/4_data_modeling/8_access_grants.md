@@ -34,7 +34,7 @@ You can set user attributes by going to the "Team Members" section of the worksp
 
 ### Examples
 
-Access grants are defined and applied as follows. They're defined in models, and can be applied to any explore, join, view, or field using the `required_access_grants` property. If you specify multiple access grants in that property they must *all* be true for that user to have access.
+Access grants are defined and applied as follows. They're defined in models, and can be applied to any view or field using the `required_access_grants` property. If you specify multiple access grants in that property they must *all* be true for that user to have access.
 
 ```
 version: 1
@@ -47,11 +47,23 @@ access_grants:
     user_attribute: department
     allowed_values: ["Marketing"]
 
-explores:
-  - name: orders
-    required_access_grants: [restrict_dept]
 
-    access_filters:
-      - field: orders.product
-        user_attribute: 'owned_product'
+This is the view file 
+
+```
+version: 1
+type: view
+name: sample_view
+model_name: demo
+required_access_grants: [restrict_dept]
+
+access_filters:
+  - field: orders.product
+    user_attribute: 'owned_product'
+
+fields:
+  - name: orders
+  .
+  .
+  .
 ```

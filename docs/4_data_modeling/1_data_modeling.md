@@ -10,10 +10,7 @@ To understand data modeling in Zenlytic there are a few key concepts to grasp. I
 ### Key concepts
 
 * [Models](2_model.md)
-    * Models are collections of explores that reference a database connection. They serve as the data model's reference to the warehouses itself. They give your data model the ability to reference multiple data warehouses.
-
-* [Explores](4_explore.md)
-    * Explores are collections of views (that is, database tables) that can be joined together. [Joins](5_join.md) are specified in the explore between the [views (tables)](6_view.md) that are included in the explore. They give users of Zenlytic the ability to dynamically join various tables together without worrying about doing the join in the wrong way.
+    * Models are references to a database connection. They serve as the data model's reference to the warehouses itself. They give your data model the ability to reference multiple data warehouses, and set some high level properties like the week start day or the timezone.
 
 * [Views](6_view.md)
     * Views directly represent a underlying database table. They contain both the [dimensions (columns)](91_dimension.md) and [measures (aggregates)](93_measure.md) inside of the table they reference.

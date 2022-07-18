@@ -33,7 +33,7 @@ folder: data_model/ # This is the folder that your data model is in
 
 ### Seeding 
 
-One of the most helpful if you're just starting out is the `seed` method. If you haven't started writing your data model or if you've recently added a new database, it's a pain to go in and manually set up the explores, views and columns. `seed` allows you to specify a database and optionally a schema, and it will programmatically read the tables in that database or schema and generate the explores, views, and fields  to give you a nice starting place.
+One of the most helpful if you're just starting out is the `seed` method. If you haven't started writing your data model or if you've recently added a new database, it's a pain to go in and manually set up the views and columns. `seed` allows you to specify a database and optionally a schema, and it will programmatically read the tables in that database or schema and generate the views and fields to give you a nice starting place.
 
 Here are some examples (the `$` indicates these examples are taking place in the terminal):
 
@@ -67,16 +67,10 @@ $ ml validate
 
 Two additional helper commands are the `list` and `show` commands. The `list` command lists the names of objects from the type you pass, and the `show` command shows printable attributes of the object with the name you pass. Here are some examples.
 
-This lists the names of all the explores in your project
+This lists the names of all the models in your project
 
 ```
 $ ml list
-```
-
-This command lists all the views in the explore `transaction_lines`
-
-```
-$ ml list --explore transaction_lines views
 ```
 
 This command lists all the metrics (fields of type `measure`) in the view `transactions`
@@ -85,16 +79,16 @@ This command lists all the metrics (fields of type `measure`) in the view `trans
 $ ml list --view transactions metrics
 ```
 
-This command shows the attributes of the field `total_revenue` in the explore `transaction_lines`
+This command shows the attributes of the field `total_revenue`
 
 ```
-$ ml show --explore transaction_lines --type field total_revenue
+$ ml show --type field total_revenue
 ```
 
-This command shows the attributes of the explore `transaction_lines`
+This command shows the attributes of the view `transaction_lines`
 
 ```
-$ ml show --type explore transaction_lines
+$ ml show --type view transaction_lines
 ```
 
 Have any other ideas for good cli tools to help with development? Open a [GitHub issue](https://github.com/Zenlytic/metrics_layer/issues) and let us know!

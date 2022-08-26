@@ -46,9 +46,9 @@ access_grants:
   - name: restrict_dept
     user_attribute: department
     allowed_values: ["Marketing"]
+```
 
-
-This is the view file 
+This is the view file that corresponds with that access grant. 
 
 ```
 version: 1

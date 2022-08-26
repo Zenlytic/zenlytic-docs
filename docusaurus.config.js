@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Zenlytic Docs',
   tagline: 'Modern self-serve analytics',
-  url: 'https://zenlytic.github.io',
+  url: 'https://docs.zenlytic.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -36,6 +36,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      algolia: {
+        // The application ID provided by Algolia
+        appId: '029VIRGT6M',
+        // Public API key: it is safe to commit it
+        apiKey: '1664be1f8d2107ebb3040175ea87987e',
+        indexName: 'DOCS',
+        searchPagePath: 'search',
+      },
       navbar: {
         title: 'Zenlytic',
         logo: {

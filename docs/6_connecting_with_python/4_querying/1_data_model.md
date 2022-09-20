@@ -14,7 +14,8 @@ When listing views, the default is to return a list of `View` [objects](../6_pro
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection()
+# Connect to the repo we're at the root of right now
+conn = MetricsLayerConnection('./')
 
 # Lists of *all* the views in your data model
 views = conn.list_views()
@@ -31,7 +32,8 @@ When listing metrics, the default is to return a list of `Field` [objects](../6_
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection()
+# Connect to the repo we're at the root of right now
+conn = MetricsLayerConnection('./')
 
 # Lists of *all* the metrics in your data model
 metrics = conn.list_metrics()

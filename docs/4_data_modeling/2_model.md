@@ -42,12 +42,13 @@ connection: my_connection
 timezone: America/New_York
 ```
 
-This is an example of an access grant defined in a model. In this case, this access grant could be reused in a view or in fields to limit viewing to only users who have the their `department` user attribute equal to "Marketing". 
+This is an example of an access grant defined in a model. In this case, this access grant could be reused in a view or in fields to limit viewing to only users who have the their `department` user attribute equal to "Marketing". This model also sets the `week_start_day` property which tells which day to start weeks on (the default is monday).
 
 ```
 version: 1
 type: model
 name: demo
+week_start_day: sunday
 
 # This defines the access grant
 access_grants:

@@ -20,4 +20,4 @@ sql: ${total_gross_revenue} - ${total_discounts}
 
 There will be more examples of each type of field in their respective documentation pages.
 
-Fields are defined in view files.
+Fields are defined in [view](6_view.md) files.

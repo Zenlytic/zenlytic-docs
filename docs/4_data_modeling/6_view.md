@@ -51,6 +51,10 @@ Identifiers will be used to form the join graph for your database. By default, Z
 fields: This is a list of [fields](9_field.md). Each field must have all required parameters included.
 
 
+### Identifiers 
+
+Identifiers will be used to form the joins in your database. You will specify the primary and foreign keys using the syntax below and Zenlytic will automatically make the possible joins available to you through any queries you run.
+
 ### Examples
 
 This is a basic view with just 2 dimensions and 1 measure, that explicitly references the `prod.order_lines` table. This view also defines it's primary key as an identifier and a foreign key as an identifier.

@@ -13,7 +13,7 @@ To understand data modeling in Zenlytic there are a few key concepts to grasp. I
     * Models are references to a database connection. They serve as the data model's reference to the warehouses itself. They give your data model the ability to reference multiple data warehouses, and set some high level properties like the week start day or the timezone.
 
 * [Views](6_view.md)
-    * Views directly represent a underlying database table. They contain both the [dimensions (columns)](91_dimension.md) and [measures (aggregates)](93_measure.md) inside of the table they reference.
+    * Views directly represent a underlying database table. They contain both the [dimensions (columns)](91_dimension.md) and [measures (aggregates)](93_measure.md) inside of the table they reference. In addition, they contain [identifiers](6_view.md#identifiers) which define the possible join to or from the table.
 
 * [Dimensions](91_dimension.md)
     * A dimension represents a column in the database table it's view references. You can also have groups of dimensions (like timeframes) which reference the same column with different transformations applied.
@@ -22,11 +22,23 @@ To understand data modeling in Zenlytic there are a few key concepts to grasp. I
     * A measure (or metric) represents the aggregation of a dimension or dimensions inside the table its view references. Any valid aggregation in a SQL statement with a `group by` will work as a measure (e.g. `sum(sales)`).
 
 
+### Examples
+
+The best way to learn to to see examples. We have examples using both our metrics yaml syntax and [dbt metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) integration. The actual definition of the fields is the same in both cases, but for dbt metrics any properties not available in the column or metric object will be put in the `meta` tag.
+
+* [dbt Metrics example](https://github.com/Zenlytic/jaffle_shop) (jaffles anyone?)
+* Metrics Layer yaml syntax - COMING SOON
+
+
 ### Naming conventions
 
-Naming is a crucial part of any data model and one of the most difficult aspects of maintaining a data model that can be understood by end users. Here are some Zenlytic naming conventions, both technically required and recommended
+Naming is a crucial part of any data model and one of the most difficult aspects of maintaining a data model that can be understood by end users. Here are some Zenlytic naming conventions, both technically required and recommended.
+
+
+##### Technically Required
 
 * The `name` field. Name fields must only contain letters, numbers, or the `_` character. They must be unique throughout your collection they are in, and despite how you may choose to enter them, they will always be lower-cased when referenced in Zenlytic. This syntax is required when naming objects in Zenlytic
+
 
 ##### Recommendations
 

@@ -17,7 +17,7 @@ conn = MetricsLayerConnection('./')
 project = conn.project
 ```
 
-Using the project object you can look around your entire data model
+Using the project object, you can look around your entire data model.
 
 
 ### Models

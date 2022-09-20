@@ -4,10 +4,9 @@ sidebar_position: 1
 
 # Setting up
 
-This is a high level overview of how to get started creating your Zenlytic data model. 
+This is a high-level overview of how to start creating your Zenlytic data model. 
 
-
-To start you'll create a GitHub repo if you don't already have one (if you're using dbt and you'd like to integrate it with Zenlytic, you can use that existing repo).
+To start, you'll create a GitHub repo if you don't already have one (if you're using dbt and would like to integrate it with Zenlytic, you can use that. existing repo).
 
 To connect to your data warehouse in the Zenlytic UI follow [these steps](3_database_connection.md#zenlytic-connection), and to connect for local development follow the [steps here](3_database_connection.md#local-connection). 
 

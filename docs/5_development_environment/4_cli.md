@@ -14,7 +14,7 @@ $ ml debug
 
 ### Initialize
 
-To initialize your project run this command
+To initialize your project run this command.
 
 ```
 $ ml init

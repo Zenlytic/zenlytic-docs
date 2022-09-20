@@ -5,7 +5,7 @@ sidebar_position: 1
 # Overview
 
 
-To understand data modeling in Zenlytic there are a few key concepts to grasp. If you've used data models like LookML before, these will be intuitive and you'll be able to go straight to the implementation of your model.
+To understand data modeling in Zenlytic, there are a few key concepts to grasp. If you've used data models like LookML before, these will be intuitive, and you'll be able to go straight to the implementation of your model.
 
 ### Key concepts
 

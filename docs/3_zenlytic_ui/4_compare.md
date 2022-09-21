@@ -10,7 +10,7 @@ To get to the compare question, click on the "Find what makes X distinctive" fol
 
 ![compare-follow-up](../assets/compare-follow-up.png)
 
-Then you'll see a result like this.
+Then you'll see a result like this. The attributes, like in the explain change, let you select which metrics to include in your question.
 
 ![compare](../assets/compare.png)
 

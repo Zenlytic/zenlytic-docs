@@ -58,7 +58,7 @@ from metrics_layer import MetricsLayerConnection
 
 # Give metrics_layer the info to connect to your data model and warehouse
 config = {
-  "location": "~/Desktop/my-lookml-repo",
+  "location": "~/Desktop/my-data-model-repo",
   "connections": [
     {
       "name": "mycompany",              # The name of the connection in LookML or yaml (you'll see this in model files)

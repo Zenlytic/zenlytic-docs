@@ -30,7 +30,11 @@ To set the value to use for the filter you can use the drop down for the value o
 
 ### Time periods
 
-The time period allows you to filter your data by it's primary time slice. You can change the value by selecting a custom range or selecting from one of the presets.
+The time period allows you to filter your data by its primary time slice. You can change the value to a custom range by choosing how you'd like to use the time period.
+
+![explore-time-period](../assets/explore-time-period-types.png)
+
+
+Then, once you choose how you'd like to define your time period, you choose the values to complete the time period selection, like this.
 
 ![explore-time-period](../assets/explore-time-period.png)
-

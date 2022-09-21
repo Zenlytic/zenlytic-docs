@@ -20,3 +20,7 @@ You can also specify which attributes / slices you'd like Zenlytic to search ove
 
 ![explain-change-attributes](../assets/explain-change-attributes.png)
 
+
+Not seeing what you expect? By default Zenlytic filters out smaller changes to focus on larger ones. You can change that filtering threshold in "Additional Settings" in the side bar menu (change "Min Group Size" to 0 to see all values no matter how small).
+
+![explain-change-settings](../assets/explain-change-settings.png)

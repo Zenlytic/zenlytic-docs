@@ -9,7 +9,7 @@ There are several options in python for exploring a data model. Here are some ex
 
 ### Views
 
-When listing views, the default is to return a list of `View` [objects](../6_project/4_view.md). More information is available in the [view section](../../4_data_modeling/6_view.md) of the docs
+When listing views, the default is to return a list of `View` objects. More information is available in the [view section](../../4_data_modeling/6_view.md) of the docs
 
 ```
 from metrics_layer import MetricsLayerConnection
@@ -27,7 +27,7 @@ view = conn.get_view("order_lines")
 
 ### Metrics
 
-When listing metrics, the default is to return a list of `Field` [objects](../6_project/5_field.md). Listing metrics will return all measures associated with your LookML project.
+When listing metrics, the default is to return a list of `Field` objects. Listing metrics will return all measures associated with your data model.
 
 ```
 from metrics_layer import MetricsLayerConnection
@@ -54,7 +54,7 @@ metric = conn.get_metric("orders.total_revenue")
 
 ### Dimensions
 
-When listing dimensions, like listing metrics, the default is to return a list of `Field` [objects/](../6_project/5_field.md). Listing dimensions will return all dimensions and dimension_groups associated with your LookML project.
+When listing dimensions, like listing metrics, the default is to return a list of `Field` objects. Listing dimensions will return all dimensions and dimension_groups associated with your data model.
 
 ```
 # Lists of *all* the dimensions in your data model

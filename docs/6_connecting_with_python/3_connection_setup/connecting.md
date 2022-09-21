@@ -17,7 +17,7 @@ Metrics Layer gets this information by looking for the same `profiles.yml` file 
 
 ### Local repo
 
-This is the best method when the repo with your LookML or [zenlytic data model](../../4_data_modeling/1_data_modeling.md) is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
+This is the best method when the repo with your [zenlytic data model](../../4_data_modeling/1_data_modeling.md)/dbt repo is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
 
 The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](../../4_data_modeling/2_model.md#properties) property in your model file.
 
@@ -36,7 +36,7 @@ demo_connection:  # This references the connection property in the YAML model or
 
 ```
 
-You will be able to connect with the following python code, if you are in the repo of the Zenlytic data model project (or LookML).
+You will be able to connect with the following python code, if you are in the repo of the Zenlytic data model project (or dbt repo).
 
 ```
 from metrics_layer import MetricsLayerConnection
@@ -61,7 +61,7 @@ config = {
   "location": "~/Desktop/my-data-model-repo",
   "connections": [
     {
-      "name": "mycompany",              # The name of the connection in LookML or yaml (you'll see this in model files)
+      "name": "mycompany",              # The name of the connection in yaml (you'll see this in model files) or the dbt profile name
       "type": "snowflake",
       "account": "2e12ewdq.us-east-1",
       "username": "demo_user",

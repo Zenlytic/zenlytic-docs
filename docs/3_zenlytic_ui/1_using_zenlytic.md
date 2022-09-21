@@ -23,12 +23,12 @@ Zenlytic is a modern analytics tool that helps you understand the "Why" behind y
 * [Analyze Baskets](./6_basket_mix.md)
     * The analyze baskets question lets you easily look at baskets of goods customers purchase from you. For example, you could figure out which two products your customers most often buy together, to better inform how you promote bundles of products or organize your online store.
 
+* [Funnel](./7_funnel.md)
+    * The funnel question lets you quickly look at sequences of customer interactions with you. This can be anything in your database like individual clicks on your site, marketing/sales touch points, or orders. For example, you could figure out how many customers after making an order through a paid channel come back and make another order from any channel.
 
 ### Search 
 
-You can also access your data via a natural language search that takes you directly to your question in your data. To access the search page click on the search option in the top navigation bar.
-
-You can then use the search bar like you'd use Google search.
+You can also access your data via a natural language search that takes you directly to your question in your data. Search is always available in the top navigation bar and by clicking `cmd-k` at any time.
 
 ![search-page](../assets/search-page.png)
 
@@ -55,7 +55,7 @@ When you're on a dashboard page, you can click the three dots on any of the plot
 
 ### Command Palette
 
-At any time when using Zenlytic you can activate the command palette by pressing `cmd-k` or by clicking on the search / computer icon in the top right of the navigation bar. Type commands into the command palette to streamline your workflows.
+At any time when using Zenlytic you can activate the command palette by pressing `cmd-k` or by clicking on the search / computer icon in the navigation bar. Type commands into the command palette to streamline your workflows.
 
 ![command-palette](../assets/command-palette.png)
 

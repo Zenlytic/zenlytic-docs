@@ -4,7 +4,7 @@ sidebar_position: 9
 
 # Fields
 
-Fields reference either columns in the database (dimensions and dimension groups) or aggregates computed in a `group by` statement (measures or metrics). There are three types of fields `dimension`, `dimension_group` and `measure` (we also refer to measures as metrics, and use the terms interchangeably). For all fields their `field_type` (one of the three just listed) is a required property.
+Fields reference either columns in the database (dimensions and dimension groups) or aggregates computed in a `group by` statement (measures or metrics). There are three types of fields `dimension`, `dimension_group`, and `measure` (we also refer to measures as metrics and use the terms interchangeably). For all fields, their `field_type` (one of the three just listed) is a required property.
 
 - [Dimensions](91_dimension.md) are references to columns in your database table. They can either reference each other or raw columns in the database.
 
@@ -20,4 +20,4 @@ sql: ${total_gross_revenue} - ${total_discounts}
 
 There will be more examples of each type of field in their respective documentation pages.
 
-Fields are defined in view files.
+Fields are defined in [view](6_view.md) files.

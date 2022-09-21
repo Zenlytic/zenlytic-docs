@@ -6,11 +6,11 @@ sidebar_position: 2
 
 There are two main methods for interacting with SQL in Metrics Layer `get_sql_query`, which gets the SQL necessary to calculate your request, but doesn't run it, and `query`, which gets that SQL and runs it against your warehouse.
 
-In both of these methods there are two ways to use Metrics Layer, using SQL with a `MQL` tag for metrics, or specifying lists of metrics and dimensions.
+There are two ways to use the Metrics Layer: SQL with a `MQL` tag for metrics, or specifying lists of metrics and dimensions.
 
 :::tip Query speed
 
-In all cases, Metrics Layer generates the SQL query locally, then sends it directly to your warehouse. This is an order of magnitude faster than using the Looker API or similar.
+In all cases, the Metrics Layer generates the SQL query locally, then sends it directly to your warehouse. This is an order of magnitude faster than using the Looker API or similar.
 
 :::
 
@@ -21,7 +21,8 @@ Here's an example of specifying metrics and dimensions to query:
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection()
+# Connect to the repo we're at the root of right now
+conn = MetricsLayerConnection('./')
 
 # Generates the SQL query and returns it as a string
 sql_query = conn.get_sql_query(

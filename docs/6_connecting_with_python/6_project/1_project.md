@@ -11,12 +11,13 @@ Once you create a connection, you can access the project like this:
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection("demo")
+# Connect to the repo we're at the root of right now
+conn = MetricsLayerConnection('./')
 
 project = conn.project
 ```
 
-Using the project object you can look around your entire data model
+Using the project object, you can look around your entire data model.
 
 
 ### Models
@@ -25,6 +26,14 @@ Using the project object you can look around your entire data model
 all_models_in_project = project.models()
 
 a_single_model = project.get_model(model_name="revenue")
+```
+
+### Dashboards
+```
+# Dashboards
+all_dashboards_in_project = project.dashboards()
+
+a_single_dashboard = project.get_dashboard("sales_dashboard")
 ```
 
 ### Views
@@ -55,4 +64,4 @@ a_single_field = project.get_field("total_revenue", view_name="orders")
 ```
 
 
-To learn more about any of the objects returned here, look at the documentation for [models](./2_model.md), [views](./4_view.md), or [fields](./5_field.md).
+To learn more about any of the types returned here, look at the documentation for [models](../../4_data_modeling/2_model.md), [dashboards](../../4_data_modeling/3_dashboard.md), [views](../../4_data_modeling/6_view.md), or [fields](../../4_data_modeling/9_field.md).

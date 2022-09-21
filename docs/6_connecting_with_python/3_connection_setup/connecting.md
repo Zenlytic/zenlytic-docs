@@ -17,12 +17,12 @@ Metrics Layer gets this information by looking for the same `profiles.yml` file 
 
 ### Local repo
 
-This is the best method when the repo with your LookML or [zenlytic data model](../../4_data_modeling/1_data_modeling.md) is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
+This is the best method when the repo with your [zenlytic data model](../../4_data_modeling/1_data_modeling.md)/dbt repo is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
 
 The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](../../4_data_modeling/2_model.md#properties) property in your model file.
 
 ```
-demo_connection:  # This references the connection property in the LookML or yaml model
+demo_connection:  # This references the connection property in the YAML model or dbt project
   target: dev
   outputs:
     dev:
@@ -36,12 +36,12 @@ demo_connection:  # This references the connection property in the LookML or yam
 
 ```
 
-You will be able to connect with the following python code, if you are in the repo of the Zenlytic data model project (or LookML).
+You will be able to connect with the following python code, if you are in the repo of the Zenlytic data model project (or dbt repo).
 
 ```
 from metrics_layer import MetricsLayerConnection
 
-conn = MetricsLayerConnection()
+conn = MetricsLayerConnection('./')
 
 df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])
 ```
@@ -49,17 +49,19 @@ df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])
 
 ### Explicitly passed values
 
-This is the best method for connecting if you're using a local jupyter notebook, or similar. If you're using a hosted notebook solution, you'll need to reference the github repo, not a local folder. To do that, replace the `repo_path` property with two properties `repo_url: https://{YOUR_GITHUB_USERNAME}:{YOUR_GITHUB_ACCESS_TOKEN}@github.com/my_company/my_company_data_model` and `branch: dev`.
+This is the best method for connecting if you're using a local jupyter notebook, hosted notebook, or production back end. You can either connect by referencing a local repo on your machine (first example below) or by connecting to a github repo and pulling a repo and branch in that repo (second example below).
+
+Here's an example with a local repo.
 
 ```
 from metrics_layer import MetricsLayerConnection
 
 # Give metrics_layer the info to connect to your data model and warehouse
 config = {
-  "repo_path": "~/Desktop/my-lookml-repo",
+  "location": "~/Desktop/my-data-model-repo",
   "connections": [
     {
-      "name": "mycompany",              # The name of the connection in LookML or yaml (you'll see this in model files)
+      "name": "mycompany",              # The name of the connection in yaml (you'll see this in model files) or the dbt profile name
       "type": "snowflake",
       "account": "2e12ewdq.us-east-1",
       "username": "demo_user",
@@ -69,7 +71,34 @@ config = {
     }
   ],
 }
-conn = MetricsLayerConnection(config)
+conn = MetricsLayerConnection(**config)
+
+# You're off to the races. Query away!
+df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])
+```
+
+Here's another example pulling a repo from GitHub.
+
+```
+from metrics_layer import MetricsLayerConnection
+
+# Give metrics_layer the info to connect to your data model and warehouse
+config = {
+  "location": "https://{YOUR_GITHUB_USERNAME}:{YOUR_GITHUB_ACCESS_TOKEN}@github.com/my_company/my_company_data_model",
+  "branch": "dev",
+  "connections": [
+    {
+      "name": "mycompany",              # The name of the connection in yaml (you'll see this in model files), or name of dbt profile
+      "type": "snowflake",
+      "account": "2e12ewdq.us-east-1",
+      "username": "demo_user",
+      "password": "q23e13erfwefqw",
+      "database": "ANALYTICS",          # Optional
+      "schema": "DEV",                  # Optional
+    }
+  ],
+}
+conn = MetricsLayerConnection(**config)
 
 # You're off to the races. Query away!
 df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])

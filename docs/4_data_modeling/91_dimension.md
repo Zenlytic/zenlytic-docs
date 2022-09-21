@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Dimensions
 
-Dimensions are references to a column in the database, or combinations of those references to columns. They let you define columns along with labels and descriptions so business users can make sense of the data. You can also use dimensions as building blocks for measures, so if something changes in your database table, you only have to update it in one spot.
+Dimensions are references to a column in the database or combinations of those references to columns. They let you define columns along with labels and descriptions so business users can make sense of the data. You can also use dimensions as building blocks for measures, so if something changes in your database table, you only have to update it in one spot.
 
 ---
 
@@ -30,6 +30,8 @@ Dimensions are references to a column in the database, or combinations of those 
 
 `tags`: This is a list of strings that tag a field with special meaning. For instance, the `customer` tag indicates that this field is the unique identifier for a customer and Zenlytic will use that to know throughout your queries what you mean when you say "Customer".
 
+`drill_fields`: This is a list of field names (dimensions or measures) to include in the drill query for the name of the tag (see below).
+
 `searchable`: A yes (or true) means that you want Zenlytic to index the categories of this dimension for use in natural language search. For example, if you indexed the column `state` you'd be able to search for states just by typing "New York" without having to mention the state field.
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`.
@@ -51,6 +53,9 @@ Dimensions are references to a column in the database, or combinations of those 
 
 
 This example shows three fields, the first of which is the table's primary key, the second of which is the order id with a special tag to denote to Zenlytic that it is an "order", and the third of which is a numeric column, with a label and description.
+
+The dimension `order_id` is tagged as an 'order' which means it will show up in the Zenlytic UI with an option to "Drill into orders."  If that option is selected, zenlytic will create a query filtered for the group selected and add that column, `order_id` and all fields (if any) defined in the `drill_fields` property.
+
 
 ```
 version: 1
@@ -75,6 +80,7 @@ fields:
   sql: ${TABLE}.order_id
   hidden: yes
   tags: ['orders']
+  drill_fields: [marketing_channel, total_revenue]
 
 - name: price
   field_type: dimension
@@ -82,4 +88,15 @@ fields:
   sql: ${TABLE}.item_price
   label: "Item price"
   description: "The price we currently have on the item in Shopify"
+
+- name: marketing_channel
+  field_type: dimension
+  type: string
+  sql: ${TABLE}.marketing_channel
+
+- name: total_revenue
+  field_type: measure
+  type: sum
+  sql: ${TABLE}.revenue
+
 ```

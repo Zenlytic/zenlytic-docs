@@ -6,7 +6,7 @@ sidebar_position: 3
 
 Dashboards are collections of dashboard elements. Dashboard elements are plots or tables created with a combination of measures and dimensions that can be joined together.
 
-Dashboards are specified in yaml files, like all files in Zenlytic.
+Dashboards are specified in YAML files, like all files in Zenlytic.
 
 ---
 
@@ -66,6 +66,12 @@ Dashboard elements determine what to display for each element in the dashboard.
   `any_time` (or leaving the field blank)
 For more advanced, fine-grained controls over the time filters, use the [field filters](94_field_filter.md) under the `filters` property.
 
+`sort`: This is a list of sorts to apply. A sort is defined with a `field` (any field accessible in the data model) and `value` (either asc or desc, defaults to asc if empty) property like this:
+```
+sort:
+- field: orders.campaign
+  value: desc
+```
 ## Examples
 
 Here is an example of a dashboard file for a retention dashboard with two elements (the second of which is a cohort plot). The time period applied to both plots means that the data will all be within the last 30 days.
@@ -89,7 +95,7 @@ elements:
     time_period: 30_days
 ```
 
-Here is an example of a dashboard file with a filter at the dashboard level, and an additional filter applied to the second plot. The dashboard level filter will apply to both plots when the dashboard is run and/or when the filter is changed. The second of the two plots will have an additional filter applied which filters out the `CabinSummerVideo_TikTok` campaign from the results.
+Here is an example of a dashboard file with a filter at the dashboard level, and an additional filter applied to the second plot. The dashboard level filter will apply to both plots when the dashboard is run and/or when the filter is changed. The second of the two plots will have an additional filter applied which filters out the `CabinSummerVideo_TikTok` campaign from the results. This dashboard also includes a sort to make sure the campaigns are organized from highest in terms of total revenue to lowest.
 
 
 ```
@@ -117,5 +123,8 @@ elements:
     filters:
      - field: campaign
        value: -CabinSummerVideo_TikTok
+    sort:
+    - field: orders.total_revenue
+      value: desc
 ```
 

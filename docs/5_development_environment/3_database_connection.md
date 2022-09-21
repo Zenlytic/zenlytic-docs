@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Database connections
 
-There are two ways to connect to your data warehouse. One through Zenlytic for your official reporting, and one locally in the same way that you connect with dbt (if you use dbt).
+There are two ways to connect to your data warehouse. One through Zenlytic for your official reporting, and one locally in the same way you connect with dbt (if you use dbt).
 
 
 ### Zenlytic connection

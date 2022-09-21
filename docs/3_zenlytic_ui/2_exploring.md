@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Exploring your data 
 
-The explore question lets you answer the "What" question about your data. You can get to this question by [searching your data](./1_using_zenlytic.md#search), [clicking on a metric](./1_using_zenlytic.md#metrics), or [following up from a dashboard](./1_using_zenlytic.md#dashboards).  Once you're in the explore interface you can do several operations on your data.
+The explore question lets you answer the "What" question about your data. You can get to this question by [searching your data](./1_using_zenlytic.md#search), [clicking on a metric](./1_using_zenlytic.md#metrics), or [following up from a dashboard](./1_using_zenlytic.md#dashboards).  Once in the explore interface, you can do several operations on your data.
 
 ### Slicing 
 
@@ -30,7 +30,11 @@ To set the value to use for the filter you can use the drop down for the value o
 
 ### Time periods
 
-The time period allows you to filter your data by it's primary time slice. You can change the value by selecting a custom range or selecting from one of the presets.
+The time period allows you to filter your data by its primary time slice. You can change the value to a custom range by choosing how you'd like to use the time period.
+
+![explore-time-period](../assets/explore-time-period-types.png)
+
+
+Then, once you choose how you'd like to define your time period, you choose the values to complete the time period selection, like this.
 
 ![explore-time-period](../assets/explore-time-period.png)
-

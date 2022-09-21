@@ -4,9 +4,9 @@ sidebar_position: 6
 
 # Views
 
-Views reference exactly one table in the database. They can be joined together using `identifiers`, but always reference the same table in the database.
+Views reference exactly one table in the database. They can be joined together using `identifiers` but always reference the same table in the database.
 
-Views, like all files in Zenlytic, are yaml text files.
+Views, like all files in Zenlytic, are YAML text files.
 
 ---
 
@@ -50,6 +50,10 @@ Identifiers will be used to form the join graph for your database. By default, Z
 
 fields: This is a list of [fields](9_field.md). Each field must have all required parameters included.
 
+
+### Identifiers 
+
+Identifiers will be used to form the joins in your database. You will specify the primary and foreign keys using the syntax below and Zenlytic will automatically make the possible joins available to you through any queries you run.
 
 ### Examples
 

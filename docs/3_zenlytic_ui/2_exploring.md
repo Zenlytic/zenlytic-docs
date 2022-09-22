@@ -2,13 +2,13 @@
 sidebar_position: 2
 ---
 
-# Exploring your data 
+# Slice and Explore 
 
-The explore question lets you answer the "What" question about your data. You can get to this question by [searching your data](./1_using_zenlytic.md#search), [clicking on a metric](./1_using_zenlytic.md#metrics), or [following up from a dashboard](./1_using_zenlytic.md#dashboards).  Once in the explore interface, you can do several operations on your data.
+The Slice and Explore Metrics question lets you answer the "What" questions about your data. You can get to this question by [searching your data](./1_using_zenlytic.md#search), [clicking on a metric](./1_using_zenlytic.md#metrics), or [following up from a dashboard](./1_using_zenlytic.md#dashboards).  Once in the Slice and Explore interface, you can do several operations on your data.
 
 ### Slicing 
 
-You can add or remove metrics and slices from your explore whenever you'd like. You use the Metrics and Slices menu on the left hand side to add these additional metrics or slices. 
+You can add or remove metrics and slices from your question whenever you'd like. You use the Metrics and Slices menu on the left hand side to add these additional metrics or slices. 
 
 ![explore-slicing](../assets/explore-slicing.png)
 

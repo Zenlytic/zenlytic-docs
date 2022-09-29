@@ -27,7 +27,7 @@ To understand data modeling in Zenlytic, there are a few key concepts to grasp. 
 The best way to learn to to see examples. We have examples using both our metrics yaml syntax and [dbt metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) integration. The actual definition of the fields is the same in both cases, but for dbt metrics any properties not available in the column or metric object will be put in the `meta` tag.
 
 * [dbt Metrics example](https://github.com/Zenlytic/jaffle_shop) (jaffles anyone?)
-* Metrics Layer yaml syntax - COMING SOON
+* [Metrics Layer yaml example](https://github.com/Zenlytic/demo-data-model)
 
 
 ### Naming conventions

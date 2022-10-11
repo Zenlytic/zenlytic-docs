@@ -55,5 +55,5 @@ fields: [ALL_FIELDS*, -email]
 Finally, let's define a set without PII and without location. We can use our existing building blocks for this one. In the first part of this definition we included the fields `customer_id`, `new_vs_repeat`, `state`, and `city`. Then we negated our set with `state` and `city`, which means our final set will only contain two fields `customer_id` and `new_vs_repeat`, which is exactly what we wanted.
 ```
 name: customer_no_pii_no_location
-fields: [customer_no_pii*, -customer_no_location]
+fields: [customer_no_pii*, -customer_location]
 ```

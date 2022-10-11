@@ -52,7 +52,7 @@ Dimensions are references to a column in the database or combinations of those r
 ### Examples
 
 
-This example shows three fields, the first of which is the table's primary key, the second of which is the order id with a special tag to denote to Zenlytic that it is an "order", and the third of which is a numeric column, with a label and description.
+This example shows several fields, the first of which is the table's primary key, the second of which is the order id with a special tag to denote to Zenlytic that it is an "order", and the third of which is a numeric column, with a label and description.
 
 The dimension `order_id` is tagged as an 'order' which means it will show up in the Zenlytic UI with an option to "Drill into orders."  If that option is selected, zenlytic will create a query filtered for the group selected and add that column, `order_id` and all fields (if any) defined in the `drill_fields` property.
 

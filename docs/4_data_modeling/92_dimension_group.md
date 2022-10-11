@@ -44,7 +44,7 @@ Dimension Groups are a particular type of dimension used for timeframes (referen
 
 ### Examples
 
-This example shows two fields, the first of which is the table's primary key and the second of which is a dimension group for a date and the third of which is a duration dimension group. In the Zenlytic interface, you'll reference the dates defines in the second field like `order_date`, `order_month`, etc. You'll reference the third field like `days_between_first_order_and_this_order`, `months_between_first_order_and_this_order`, etc.
+This example shows several fields, the first of which is the table's primary key and the second of which is a dimension group for a date and the third of which is a duration dimension group. In the Zenlytic interface, you'll reference the dates defines in the second field like `order_date`, `order_month`, etc. You'll reference the third field like `days_between_first_order_and_this_order`, `months_between_first_order_and_this_order`, etc.
 
 ```
 version: 1

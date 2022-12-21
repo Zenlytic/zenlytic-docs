@@ -74,17 +74,17 @@ Finally, finish filling out your data warehouse's connection information and cli
 ## Troubleshooting
 
 **Not seeing metrics in the Zenlytic interface?**
-* To make metrics visible in the UI, you'll need to add an extra to the definition of the metric, like this:
+* If you have the `hidden` property set to `true`, you won't see those metrics or dimensions anywhere in the UI. Make sure you remove the hidden property or set it to `false` if you want those metrics to show up in the UI. 
 
 ```
+# This metric won't show up in the UI because hidden is set to true
 - name: number_of_orders
   field_type: measure
   type: count_distinct
   sql: ${order_id}
   description: "The unique number of orders placed"
   value_format_name: decimal_0
-  extra:
-    zenlytic.show: yes
+  hidden: yes
 ```
 
 

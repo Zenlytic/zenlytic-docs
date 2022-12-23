@@ -9,7 +9,8 @@ The analyze baskets question lets you quickly look at baskets of goods customers
 
 To get to the Analyze Baskets question you can open an explore question of the metric you are interested in and change the question type drop down in the upper part of the left hand side menu bar to "Analyze Baskets" 
 
-![change-question-type](../assets/change-question-type.png)
+![change-question-type](../assets/change-question-type-baskets.png)
 
 Then run the question and you'll see the basket combinations along with a few metrics. You can change the number of combinations in he baskets using the drop down under "Additional settings."
 
+![baskets](../assets/baskets.png)

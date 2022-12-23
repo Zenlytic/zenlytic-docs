@@ -9,7 +9,7 @@ The user journey question lets you look across a series of events for your metri
 
 To get to the User journey question you can open an explore question of the metric you are interested in and change the question type drop down in the upper part of the left hand side menu bar to "User Journey" 
 
-![change-question-type](../assets/change-question-type.png)
+![change-question-type](../assets/change-question-type-user-journey.png)
 
 Then run the question and you'll see the flow by the default category. You can change the default category in the drop down under "Additional settings" along with the number of actions and the top categories shown. 
 

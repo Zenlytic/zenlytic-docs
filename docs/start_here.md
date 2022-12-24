@@ -16,6 +16,8 @@ Once you create your repo, you can install the most recent version of the metric
 pip install metrics-layer[snowflake]
 ``` 
 
+This will install the metrics-layer package with the connector for Snowflake. It will also give you access to the `ml` command line interface, which you'll use throughout the setup process.
+
 Then you'll run the init command to create your project structure. This will create folders and the `zenlytic_project.yml` file. 
 ```
 ml init

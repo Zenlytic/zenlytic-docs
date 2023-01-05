@@ -46,6 +46,8 @@ Dimensions are references to a column in the database or combinations of those r
 
 `tiers`: For dimensions of type `tier`, specify the breakpoints for the various tiers. For example you might have a dimension `age` which you want to break into tiers, using `[0, 20, 30, 40, 50]` would partition the `age` dimension into groups depending in which range the age fell into between the buckets `[0,20)`, `[20,30)`, `[30,40)`, `[40,50)`, `50+`.
 
+`link`: You can specify a link on a dimension with the option to impute the value of the cell clicked on in the link as a follow up question in Zenlytic. For example, with the link `https://myshopify.com/myfakestore/orders/{{value}}` on the order_id dimension, when a user asks a follow up question by clicking on the order id, they'll have an option to drill into the above link where the order id they clicked on replaces `{{value}}` in the url (i.e. `https://myshopify.com/myfakestore/orders/112335499`).
+
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
 
 
@@ -54,7 +56,7 @@ Dimensions are references to a column in the database or combinations of those r
 
 This example shows several fields, the first of which is the table's primary key, the second of which is the order id with a special tag to denote to Zenlytic that it is an "order", and the third of which is a numeric column, with a label and description.
 
-The dimension `order_id` is tagged as an 'order' which means it will show up in the Zenlytic UI with an option to "Drill into orders."  If that option is selected, zenlytic will create a query filtered for the group selected and add that column, `order_id` and all fields (if any) defined in the `drill_fields` property.
+The dimension `order_id` is tagged as an 'order' which means it will show up in the Zenlytic UI with an option to "Drill into orders."  If that option is selected, zenlytic will create a query filtered for the group selected and add that column, `order_id` and all fields (if any) defined in the `drill_fields` property. Since `order_id` also has the `link` specified, you will also see a follow up question to go to the link with the order id imputed in the link.
 
 
 ```
@@ -81,6 +83,7 @@ fields:
   hidden: yes
   tags: ['orders']
   drill_fields: [marketing_channel, total_revenue]
+  link: https://myshopify.com/myfakestore/orders/{{value}}
 
 - name: price
   field_type: dimension

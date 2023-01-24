@@ -38,3 +38,8 @@ The time period allows you to filter your data by its primary time slice. You ca
 Then, once you choose how you'd like to define your time period, you choose the values to complete the time period selection, like this.
 
 ![explore-time-period](../assets/explore-time-period.png)
+
+
+### Table Calculations 
+
+If you have questions about the types of formula's and functions you can use in table calculations use the reference [here](../4_data_modeling/97_table_calculation_syntax.md)

@@ -42,12 +42,4 @@ Then, once you choose how you'd like to define your time period, you choose the 
 
 ### Table Calculations 
 
-Once you have a result from your question, you can add additional columns as table calculations based on the data in the table. This functionality is similar to functions in Excel. To add a table calculation, click on the three dot menu for the column in the header of the table or click the "+ Table Calculation" button.
-
-TODO image of table calc interface 
-
-Once you've created your calculation, it will be available for use in visualizations.
-
-TODO table image 
-
 If you have questions about the types of formula's and functions you can use in table calculations use the reference [here](../4_data_modeling/97_table_calculation_syntax.md)

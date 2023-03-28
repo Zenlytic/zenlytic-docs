@@ -9,7 +9,7 @@ We're going to walk through setting up Zenlytic from scratch. You should have re
 
 ## Defining your data model.
 
-Documentation on defining your data model can be found [here](./4_data_modeling/1_data_modeling.md). You'll first need to create a GitHub repo, then in that repo define the [models](./4_data_modeling/2_model.md), [views](./4_data_modeling/6_view.md), and [dashboards](./4_data_modeling/3_dashboard.md) you want. 
+Documentation on defining your data model can be found [here](./4_data_modeling/1_data_modeling.md). You'll first need to create a GitHub repo, then in that repo define the [models](./4_data_modeling/2_model.md), [views](./4_data_modeling/5_view.md), and [dashboards](./4_data_modeling/3_dashboard.md) you want. 
 
 Once you create your repo, you can install the most recent version of the metrics layer with the database option of your choice.
 ```

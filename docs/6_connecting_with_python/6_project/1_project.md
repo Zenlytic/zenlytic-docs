@@ -64,4 +64,4 @@ a_single_field = project.get_field("total_revenue", view_name="orders")
 ```
 
 
-To learn more about any of the types returned here, look at the documentation for [models](../../4_data_modeling/2_model.md), [dashboards](../../4_data_modeling/3_dashboard.md), [views](../../4_data_modeling/6_view.md), or [fields](../../4_data_modeling/9_field.md).
+To learn more about any of the types returned here, look at the documentation for [models](../../4_data_modeling/2_model.md), [dashboards](../../4_data_modeling/3_dashboard.md), [views](../../4_data_modeling/5_view.md), or [fields](../../4_data_modeling/9_field.md).

@@ -9,7 +9,7 @@ There are several options in python for exploring a data model. Here are some ex
 
 ### Views
 
-When listing views, the default is to return a list of `View` objects. More information is available in the [view section](../../4_data_modeling/6_view.md) of the docs
+When listing views, the default is to return a list of `View` objects. More information is available in the [view section](../../4_data_modeling/5_view.md) of the docs
 
 ```
 from metrics_layer import MetricsLayerConnection

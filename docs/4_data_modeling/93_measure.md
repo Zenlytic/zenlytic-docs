@@ -14,7 +14,7 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `field_type`: (Required) The field type of the field. For measures (or metrics) this is always `measure`.
 
-`type`: (Required) The type of the field. For measures this is one of `sum`, `average`, `count`, `count_distinct`, `sum_distinct`, `average_distinct` or `number`. Note, both `sum_distinct` and `average_distinct` require you to pass a value to the `sql_distinct_key` property.
+`type`: (Required) The type of the field. For measures this is one of `sum`, `average`, `count`, `count_distinct`, `sum_distinct`, `average_distinct`, `cumulative`, or `number`. Note, both `sum_distinct` and `average_distinct` require you to pass a value to the `sql_distinct_key` property. `cumulative` requires you to pass the `measure` property.
 
 `label`: The label of the measure (or metric) is what shows up to the end users of your data model. If not specified it defaults to the name of the measure (or metric).
 
@@ -34,11 +34,15 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `sql_distinct_key`: This tells Zenlytic that the measure you are calculating here is duplicated, and what field or expression it is unique on. For example, if you have a sales amount that is tied to an order but present in a order lines table, you could set this value to `order_id` and the type to `sum_distinct` to correctly sum up the sales amount without double counting. See [symmetric aggregates](96_symmetric_aggregates.md) for more information.
 
+`measure`: This is only used when the metric has the type `cumulative`. A cumulative metric will sum up that metric over all time, and the measure property specifies which metric to aggregate over all time. For example, you could have a metric of type `sum` called `total_revenue` and create a cumulative metric referencing that named `cumulative_revenue` which calculates the `total_revenue` metric cumulatively. 
+
 `filters`: This is a list of [field filters](94_field_filter.md), which have two properties, `field` and `value`. For example, the below field filter equates to the SQL where clause `where channel != 'Paid'`. Note, you *cannot* apply filters to measures of type `number`. You must apply your filters to the input measures, to achieve that result.
 ```
 - field: channel
   value: "-Paid"
 ```
+
+`canon_date`: This is the date to use when trending this metric over time or applying a time period. It defaults to the `default_date` of the view the metric is in, but you can override it here. When you override it, just use the `name` of the date field (e.g. use `order_at` instead of `order_at_date` which also contains a dimension group).
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
 
@@ -87,4 +91,17 @@ fields:
   type: sum_distinct
   sql_distinct_key: ${order_id}
   sql: ${price} 
+
+- name: number_of_orders
+  field_type: measure
+  type: count_distinct
+  sql: ${order_id}
+
+- name: cumulative_orders
+  field_type: measure
+  type: cumulative
+  measure: number_of_orders
+  description: "The unique cumulative number of orders"
+  value_format_name: decimal_0
+
 ```

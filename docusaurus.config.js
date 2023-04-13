@@ -44,6 +44,11 @@ const config = {
         indexName: 'DOCS',
         searchPagePath: 'search',
       },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false, 
+        respectPrefersColorScheme: false,
+      },
       navbar: {
         title: 'Zenlytic',
         logo: {

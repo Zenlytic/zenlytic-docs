@@ -34,6 +34,10 @@
   --ifm-font-color-base-inverse: #ffffff;
 }
 
+[data-theme='dark'] .DocSearch {
+  --docsearch-hit-active-color: #000000;
+}
+
 [data-theme='light'] {
   --ifm-color-primary: #87e487;
   --ifm-color-primary-dark: #21af90;

@@ -16,7 +16,7 @@ This is a reference for the functions available to the table calculations, inclu
 | 3 | 21% |
 | 6 | 43% | 
 
-`cumulativesum`: The cumulative sum function creates a running total of the column going in the sort order of the column. For example, if you used `cumulativesum([orders.total_revenue])` on the below table, you'd see this result.
+`cumulativesum`: The cumulative sum function creates a running total of the column going in the sort order of the column. For example, if you used `cumulativesum([orders.total_revenue])` on the below table, you'd see this result. Note: You cannot pass an expression to the `cumulativesum` function, you can only pass the reference to the column itself (e.g. passing [orders.total_revenue] will work as expected, but  passing [orders.total_revenue] * 2 will not) 
 
 | total revenue | fx (cumulativesum of total revenue) | 
 |---------------|----|

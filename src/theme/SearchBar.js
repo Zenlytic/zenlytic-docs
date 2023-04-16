@@ -1,6 +1,8 @@
 import React from "react";
 import { MendableSearchBar } from "@mendable/search";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
 
 export default function SearchBarWrapper() {
   const {
@@ -8,12 +10,16 @@ export default function SearchBarWrapper() {
   } = useDocusaurusContext();
   return (
     <div className="mendable-search">
-      <MendableSearchBar
-        anon_key={customFields.mendableAnonKey}
-        style={{ accentColor: "#ECFFA1", darkMode: true }}
-        placeholder="Search..."
-        dialogPlaceholder="How to I create a view?"
-      />
+        <BrowserOnly>
+            {() => {
+            return <MendableSearchBar
+                anon_key={customFields.mendableAnonKey}
+                style={{ accentColor: "#ECFFA1", darkMode: true }}
+                placeholder="Search..."
+                dialogPlaceholder="How to I create a view?"
+                />;
+            }}
+        </BrowserOnly>
     </div>
   );
 }

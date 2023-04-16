@@ -16,7 +16,14 @@ const config = {
   organizationName: 'Zenlytic', // Usually your GitHub org/user name.
   projectName: 'zenlytic-docs', // Usually your repo name.
   trailingSlash: false,
-
+  customFields:{
+    mendableAnonKey:process.env.MENDABLE_ANON_KEY,
+  },
+  plugins: [
+      [
+          'docusaurus-node-polyfills', { excludeAliases: ['console']}
+      ]
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',

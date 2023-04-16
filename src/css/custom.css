@@ -57,6 +57,29 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+.ms-prose :where(code):not(:where([class~="ms-not-prose"] *)) {
+  background-color: var(--ifm-code-background) !important;
+}
+
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Reduce width on mobile for Mendable Search */
+@media (max-width: 767px) {
+  .mendable-search {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mendable-search {
+    width: 150px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mendable-search {
+    width: 140px;
+  }
 }

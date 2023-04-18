@@ -1560,10 +1560,10 @@
   resolved "https://registry.npmjs.org/@mdx-js/util/-/util-1.6.22.tgz"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@mendable/search@^0.0.85":
-  version "0.0.85"
-  resolved "https://registry.npmjs.org/@mendable/search/-/search-0.0.85.tgz"
-  integrity sha512-/kRlUPPkxLZK9xaH+FlMFA9pvwHGG6KjBBHMfQadOacj3B7kqmW+ROopBBj3Q1FdWy2RizlT2t2YUJ8Duz9Llg==
+"@mendable/search@^0.0.88":
+  version "0.0.88"
+  resolved "https://registry.yarnpkg.com/@mendable/search/-/search-0.0.88.tgz#4c076d80abe1ac3d048d8ca021cf5525456e2301"
+  integrity sha512-YD0q6FO8bl3Yg/5wqH5rl+FEB5TnXJkYhfDPrqQ44p0BB67EssNYkjLvTE/R5L7Y6gvgIb1N5GMoRjxbMYxIYw==
   dependencies:
     posthog-js "^1.45.1"
 

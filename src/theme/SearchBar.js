@@ -17,6 +17,7 @@ export default function SearchBarWrapper() {
                 style={{ accentColor: "#ECFFA1", darkMode: true }}
                 placeholder="Search..."
                 dialogPlaceholder="How to I create a view?"
+                showSimpleSearch={true}
                 />;
             }}
         </BrowserOnly>

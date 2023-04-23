@@ -30,7 +30,7 @@ These properties are the ones you can define for an `identifier` in a view.
 
 ### Identifier Join Example
 
-This is a basic view with a few dimensions and measures, that explicitly references the `prod.order_lines` table. This view defines its primary key (`order_line_id`), a foreign key (named `customer_id` but that references the `customer_email` field), and a custom join to the `discounts` view based on a `sql_on` criteria.
+This is a basic view with a few dimensions and measures, that explicitly references the `prod.order_lines` table. This view defines its primary key (`order_line_id`), a foreign key (named `customer_id` but that references the `customer_email` field), and a custom join to the `discounts` view based on a `sql_on` criteria. *Note: identifiers are connected to each other based on the `name` property only. The `sql` property is just used to reference the name of the appropriate field in the view. E.g. you might have a `customer_id` in one view as a foreign key and a `id` in another as a primary key. You could name the identifier `customer` on both views and in one reference `sql: ${customer_id}` and in the other reference `sql: ${id}` and Zenlytic would join them correctly since they have a matching `name` property.*
 
 Since `order_line_id` is defined as a primary key, this view will be available to join in any table that references `order_line_id` as a foreign key.
 

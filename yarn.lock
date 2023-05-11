@@ -1560,10 +1560,10 @@
   resolved "https://registry.npmjs.org/@mdx-js/util/-/util-1.6.22.tgz"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@mendable/search@^0.0.88":
-  version "0.0.88"
-  resolved "https://registry.yarnpkg.com/@mendable/search/-/search-0.0.88.tgz#4c076d80abe1ac3d048d8ca021cf5525456e2301"
-  integrity sha512-YD0q6FO8bl3Yg/5wqH5rl+FEB5TnXJkYhfDPrqQ44p0BB67EssNYkjLvTE/R5L7Y6gvgIb1N5GMoRjxbMYxIYw==
+"@mendable/search@^0.0.93":
+  version "0.0.93"
+  resolved "https://registry.yarnpkg.com/@mendable/search/-/search-0.0.93.tgz#079ff6daa767ec810f6a9fdff4b52d329cc3defd"
+  integrity sha512-MK4WUzp2xz/F/uCC+gNnUCdjD8Mp783uwS2J6N71Pyw2WxE9byg+vx/7yjtS3itW87mIQ8Fo5nWlcEzQlv8zLA==
   dependencies:
     posthog-js "^1.45.1"
 
@@ -4137,7 +4137,7 @@ feed@^4.2.2:
 
 fflate@^0.4.1:
   version "0.4.8"
-  resolved "https://registry.npmjs.org/fflate/-/fflate-0.4.8.tgz"
+  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.4.8.tgz#f90b82aefbd8ac174213abb338bd7ef848f0f5ae"
   integrity sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA==
 
 figures@^3.2.0:
@@ -7033,9 +7033,9 @@ postcss@^8.2.15, postcss@^8.2.4, postcss@^8.3.5:
     source-map-js "^0.6.2"
 
 posthog-js@^1.45.1:
-  version "1.53.2"
-  resolved "https://registry.npmjs.org/posthog-js/-/posthog-js-1.53.2.tgz"
-  integrity sha512-/vSGeDEWNX8ZVvXu4DA+tdZXcc8gHjZl8Tb5cU97KXngQCOumsSimJTBeG/PI8X8R/mRWBbOmnllo72YWTrl1g==
+  version "1.56.0"
+  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.56.0.tgz#fea94fead4eb312292f6f7b1407248398cf0cb98"
+  integrity sha512-Ng44eEPYlrvLohxLSGMRoy6xQWrNMI74gEl0vKqgvYIX31bXFsKgZaDsVluPrK+IyG+U2HokIVkrURkDXn7rOQ==
   dependencies:
     fflate "^0.4.1"
     rrweb-snapshot "^1.1.14"
@@ -7769,7 +7769,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
 
 rrweb-snapshot@^1.1.14:
   version "1.1.14"
-  resolved "https://registry.npmjs.org/rrweb-snapshot/-/rrweb-snapshot-1.1.14.tgz"
+  resolved "https://registry.yarnpkg.com/rrweb-snapshot/-/rrweb-snapshot-1.1.14.tgz#9d4d9be54a28a893373428ee4393ec7e5bd83fcc"
   integrity sha512-eP5pirNjP5+GewQfcOQY4uBiDnpqxNRc65yKPW0eSoU1XamDfc4M8oqpXGMyUyvLyxFDB0q0+DChuxxiU2FXBQ==
 
 rtl-detect@^1.0.3:

@@ -14,7 +14,7 @@ export default function SearchBarWrapper() {
             {() => {
             return <MendableSearchBar
                 anon_key={customFields.mendableAnonKey}
-                style={{ accentColor: "#ECFFA1", darkMode: true }}
+                style={{ accentColor: "#ECFFA1", darkMode: true, ariaLabel: 'Search' }}
                 placeholder="Search..."
                 dialogPlaceholder="How to I create a view?"
                 showSimpleSearch={true}

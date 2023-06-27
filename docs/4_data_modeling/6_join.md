@@ -67,6 +67,57 @@ fields:
 
 ```
 
+### Composite Keys 
+
+In many situations you will have many to many relationships in your data. For example, let's think about a SaaS application that has tables `users` and `workspaces`. A user can be a part of one or more workspaces, which means we'll need a "bridge" table called `user_workspaces` that shows which users have access to which workspaces. If we set up joins (identifiers) in the `user_workspaces` view as follows the join will happen as we expect.
+
+```
+version: 1
+type: view
+name: user_workspaces
+model_name: my_model
+sql_table_name: PROD.USER_WORKSPACES
+
+identifiers:
+- name: user_id
+  type: foreign
+  sql: ${user_id}
+- name: workspace_id
+  type: foreign
+  sql: ${workspace_id}
+
+...
+```
+
+But, if we also have another table that lists both `user_id` and `workspace_id` as a foreign key, Zenlytic will have no way of knowing which table to use to join users and workspaces if no metrics in other views are selected. Composite keys give you the ability to specify the right bridge table to use in these type of situations. We'll specify a composite key below, which will tell Zenlytic to prioritize this join between users and workspaces if there aren't other tables involved which change the join pattern.
+
+```
+version: 1
+type: view
+name: user_workspaces
+model_name: my_model
+sql_table_name: PROD.USER_WORKSPACES
+
+identifiers:
+- name: user_id
+  type: foreign
+  sql: ${user_id}
+- name: workspace_id
+  type: foreign
+  sql: ${workspace_id}
+  # This one is the composite key. It references the existing foreign keys specified 
+  # in the table, and tells Zenlytic that this table is unique on a key that 
+  # would concatenate ${workspace_id} and ${user_id}
+- name: user_workspace
+  type: primary
+  identifiers:
+    - name: workspace_id
+    - name: user_id
+...
+```
+
+Now that we've defined the composite key, we can be sure Zenlytic will handle our many to many join correctly.
+
 ### Merged Results & Mappings
 
 

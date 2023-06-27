@@ -89,7 +89,9 @@ identifiers:
 ...
 ```
 
-But, if we also have another table that lists both `user_id` and `workspace_id` as a foreign key, Zenlytic will have no way of knowing which table to use to join users and workspaces if no metrics in other views are selected. Composite keys give you the ability to specify the right bridge table to use in these type of situations. We'll specify a composite key below, which will tell Zenlytic to prioritize this join between users and workspaces if there aren't other tables involved which change the join pattern.
+But, if we also have another table that lists both `user_id` and `workspace_id` as foreign keys, Zenlytic will have no way of knowing which table to use to join users and workspaces by default. 
+
+Composite keys give you the ability to specify the right bridge table to use in these type of situations. We'll specify a composite key below, which will tell Zenlytic to prioritize this join between users and workspaces if there aren't other tables involved which require a change to the join pattern.
 
 ```
 version: 1

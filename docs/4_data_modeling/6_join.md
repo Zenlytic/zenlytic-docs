@@ -118,7 +118,7 @@ identifiers:
 ...
 ```
 
-Now that we've defined the composite key, we can be sure Zenlytic will handle our many to many join correctly.
+Now that we've defined the composite key, we can be sure Zenlytic will handle our many to many join between `users` and `workspaces` correctly.
 
 ### Merged Results & Mappings
 

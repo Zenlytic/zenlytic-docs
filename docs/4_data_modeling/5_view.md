@@ -38,9 +38,11 @@ sql: "select *, row_number() over (partition by customer_id order by order_date)
     fields: [field_or_set, field_or_set]
 ```
 
-`required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will *always* be applied for this view in any join sequence.
+`access_filters`: This is an optional list of [access filters](./8_access_grants.md#access-filters) to apply to the view when it is queried.
 
-identifiers: This is a list of [fields](9_field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. An example 
+`required_access_grants`: This is a list of [access grant](8_access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will *always* be applied for this view in any join sequence.
+
+`identifiers`: This is a list of [fields](9_field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. An example 
 ```
 - name: order_key
   type: primary
@@ -48,7 +50,7 @@ identifiers: This is a list of [fields](9_field.md) with additional information 
 ```
 Identifiers will be used to form the join graph for your database. By default, Zenlytic will not allow fan-out or chasm joins, but if you specify views in the `allow_fanouts` parameter those will be joined and calculated accurately using [symmetric aggregates](./96_symmetric_aggregates.md).
 
-fields: This is a list of [fields](9_field.md). Each field must have all required parameters included.
+`fields`: This is a list of [fields](9_field.md). Each field must have all required parameters included.
 
 
 ### Identifiers 

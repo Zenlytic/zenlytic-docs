@@ -58,7 +58,7 @@ identifiers:
 - name: discount_join 
   type: join
   reference: discounts
-  relationship: one_to_many
+  relationship: many_to_one
   sql_on: ${discounts.order_id}=${order_lines.order_id} and ${discounts.product_id}=${order_lines.product_id}
 
 fields:

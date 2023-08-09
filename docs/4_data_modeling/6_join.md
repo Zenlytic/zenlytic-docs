@@ -36,7 +36,7 @@ Since `order_line_id` is defined as a primary key, this view will be available t
 
 Since `customer_id` is defined as a foreign key, all views that define `customer_id` as a primary key will be available to join in to this view.
 
-Since `discount_join` is defined as a custom join, exactly one (`many_to_one`) join relationship will exist between `order_lines` and `discounts` with this criteria.
+Since `discount_join` is defined as a custom join, exactly one (`many_to_one`) join relationship will exist between `order_lines` and `discounts` with this criteria. 
 
 ```
 version: 1
@@ -58,6 +58,7 @@ identifiers:
 - name: discount_join 
   type: join
   reference: discounts
+  relationship: many_to_one
   sql_on: ${discounts.order_id}=${order_lines.order_id} and ${discounts.product_id}=${order_lines.product_id}
 
 fields:
@@ -70,6 +71,12 @@ fields:
 ### Composite Keys 
 
 In many situations you will have many to many relationships in your data. For example, let's think about a SaaS application that has tables `users` and `workspaces`. A user can be a part of one or more workspaces, which means we'll need a "bridge" table called `user_workspaces` that shows which users have access to which workspaces. If we set up joins (identifiers) in the `user_workspaces` view as follows the join will happen as we expect.
+
+:::tip Composite keys vs. Custom joins
+
+Composite keys just handle choosing the correct bridge table, they do not construct a join like `a.user_id=b.user_id and a.workspace_id=b.workspace_id`. For that behavior, use a custom join mentioned above.
+
+:::
 
 ```
 version: 1

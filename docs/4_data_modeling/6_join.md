@@ -36,7 +36,7 @@ Since `order_line_id` is defined as a primary key, this view will be available t
 
 Since `customer_id` is defined as a foreign key, all views that define `customer_id` as a primary key will be available to join in to this view.
 
-Since `discount_join` is defined as a custom join, exactly one (`many_to_one`) join relationship will exist between `order_lines` and `discounts` with this criteria.
+Since `discount_join` is defined as a custom join, exactly one (`many_to_one`) join relationship will exist between `order_lines` and `discounts` with this criteria. 
 
 ```
 version: 1

@@ -58,6 +58,7 @@ identifiers:
 - name: discount_join 
   type: join
   reference: discounts
+  relationship: one_to_many # options are many_to_one, one_to_one, one_to_many, and many_to_many
   sql_on: ${discounts.order_id}=${order_lines.order_id} and ${discounts.product_id}=${order_lines.product_id}
 
 fields:
@@ -70,6 +71,8 @@ fields:
 ### Composite Keys 
 
 In many situations you will have many to many relationships in your data. For example, let's think about a SaaS application that has tables `users` and `workspaces`. A user can be a part of one or more workspaces, which means we'll need a "bridge" table called `user_workspaces` that shows which users have access to which workspaces. If we set up joins (identifiers) in the `user_workspaces` view as follows the join will happen as we expect.
+
+Note: This just handles choosing of the correct bridge table, it does not construct a join like `a.user_id=b.user_id and a.workspace_id=b.workspace_id`. For that behavior, use a custom join mentioned above.
 
 ```
 version: 1

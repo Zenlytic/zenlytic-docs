@@ -20,6 +20,8 @@ Views, like all files in Zenlytic, are YAML text files.
 
 `label`: The label of the view is what shows up to the end users of your data model. If not specified it defaults to the name of the view.
 
+`description`: The description of the view. This can help business users understand what the view represents and how it is created.
+
 `sql_table_name`: This is the table name in the database that the view references. For example, `prod.customers` would be a valid `sql_table_name`. You can also reference a dbt `ref` if you define your metrics layer in the same repo as your dbt. For example, `{{ ref('customers') }}`. Zenlytic will check for the validity of the `ref` when you run validation on your data model.
 
 `derived_table`: This is a nested property that you can use to define transformed tables using a SQL statement. This SQL statement is run and is considered to be the "base" of the view. Note, we prefer using [dbt](https://getdbt.com) over derived tables for better testing and maintainability.

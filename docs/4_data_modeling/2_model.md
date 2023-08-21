@@ -28,6 +28,8 @@ Models only have a few core properties:
 
 `timezone`: This controls which timezone Zenlytic uses when querying dates and times from your database. Zenlytic will automatically change the timezone from the database timezone to the timezone you set here. The default is to make no change to the timezone found in the database.
 
+`default_convert_tz`: This field sets the default value for `convert_tz` in each [dimension group](./92_dimension_group.md) in this model. This defaults to `true` so if you set a timezone, it will be applied, unless you either set this value to `false` or set `convert_tz: false` on the field itself.
+
 `access_grants`: This field is a list of [access grants](8_access_grants.md). You can use access grants to control what data users of Zenlytic are allowed to see and access.
 
 ### Examples 

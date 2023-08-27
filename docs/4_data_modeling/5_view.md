@@ -24,10 +24,13 @@ Views, like all files in Zenlytic, are YAML text files.
 
 `sql_table_name`: This is the table name in the database that the view references. For example, `prod.customers` would be a valid `sql_table_name`. You can also reference a dbt `ref` if you define your metrics layer in the same repo as your dbt. For example, `{{ ref('customers') }}`. Zenlytic will check for the validity of the `ref` when you run validation on your data model.
 
-`derived_table`: This is a nested property that you can use to define transformed tables using a SQL statement. This SQL statement is run and is considered to be the "base" of the view. Note, we prefer using [dbt](https://getdbt.com) over derived tables for better testing and maintainability.
+`derived_table`: This is a property that you can use to define transformed tables using a SQL statement. This SQL statement is run and is considered to be the "base" of the view. Note, we generally prefer using [dbt](https://getdbt.com) over derived tables for better testing and maintainability. This property has a nested property `sql` inside of the `derived_table` property that you use to define the SQL statement.
 ```
-sql: "select *, row_number() over (partition by customer_id order by order_date) as order_number from myschema.mytable"
-
+...
+name: my_view
+derived_table: 
+  sql: "select *, row_number() over (partition by customer_id order by order_date) as order_number from myschema.mytable"
+...
 ```
 
 `default_date`: This is the default date [dimension group](92_dimension_group.md) without a time frame chosen for it. For example, if your dimension group is named `order` you would use the value `order` here, not `order_month` or `order_week` like you would reference elsewhere.

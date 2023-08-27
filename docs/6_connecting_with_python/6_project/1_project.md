@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Project
 
-The project object is the class you use to interact with your project as a whole. It has many convenience methods that allow you to look around the project.
+The project object is the class you use to interact with your project as a whole. It has many convenience methods that allow you to look around the project. All yaml objects like models, views, and fields properties listed in the yaml file are inherited in the class of the same type accessible via the `Project` object.
 
 Once you create a connection, you can access the project like this:
 

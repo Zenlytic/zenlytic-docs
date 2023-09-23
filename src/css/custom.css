@@ -83,3 +83,15 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
     width: 140px;
   }
 }
+
+@font-face {
+  font-family: 'GT Zirkon';
+  src: url('/fonts/GT-Zirkon-Book.woff2') format('woff2'),
+       url('/fonts/GT-Zirkon-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'GT Zirkon', sans-serif;
+}

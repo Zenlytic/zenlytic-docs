@@ -16,6 +16,7 @@
   --ifm-code-font-size: 95%; */
   --ifm-color-secondary: #ECFFA1;
   /* --ifm-footer-link-color: #fafafa; */
+  --ifm-font-family-base: 'GT Zirkon', sans-serif;
 }
 
 [data-theme='dark'] {
@@ -82,4 +83,16 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   .mendable-search {
     width: 140px;
   }
+}
+
+@font-face {
+  font-family: 'GT Zirkon';
+  src: url('/fonts/GT-Zirkon-Book.woff2') format('woff2'),
+       url('/fonts/GT-Zirkon-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'GT Zirkon', sans-serif;
 }

@@ -140,6 +140,14 @@ You can also define metrics that use merged results. For example, to define `cos
 
 This is the `demo_model` model. It contains a connection to the warehouse and a mapping between the `orders.channel` dimension and the `marketing_spend.marketing_channel` column.
 
+Mappings are not meant to map separate fields to the one field in separate mapping arguments. For example, if you want to map field X and field Y to field Z, you must do so with a `fields` argument like `fields: [view_1.X, view_2.Y, view_3.Z]`, NOT in two separate mappings, one mapping X -> Z and the other mapping Y -> Z.
+
+:::tip Mappings with null values
+
+Most databases have logic that results in `null=null` being `false` which, means if you map two columns, both with null values, the two nulls won't map to each other. You can solve this using your database's `ifnull` function to replace those `null` values with a string of your choosing.
+
+:::
+
 ```
 version: 1
 type: model

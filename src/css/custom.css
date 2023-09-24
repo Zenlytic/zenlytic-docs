@@ -16,6 +16,7 @@
   --ifm-code-font-size: 95%; */
   --ifm-color-secondary: #ECFFA1;
   /* --ifm-footer-link-color: #fafafa; */
+  --ifm-font-family-base: 'GT Zirkon', sans-serif;
 }
 
 [data-theme='dark'] {

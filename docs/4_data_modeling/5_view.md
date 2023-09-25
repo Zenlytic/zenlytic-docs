@@ -43,6 +43,18 @@ derived_table:
     fields: [field_or_set, field_or_set]
 ```
 
+`always_filter`: This is an optional list of filters which use the usual [field filter selection syntax](./94_field_filter.md) and will *always* be applied to the query. These filters are applied to the entire query, not just a metric or dimension, and if it is not possible to reference or join in the field needed for the filter it will result in an error. Example below:
+
+Here are two filters that will be applied to *all* queries that reference this view. One field `context_os` is present in the view, and does not need to specify its view name. The other field `is_churned` is *not* present in this view and must specify its view name. It will be joined in dynamically whenever this view is referenced to apply the filter.
+
+```
+always_filter:
+- field: customers.is_churned
+  value: FALSE
+- field: context_os
+  value: -NULL
+```
+
 `access_filters`: This is an optional list of [access filters](./8_access_grants.md#access-filters) to apply to the view when it is queried.
 
 `required_access_grants`: This is a list of [access grant](8_access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will *always* be applied for this view in any join sequence.

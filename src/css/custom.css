@@ -62,6 +62,10 @@
   background-color: var(--ifm-code-background) !important;
 }
 
+.prose-code\:ms-text-gray-100 :is(:where(code):not(:where([class~="ms-not-prose"] *))) {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }

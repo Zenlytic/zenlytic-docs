@@ -65,7 +65,7 @@ always_filter:
 
 If you do not have more than one event, use `event_name` and enter the name of the type of event (e.g. for an orders table you might enter "Order" or "Purchase").
 
-NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tag: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
+NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tags: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
 
 `event_name`: To enable funnels in Zenlytic you will have to set either this property or `event_dimension` (funnels are disabled by default). Set this property if you have an event table and that table has exactly one event type in it. The event name value possible to select when picking 'steps' in a funnel like this:
 
@@ -73,7 +73,7 @@ NOTE: To use funnels, you must tag at least one column in the table or joinable 
 
 If you do have more than one event type, use `event_dimension` and enter the name of the field that denotes the event (e.g. for an events table  table you might have a column named `event_label`).
 
-NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tag: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
+NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tags: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
 
 
 `identifiers`: This is a list of [fields](9_field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. An example 

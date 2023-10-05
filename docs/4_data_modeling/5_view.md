@@ -59,6 +59,23 @@ always_filter:
 
 `required_access_grants`: This is a list of [access grant](8_access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will *always* be applied for this view in any join sequence.
 
+`event_dimension`: To enable funnels in Zenlytic you will have to set either this property or `event_name` (funnels are disabled by default). Set this property if you have an event table and that table has more than one event type in it. The event dimension will be used to determine the unique values possible to select when picking 'steps' in a funnel like this:
+
+![funnel-multi-event](../assets/funnel-multi-event.png)
+
+If you do not have more than one event, use `event_name` and enter the name of the type of event (e.g. for an orders table you might enter "Order" or "Purchase").
+
+NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tag: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
+
+`event_name`: To enable funnels in Zenlytic you will have to set either this property or `event_dimension` (funnels are disabled by default). Set this property if you have an event table and that table has exactly one event type in it. The event name value possible to select when picking 'steps' in a funnel like this:
+
+![funnel-single-event](../assets/funnel-single-event.png)
+
+If you do have more than one event type, use `event_dimension` and enter the name of the field that denotes the event (e.g. for an events table  table you might have a column named `event_label`).
+
+NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tag: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
+
+
 `identifiers`: This is a list of [fields](9_field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. An example 
 ```
 - name: order_key
@@ -66,6 +83,7 @@ always_filter:
   sql: ${order_id}
 ```
 Identifiers will be used to form the join graph for your database. By default, Zenlytic will not allow fan-out or chasm joins, but if you specify views in the `allow_fanouts` parameter those will be joined and calculated accurately using [symmetric aggregates](./96_symmetric_aggregates.md).
+
 
 `fields`: This is a list of [fields](9_field.md). Each field must have all required parameters included.
 

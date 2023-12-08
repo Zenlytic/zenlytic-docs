@@ -39,7 +39,7 @@ Protect this signed URL as you would an access token or password credentials - d
    <iframe src="<MY_SIGNED_URL>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
    ```
 
-   Likewise for a chat session in iframe. To request a chat embedded url, you'd just pass `target_url`: `https://app.zenlytic.com/chat`
+   To request a chat embedded url, you'd change the `target_url` to `https://app.zenlytic.com/chat`
    ```
    <iframe src="<MY_SIGNED_URL>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
    ```
@@ -57,7 +57,7 @@ Protect this signed URL as you would an access token or password credentials - d
 - **Method:** `POST`
 - **Headers:** Include basic authentication header. You will need to base64 encode your credentials in the form `client_id:client_secret`, then pass under the `Authorization` header with the `Basic ` prefix. Python code to create the header is given below:
 
-```
+```python
 import base64
 
 def create_basic_auth_header(client_id, client_secret):

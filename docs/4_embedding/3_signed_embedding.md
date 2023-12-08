@@ -31,17 +31,17 @@ Protect this signed URL as you would an access token or password credentials - d
    - See details in [API Reference](./3_signed_embedding.md#api-reference) below
 
 2. **Parameters for iframe**
-   - User ID and JWT token session: To authenticate and personalize the analytics content. The JWT token will expire 24 hours after issuance
+   - Signed URL retrieved in the previous step
    - Pass the url to the iframe like in the examples below
 
    Pass the url to the iframe:
    ```
-   <iframe src="https://app.zenlytic.com/embed/dashboards/73b64533-c027-43b8-b8a8-60694254123?userID=<zenlytic-user-id>&userJWT=<zenlytic-token>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
+   <iframe src="<MY_SIGNED_URL>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
    ```
 
-   Likewise for a chat session in iframe:
+   Likewise for a chat session in iframe. To request a chat embedded url, you'd just pass `target_url`: `https://app.zenlytic.com/chat`
    ```
-   <iframe src="https://app.zenlytic.com/embed/chat?userID=<zenlytic-user-id>&userJWT=<zenlytic-token>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
+   <iframe src="<MY_SIGNED_URL>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
    ```
 
 3. **Handling URL Expiry**

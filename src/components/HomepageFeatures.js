@@ -27,9 +27,9 @@ const FeatureList = [
     title: 'Interoperable',
     description: (
       <>
-        Zenlytic's metrics layer integrates directly with dbt. You can reference dbt models as
-        you define your metrics, and have validation that you didn't just break your
-        key dashboards with a dbt change.
+        Zenlytic's metrics layer integrates directly with dbt Metricflow. 
+        You can reference your semantic models directly in Zenlytic 
+        and explore them with Zoë, the AI chatbot, and with full UI functionality.
       </>
     ),
   },

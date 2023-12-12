@@ -11,6 +11,14 @@ We're going to walk through setting up Zenlytic from scratch. You should have re
 
 Documentation on defining your data model can be found [here](./4_data_modeling/1_data_modeling.md). You'll first need to create a GitHub repo, then in that repo define the [models](./4_data_modeling/2_model.md), [views](./4_data_modeling/5_view.md), and [dashboards](./4_data_modeling/3_dashboard.md) you want. 
 
+
+:::tip Zenlytic UI
+
+To avoid messing around with your local python, you can use the Zenlytic UI for all tasks listed below. The UI has error tracking built in, so you'll know if somethings isn't right.
+
+:::
+
+
 Once you create your repo, you can install the most recent version of the metrics layer with the database option of your choice.
 ```
 pip install metrics-layer[snowflake]
@@ -40,7 +48,7 @@ To ensure your data model is correct you can run validation in the root of your 
 ml validate
 ```
 
-There are a some example repos to help you as well! Here's one for the [dbt integration](https://github.com/Zenlytic/jaffle_shop) and one for [standard yaml](https://github.com/Zenlytic/demo-data-model).
+There are a some example repos to help you as well! Here's one for our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
 
 
 
@@ -61,7 +69,7 @@ Then you'll fill in GitHub credentials for the repo you're using to store your d
 
 Once you've filled in GitHub credentials, you can click "+ Add Connection" under "Database Connections" in the settings menu. You'll first need to select your warehouse type from the drop down, and name your connection. 
 
-The naming of the connection is how Zenlytic links database credentials with your data model. The name of the connection here must be the same as the `connection` property in the [model](./4_data_modeling/2_model.md) or the same as the dbt `profile` if integrating with dbt without a model file. 
+The naming of the connection is how Zenlytic links database credentials with your data model. The name of the connection here must be the same as the `connection` property in the [model](./4_data_modeling/2_model.md) or the same as the dbt `profile` if integrating with dbt Metricflow without a model file. 
 
 For example, to connect with this [example repo](https://github.com/Zenlytic/demo-data-model) we'd use the connection name `demo` because that's the value of `connection` in the [model file](https://github.com/Zenlytic/demo-data-model/blob/master/models/pure_organics_model.yml).  
 

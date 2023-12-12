@@ -26,11 +26,11 @@ An example of that file will look like this
 
 ```
 name: my_project_name # This can be anything you want
-mode: dbt (only necessary when using dbt metrics)
+mode: metricflow (only necessary when using dbt Metricflow)
 profile: my_dbt_profile # This references the name in your dbt profiles.yml file
 
-model-paths: ['models'] # This is the folder where your models are (optional with dbt metrics)
-view-paths: ['views'] # This is the folder where your views are (unnecessary with dbt metrics)
+model-paths: ['models'] # This is the folder where your models are (optional with dbt Metricflow)
+view-paths: ['views'] # This is the folder where your views are (unnecessary with dbt Metricflow)
 dashboard-paths: ['dashboards'] # This is the folder where your dashboards are
 
 ```

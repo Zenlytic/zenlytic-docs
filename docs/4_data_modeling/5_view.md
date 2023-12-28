@@ -32,6 +32,7 @@ derived_table:
   sql: "select *, row_number() over (partition by customer_id order by order_date) as order_number from myschema.mytable"
 ...
 ```
+Note: The filters in `always_filter` *will not* be applied if you are using this property to define the data for the view to sit on top of. 
 
 `default_date`: This is the default date [dimension group](92_dimension_group.md) without a time frame chosen for it. For example, if your dimension group is named `order` you would use the value `order` here, not `order_month` or `order_week` like you would reference elsewhere.
 
@@ -43,7 +44,11 @@ derived_table:
     fields: [field_or_set, field_or_set]
 ```
 
-`always_filter`: This is an optional list of filters which use the usual [field filter selection syntax](./94_field_filter.md) and will *always* be applied to the query. These filters are applied to the entire query, not just a metric or dimension, and if it is not possible to reference or join in the field needed for the filter it will result in an error. Example below:
+`always_filter`: This is an optional list of filters which use the usual [field filter selection syntax](./94_field_filter.md) and will *always* be applied to the query. These filters are applied to the entire query, not just a metric or dimension, and if it is not possible to reference or join in the field needed for the filter it will result in an error. 
+
+Note: This set of filters *will not* be applied if you are using a derived table mentioned above instead of `sql_table_name`. 
+
+Example below:
 
 Here are two filters that will be applied to *all* queries that reference this view. One field `context_os` is present in the view, and does not need to specify its view name. The other field `is_churned` is *not* present in this view and must specify its view name. It will be joined in dynamically whenever this view is referenced to apply the filter.
 

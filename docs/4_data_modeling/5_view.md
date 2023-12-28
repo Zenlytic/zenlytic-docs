@@ -46,7 +46,7 @@ Note: The filters in `always_filter` *will not* be applied if you are using this
 
 `always_filter`: This is an optional list of filters which use the usual [field filter selection syntax](./94_field_filter.md) and will *always* be applied to the query. These filters are applied to the entire query, not just a metric or dimension, and if it is not possible to reference or join in the field needed for the filter it will result in an error. 
 
-NOTE: This set of filters *will not* be applied if you are using a derived table mentioned above. 
+Note: This set of filters *will not* be applied if you are using a derived table mentioned above instead of `sql_table_name`. 
 
 Example below:
 

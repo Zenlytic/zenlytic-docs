@@ -14,7 +14,7 @@ Their syntax is not entirely straightforward but is quite powerful.
 
 Field filters have only two (2) properties, with an optional third:
 
-`field`: (Required) The name of the field to reference. If you reference this field inside a view, you do not need to use the syntax `view_name.field_name` but otherwise you will need to use that syntax to disambiguate the field.
+`field`: (Required) The name of the field to reference. If you reference this field inside a view, you do not need to use the syntax `view_name.field_name` but otherwise you will need to use that syntax to disambiguate the field. Note: for dimension groups, you will also need to include the extension in your reference (e.g. if your dimension group has name `order_at` and has an option `date` in its `timeframes` property, a valid reference would be `order_at_date`, NOT `order_at`)
 
 `value`: (Required) This is the value used to determine the comparison the filter will use (equal to, greater than, etc) and the value tom compare against. The syntax is discussed in depth below.
 

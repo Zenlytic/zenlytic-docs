@@ -44,6 +44,63 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `canon_date`: This is the date to use when trending this metric over time or applying a time period. It defaults to the `default_date` of the view the metric is in, but you can override it here. When you override it, just use the `name` of the date field (e.g. use `order_at` instead of `order_at_date` which also contains a dimension group).
 
+`non_additive_dimension`: This property defines a dimension over which the metric cannot be aggregated (usually a time dimension). An example of this type of metric would be MRR (Monthly Recurring Revenue) where each customer in your database has their MRR as of a single day in the database. To get the right answer, you can't just sum up MRR over all days, you have to take MRR for each customer on the most recent day that customer had an MRR value and then sum *that*. 
+
+For example, let's look at a daily MRR table that includes one row per date of the account, the account's id, the account's plan type, and the plan's MRR in the following columns:
+
+| record_date   | account_id | plan_type | mrr_value |
+|------------|------------|-----------|------------|
+| 2022-01-01 | 123        | Basic     | $20        |
+| 2022-01-02 | 123        | Basic     | $50        |
+| 2022-01-03 | 125        | Basic     | $20        |
+| 2022-01-04 | 126        | Enterprise| $100       |
+
+The Non Additive Dimension has three properties in it. 
+* `name`: This references the fully qualified name of the field you're referencing (e.g. `record_date_raw`). 
+* `window_choice`: This is either `max` or `min` and indicated whether you want to choose the start of period value (min) or the end of period value (max). 
+* `window_groupings` (Optional) This is an array of fully qualified field references, which tells Zenlytic which groups to consider specially when finding the start or end of the period
+  * Example: If you have MRR, like our example here, you will want to use `account_id` as the window grouping because if you have `account_id` X who's most recently recorded day is 2023-01-02 and `account_id` Y who's most recently recorded day is 2023-01-04, you want to use the `mrr_value` from 2023-01-02 for `account_id` X and 2023-01-04 for `account_id` Y. Window groupings allow you to specify the `account_id` as a window grouping to achieve that end.
+
+__Example 1 (MRR):__
+```
+- name: account_id
+  field_type: dimension
+  type: string
+  sql: ${TABLE}.id
+
+- name: record
+  field_type: dimension_group
+  type: time
+  sql: ${TABLE}.record_at
+  timeframes: [raw, date, week, month, year]
+
+- name: mrr
+  field_type: measure
+  type: sum
+  sql: ${TABLE}.mrr_value
+  non_additive_dimension:
+    name: record_raw      # This is referencing the raw timestamp of the above dimension group
+    window_choice: max
+    window_groupings: [account_id]
+```
+
+__Example 2 (Inventory):__
+```
+- name: snapshot
+  field_type: dimension_group
+  type: time
+  sql: ${TABLE}.snapshot_at
+  timeframes: [raw, date, week, month, year]
+
+- name: beginning_of_period_inventory_levels
+  field_type: measure
+  type: sum
+  sql: ${TABLE}.inventory_value
+  non_additive_dimension:
+    name: snapshot_date      # This is referencing the timestamp truncated to the date of the above dimension group
+    window_choice: min
+```
+
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
 
 ## Examples

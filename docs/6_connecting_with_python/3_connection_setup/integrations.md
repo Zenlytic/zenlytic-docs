@@ -8,5 +8,5 @@ The metrics layer (obviously) integrates with [Zenlytic's own data model](../../
 
 The metrics layer no longer supports dbt Metrics (changed in `0.11.X` and above). Use `0.10.X` and below if you need dbt metrics support.
 
-It integrates with BigQuery, Redshift, Postgres, Druid, DuckDB (MotherDuck), SQL Server, and Snowflake for data warehouses.
+It integrates with BigQuery, Redshift, Postgres, Databricks SQL Warehouse, Druid, DuckDB (MotherDuck), SQL Server, and Snowflake for data warehouses.
 

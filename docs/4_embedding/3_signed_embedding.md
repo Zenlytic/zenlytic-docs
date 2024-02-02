@@ -92,7 +92,8 @@ print(auth_header)
   }
   ```
   - `extra_prompt_context`: (Optional) This is extra context added to Zoë to make your user's experience customized. You could say things like "Only speak to me in French" or "Always address me as Doctor." This is only visible to Zoë, not to the user.
-  - `chat_welcome_message`: (Optional) This is the initial message that Zoë shows to the user. For example, you could have Zoë say "Welcome to MyCompany chat! How can I help you find your data today?"
+  - `chat_header_message`: (Optional) This is the welcome header that Zoë shows to the user. For example, you could have Zoë say "Welcome Paul," or send " " to not display this value.
+  - `chat_welcome_message`: (Optional) This is the initial message that Zoë shows to the user. For example, you could have Zoë say "How can I help you find your data today?"
   - `chat_initial_prompts`: (Optional) This is an array of initial prompts to display in Zoë. This helps a user see example questions they can ask. For example, ["What were sales in 2023?", "How many customers joined in the last week?"]
   - `first_name`: (Optional) The first name of the user in your system. Defaults to 'Embedded'.
   - `last_name`: (Optional) The last name of the user in your system. Defaults to 'User'.
@@ -106,7 +107,8 @@ print(auth_header)
         "account_id": 1327789
     },
     "extra_prompt_context": "Always address me in French",
-    "chat_welcome_message": "Welcome to MyCompany chat! How can I help?",
+    "chat_header_message": "Welcome Paul,",
+    "chat_welcome_message": "How can I help you today?",
     "chat_initial_prompts": ["What are my sales in the last month?", "How many customers joined in the last week?"]
 }
 ```

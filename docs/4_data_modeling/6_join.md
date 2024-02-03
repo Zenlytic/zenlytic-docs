@@ -28,6 +28,13 @@ These properties are the ones you can define for an `identifier` in a view.
 
 `allowed_fanouts`: This is used for `primary` and `foreign` join types, and it is a list of referenced views you would like to allow fanout joins for. By default, Zenlytic will not allow fanout joins, but you can explicitly allow them for certain views using this property. Zenlytic uses [symmetric aggregates](./96_symmetric_aggregates.md) to calculate metrics correctly even in the event of a fanout join.
 
+`join_as`: This is a name that identifies how you want to alias the view you are joining in as if it was another view. For example, if you have a tickets view with a requestor_id and a assignee_id and a cx_users view, you could have two 'join_as' statements from the cx_users view to join in those users once as "Requestors" and another time as "Assignees." Note: this property must follow [Zenlytic naming conventions](1_data_modeling.md#naming-conventions), and it *must be unique in your project*, just like view names.
+
+`join_as_label`: This is the label that will show up in the sidebar menu like a view label if you specify a `join_as` value. If you leave it blank, it will default to a prettified version of the `join_as` property.
+
+`join_as_field_prefix`: This is a prefix that goes in front of all fields aliased under the `join_as` property. For example, if you have a cx_users table with an email field, you might want the prefix "Requestor" before each field to make it clear which email field belongs to the requestor and which belongs to the assignee. If you leave it blank, it will default to the `join_as_label` value.
+
+
 ### Identifier Join Example
 
 This is a basic view with a few dimensions and measures, that explicitly references the `prod.order_lines` table. This view defines its primary key (`order_line_id`), a foreign key (named `customer_id` but that references the `customer_email` field), and a custom join to the `discounts` view based on a `sql_on` criteria. *Note: identifiers are connected to each other based on the `name` property only. The `sql` property is just used to reference the name of the appropriate field in the view. E.g. you might have a `customer_id` in one view as a foreign key and a `id` in another as a primary key. You could name the identifier `customer` on both views and in one reference `sql: ${customer_id}` and in the other reference `sql: ${id}` and Zenlytic would join them correctly since they have a matching `name` property.*
@@ -126,6 +133,61 @@ identifiers:
 ```
 
 Now that we've defined the composite key, we can be sure Zenlytic will handle our many to many join between `users` and `workspaces` correctly.
+
+
+### Join As
+
+In many situations you will have a table like `tickets` that joins to another table `cx_users` on two keys, which have different meanings when joined on, like `requestor_id` and `assignee_id`.
+
+`join_as` gives you the ability to join in your `cx_users` table twice to the `tickets` table, once as a Requestor and once as an Assignee.
+
+
+In the tickets table, we will set up two identifiers. One for requestors and one for assignees.
+```
+version: 1
+type: view
+name: tickets
+model_name: my_model
+sql_table_name: PROD.TICKETS
+
+identifiers:
+- name: requestor_user_id
+  type: foreign
+  sql: ${requestor_id}
+- name: assignee_user_id
+  type: foreign
+  sql: ${assignee_id}
+
+...
+```
+
+Now, in the `cx_users` table, we can specify the `join_as` statements, and the labels we want to show up in the UI.
+
+```
+version: 1
+type: view
+name: cx_users
+model_name: my_model
+sql_table_name: PROD.CX_USERS
+
+identifiers:
+- name: requestor_user_id
+  type: primary
+  sql: ${user_id}
+  join_as: requestor_users        # This value must be unique like view names
+  join_as_label: Requestor        # This value is optional and will look like the view label
+
+- name: assignee_user_id
+  type: primary
+  sql: ${user_id}
+  join_as: assigned_users
+  join_as_label: Assigned To      # This will be the label of the view when joined
+  join_as_field_prefix: Assignee  # This will be the prefix for the fields when joined
+...
+```
+
+Now that we've defined our `join_as` statement, Zenlytic will show options in the sidebar menu for both "Requestor" and "Assigned To" fields from the `cx_users` view.
+
 
 ### Merged Results & Mappings
 

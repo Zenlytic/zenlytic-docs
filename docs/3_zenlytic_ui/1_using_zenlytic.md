@@ -14,12 +14,6 @@ Zenlytic is a modern analytics tool that helps you understand the "Why" behind y
 * [Explain Change](./3_explain_change.md)
     * The explain change question lets you answer the question "Why did this metric change?" You can change to this question at any time, or drag / click on the plot to ask a explain change follow up question to figure out why your metric is spiking.
 
-* [Compare](./4_compare.md)
-    * The compare question lets you compare a group (e.g. orders from paid ads) to the rest of your data (e.g. orders NOT from paid ads). This question will highlight  the differences in the two groups by looking at how they vary by your companies metrics. For example, orders from paid ads might have higher average order value that organic orders but a lower repurchase rate.
-
-* [User Journey](./5_user_journey.md)
-    * The user journey question lets you look across a series of events for your metrics. For example, you could look at how customers move from page to page on your site as they navigate content to see which pieces of content are more educational vs drive to a sale.
-
 * [Analyze Baskets](./6_basket_mix.md)
     * The analyze baskets question lets you easily look at baskets of goods customers purchase from you. For example, you could figure out which two products your customers most often buy together, to better inform how you promote bundles of products or organize your online store.
 

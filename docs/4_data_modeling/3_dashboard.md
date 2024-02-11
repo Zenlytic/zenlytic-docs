@@ -50,20 +50,7 @@ Dashboard elements determine what to display for each element in the dashboard.
 `cohort_by`: This is a dimension group of type `duration` that you would like to cohort the plot by.
 
 `time_period`: This is the time period for Zenlytic to apply to all metrics and slices in the query. The default value is `any_time`, which does not apply a time period filter. The options are:
-  `1_days`
-  `7_days`
-  `last_week`
-  `30_days`
-  `last_month`
-  `90_days`
-  `last_quarter`
-  `180_days`
-  `last_year`
-  `wtd` (week to date)
-  `mtd` (month to date)
-  `qtd` (quarter to date)
-  `ytd` (year to date)
-  `any_time` (or leaving the field blank)
+  a datetime [field filter](./94_field_filter.md#dates).
 For more advanced, fine-grained controls over the time filters, use the [field filters](94_field_filter.md) under the `filters` property.
 
 `sort`: This is a list of sorts to apply. A sort is defined with a `field` (any field accessible in the data model) and `value` (either asc or desc, defaults to asc if empty) property like this:
@@ -86,13 +73,13 @@ elements:
   - model: demo
     metrics: [orders.repeat_order_rate, orders.average_order_value]
     slice_by: [orders.product]
-    time_period: 30_days
+    time_period: 30 days
 
   - model: demo
     metrics: [orders.repeat_order_rate]
     slice_by: [orders.product]
     cohort_by: orders.weeks_duration_firstorder_thisorder
-    time_period: 30_days
+    time_period: 30 days
 ```
 
 Here is an example of a dashboard file with a filter at the dashboard level, and an additional filter applied to the second plot. The dashboard level filter will apply to both plots when the dashboard is run and/or when the filter is changed. The second of the two plots will have an additional filter applied which filters out the `CabinSummerVideo_TikTok` campaign from the results. This dashboard also includes a sort to make sure the campaigns are organized from highest in terms of total revenue to lowest.

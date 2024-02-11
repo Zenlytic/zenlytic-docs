@@ -2,67 +2,19 @@
 sidebar_position: 2
 ---
 
-# Start here (setup)
+# Start here
 
 We're going to walk through setting up Zenlytic from scratch. You should have received a login to your workspace to begin the setup process.
 
 
-## Defining your data model.
+## Connecting your git repo
 
-Documentation on defining your data model can be found [here](./4_data_modeling/1_data_modeling.md). You'll first need to create a GitHub repo, then in that repo define the [models](./4_data_modeling/2_model.md), [views](./4_data_modeling/5_view.md), and [dashboards](./4_data_modeling/3_dashboard.md) you want. 
-
-
-:::tip Zenlytic UI
-
-To avoid messing around with your local python, you can use the Zenlytic UI for all tasks listed below. The UI has error tracking built in, so you'll know if somethings isn't right.
-
-:::
+First, if it's not already created, set up a Github repo for your data model. Once you create your repo, go to the [Zenlytic UI](https://app.zenlytic.com/data-model-editor), and go to Workspace Settings. 
 
 
-Once you create your repo, you can install the most recent version of the metrics layer with the database option of your choice.
-```
-pip install metrics-layer[snowflake]
-``` 
+![workspace-settings](assets/workspace-settings.png)
 
-This will install the metrics-layer package with the connector for Snowflake. It will also give you access to the `ml` command line interface, which you'll use throughout the setup process.
-
-Then you'll run the init command to create your project structure. This will create folders and the `zenlytic_project.yml` file. 
-```
-ml init
-```
-
-Then you'll need to define your local connection credentials. You'll do this in exactly the same way as [you would for dbt](https://docs.getdbt.com/dbt-cli/configure-your-profile). Make sure that `profile` in your `zenlytic_project.yml` file is set to the same name as the dbt profile you just created.
-
-
-Now you can use the seeding capability to make setup of the data model much easier. To seed all view files for a database schema run
-```
-ml seed --schema <YOUR_SCHEMA_NAME>
-``` 
-To seed a specific table run 
-```
-ml seed --schema <YOUR_SCHEMA_NAME> --table <YOUR_TABLE_NAME>
-```
-
-To ensure your data model is correct you can run validation in the root of your repo and it will give you any warnings or errors associated with your project.
-```
-ml validate
-```
-
-There are a some example repos to help you as well! Here's one for our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
-
-
-
-## Connecting to your GitHub Repo  
-
-You'll go to your workspace and open settings (click on the top left of the homepage).
-
-![open-settings](assets/open-settings.png)
-
-
-Then you'll fill in GitHub credentials for the repo you're using to store your data model. To authenticate, enter a personal access token you can create via GitHub UI ([how to create one](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)). Then click save when you're done.
-
-![enter-github-creds](assets/enter-github-creds.png)
-
+Once there, follow the docs for [connecting your Github repo using a deploy key](https://intercom.help/zenlytic/en/articles/6960775-connecting-to-github-with-a-deploy-key).
 
 
 ## Connecting to your data warehouse
@@ -73,15 +25,34 @@ The naming of the connection is how Zenlytic links database credentials with you
 
 For example, to connect with this [example repo](https://github.com/Zenlytic/demo-data-model) we'd use the connection name `demo` because that's the value of `connection` in the [model file](https://github.com/Zenlytic/demo-data-model/blob/master/models/pure_organics_model.yml).  
 
-![create-connection](assets/create-connection.png)
-
 
 Finally, finish filling out your data warehouse's connection information and click save
 
 ![finish-connection](assets/finish-connection.png)
 
 
-## Troubleshooting
+
+## Defining your data model
+
+Documentation on defining your data model can be found [here](./4_data_modeling/1_data_modeling.md). In the repo you connected earlier, you'll define the [models](./4_data_modeling/2_model.md) and [views](./4_data_modeling/5_view.md) you want. Here's an example repo for an direct-to-consumer cosmetics brand in our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
+
+
+To start defining metrics, go to the [Data Model Editor](https://app.zenlytic.com/data-model-editor) in the Zenlytic UI.
+
+
+To add a new table click "Create view from table" and select tables to bring into your data model. You can bring tables in using AI to define your metrics (which takes 1-3 min), or you can uncheck that box to just get the explicit table metadata.
+
+
+![create-view-from-table](assets/create-view-from-table.png)
+
+
+Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](./4_data_modeling/5_view.md) if you're defining metrics, define the [identifiers](./4_data_modeling/6_join.md) for joins, and define the aggregates ([metrics / measures](./4_data_modeling/93_measure.md)) you want to use.
+
+
+To make your changes live for other users on the production branch, click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the chatbot) has the latest information on your production metrics.
+
+
+## FAQ
 
 **Not seeing metrics in the Zenlytic interface?**
 * If you have the `hidden` property set to `true`, you won't see those metrics or dimensions anywhere in the UI. Make sure you remove the hidden property or set it to `false` if you want those metrics to show up in the UI. 
@@ -97,10 +68,13 @@ Finally, finish filling out your data warehouse's connection information and cli
   hidden: yes
 ```
 
+**Want to use a local development environment?**
+* If you'd prefer to use a local development environment you can follow [our docs for setup](./6_connecting_with_python/getting_started_local.md). 
+
 
 ## Where do I go from here?
 
-If you want to learn more about how to use the user interface and the different capabilities is has, check out the [documentation on the user interface](./3_zenlytic_ui/1_using_zenlytic.md)!
+If you want to learn more about how to use the user interface and the different capabilities it has, check out the [documentation on the user interface](./3_zenlytic_ui/1_using_zenlytic.md)!
 
 If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./4_data_modeling/1_data_modeling.md)
 

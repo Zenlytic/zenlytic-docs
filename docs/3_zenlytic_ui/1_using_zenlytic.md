@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Using Zenlytic
 
-Zenlytic is a modern analytics tool that helps you understand the "Why" behind your data.  There are several different "question types" you can ask and answer in Zenlytic.
+Zenlytic is a LLM-powered business intelligence platform that makes self-serve analytics possible.  There are several different "question types" you can ask and answer in Zenlytic.
 
 ### Question Types
 

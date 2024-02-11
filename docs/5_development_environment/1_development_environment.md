@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Setting up
 
-This is a high-level overview of how to start creating your Zenlytic data model. 
+This is a high-level overview of how to start creating your Zenlytic data model in your local development environment. 
 
 To start, you'll create a GitHub repo if you don't already have one (if you're using dbt and would like to integrate it with Zenlytic, you can use that existing repo).
 

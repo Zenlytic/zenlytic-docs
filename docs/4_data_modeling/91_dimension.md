@@ -58,7 +58,7 @@ This example shows several fields, the first of which is the table's primary key
 
 The dimension `order_id` is tagged as an 'order' which means it will show up in the Zenlytic UI with an option to "Drill into orders."  If that option is selected, zenlytic will create a query filtered for the group selected and add that column, `order_id` and all fields (if any) defined in the `drill_fields` property. Since `order_id` also has the `link` specified, you will also see a follow up question to go to the link with the order id imputed in the link.
 
-
+This is a view on top of the `order_lines` table which defines the `total_revenue` metric, and a drill defined on the `order_id`. This will result in a "Drill into orders" option in the Zenlytic UI. The link on the order will result in an option to "Go to external link" in the Zenlytic UI.
 ```
 version: 1
 type: view

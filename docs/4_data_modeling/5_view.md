@@ -101,6 +101,9 @@ Identifiers will be used to form the joins in your database. You will specify th
 
 This is a basic view with just 2 dimensions and 1 measure, that explicitly references the `prod.order_lines` table. This view also defines it's primary key as an identifier and a foreign key as an identifier.
 
+This view defines the average price measure on the order lines view and allows a join using the `customer_id` identifier.
+
+
 ```
 version: 1
 type: view

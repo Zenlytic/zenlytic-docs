@@ -24,6 +24,8 @@ These properties are the ones you can define for an `identifier` in a view.
 
 `relationship`: Only used for type `join`. One of `one_to_one`, `many_to_one`, `one_to_many`, `many_to_many`. It specifies the join type from the view the join is defined in to the referenced view. The default is `many_to_one`.
 
+`join_type`: Only used for type `join`. One of `left_outer`, `inner`, `full_outer`, `cross`. It specifies the SQL join type from the view the join is defined in to the referenced view. The default is `left_outer`.
+
 `sql_on`: This is only for (type `join`) joins and can be any arbitrary SQL with references to either the view the join is defined in or to referenced view.
 
 `allowed_fanouts`: This is used for `primary` and `foreign` join types, and it is a list of referenced views you would like to allow fanout joins for. By default, Zenlytic will not allow fanout joins, but you can explicitly allow them for certain views using this property. Zenlytic uses [symmetric aggregates](./96_symmetric_aggregates.md) to calculate metrics correctly even in the event of a fanout join.
@@ -66,6 +68,7 @@ identifiers:
   type: join
   reference: discounts
   relationship: many_to_one
+  join_type: left_outer
   sql_on: ${discounts.order_id}=${order_lines.order_id} and ${discounts.product_id}=${order_lines.product_id}
 
 fields:

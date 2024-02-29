@@ -58,6 +58,7 @@ For example, let's look at a daily MRR table that includes one row per date of t
 The Non Additive Dimension has three properties in it. 
 * `name`: This references the fully qualified name of the field you're referencing (e.g. `record_date_raw`). 
 * `window_choice`: This is either `max` or `min` and indicated whether you want to choose the start of period value (min) or the end of period value (max). 
+* `window_aware_of_query_dimensions`: (Optional) This is either `true` or `false`. When `true`, it will include all group by dimensions in the metric's calculation. For example, when calculating inventory you might want the value to be `true` so that when grouping by product you get the most recent date for each product. In another example, you might want the value to be `false` if you are calculating account balances because you don't want the most recent date of an account type to influence the balance of a account holder's balance. The default is `true`.
 * `window_groupings` (Optional) This is an array of fully qualified field references, which tells Zenlytic which groups to consider specially when finding the start or end of the period
   * Example: If you have MRR, like our example here, you will want to use `account_id` as the window grouping because if you have `account_id` X who's most recently recorded day is 2023-01-02 and `account_id` Y who's most recently recorded day is 2023-01-04, you want to use the `mrr_value` from 2023-01-02 for `account_id` X and 2023-01-04 for `account_id` Y. Window groupings allow you to specify the `account_id` as a window grouping to achieve that end.
 
@@ -99,6 +100,7 @@ __Example 2 (Inventory):__
   non_additive_dimension:
     name: snapshot_date      # This is referencing the timestamp truncated to the date of the above dimension group
     window_choice: min
+    window_aware_of_query_dimensions: true     # The default is true 
 ```
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`

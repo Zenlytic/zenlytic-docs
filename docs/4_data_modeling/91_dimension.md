@@ -18,7 +18,9 @@ Dimensions are references to a column in the database or combinations of those r
 
 `label`: The label of the dimension is what shows up to the end users of your data model. If not specified it defaults to the name of the dimension.
 
-`description`: The description of the dimension. This can help business users understand what the field represents.
+`description`: The description of the dimension. This is shown in the UI and can help end users understand what the field represents.
+
+`zoe_description`: The description of the dimension as shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoe only. End users will still see `description` in the UI.
 
 `primary_key`: A yes (or true) indicates that this field is the primary key of the table. The default is (or course) "no".
 

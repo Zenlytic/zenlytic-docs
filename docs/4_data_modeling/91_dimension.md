@@ -20,7 +20,7 @@ Dimensions are references to a column in the database or combinations of those r
 
 `description`: The description of the dimension. This is shown in the UI and can help end users understand what the field represents.
 
-`zoe_description`: The description of the dimension as shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoe only. End users will still see `description` in the UI.
+`zoe_description`: The description of the dimension as shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI.
 
 `primary_key`: A yes (or true) indicates that this field is the primary key of the table. The default is (or course) "no".
 

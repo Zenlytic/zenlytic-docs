@@ -18,7 +18,9 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `label`: The label of the measure (or metric) is what shows up to the end users of your data model. If not specified it defaults to the name of the measure (or metric).
 
-`description`: The description of the measure (or metric). This can help business users understand what the field represents.
+`description`: The description of the measure (or metric). This is shown in the UI and can help end users understand what the field represents.
+
+`zoe_description`: The description of the measure (or metric) shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI.
 
 `hidden`: A yes (or true) indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is "no" which shows the field in the UI.
 

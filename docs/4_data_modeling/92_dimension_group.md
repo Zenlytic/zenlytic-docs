@@ -18,7 +18,9 @@ Dimension Groups are a particular type of dimension used for timeframes (referen
 
 `label`: The label of the dimension group is what shows up to the end users of your data model. If not specified it defaults to the name of the dimension group.
 
-`description`: The description of the dimension group. This can help business users understand what the field represents.
+`description`: The description of the dimension group. This is shown in the UI and can help end users understand what the field represents.
+
+`zoe_description`: The description of the dimension group shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI.
 
 `hidden`: A yes (or true) indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is "no" which shows the field in the UI.
 

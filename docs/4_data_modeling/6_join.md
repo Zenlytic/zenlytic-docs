@@ -36,6 +36,8 @@ These properties are the ones you can define for an `identifier` in a view.
 
 `join_as_field_prefix`: This is a prefix that goes in front of all fields aliased under the `join_as` property. For example, if you have a cx_users table with an email field, you might want the prefix "Requestor" before each field to make it clear which email field belongs to the requestor and which belongs to the assignee. If you leave it blank, it will default to the `join_as_label` value.
 
+`include_metrics`: This boolean defines if the metrics from the `join_as` join should be included in the fields joined in and shown in the UI. If you leave it blank, it will default to `false` and no metrics from your join_as statement will be shown.
+
 
 ### Identifier Join Example
 

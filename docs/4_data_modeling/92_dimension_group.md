@@ -18,9 +18,9 @@ Dimension Groups are a particular type of dimension used for timeframes (referen
 
 `label`: The label of the dimension group is what shows up to the end users of your data model. If not specified it defaults to the name of the dimension group.
 
-`description`: The description of the dimension group. This is shown in the UI and can help end users understand what the field represents.
+`description`: The description of the dimension group. This is shown in the UI and can help end users understand what the field represents. When this is set and the `zoe_description` property is not set, this will be shown to Zoë. Use this to provide context to Zoë on how to use the field correctly.
 
-`zoe_description`: The description of the dimension group shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI.
+`zoe_description`: The description of the dimension group shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the field correctly.
 
 `hidden`: A yes (or true) indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is "no" which shows the field in the UI.
 
@@ -28,7 +28,7 @@ Dimension Groups are a particular type of dimension used for timeframes (referen
 
 `required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
-`synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`.
+`synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`. This works like a keyword search under the hood, to make fields with synonyms related to the question asked show up in context for Zoë.
 
 `timeframes`: (Required, only for `type` = time) This property is only for dimension groups of type `time`. It's a list of values which you want to make available to the end user. The options are [listed below](92_dimension_group.md#timeframes).
 

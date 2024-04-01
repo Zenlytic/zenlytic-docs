@@ -22,6 +22,8 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `zoe_description`: The description of the measure (or metric) shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the field correctly.
 
+`group_label`: The label of the view the field is put into in the left hand sidebar menu. If not specified it defaults to the name of the view the field is present in.
+
 `hidden`: A yes (or true) indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is "no" which shows the field in the UI.
 
 `sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 1 else 0 end`. Note, for the `count` type you can leave this property blank and it will default to counting the primary key of the view it's defined in.

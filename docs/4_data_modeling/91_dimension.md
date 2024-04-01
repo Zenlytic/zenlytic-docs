@@ -22,6 +22,8 @@ Dimensions are references to a column in the database or combinations of those r
 
 `zoe_description`: The description of the dimension as shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the field correctly.
 
+`group_label`: The label of the view the field is put into in the left hand sidebar menu. If not specified it defaults to the name of the view the field is present in.
+
 `primary_key`: A yes (or true) indicates that this field is the primary key of the table. The default is (or course) "no".
 
 `hidden`: A yes (or true) indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is "no" which shows the field in the UI.

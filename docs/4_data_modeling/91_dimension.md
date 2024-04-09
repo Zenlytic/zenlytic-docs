@@ -24,9 +24,9 @@ Dimensions are references to a column in the database or combinations of those r
 
 `group_label`: The label of the view the field is put into in the left hand sidebar menu. If not specified it defaults to the name of the view the field is present in.
 
-`primary_key`: A yes (or true) indicates that this field is the primary key of the table. The default is (or course) "no".
+`primary_key`: A `true` indicates that this field is the primary key of the table. The default is (of course) `false`.
 
-`hidden`: A yes (or true) indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is "no" which shows the field in the UI.
+`hidden`: A `true` indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is false which shows the field in the UI.
 
 `sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 'Yes' else 'No' end`.
 

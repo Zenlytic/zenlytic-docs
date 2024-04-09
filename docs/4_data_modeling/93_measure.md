@@ -14,7 +14,7 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `field_type`: (Required) The field type of the field. For measures (or metrics) this is always `measure`.
 
-`type`: (Required) The type of the field. For measures this is one of `sum`, `average`, `count`, `count_distinct`, `sum_distinct`, `average_distinct`, `cumulative`, or `number`. Note, both `sum_distinct` and `average_distinct` require you to pass a value to the `sql_distinct_key` property. `cumulative` requires you to pass the `measure` property.
+`type`: (Required) The type of the field. For measures this is one of `sum`, `average`, `count`, `count_distinct`, `sum_distinct`, `average_distinct`, `median` (if supported in your database), `max`, `min`, `cumulative`, or `number`. Note, both `sum_distinct` and `average_distinct` require you to pass a value to the `sql_distinct_key` property. `cumulative` requires you to pass the `measure` property.
 
 `label`: The label of the measure (or metric) is what shows up to the end users of your data model. If not specified it defaults to the name of the measure (or metric).
 
@@ -24,13 +24,11 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `group_label`: The label of the view the field is put into in the left hand sidebar menu. If not specified it defaults to the name of the view the field is present in.
 
-`hidden`: A yes (or true) indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is "no" which shows the field in the UI.
+`hidden`: A `true` indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is false which shows the field in the UI.
 
-`sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 1 else 0 end`. Note, for the `count` type you can leave this property blank and it will default to counting the primary key of the view it's defined in.
+`sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 1 else 0 end`.
 
 `value_format_name`: This is the format to use when displaying the field. Check out [field formatting](95_formatting.md) to see available options. The default is `decimal_1`, which formats `12543.5524` to `12,543.6`.
-
-`tags`: This is a list of strings that tag a field with special meaning. For instance, the `customer` tag indicates that this field is the unique identifier for a customer and Zenlytic will use that to know throughout your queries what you mean when you say "Customer".
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`. This works like a keyword search under the hood, to make fields with synonyms related to the question asked show up in context for Zoë.
 

@@ -32,6 +32,9 @@ Models only have a few core properties:
 
 `access_grants`: This field is a list of [access grants](8_access_grants.md). You can use access grants to control what data users of Zenlytic are allowed to see and access.
 
+`mappings`: Mappings equate fields that mean the same thing but are in different, un-joinable tables. For example, you might have a `channel` field on the orders table and a `marketing_channel` field on the `marketing_spend` table, and they represent the same thing and have the same values. You can set up a mapping that connects those two fields in Zenlytic and leaves only one option for the end users to select. Zenlytic will dynamically figure out which field it should use or if it needs to use both. Find out more about mappings [in the join docs](./6_join.md#merged-results--mappings) or in the example below.
+
+
 ### Examples 
 
 Here is an example of a model that also sets a timezone for all queries to the database.
@@ -46,6 +49,8 @@ timezone: America/New_York
 
 This is an example of an access grant defined in a model. In this case, this access grant could be reused in a view or in fields to limit viewing to only users who have the their `department` user attribute equal to "Marketing". This model also sets the `week_start_day` property which tells which day to start weeks on (the default is monday).
 
+The mapping example here maps the `marketing_spend.marketing_channel` to the `orders.channel` field so Zenlytic (and Zoë) know they are the same concept.
+
 ```
 version: 1
 type: model
@@ -57,5 +62,11 @@ access_grants:
   - name: restrict_dept
     user_attribute: department
     allowed_values: ["Marketing"]
+
+mappings:
+  channel: 
+    fields: [marketing_spend.marketing_channel, orders.channel]
+    group_label: "Acquisition" # This controls the header under which the mapped field shows up in the UI
+    description: "The channel the customer came to our site from"
 
 ```

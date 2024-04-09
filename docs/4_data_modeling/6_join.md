@@ -30,6 +30,8 @@ These properties are the ones you can define for an `identifier` in a view.
 
 `allowed_fanouts`: This is used for `primary` and `foreign` join types, and it is a list of referenced views you would like to allow fanout joins for. By default, Zenlytic will not allow fanout joins, but you can explicitly allow them for certain views using this property. Zenlytic uses [symmetric aggregates](./96_symmetric_aggregates.md) to calculate metrics correctly even in the event of a fanout join.
 
+`identifiers`: This is only valid for a composite key (see [example below](./6_join.md#composite-keys)). It contains a list of dictionaries with a `name` property that references identifiers defined above it. The composite key enables you to specify "bridge" tables to facilitate many-to-many relationships in your data model.
+
 `join_as`: This is a name that identifies how you want to alias the view you are joining in as if it was another view. For example, if you have a tickets view with a requestor_id and a assignee_id and a cx_users view, you could have two 'join_as' statements from the cx_users view to join in those users once as "Requestors" and another time as "Assignees." Note: this property must follow [Zenlytic naming conventions](1_data_modeling.md#naming-conventions), and it *must be unique in your project*, just like view names.
 
 `join_as_label`: This is the label that will show up in the sidebar menu like a view label if you specify a `join_as` value. If you leave it blank, it will default to a prettified version of the `join_as` property.

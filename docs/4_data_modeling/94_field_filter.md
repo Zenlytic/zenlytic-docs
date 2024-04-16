@@ -2,7 +2,7 @@
 sidebar_position: 13
 ---
 
-# Field filters
+# Filters
 
 Field filters can be attached to objects in several contexts. They can be used on fields (measures, dimensions, dimension groups), and dashboards (at the whole-dashboard level or the element level).
 

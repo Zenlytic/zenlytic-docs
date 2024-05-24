@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Zenlytic is a LLM-powered business intelligence platform that makes self-serve analytics possible through a conversational interface to your data.
 
-Zenlytic has a strong semantic layer, which means that the person or team in charge of data will model out the company's metrics explicitly defining things like revenue or conversion to what they need to be for that company. This means end users don't have to remember those definitions, and whenever the team uses data they're comparing apples-to-apples.
+Zenlytic has a strong Cognitive layer, which means that the person or team in charge of data will model out the company's metrics explicitly defining things like revenue or conversion to what they need to be for that company. This means end users don't have to remember those definitions, and whenever the team uses data they're comparing apples-to-apples.
 
 ## How does it work?
 

@@ -86,6 +86,7 @@ Example | Description
 ---|---
 "after 2021-02-03" | This is any date on or after 2021-02-03
 "before 2021-02-03" | This is any date on or before 2021-02-03
+"2021-02-03 until yesterday" | This is any date on or after 2021-02-03 up until the day before `current_date` in your warehouse. You can use any options listed in this syntax in the first or second slot here. The filter will take the beginning of the range of the first value (if it is a range), and the end of the range of the second value (if it is a range).
 "today" | This is any date that has the same day as current_date in your warehouse
 "yesterday" | This is any date that has the same day as the day before current_date in your warehouse
 "this week" | This is any date from the start of the current week (as defined in your [model](2_model.md)) to now

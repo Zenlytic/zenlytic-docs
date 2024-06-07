@@ -36,7 +36,6 @@ Note: The filters in `always_filter` *will not* be applied if you are using this
 
 `default_date`: This is the default date [dimension group](92_dimension_group.md) without a time frame chosen for it. For example, if your dimension group is named `order` you would use the value `order` here, not `order_month` or `order_week` like you would reference elsewhere.
 
-`row_label`: This is the text label of what a row in this table logically represents (e.g. a table of customers, would have a logical row label of "Customer").
 
 `sets`: This is a list of [sets](7_set.md) that are defined in this view. Example syntax of the definition is below.
 ```
@@ -112,7 +111,6 @@ model_name: demo_model
 
 sql_table_name: prod.order_lines
 default_date: order
-row_label: Order Line
 
 identifiers:
 - name: order_line_id

@@ -70,7 +70,6 @@ name: order_lines
 
 sql_table_name: prod.order_lines
 default_date: order
-row_label: Order Line
 
 fields:
 - name: order_line_id

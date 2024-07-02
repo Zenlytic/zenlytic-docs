@@ -24,6 +24,9 @@ Models only have a few core properties:
 
 `connection`: (Required) This is the name of the database connection that is being referenced in Zenlytic. You will specify this name when you enter the database credentials in Zenlytic, and it follows [Zenlytic's conventions for names](1_data_modeling.md#naming-conventions)
 
+
+`fiscal_month_offset`: This controls the offset applied by Zenlytic to calculate "Fiscal" time frames. For example, if you set it to `1` then the `fiscal_quarter` will be set to start in `February` instead of `January`, which is the default. This takes any positive or negative integer. Default is `0`.
+
 `week_start_day`: This controls which day of the week Zenlytic assumes your definition of "Week" starts on. The default value is `monday` (which is standard across ISO dates).
 
 `timezone`: This controls which timezone Zenlytic uses when querying dates and times from your database. Zenlytic will automatically change the timezone from the database timezone to the timezone you set here. The default is to make no change to the timezone found in the database.

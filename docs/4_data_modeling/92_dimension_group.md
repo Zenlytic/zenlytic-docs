@@ -46,6 +46,58 @@ Dimension Groups are a particular type of dimension used for timeframes (referen
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
 
+### Timeframes
+
+:::tip Fiscal date reporting
+
+All `fiscal_` timeframes are based on the model's `fiscal_month_offset` property. This let's you set up your fiscal year/quarter/month reporting right in Zenlytic! Find out more information [here](./2_model.md).
+
+:::
+The available timeframe options are:
+
+* `raw`: Shows the raw value and can be used in references, but is not used in the Zenlytic UI.
+* `time`: Shows the raw timestamp.
+* `second`: Shows the value truncated to the second.
+* `minute`: Shows the value truncated to the minute.
+* `hour`: Shows the value truncated to the hour.
+* `date`: Shows the value truncated to the day.
+* `week`: Shows the value truncated to the week.
+* `month`: Shows the value truncated to the month.
+* `quarter`: Shows the value truncated to the quarter.
+* `year`: Shows the value truncated to the year.
+* `fiscal_month`: Shows the value truncated to the fiscal month.
+* `fiscal_quarter`: Shows the value truncated to the fiscal quarter.
+* `fiscal_year`: Shows the value truncated to the fiscal year.
+* `week_index`: Shows the week of the year as an integer (alias of `week_of_year` below).
+* `week_of_year`: Shows the week of the year as an integer.
+* `week_of_month`: Shows the week of the month as an integer.
+* `month_of_year`: Shows the month of the year as a 3 character string ('Jan', 'Feb', 'Mar', etc).
+* `month_of_year_index`: Shows the month of the year as an integer.
+* `fiscal_month_index`: Shows the fiscal month of the year as an integer. The first fiscal month is the first month of the fiscal year.
+* `fiscal_month_of_year_index`: Shows the fiscal month of the year as an integer (alias of the `fiscal_month_index`).
+* `month_name`: Shows the month of the year as a 3 character string (alias of `month_of_year`).
+* `month_index`: Shows the month of the year as an integer (alias of `month_of_year_index`).
+* `quarter_of_year`: Shows the quarter of the year as an integer.
+* `fiscal_quarter_of_year`: Shows the fiscal quarter of the year as an integer.
+* `hour_of_day`: Shows the hour of the day as an integer.
+* `day_of_week`: Shows the day of the week as a 3 character string ('Mon', 'Tue', 'Wed', etc).
+* `day_of_month`: Shows the day of the month as an integer.
+* `day_of_year`: Shows the day of the year as an integer.
+
+### Intervals 
+
+The available interval options are:
+
+* `second`: The number of seconds between the `sql_start` and the `sql_end`.
+* `minute`: The number of minutes between the `sql_start` and the `sql_end`.
+* `hour`: The number of hours between the `sql_start` and the `sql_end`.
+* `day`: The number of days between the `sql_start` and the `sql_end`.
+* `week`: The number of weeks between the `sql_start` and the `sql_end`.
+* `month`: The number of months between the `sql_start` and the `sql_end`.
+* `quarter`: The number of quarters between the `sql_start` and the `sql_end`.
+* `year`: The number of years between the `sql_start` and the `sql_end`.
+
+
 ### Examples
 
 This example shows several fields, the first of which is the table's primary key and the second of which is a dimension group for a date and the third of which is a duration dimension group. In the Zenlytic interface, you'll reference the dates defines in the second field like `order_date`, `order_month`, etc. You'll reference the third field like `days_between_first_order_and_this_order`, `months_between_first_order_and_this_order`, etc.

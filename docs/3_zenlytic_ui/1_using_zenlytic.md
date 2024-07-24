@@ -27,13 +27,6 @@ You can also access your data via a natural language search that takes you direc
 ![search-page](../assets/search-page.png)
 
 
-### Metrics
-
-You can also access your data via a list of your company's metrics.  To get to this page click the Metrics option on the top navigation bar. To then go to any of the metrics, just click on the metric itself.
-
-![metrics-page](../assets/metrics-page.png)
-
-
 ### Dashboards
 
 You can also access saved views of your data using dashboards. To get to the list of your company's dashboards, you can click on the Dashboards option in the top navigation bar. Then to go to a dashboard, click on it's name.

@@ -100,6 +100,11 @@ fields:
   type: string
   sql: ${TABLE}.marketing_channel
 
+- name: marketing_group
+  field_type: dimension
+  type: string
+  sql: case when ${marketing_channel} = 'Direct' or ${marketing_channel} ilike '%email%' then 'Organic' else 'Paid' end
+
 - name: total_revenue
   field_type: measure
   type: sum

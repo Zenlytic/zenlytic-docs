@@ -17,5 +17,6 @@ Zenlytic integrates with the following data warehouses:
 * Databricks SQL Warehouse
 * Druid
 * DuckDB (MotherDuck)
+* Trino
 * SQL Server
 * Azure Synapse Analytics

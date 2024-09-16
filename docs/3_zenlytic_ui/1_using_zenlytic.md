@@ -8,6 +8,9 @@ Zenlytic is a LLM-powered business intelligence platform that makes self-serve a
 
 ### Question Types
 
+* [Zoë](./zoe.md)
+    * Zoë is an AI data analyst who uses your cognitive layer to answer questions about your data for you. She can answer questions about anything you can query using the [explore](./2_exploring.md) interface, create and add plots to a dashboard, use a code interpreter to answer complex data science questions, and integrates with both Slack and Microsoft Teams.
+
 * [Explore](./2_exploring.md)
     * The explore question is a general purpose question where you can answer the "What" questions that lead into the "Why" questions. For example, you could look at number of customers by acquisition channel who have spent more than $200 in the last 3 months in this question type. You can [slice](./2_exploring.md#slicing) and [filter](./2_exploring.md#filtering) key metrics easily.
 

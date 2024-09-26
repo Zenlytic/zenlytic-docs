@@ -33,3 +33,40 @@ For example, this user will *not* have access to this `email` field because the 
 For more information on how to apply access grants and filters, look at the documentation on [access controls](../4_data_modeling/8_access_grants.md).
 
 
+### User attributes populated automatically 
+
+There are certain user attributes that are populated automatically.
+
+The following user attributes are populated automatically and cannot be overridden:
+* `email`: the logged in user's email
+
+
+### Reserved User Attributes
+
+There are certain user attributes that have special behavior.
+
+#### zenlytic_connection_database
+
+
+The `zenlytic_connection_database` user attribute has the special property that it will override the "database" in the connection to the data warehouse. Not all warehouses handle the "database" idea in the same way, so this is exactly how that breaks down in each situation and for each database type.
+
+In the product, the user attribute is applied as the database to use in all querying situations instead of:
+* Testing the connection itself
+* Listing databases when adding a new view
+* Listing tables when adding a new view
+
+The attribute only applies as the database chosen in the connection itself for:
+* Postgres
+* Redshift
+* Azure Synapse
+* SQL Server
+* Trino
+
+The attribute applies in the `USE DATABASE` clause for:
+* DuckDB
+* Snowflake
+
+The attribute *does not apply* in databases where it is not applicable, which are:
+* BigQuery
+* Druid
+* Databricks

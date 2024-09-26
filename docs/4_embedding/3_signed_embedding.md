@@ -151,6 +151,9 @@ requests.post(url, headers=headers, data=data)
   - Missing or invalid parameters.
   - Server-side errors in URL generation.
 
+### **Customization**
+
+To dynamically change the database chosen in the query, you can set the `zenlytic_connection_database` user attribute. See additional docs on the behavior of this attribute [here](../3_zenlytic_ui/9_user_attributes.md#zenlytic_connection_database).
 
 ### **Troubleshooting**
 

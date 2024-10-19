@@ -155,6 +155,63 @@ requests.post(url, headers=headers, data=data)
 
 To dynamically change the database chosen in the query, you can set the `zenlytic_connection_database` user attribute. See additional docs on the behavior of this attribute [here](../3_zenlytic_ui/9_user_attributes.md#zenlytic_connection_database).
 
+### **Communication**
+
+
+#### Zenlytic Embedded iframe Events
+
+Zenlytic provides an event system for embedded iframes to communicate with the parent application. Currently, we support one event: `questionRunFinished`. Additional events can be added upon request.
+
+
+#### Listening for Events
+
+
+To handle events from the Zenlytic iframe, add an event listener to the window object. Here's an example of how to properly listen for and handle events:
+
+```javascript
+window.addEventListener('message', (message) => {
+  if (message.origin !== 'https://app.zenlytic.com') {
+    // Ignore messages not from Zenlytic
+    return;
+  }
+  
+  switch (message.data.type) {
+    case 'questionRunFinished':
+      console.log(`Question ${message.data.detail.id} finished running!`);
+      // Handle the event here
+      break;
+    // Add cases for future events as they become available
+  }
+});
+```
+
+#### Supported Events
+
+
+`questionRunFinished`
+This event is triggered when a question in the embedded iframe finishes running.
+
+Event details include:
+
+```
+id: The ID of the question that finished
+slices: An array of column IDs representing slices in the question
+metrics: An array of column IDs representing metrics in the question
+filters: An array of filters applied to the question
+time_periods: The current and compare time periods for the question
+row_limit: The row limit set for the question
+sql: The SQL query used to generate the question result
+compare_query: The SQL query used for comparison (if applicable)
+```
+
+#### Security Note
+
+Always verify that the origin of the message is `https://app.zenlytic.com` (or your custom domain, if you are an enterprise customer) before processing the event to ensure the message comes from Zenlytic.
+
+For any questions or requests for additional events, please contact Zenlytic support.
+
+
+
 ### **Troubleshooting**
 
 - **Invalid URL Errors:** Ensure all required parameters are correctly included in the API request.

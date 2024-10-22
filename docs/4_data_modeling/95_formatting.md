@@ -14,15 +14,22 @@ There are several options. Broadly speaking, there is a format type followed by 
 
 Value Format Name | Unformatted Value | Formatted Value
 ---|---|---
+decimal | 12345.678 | 12346
 decimal_0 | 12345.678 | 12,346
 decimal_1 | 12345.678 | 12,345.7
-decimal_2 | 12345.678 | 12,345.68
+decimal_2 | 12345.67812 | 12,345.68
+decimal_3 | 12345.67812 | 12,345.678
+decimal_4 | 12345.67812 | 12,345.6781
 decimal_pct_0 | 3.456 | 3%
 decimal_pct_1 | 3.456 | 3.5%
 decimal_pct_2 | 3.456 | 3.46%
+decimal_pct_3 | 3.4561 | 3.456%
+decimal_pct_4 | 3.4561 | 3.4561%
 percent_0 | 0.3456 | 35%
 percent_1 | 0.3456 | 34.6%
 percent_2 | 0.3456 | 34.56%
+percent_3 | 0.345612 | 34.561%
+percent_4 | 0.345612 | 34.5612%
 eur | 12345.678 | €12.3k
 eur_0 | 12345.678 | €12,346
 eur_1 | 12345.678 | €12,345.7

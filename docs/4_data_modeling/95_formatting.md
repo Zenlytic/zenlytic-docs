@@ -38,6 +38,7 @@ usd | 12345.678 | $12.3k
 usd_0 | 12345.678 | $12,346
 usd_1 | 12345.678 | $12,345.7
 usd_2 | 12345.678 | $12,345.68
+image_from_url | https://mydomain.com/myimage | (Rendered Image)
 
 
 ### Examples

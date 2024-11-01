@@ -97,6 +97,7 @@ print(auth_header)
   - `chat_initial_prompts`: (Optional) This is an array of initial prompts to display in Zoë. This helps a user see example questions they can ask. For example, ["What were sales in 2023?", "How many customers joined in the last week?"]
   - `first_name`: (Optional) The first name of the user in your system. Defaults to 'Embedded'.
   - `last_name`: (Optional) The last name of the user in your system. Defaults to 'User'.
+  - `role_name`: (Optional) The role you want the user to assume in the application. Options are `embed` and `embedded_with_scheduling` Defaults to `embed`. See [user role details](https://intercom.help/zenlytic/en/articles/9264249-user-roles) for more information
 
 - **Example Body Parameters**
 ```json
@@ -109,7 +110,8 @@ print(auth_header)
     "extra_prompt_context": "Always address me in French",
     "chat_header_message": "Welcome Paul,",
     "chat_welcome_message": "How can I help you today?",
-    "chat_initial_prompts": ["What are my sales in the last month?", "How many customers joined in the last week?"]
+    "chat_initial_prompts": ["What are my sales in the last month?", "How many customers joined in the last week?"],
+    "role_name": "embed"
 }
 ```
 

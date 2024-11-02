@@ -72,6 +72,7 @@ The available timeframe options are:
 * `week_of_year`: Shows the week of the year as an integer.
 * `week_of_month`: Shows the week of the month as an integer.
 * `month_of_year`: Shows the month of the year as a 3 character string ('Jan', 'Feb', 'Mar', etc).
+* `month_of_year_full_name`: Shows the month of the year as a string ('January', 'February', 'March', etc).
 * `month_of_year_index`: Shows the month of the year as an integer.
 * `fiscal_month_index`: Shows the fiscal month of the year as an integer. The first fiscal month is the first month of the fiscal year.
 * `fiscal_month_of_year_index`: Shows the fiscal month of the year as an integer (alias of the `fiscal_month_index`).

@@ -7,6 +7,8 @@ sidebar_position: 1
 
 To understand data modeling in Zenlytic, there are a few key concepts to grasp. If you've used data models like LookML before, these will be intuitive, and you'll be able to go straight to the implementation of your model. To better understand how to define context for Zoë, the AI analyst, check out the [tips & tricks doc](https://zenlytics.notion.site/Zo-Tips-Tricks-22675636cd8c4e73a45fd065f158db5e?pvs=4). 
 
+Note: You can also use our automatic LookML -> ZenML converter [here](https://lookml-zenml.netlify.app/).
+
 ### Key concepts
 
 * [Models](2_model.md)

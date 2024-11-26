@@ -157,6 +157,10 @@ requests.post(url, headers=headers, data=data)
 
 To dynamically change the database chosen in the query, you can set the `zenlytic_connection_database` user attribute. See additional docs on the behavior of this attribute [here](../3_zenlytic_ui/9_user_attributes.md#zenlytic_connection_database).
 
+To dynamically change the connection chosen in the query, you can set the `zenlytic_connection_name` user attribute. See additional docs on the behavior of this attribute [here](../3_zenlytic_ui/9_user_attributes.md#zenlytic_connection_name).
+
+Note: You cannot set both of these properties at the same time.
+
 ### **Communication**
 
 

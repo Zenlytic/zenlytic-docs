@@ -45,6 +45,16 @@ The following user attributes are populated automatically and cannot be overridd
 
 There are certain user attributes that have special behavior.
 
+#### zenlytic_connection_name
+
+The `zenlytic_connection_name` user attribute has the special property that it will override the connection that is used to run queries on the data warehouse. You will set this property to the name of the credential, and that credential will be used in the query.
+
+In the product, the user attribute is applied as the connection to use in all querying situations instead of:
+* Testing the connection itself
+* Listing databases when adding a new view
+* Listing tables when adding a new view
+
+
 #### zenlytic_connection_database
 
 

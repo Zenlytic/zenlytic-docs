@@ -55,7 +55,7 @@ Additionally, you can schedule dashboards for delivery in Slack, through the sch
 
 ### Teams 
 
-To set up the Teams integration, contact Zenlytic support, following [these instructions](https://www.notion.so/zenlytics/Installing-the-Zenlytic-Bot-in-Microsoft-Teams-b5eb4f7ac7eb4a45bc350bcd9931dc4b?pvs=4)
+To set up the Teams integration, contact Zenlytic support, following [these instructions](https://zenlytics.notion.site/Installing-the-Zenlytic-Bot-in-Microsoft-Teams-b5eb4f7ac7eb4a45bc350bcd9931dc4b)
 
 Zoë is available in DMs and in channels, but not in group DMs.
 

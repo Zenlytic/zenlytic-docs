@@ -47,7 +47,7 @@ required_access_grants:
 
 ### Full Example
 
-Consider the following four views:
+Using the above model as our model, consider the following four views:
 
 ```
 name: orders
@@ -108,7 +108,7 @@ Which looks like this in Postman
 
 ![has-events-request](../assets/has-events-request.png)
 
-The session that is generated will NOT have access to any of `pg_orders`, `orders`, or `sessions`. It will only have access to the `events` table (assuming these four tables are the only ones in our model). Zoë will not be able to see those three tables the sessions does not have access to, and will have no idea that they exist.
+The session that is generated will NOT have access to any of `pg_orders`, `orders`, or `sessions`. It will only have access to the `events` table (assuming these four tables are the only ones in our model). Zoë will not be able to see those three tables the user does not have access to, and will have no idea that they exist.
 
 ![zoe-just-events](../assets/zoe-just-events.png)
 

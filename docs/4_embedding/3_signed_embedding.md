@@ -161,6 +161,13 @@ To dynamically change the connection chosen in the query, you can set the `zenly
 
 Note: You cannot set both of these properties at the same time.
 
+### Embedded UI Settings
+
+You can additionally set some other settings and system prompt context for Zoë in the Embedded settings page in the UI. These settings will apply to all of your tenants.
+
+![embedded-ui-settings](../assets/embedded-ui-settings.png)
+
+
 ### **Communication**
 
 

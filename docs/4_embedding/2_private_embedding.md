@@ -49,3 +49,8 @@ Similarly, if you want to embed a chat window, you can use the iframe
 <iframe src="https://app.zenlytic.com/embed/chat" style="height:700px;width:100%;border:none;" title="Data Chat" description="Zenlytic Chat"></iframe>
 ```
 
+### Embedded UI Settings
+
+You can additionally set some other settings and system prompt context for Zoë in the Embedded settings page in the UI. These settings will apply to all of your tenants.
+
+![embedded-ui-settings](../assets/embedded-ui-settings.png)

@@ -54,3 +54,5 @@ Similarly, if you want to embed a chat window, you can use the iframe
 You can additionally set some other settings and system prompt context for Zoë in the Embedded settings page in the UI. These settings will apply to all of your tenants.
 
 ![embedded-ui-settings](../assets/embedded-ui-settings.png)
+
+You can also change the name of Zoë to any name you would like using the Chat Agent Name setting.

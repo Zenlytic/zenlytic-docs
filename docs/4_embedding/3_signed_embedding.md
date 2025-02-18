@@ -167,6 +167,8 @@ You can additionally set some other settings and system prompt context for Zoë 
 
 ![embedded-ui-settings](../assets/embedded-ui-settings.png)
 
+You can also change the name of Zoë to any name you would like using the Chat Agent Name setting.
+
 
 ### **Communication**
 

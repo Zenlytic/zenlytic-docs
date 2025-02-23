@@ -14,6 +14,7 @@ Zenlytic integrates with the following data warehouses:
 * BigQuery
 * Redshift
 * Postgres
+* MySQL
 * Databricks SQL Warehouse
 * Druid
 * DuckDB (MotherDuck)

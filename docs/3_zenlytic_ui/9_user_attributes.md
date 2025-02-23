@@ -67,6 +67,7 @@ In the product, the user attribute is applied as the database to use in all quer
 
 The attribute only applies as the database chosen in the connection itself for:
 * Postgres
+* MySQL
 * Redshift
 * Azure Synapse
 * SQL Server

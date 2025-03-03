@@ -40,6 +40,10 @@ To start, you'll see a json that is structured like this:
 			}
 		},
 		"background_color": "gray.20",
+		"chat_agent_avatar": {
+			"background": "transparent",
+			"src": "<link>"
+		},
 		"chatbox": {
 			"background_color": "white",
 			"border_color": "gray.60",

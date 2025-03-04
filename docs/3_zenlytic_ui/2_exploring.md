@@ -6,7 +6,7 @@ sidebar_position: 3
 
 The Slice and Explore Metrics question lets you answer the "What" questions about your data. You can get to this question by [searching your data](./1_using_zenlytic.md#search), [clicking on a metric](./1_using_zenlytic.md#metrics), or [following up from a dashboard](./1_using_zenlytic.md#dashboards).  Once in the Slice and Explore interface, you can do several operations on your data.
 
-<http://docs/assets/ExplorePage.png>
+![explore-slicing](../assets/ExplorePage.png)
 
 ### Slicing 
 

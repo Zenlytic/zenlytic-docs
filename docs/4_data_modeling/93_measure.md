@@ -28,6 +28,8 @@ Measures (or metrics) are aggregations performed inside of a SQL `group by` stat
 
 `sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 1 else 0 end`.
 
+You can also reference any [referenceable attributes](./98_referenceable_attributes.md) and drop them into the `sql` statement here. For example, you can use a passed user attribute to dynamically change the country the average uses when the measure hs `type: average` and `sql: case when country_detail.country='{{ user_attributes["country_options"] }}' then country_detail.rain end`
+
 `value_format_name`: This is the format to use when displaying the field. Check out [field formatting](95_formatting.md) to see available options. The default is `decimal_1`, which formats `12543.5524` to `12,543.6`.
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`. This works like a keyword search under the hood, to make fields with synonyms related to the question asked show up in context for Zoë.

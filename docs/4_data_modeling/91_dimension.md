@@ -30,6 +30,8 @@ Dimensions are references to a column in the database or combinations of those r
 
 `sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 'Yes' else 'No' end`.
 
+You can also reference any [referenceable attributes](./98_referenceable_attributes.md) and drop them into the `sql` statement here. For example, you can use a passed user attribute to dynamically change the language used to translate the content for the user `LOOKUP(${TABLE}.product_name, '{{ user_attributes["user_lang"] }}' )`
+
 `value_format_name`: This is the format to use when displaying the field. Check out [field formatting](95_formatting.md) to see available options. The default is `decimal_1`, which formats `12543.5524` to `12,543.6`.
 
 `tags`: This is a list of strings that tag a field with special meaning. For instance, the `customer` tag indicates that this field is the unique identifier for a customer and Zenlytic will use that to know throughout your queries what you mean when you say "Customer".

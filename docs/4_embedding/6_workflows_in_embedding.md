@@ -5,182 +5,36 @@ sidebar_position: 6
 # Workflows in Embedding (beta)
 
 
-[todo]
-You can control UI customization in Zenlytic's embedded environment via a JSON that maps to CSS styles in the Zenlytic embedded product.
+You can add workflows to the embedding experience by creating the workflows in the UI, and then sharing those workflows with "all users" as Viewer (which only gives the ability to run the workflow).
 
-:::tip Embedded styles ONLY apply in embedding
+![sharing-workflow](../assets/sharing-workflow.png)
 
-The styles you define here will *ONLY* be visible in the embedded application itself. You won't see the chat UI change, unless you are looking at the embedded version of the chat UI.
+Once you have those workflows created, and shared you will see the lightening bolt option in the embedded UI to run the workflow.
+
+:::tip Use the right role
+
+Only the `embedded_with_scheduling` role has access to workflows, so you will not see the option to run workflows if you only use the `embed` role.
 
 :::
 
-### Defining styles
+In the chat UI, that will look like this
 
-You will find the JSON input for defining styles in the Style section of the workspace settings. Only admins in the workspace will have access to this section. 
+![workflow-in-chat](../assets/run-workflow-in-chat.png)
 
-![embedding-style-settings](../assets/embedding-style-settings.png)
 
-To start, you'll see a json that is structured like this:
+### Running automatically
 
-```
-{
-	"avatar": {
-		"background_color": "brand.90",
-		"color": "gray.800"
-	},
-	"chat": {
-		"accordion": {
-			"background_color": "gray.40",
-			"border_radius": "base",
-			"color": "gray.800",
-			"icon": {
-				"color": "gray.300"
-			},
-			"panel": {
-				"background_color": "gray.20"
-			}
-		},
-		"background_color": "gray.20",
-		"chat_agent_avatar": {
-			"background": "transparent",
-			"src": "<link>"
-		},
-		"chatbox": {
-			"background_color": "white",
-			"border_color": "gray.60",
-			"border_radius": "lg",
-			"disabled": {
-				"background_color": "gray.20"
-			},
-			"icon": {
-				"color": "gray.300"
-			}
-		},
-		"color": "gray.800",
-		"explore_chat_toggle": {
-			"background_color": "white",
-			"border_color": "gray.60",
-			"border_radius": "full",
-			"icon": {
-				"active": {
-					"background_color": "gray.40",
-					"color": "gray.800"
-				},
-				"color": "gray.400"
-			}
-		},
-		"feedback": {
-			"menu": {
-				"background_color": "white",
-				"color": "gray.800",
-				"secondary_color": "gray.500",
-				"submit_button": {
-					"background_color": "white",
-					"border_color": "gray.60",
-					"color": "gray.800",
-					"hover": {
-						"background_color": "gray.30"
-					}
-				},
-				"textarea": {
-					"background_color": "gray.20",
-					"border_color": "gray.60",
-					"border_radius": "base",
-					"color": "gray.800"
-				}
-			},
-			"response_text": {
-				"color": "gray.700"
-			},
-			"submission_buttons": {
-				"active": {
-					"color": "gray.700"
-				},
-				"color": "gray.300",
-				"hover": {
-					"background_color": "gray.50"
-				}
-			}
-		},
-		"loading_indicator": {
-			"color": "gray.30",
-			"secondary_color": "gray.300"
-		},
-		"message": {
-			"background_color": "white",
-			"border_radius": "lg"
-		},
-		"secondary_color": "gray.300",
-		"suggestion": {
-			"background_color": "white",
-			"border_color": "gray.60",
-			"border_radius": "full",
-			"color": "gray.800"
-		},
-		"welcome_text": {
-			"color": "gray.500"
-		}
-	},
-	"embed_menu": {
-		"background_color": "white",
-		"border_color": "gray.60",
-		"color": "gray.800",
-		"icon": {
-			"color": "gray.300"
-		}
-	},
-	"nav": {
-		"background_color": "gray.700",
-		"border_color": "gray.600",
-		"color": "gray.100",
-		"hover": {
-			"color": "gray.600"
-		},
-		"icon": {
-			"color": "gray.200"
-		},
-		"logo_image": {
-			"rectangle": "<link>/zenlyticLogoWhiteTransparent.svg",
-			"square": "<link>/zenlyticLogoMarkWhiteTransparent.png"
-		},
-		"search_buttons": {
-			"background_color": "gray.700"
-		},
-		"search_input": {
-			"background_color": "gray.800",
-			"color": "gray.300",
-			"placeholder_color": "gray.500"
-		},
-		"search_panel": {
-			"background_color": "gray.700",
-			"color": "gray.300"
-		},
-		"search_result": {
-			"description": {
-				"color": "gray.300"
-			},
-			"hover": {
-				"background_color": "gray.600"
-			},
-			"title": {
-				"color": "white"
-			}
-		},
-		"secondary_color": "gray.300"
-	}
-}
-```
 
-Each key in the JSON corresponds to the associated styles in that portion of the application. For example, if you change the key `"chat" -> "background_color"` from `"gray.20"` to `"#000000"`, you'll see the background color of the chat interface change from a light gray to black.
+To run workflows without making the user pick which workflow they want to run, you will pass query parameters to select the workflow you want to use. 
 
-Since, the styles are only changed in the embedding environment, you'll have to change the url for chat that you are looking at to see the the styles applied. 
+You can get the workflow id from the 3 dot menu on the workflow creation page, or from the url on the workflow creation page. You will pass query parameters like this to run a workflow
 
-For example, if I make that change, and then go to the `/chat` route, I will not see the change in style applied. 
+`https://app.zenlytic.com/chat/my-conversation-id?workflowId=<my-workflow-id>`
 
-![embedded-style-not-applying](../assets/embedded-style-not-applying.png)
+That will kick off the run of the workflow. If the workflow requires inputs, it will open a modal asking the user for the inputs. If it does not require inputs, the workflow will start running immediately.
 
-However, if I emulate the embedded environment by going to the `/embed/chat` route instead, I will see the styles applied as I expect.
+Note: you can also run a normal chat question via query parameters as well. To do that you will pass query parameters in the URL like this:
 
-![embedded-style-applying](../assets/embedded-style-applying.png)
+`https://app.zenlytic.com/chat/my-conversation-id?q=hello`
 
-To develop and test changes, you should have one tab open to the workspace settings, where you can make changes to the JSON object that governs the styles, and another tab open to `/embed/chat` where you can refresh the page after making changes to the JSON to see how those changes impact the embedded UI. 
+This will initiate the conversation with the user's question `"hello"`.

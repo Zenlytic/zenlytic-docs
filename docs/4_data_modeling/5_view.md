@@ -34,6 +34,19 @@ derived_table:
 ```
 Note: The filters in `always_filter` *will not* be applied if you are using this property to define the data for the view to sit on top of. 
 
+You can also reference any [referenceable attributes](./98_referenceable_attributes.md) and drop them into the derived SQL statement. For example, in this case we are dynamically applying a filter to the SQL query based on the user's user attribute for 'owned_region'
+```
+...
+name: my_view
+derived_table: 
+  sql: >
+    select 
+      * 
+    from myschema.mytable
+    where '{{ user_attributes['owned_region'] }}' = mytable.region
+...
+```
+
 `default_date`: This is the default date [dimension group](92_dimension_group.md) without a time frame chosen for it. For example, if your dimension group is named `order` you would use the value `order` here, not `order_month` or `order_week` like you would reference elsewhere.
 
 

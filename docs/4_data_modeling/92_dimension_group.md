@@ -26,7 +26,27 @@ Dimension Groups are a particular type of dimension used for timeframes (referen
 
 `hidden`: A `true` indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is false which shows the field in the UI.
 
-`sql`: (Required, only for `type` = time) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 'Yes' else 'No' end`.
+`sql`: (Required, only for `type` = time) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 'Yes' else 'No' end`. 
+
+You can also reference any [referenceable attributes](./98_referenceable_attributes.md) and drop them into the `sql` statement here. For example, you can use the query attribute for which dimension group is selected to take advantage of specialized database extensions, like Timescale DB. 
+```
+- name: rainfall_at
+  field_type: dimension_group
+  type: time
+  timeframes:
+    - raw
+    - date
+    - week
+    - month
+  sql: >
+    case 
+      when '{{ query_attributes['dimension_group'] }}' = 'raw' then ${TABLE}.rain_date 
+      when '{{ query_attributes['dimension_group'] }}' = 'date' then time_bucket('1 day', ${TABLE}.rain_date) 
+      when '{{ query_attributes['dimension_group'] }}' = 'week' then time_bucket('1 week', ${TABLE}.rain_date) 
+      when '{{ query_attributes['dimension_group'] }}' = 'month' then time_bucket('1 month', ${TABLE}.rain_date) 
+      else null
+    end
+```
 
 `required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 

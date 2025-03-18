@@ -29,12 +29,12 @@ To run workflows without making the user pick which workflow they want to run, y
 
 You can get the workflow id from the 3 dot menu on the workflow creation page, or from the url on the workflow creation page. You will pass query parameters like this to run a workflow
 
-`https://app.zenlytic.com/chat/my-conversation-id?workflowId=<my-workflow-id>`
+`https://app.zenlytic.com/chat?workflowId=<my-workflow-id>`
 
 That will kick off the run of the workflow. If the workflow requires inputs, it will open a modal asking the user for the inputs. If it does not require inputs, the workflow will start running immediately.
 
 Note: you can also run a normal chat question via query parameters as well. To do that you will pass query parameters in the URL like this:
 
-`https://app.zenlytic.com/chat/my-conversation-id?q=hello`
+`https://app.zenlytic.com/chat?q=hello`
 
 This will initiate the conversation with the user's question `"hello"`.

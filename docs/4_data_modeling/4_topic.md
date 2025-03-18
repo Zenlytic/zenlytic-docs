@@ -12,7 +12,7 @@ Topics are collections of tables (views) that can be joined together using forei
 
 `type`: (Required) The type of the file. For these topic files is should always be `topic`.
 
-`base_view`: (Required) The base view of the topic. This is the name of the [view](6_view.md) you want to create the topic from.
+`base_view`: (Required) The base view of the topic. This is the name of the [view](./5_view.md) you want to create the topic from.
 
 `model_name`: (Required) The name of the [model](./2_model.md) (e.g. database connection) the view references.
 
@@ -24,7 +24,7 @@ Topics are collections of tables (views) that can be joined together using forei
 
 `hidden`: A `true` indicates that this topic should be hidden in the user interface. If a topic is hidden it can still be referenced in the data model, despite not appearing to end users in the UI or to Zoë. The default is false which shows the topic in the UI.
 
-`required_access_grants`: This is a list of [access grant](8_access_grants.md) names that are required to access this topic. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this topic.
+`required_access_grants`: This is a list of [access grant](./8_access_grants.md) names that are required to access this topic. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this topic.
 
 `always_filter`: This is an optional list of filters which use the usual [field filter selection syntax](./94_field_filter.md) and will *always* be applied to the query. These filters are applied to the entire query, not just a metric or dimension, and if it is not possible to reference or join in the field needed for the filter it will result in an error. 
 

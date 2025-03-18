@@ -16,7 +16,7 @@ Topics are collections of tables (views) that can be joined together using forei
 
 `model_name`: (Required) The name of the [model](./2_model.md) (e.g. database connection) the view references.
 
-`label`: The label of the topic is what shows up to the end users of your data model. If not specified it defaults to the name of the topic.
+`label`: (Required) The label of the topic is what shows up to the end users of your data model. If not specified it defaults to the name of the topic.
 
 `description`: This is the description of the topic. This is helpful to let business users know what data is referenced here.
 
@@ -64,6 +64,7 @@ The simplest example of a topic is how it's defined in a model when it's referen
 ```
 type: topic
 base_view: orders
+label: Orders
 model_name: test_model
 ```
 

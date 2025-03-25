@@ -42,4 +42,4 @@ Then, once you choose how you'd like to define your time period, you choose the 
 
 ### Table Calculations 
 
-If you have questions about the types of formula's and functions you can use in table calculations use the reference [here](../4_data_modeling/97_table_calculation_syntax.md)
+If you have questions about the types of formula's and functions you can use in table calculations use the reference [here](../5_data_modeling/97_table_calculation_syntax.md)

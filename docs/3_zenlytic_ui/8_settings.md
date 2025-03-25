@@ -10,7 +10,7 @@ This section covers basic admin operations in Zenlytic. To get to your workspace
 ![settings](../assets/getting-to-settings.png)
 
 
-To add additional team members or change team member permissions go to the "Team Members" tab. From here you can add, remove or update user's permissions and user attributes. User attributes can be used for connection to Slack if emails are mismatched between Slack and Zenlytic. They are also used for advanced permissions using [access grants](../4_data_modeling/8_access_grants.md).
+To add additional team members or change team member permissions go to the "Team Members" tab. From here you can add, remove or update user's permissions and user attributes. User attributes can be used for connection to Slack if emails are mismatched between Slack and Zenlytic. They are also used for advanced permissions using [access grants](../5_data_modeling/8_access_grants.md).
 
 
 ![team-members](../assets/settings-team-members.png)

@@ -19,7 +19,7 @@ Then you'll click on the "+ Add Connection" button under the connections tab.
 ![blank-new-connection](../assets/blank-new-connection.png)
 
 
-You'll fill out your connection information, making sure you set the `Connection Name` to the name you'll reference in your [data model's model file](../4_data_modeling/2_model.md).
+You'll fill out your connection information, making sure you set the `Connection Name` to the name you'll reference in your [data model's model file](../5_data_modeling/2_model.md).
 
 ![filled-new-connection](../assets/filled-new-connection.png)
 

@@ -17,9 +17,9 @@ Metrics Layer gets this information by looking for the same `profiles.yml` file 
 
 ### Local repo
 
-This is the best method when the repo with your [zenlytic data model](../../4_data_modeling/1_data_modeling.md)/dbt repo is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
+This is the best method when the repo with your [zenlytic data model](../../5_data_modeling/1_data_modeling.md)/dbt repo is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
 
-The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](../../4_data_modeling/2_model.md#properties) property in your model file.
+The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](../../5_data_modeling/2_model.md#properties) property in your model file.
 
 ```
 demo_connection:  # This references the connection property in the YAML model or dbt project

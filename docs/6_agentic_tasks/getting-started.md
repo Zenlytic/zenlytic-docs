@@ -45,7 +45,7 @@ That’s it! After the Task is completed, the chat input will become available a
 By navigating to https://app.zenlytic.com/tasks or clicking the *Tasks* option in the left-hand navigational sidebar, you will see a list of Tasks that have been created in your workspace. The three-dot menu reveals options to run, duplicate, or delete a Task. When you click on a Task name or highlighted row, you will be navigated to the Task Builder.
 
 ![tasks](../assets/agentic-tasks/tasks.png)
-/7
+
 ## Creating Tasks
 
 In the upper right-hand side of the screen, you can create new Tasks by pressing *New Task*. This button will then navigate you to your new Task in the Task Builder.

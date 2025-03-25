@@ -69,7 +69,7 @@ To make your changes live for other users on the production branch, click "Deplo
 ```
 
 **Want to use a local development environment?**
-* If you'd prefer to use a local development environment you can follow [our docs for setup](./6_connecting_with_python/getting_started_local.md). 
+* If you'd prefer to use a local development environment you can follow [our docs for setup](./8_connecting_with_python/getting_started_local.md). 
 
 
 ## Where do I go from here?
@@ -78,6 +78,6 @@ If you want to learn more about how to use the user interface and the different 
 
 If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./5_data_modeling/1_data_modeling.md)
 
-If you'd like to learn about how to get everything set up for defining those metric definitions look at the [documentation on your metric development environment](./5_development_environment/1_development_environment.md)
+If you'd like to learn about how to get everything set up for defining those metric definitions look at the [documentation on your metric development environment](./7_development_environment/1_development_environment.md)
 
 As always, feel free to reach out to your Zenlytic contact if you have questions that aren't answered in the documentation!

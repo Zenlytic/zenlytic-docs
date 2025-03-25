@@ -21,7 +21,7 @@ If you want to learn more about how to use the user interface and the different 
 
 If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./5_data_modeling/1_data_modeling.md)
 
-If you'd like to learn about how to get everything set up for defining those metric definitions in your local environment, as opposed to the Zenlytic UI, look at the [documentation on your metric development environment](./5_development_environment/1_development_environment.md)
+If you'd like to learn about how to get everything set up for defining those metric definitions in your local environment, as opposed to the Zenlytic UI, look at the [documentation on your metric development environment](./7_development_environment/1_development_environment.md)
 
 Note: You can also use our automatic LookML -> ZenML converter [here](https://lookml-zenml.netlify.app/) to get started quickly if you're moving from Looker.
 

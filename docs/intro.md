@@ -19,7 +19,7 @@ The maintainers of Zenlytic will maintain their metric definitions in [yaml](htt
 
 If you want to learn more about how to use the user interface and the different capabilities it has, check out the [documentation on the user interface](./3_zenlytic_ui/1_using_zenlytic.md)!
 
-If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./4_data_modeling/1_data_modeling.md)
+If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./5_data_modeling/1_data_modeling.md)
 
 If you'd like to learn about how to get everything set up for defining those metric definitions in your local environment, as opposed to the Zenlytic UI, look at the [documentation on your metric development environment](./5_development_environment/1_development_environment.md)
 

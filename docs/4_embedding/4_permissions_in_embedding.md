@@ -5,11 +5,11 @@ sidebar_position: 4
 # Permissions in Embedding
 
 
-You can control permissions in Zenlytic via access controls using both access filters (row-based) and access grants (column-based). Docs on those are [here](../4_data_modeling/8_access_grants.md).
+You can control permissions in Zenlytic via access controls using both access filters (row-based) and access grants (column-based). Docs on those are [here](../5_data_modeling/8_access_grants.md).
 
 ### Setting up the access permissions
 
-To start, you'll define the logic that determine when an access grant is allowed or not allowed. For example, with these definitions, which are found in the [model](../4_data_modeling/2_model.md) file:
+To start, you'll define the logic that determine when an access grant is allowed or not allowed. For example, with these definitions, which are found in the [model](../5_data_modeling/2_model.md) file:
 
 ```
 version: 1

@@ -18,7 +18,7 @@ If you're not integrating with dbt Metricflow, initialize your project you'll us
 
 To seed your model from your existing data warehouse tables follow the [instructions on seeding](4_cli.md#seeding) (note: this does not work for dbt Metricflow). 
 
-That's the setup process! For further information on the data model and how to develop the metrics your company needs check out the documentation on [Zenlytic's data model](../4_data_modeling/1_data_modeling.md).
+That's the setup process! For further information on the data model and how to develop the metrics your company needs check out the documentation on [Zenlytic's data model](../5_data_modeling/1_data_modeling.md).
 
 The steps above with links to more information:
 

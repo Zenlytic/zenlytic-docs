@@ -21,7 +21,7 @@ Once there, follow the docs for [connecting your Github repo using a deploy key]
 
 Once you've filled in GitHub credentials, you can click "+ Add Connection" under "Database Connections" in the settings menu. You'll first need to select your warehouse type from the drop down, and name your connection. 
 
-The naming of the connection is how Zenlytic links database credentials with your data model. The name of the connection here must be the same as the `connection` property in the [model](./4_data_modeling/2_model.md) or the same as the dbt `profile` if integrating with dbt Metricflow without a model file. 
+The naming of the connection is how Zenlytic links database credentials with your data model. The name of the connection here must be the same as the `connection` property in the [model](./5_data_modeling/2_model.md) or the same as the dbt `profile` if integrating with dbt Metricflow without a model file. 
 
 For example, to connect with this [example repo](https://github.com/Zenlytic/demo-data-model) we'd use the connection name `demo` because that's the value of `connection` in the [model file](https://github.com/Zenlytic/demo-data-model/blob/master/models/pure_organics_model.yml).  
 
@@ -34,7 +34,7 @@ Finally, finish filling out your data warehouse's connection information and cli
 
 ## Defining your data model
 
-Documentation on defining your data model can be found [here](./4_data_modeling/1_data_modeling.md). In the repo you connected earlier, you'll define the [models](./4_data_modeling/2_model.md) and [views](./4_data_modeling/5_view.md) you want. Here's an example repo for an direct-to-consumer cosmetics brand in our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
+Documentation on defining your data model can be found [here](./5_data_modeling/1_data_modeling.md). In the repo you connected earlier, you'll define the [models](./5_data_modeling/2_model.md) and [views](./5_data_modeling/5_view.md) you want. Here's an example repo for an direct-to-consumer cosmetics brand in our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
 
 
 To start defining metrics, go to the [Data Model Editor](https://app.zenlytic.com/data-model-editor) in the Zenlytic UI.
@@ -46,7 +46,7 @@ To add a new table click "Create view from table" and select tables to bring int
 ![create-view-from-table](assets/create-view-from-table.png)
 
 
-Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](./4_data_modeling/5_view.md) if you're defining metrics, define the [identifiers](./4_data_modeling/6_join.md) for joins, and define the aggregates ([metrics / measures](./4_data_modeling/93_measure.md)) you want to use.
+Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](./5_data_modeling/5_view.md) if you're defining metrics, define the [identifiers](./5_data_modeling/6_join.md) for joins, and define the aggregates ([metrics / measures](./5_data_modeling/93_measure.md)) you want to use.
 
 
 To make your changes live for other users on the production branch, click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the chatbot) has the latest information on your production metrics.
@@ -76,7 +76,7 @@ To make your changes live for other users on the production branch, click "Deplo
 
 If you want to learn more about how to use the user interface and the different capabilities it has, check out the [documentation on the user interface](./3_zenlytic_ui/1_using_zenlytic.md)!
 
-If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./4_data_modeling/1_data_modeling.md)
+If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](./5_data_modeling/1_data_modeling.md)
 
 If you'd like to learn about how to get everything set up for defining those metric definitions look at the [documentation on your metric development environment](./5_development_environment/1_development_environment.md)
 

@@ -28,9 +28,11 @@ Dimensions are references to a column in the database or combinations of those r
 
 `hidden`: A `true` indicates that this field should be hidden in the user interface. If a field is hidden it can still be referenced in the data model, despite not appearing to end users as a selectable field. The default is false which shows the field in the UI.
 
-`sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 'Yes' else 'No' end`.
+`sql`: (Required) This is the SQL expression that generates the field value. It can be as simple as `${TABLE}.my_field_name` which just references a column in the database table, or something more advanced that references previously defined fields, like `case when ${channel} ilike '%owned' then 'Yes' else 'No' end`. Note: You can also use window functions in this property, if you specify the `window` property below as `true`.
 
 You can also reference any [referenceable attributes](./98_referenceable_attributes.md) and drop them into the `sql` statement here. For example, you can use a passed user attribute to dynamically change the language used to translate the content for the user `LOOKUP(${TABLE}.product_name, '{{ user_attributes["user_lang"] }}' )`
+
+`window`: This is a boolean that is true if the SQL expression in the `sql` property is a window function, and false otherwise. It defaults to `false`.
 
 `value_format_name`: This is the format to use when displaying the field. Check out [field formatting](95_formatting.md) to see available options. The default is `decimal_1`, which formats `12543.5524` to `12,543.6`.
 

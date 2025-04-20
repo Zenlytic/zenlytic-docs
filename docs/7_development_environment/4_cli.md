@@ -32,7 +32,7 @@ profile: my_dbt_profile # This references the name in your dbt profiles.yml file
 model-paths: ['models'] # This is the folder where your models are (optional with dbt Metricflow)
 view-paths: ['views'] # This is the folder where your views are (unnecessary with dbt Metricflow)
 dashboard-paths: ['dashboards'] # This is the folder where your dashboards are
-
+topic-paths: ['topics']
 ```
 
 

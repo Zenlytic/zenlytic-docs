@@ -26,4 +26,4 @@ The steps above with links to more information:
 2. [Connect to your database](3_database_connection.md)
 3. [Initialize your project](4_cli.md)
 4. [Seed your project with your data warehouse tables](4_cli.md#seeding)
-5. [Integration with dbt Metricflow](6_dbt_files.md) (Optional)
+5. [Integration with dbt Metricflow](../5_data_modeling/12_dbt_metricflow.md) (Optional)

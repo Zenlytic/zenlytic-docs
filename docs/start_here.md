@@ -6,20 +6,14 @@ sidebar_position: 2
 
 We're going to walk through setting up Zenlytic from scratch. You should have received a login to your workspace to begin the setup process.
 
-
-## Connecting your git repo
-
-First, if it's not already created, set up a Github repo for your data model. Once you create your repo, go to the [Zenlytic UI](https://app.zenlytic.com/data-model-editor), and go to Workspace Settings. 
-
-
-![workspace-settings](assets/workspace-settings.png)
-
-Once there, follow the docs for [connecting your Github repo using a deploy key](https://intercom.help/zenlytic/en/articles/6960775-connecting-to-github-with-a-deploy-key).
+There are two external connections Zenlytic needs to make to function.
+1. Your data warehouse.
+2. Git for your data model. 
 
 
 ## Connecting to your data warehouse
 
-Once you've filled in GitHub credentials, you can click "+ Add Connection" under "Database Connections" in the settings menu. You'll first need to select your warehouse type from the drop down, and name your connection. 
+You can click "+ Add Connection" under "Database Connections" in the settings menu. You'll first need to select your warehouse type from the drop down, and name your connection. 
 
 The naming of the connection is how Zenlytic links database credentials with your data model. The name of the connection here must be the same as the `connection` property in the [model](./5_data_modeling/2_model.md) or the same as the dbt `profile` if integrating with dbt Metricflow without a model file. 
 
@@ -31,6 +25,9 @@ Finally, finish filling out your data warehouse's connection information and cli
 ![finish-connection](assets/finish-connection.png)
 
 
+## Git 
+
+Git should be already connected. You should continue to default to using Zenlytic's "Managed Repo" setting, which involves no setup. If you want to switch from that to a separate repo, you can contact support or follow [our git documentation](https://intercom.help/zenlytic/en/articles/7992579-git-data-model-setup). 
 
 ## Defining your data model
 
@@ -65,11 +62,8 @@ To make your changes live for other users on the production branch, click "Deplo
   sql: ${order_id}
   description: "The unique number of orders placed"
   value_format_name: decimal_0
-  hidden: yes
+  hidden: true
 ```
-
-**Want to use a local development environment?**
-* If you'd prefer to use a local development environment you can follow [our docs for setup](./8_connecting_with_python/getting_started_local.md). 
 
 
 ## Where do I go from here?

@@ -14,7 +14,7 @@ We no longer support dbt Metrics, and only support dbt Metricflow.
 
 If you're integrating with dbt Metricflow, you'll follow it's syntax and just set the `mode: metricflow` in your `zenlytic_project.yml` file.
 
-If you're not integrating with dbt Metricflow, initialize your project you'll use the [metrics layer cli](4_cli.md#initialize) and run `ml init` in the root of the repo you want to use. 
+If you're not integrating with dbt Metricflow, to initialize your project you'll use the [metrics layer cli](4_cli.md#initialize) and run `ml init` in the root of the repo you want to use. 
 
 To seed your model from your existing data warehouse tables follow the [instructions on seeding](4_cli.md#seeding) (note: this does not work for dbt Metricflow). 
 

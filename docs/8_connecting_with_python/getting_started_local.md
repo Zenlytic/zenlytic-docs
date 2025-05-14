@@ -14,7 +14,7 @@ Documentation on defining your data model can be found [here](./5_data_modeling/
 
 :::tip Zenlytic UI
 
-To avoid messing around with your local python, you can use the [Zenlytic UI](https://app.zenlytic.com/data-model-editor) for all tasks listed below. The UI has error tracking built in, so you'll know if something isn't right.
+To avoid messing around with your local Python, you can use the [Zenlytic UI](https://app.zenlytic.com/data-model-editor) for all tasks listed below. The UI has error tracking built in, so you'll know if something isn't right.
 
 :::
 

@@ -38,7 +38,7 @@ After clicking on the ⚡ *Lightning* icon button, the following modal will appe
 
 ![workflows-modal](../assets/workflows/workflows-modal.png)
 
-While the Workflow runs, the chat input for the Workflow's conversation will display "Workflow in progress…” Feel free to navigate away from the Workflow's conversation to other chats or browser tabs while the Workflow is running. Workflows were designed with workflows that take a long time to complete in mind; the Workflow's conversation will update with responses whenever they are available.
+While the Workflow runs, the chat input for the Workflow's conversation will display "Workflow in progress…” Feel free to navigate away from the Workflow's conversation to other chats or browser tabs while the Workflow is running. Workflows were designed with long-running operations in mind; the Workflow's conversation will update with responses whenever they are available.
 
 ![running-workflow](../assets/workflows/running-workflow.png)
 

@@ -21,7 +21,7 @@ Zenlytic is a LLM-powered business intelligence platform that makes self-serve a
     * The analyze baskets question lets you easily look at baskets of goods customers purchase from you. For example, you could figure out which two products your customers most often buy together, to better inform how you promote bundles of products or organize your online store.
 
 * [Funnel](./7_funnel.md)
-    * The funnel question lets you quickly look at sequences of customer interactions with you. This can be anything in your database like individual clicks on your site, marketing/sales touch points, or orders. For example, you could figure out how many customers after making an order through a paid channel come back and make another order from any channel.
+    * The funnel question lets you quickly look at sequences of customer interactions. This can be anything in your database like individual clicks on your site, marketing/sales touch points, or orders. For example, you could figure out how many customers after making an order through a paid channel come back and make another order from any channel.
 
 ### Search 
 

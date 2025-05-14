@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Command Line Interface
 
-There are a few cli methods Zenlytic's metrics layer provides using its cli `ml`.
+After [installation](https://github.com/Zenlytic/metrics_layer?tab=readme-ov-file#installation), there are a few cli methods Zenlytic's metrics layer provides using its cli `ml`.
 
 The first is the `debug` command. Once you finish [git setup](2_git.md) and [connection setup](3_database_connection.md), simply run the following command from the terminal.
 

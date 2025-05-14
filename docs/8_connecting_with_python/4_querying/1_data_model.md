@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Exploring the Data model
 
-There are several options in python for exploring a data model. Here are some examples of their usage:
+There are several options in Python for exploring a data model. Here are some examples of their usage:
 
 
 ### Views

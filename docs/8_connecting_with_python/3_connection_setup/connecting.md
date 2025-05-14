@@ -36,7 +36,7 @@ demo_connection:  # This references the connection property in the YAML model or
 
 ```
 
-You will be able to connect with the following python code, if you are in the repo of the Zenlytic data model project (or dbt repo).
+You will be able to connect with the following Python code, if you are in the repo of the Zenlytic data model project (or dbt repo).
 
 ```
 from metrics_layer import MetricsLayerConnection

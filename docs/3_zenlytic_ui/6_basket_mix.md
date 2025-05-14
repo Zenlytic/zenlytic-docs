@@ -11,6 +11,6 @@ To get to the Analyze Baskets question you can open an explore question of the m
 
 ![change-question-type](../assets/change-question-type-baskets.png)
 
-Then run the question and you'll see the basket combinations along with a few metrics. You can change the number of combinations in he baskets using the drop down under "Additional settings."
+Then run the question and you'll see the basket combinations along with a few metrics. You can change the number of combinations in the baskets using the drop down under "Additional settings."
 
 ![baskets](../assets/baskets.png)

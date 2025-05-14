@@ -22,7 +22,7 @@ When Zoë creates queries, she doesn't do Text-to-SQL, she uses the governed mea
 
 ## Code Interpreter
 
-Zoë also has access to a code interpreter. This is a sandbox environment where she can write and run python code to use on top of governed results from cognitive layer queries she runs.
+Zoë also has access to a code interpreter. This is a sandbox environment where she can write and run Python code to use on top of governed results from cognitive layer queries she runs.
 
 This gives her a huge amount of flexibility to answer complex questions that involve merging results of separate queries, plugging in assumptions to scenarios, and doing clustering, correlation, or regression analysis.
 

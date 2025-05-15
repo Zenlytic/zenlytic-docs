@@ -4,10 +4,9 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-/** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Zenlytic Docs',
-  tagline: 'Modern self-serve analytics',
+  tagline: 'Modern self-serve intelligent analytics',
   url: 'https://docs.zenlytic.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -18,14 +17,15 @@ const config = {
   trailingSlash: false,
   
   plugins: [
-      [
-          'docusaurus-node-polyfills', { excludeAliases: ['console']}
-      ]
+    [
+      'docusaurus-node-polyfills', 
+      { excludeAliases: ['console'] }
+    ]
   ],
+
   presets: [
     [
       '@docusaurus/preset-classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
@@ -38,16 +38,26 @@ const config = {
     ],
   ],
 
+  // Remove duplicate Algolia preconnect configurations
+  stylesheets: [
+    {
+      href: 'https://029VIRGT6M-dsn.algolia.net',
+      rel: 'preconnect',
+      crossorigin: 'anonymous'
+    }
+  ],
+
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    /** @type {import('@docusaurus/types').ThemeConfig} */
     ({
       algolia: {
-        // The application ID provided by Algolia
         appId: '029VIRGT6M',
-        // Public API key: it is safe to commit it
         apiKey: '1664be1f8d2107ebb3040175ea87987e',
         indexName: 'DOCS',
-        searchPagePath: 'search',
+        contextualSearch: true,
+        searchParameters: {
+          distinct: 1
+        },
       },
       colorMode: {
         defaultMode: 'dark',
@@ -59,6 +69,8 @@ const config = {
         logo: {
           alt: 'Zenlytic Logo',
           src: 'img/zenlytic-logo.jpeg',
+          href: 'https://www.zenlytic.com',
+          target: '_blank',
         },
         items: [
           {
@@ -66,11 +78,6 @@ const config = {
             docId: 'intro',
             position: 'left',
             label: 'Docs',
-          },
-          {
-            href: 'https://github.com/Zenlytic/metrics_layer',
-            label: 'GitHub',
-            position: 'right',
           },
         ],
       },
@@ -105,6 +112,10 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/Zenlytic/metrics_layer',
+              },
+              {
+                label: 'Zenlytic.com',
+                href: 'https://www.zenlytic.com',
               },
             ],
           },

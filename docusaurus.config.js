@@ -54,6 +54,7 @@ const config = {
         appId: '029VIRGT6M',
         apiKey: '1664be1f8d2107ebb3040175ea87987e',
         indexName: 'DOCS',
+        searchPagePath: 'search',
         contextualSearch: true,
         searchParameters: {
           distinct: 1

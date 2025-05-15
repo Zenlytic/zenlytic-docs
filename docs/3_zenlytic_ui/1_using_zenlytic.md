@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: "Getting Started with the UI"
+description: "Essential guide to using Zenlytic's interface and features"
 ---
 
 # Using Zenlytic

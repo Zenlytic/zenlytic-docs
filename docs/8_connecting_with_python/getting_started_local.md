@@ -9,7 +9,7 @@ We're going to walk through setting up Zenlytic from scratch using your local de
 
 ## Defining your data model.
 
-Documentation on defining your data model can be found [here](/docs/5_data_modeling/1_data_modeling). You'll first need to create a GitHub repo, if one has not been defined already, then in that repo define the [models](/docs/5_data_modeling/2_model) and [views](/docs/5_data_modeling/5_view) you want. 
+Documentation on defining your data model can be found [here](/docs/5_data_modeling/1_data_modeling.md). You'll first need to create a GitHub repo, if one has not been defined already, then in that repo define the [models](/docs/5_data_modeling/2_model.md) and [views](/docs/5_data_modeling/5_view.md) you want. 
 
 
 :::tip Zenlytic UI

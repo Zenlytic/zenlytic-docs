@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
@@ -20,9 +21,11 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.title}
-      description="Explore Zenlytic's comprehensive documentation. Learn about data modeling, analytics workflows, embedding capabilities, and more. Your guide to Intelligent Analytics.">
+    <Layout>
+      <Head>
+        <title>{`${siteConfig.title} - ${siteConfig.tagline}`}</title>
+        <meta name="description" content={siteConfig.tagline} />
+      </Head>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

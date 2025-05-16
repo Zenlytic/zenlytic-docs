@@ -1,4 +1,8 @@
 {
-  "label": "Development environment",
-  "position": 7
+  "label": "Development Environment",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Set up and configure your development environment for working with Zenlytic"
+  }
 }

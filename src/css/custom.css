@@ -17,6 +17,7 @@
   --ifm-color-secondary: #ECFFA1;
   /* --ifm-footer-link-color: #fafafa; */
   --ifm-font-family-base: 'GT Zirkon', sans-serif;
+  --ifm-heading-font-family: 'Acid Grotesk', sans-serif;
 }
 
 [data-theme='dark'] {
@@ -97,6 +98,54 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Acid Grotesk';
+  src: url('/fonts/FFF-AcidGrotesk-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: 'GT Zirkon', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Acid Grotesk', sans-serif !important;
+}
+
+/* Create three equal columns in the footer */
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 0 2rem;
+}
+
+.footer__col {
+  text-align: center;
+}
+
+/* Ensure copyright stays centered */
+.footer__bottom {
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .footer__links {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Add specific styles for documentation headings */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-family: 'Acid Grotesk', sans-serif !important;
 }

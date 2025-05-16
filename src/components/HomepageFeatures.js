@@ -1,50 +1,61 @@
 import React from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './HomepageFeatures.module.css';
 
-const FeatureList = [
+const DocCategories = [
   {
-    title: 'Natural language',
-    description: (
-      <>
-        Zenlytic lets you ask natural language questions of your data.
-        Business people can get the answers they need without having to
-        figure out every facet of the interface. That's true self-serve.
-      </>
-    ),
+    title: 'Tips and Tricks',
+    description: 'Essential tips and tricks for getting the most out of Zenlytic and Zoë',
+    docId: 'category/tips-and-tricks',
   },
   {
-    title: 'Deeper questions',
-    description: (
-      <>
-        Zenlytic helps you answer deeper questions like "Why is my conversion
-        rate changing?" or "How are my TikTok customers different?"
-        You shouldn't have to spend hours to get the answers you need.
-      </>
-    ),
+    title: 'Using Zenlytic',
+    description: 'Learn how to use Zenlytic\'s powerful interface features and capabilities',
+    docId: 'category/using-zenlytic',
   },
   {
-    title: 'Interoperable',
-    description: (
-      <>
-        Zenlytic's metrics layer integrates directly with dbt Metricflow. 
-        You can reference your semantic models directly in Zenlytic 
-        and explore them with Zoë, the AI chatbot, and with full UI functionality.
-      </>
-    ),
+    title: 'Embedding',
+    description: 'Discover how to embed Zenlytic\'s analytics capabilities into your applications',
+    docId: 'category/embedding',
+  },
+  {
+    title: 'Data Modeling',
+    description: 'Learn how to model your data effectively in Zenlytic for optimal analytics performance',
+    docId: 'category/data-modeling',
+  },
+  {
+    title: 'Workflows',
+    description: 'Explore Zenlytic\'s workflow capabilities for automating and streamlining your analytics processes',
+    docId: 'category/workflows',
+  },
+  {
+    title: 'Development Environment',
+    description: 'Set up and configure your development environment for working with Zenlytic',
+    docId: 'category/development-environment',
+  },
+  {
+    title: 'Connecting with Python',
+    description: 'Learn how to integrate Zenlytic with Python for advanced analytics capabilities',
+    docId: 'category/connecting-with-python',
+  },
+  {
+    title: 'About',
+    description: 'Learn more about Zenlytic, our mission, and how we can help you with your analytics needs',
+    docId: 'category/about',
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function DocCard({ title, description, docId }) {
   return (
-    <div style={{ paddingTop: '50px' }} className={clsx('col col--4')}>
-      {/* <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
-      </div> */}
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+    <div className={clsx('col col--3', styles.card)}>
+      <Link to={`/docs/${docId}`} className={styles.cardLink}>
+        <div className={styles.cardContent}>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+      </Link>
     </div>
   );
 }
@@ -54,8 +65,8 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+          {DocCategories.map((props, idx) => (
+            <DocCard key={idx} {...props} />
           ))}
         </div>
       </div>

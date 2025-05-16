@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: "Getting Started with Embedding"
+description: "Essential guide to embedding Zenlytic analytics in your applications"
 ---
 
 # Embedded Analytics
@@ -14,6 +16,6 @@ Embedded analytics is the process of taking content you've created in Zenlytic, 
 
 * [Signed Embedding](./3_signed_embedding.md)
     * This type of embedding is best for external applications (e.g. embedding a Zenlytic dashboard on usage of your SaaS platform into an admin panel for your own users and scoping user's access to content to only their data within your system).  
-    * Signed embedding lets you provide a seamless authentication experience for your end customers. In this method, you use Zenlytic API credentials to hit an endpoint, which returns a signed URL for the embedded content you’ve selected to display to the user. 
+    * Signed embedding lets you provide a seamless authentication experience for your end customers. In this method, you use Zenlytic API credentials to hit an endpoint, which returns a signed URL for the embedded content you've selected to display to the user. 
     * You can apply permissions for the signed url using row-based and column-based [access grants](../5_data_modeling/8_access_grants.md) that are added to the signed url when you request it. The signed URL is placed in the iframe, which is displayed in your application.
 

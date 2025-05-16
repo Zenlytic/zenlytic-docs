@@ -21,7 +21,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title="Zenlytic Documentation - Intelligent Analytics"
+      title={siteConfig.title}
       description="Explore Zenlytic's comprehensive documentation. Learn about data modeling, analytics workflows, embedding capabilities, and more. Your guide to Intelligent Analytics.">
       <HomepageHeader />
       <main>

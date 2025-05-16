@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 const config = {
   title: 'Zenlytic Docs',
-  tagline: 'Modern self-serve intelligent analytics',
+  tagline: 'Intelligent Analytics',
   url: 'https://docs.zenlytic.com',
   baseUrl: '/',
   onBrokenLinks: 'warn',

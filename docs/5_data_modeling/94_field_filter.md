@@ -28,42 +28,42 @@ Anytime when using the Zenlytic UI you can replicate this behavior using the `ma
 
 #### String (or text)
 
-Example | Description
----|---
-Foo | Equals "Foo" exactly, `field_name = 'Foo'`
-Foo,Bar | Equals "Foo" or "Bar" exactly, `field_name in ('Foo', 'Bar')`
-%Foo% | Matches any string that contains "Foo" (not case sensitive), e.g. matches 'fast food', `field_name ilike '%Foo%'`
-Foo% | Matches any string that starts with "Foo" (not case sensitive), e.g. matches 'food' does not match 'fast food', `field_name ilike 'Foo%'`
-%Foo | Matches any string that ends with "Foo" (not case sensitive), e.g. matches 'tofoo' does not match 'food', `field_name ilike '%Foo'`
-NULL | Value is null, `field_name is null`
--Foo | Not equal to "Foo" exactly, `field_name != 'Foo'`
--Foo,-Bar | Not equal to "Foo" or "Bar" exactly, `field_name not in ('Foo', 'Bar')`
--NULL | Value is not null, `field_name is not null`
--%Foo% | Does not match any string that contains "Foo" (not case sensitive), `field_name not ilike '%Foo%'`
--Foo% | Does not match any string that starts with "Foo" (not case sensitive), `field_name not ilike 'Foo%'`
--%Foo | Does not match any string that ends with "Foo" (not case sensitive), `field_name not ilike '%Foo'`
+| Example | Description |
+|---------|-------------|
+| Foo | Equals "Foo" exactly, `field_name = 'Foo'` |
+| Foo,Bar | Equals "Foo" or "Bar" exactly, `field_name in ('Foo', 'Bar')` |
+| %Foo% | Matches any string that contains "Foo" (not case sensitive), e.g. matches 'fast food', `field_name ilike '%Foo%'` |
+| Foo% | Matches any string that starts with "Foo" (not case sensitive), e.g. matches 'food' does not match 'fast food', `field_name ilike 'Foo%'` |
+| %Foo | Matches any string that ends with "Foo" (not case sensitive), e.g. matches 'tofoo' does not match 'food', `field_name ilike '%Foo'` |
+| NULL | Value is null, `field_name is null` |
+| -Foo | Not equal to "Foo" exactly, `field_name != 'Foo'` |
+| -Foo,-Bar | Not equal to "Foo" or "Bar" exactly, `field_name not in ('Foo', 'Bar')` |
+| -NULL | Value is not null, `field_name is not null` |
+| -%Foo% | Does not match any string that contains "Foo" (not case sensitive), `field_name not ilike '%Foo%'` |
+| -Foo% | Does not match any string that starts with "Foo" (not case sensitive), `field_name not ilike 'Foo%'` |
+| -%Foo | Does not match any string that ends with "Foo" (not case sensitive), `field_name not ilike '%Foo'` |
 
 
 #### Numeric
 
-Example | Description
----|---
-"=100" | Equals 100 exactly, `field_name = 100`
-"!=100" | Not equal to 100 exactly, `field_name != 100`
-">=100" | Greater than or equal to 100 exactly, `field_name >= 100`
-"<=100" | Less than or equal to 100 exactly, `field_name <= 100`
-">100" | Greater than 100 exactly, `field_name > 100`
-"<100" | Less than 100 exactly, `field_name < 100`
-NULL | Value is null, `field_name is null`
--NULL | Value is not null, `field_name is not null`
+| Example | Description |
+|---------|-------------|
+| `=100` | Equals 100 exactly, `field_name = 100` |
+| `!=100` | Not equal to 100 exactly, `field_name != 100` |
+| `>=100` | Greater than or equal to 100 exactly, `field_name >= 100` |
+| `<=100` | Less than or equal to 100 exactly, `field_name <= 100` |
+| `>100` | Greater than 100 exactly, `field_name > 100` |
+| `<100` | Less than 100 exactly, `field_name < 100` |
+| NULL | Value is null, `field_name is null` |
+| -NULL | Value is not null, `field_name is not null` |
 
 
 #### Boolean (True or False)
 
-Example | Description
----|---
-TRUE | The value evaluates to true, `field_name`
-FALSE | The value evaluates to false, `not field_name`
+| Example | Description |
+|---------|-------------|
+| TRUE | The value evaluates to true, `field_name` |
+| FALSE | The value evaluates to false, `not field_name` |
 
 
 #### Dates
@@ -81,35 +81,35 @@ You can also use the above patterns and append "to date" to get rolling historic
 Finally, you can also say `{n} {interval} ago for {n} {interval}` to have a extremely fine-grained filter for historical dates.
 
 
-Example | Description
----|---
-"after 2021-02-03" | This is any date on or after 2021-02-03
-"before 2021-02-03" | This is any date on or before 2021-02-03
-"2021-02-03 until yesterday" | This is any date on or after 2021-02-03 up until the day before `current_date` in your warehouse. You can use any options listed in this syntax in the first or second slot here. The filter will take the beginning of the range of the first value (if it is a range), and the end of the range of the second value (if it is a range).
-"today" | This is any date that has the same day as current_date in your warehouse
-"yesterday" | This is any date that has the same day as the day before current_date in your warehouse
-"this week" | This is any date from the start of the current week (as defined in your [model](2_model.md)) to now
-"this month" | This is any date from the start of the current month to now
-"this quarter" | This is any date from the start of the current quarter to now
-"this year" | This is any date from the start of the current year to now
-"last week" | This is any date from the start of the last complete week to the beginning of the current week
-"last month" | This is any date from the start of the last complete month to the beginning of the current month
-"last quarter" | This is any date from the start of the last complete quarter to the beginning of the current quarter
-"last year" | This is any date from the start of the last complete year to the beginning of the current year
-"week to date" | This is any date from the start of the current week (as defined in your [model](2_model.md)) to now
-"month to date" | This is any date from the start of the current month to now
-"quarter to date" | This is any date from the start of the current quarter to now
-"year to date" | This is any date from the start of the current year to now
-"last week to date" | This is any date from the start of the last complete week to same number of complete days from the start of that week that have been completed in the current week
-"52 weeks ago to date" | This is any date from the start of 52 weeks ago to same number of complete days from the start of that week that have been completed in the current week
-"12 months ago to date" | This is any date from the start of the 12 months ago to same number of complete days from the start of that month that have been completed in the current month
-"1 year ago to date" |  This is any date from the start of the 1 year ago to same number of complete days from the start of that year that have been completed in the current year
-"1 year ago for 3 months" | This is any date from the start of the 1 year ago to the end of 3 months from the start of that year
-"1 year ago for 30 days" | This is any date from the start of the 1 year ago to the end of 30 days from the start of that year
-"2 years ago" | 2 years ago from the start of the current year until one year after that date
-"3 months ago" | 3 months ago from the start of the current month until one month after that date
-"3 months" | 3 months ago from the start of the current month to now
-"30 days" | 30 days ago from the start of the current day to now
+| Example | Description |
+|---------|-------------|
+| "after 2021-02-03" | This is any date on or after 2021-02-03 |
+| "before 2021-02-03" | This is any date on or before 2021-02-03 |
+| "2021-02-03 until yesterday" | This is any date on or after 2021-02-03 up until the day before `current_date` in your warehouse. You can use any options listed in this syntax in the first or second slot here. The filter will take the beginning of the range of the first value (if it is a range), and the end of the range of the second value (if it is a range). |
+| "today" | This is any date that has the same day as current_date in your warehouse |
+| "yesterday" | This is any date that has the same day as the day before current_date in your warehouse |
+| "this week" | This is any date from the start of the current week (as defined in your [model](2_model.md)) to now |
+| "this month" | This is any date from the start of the current month to now |
+| "this quarter" | This is any date from the start of the current quarter to now |
+| "this year" | This is any date from the start of the current year to now |
+| "last week" | This is any date from the start of the last complete week to the beginning of the current week |
+| "last month" | This is any date from the start of the last complete month to the beginning of the current month |
+| "last quarter" | This is any date from the start of the last complete quarter to the beginning of the current quarter |
+| "last year" | This is any date from the start of the last complete year to the beginning of the current year |
+| "week to date" | This is any date from the start of the current week (as defined in your [model](2_model.md)) to now |
+| "month to date" | This is any date from the start of the current month to now |
+| "quarter to date" | This is any date from the start of the current quarter to now |
+| "year to date" | This is any date from the start of the current year to now |
+| "last week to date" | This is any date from the start of the last complete week to same number of complete days from the start of that week that have been completed in the current week |
+| "52 weeks ago to date" | This is any date from the start of 52 weeks ago to same number of complete days from the start of that week that have been completed in the current week |
+| "12 months ago to date" | This is any date from the start of the 12 months ago to same number of complete days from the start of that month that have been completed in the current month |
+| "1 year ago to date" |  This is any date from the start of the 1 year ago to same number of complete days from the start of that year that have been completed in the current year |
+| "1 year ago for 3 months" | This is any date from the start of the 1 year ago to the end of 3 months from the start of that year |
+| "1 year ago for 30 days" | This is any date from the start of the 1 year ago to the end of 30 days from the start of that year |
+| "2 years ago" | 2 years ago from the start of the current year until one year after that date |
+| "3 months ago" | 3 months ago from the start of the current month until one month after that date |
+| "3 months" | 3 months ago from the start of the current month to now |
+| "30 days" | 30 days ago from the start of the current day to now |
 
 
 ### Examples 
@@ -133,10 +133,3 @@ The first filter sets the numeric `order_number` equal to `1`.  The second filte
     - field: order_date
       value: month to date
 ```
-```
-
-The main changes I made:
-1. Replaced all comparison operators (`<`, `>`) with their text equivalents (`!=`, `>=`, `<=`, `>`, `<`)
-2. Removed any unescaped angle brackets
-3. Made sure all code blocks are properly formatted
-4. Ensured tables are properly formatted

@@ -21,8 +21,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Zenlytic - Modern self serve BI`}
-      description="Zenlytic is modern self serve BI, move from asking what to why, and keep your metrics consistent and governed">
+      title="Zenlytic Documentation - Intelligent Analytics"
+      description="Explore Zenlytic's comprehensive documentation. Learn about data modeling, analytics workflows, embedding capabilities, and more. Your guide to Intelligent Analytics.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

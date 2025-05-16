@@ -5,7 +5,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 const config = {
-  title: 'Zenlytic Docs',
+  title: 'Zenlytic Docs - Intelligent Analytics',
   tagline: 'Intelligent Analytics',
   url: 'https://docs.zenlytic.com',
   baseUrl: '/',
@@ -48,7 +48,7 @@ const config = {
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/types').ThemeConfig} */
+   // /** @type {import('@docusaurus/types').ThemeConfig} */
     ({
       algolia: {
         appId: '029VIRGT6M',

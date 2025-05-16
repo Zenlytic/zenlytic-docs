@@ -131,13 +131,13 @@ const config = {
       //added
       metadata: [
         { name: 'description', content: 'Documentation for Zenlytic\'s Intelligent Analytics platform.' },
-        { property: 'og:title', content: 'Zenlytic Docs | Intelligent Analytics' },
+        { property: 'og:title', content: 'Zenlytic Docs - Intelligent Analytics' },
         { property: 'og:description', content: 'Documentation for Zenlytic\'s Intelligent Analytics platform.' },
         { property: 'og:image', content: 'https://docs.zenlytic.com/img/social-card.png' }, // Update this to your actual image path
         { property: 'og:url', content: 'https://docs.zenlytic.com' },
         { property: 'og:type', content: 'website' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Zenlytic Docs | Intelligent Analytics' },
+        { name: 'twitter:title', content: 'Zenlytic Docs - Intelligent Analytics' },
         { name: 'twitter:description', content: 'Documentation for Zenlytic\'s Intelligent Analytics platform.' },
         { name: 'twitter:image', content: 'https://docs.zenlytic.com/img/social-card.png' } // Same as above
       ]

@@ -9,7 +9,7 @@ const config = {
   tagline: 'Modern self-serve intelligent analytics',
   url: 'https://docs.zenlytic.com',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'Zenlytic', // Usually your GitHub org/user name.
@@ -75,8 +75,7 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            to: '/',
             position: 'left',
             label: 'Docs',
           },

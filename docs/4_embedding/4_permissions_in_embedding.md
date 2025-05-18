@@ -9,7 +9,7 @@ You can control permissions in Zenlytic via access controls using both access fi
 
 ### Setting up the access permissions
 
-To start, you'll define the logic that determine when an access grant is allowed or not allowed. For example, with these definitions, which are found in the [model](../5_data_modeling/2_model.md) file:
+To start, you'll define the logic to determine when an access grant is allowed or not allowed. For example, with these definitions, which are found in the [model](../5_data_modeling/2_model.md) file:
 
 ```
 version: 1

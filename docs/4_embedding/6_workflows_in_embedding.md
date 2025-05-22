@@ -5,7 +5,7 @@ sidebar_position: 6
 # Workflows in Embedding
 
 
-You can add Workflows to the embedding experience by creating the Workflows in the UI, and then sharing those Workflows with "all users" as Viewer (which only gives the ability to _run_ the Workflow).
+You can add [Workflows](../6_workflows/getting-started.md) to the embedding experience by creating the Workflows in the UI, and then sharing those Workflows with "all users" as Viewer (which only gives the ability to _run_ the Workflow).
 
 ![sharing-workflow](../assets/sharing-workflow.png)
 

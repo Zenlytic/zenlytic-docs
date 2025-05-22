@@ -15,7 +15,7 @@ You can add or remove metrics and slices from your question whenever you'd like.
 
 ### Filtering 
 
-You can also use the left hand menu to filter on a metric of a slice by clicking the three dot menu and clicking "Add as filter" or you can add a filter by clicking the filter icon right below the question title. 
+You can also use the left hand menu to filter on a metric or a slice by clicking the three dot menu and clicking "Add as filter" or you can add a filter by clicking the filter icon right below the question title. 
 
 ![explore-filtering](../assets/explore-filtering.png)
 

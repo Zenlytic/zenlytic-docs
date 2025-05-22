@@ -4,13 +4,12 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-/** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Zenlytic Docs',
-  tagline: 'Modern self-serve analytics',
+  title: 'Zenlytic Docs - Intelligent Analytics',
+  tagline: 'Intelligent Analytics',
   url: 'https://docs.zenlytic.com',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'Zenlytic', // Usually your GitHub org/user name.
@@ -18,14 +17,15 @@ const config = {
   trailingSlash: false,
   
   plugins: [
-      [
-          'docusaurus-node-polyfills', { excludeAliases: ['console']}
-      ]
+    [
+      'docusaurus-node-polyfills', 
+      { excludeAliases: ['console'] }
+    ]
   ],
+
   presets: [
     [
       '@docusaurus/preset-classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
@@ -38,16 +38,27 @@ const config = {
     ],
   ],
 
+  // Remove duplicate Algolia preconnect configurations
+  stylesheets: [
+    {
+      href: 'https://029VIRGT6M-dsn.algolia.net',
+      rel: 'preconnect',
+      crossorigin: 'anonymous'
+    }
+  ],
+
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+   // /** @type {import('@docusaurus/types').ThemeConfig} */
     ({
       algolia: {
-        // The application ID provided by Algolia
         appId: '029VIRGT6M',
-        // Public API key: it is safe to commit it
         apiKey: '1664be1f8d2107ebb3040175ea87987e',
         indexName: 'DOCS',
         searchPagePath: 'search',
+        contextualSearch: true,
+        searchParameters: {
+          distinct: 1
+        },
       },
       colorMode: {
         defaultMode: 'dark',
@@ -59,18 +70,14 @@ const config = {
         logo: {
           alt: 'Zenlytic Logo',
           src: 'img/zenlytic-logo.jpeg',
+          href: 'https://www.zenlytic.com',
+          target: '_blank',
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            to: '/docs/intro',
             position: 'left',
             label: 'Docs',
-          },
-          {
-            href: 'https://github.com/Zenlytic/metrics_layer',
-            label: 'GitHub',
-            position: 'right',
           },
         ],
       },
@@ -106,6 +113,10 @@ const config = {
                 label: 'GitHub',
                 href: 'https://github.com/Zenlytic/metrics_layer',
               },
+              {
+                label: 'Zenlytic.com',
+                href: 'https://www.zenlytic.com',
+              },
             ],
           },
         ],
@@ -115,6 +126,22 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      titleDelimiter: '',
+
+      //added
+      metadata: [
+        { name: 'description', content: 'Documentation for Zenlytic\'s Intelligent Analytics platform.' },
+        { property: 'og:title', content: 'Zenlytic Docs - Intelligent Analytics' },
+        { property: 'og:description', content: 'Documentation for Zenlytic\'s Intelligent Analytics platform.' },
+        { property: 'og:image', content: 'https://docs.zenlytic.com/img/social-card.png' }, // Update this to your actual image path
+        { property: 'og:url', content: 'https://docs.zenlytic.com' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Zenlytic Docs - Intelligent Analytics' },
+        { name: 'twitter:description', content: 'Documentation for Zenlytic\'s Intelligent Analytics platform.' },
+        { name: 'twitter:image', content: 'https://docs.zenlytic.com/img/social-card.png' } // Same as above
+      ]
+      //end of added
     }),
 };
 

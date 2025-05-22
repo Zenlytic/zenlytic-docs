@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: "Getting Started with Development"
+description: "Essential setup guide for your local development environment"
 ---
 
 # Setting up

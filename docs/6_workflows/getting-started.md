@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: "Getting Started with Workflows"
+description: "Essential guide to creating and managing Zenlytic workflows"
 ---
 
 # Getting Started
@@ -34,17 +36,17 @@ Workflows are ideal for implementing tasks where you need one or all of the foll
 
 ## Running Workflows
 
-After clicking on the ⚡ *Lightning* icon button, the following modal will appear. Search workflows by name, creator, and creation date. Click a Workflow name and press “Submit” to run it. If a Workflow requires user input before it can run, click the "Next" button to provide the required input values first. More on inputs in the [Requiring User Inputs](/docs/workflows/inputs) section.
+After clicking on the ⚡ *Lightning* icon button, the following modal will appear. Search workflows by name, creator, and creation date. Click a Workflow name and press "Submit" to run it. If a Workflow requires user input before it can run, click the "Next" button to provide the required input values first. More on inputs in the [Requiring User Inputs](/docs/workflows/inputs) section.
 
 ![workflows-modal](../assets/workflows/workflows-modal.png)
 
-While the Workflow runs, the chat input for the Workflow's conversation will display "Workflow in progress…” Feel free to navigate away from the Workflow's conversation to other chats or browser tabs while the Workflow is running. Workflows were designed with long-running operations in mind; the Workflow's conversation will update with responses whenever they are available.
+While the Workflow runs, the chat input for the Workflow's conversation will display "Workflow in progress…" Feel free to navigate away from the Workflow's conversation to other chats or browser tabs while the Workflow is running. Workflows were designed with workflows that take a long time to complete in mind; the Workflow's conversation will update with responses whenever they are available.
 
 ![running-workflow](../assets/workflows/running-workflow.png)
 
 ## Continuing the Workflow Conversation
 
-That’s it! After the Workflow is completed, the chat input will become available again and we can send follow up messages to continue our analysis with Zoe from wherever the Workflow completed.
+That's it! After the Workflow is completed, the chat input will become available again and we can send follow up messages to continue our analysis with Zoe from wherever the Workflow completed.
 
 ![workflow-followup](../assets/workflows/workflow-followup.png)
 
@@ -62,9 +64,9 @@ In the upper right-hand side of the screen, you can create new Workflows by pres
 
 ## Editing Workflows
 
-By default, the newly created Workflow will be titled “New Workflow" and contain no messages. We can click the Workflow title and type to change the title. The new name will be saved with an outside click or "Enter" keypress. 
+By default, the newly created Workflow will be titled "New Workflow" and contain no messages. We can click the Workflow title and type to change the title. The new name will be saved with an outside click or "Enter" keypress. 
 
-Workflows allow us to define an entire "script" of messages that will be added to a conversation and run in sequence. Let’s click on  the *Add Message* button in the *Step Builder* tab to get started.
+Workflows allow us to define an entire "script" of messages that will be added to a conversation and run in sequence. Let's click on  the *Add Message* button in the *Step Builder* tab to get started.
 
 ![new-workflow](../assets/workflows/new-workflow.png)
 
@@ -72,13 +74,13 @@ After adding the first message to the Workflow, check the preview on the right t
 
 ![new-message](../assets/workflows/new-message.png)
 
-Click the textarea labeled “Write a message…” to edit the first message in the Workflow. Type the new prompt, then click outside the textarea or hit *Enter on your keyboard* to save the changes. Once saved, the text content of the message in the *Step Builder* tab on the left-hand side should correspond with the text content of the first user message in the Workflow conversation preview on the right-hand side.
+Click the textarea labeled "Write a message…" to edit the first message in the Workflow. Type the new prompt, then click outside the textarea or hit *Enter on your keyboard* to save the changes. Once saved, the text content of the message in the *Step Builder* tab on the left-hand side should correspond with the text content of the first user message in the Workflow conversation preview on the right-hand side.
 
 Click on the *Play* button in the upper right-hand section to preview a Run of our single-message Workflow.
 
 ![first-message](../assets/workflows/first-message.png)
 
-When running, the Workflow messages will temporarily be unavailable to edit. The Workflow run can be cancelled at any time by pressing the *Pause* button in the upper right-hand section. The current Workflow message being run will be distinguished by a pulsing black outline. The respective message in the Workflow conversation preview will read “Zoe is generating a response…” until it is available.
+When running, the Workflow messages will temporarily be unavailable to edit. The Workflow run can be cancelled at any time by pressing the *Pause* button in the upper right-hand section. The current Workflow message being run will be distinguished by a pulsing black outline. The respective message in the Workflow conversation preview will read "Zoe is generating a response…" until it is available.
 
 ![message-running](../assets/workflows/message-running.png)
 
@@ -112,7 +114,7 @@ Files can be added to Workflow messages by pressing the *File Upload* icon butto
 
 ## Create Workflow from an existing Conversation
 
-From an existing chat, we can click the “Save as Workflow” button in the three-dot dropdown menu to create a new workflow from the outline of an existing chat. It will be saved in the Workflows tab, and you can navigate to it in the future by hovering over the left-hand navigation side bar and clicking on 'Workflows'. You can also run the new workflow immediately by clicking the Lightning icon button in the Chat inputbox and selecting the latest workflow.
+From an existing chat, we can click the "Save as Workflow" button in the three-dot dropdown menu to create a new workflow from the outline of an existing chat. It will be saved in the Workflows tab, and you can navigate to it in the future by hovering over the left-hand navigation side bar and clicking on 'Workflows'. You can also run the new workflow immediately by clicking the Lightning icon button in the Chat inputbox and selecting the latest workflow.
 
 ![save-as-workflow](../assets/workflows/save-as-workflow.png)
 

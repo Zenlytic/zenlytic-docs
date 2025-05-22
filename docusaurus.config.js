@@ -75,7 +75,7 @@ const config = {
         },
         items: [
           {
-            to: '/',
+            to: '/docs/intro',
             position: 'left',
             label: 'Docs',
           },

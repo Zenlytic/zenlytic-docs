@@ -52,7 +52,7 @@ access_grants:
 
 This is the view file that applies the `restrict_dept` access grant to restrict access to the entire view (every field in the view) to only people with the department "Marketing" or "Exec". 
 
-Additionally, it uses the `exec_only` access grant ensure *only* users with the department "Exec" have access to the `email` field. 
+Additionally, it defines the `exec_only` access grant (used below) to ensure *only* users with the department "Exec" have access to the `email` field. 
 
 As a result, a user with the department "Finance" won't be able to access any field in this view, a user with the department "Marketing" will access every field except for the `email` field, and a user with the "Exec" department will access every field in the view, including the `email` field.
 

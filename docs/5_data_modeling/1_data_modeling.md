@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: "Getting Started with Data Modeling"
+description: "Essential concepts and best practices for modeling your data in Zenlytic"
 ---
 
 # Overview

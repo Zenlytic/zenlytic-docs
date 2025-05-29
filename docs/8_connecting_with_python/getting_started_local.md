@@ -9,12 +9,12 @@ We're going to walk through setting up Zenlytic from scratch using your local de
 
 ## Defining your data model.
 
-Documentation on defining your data model can be found [here](./5_data_modeling/1_data_modeling.md). You'll first need to create a GitHub repo, if one has not been defined already, then in that repo define the [models](./5_data_modeling/2_model.md) and [views](./5_data_modeling/5_view.md) you want. 
+Documentation on defining your data model can be found [here](/docs/5_data_modeling/1_data_modeling.md). You'll first need to create a GitHub repo, if one has not been defined already, then in that repo define the [models](/docs/5_data_modeling/2_model.md) and [views](/docs/5_data_modeling/5_view.md) you want. 
 
 
 :::tip Zenlytic UI
 
-To avoid messing around with your local python, you can use the [Zenlytic UI](https://app.zenlytic.com/data-model-editor) for all tasks listed below. The UI has error tracking built in, so you'll know if something isn't right.
+To avoid messing around with your local Python, you can use the [Zenlytic UI](https://app.zenlytic.com/data-model-editor) for all tasks listed below. The UI has error tracking built in, so you'll know if something isn't right.
 
 :::
 
@@ -25,6 +25,8 @@ pip install metrics-layer[snowflake]
 ``` 
 
 This will install the metrics-layer package with the connector for Snowflake. It will also give you access to the `ml` command line interface, which you'll use throughout the setup process.
+
+Note: Warehouse connectors for BigQuery, Redshift, and Postgres [are also available](https://github.com/Zenlytic/metrics_layer?tab=readme-ov-file#installation).
 
 Then you'll run the init command to create your project structure. This will create folders and the `zenlytic_project.yml` file. 
 ```

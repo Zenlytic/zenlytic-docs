@@ -1,4 +1,8 @@
 {
-  "label": "Embedded",
-  "position": 4
+  "label": "Embedding",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Discover how to embed Zenlytic's analytics capabilities into your applications"
+  }
 }

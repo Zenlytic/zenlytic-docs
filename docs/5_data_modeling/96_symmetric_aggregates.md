@@ -8,6 +8,7 @@ Symmetric aggregates allow Zenlytic to calculate your metrics accurately even wh
 
 We could go in-depth into how we do this, but we're obviously not the first to do this, and Looker has already written the best piece of content about this [here](https://cloud.google.com/looker/docs/best-practices/understanding-symmetric-aggregates), which we strongly recommend checking out.
 
+
 ### Examples 
 
 You can use `distinct` aggregates to tell Zenlytic how to distinctly calculate your metric. For example, this measure is a sum, but uniquely for each `order_id`.

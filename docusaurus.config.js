@@ -5,7 +5,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 const config = {
-  title: 'Zenlytic Docs - Intelligent Analytics',
+  title: 'Zenlytic Docs',
   tagline: 'Intelligent Analytics',
   url: 'https://docs.zenlytic.com',
   baseUrl: '/',
@@ -30,6 +30,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/Zenlytic/zenlytic-docs/blob/master/',
+          routeBasePath: 'docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -75,7 +76,7 @@ const config = {
         },
         items: [
           {
-            to: '/docs/intro',
+            to: '/',
             position: 'left',
             label: 'Docs',
           },
@@ -88,8 +89,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Documentation',
-                to: '/docs/intro',
+             label: 'Documentation',
+                to: '/',
               },
             ],
           },

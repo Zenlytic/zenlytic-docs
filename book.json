@@ -1,0 +1,21 @@
+{
+    "title": "Zenlytic Documentation",
+    "description": "Documentation for Zenlytic",
+    "author": "Zenlytic",
+    "language": "en",
+    "structure": {
+        "readme": "intro.md",
+        "summary": "SUMMARY.md"
+    },
+    "plugins": [
+        "theme-default",
+        "highlight",
+        "search",
+        "sharing"
+    ],
+    "pluginsConfig": {
+        "theme-default": {
+            "showSummary": true
+        }
+    }
+} 

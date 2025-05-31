@@ -1,4 +1,3 @@
-
 # Connecting
 
 First, we'll go through how to set up a `profiles.yml` file, which is the best solution for an individual using Zenlytic's metrics layer on his or her local machine. Second, we'll look at other ways of passing the configuration into the metrics layer.
@@ -14,11 +13,11 @@ Metrics Layer gets this information by looking for the same `profiles.yml` file 
 
 ### Local repo
 
-This is the best method when the repo with your [zenlytic data model](../../5_data_modeling/1_data_modeling.md)/dbt repo is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
+This is the best method when the repo with your [zenlytic data model](/5_data_modeling/1_data_modeling.md)/dbt repo is on your local machine. Your `profiles.yml` will looks like this with a connection to Snowflake.
 
-The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](../../5_data_modeling/2_model.md#properties) property in your model file.
+The `demo_connection` name, which is the same name that dbt references, is the value you'd use for your [connection](/5_data_modeling/2_model.md#properties) property in your model file.
 
-```
+```yaml
 demo_connection:  # This references the connection property in the YAML model or dbt project
   target: dev
   outputs:
@@ -30,12 +29,11 @@ demo_connection:  # This references the connection property in the YAML model or
       warehouse: compute_wh             # optional
       database: demo                    # optional (required by dbt, but not your data model)
       schema: analytics                 # optional (required by dbt, but not your data model)
-
 ```
 
 You will be able to connect with the following Python code, if you are in the repo of the Zenlytic data model project (or dbt repo).
 
-```
+```python
 from metrics_layer import MetricsLayerConnection
 
 conn = MetricsLayerConnection('./')
@@ -43,14 +41,13 @@ conn = MetricsLayerConnection('./')
 df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])
 ```
 
-
 ### Explicitly passed values
 
 This is the best method for connecting if you're using a local jupyter notebook, hosted notebook, or production back end. You can either connect by referencing a local repo on your machine (first example below) or by connecting to a github repo and pulling a repo and branch in that repo (second example below).
 
-Here's an example with a local repo.
+Here's an example with a local repo:
 
-```
+```python
 from metrics_layer import MetricsLayerConnection
 
 # Give metrics_layer the info to connect to your data model and warehouse
@@ -74,9 +71,9 @@ conn = MetricsLayerConnection(**config)
 df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])
 ```
 
-Here's another example pulling a repo from GitHub.
+Here's another example pulling a repo from GitHub:
 
-```
+```python
 from metrics_layer import MetricsLayerConnection
 
 # Give metrics_layer the info to connect to your data model and warehouse
@@ -100,4 +97,3 @@ conn = MetricsLayerConnection(**config)
 # You're off to the races. Query away!
 df = conn.query(metrics=["total_revenue"], dimensions=["channel", "region"])
 ```
-

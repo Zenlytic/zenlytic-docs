@@ -50,7 +50,7 @@ To make your changes live for other users on the production branch, click "Deplo
 **Not seeing metrics in the Zenlytic interface?**
 * If you have the `hidden` property set to `true`, you won't see those metrics or dimensions anywhere in the UI. Make sure you remove the hidden property or set it to `false` if you want those metrics to show up in the UI. 
 
-```
+```yaml
 # This metric won't show up in the UI because hidden is set to true
 - name: number_of_orders
   field_type: measure

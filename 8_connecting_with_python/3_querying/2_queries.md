@@ -1,21 +1,16 @@
-
 # Getting SQL and running queries
 
 There are two main methods for interacting with SQL in Metrics Layer `get_sql_query`, which gets the SQL necessary to calculate your request, but doesn't run it, and `query`, which gets that SQL and runs it against your warehouse.
 
 There are two ways to use the Metrics Layer: SQL with a `MQL` tag for metrics, or specifying lists of metrics and dimensions.
 
-:::tip Query speed
-
-In all cases, the Metrics Layer generates the SQL query locally, then sends it directly to your warehouse. This is an order of magnitude faster than using the Looker API or similar.
-
-:::
+> **Note:** In all cases, the Metrics Layer generates the SQL query locally, then sends it directly to your warehouse. This is an order of magnitude faster than using the Looker API or similar.
 
 ## Metrics and dimensions
 
 Here's an example of specifying metrics and dimensions to query:
 
-```
+```python
 from metrics_layer import MetricsLayerConnection
 
 # Connect to the repo we're at the root of right now
@@ -38,9 +33,9 @@ df = conn.query(
 
 Here's an example of using the `MQL` syntax to compose queries to run against the warehouse. You can include queries with only `MQL`, queries that compose `MQL` with other SQL, or queries that are only SQL (in this case you'll have to pass a `connection_name` argument because Metrics Layer will not be able to determine which connection to use).
 
-
 ### MQL only
-```
+
+```python
 # Example using MQL only
 query = "MQL(total_revenue BY acquisition_channel)"
 
@@ -51,9 +46,9 @@ raw_sql_query = conn.get_sql_query(sql=query)
 df = conn.query(sql=query)
 ```
 
-
 ### MQL and SQL
-```
+
+```python
 # Example composing MQL and SQL
 query = """
     SELECT
@@ -73,7 +68,8 @@ df = conn.query(sql=query)
 ```
 
 ### SQL only
-```
+
+```python
 # Example with SQL only
 query = """
     SELECT

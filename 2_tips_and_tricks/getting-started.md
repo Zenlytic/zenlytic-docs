@@ -1,4 +1,3 @@
-
 # Getting Started with Tips
 
 When thinking about how you're defining your data model for use with Zoë, ask this question. 

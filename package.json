@@ -1,0 +1,18 @@
+{
+  "name": "zenlytic-docs",
+  "version": "1.0.0",
+  "description": "Zenlytic Documentation",
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve"
+  },
+  "dependencies": {
+    "honkit": "^6.0.3",
+    "gitbook-plugin-anchors": "^0.7.1",
+    "gitbook-plugin-back-to-top-button": "^0.1.4",
+    "gitbook-plugin-sharing": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

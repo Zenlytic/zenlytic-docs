@@ -1,4 +1,3 @@
-
 # What is Zenlytic?
 
 Zenlytic is a LLM-powered business intelligence platform that makes self-serve analytics possible through a conversational interface to your data.
@@ -10,7 +9,6 @@ Zenlytic has a strong Cognitive layer, which means that the person or team in ch
 Zenlytic has a user interface that is accessible in any Chrome-based web browser. End users of Zenlytic can make queries to their data warehouse through that interface.
 
 The maintainers of Zenlytic will maintain their metric definitions in [yaml](https://www.redhat.com/en/topics/automation/what-is-yaml) files using a version control system like [GitHub](https://github.com).
-
 
 ## Where do I go from here?
 

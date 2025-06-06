@@ -1,4 +1,3 @@
-
 # Permissions in Embedding
 
 
@@ -103,11 +102,11 @@ When requesting the signed API for the session if you pass the set of user_attri
 
 Which looks like this in Postman
 
-![has-events-request](../assets/has-events-request.png)
+![has-events-request](/assets/has-events-request.png)
 
 The session that is generated will NOT have access to any of `pg_orders`, `orders`, or `sessions`. It will only have access to the `events` table (assuming these four tables are the only ones in our model). Zoë will not be able to see those three tables the user does not have access to, and will have no idea that they exist.
 
-![zoe-just-events](../assets/zoe-just-events.png)
+![zoe-just-events](/assets/zoe-just-events.png)
 
 Conversely, if you pass the following user_attributes
 ```
@@ -118,12 +117,12 @@ Conversely, if you pass the following user_attributes
 }
 ```
 
-![no-events-request](../assets/no-events-request.png)
+![no-events-request](/assets/no-events-request.png)
 
 
 The user will have access to the `pg_orders`, `sessions`, and `orders` tables, but will NOT have access to the `events` table. 
 
-![zoe-no-events](../assets/zoe-no-events.png)
+![zoe-no-events](/assets/zoe-no-events.png)
 
 
 You can apply similar logic to fields as well to define more granular permissions inside of tables.

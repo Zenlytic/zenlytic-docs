@@ -1,4 +1,3 @@
-
 # Workflows in Embedding
 
 
@@ -16,7 +15,7 @@ Only the `embedded_with_scheduling` role has access to Workflows, so you will no
 
 In the chat UI, that will look like this
 
-![workflow-in-chat](../assets/run-workflow-in-chat.png)
+![workflow-in-chat](/assets/run-workflow-in-chat.png)
 
 
 ### Running automatically

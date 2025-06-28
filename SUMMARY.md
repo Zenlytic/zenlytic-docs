@@ -37,16 +37,6 @@
 * [Follow Ups From a Dashboard](zenlytic-ui/following_up_from_a_dashboard.md)
 * [Microsoft Teams Bot](zenlytic-ui/microsoft_teams_bot.md)
 
-## Embedding
-
-* [Embedding](embedding/4_embedding.md)
-* [Embedding Overview](embedding/embedding_overview.md)
-* [Private Embedding](embedding/private_embedding.md)
-* [Signed Embedding](embedding/signed_embedding.md)
-* [Permissions in Embedding](embedding/permissions_in_embedding.md)
-* [Embedding Styles](embedding/embedding_styles.md)
-* [Workflows in Embedding](embedding/workflows_in_embedding.md)
-
 ## Data Modeling
 
 * [Data Modeling](data-modeling/5_data_modeling.md)
@@ -77,6 +67,16 @@
 * [Publish](workflows/publish.md)
 * [Schedule Delivery](workflows/schedule-delivery.md)
 * [Run History](workflows/run-history.md)
+
+## Embedding
+
+* [Embedding](embedding/4_embedding.md)
+* [Embedding Overview](embedding/embedding_overview.md)
+* [Private Embedding](embedding/private_embedding.md)
+* [Signed Embedding](embedding/signed_embedding.md)
+* [Permissions in Embedding](embedding/permissions_in_embedding.md)
+* [Embedding Styles](embedding/embedding_styles.md)
+* [Workflows in Embedding](embedding/workflows_in_embedding.md)
 
 ## Data Sources
 

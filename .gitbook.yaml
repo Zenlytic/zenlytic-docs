@@ -13,93 +13,93 @@ structure:
 # Maps old URLs to new URLs
 redirects:
   # Main pages
-  docs/intro: /
-  docs: /
-  intro: /
+  docs/intro: intro.md
+  docs: intro.md
+  intro: intro.md
   
   # Getting Started section
-  docs/start_here: getting-started/start_here
-  start_here: getting-started/start_here
-  docs/about/license-doc: getting-started/license-doc
+  docs/start_here: getting-started/start_here.md
+  start_here: getting-started/start_here.md
+  docs/about/license-doc: getting-started/license-doc.md
   
   # Tips & Tricks section
-  docs/category/tips-and-tricks: tips-and-tricks/zoe_tips_and_tricks
-  docs/tips_and_tricks/getting-started: tips-and-tricks/zoe_tips_and_tricks
-  docs/tips_and_tricks/naming-conventions: tips-and-tricks/naming-conventions
-  docs/tips_and_tricks/descriptions-and-synonyms: tips-and-tricks/descriptions-and-synonyms
-  docs/tips_and_tricks/entity-drills: tips-and-tricks/entity-drills
-  docs/tips_and_tricks/time-metrics: tips-and-tricks/time-metrics
-  docs/tips_and_tricks/voice-commands: tips-and-tricks/voice-commands
-  docs/tips_and_tricks/data-indexing: tips-and-tricks/data-indexing
+  docs/category/tips-and-tricks: tips-and-tricks/zoe_tips_and_tricks.md
+  docs/tips_and_tricks/getting-started: tips-and-tricks/zoe_tips_and_tricks.md
+  docs/tips_and_tricks/naming-conventions: tips-and-tricks/naming-conventions.md
+  docs/tips_and_tricks/descriptions-and-synonyms: tips-and-tricks/descriptions-and-synonyms.md
+  docs/tips_and_tricks/entity-drills: tips-and-tricks/entity-drills.md
+  docs/tips_and_tricks/time-metrics: tips-and-tricks/time-metrics.md
+  docs/tips_and_tricks/voice-commands: tips-and-tricks/voice-commands.md
+  docs/tips_and_tricks/data-indexing: tips-and-tricks/data-indexing.md
   
   # Zenlytic UI section
-  docs/category/using-zenlytic: zenlytic-ui/using_zenlytic
-  docs/zenlytic_ui/using_zenlytic: zenlytic-ui/using_zenlytic
-  docs/zenlytic_ui/zoe: zenlytic-ui/zoe
-  docs/zenlytic_ui/exploring: zenlytic-ui/exploring
-  docs/zenlytic_ui/settings: zenlytic-ui/data_model_editor
-  docs/zenlytic_ui/user_attributes: zenlytic-ui/user_attributes
-  docs/zenlytic_ui/basket_mix: zenlytic-ui/using_zenlytic
-  docs/zenlytic_ui/explain_change: zenlytic-ui/using_zenlytic
-  docs/zenlytic_ui/funnel: zenlytic-ui/using_zenlytic
+  docs/category/using-zenlytic: zenlytic-ui/using_zenlytic.md
+  docs/zenlytic_ui/using_zenlytic: zenlytic-ui/using_zenlytic.md
+  docs/zenlytic_ui/zoe: zenlytic-ui/zoe.md
+  docs/zenlytic_ui/exploring: zenlytic-ui/exploring.md
+  docs/zenlytic_ui/settings: zenlytic-ui/data_model_editor.md
+  docs/zenlytic_ui/user_attributes: zenlytic-ui/user_attributes.md
+  docs/zenlytic_ui/basket_mix: zenlytic-ui/using_zenlytic.md
+  docs/zenlytic_ui/explain_change: zenlytic-ui/using_zenlytic.md
+  docs/zenlytic_ui/funnel: zenlytic-ui/using_zenlytic.md
   
   # Data Modeling section
-  docs/category/data-modeling: data-modeling/data_modeling
-  docs/data_modeling/data_modeling: data-modeling/data_modeling
-  docs/data_modeling/model: data-modeling/model
-  docs/data_modeling/dashboard: data-modeling/dashboard
-  docs/data_modeling/topic: data-modeling/topic
-  docs/data_modeling/view: data-modeling/view
-  docs/data_modeling/join: data-modeling/join
-  docs/data_modeling/set: data-modeling/set
-  docs/data_modeling/access_grants: data-modeling/access_grants
-  docs/data_modeling/field: data-modeling/field
-  docs/data_modeling/dimension: data-modeling/dimension
-  docs/data_modeling/dimension_group: data-modeling/dimension_group
-  docs/data_modeling/measure: data-modeling/measure
-  docs/data_modeling/field_filter: data-modeling/field_filter
-  docs/data_modeling/formatting: data-modeling/formatting
-  docs/data_modeling/symmetric_aggregates: data-modeling/symmetric_aggregates
-  docs/data_modeling/table_calculation_syntax: data-modeling/table_calculation_syntax
-  docs/data_modeling/referenceable_attributes: data-modeling/referenceable_attributes
-  docs/data_modeling/dbt_metricflow: data-modeling/dbt_metricflow
+  docs/category/data-modeling: data-modeling/data_modeling.md
+  docs/data_modeling/data_modeling: data-modeling/data_modeling.md
+  docs/data_modeling/model: data-modeling/model.md
+  docs/data_modeling/dashboard: data-modeling/dashboard.md
+  docs/data_modeling/topic: data-modeling/topic.md
+  docs/data_modeling/view: data-modeling/view.md
+  docs/data_modeling/join: data-modeling/join.md
+  docs/data_modeling/set: data-modeling/set.md
+  docs/data_modeling/access_grants: data-modeling/access_grants.md
+  docs/data_modeling/field: data-modeling/field.md
+  docs/data_modeling/dimension: data-modeling/dimension.md
+  docs/data_modeling/dimension_group: data-modeling/dimension_group.md
+  docs/data_modeling/measure: data-modeling/measure.md
+  docs/data_modeling/field_filter: data-modeling/field_filter.md
+  docs/data_modeling/formatting: data-modeling/formatting.md
+  docs/data_modeling/symmetric_aggregates: data-modeling/symmetric_aggregates.md
+  docs/data_modeling/table_calculation_syntax: data-modeling/table_calculation_syntax.md
+  docs/data_modeling/referenceable_attributes: data-modeling/referenceable_attributes.md
+  docs/data_modeling/dbt_metricflow: data-modeling/dbt_metricflow.md
   
   # Workflows section
-  docs/category/workflows: workflows/getting-started
-  docs/workflows/getting-started: workflows/getting-started
-  docs/workflows/inputs: workflows/inputs
-  docs/workflows/publish: workflows/publish
-  docs/workflows/schedule-delivery: workflows/schedule-delivery
-  docs/workflows/run-history: workflows/run-history
+  docs/category/workflows: workflows/getting-started.md
+  docs/workflows/getting-started: workflows/getting-started.md
+  docs/workflows/inputs: workflows/inputs.md
+  docs/workflows/publish: workflows/publish.md
+  docs/workflows/schedule-delivery: workflows/schedule-delivery.md
+  docs/workflows/run-history: workflows/run-history.md
   
   # Embedding section
-  docs/category/embedding: embedding/embedding_overview
-  docs/embedding/embedding_overview: embedding/embedding_overview
-  docs/embedding/private_embedding: embedding/private_embedding
-  docs/embedding/signed_embedding: embedding/signed_embedding
-  docs/embedding/permissions_in_embedding: embedding/permissions_in_embedding
-  docs/embedding/embedding_styles: embedding/embedding_styles
-  docs/embedding/workflows_in_embedding: embedding/workflows_in_embedding
+  docs/category/embedding: embedding/embedding_overview.md
+  docs/embedding/embedding_overview: embedding/embedding_overview.md
+  docs/embedding/private_embedding: embedding/private_embedding.md
+  docs/embedding/signed_embedding: embedding/signed_embedding.md
+  docs/embedding/permissions_in_embedding: embedding/permissions_in_embedding.md
+  docs/embedding/embedding_styles: embedding/embedding_styles.md
+  docs/embedding/workflows_in_embedding: embedding/workflows_in_embedding.md
   
   # Development Environment section (redirect to getting started)
-  docs/category/development-environment: getting-started/start_here
-  docs/development_environment/development_environment: getting-started/start_here
-  docs/development_environment/cli: getting-started/start_here
-  docs/development_environment/database_connection: getting-started/start_here
-  docs/development_environment/git: getting-started/start_here
+  docs/category/development-environment: getting-started/start_here.md
+  docs/development_environment/development_environment: getting-started/start_here.md
+  docs/development_environment/cli: getting-started/start_here.md
+  docs/development_environment/database_connection: getting-started/start_here.md
+  docs/development_environment/git: getting-started/start_here.md
   
   # Connecting with Python section (redirect to getting started)
-  docs/category/connecting-with-python: getting-started/start_here
-  docs/connecting_with_python/getting_started_local: getting-started/start_here
-  docs/connecting_with_python/connection_setup/connecting: getting-started/start_here
-  docs/connecting_with_python/connection_setup/integrations: getting-started/start_here
-  docs/connecting_with_python/project/project: getting-started/start_here
-  docs/connecting_with_python/querying/data_model: getting-started/start_here
-  docs/connecting_with_python/querying/queries: getting-started/start_here
+  docs/category/connecting-with-python: getting-started/start_here.md
+  docs/connecting_with_python/getting_started_local: getting-started/start_here.md
+  docs/connecting_with_python/connection_setup/connecting: getting-started/start_here.md
+  docs/connecting_with_python/connection_setup/integrations: getting-started/start_here.md
+  docs/connecting_with_python/project/project: getting-started/start_here.md
+  docs/connecting_with_python/querying/data_model: getting-started/start_here.md
+  docs/connecting_with_python/querying/queries: getting-started/start_here.md
   
   # About section (redirect to getting started)
-  docs/category/about: getting-started/license-doc
+  docs/category/about: getting-started/license-doc.md
   
   # Other pages
-  docs/markdown-page: /
-  docs/search: / 
+  docs/markdown-page: intro.md
+  docs/search: intro.md 

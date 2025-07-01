@@ -44,15 +44,19 @@ Point the iframe's src attribute to the URL of the analytics content. You can co
 
 URL's add the `/embed` segement to the url for the embedded view. You can add this to the url in your browser to preview how the embedded dashboard will appear to your embedded user. Here is an example iframe and the URL for embedding a certain dashboard:
 
+{% code overflow="wrap" %}
 ```yaml
 <iframe src="https://app.zenlytic.com/embed/dashboards/73b64533-c027-43b8-b8a8-606345212343" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
 ```
+{% endcode %}
 
 Similarly, if you want to embed a chat window, you can use the iframe
 
+{% code overflow="wrap" %}
 ```yaml
 <iframe src="https://app.zenlytic.com/embed/chat" style="height:700px;width:100%;border:none;" title="Data Chat" description="Zenlytic Chat"></iframe>
 ```
+{% endcode %}
 
 ## Embedded UI Settings
 

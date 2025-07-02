@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Follow Ups
 
 > Ask follow up questions by using filtering, 'Explain the change' question type, and 'Drill into' features

@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Bigquery Setup
 
 > **Note:** Alternatively to creating a service account, you can use [Workload Identity Federation to connect to BigQuery](../authentication-and-security/google_workload_identity_federation.md).

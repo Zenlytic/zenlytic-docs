@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Signed Embedding
 
 Signed embedding provides a seamless and secure way to integrate Zenlytic content into your application using dynamically generated signed URLs. This method is especially suitable for scenarios where smooth experience and controlled access to analytics data are paramount. The signed URL ensures that each embedded analytics instance is secure, time-limited, and tailored to individual user permissions.

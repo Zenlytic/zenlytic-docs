@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Azure Synapse Setup
 
 To connect Zenlytic to Azure Synapse Analytics, you'll need to configure the connection with your database credentials. Here's how to do it:

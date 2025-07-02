@@ -1,18 +1,4 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
-# Field
+# Fields
 
 Fields reference either columns in the database (dimensions and dimension groups) or aggregates computed in a `group by` statement (measures or metrics). There are three types of fields `dimension`, `dimension_group`, and `measure` (we also refer to measures as metrics and use the terms interchangeably). For all fields, their `field_type` (one of the three just listed) is a required property.
 

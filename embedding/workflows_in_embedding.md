@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Workflows in Embedding
 
 You can add [Workflows](../workflows/getting-started.md) to the embedding experience by creating the Workflows in the UI, and then sharing those Workflows with "all users" as Viewer (which only gives the ability to _run_ the Workflow).

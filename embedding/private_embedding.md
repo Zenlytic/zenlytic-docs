@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Private Embedding
 
 Private embedding enables the integration of Zenlytic content directly into your application using an iframe. This method is designed for scenarios where analytics are embedded within a controlled, authenticated environment. It leverages Zenlytic's existing authentication mechanism to ensure that only authorized users with Zenlytic accounts can access the embedded analytics.

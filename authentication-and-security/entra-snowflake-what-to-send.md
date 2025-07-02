@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Snowflake with Entra - What to Send
 
 Before continuing, complete the setup process in this document to configure Zenlytic as an OAuth provider for Snowflake and Microsoft Entra.

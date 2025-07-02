@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # IP Whitelisting
 
 These are the IP addresses to whitelist for a Zenlytic deployment in the US. This is the default deployment area if not specified in your contract.

@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Referenceable Attributes
 
 Referenceable attributes are attributes that can be used in queries either on views or dimensions, dimension groups or measures.

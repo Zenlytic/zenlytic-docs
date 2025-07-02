@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Microsoft Teams Bot
 
 The Zenlytic Bot brings the power of Zoë, Zenlytic's flagship natural language BI assistant, directly into Microsoft Teams. This integration allows users to effortlessly explore and query their organization's data, check available fields, views, and dashboards on specific topics, and even create or modify dashboards - all without ever leaving the convenience of Teams.

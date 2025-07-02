@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Joins
 
 Joins are how views are connected to each other. The are defined by `identifiers` on the views. `identifiers` can be defined as primary keys, foreign keys, or explicit point to point joins.

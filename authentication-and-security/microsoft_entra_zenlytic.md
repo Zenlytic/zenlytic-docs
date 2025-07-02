@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Microsoft Entra Zenlytic
 
 ## How to setup Microsoft Entra to Authenticate in Zenlytic

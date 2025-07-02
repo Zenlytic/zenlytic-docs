@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Integrations Overview
 
 The metrics layer (obviously) integrates with [Zenlytic's own data model](../data-modeling/data_modeling.md) as the Cognitive layer, and dbt's semantic layer with [Metricflow](https://docs.getdbt.com/docs/build/sl-getting-started). The metrics layer supports versions 1.8 - 1.10 of dbt's semantic layer (Metricflow). More details on the integration can be found [here](../data-modeling/dbt_metricflow.md).

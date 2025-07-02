@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Embedding Overview
 
 Embedded analytics is the process of taking content you've created in Zenlytic, and making it available to users via an iframe in a separate application. There are two ways to embed Zenlytic content in your application.

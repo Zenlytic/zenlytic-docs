@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Publish
 
 By default, Workflows are private to you, however, we can allow others in our organization to run and extend our Workflows when they are ready. The following image shows the "Publish Workflow" popover that appears after clicking "Publish" in the Workflow Builder Header.

@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Inputs
 
 Inputs are used to collect information from the user before the Workflow begins. Consider the following example, where Zoe is taking a look at products in a week over week analysis. With inputs, it's possible to make this Workflow run differently depending on the user's input.

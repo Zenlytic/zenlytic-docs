@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Views
 
 Views reference exactly one table in the database. They can be joined together using `identifiers` but always reference the same table in the database.

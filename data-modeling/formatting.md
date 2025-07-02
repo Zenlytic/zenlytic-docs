@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Formatting
 
 Passing the `value_format_name` parameter to your [field](field.md) lets you easily format values in a way that's easy to read for business users.

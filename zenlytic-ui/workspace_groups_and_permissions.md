@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Workspace Groups And Permissions
 
 > Create a group in Workspace Settings, name it, and add team members. This group can govern dashboard access in your workspace.

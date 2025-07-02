@@ -1,20 +1,6 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Access Grants
 
-Access control is managed in Zenlytic through two concepts.&#x20;
+Access control is managed in Zenlytic through two concepts.
 
 1. [Access grants](access_grants.md#access-grants) cover _column-based_ access control
 2. [Access filters](access_grants.md#access-filters) cover _row-based_ access control

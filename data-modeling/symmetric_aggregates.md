@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Symmetric Aggregates
 
 Symmetric aggregates allow Zenlytic to calculate your metrics accurately even when there's a situation where the joins make that very difficult by duplicating the values to aggregate.

@@ -5,11 +5,6 @@
 * [Zenlytic Documentation](intro.md)
 * [Copy of Zenlytic Documentation](getting-started/intro-1.md)
 * [Start Here](getting-started/start_here.md)
-* [License](getting-started/license-doc.md)
-
-***
-
-* [About](9_about.md)
 
 ## Tips & Tricks
 
@@ -105,3 +100,8 @@
 * [IP Whitelisting](authentication-and-security/ip_whitelisting.md)
 * [Login Troubleshooting](authentication-and-security/login_troubleshooting.md)
 * [Connecting To Github With A Deploy Key](authentication-and-security/connecting_to_github_with_a_deploy_key.md)
+
+## Legal & Support
+
+* [Customer Support Policy](legal-and-support/customer-support-policy.md)
+* [License](legal-and-support/license-doc.md)

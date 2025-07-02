@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Workflows Getting Started
 
 Intelligent Workflows allow us to build and run entire conversations with Zoe, and then enable others in the organization to re-run those conversations easily. With this feature, Zoe is more programmable and reusable for solving task-specific workflows than ever before.

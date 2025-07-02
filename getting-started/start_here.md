@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Start Here
 
 We're going to walk through setting up Zenlytic from scratch. You should have received a login to your workspace to begin the setup process.

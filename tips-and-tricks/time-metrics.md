@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Time Metrics
 
 Each metric in Zenlytic should be associated with a time dimension group. The associated dimension group with a metric is called that metric's `canon_date`.

@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Schedule Delivery
 
 Next to the Run Preview "Play" button, we can click "Schedule Delivery" to open a modal for managing delivery schedules for this Workflow. By default, there will be no schedules, so click "Create New Delivery" to get started.

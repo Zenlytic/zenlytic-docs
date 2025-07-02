@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Using Zenlytic
 
 Zenlytic is a LLM-powered intelligent analytics platform that makes self-service possible. There are several different `question types` you can ask and answer in Zenlytic.

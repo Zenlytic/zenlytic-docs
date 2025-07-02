@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # dbt MetricFlow Integration
 
 To integrate Zenlytic's data model with your dbt models, define the dimensions and measures (metrics) in semantic models section of dbt. Follow this page to get started with [Metricflow (dbt Semantic Layer)](https://docs.getdbt.com/docs/get-started-dbt).

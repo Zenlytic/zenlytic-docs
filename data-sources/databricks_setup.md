@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Databricks Setup
 
 To connect Zenlytic to Databricks, you'll need to configure the connection using a personal access token. Here's how to do it:

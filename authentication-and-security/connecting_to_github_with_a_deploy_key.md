@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Connecting To Github With A Deploy Key
 
 **Step 1:** In Zenlytic, you'll first go into Settings, then Workspace Settings

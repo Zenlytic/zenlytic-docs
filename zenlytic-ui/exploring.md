@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Exploring
 
 The Slice and Explore Metrics question lets you answer the "What" questions about your data. You can get to this question by [searching your data](using_zenlytic.md#search), [clicking on a metric](using_zenlytic.md#metrics), or [following up from a dashboard](using_zenlytic.md#dashboards). Once in the Slice and Explore interface, you can do several operations on your data.

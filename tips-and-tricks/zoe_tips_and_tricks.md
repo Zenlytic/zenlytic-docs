@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Working with Zoë Tips and Tricks
 
 When thinking about how you're defining your data model for use with Zoë, ask this question.

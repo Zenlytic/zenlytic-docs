@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Naming Conventions
 
 Clearly naming your metrics (measures) and dimensions is key for Zoë to perform well for you. If you have two revenue metrics defined as `Revenue first` and `Revenue second`, Zoë, like a human analyst, will have no idea which one to pick.

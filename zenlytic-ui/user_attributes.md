@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # User Attributes
 
 This section covers how to set user attributes. User attributes are how users are assigned permissions that control their access to data (using [access controls](../data-modeling/access_grants.md)).

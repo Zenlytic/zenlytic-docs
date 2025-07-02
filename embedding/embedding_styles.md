@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Embedding Styles
 
 You can control UI customization in Zenlytic's embedded environment via a JSON that maps to CSS styles in the Zenlytic embedded product.

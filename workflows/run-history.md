@@ -1,17 +1,3 @@
----
-layout:
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
----
-
 # Run History
 
 The _Run_ _History_ tab provides a list of previous runs of the currently selected Workflow. By clicking on a run on the left-hand side, the conversation preview on the right-hand side will change to show that previous run's conversation history.

@@ -104,4 +104,6 @@
 ## Legal & Support
 
 * [Customer Support Policy](legal-and-support/customer-support-policy.md)
+* [End User Terms of Use](https://app.zenlytic.com/end-user-terms-of-use)
+* [Privacy Policy](https://app.zenlytic.com/privacy-policy)
 * [License](legal-and-support/license-doc.md)

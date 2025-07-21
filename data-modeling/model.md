@@ -44,6 +44,7 @@ This is an example of an access grant defined in a model. In this case, this acc
 
 The mapping example here maps the `marketing_spend.marketing_channel` to the `orders.channel` field so Zenlytic (and Zoë) know they are the same concept.
 
+{% code overflow="wrap" %}
 ````yaml
 version: 1
 type: model
@@ -63,3 +64,4 @@ mappings:
     description: "The channel the customer came to our site from"
     ```
 ````
+{% endcode %}

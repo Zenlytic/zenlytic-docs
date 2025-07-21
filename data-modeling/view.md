@@ -20,6 +20,7 @@ Views, like all files in Zenlytic, are YAML text files.
 
 `derived_table`: This is a property that you can use to define transformed tables using a SQL statement. This SQL statement is run and is considered to be the "base" of the view. Note, we generally prefer using [dbt](https://getdbt.com) over derived tables for better testing and maintainability. This property has a nested property `sql` inside of the `derived_table` property that you use to define the SQL statement.
 
+{% code overflow="wrap" %}
 ```yaml
 ...
 name: my_view
@@ -27,6 +28,7 @@ derived_table:
   sql: "select *, row_number() over (partition by customer_id order by order_date) as order_number from myschema.mytable"
 ...
 ```
+{% endcode %}
 
 Note: The filters in `always_filter` _will not_ be applied if you are using this property to define the data for the view to sit on top of.
 

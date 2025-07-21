@@ -61,6 +61,7 @@ The dimension `order_id` is tagged as an 'order' which means it will show up in 
 
 This is a view on top of the `order_lines` table which defines the `total_revenue` metric, and a drill defined on the `order_id`. This will result in a "Drill into orders" option in the Zenlytic UI. The link on the order will result in an option to "Go to external link" in the Zenlytic UI.
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -108,3 +109,4 @@ fields:
   type: sum
   sql: ${TABLE}.revenue
 ```
+{% endcode %}

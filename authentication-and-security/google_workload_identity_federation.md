@@ -21,9 +21,11 @@ After clicking Get Started, fill out the next screen
 
 5. Get the principle value to add permissions to in GCP. You will need to follow the format in these [Google Cloud Workload Identity Federation documentation](https://cloud.google.com/iam/docs/workload-identity-federation?_gl=1*1a70t2e*_ga*MTA2MzMwNDkwMS4xNzQ4NTMzOTU2*_ga_WH2QY8WWF5*czE3NDg1MzM5NTYkbzEkZzEkdDE3NDg1Mzg1NTEkajQ1JGwwJGgw#impersonation) from Google, which will be:
 
+{% code overflow="wrap" %}
 ```bash
 principalSet://iam.googleapis.com/projects/<PROJECT_NUMBER>/locations/global/workloadIdentityPools/<POOL_ID>/attribute.aws_role/<ATTRIBUTE_VALUE>
 ```
+{% endcode %}
 
 You will fill in those values with the values you have from this process so far, and one value from the Zenlytic team.
 
@@ -33,9 +35,11 @@ You will fill in those values with the values you have from this process so far,
 
 Using those values, the final principle would be
 
+{% code overflow="wrap" %}
 ```bash
 principalSet://iam.googleapis.com/projects/123456789/locations/global/workloadIdentityPools/zenlytic-aws-federation-pool/attribute.aws_role/mycompany-gcp-workload-identity-federation-role-prod
 ```
+{% endcode %}
 
 6. Give that principle access to the resources in BigQuery you would like it to have. For example, in the IAM screen, click **"Grant Access"**
 
@@ -63,6 +67,7 @@ You will put this config into Zenlytic to configure the connection to BigQuery, 
 
 8. Finally, the json will look like
 
+{% code overflow="wrap" %}
 ```json
 {
 	"project_id": "<your-project-id>", // NOTE: You must add this line
@@ -79,3 +84,4 @@ You will put this config into Zenlytic to configure the connection to BigQuery, 
   }
 }
 ```
+{% endcode %}

@@ -44,6 +44,7 @@ Since `customer_id` is defined as a foreign key, all views that define `customer
 
 Since `discount_join` is defined as a custom join, exactly one (`many_to_one`) join relationship will exist between `order_lines` and `discounts` with this criteria.
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -73,6 +74,7 @@ fields:
 . 
 
 ```
+{% endcode %}
 
 ## Composite Keys
 
@@ -84,6 +86,7 @@ Composite keys vs. Custom joins
 Composite keys just handle choosing the correct bridge table, they do not construct a join like `a.user_id=b.user_id and a.workspace_id=b.workspace_id`. For that behavior, use a custom join mentioned above.
 {% endhint %}
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -101,11 +104,13 @@ identifiers:
 
 ...
 ```
+{% endcode %}
 
 But, if we also have another table that lists both `user_id` and `workspace_id` as foreign keys, Zenlytic will have no way of knowing which table to use to join users and workspaces by default.
 
 Composite keys give you the ability to specify the right bridge table to use in these type of situations. We'll specify a composite key below, which will tell Zenlytic to prioritize this join between users and workspaces if there aren't other tables involved which require a change to the join pattern.
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -130,6 +135,7 @@ identifiers:
     - name: user_id
 ...
 ```
+{% endcode %}
 
 Now that we've defined the composite key, we can be sure Zenlytic will handle our many to many join between `users` and `workspaces` correctly.
 
@@ -161,6 +167,7 @@ identifiers:
 
 Now, in the `cx_users` table, we can specify the `join_as` statements, and the labels we want to show up in the UI.
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -183,6 +190,7 @@ identifiers:
   join_as_field_prefix: Assignee  # This will be the prefix for the fields when joined
 ...
 ```
+{% endcode %}
 
 Now that we've defined our `join_as` statement, Zenlytic will show options in the sidebar menu for both "Requestor" and "Assigned To" fields from the `cx_users` view.
 
@@ -206,6 +214,7 @@ Mappings with null values
 Most databases have logic that results in `null=null` being `false` which, means if you map two columns, both with null values, the two nulls won't map to each other. You can solve this using your database's `ifnull` function to replace those `null` values with a string of your choosing.
 {% endhint %}
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: model
@@ -221,9 +230,11 @@ mappings:
     description: "The channel the customer came to our site from"
 
 ```
+{% endcode %}
 
 This is the `marketing_spend` view, it has several dimensions and metrics and a merged result metric, `cost_per_acquisition` which references a metric in the `orders` view.
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -259,6 +270,7 @@ fields:
   
   
 ```
+{% endcode %}
 
 With this setup, we could query `cost_per_acquisition` by `channel` by `week` and Zenlytic will calculate `total_marketing_spend` by `marketing_channel` and `spend_at_week` then merge that result with the result of `number_of_new_customers` by `channel` and `order_week` merging them together by `week` and `channel`.
 

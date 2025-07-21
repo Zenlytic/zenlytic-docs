@@ -86,6 +86,7 @@ Look at this section if you need to create a new user for Zenlytic to use when a
 
 Run the following SQL commands to grant necessary permissions:
 
+{% code overflow="wrap" %}
 ```sql
 -- Grant usage on warehouse
 GRANT USAGE ON WAREHOUSE <your_warehouse_name> TO ROLE <your_role_name>;
@@ -99,6 +100,7 @@ GRANT USAGE ON SCHEMA <your_database_name>.<your_schema_name> TO ROLE <your_role
 -- Grant select on all tables in schema
 GRANT SELECT ON ALL TABLES IN SCHEMA <your_database_name>.<your_schema_name> TO ROLE <your_role_name>;
 ```
+{% endcode %}
 
 ## Advanced Settings
 

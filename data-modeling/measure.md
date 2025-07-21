@@ -67,6 +67,7 @@ The Non Additive Dimension has three properties
 
 **Example 1 (MRR):**
 
+{% code overflow="wrap" %}
 ```yaml
 - name: account_id
   field_type: dimension
@@ -88,9 +89,11 @@ The Non Additive Dimension has three properties
     window_choice: max
     window_groupings: [account_id]
 ```
+{% endcode %}
 
 **Example 2 (Inventory):**
 
+{% code overflow="wrap" %}
 ```yaml
 - name: snapshot
   field_type: dimension_group
@@ -107,6 +110,7 @@ The Non Additive Dimension has three properties
     window_choice: min
     window_aware_of_query_dimensions: true     # The default is true 
 ```
+{% endcode %}
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
 

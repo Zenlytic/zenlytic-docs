@@ -24,6 +24,7 @@ Dimension Groups are a particular type of dimension used for timeframes (referen
 
 You can also reference any [referenceable attributes](referenceable_attributes.md) and drop them into the `sql` statement here. For example, you can use the query attribute for which dimension group is selected to take advantage of specialized database extensions, like Timescale DB.
 
+{% code overflow="wrap" %}
 ```yaml
 - name: rainfall_at
   field_type: dimension_group
@@ -42,6 +43,7 @@ You can also reference any [referenceable attributes](referenceable_attributes.m
       else null
     end
 ```
+{% endcode %}
 
 `required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 

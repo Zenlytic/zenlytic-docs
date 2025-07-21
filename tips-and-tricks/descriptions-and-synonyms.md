@@ -36,6 +36,3 @@ In this example, we've added the synonyms `customer` and `loyalty` to the `new_v
   - customer
   - loyalty
 ```
-
-```
-```

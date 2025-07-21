@@ -13,6 +13,7 @@ Next, you'll need to add a `zenlytic_project.yml` file in the root of the repo. 
 {% hint style="info" %}
 Configuration File
 
+{% code overflow="wrap" %}
 ```
 # The name doesn't matter functionally.
 name: demo_zenlytic_project
@@ -41,6 +42,7 @@ dashboard-paths:
 model-paths:
 - models
 ```
+{% endcode %}
 {% endhint %}
 
 Once you have that `zenlytic_project.yml` file ready to go, Zenlytic will be able to see your files.

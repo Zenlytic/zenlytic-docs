@@ -69,6 +69,7 @@ model_name: test_model
 
 Topics can be extended by defining joins related to the topic. Here's a full example with many of the available properties.
 
+{% code overflow="wrap" %}
 ```yaml
 type: topic
 label: Order lines unfiltered
@@ -103,3 +104,4 @@ views:
       sql_on: ${discounts.discount_id} = ${discount_detail.discount_id} and ${orders.order_id} = ${discount_detail.discount_order_id}
 
 ```
+{% endcode %}

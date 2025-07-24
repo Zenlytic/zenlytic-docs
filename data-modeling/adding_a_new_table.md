@@ -21,9 +21,3 @@ Alternatively, file upload is supported for CSVs. Only one table can be selected
 3. If the table joins to other existing tables in the data model, click "Add Joins" to add joins prior to adding the table. Joins can also be set up later. 
 
 ![add-new-table-joins](../assets/add-new-table-joins.png)
-
-## FAQ
-
-Q: Can I upload multiple tables?
-A: No, only one table per upload is supported right now.
-

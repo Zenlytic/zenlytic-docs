@@ -26,4 +26,4 @@ This section covers how to build data models in Zenlytic. Data models are the fo
 * [Symmetric Aggregates](symmetric_aggregates.md)
 * [Table Calculation Syntax](table_calculation_syntax.md)
 * [Referenceable Attributes](referenceable_attributes.md)
-* [Adding tables](adding_tables.md)
+* [Adding a new table](adding_a_new_table.md)

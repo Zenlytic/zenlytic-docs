@@ -33,7 +33,7 @@ To add a new table click "Create view from table" and select tables to bring int
 
 ![Create View from Table](../assets/4_embedding/create-view-from-table.png)
 
-Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, define the [identifiers](../data-modeling/join.md) for joins, and define the aggregates ([metrics / measures](../5_data_modeling/1measure.md)) you want to use.
+Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, organize your views into [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../data-modeling/measure.md)) you want to use.
 
 To make your changes live for other users on the production branch, click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the chatbot) has the latest information on your production metrics.
 

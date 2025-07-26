@@ -1,6 +1,6 @@
 # Views
 
-Views reference exactly one table in the database. They can be joined together using `identifiers` but always reference the same table in the database.
+Views reference exactly one table in the database. They are organized into [topics](topic.md) for usage in Zenlytic, which define how they join together.
 
 Views, like all files in Zenlytic, are YAML text files.
 
@@ -73,84 +73,23 @@ always_filter:
 
 `access_filters`: This is an optional list of [access filters](access_grants.md#access-filters) to apply to the view when it is queried.
 
-`required_access_grants`: This is a list of [access grant](access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will _always_ be applied for this view in any join sequence.
-
-`event_dimension`: To enable funnels in Zenlytic you will have to set either this property or `event_name` (funnels are disabled by default). Set this property if you have an event table and that table has more than one event type in it. The event dimension will be used to determine the unique values possible to select when picking 'steps' in a funnel like this:
-
-![funnel-multi-event](../assets/data_modeling/funnel-multi-event.png)
-
-If you do not have more than one event, use `event_name` and enter the name of the type of event (e.g. for an orders table you might enter "Order" or "Purchase").
-
-NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tags: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
-
-`event_name`: To enable funnels in Zenlytic you will have to set either this property or `event_dimension` (funnels are disabled by default). Set this property if you have an event table and that table has exactly one event type in it. The event name value possible to select when picking 'steps' in a funnel like this:
-
-![funnel-single-event](../assets/5_data_modeling/funnel-single-event.png)
-
-If you do have more than one event type, use `event_dimension` and enter the name of the field that denotes the event (e.g. for an events table table you might have a column named `event_label`).
-
-NOTE: To use funnels, you must tag at least one column in the table or joinable to the table with `tags: ['customer']` to tell the compiler which field to use to follow someone through the funnel (e.g. the field linking steps in the funnel).
-
-`identifiers`: This is a list of [fields](field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. An example
+This will apply row-level security to the table. The behavior is to set the chosen column equal to the user attribute value. They are defined like this:
 
 ```yaml
-- name: order_key
-  type: primary
-  sql: ${order_id}
+access_filters:
+  - field: orders.product
+    user_attribute: 'products'
 ```
 
-Identifiers will be used to form the join graph for your database. By default, Zenlytic will not allow fan-out or chasm joins, but if you specify views in the `allow_fanouts` parameter those will be joined and calculated accurately using [symmetric aggregates](symmetric_aggregates.md).
+`required_access_grants`: This is a list of [access grant](access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will _always_ be applied for this view in any join sequence.
+
+
+`identifiers`: This is a list of [fields](field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. 
+
+Identifiers can be used to create a join_as view, which will allow a table to join into a topic more than once on different keys. More information is in the [joins](./join.md) section.
 
 `fields`: This is a list of [fields](../5_data_modeling/9_field.md). Each field must have all required parameters included.
 
-## Identifiers
+## Joins 
 
-Identifiers will be used to form the joins in your database. You will specify the primary and foreign keys using the syntax below and Zenlytic will automatically make the possible joins available to you through any queries you run.
-
-## Examples
-
-This is a basic view with just 2 dimensions and 1 measure, that explicitly references the `prod.order_lines` table. This view also defines it's primary key as an identifier and a foreign key as an identifier.
-
-This view defines the average price measure on the order lines view and allows a join using the `customer_id` identifier.
-
-```yaml
-version: 1
-type: view
-name: order_lines
-model_name: demo_model
-
-sql_table_name: prod.order_lines
-default_date: order
-
-identifiers:
-- name: order_line_id
-  type: primary
-  sql: ${order_line_id}
-- name: customer_id
-  type: foreign
-  sql: ${customer_email}
-
-fields:
-- name: order_line_id
-  field_type: dimension
-  type: string
-  sql: ${TABLE}.order_line_id
-  primary_key: yes
-  hidden: yes
-
-- name: customer_email
-  field_type: dimension
-  type: string
-  sql: ${TABLE}.email
-
-- name: price
-  field_type: dimension
-  type: number
-  sql: ${TABLE}.item_price
-
-- name: avg_price
-  field_type: measure
-  type: average
-  # This references the "price" dimension above to calculate the average
-  sql: ${price} 
-```
+Joins are defined in [topics](./topic.md). 

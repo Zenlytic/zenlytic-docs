@@ -97,8 +97,8 @@ The Clarity Engine applies the same security model as Dynamic Fields mode:
 
 When the Clarity Engine writes custom SQL, it actively identifies opportunities to reuse existing semantic model context:
 
-[todo image]
-<figure><img src="../assets/3_zenlytic_ui/zoe_exploratory_mode.png" alt=""><figcaption><p>The Clarity Engine analyzing your request in exploratory mode</p></figcaption></figure>
+
+<figure><img src="../assets/3_zenlytic_ui/zoe_exploratory_mode_hover.png" alt=""><figcaption><p>The Clarity Engine highlighting re-use in exploratory mode</p></figcaption></figure>
 
 The Clarity Engine will let Zoë highlight to you in natural language what approach she is taking with your query and highlight which parts of your semantic model she is re-using with hover-able text 
 
@@ -112,8 +112,8 @@ Both modes of the Clarity Engine integrate seamlessly with the code interpreter,
 - **Perform advanced analytics** including clustering, correlation, regression, and forecasting
 - **Create custom visualizations** beyond standard chart types
 
-[todo viz]
-<figure><img src="../assets/3_zenlytic_ui/zenlytic-uizoecode-interpreter.png" alt=""><figcaption><p>The Clarity Engine using Python for advanced analysis</p></figcaption></figure>
+
+<figure><img src="../assets/3_zenlytic_ui/zoe_code_interpreter_results.png" alt=""><figcaption><p>The Clarity Engine using Python for advanced analysis</p></figcaption></figure>
 
 ## Choosing Between Modes
 

@@ -6,7 +6,7 @@ The Clarity Engine is Zenlytic's AI suspension system that powers Zoë, enabling
 
 To get started using the Clarity Engine through Zoë, just ask her a question. If you don't know what you can ask about, simply ask what data she can see, or what would be a great question to ask next. She will be even more helpful if you share your job title and more context about what you're trying to accomplish.
 
-![Starting-a-new-chat-with-Zoë](../assets/3_zenlytic_ui/zoe_input_box.png)
+![Starting a new chat with Zoë](../assets/3_zenlytic_ui/zoe_input_box.png)
 
 When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). The Clarity Engine can handle both types of questions and Zoë will ask you follow-up questions if she isn't able to make reasonable assumptions about what you intend.
 

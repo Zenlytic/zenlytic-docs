@@ -10,6 +10,7 @@
 
 * [Tips and Tricks](tips-and-tricks/2_tips_and_tricks.md)
 * [Working with Zoë Tips and Tricks](tips-and-tricks/zoe_tips_and_tricks.md)
+* [How Zoë Ingests Context](tips-and-tricks/zoe_context_ingestion.md)
 * [Naming Conventions](tips-and-tricks/naming-conventions.md)
 * [Descriptions and Synonyms](tips-and-tricks/descriptions-and-synonyms.md)
 * [Entity Drills](tips-and-tricks/entity-drills.md)
@@ -22,7 +23,7 @@
 
 * [Zenlytic UI](zenlytic-ui/3_zenlytic_ui.md)
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
-* [Zoë](zenlytic-ui/zoe.md)
+* [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [Exploring](zenlytic-ui/exploring.md)
 * [Data Model Editor](zenlytic-ui/data_model_editor.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)

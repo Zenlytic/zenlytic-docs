@@ -6,7 +6,7 @@ The Clarity Engine is Zenlytic's AI suspension system that powers Zoë, enabling
 
 To get started using the Clarity Engine through Zoë, just ask her a question. If you don't know what you can ask about, simply ask what data she can see, or what would be a great question to ask next. She will be even more helpful if you share your job title and more context about what you're trying to accomplish.
 
-![Starting a new chat with Zoë](../assets/3_zenlytic_ui/zenlytic_input_box.png)
+![Starting-a-new-chat-with-Zoë](../assets/3_zenlytic_ui/zoe_input_box.png)
 
 When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). The Clarity Engine can handle both types of questions and Zoë will ask you follow-up questions if she isn't able to make reasonable assumptions about what you intend.
 
@@ -18,7 +18,7 @@ The buttons in the chat work like this
 * The Chat Options section opens a toggle for Exploratory mode. When Exploratory mode is toggled on, you'll see a microscope icon as another icon in the chat input box (see below)
 * Press "Enter" or click the Up Arrow button to submit the message.
 
-![Starting a new chat with Zoë in Exploratory mode](../assets/3_zenlytic_ui/zenlytic_input_box_exploratory.png)
+![Starting a new chat with Zoë in Exploratory mode](../assets/3_zenlytic_ui/zoe_input_box_exploratory.png)
 
 The first (and default) mode of operation is for Zoë to use your semantic model, referencing fields from your model when appropriate, and extending the model by writing SQL on the fly when she needs to. That mode is called Dynamic fields (for the SQL Zoë is writing on the fly).
 
@@ -67,7 +67,7 @@ Zoë shows when she is re-using a verified metric or dimension from your semanti
 
 Likewise, if she has written SQL on the fly to answer your question, not using a verified metric or dimension, that is a dynamic field, and does not have a green checkmark. 
 
-![The Clarity Engine promoting a metric](../assets/3_zenlytic_ui/zoe_clarity_answer.png)
+![The Clarity Engine promoting a metric](../assets/3_zenlytic_ui/zoe_clarity_promote_hover.png)
 
 If Zoë answers your question with a metric or dimension that is not already in your data model (and you are a developer or above permission level), you will see an option to Promote that metric or dimension into your semantic model when hovering the dynamic field.
 

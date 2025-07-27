@@ -1,6 +1,6 @@
 # Follow Ups
 
-> Ask follow up questions by using filtering, 'Explain the change' question type, and 'Drill into' features
+> Ask follow up questions by using filtering, and 'Drill into' features
 
 Follow Ups are Zenlytic's way of helping you ask questions that dig deeper into details of your analysis from the [Slice and Explore](exploring.md) section.
 
@@ -10,27 +10,21 @@ For example, if you are looking at a yearly view and want to see the details of 
 
 Once you have [selected your metrics and slices](exploring.md#slicing) , ask follow up questions the following 3 ways; clicking on the visualization, dragging a section on a line plot, or clicking on a table cell value.
 
-## Clicking on visualization
-
-Click on any slice from the visualization section to show the follow up question types available.
-
-![Follow Ups 1](../assets/3_zenlytic_ui/follow-ups-1.gif)
-
 ## Dragging section on a line graph
 
 Drag your cursor across a line graph to select a range of a slice to show the follow up question types available.
 
 If there is more than one value in the visualization, you will be prompted to select one.
 
-![Follow Ups 2](../assets/3_zenlytic_ui/follow-ups-2.gif)
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.34.13 AM.png" alt=""><figcaption></figcaption></figure>
 
 ## Clicking on table cell value
 
 Click on the table's cell value to show the follow up question types available.
 
-![Follow Ups 3](../assets/3_zenlytic_ui/follow-ups-3.gif)
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.45.38 AM.png" alt=""><figcaption></figcaption></figure>
 
-Follow up question types
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.46.30 AM.png" alt=""><figcaption></figcaption></figure>
 
 There are three follow up questions types you can use to add more details to your question. They are 'Filter on selected', 'Explain the change', and 'Drill into'.
 
@@ -38,18 +32,12 @@ There are three follow up questions types you can use to add more details to you
 
 Filter on selected will filter the slice range you have selected and narrows down the metrics in the question.
 
-![Followup+filter+on+selected](../assets/3_zenlytic_ui/followup+filter+on+selected.gif)
+## Drill by
 
-## Explain the change
-
-'Explain the change' adds slices that most likely correlate to the difference in metric that has been selected. [Here is an article](exploring.md#explain-the-change) going into more details about this question type.
-
-![Followupexplain+the+change](../assets/3_zenlytic_ui/followupexplain+the+change.gif)
+Drill by gives you a selector with all dimensions that can be joined into your existing query. You can select a dimension to add it to the query and open the result in a new tab.
 
 ## Drill into
 
 'Drill into' adds slices that provide more detail based on the slice chosen. For example, you can drill into revenue at a user level, order level, or product level.
 
-Each 'Drill into' slice can be configured to your business needs. [Here's an example](../5_data_modeling/dimension/#examples) of how that can be customized.
-
-![Followup+drill+into+x](../assets/3_zenlytic_ui/followup+drill+into+x.gif)
+Each 'Drill into' slice can be configured to your business needs, using a [tag](../data-modeling/dimension.md).&#x20;

@@ -29,13 +29,13 @@ Documentation on defining your data model can be found [here](../data-modeling/d
 
 To start defining metrics, go to the [Data Model Editor](https://app.zenlytic.com/data-model-editor) in the Zenlytic UI.
 
-To add a new table click "Create view from table" and select tables to bring into your data model. You can bring tables in using AI to define your metrics (which takes 1-3 min), or you can uncheck that box to just get the explicit table metadata.
+To add a new table click "Create view from table" and select tables to bring into your data model. When you import tables, Zenlytic will use the information\_schema table to pull in metadata, and (for warehouses like Snowflake, BigQuery, and Databricks) pull in column and table level descriptions.
 
-![Create View from Table](../assets/4_embedding/create-view-from-table.png)
+<p align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt="" data-size="original"></p>
 
-Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, define the [identifiers](../data-modeling/join.md) for joins, and define the aggregates ([metrics / measures](../5_data_modeling/1measure.md)) you want to use.
+Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, define the [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../5_data_modeling/1measure.md)) you want to use.
 
-To make your changes live for other users on the production branch, click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the chatbot) has the latest information on your production metrics.
+To make your changes live for other users on the production branch (if you are not making changes on the production branch), click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the AI Analyst) has the latest information on your production metrics.
 
 ## FAQ
 

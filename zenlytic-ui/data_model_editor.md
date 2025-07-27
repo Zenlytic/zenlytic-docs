@@ -10,7 +10,7 @@ In the main interface, you'll first create a branch (we won't let you edit the p
 
 Once you create a branch, you can edit files. You can reference [the docs](https://docs.zenlytic.com) for more information on defining metrics, joins, and permissions on data.
 
-![Data Model Editor 2](../assets/4_embedding/data-model-editor-2.png)
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.25.05 AM.png" alt=""><figcaption></figcaption></figure>
 
 To add new tables to Zenlytic, you will click the "+" above the names of the files on the left-hand side, then click "Create View from Table." You can then select the database associated with your the table you want to use, and click on it. Click "Create View" to initialize the view based on the table you selected. This will take care of all the boilerplate setup, and all you'll have to do is define the metrics and joins you want.
 

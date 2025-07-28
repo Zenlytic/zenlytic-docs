@@ -10,7 +10,7 @@ Note: Providing more context about the task you're trying to accomplish, your te
 
 ![Starting a new chat with Zoë](../assets/3_zenlytic_ui/zoe_input_box.png)
 
-You can ask Zoë specific questions (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general ones (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). The Clarity Engine handles both types of questions, and Zoë will ask follow-up questions when she is unable to to make reasonable assumptions about your intent.
+You can ask Zoë specific questions (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general ones (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). The Clarity Engine handles both types of questions, and Zoë will ask follow-up questions when she is unable to make reasonable assumptions about your intent.
 
 The chat interface includes several interactive elements:
 

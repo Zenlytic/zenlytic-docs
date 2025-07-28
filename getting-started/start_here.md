@@ -33,7 +33,7 @@ To add a new table click "Create view from table" and select tables to bring int
 
 <p align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt="" data-size="original"></p>
 
-Once, the table is imported, you'll see a yaml file with dimensions defined. Make sure you select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, organize your views into [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../data-modeling/measure.md)) you want to use.
+Once the table is imported, you'll see a yaml file with dimensions defined. Make sure to select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, organize your views into [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../data-modeling/measure.md)) you want to use.
 
 To make your changes live for other users on the production branch (if you are not making changes on the production branch), click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the AI Analyst) has the latest information on your production metrics.
 

@@ -1,6 +1,6 @@
 # Views
 
-Views reference exactly one table in the database. They are organized into [topics](topic.md) for usage in Zenlytic, which define how they join together.
+Views reference exactly one table in the database. In Zenlytic, they are organized into [topics](topic.md) for usage that define how they join together.
 
 Views, like all files in Zenlytic, are YAML text files.
 

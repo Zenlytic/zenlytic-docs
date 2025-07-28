@@ -86,7 +86,7 @@ access_filters:
 
 `identifiers`: This is a list of [fields](field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. 
 
-Identifiers can be used to create a join_as view, which will allow a table to join into a topic more than once on different keys. More information is in the [joins](./join.md) section.
+Identifiers can be used to create a `join_as` view, which will allow a table to join into a topic more than once on different keys. More information is in the [joins](./join.md) section.
 
 `fields`: This is a list of [fields](../5_data_modeling/9_field.md). Each field must have all required parameters included.
 

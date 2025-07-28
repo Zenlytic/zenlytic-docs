@@ -9,7 +9,7 @@ Topics allow you to:
 
 ## Topics
 
-Topics organize your views into logical groupings and handle the join relationships between them. When you create a topic, you specify:
+Topics organize your views into logical groupings and handle the join relationships between them. When creating a topic, you specify:
 
 1. A **base view** that anchors the topic
 2. **Additional views** that join to the base view or to each other

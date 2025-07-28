@@ -152,8 +152,8 @@ fields:
   field_type: dimension
   type: string
   sql: ${TABLE}.id
-	tags: ['Sales Rep']
-	drill_fields: [first_name, last_name, email, status]
+  tags: ['Sales Rep']
+  drill_fields: [first_name, last_name, email, status]
 
 - name: first_name
   field_type: dimension
@@ -202,8 +202,8 @@ You can add a `description` to your metrics (measures) like this
   field_type: measure
   type: average
   sql: ${TABLE}.revenue
-  description: |
-		  This is the gross average order value. This just covers 
+  description: |>
+      This is the gross average order value. This just covers 
       DTC revenue, and is sometimes internally referred 
       to as 'the magic' This is the metric that 
       should be used when someone asks about AOV, generally speaking

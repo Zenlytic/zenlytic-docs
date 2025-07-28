@@ -2,17 +2,21 @@
 
 This section covers how to set user attributes. User attributes are how users are assigned permissions that control their access to data (using [access controls](../data-modeling/access_grants.md)).
 
-To set a user attribute on a user, go to Workspace Settings, then go to Team Members
+To set a user attribute on a user, go to Workspace Settings, then go to Team Members then go to Attributes to define the attribute
 
-![team-members](../assets/3_zenlytic_ui/settings-team-members-attrs.png)
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.26.10 AM.png" alt=""><figcaption></figcaption></figure>
 
-To set a user attribute, click on User Attributes, and set the attribute on the user. This example sets the user attribute `department` to `Engineering` on this user.
+Then make the user attribute you want in the pop up menu and pick its type&#x20;
 
-![user-attribute](../assets/4_embedding/user-attribute.png)
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.26.58 AM.png" alt=""><figcaption></figcaption></figure>
 
-Now that this user's `department` attribute is set, their permissions will be determined by that (and any other attributes) set on that user.
+You can set a user attribute on either a group or an individual user. To set it on an individual user, click on Users, and set the attribute on the user. This example sets the user attribute `Department` to `blah` on this user.
 
-For example, since the user's attribute for `department` has been set to `Engineering`, not one of the allowed options (`Executive`, `Finance`, `Marketing`) this user will not have access to anything restricted by this access grant.
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.27.53 AM.png" alt=""><figcaption></figcaption></figure>
+
+Now that this user's `Department` attribute is set, their permissions will be determined by that (and any other attributes) set on that user.
+
+For example, since the user's attribute for `Department` has been set to `blah`, not one of the allowed options (`Executive`, `Finance`, `Marketing`) this user will not have access to anything restricted by this access grant.
 
 ![access-grants](../assets/3_zenlytic_ui/access-grant-example.png)
 

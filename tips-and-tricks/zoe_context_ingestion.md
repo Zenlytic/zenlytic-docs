@@ -6,7 +6,7 @@ Zoë, Zenlytic's AI data analyst, leverages multiple sources of context to under
 
 ### 1. Custom System Prompt Context
 
-We allow you to extend Zoë's default system prompt with domain-specific knowledge that provides high-level organizational context:
+You can extend Zoë's default system prompt with domain-specific knowledge that provides high-level organizational context:
 
 - **Industry Context**: Specific business metrics, KPIs, and analytical patterns relevant to your sector
 - **Company Terminology**: Internal terms, abbreviations, and naming conventions that differ from standard usage

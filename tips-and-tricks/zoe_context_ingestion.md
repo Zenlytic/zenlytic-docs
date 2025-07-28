@@ -1,70 +1,71 @@
 # How Zoë Ingests Context
 
-Zoë, the AI data analyst, leverages multiple sources of context to understand your data model and provide accurate, relevant responses. This document explains the different ways Zoë learns about your data and how to optimize each source for better results.
+Zoë, Zenlytic's AI data analyst, leverages multiple sources of context to understand your organization's data ecosystem, analytical philosophy, and business logic. This document explains the different ways Zoë learns about your data and how to optimize each source for better results.
 
 ## Context Sources
 
-### 1. Customer Context in System Prompt
+### 1. Custom System Prompt Context
 
-Custom context added to Zoë's system prompt provides domain-specific knowledge:
+We allow you to extend Zoë's default system prompt with domain-specific knowledge that provides high-level organizational context:
 
-- **Industry Context**: Specific business metrics and KPIs relevant to your sector
-- **Company Terminology**: Internal terms, abbreviations, and naming conventions
-- **Business Rules**: Specific calculation methods or data interpretation guidelines
-- **Organizational Structure**: How departments, teams, or business units are organized
+- **Industry Context**: Specific business metrics, KPIs, and analytical patterns relevant to your sector
+- **Company Terminology**: Internal terms, abbreviations, and naming conventions that differ from standard usage
+- **Business Rules**: Unique calculation methods, data interpretation guidelines, or analytical frameworks your organization follows
+- **Organizational Structure**: How departments, teams, or business units are organized and how this affects data analysis
 
 **Optimization Tips:**
 - Include glossaries of company-specific terms and their definitions
-- Document any unique business rules or calculation methodologies
-- Explain organizational hierarchies that affect data interpretation
-- Provide context about data quality issues or known limitations
+- Document any unique business rules or calculation methodologies that Zoë should always follow
+- Explain organizational hierarchies and how they impact data interpretation and reporting
+- Provide context about data quality considerations, known limitations, or special handling requirements
 
 ### 2. Fine-Tuning Examples
 
 Zoë learns from examples of successfully answered questions to improve her performance:
 
 - **Query Patterns**: Common ways users ask for similar data when she answers successfully
-- **Field Usage**: How different measures and dimensions are typically combined
+- **Field Usage**: How different measures and dimensions are typically combined for specific analyses
+- **Response Preferences**: The analytical approaches and explanations that work best for your team
 
 **Optimization Tips:**
-- Review Zoë's responses and hit the thumbs up button to reinforce desired behavior using a fine tuning example
-- Use the admin panel to remove any undesired or incorrectly "thumbs up" patterns
-- Zoë will see how often fields are used in your workspace, and will automatically lean toward re-using the most popular content.
+- Review Zoë's responses and hit the thumbs up button to reinforce desired behavior
+- Use the admin panel to remove any undesired or incorrectly marked examples
+- Zoë will automatically prioritize frequently used fields in your workspace when making analytical decisions
 
 ### 3. YAML-Based Views
 
-For traditional Zenlytic setups, Zoë reads directly from your YAML view definitions (see 5 for dbt Metricflow):
+When using Zenlytic's native semantic layer, Zoë reads directly from your YAML view definitions to understand your data structure (see 4. for dbt Metricflow):
 
-- **Field Definitions**: All view, measures, dimensions, and dimension groups. Descriptions pull in automatically from data warehouses like Snowflake, BigQuery and Databricks.
-- **Topic Structure**: How views join to each other through topics (including topic descriptions)
-- **Access Controls**: What data each user can access (Zoë does not see data a user cannot access, and will block access if requested)
-- **Descriptions**: Both user-facing and Zoë-specific descriptions using `description` and `zoe_description` (Zoë will see `description` if `zoe_description` is not defined, and will only see `zoe_description` if both are defined)
+- **Field Definitions**: Views, measures, dimensions, and dimension groups, with field descriptions automatically imported from data warehouse metadata (Snowflake, BigQuery, Databricks, etc.)
+- **Topic Structure**: How views join together through topics, including topic-level descriptions that provide analytical context
+- **Access Controls**: User permissions that determine what data Zoë can access (she cannot see or reference data that users don't have permission to view)
+- **Descriptions**: Both user-facing and AI-specific descriptions using the `description` and `zoe_description` attributes (Zoë uses `description` by default, but `zoe_description` takes precedence when both are defined)
 
 **Optimization Tips:**
-- Use `zoe_description` fields to provide AI-specific context that differs from user-facing descriptions
+- Use the `zoe_description` attribute to provide AI-specific context that differs from user-facing descriptions
 - Include business logic explanations in measure and dimension descriptions
 - Document edge cases, calculation nuances, or limitations that Zoë should be aware of
 
+### 4. dbt MetricFlow Integration (Optional)
 
-### 4. dbt MetricFlow ingestion (Optional)
+When using dbt MetricFlow as your semantic layer (instead of Zenlytic's native ZenML), Zoë automatically ingests context from your dbt project:
 
-When using dbt MetricFlow as your semantic layer (instead of Zenlytic's ZenML), Zoë automatically ingests context from your dbt project:
-
-- **Semantic Models**: Automatically mapped to Zenlytic views
-- **Measures and Metrics**: Both map to Zenlytic measures.
-- **Dimensions**: Converted to Zenlytic dimensions and dimension groups
-- **Relationships**: Join logic and entity relationships are preserved and mapped to [topics](../data-modeling/topic.md)
-- **Documentation**: Model and field descriptions carry over to help Zoë understand business context
+- **Semantic Models**: Automatically mapped to Zenlytic views for seamless integration
+- **Measures and Metrics**: Both dbt measures and metrics map to Zenlytic measures
+- **Dimensions**: Converted to Zenlytic dimensions and dimension groups with appropriate time granularities
+- **Relationships**: Join logic and entity relationships are preserved and automatically mapped to [topics](../data-modeling/topic.md)
+- **Documentation**: Model and field descriptions carry over from dbt to provide business context for Zoë
 
 **Optimization Tips:**
-- Include rich descriptions in your dbt models and fields
-- Use clear, business-friendly naming conventions
-- If you need more sophisticated join logic, you can set `use_default_topics` to `false` in the `zenlytic_project.yml` file and define your own [topics](../data-modeling/topic.md) referencing your Metricflow views.
-
+- Include rich, business-focused descriptions in your dbt models and fields
+- Use clear, business-friendly naming conventions that will be intuitive for both, Zoë and your end users
+- For advanced join logic beyond MetricFlow's capabilities, set `use_default_topics` to `false` in your `zenlytic_project.yml` file and define custom [topics](../data-modeling/topic.md) that reference your MetricFlow views
 
 ## Best Practices for Context Optimization
 
 ### Rich Descriptions
+Always include business context in your field descriptions to help Zoë understand not just what the data is, but how it should be used:
+
 ```yaml
 # Good: Provides business context
 - name: customer_lifetime_value
@@ -82,6 +83,8 @@ When using dbt MetricFlow as your semantic layer (instead of Zenlytic's ZenML), 
 ```
 
 ### Clear Topic Organization
+Organize your topics with descriptive labels and rich context to help Zoë understand the analytical purpose:
+
 ```yaml
 # Good: Descriptive topic with Zoë context
 type: topic
@@ -92,18 +95,18 @@ zoe_description: Primary topic for customer health metrics, churn analysis, and 
 ```
 
 ### Semantic Field Names
-Use field names that clearly indicate their business purpose. This is not essential because Zoë has extensive world knowledge, but it is very helpful for both Zoë and your end users:
+Use field names that clearly indicate their business purpose. While not essential since Zoë has extensive world knowledge, descriptive names benefit both, Zoë and your end users:
 - `monthly_recurring_revenue` instead of `mrr`
 - `customer_acquisition_cost` instead of `cac`
 - `days_since_last_purchase` instead of `days_diff`
 
 ## Context Hierarchy
 
-Zoë processes context in this priority order:
+Zoë processes context sources in the following priority order:
 
-1. **Customer system prompt context** (company-specific rules and terminology)
-2. **Structural relationships** (how data connects through topics and joins, including topic descriptions)
-3. **YAML/dbt descriptions** (field and view-level business context)
-4. **Fine-tuning examples** (Zoë sees her previous (successful) query patterns)
+1. **Custom system prompt context** - Company-specific rules, terminology, and high-level organizational knowledge
+2. **Structural relationships** - How data connects through topics and joins, including topic-level descriptions
+3. **Field and view descriptions** - Business context from YAML definitions or dbt documentation at the view, measure, and dimension level
+4. **Fine-tuning examples** - Patterns from previous successful queries and responses that have been marked as helpful
 
-Understanding this hierarchy helps you place the most critical context in the right locations for maximum impact on Zoë's performance. 
+Understanding this hierarchy helps you strategically place your most critical context in the highest-priority locations for maximum impact on Zoë's analytical performance.

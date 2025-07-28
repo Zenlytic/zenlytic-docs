@@ -131,7 +131,7 @@ This will let you join in the same underlying `cx_users` table twice using diffe
 
 1. **Group related views logically**
 
-Create topics that make business sense. Don't join views only because it's possible to join them. Zoë can run queries on separate topics and merge the results afterwards, so it's not necessary all data you'd want to ask about is in the same topic.
+Create topics that make business sense. Don't join views only because it's possible to join them. Zoë can run queries on separate topics and merge the results afterwards, so it's not necessary to ensure all data you'd want to ask about is in the same topic.
 
 2. **Provide descriptive topic labels and descriptions** 
 

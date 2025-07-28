@@ -1,6 +1,6 @@
 # Joins
 
-**Topics are the primary way joins are organized and managed in Zenlytic.** [Topics](topic.md) define collections of views that can be joined together and specify how those joins work. This approach provides clearer organization, better governance, and more intuitive data relationships.
+**Topics are the primary way joins are organized and managed in Zenlytic.** [Topics](topic.md) define collections of views that can be joined together and specify how those joins relate to each other. This approach provides clearer organization, better governance, and more intuitive data relationships.
 
 Topics allow you to:
 - Explicitly specify which views belong together, and how they should join

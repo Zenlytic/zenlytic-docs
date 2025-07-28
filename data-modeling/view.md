@@ -73,7 +73,7 @@ always_filter:
 
 `access_filters`: This is an optional list of [access filters](access_grants.md#access-filters) to apply to the view when it is queried.
 
-This will apply row-level security to the table. The behavior is to set the chosen column equal to the user attribute value. They are defined like this:
+Access filters can be used to apply row-level security against views. The following example shows how to make a specified column only visible to workspace members with a user attribute value:
 
 ```yaml
 access_filters:

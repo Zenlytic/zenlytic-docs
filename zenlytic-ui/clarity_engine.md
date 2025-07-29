@@ -79,7 +79,7 @@ The Clarity Engine uses an intelligent agent-based architecture that allows Zoë
 
 ### Promoting Dynamic Fields
 
-When Zoë creates Dynamic Fields to answer your questions, you can promote these fields into your semantic model for reuse across the platform. Dynamic Fields appear without a green checkmark, indicating they were generated in the context of your the current question and haven't yet been validated by the data team.
+When Zoë creates Dynamic Fields to answer your questions, you can promote these fields into your semantic model for reuse across the platform. Dynamic Fields appear without a green checkmark, indicating they were generated in the context of your current question and haven't yet been validated by the data team.
 
 Note: Promoting Dynamic Fields requires developer-level permissions or above.
 

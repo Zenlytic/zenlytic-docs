@@ -107,4 +107,7 @@
 * [Customer Support Policy](legal-and-support/customer-support-policy.md)
 * [End User Terms of Use](https://app.zenlytic.com/end-user-terms-of-use)
 * [Privacy Policy](https://app.zenlytic.com/privacy-policy)
+* [Zenlytic Data Processing Addendum](legal-and-support/zenlytic-data-processing-addendum.md)
+* [Zenlytic End User License Agreement](legal-and-support/zenlytic-end-user-license-agreement.md)
+* [Subprocessors](legal-and-support/subprocessors.md)
 * [License](legal-and-support/license-doc.md)

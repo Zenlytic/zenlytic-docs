@@ -9,7 +9,7 @@ This section covers all aspects of the Zenlytic user interface and its features.
 ## Contents
 
 * [Using Zenlytic](using_zenlytic.md)
-* [Zoe](zoe.md)
+* [Zoe](broken-reference)
 * [Exploring](exploring.md)
 * [Data Model Editor](data_model_editor.md)
 * [User Attributes](user_attributes.md)

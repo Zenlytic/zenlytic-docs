@@ -3,12 +3,10 @@
 ## Getting Started
 
 * [Zenlytic Documentation](intro.md)
-* [Copy of Zenlytic Documentation](getting-started/intro-1.md)
 * [Start Here](getting-started/start_here.md)
 
 ## Tips & Tricks
 
-* [Tips and Tricks](tips-and-tricks/2_tips_and_tricks.md)
 * [Working with Zoë Tips and Tricks](tips-and-tricks/zoe_tips_and_tricks.md)
 * [How Zoë Ingests Context](tips-and-tricks/zoe_context_ingestion.md)
 * [Naming Conventions](tips-and-tricks/naming-conventions.md)
@@ -21,7 +19,6 @@
 
 ## Zenlytic UI
 
-* [Zenlytic UI](zenlytic-ui/3_zenlytic_ui.md)
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
 * [Clarity Engine (beta)](zenlytic-ui/clarity_engine.md)
 * [Exploring](zenlytic-ui/exploring.md)
@@ -35,7 +32,6 @@
 
 ## Data Modeling
 
-* [Data Modeling](data-modeling/5_data_modeling.md)
 * [Data Modeling Overview](data-modeling/data_modeling.md)
 * [Model](data-modeling/model.md)
 * [Dashboards](data-modeling/dashboard.md)
@@ -57,7 +53,6 @@
 
 ## Workflows
 
-* [Workflows](workflows/6_workflows.md)
 * [Workflows Getting Started](workflows/getting-started.md)
 * [Inputs](workflows/inputs.md)
 * [Publish](workflows/publish.md)
@@ -66,7 +61,6 @@
 
 ## Embedding
 
-* [Embedding](embedding/4_embedding.md)
 * [Embedding Overview](embedding/embedding_overview.md)
 * [Private Embedding](embedding/private_embedding.md)
 * [Signed Embedding](embedding/signed_embedding.md)
@@ -76,7 +70,6 @@
 
 ## Data Sources
 
-* [Data Sources](data-sources/7_data_sources.md)
 * [Integrations Overview](data-sources/integrations.md)
 * [Bigquery Setup](data-sources/bigquery_setup.md)
 * [Snowflake Setup](data-sources/snowflake_setup.md)
@@ -92,7 +85,6 @@
 
 ## Authentication & Security
 
-* [Authentication & Security](authentication-and-security/8_authentication.md)
 * [Microsoft Entra Zenlytic](authentication-and-security/microsoft_entra_zenlytic.md)
 * [Snowflake with Microsoft Entra](authentication-and-security/microsoft_entra_snowflake.md)
 * [Snowflake with Entra - What to Send](authentication-and-security/entra-snowflake-what-to-send.md)
@@ -104,10 +96,11 @@
 
 ## Legal & Support
 
+* [Legal](legal-and-support/legal/README.md)
+  * [End User License Agreement](legal-and-support/legal/end-user-license-agreement.md)
+  * [Data Processing Addendum](legal-and-support/legal/data-processing-addendum.md)
+  * [Subprocessors](legal-and-support/legal/subprocessors.md)
 * [Customer Support Policy](legal-and-support/customer-support-policy.md)
 * [End User Terms of Use](https://app.zenlytic.com/end-user-terms-of-use)
 * [Privacy Policy](https://app.zenlytic.com/privacy-policy)
-* [Zenlytic Data Processing Addendum](legal-and-support/zenlytic-data-processing-addendum.md)
-* [Zenlytic End User License Agreement](legal-and-support/zenlytic-end-user-license-agreement.md)
-* [Subprocessors](legal-and-support/subprocessors.md)
 * [License](legal-and-support/license-doc.md)

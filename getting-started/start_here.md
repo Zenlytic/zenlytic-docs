@@ -1,3 +1,20 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+---
+
 # Start Here
 
 We're going to walk through setting up Zenlytic from scratch. You should have received a login to your workspace to begin the setup process.
@@ -31,7 +48,7 @@ To start defining metrics, go to the [Data Model Editor](https://app.zenlytic.co
 
 To add a new table click "Create view from table" and select tables to bring into your data model. When you import tables, Zenlytic will use the information\_schema table to pull in metadata, and (for warehouses like Snowflake, BigQuery, and Databricks) pull in column and table level descriptions.
 
-<p align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt="" data-size="original"></p>
+<div align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt=""></div>
 
 Once the table is imported, you'll see a yaml file with dimensions defined. Make sure to select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, organize your views into [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../data-modeling/measure.md)) you want to use.
 

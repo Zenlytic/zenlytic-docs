@@ -83,6 +83,7 @@ The default date will be the default `canon_date` for all metrics in that view u
 
 Using an example from subscription management
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -131,6 +132,7 @@ fields:
   description: "This is the unique number of subscriptions by the date canceled"
 ...
 ```
+{% endcode %}
 
 The first measure inherits the `canon_date` of `created_at` from the `default_date` on the view, and the second one is set explicitly to be `canceled_at` because its definition needs to use another date to derive its meaning.
 

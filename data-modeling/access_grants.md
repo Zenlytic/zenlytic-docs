@@ -73,9 +73,7 @@ fields:
     field_type: dimension
     type: string
     sql: ${TABLE}.email
-  .
-  .
-  .
+  
 ```
 
 ## Access filters
@@ -116,9 +114,6 @@ fields:
     type: string
     sql: ${TABLE}.product
 
-  .
-  .
-  .
 ```
 
 ## User attributes

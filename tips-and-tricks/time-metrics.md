@@ -15,7 +15,6 @@ sql_table_name: PROD.GOOGLE_AD_STATS
 default_date: ad_stat_recorded_at
 
 fields:
-...
 - name: ad_stat_recorded_at
   field_type: dimension_group
   type: time
@@ -28,7 +27,6 @@ fields:
   - quarter
   - year
   sql: ${TABLE}.DATE
-...
 ```
 
 Under the default date property you'll just reference the `name` of the time you want to use as the default date.
@@ -39,6 +37,7 @@ The default date will be the default `canon_date` for all metrics in that view u
 
 Using an example from subscription management:
 
+{% code overflow="wrap" %}
 ```yaml
 version: 1
 type: view
@@ -48,7 +47,6 @@ sql_table_name: PROD.SUBSCRIPTIONS
 default_date: created_at
 
 fields:
-...
 - name: created_at
   field_type: dimension_group
   type: time
@@ -85,7 +83,7 @@ fields:
   sql: ${subscription_id}
   canon_date: canceled_at
   description: "This is the unique number of subscriptions by the date canceled"
-...
 ```
+{% endcode %}
 
 The first measure inherits the `canon_date` of `created_at` from the `default_date` on the view, and the second one is set explicitly to be `canceled_at` because its definition needs to use another date to derive its meaning.

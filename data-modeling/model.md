@@ -45,7 +45,7 @@ This is an example of an access grant defined in a model. In this case, this acc
 The mapping example here maps the `marketing_spend.marketing_channel` to the `orders.channel` field so Zenlytic (and Zoë) know they are the same concept.
 
 {% code overflow="wrap" %}
-````yaml
+```yaml
 version: 1
 type: model
 name: demo
@@ -62,6 +62,5 @@ mappings:
     fields: [marketing_spend.marketing_channel, orders.channel]
     group_label: "Acquisition" # This controls the header under which the mapped field shows up in the UI
     description: "The channel the customer came to our site from"
-    ```
-````
+```
 {% endcode %}

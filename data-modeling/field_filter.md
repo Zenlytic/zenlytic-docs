@@ -20,31 +20,18 @@ Anytime when using the Zenlytic UI you can replicate this behavior using the `ma
 
 ## String (or text)
 
-| Example   | Description                                                                                                                               |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Foo       | Equals "Foo" exactly, `field_name = 'Foo'`                                                                                                |
-| Foo,Bar   | Equals "Foo" or "Bar" exactly, `field_name in ('Foo', 'Bar')`                                                                             |
-| %Foo%     | Matches any string that contains "Foo" (not case sensitive), e.g. matches 'fast food', `field_name ilike '%Foo%'`                         |
-| Foo%      | Matches any string that starts with "Foo" (not case sensitive), e.g. matches 'food' does not match 'fast food', `field_name ilike 'Foo%'` |
-| %Foo      | Matches any string that ends with "Foo" (not case sensitive), e.g. matches 'tofoo' does not match 'food', `field_name ilike '%Foo'`       |
-| NULL      | Value is null, `field_name is null`                                                                                                       |
-| -Foo      | Not equal to "Foo" exactly, `field_name != 'Foo'`                                                                                         |
-| -Foo,-Bar | Not equal to "Foo" or "Bar" exactly, `field_name not in ('Foo', 'Bar')`                                                                   |
-| -NULL     | Value is not null, `field_name is not null`                                                                                               |
-| -%Foo%    | Does not match any string that contains "Foo" (not case sensitive), `field_name not ilike '%Foo%'`                                        |
-| -Foo%     | Does not match any string that starts with "Foo" (not case sensitive), `field_name not ilike 'Foo%'`                                      |
-| -%Foo     | Does not match any string that ends with "Foo" (not case sensitive), `field_name not ilike '%Foo'`                                        |
+<table><thead><tr><th width="200.1796875">Example</th><th>Description</th></tr></thead><tbody><tr><td>Foo</td><td>Equals "Foo" exactly, <code>field_name = 'Foo'</code></td></tr><tr><td>Foo,Bar</td><td>Equals "Foo" or "Bar" exactly, <code>field_name in ('Foo', 'Bar')</code></td></tr><tr><td>%Foo%</td><td>Matches any string that contains "Foo" (not case sensitive), e.g. matches 'fast food', <code>field_name ilike '%Foo%'</code></td></tr><tr><td>Foo%</td><td>Matches any string that starts with "Foo" (not case sensitive), e.g. matches 'food' does not match 'fast food', <code>field_name ilike 'Foo%'</code></td></tr><tr><td>%Foo</td><td>Matches any string that ends with "Foo" (not case sensitive), e.g. matches 'tofoo' does not match 'food', <code>field_name ilike '%Foo'</code></td></tr><tr><td>NULL</td><td>Value is null, <code>field_name is null</code></td></tr><tr><td>-Foo</td><td>Not equal to "Foo" exactly, <code>field_name != 'Foo'</code></td></tr><tr><td>-Foo,-Bar</td><td>Not equal to "Foo" or "Bar" exactly, <code>field_name not in ('Foo', 'Bar')</code></td></tr><tr><td>-NULL</td><td>Value is not null, <code>field_name is not null</code></td></tr><tr><td>-%Foo%</td><td>Does not match any string that contains "Foo" (not case sensitive), <code>field_name not ilike '%Foo%'</code></td></tr><tr><td>-Foo%</td><td>Does not match any string that starts with "Foo" (not case sensitive), <code>field_name not ilike 'Foo%'</code></td></tr><tr><td>-%Foo</td><td>Does not match any string that ends with "Foo" (not case sensitive), <code>field_name not ilike '%Foo'</code></td></tr></tbody></table>
 
 ## Numeric
 
 | Example | Description                                               |
 | ------- | --------------------------------------------------------- |
-| `=100`  | Equals 100 exactly, `field_name = 100`                    |
-| `!=100` | Not equal to 100 exactly, `field_name != 100`             |
-| `>=100` | Greater than or equal to 100 exactly, `field_name >= 100` |
-| `<=100` | Less than or equal to 100 exactly, `field_name <= 100`    |
-| `>100`  | Greater than 100 exactly, `field_name > 100`              |
-| `<100`  | Less than 100 exactly, `field_name < 100`                 |
+| =100    | Equals 100 exactly, `field_name = 100`                    |
+| !=100   | Not equal to 100 exactly, `field_name != 100`             |
+| >=100   | Greater than or equal to 100 exactly, `field_name >= 100` |
+| <=100   | Less than or equal to 100 exactly, `field_name <= 100`    |
+| >100    | Greater than 100 exactly, `field_name > 100`              |
+| <100    | Less than 100 exactly, `field_name < 100`                 |
 | NULL    | Value is null, `field_name is null`                       |
 | -NULL   | Value is not null, `field_name is not null`               |
 

@@ -1,11 +1,29 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+---
+
 # Joins
 
 **Topics are the primary way joins are organized and managed in Zenlytic.** [Topics](topic.md) define collections of views that can be joined together and specify how those joins relate to each other. This approach provides clearer organization, better governance, and more intuitive data relationships.
 
 Topics allow you to:
-- Explicitly specify which views belong together, and how they should join
-- Provide business context about how data relates
-- Apply consistent access controls across related data
+
+* Explicitly specify which views belong together, and how they should join
+* Provide business context about how data relates
+* Apply consistent access controls across related data
 
 ## Topics
 
@@ -17,6 +35,7 @@ Topics organize your views into logical groupings and handle the join relationsh
 
 Here's how joins work within topics:
 
+{% code overflow="wrap" %}
 ```yaml
 type: topic
 label: Customer Analytics
@@ -55,6 +74,7 @@ views:
       relationship: one_to_many
       sql_on: ${customers.customer_id} = ${customer_support_tickets.customer_id}
 ```
+{% endcode %}
 
 Zoë uses topics to understand what data can be joined together and how those relationships work, making her responses more accurate and contextually appropriate.
 
@@ -64,11 +84,11 @@ Sometimes you need to join the same table into a topic multiple times with diffe
 
 The `join_as` feature allows you to create multiple aliases for the same view within a topic, each with its own join logic and field prefixes.
 
-
 First, define the identifiers in the view you want to join twice into your topic with `join_as` specifications:
 
 {% code overflow="wrap" %}
 ```yaml
+
 version: 1
 type: view
 name: cx_users
@@ -88,7 +108,7 @@ identifiers:
   join_as: assigned_users
   join_as_label: Assigned To      # This will be the label of the view when joined
   join_as_field_prefix: Assignee  # This will be the prefix for the fields when joined
-...
+
 ```
 {% endcode %}
 
@@ -96,6 +116,7 @@ Then, in your topic, you can join in the view like so:
 
 {% code overflow="wrap" %}
 ```yaml
+
 type: topic
 label: Zendesk Tickets
 base_view: tickets
@@ -122,6 +143,7 @@ views:
       join_type: left_outer
       relationship: many_to_one
       sql_on: ${tickets.user_id} = ${user_segments.id}
+      
 ```
 {% endcode %}
 
@@ -133,6 +155,6 @@ This will let you join in the same underlying `cx_users` table twice using diffe
 
 Create topics that make business sense. Don't join views only because it's possible to join them. Zoë can run queries on separate topics and merge the results afterwards, so it's not necessary to ensure all data you'd want to ask about is in the same topic.
 
-2. **Provide descriptive topic labels and descriptions** 
+2. **Provide descriptive topic labels and descriptions**
 
 Help users (and Zoë) understand the data relationships, and which topic to use for answering which questions by defining descriptions on the topic.

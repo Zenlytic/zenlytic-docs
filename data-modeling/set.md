@@ -41,10 +41,12 @@ fields: [state, city]
 
 Let's define a set for the customer without PII. This will include all fields in the view except for `email`.
 
+{% code overflow="wrap" fullWidth="false" %}
 ```yaml
 name: customer_no_pii
 fields: [ALL_FIELDS*, -email]
 ```
+{% endcode %}
 
 Finally, let's define a set without PII and without location. We can use our existing building blocks for this one. In the first part of this definition we included the fields `customer_id`, `new_vs_repeat`, `state`, and `city`. Then we negated our set with `state` and `city`, which means our final set will only contain two fields `customer_id` and `new_vs_repeat`, which is exactly what we wanted.
 

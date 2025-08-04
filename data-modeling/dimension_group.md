@@ -73,48 +73,15 @@ All `fiscal_` timeframes are based on the model's `fiscal_month_offset` property
 
 The available timeframe options are:
 
-* `raw`: Shows the raw value and can be used in references, but is not used in the Zenlytic UI.
-* `time`: Shows the raw timestamp.
-* `second`: Shows the value truncated to the second.
-* `minute`: Shows the value truncated to the minute.
-* `hour`: Shows the value truncated to the hour.
-* `date`: Shows the value truncated to the day.
-* `week`: Shows the value truncated to the week.
-* `month`: Shows the value truncated to the month.
-* `quarter`: Shows the value truncated to the quarter.
-* `year`: Shows the value truncated to the year.
-* `fiscal_month`: Shows the value truncated to the fiscal month.
-* `fiscal_quarter`: Shows the value truncated to the fiscal quarter.
-* `fiscal_year`: Shows the value truncated to the fiscal year.
-* `week_index`: Shows the week of the year as an integer (alias of `week_of_year` below).
-* `week_of_year`: Shows the week of the year as an integer.
-* `week_of_month`: Shows the week of the month as an integer.
-* `month_of_year`: Shows the month of the year as a 3 character string ('Jan', 'Feb', 'Mar', etc).
-* `month_of_year_full_name`: Shows the month of the year as a string ('January', 'February', 'March', etc).
-* `month_of_year_index`: Shows the month of the year as an integer.
-* `fiscal_month_index`: Shows the fiscal month of the year as an integer. The first fiscal month is the first month of the fiscal year.
-* `fiscal_month_of_year_index`: Shows the fiscal month of the year as an integer (alias of the `fiscal_month_index`).
-* `month_name`: Shows the month of the year as a 3 character string (alias of `month_of_year`).
-* `month_index`: Shows the month of the year as an integer (alias of `month_of_year_index`).
-* `quarter_of_year`: Shows the quarter of the year as an integer.
-* `fiscal_quarter_of_year`: Shows the fiscal quarter of the year as an integer.
-* `hour_of_day`: Shows the hour of the day as an integer.
-* `day_of_week`: Shows the day of the week as a 3 character string ('Mon', 'Tue', 'Wed', etc).
-* `day_of_month`: Shows the day of the month as an integer.
-* `day_of_year`: Shows the day of the year as an integer.
+<table><thead><tr><th width="242.55078125">Options</th><th width="503.6015625">Description</th></tr></thead><tbody><tr><td>raw</td><td>Shows the raw value and can be used in references, but is not used in the Zenlytic UI</td></tr><tr><td>time</td><td>Shows the raw timestamp</td></tr><tr><td>second</td><td>Shows the value truncated to the second</td></tr><tr><td>minute</td><td>Shows the value truncated to the minute</td></tr><tr><td>hour</td><td>Shows the value truncated to the hour</td></tr><tr><td>date</td><td>Shows the value truncated to the day</td></tr><tr><td>week</td><td>Shows the value truncated to the week</td></tr><tr><td>month</td><td>Shows the value truncated to the month</td></tr><tr><td>quarter</td><td>Shows the value truncated to the quarter</td></tr><tr><td>year</td><td>Shows the value truncated to the year</td></tr><tr><td>fiscal_month</td><td>Shows the value truncated to the fiscal month</td></tr><tr><td>fiscal_quarter</td><td>Shows the value truncated to the fiscal quarter.</td></tr><tr><td>fiscal_year</td><td>Shows the value truncated to the fiscal year</td></tr><tr><td>week_index</td><td>Shows the week of the year as an integer (alias of week_of_year below)</td></tr><tr><td>week_of_year</td><td>Shows the week of the year as an integer</td></tr><tr><td>week_of_month</td><td>Shows the week of the month as an integer</td></tr><tr><td>month_of_year</td><td>Shows the month of the year as a 3 character string ('Jan', 'Feb', 'Mar', etc)</td></tr><tr><td>month_of_year_full_name</td><td>Shows the month of the year as a string ('January', 'February', 'March', etc)</td></tr><tr><td>month_of_year_index</td><td>Shows the month of the year as an integer</td></tr><tr><td>fiscal_month_index</td><td>Shows the fiscal month of the year as an integer. The first fiscal month is the first month of the fiscal year.</td></tr><tr><td>fiscal_month_of_year_index</td><td>Shows the fiscal month of the year as an integer (alias of the fiscal_month_index)</td></tr><tr><td>month_name</td><td>Shows the month of the year as a 3 character string (alias of month_of_year)</td></tr><tr><td>month_index</td><td>Shows the month of the year as an integer (alias of month_of_year_index)</td></tr><tr><td>quarter_of_year</td><td>Shows the quarter of the year as an integer</td></tr><tr><td>fiscal_quarter_of_year</td><td>Shows the fiscal quarter of the year as an integer</td></tr><tr><td>hour_of_day</td><td>Shows the hour of the day as an integer</td></tr><tr><td>day_of_week</td><td>Shows the day of the week as a 3 character string ('Mon', 'Tue', 'Wed', etc)</td></tr><tr><td>day_of_month</td><td>Shows the day of the month as an integer</td></tr><tr><td>day_of_year</td><td>Shows the day of the year as an integer</td></tr></tbody></table>
+
+
 
 ## Intervals
 
 The available interval options are:
 
-* `second`: The number of seconds between the `sql_start` and the `sql_end`.
-* `minute`: The number of minutes between the `sql_start` and the `sql_end`.
-* `hour`: The number of hours between the `sql_start` and the `sql_end`.
-* `day`: The number of days between the `sql_start` and the `sql_end`.
-* `week`: The number of weeks between the `sql_start` and the `sql_end`.
-* `month`: The number of months between the `sql_start` and the `sql_end`.
-* `quarter`: The number of quarters between the `sql_start` and the `sql_end`.
-* `year`: The number of years between the `sql_start` and the `sql_end`.
+<table><thead><tr><th width="159.71875">Options</th><th>Description</th></tr></thead><tbody><tr><td>second</td><td>The number of seconds between the <code>sql_start</code> and the <code>sql_end</code></td></tr><tr><td>minute</td><td>The number of minutes between the <code>sql_start</code> and the <code>sql_end</code></td></tr><tr><td>hour</td><td>The number of hours between the <code>sql_start</code> and the <code>sql_end</code></td></tr><tr><td>day</td><td>The number of days between the <code>sql_start</code> and the <code>sql_end</code></td></tr><tr><td>week</td><td>The number of weeks between the <code>sql_start</code> and the <code>sql_end</code></td></tr><tr><td>month</td><td>The number of months between the <code>sql_start</code> and the <code>sql_end</code></td></tr><tr><td>quarter</td><td>The number of quarters between the <code>sql_start</code> and the <code>sql_end</code></td></tr><tr><td>year</td><td>The number of years between the <code>sql_start</code> and the <code>sql_end</code></td></tr></tbody></table>
 
 ## Examples
 

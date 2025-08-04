@@ -6,33 +6,7 @@ Passing the `value_format_name` parameter to your [field](field.md) lets you eas
 
 There are several options. Broadly speaking, there is a format type followed by a number of decimal places. For example, `decimal_1` formats the number like a decimal and rounds to one decimal place.
 
-| Value Format Name | Unformatted Value            | Formatted Value  |
-| ----------------- | ---------------------------- | ---------------- |
-| decimal           | 12345.678                    | 12346            |
-| decimal\_0        | 12345.678                    | 12,346           |
-| decimal\_1        | 12345.678                    | 12,345.7         |
-| decimal\_2        | 12345.67812                  | 12,345.68        |
-| decimal\_3        | 12345.67812                  | 12,345.678       |
-| decimal\_4        | 12345.67812                  | 12,345.6781      |
-| decimal\_pct\_0   | 3.456                        | 3%               |
-| decimal\_pct\_1   | 3.456                        | 3.5%             |
-| decimal\_pct\_2   | 3.456                        | 3.46%            |
-| decimal\_pct\_3   | 3.4561                       | 3.456%           |
-| decimal\_pct\_4   | 3.4561                       | 3.4561%          |
-| percent\_0        | 0.3456                       | 35%              |
-| percent\_1        | 0.3456                       | 34.6%            |
-| percent\_2        | 0.3456                       | 34.56%           |
-| percent\_3        | 0.345612                     | 34.561%          |
-| percent\_4        | 0.345612                     | 34.5612%         |
-| eur               | 12345.678                    | €12.3k           |
-| eur\_0            | 12345.678                    | €12,346          |
-| eur\_1            | 12345.678                    | €12,345.7        |
-| eur\_2            | 12345.678                    | €12,345.68       |
-| usd               | 12345.678                    | $12.3k           |
-| usd\_0            | 12345.678                    | $12,346          |
-| usd\_1            | 12345.678                    | $12,345.7        |
-| usd\_2            | 12345.678                    | $12,345.68       |
-| image\_from\_url  | https://mydomain.com/myimage | (Rendered Image) |
+<table><thead><tr><th>Value Format Name</th><th width="281.20703125">Unformatted Value</th><th>Formatted Value</th></tr></thead><tbody><tr><td>decimal</td><td>12345.678</td><td>12346</td></tr><tr><td>decimal_0</td><td>12345.678</td><td>12,346</td></tr><tr><td>decimal_1</td><td>12345.678</td><td>12,345.7</td></tr><tr><td>decimal_2</td><td>12345.67812</td><td>12,345.68</td></tr><tr><td>decimal_3</td><td>12345.67812</td><td>12,345.678</td></tr><tr><td>decimal_4</td><td>12345.67812</td><td>12,345.6781</td></tr><tr><td>decimal_pct_0</td><td>3.456</td><td>3%</td></tr><tr><td>decimal_pct_1</td><td>3.456</td><td>3.5%</td></tr><tr><td>decimal_pct_2</td><td>3.456</td><td>3.46%</td></tr><tr><td>decimal_pct_3</td><td>3.4561</td><td>3.456%</td></tr><tr><td>decimal_pct_4</td><td>3.4561</td><td>3.4561%</td></tr><tr><td>percent_0</td><td>0.3456</td><td>35%</td></tr><tr><td>percent_1</td><td>0.3456</td><td>34.6%</td></tr><tr><td>percent_2</td><td>0.3456</td><td>34.56%</td></tr><tr><td>percent_3</td><td>0.345612</td><td>34.561%</td></tr><tr><td>percent_4</td><td>0.345612</td><td>34.5612%</td></tr><tr><td>eur</td><td>12345.678</td><td>€12.3k</td></tr><tr><td>eur_0</td><td>12345.678</td><td>€12,346</td></tr><tr><td>eur_1</td><td>12345.678</td><td>€12,345.7</td></tr><tr><td>eur_2</td><td>12345.678</td><td>€12,345.68</td></tr><tr><td>usd</td><td>12345.678</td><td>$12.3k</td></tr><tr><td>usd_0</td><td>12345.678</td><td>$12,346</td></tr><tr><td>usd_1</td><td>12345.678</td><td>$12,345.7</td></tr><tr><td>usd_2</td><td>12345.678</td><td>$12,345.68</td></tr><tr><td>image_from_url</td><td>https://mydomain.com/myimage</td><td>(Rendered Image)</td></tr></tbody></table>
 
 ## Examples
 

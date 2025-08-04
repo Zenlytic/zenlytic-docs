@@ -1,10 +1,27 @@
-# Clarity Engine
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+---
+
+# Clarity Engine (beta)
 
 The Clarity Engine serves as the backbone of Zenlytic's LLM-based agent, Zoë, enabling you to transform raw facts to confident decisions. The Clarity Engine operates in two distinctive modes: the Default Mode with Dynamic Fields for structured analysis governed by your semantic model, and Exploratory Mode for more advanced, raw SQL-based analysis that extend beyond the boundaries of the semantic model.
 
 ## Just ask!
 
-To start using the Clarity Engine in Zenlytic, navigate to Zoë (the chat interface in Zenlytic) and simply ask her a question. If you're unsure where to begin, ask what data she has access to, or request a good follow-up question based on your prior analysis within the conversation. 
+To start using the Clarity Engine in Zenlytic, navigate to Zoë (the chat interface in Zenlytic) and simply ask her a question. If you're unsure where to begin, ask what data she has access to, or request a good follow-up question based on your prior analysis within the conversation.
 
 Note: Providing more context about the task you're trying to accomplish, your team, and job title will make Zoë even more helpful.
 
@@ -58,10 +75,10 @@ Consider this measure in your semantic model:
 
 If you have access to `count_unique_emails` through the `marketing_team` access grant, the Clarity Engine can use the underlying `email` column in multiple ways:
 
-- **Counting**: "How many customers have Gmail addresses?"
-- **Filtering**: "Show me customers who signed up with work emails"
-- **Grouping**: "Break down results by email domain"
-- **Custom logic**: Create new measures that reference the email column
+* **Counting**: "How many customers have Gmail addresses?"
+* **Filtering**: "Show me customers who signed up with work emails"
+* **Grouping**: "Break down results by email domain"
+* **Custom logic**: Create new measures that reference the email column
 
 This approach maintains strict access controls while giving Zoë maximum flexibility to answer your questions using the data components you're already authorized to access.
 
@@ -72,8 +89,9 @@ When you ask Zoë a question, she analyzes your semantic model to find existing 
 ![The Clarity Engine analyzing your request](../assets/3_zenlytic_ui/zoe_clarity_answer.png)
 
 **Visual Indicators:**
-- **Green checkmark**: Indicates a verified field from your semantic model that's governed and reusable across the platform
-- **No checkmark**: Indicates a Dynamic Field created within the context of the current question
+
+* **Green checkmark**: Indicates a verified field from your semantic model that's governed and reusable across the platform
+* **No checkmark**: Indicates a Dynamic Field created within the context of the current question
 
 The Clarity Engine uses an intelligent agent-based architecture that allows Zoë to plan approaches to complex problems, use multiple tools to gather information, maintain context throughout your conversation, and update her memory to provide increasingly relevant answers.
 
@@ -86,7 +104,7 @@ Note: Promoting Dynamic Fields requires developer-level permissions or above.
 **To promote a Dynamic Field:**
 
 1. Click on the Dynamic Field in your results
-2. Click the three-dot menu on the right side of the field  
+2. Click the three-dot menu on the right side of the field
 3. Select "Promote"
 
 ![The Clarity Engine promoting a metric](../assets/3_zenlytic_ui/zoe_clarity_promote_hover.png)
@@ -102,7 +120,7 @@ Exploratory Mode enables the Clarity Engine to write custom SQL directly against
 When you enable Exploratory Mode, the Clarity Engine operates with expanded capabilities:
 
 1. **Writes custom SQL** - Creates queries directly against your tables and views, using full context about your existing semantic model
-2. **Maintains security** - Enforces all row and column-level permissions, ensuring you only access data you're authorized to see  
+2. **Maintains security** - Enforces all row and column-level permissions, ensuring you only access data you're authorized to see
 3. **Highlights reuse** - Identifies and shows you when the SQL leverages existing components from your semantic model
 4. **Provides transparency** - Explains the approach in plain English, including which parts of your semantic model are being referenced
 
@@ -112,15 +130,15 @@ This mode gives you the flexibility to explore complex data relationships while 
 
 Exploratory Mode maintains the same strict security standards as Default Mode:
 
-- **Row-level security**: Your access filters are automatically applied to all SQL queries
-- **Column-level security**: Only columns you have permission to view are included in the generated SQL queries
-- **Semantic model integration**: Existing measures and dimensions from your semantic model are reused whenever possible, preserving their built-in governance
+* **Row-level security**: Your access filters are automatically applied to all SQL queries
+* **Column-level security**: Only columns you have permission to view are included in the generated SQL queries
+* **Semantic model integration**: Existing measures and dimensions from your semantic model are reused whenever possible, preserving their built-in governance
 
 This approach ensures that expanded analytical capabilities never compromise your organization's data security and governance policies.
 
 ### Context Reuse Highlighting
 
-When writing custom SQL in Exploratory Mode, the Clarity Engine identifies and highlights when it leverages components from your existing semantic model. 
+When writing custom SQL in Exploratory Mode, the Clarity Engine identifies and highlights when it leverages components from your existing semantic model.
 
 ![The Clarity Engine highlighting re-use in exploratory mode](../assets/3_zenlytic_ui/zoe_exploratory_mode_hover.png)
 
@@ -130,10 +148,10 @@ Zoë provides clear explanations of her analytical approach, showing you which p
 
 Both Default Mode and Exploratory Mode integrate seamlessly with Zenlytic's built-in code interpreter, which executes Python code in a secure sandbox environment. This integration expands Zoë's analytical capabilities significantly:
 
-- **Merge results** - Combine results from multiple queries or external data sources
-- **Apply external assumptions** - Incorporate external assumptions into your analysis  
-- **Advanced analytics** - Perform statistical analysis including clustering, correlation, regression, and forecasting
-- **Custom visualizations** - Create specialized charts and graphs beyond standard business intelligence formats
+* **Merge results** - Combine results from multiple queries or external data sources
+* **Apply external assumptions** - Incorporate external assumptions into your analysis
+* **Advanced analytics** - Perform statistical analysis including clustering, correlation, regression, and forecasting
+* **Custom visualizations** - Create specialized charts and graphs beyond standard business intelligence formats
 
 ![The Clarity Engine using Python for advanced analysis](../assets/3_zenlytic_ui/zoe_code_interpreter_results.png)
 
@@ -141,13 +159,14 @@ Both Default Mode and Exploratory Mode integrate seamlessly with Zenlytic's buil
 
 The Clarity Engine's two modes are designed to handle different analytical scenarios. Understanding when to use each mode helps you get the most effective results from Zoë.
 
-
 **Default Mode with Dynamic Fields** is ideal for:
-- **Flexible semantic model expansion** - Leverages your existing data structure while dynamically creating new fields that extend far beyond traditional BI platforms' capabilities, allowing complex analysis while maintaining governance
-- **Platform integration and reusability** - Creates analysis components that integrate natively with dashboards, explores, workflows, and can be promoted into your permanent semantic model for team-wide use
+
+* **Flexible semantic model expansion** - Leverages your existing data structure while dynamically creating new fields that extend far beyond traditional BI platforms' capabilities, allowing complex analysis while maintaining governance
+* **Platform integration and reusability** - Creates analysis components that integrate natively with dashboards, explores, workflows, and can be promoted into your permanent semantic model for team-wide use
 
 **Exploratory Mode** is perfect for:
-- **Custom analysis beyond semantic constraints** - Handles questions that cannot be answered within the structured relationships of any semantic model, requiring complete flexibility to redefine how data connects and flows
-- **Advanced ad-hoc investigations** - Enables complex analytical techniques that extend beyond the capabilities of any other BI platform, and even beyond our Default Mode, which is already significantly more flexible than traditional solutions
+
+* **Custom analysis beyond semantic constraints** - Handles questions that cannot be answered within the structured relationships of any semantic model, requiring complete flexibility to redefine how data connects and flows
+* **Advanced ad-hoc investigations** - Enables complex analytical techniques that extend beyond the capabilities of any other BI platform, and even beyond our Default Mode, which is already significantly more flexible than traditional solutions
 
 Both modes maintain the same high standards for security, governance, and transparency while providing the advanced flexibility needed for comprehensive data analysis.

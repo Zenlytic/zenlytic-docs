@@ -1,3 +1,20 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+---
+
 # Views
 
 Views reference exactly one table in the database. In Zenlytic, they are organized into [topics](topic.md) for usage that define how they join together.
@@ -35,7 +52,7 @@ Note: The filters in `always_filter` _will not_ be applied if you are using this
 You can also reference any [referenceable attributes](referenceable_attributes.md) and drop them into the derived SQL statement. For example, in this case we are dynamically applying a filter to the SQL query based on the user's user attribute for 'owned\_region'
 
 ```yaml
-...
+
 name: my_view
 derived_table: 
   sql: >
@@ -43,7 +60,7 @@ derived_table:
       * 
     from myschema.mytable
     where '{{ user_attributes['owned_region'] }}' = mytable.region
-...
+
 ```
 
 `default_date`: This is the default date [dimension group](dimension_group.md) without a time frame chosen for it. For example, if your dimension group is named `order` you would use the value `order` here, not `order_month` or `order_week` like you would reference elsewhere.
@@ -83,13 +100,12 @@ access_filters:
 
 `required_access_grants`: This is a list of [access grant](access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will _always_ be applied for this view in any join sequence.
 
+`identifiers`: This is a list of [fields](field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references.
 
-`identifiers`: This is a list of [fields](field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references. 
-
-Identifiers can be used to create a `join_as` view, which will allow a table to join into a topic more than once on different keys. More information is in the [joins](./join.md) section.
+Identifiers can be used to create a `join_as` view, which will allow a table to join into a topic more than once on different keys. More information is in the [joins](join.md) section.
 
 `fields`: This is a list of [fields](../5_data_modeling/9_field.md). Each field must have all required parameters included.
 
-## Joins 
+## Joins
 
-Joins are defined in [topics](./topic.md). 
+Joins are defined in [topics](topic.md).

@@ -7,7 +7,7 @@ Access control is managed in Zenlytic through two concepts.
 
 ## Access grants
 
-Access grants are restrictions for certain users on the ability to see various fields and query them in the Zenlytic interface. These access restrictions are based on access to _columns_ and _views_. For row-based access control look at [access filters](access_grants.md#access-filters).
+Access grants are restrictions for certain users on the ability to see various fields and query them in the Zenlytic interface. These access restrictions are based on access to _columns,_ _views,_ and _topics_. For row-based access control look at [access filters](access_grants.md#access-filters).
 
 They are specified in [model](model.md) files, like the following example:
 

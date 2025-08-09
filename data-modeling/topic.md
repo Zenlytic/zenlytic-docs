@@ -47,6 +47,7 @@ always_filter:
 Each view can have the following properties:
 
 * `override_access_filters`: When set to `true`, access filters for this view will be ignored within this topic.
+* `from`: The view to pull from to perform the join. This property is used when you want to join a view in twice to a topic on different conditions. By default, it is the same as the name of the view, and is optional. &#x20;
 * `join`: Optional configuration to specify custom join logic:
   * `join_type`: The type of join (e.g., `left_outer`, `inner`, `full_outer`).
   * `relationship`: The cardinality relationship (e.g., `many_to_one`, `one_to_one`, `one_to_many`, `many_to_many`).
@@ -103,5 +104,40 @@ views:
       relationship: one_to_one
       sql_on: ${discounts.discount_id} = ${discount_detail.discount_id} and ${orders.order_id} = ${discount_detail.discount_order_id}
 
+
 ```
 {% endcode %}
+
+#### Joining with from
+
+You can use the `from` syntax to join the same view into a topic multiple times. This is an example of what that syntax looks like
+
+```yaml
+type: topic
+label: From Syntax Topic Example
+base_view: order_lines
+model_name: test_model
+
+views:
+  # Join customers once via customer_id
+  customers:
+    from: customers  # In this case the from statement is redundent, and optional 
+    label: Customer Info
+    field_prefix: 'Customer'
+    include_metrics: false
+    join:
+      join_type: left_outer
+      relationship: many_to_one
+      sql_on: ${order_lines.customer_id} = ${customers.customer_id}
+
+  # Join customers again with different alias
+  customer_accounts:
+    from: customers
+    label: Account Holder
+    field_prefix: 'Account'
+    join:
+      join_type: left_outer
+      relationship: many_to_one
+      sql_on: ${order_lines.account_id} = ${customer_accounts.account_id}
+
+```

@@ -15,7 +15,7 @@ layout:
     visible: true
 ---
 
-# Zenlytic Data Processing Addendum
+# Data Processing Addendum
 
 **Last Updated:** July 29, 2025
 
@@ -102,7 +102,7 @@ Zenlytic shall reasonably assist Customer regarding:
 
 If Zenlytic is required by Data Protection Requirements to process any Personal Data other than as set forth in this Addendum, Zenlytic shall inform Customer of this requirement in advance of any processing, unless Zenlytic is legally prohibited from informing Customer of such processing.
 
-## 5. Audit; Certification
+## 5. Audit Certification
 
 Customer may audit Zenlytic's compliance with this Addendum up to once per year and on such other occasions as may be required by Data Protection Requirements. Zenlytic will cooperate with the audit by providing Customer or Customer's Supervisory Authority with the information and assistance reasonably necessary to conduct the audit. Customer will reimburse Zenlytic for its reasonable expenses incurred to cooperate with such an audit. The audit must be conducted during regular business hours, subject to an agreed upon audit plan and Zenlytic's safety, security or other relevant policies, and may not unreasonably interfere with Zenlytic's business activities. Zenlytic shall not be required to breach any duties of confidentiality in connection with such audit, and Customer may use the audit reports only for the purposes of meeting Customer's regulatory audit requirements and/or confirming compliance with the requirements of this Addendum.
 

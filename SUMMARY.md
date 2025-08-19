@@ -20,7 +20,7 @@
 ## Zenlytic UI
 
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
-* [Clarity Engine (beta)](zenlytic-ui/clarity_engine.md)
+* [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [Exploring](zenlytic-ui/exploring.md)
 * [Data Model Editor](zenlytic-ui/data_model_editor.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)

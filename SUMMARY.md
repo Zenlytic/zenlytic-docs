@@ -7,8 +7,8 @@
 
 ## Tips & Tricks
 
+* [How to Steer Zoë's Answers](tips-and-tricks/zoe_context_ingestion.md)
 * [Working with Zoë Tips and Tricks](tips-and-tricks/zoe_tips_and_tricks.md)
-* [How Zoë Ingests Context](tips-and-tricks/zoe_context_ingestion.md)
 * [Naming Conventions](tips-and-tricks/naming-conventions.md)
 * [Descriptions and Synonyms](tips-and-tricks/descriptions-and-synonyms.md)
 * [Entity Drills](tips-and-tricks/entity-drills.md)

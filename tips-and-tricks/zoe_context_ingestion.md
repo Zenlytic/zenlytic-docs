@@ -15,41 +15,36 @@ layout:
     visible: true
 ---
 
-# How Zoë Ingests Context
+# How to Steer Zoë's Answers
 
 Zoë, Zenlytic's AI data analyst, leverages multiple sources of context to understand your organization's data ecosystem, analytical philosophy, and business logic. This document explains the different ways Zoë learns about your data and how to optimize each source for better results.
 
 ## Context Sources
 
-### 1. Custom System Prompt Context
+### 1. Memories
 
-You can extend Zoë's default system prompt with domain-specific knowledge that provides high-level organizational context:
+Zoë learns from examples of successfully answered questions to improve her performance & consistency:
 
-* **Industry Context**: Specific business metrics, KPIs, and analytical patterns relevant to your sector
-* **Company Terminology**: Internal terms, abbreviations, and naming conventions that differ from standard usage
-* **Business Rules**: Unique calculation methods, data interpretation guidelines, or analytical frameworks your organization follows
-* **Organizational Structure**: How departments, teams, or business units are organized and how this affects data analysis
-
-**Optimization Tips:**
-
-* Include glossaries of company-specific terms and their definitions
-* Document any unique business rules or calculation methodologies that Zoë should always follow
-* Explain organizational hierarchies and how they impact data interpretation and reporting
-* Provide context about data quality considerations, known limitations, or special handling requirements
-
-### 2. Fine-Tuning Examples
-
-Zoë learns from examples of successfully answered questions to improve her performance:
-
-* **Query Patterns**: Common ways users ask for similar data when she answers successfully
-* **Field Usage**: How different measures and dimensions are typically combined for specific analyses
-* **Response Preferences**: The analytical approaches and explanations that work best for your team
+* **User feedback**: When a user hits the thumbs up button, it will create a memory for Zoë. When asked similar questions in the future she will see that memory and will more consistently answer like that example.&#x20;
+* **Field Usage**: Zoë sees how often different measures and dimensions are used, which gives her insight into what data is popular vs used for one-off tasks.
+* **Admin control**: Admins have full visibility into all memory training examples for Zoë, under Settings -> Chat Feedback.
 
 **Optimization Tips:**
 
 * Review Zoë's responses and hit the thumbs up button to reinforce desired behavior
 * Use the admin panel to remove any undesired or incorrectly marked examples
-* Zoë will automatically prioritize frequently used fields in your workspace when making analytical decisions
+
+### 2. Custom System Prompt Context
+
+You can extend Zoë's default system prompt with domain-specific knowledge that provides high-level organizational context:
+
+* **Industry Context**: Specific business metrics, KPIs, and analytical patterns relevant to your sector. Include data interpretation guidelines, or analytical frameworks your organization follows.
+* **Company Terminology**: Internal terms, abbreviations, and naming conventions that differ from standard usage
+
+**Optimization Tips:**
+
+* Document any unique business rules or calculation methodologies that Zoë should always follow in all of her analysis
+* Provide context about data quality considerations, known limitations, or special handling requirements
 
 ### 3. YAML-Based Views
 
@@ -136,6 +131,6 @@ Zoë processes context sources in the following priority order:
 1. **Custom system prompt context** - Company-specific rules, terminology, and high-level organizational knowledge
 2. **Structural relationships** - How data connects through topics and joins, including topic-level descriptions
 3. **Field and view descriptions** - Business context from YAML definitions or dbt documentation at the view, measure, and dimension level
-4. **Fine-tuning examples** - Patterns from previous successful queries and responses that have been marked as helpful
+4. **Memories** - Patterns from previous successful queries and responses that have been marked as helpful
 
 Understanding this hierarchy helps you strategically place your most critical context in the highest-priority locations for maximum impact on Zoë's analytical performance.

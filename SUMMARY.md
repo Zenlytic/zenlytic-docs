@@ -28,6 +28,7 @@
 * [Workspace Groups And Permissions](zenlytic-ui/workspace_groups_and_permissions.md)
 * [Follow Ups](zenlytic-ui/follow_ups.md)
 * [Follow Ups From a Dashboard](zenlytic-ui/following_up_from_a_dashboard.md)
+* [Dashboard Scheduled Delivery](zenlytic-ui/dashboard-scheduled-delivery.md)
 * [Microsoft Teams Bot](zenlytic-ui/microsoft_teams_bot.md)
 
 ## Data Modeling

@@ -15,7 +15,7 @@
 * [Time Metrics](tips-and-tricks/time-metrics.md)
 * [Voice Commands](tips-and-tricks/voice-commands.md)
 * [Data Indexing](tips-and-tricks/data-indexing.md)
-* [Plot Configuration Tips and Tricks with Zoe](tips-and-tricks/plot_configuration_tips_and_tricks_with_zoe.md)
+* [Plot Configuration Tips and Tricks with Zoë](tips-and-tricks/plot_configuration_tips_and_tricks_with_zoe.md)
 
 ## Zenlytic UI
 

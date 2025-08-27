@@ -64,3 +64,7 @@ Scheduling dashboards gives users the ability to run a dashboard at a predetermi
 
 <figure><img src="../.gitbook/assets/Dashboard-Scheduler-5.png" alt=""><figcaption></figcaption></figure>
 
+Example of Email with attachments
+
+<figure><img src="../.gitbook/assets/Dashboard-Scheduler-7.png" alt=""><figcaption></figcaption></figure>
+

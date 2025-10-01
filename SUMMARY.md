@@ -52,6 +52,7 @@
 * [Table Calculation Syntax](data-modeling/table_calculation_syntax.md)
 * [Referenceable Attributes](data-modeling/referenceable_attributes.md)
 * [dbt MetricFlow Integration](data-modeling/dbt_metricflow.md)
+* [Adding a New Table](data-modeling/adding_a_new_table.md)
 
 ## Workflows
 

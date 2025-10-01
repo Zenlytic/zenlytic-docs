@@ -20,6 +20,7 @@
 ## Zenlytic UI
 
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
+* [Zoë](zenlytic-ui/zoe.md)
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [Memories](zenlytic-ui/memories.md)
 * [Exploring](zenlytic-ui/exploring.md)

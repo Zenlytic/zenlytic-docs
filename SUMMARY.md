@@ -21,6 +21,7 @@
 
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
+* [Zoe](zenlytic-ui/zoe.md)
 * [Memories](zenlytic-ui/memories.md)
 * [Exploring](zenlytic-ui/exploring.md)
 * [Data Model Editor](zenlytic-ui/data_model_editor.md)

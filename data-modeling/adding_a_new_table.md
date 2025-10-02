@@ -25,18 +25,22 @@ must only use alphanumeric characters, spaces, and underscores.
 
 ## 4. Configure table metadata
 
-After selecting a table or CSV to upload, table metadata like column data types, topic, and primary key can be selected.
+After selecting a table or CSV to upload, table metadata like name, column data types, default date, and primary key can be configured.
 
 ![add-new-table-preview](../assets/5_data_modeling/add-new-table-preview-data.png)
 
-## 5. Add any joins (optional)
+## 5. Associate table with topic
 
-If the table joins to other existing tables in the data model, click **"Add Joins"** to add joins prior to adding the table. Joins can also be set up later. 
+If the table doesn't join to any existing topics in the data model, add it to a new topic.
 
-![add-new-table-add-joins](../assets/5_data_modeling/add-new-table-add-joins.png)
+![add-new-table-add-joins](../assets/5_data_modeling/add-new-table-new-topic.png)
+
+If the table does join to an existing topic, add it to an existing topic. Additional joins can also be set up later.
+
+![add-new-table-add-joins](../assets/5_data_modeling/add-new-table-existing-topic.png)
 
 ## 6. Add table
 
-After clicking **"Add Joins"** from the join form or **"Add Table"** from the data preview form, the table is added to the data model.
+After associating the table with a topic, the table is added to the data model.
 
 ![add-new-table-success](../assets/5_data_modeling/add-new-table-success.png)

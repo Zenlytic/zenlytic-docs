@@ -101,9 +101,10 @@
 ## Legal & Support
 
 * [Legal](legal-and-support/legal/README.md)
-  * [End User License Agreement](legal-and-support/legal/end-user-license-agreement.md)
+  * [Terms of Service](legal-and-support/legal/terms-of-service.md)
   * [Data Processing Addendum](legal-and-support/legal/data-processing-addendum.md)
   * [Subprocessors](legal-and-support/legal/subprocessors.md)
+  * [Terms of Service Agreement](legal-and-support/legal/terms-of-service-agreement.md)
 * [Customer Support Policy](legal-and-support/customer-support-policy.md)
 * [End User Terms of Use](https://app.zenlytic.com/end-user-terms-of-use)
 * [Privacy Policy](https://app.zenlytic.com/privacy-policy)

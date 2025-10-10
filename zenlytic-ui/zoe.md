@@ -1,4 +1,4 @@
-# Zoë
+# Zoe
 
 Zoë is an AI data analyst who uses your data to answer questions for you. This section will describe some of her capabilities, and how to get best results.
 
@@ -6,7 +6,7 @@ Zoë is an AI data analyst who uses your data to answer questions for you. This 
 
 To get started using Zoë, just ask her a question. If you don't know what you can ask about, simply ask what data she can see, or what would be a great question to ask next. She will be even more helpful if you share your job title and more context about what you're trying to accomplish.
 
-<figure><img src="../assets/3_zenlytic_ui/new-chat.png" alt=""><figcaption><p>Starting a new chat with Zoë</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/zoe-welcome.png" alt=""><figcaption><p>Starting a new chat with Zoë</p></figcaption></figure>
 
 When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). Zoë can handle both type of questions, and will ask you follow up questions if she isn't able to make reasonable assumptions about what you intend from your question.
 

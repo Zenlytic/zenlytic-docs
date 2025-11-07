@@ -23,15 +23,15 @@ Zoë, Zenlytic's AI data analyst, leverages multiple sources of context to under
 
 ### 1. Memories
 
-Zoë learns from examples of successfully answered questions to improve her performance & consistency:
+Zoë learns from examples of successfully answered questions to improve her performance & consistency (more information [here](../zenlytic-ui/memories.md)):
 
-* **User feedback**: When a user hits the thumbs up button, it will create a memory for Zoë. When asked similar questions in the future she will see that memory and will more consistently answer like that example.&#x20;
+* **User feedback**: When a user hits the Add to Memory button, it will create a memory for Zoë. When asked similar questions in the future she will see that memory and will more consistently answer like that example.&#x20;
 * **Field Usage**: Zoë sees how often different measures and dimensions are used, which gives her insight into what data is popular vs used for one-off tasks.
-* **Admin control**: Admins have full visibility into all memory training examples for Zoë, under Settings -> Chat Feedback.
+* **Admin control**: Admins have full visibility into all memory training examples for Zoë, under Settings -> Memory
 
 **Optimization Tips:**
 
-* Review Zoë's responses and hit the thumbs up button to reinforce desired behavior
+* Review Zoë's responses and hit the Add to Memory button to reinforce desired behavior
 * Use the admin panel to remove any undesired or incorrectly marked examples
 
 ### 2. Custom System Prompt Context

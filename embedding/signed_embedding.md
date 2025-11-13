@@ -34,16 +34,18 @@ Protect this signed URL as you would an access token or password credentials - d
 
     {% code overflow="wrap" %}
     ```html
-    <iframe src="<MY_SIGNED_URL>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
+    <iframe src="<MY_SIGNED_URL>" allow="microphone *; clipboard-write *" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
     ```
     {% endcode %}
+
+    The `microphone` permission allows the Transcribe voice feature to work as expected. The `clipboard-write` permission allows the Copy to clipboard buttons under each message to work as expected. Please note, the presence of these permissions on the iframe will allow the native browser's "Ask for permission" popups to appear, they do not automatically give embedded users' consent to those actions.
 
 
 3.  **To request a chat embedded url, you'd change the `target_url` to** `https://app.zenlytic.com/chat`
 
     {% code overflow="wrap" %}
     ```html
-    <iframe src="<MY_SIGNED_URL>" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
+    <iframe src="<MY_SIGNED_URL>" allow="microphone *; clipboard-write *" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
     ```
     {% endcode %}
 

@@ -56,13 +56,13 @@
 * [dbt MetricFlow Integration](data-modeling/dbt_metricflow.md)
 * [Adding a New Table](data-modeling/adding_a_new_table.md)
 
-## Workflows
+## Proactive Analytics
 
-* [Workflows Getting Started](workflows/getting-started.md)
-* [Inputs](workflows/inputs.md)
-* [Publish](workflows/publish.md)
-* [Schedule Delivery](workflows/schedule-delivery.md)
-* [Run History](workflows/run-history.md)
+* [Proactive Getting Started](proactive-analytics/getting-started.md)
+* [Inputs](proactive-analytics/inputs.md)
+* [Publish](proactive-analytics/publish.md)
+* [Schedule Delivery](proactive-analytics/schedule-delivery.md)
+* [Run History](proactive-analytics/run-history.md)
 
 ## Embedding
 
@@ -71,7 +71,7 @@
 * [Signed Embedding](embedding/signed_embedding.md)
 * [Permissions in Embedding](embedding/permissions_in_embedding.md)
 * [Embedding Styles](embedding/embedding_styles.md)
-* [Workflows in Embedding](embedding/workflows_in_embedding.md)
+* [Proactive Agents in Embedding](embedding/workflows_in_embedding.md)
 
 ## Data Sources
 

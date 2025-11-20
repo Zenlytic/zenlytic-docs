@@ -20,35 +20,25 @@ Protect this signed URL as you would an access token or password credentials - d
 
 ### **Generating Signed URLs**
 
-1.  **API Request for a Signed URL**
-
-    * Make a request to the API endpoint to obtain a signed URL.
-    * Include necessary authentication credentials (client\_id and client\_secret you receive from your Zenlytic representative) and user-specific parameters in the request.
-    * See details in [API Reference](signed_embedding.md#api-reference) below
-
-
+1. **API Request for a Signed URL**
+   * Make a request to the API endpoint to obtain a signed URL.
+   * Include necessary authentication credentials (client\_id and client\_secret you receive from your Zenlytic representative) and user-specific parameters in the request.
+   * See details in [API Reference](signed_embedding.md#api-reference) below
 2.  **Parameters for iframe**
 
     * Signed URL retrieved in the previous step
     * Pass the url to the iframe like in the examples below
 
-    {% code overflow="wrap" %}
-    ```html
-    <iframe src="<MY_SIGNED_URL>" allow="microphone *; clipboard-write *" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
-    ```
-    {% endcode %}
+    <pre class="language-html" data-overflow="wrap"><code class="lang-html">&#x3C;iframe src="&#x3C;MY_SIGNED_URL>" allow="microphone *; clipboard-write *" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard">&#x3C;/iframe>
+    </code></pre>
+
+
 
     The `microphone` permission allows the Transcribe voice feature to work as expected. The `clipboard-write` permission allows the Copy to clipboard buttons under each message to work as expected. Please note, the presence of these permissions on the iframe will allow the native browser's "Ask for permission" popups to appear, they do not automatically give embedded users' consent to those actions.
-
-
 3.  **To request a chat embedded url, you'd change the `target_url` to** `https://app.zenlytic.com/chat`
 
-    {% code overflow="wrap" %}
-    ```html
-    <iframe src="<MY_SIGNED_URL>" allow="microphone *; clipboard-write *" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard"></iframe>
-    ```
-    {% endcode %}
-
+    <pre class="language-html" data-overflow="wrap"><code class="lang-html">&#x3C;iframe src="&#x3C;MY_SIGNED_URL>" allow="microphone *; clipboard-write *" style="height:700px;width:100%;border:none;" title="Dashboard" description="Zenlytic Dashboard">&#x3C;/iframe>
+    </code></pre>
 
 
 4. **Handling URL Expiry**
@@ -164,14 +154,16 @@ requests.post(url, headers=headers, data=data)
   * `expires_in`: Expiry in seconds from now.
 *   **Example Response**
 
-    {% code overflow="wrap" %}
+    \{% code overflow="wrap" %\}
+
     ```json
     {
         "signed_url": "https://app.zenlytic.com/embed/chat?userID=12345&userJWT=abc123",
         "expires_in": 86400
     }
     ```
-    {% endcode %}
+
+    \{% endcode %\}
 
 ### **Error Handling**
 

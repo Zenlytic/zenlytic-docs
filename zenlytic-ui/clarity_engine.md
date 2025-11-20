@@ -15,7 +15,7 @@ layout:
     visible: true
 ---
 
-# Clarity Engine (beta)
+# Clarity Engine
 
 The Clarity Engine serves as the backbone of Zenlytic's LLM-based agent, Zoë, enabling you to transform raw facts to confident decisions. The Clarity Engine operates in two distinctive modes: the Default Mode with Dynamic Fields for structured analysis governed by your semantic model, and Exploratory Mode for more advanced, raw SQL-based analysis that extend beyond the boundaries of the semantic model.
 
@@ -25,7 +25,7 @@ To start using the Clarity Engine in Zenlytic, navigate to Zoë (the chat interf
 
 Note: Providing more context about the task you're trying to accomplish, your team, and job title will make Zoë even more helpful.
 
-![Starting a new chat with Zoë](../assets/3_zenlytic_ui/zoe_input_box.png)
+![Starting a new chat with Zoë](../.gitbook/assets/zoe_input_box.png)
 
 You can ask Zoë specific questions (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general ones (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). The Clarity Engine handles both types of questions, and Zoë will ask follow-up questions when she is unable to make reasonable assumptions about your intent.
 
@@ -38,7 +38,7 @@ The chat interface includes several interactive elements:
 * **Chat Options**: Opens a toggle for Exploratory mode; when enabled, you'll see a microscope icon appear in the chat input (shown below)
 * **Submit**: Press "Enter" or click the up arrow button to send your message
 
-![Starting a new chat with Zoë in Exploratory mode](../assets/3_zenlytic_ui/zoe_input_box_exploratory.png)
+![Starting a new chat with Zoë in Exploratory mode](../.gitbook/assets/zoe_input_box_exploratory.png)
 
 ## Default Mode with Dynamic Fields
 
@@ -86,7 +86,7 @@ This approach maintains strict access controls while giving Zoë maximum flexibi
 
 When you ask Zoë a question, she analyzes your semantic model to find existing fields that can answer your question and creates new Dynamic Fields when needed. Her responses include clear visual indicators to help you understand what she's using:
 
-![The Clarity Engine analyzing your request](../assets/3_zenlytic_ui/zoe_clarity_answer.png)
+![The Clarity Engine analyzing your request](../.gitbook/assets/zoe_clarity_answer.png)
 
 **Visual Indicators:**
 
@@ -107,7 +107,7 @@ Note: Promoting Dynamic Fields requires developer-level permissions or above.
 2. Click the three-dot menu on the right side of the field
 3. Select "Promote"
 
-![The Clarity Engine promoting a metric](../assets/3_zenlytic_ui/zoe_clarity_promote_hover.png)
+![The Clarity Engine promoting a metric](../.gitbook/assets/zoe_clarity_promote_hover.png)
 
 This promotion workflow transforms ad-hoc analysis into governed, reusable components that become available across dashboards, explores, workflows and future conversations with Zoë. By building your semantic model this way, you create measures and dimensions based on real analytical needs rather than trying to anticipate every possible field upfront.
 
@@ -140,7 +140,7 @@ This approach ensures that expanded analytical capabilities never compromise you
 
 When writing custom SQL in Exploratory Mode, the Clarity Engine identifies and highlights when it leverages components from your existing semantic model.
 
-![The Clarity Engine highlighting re-use in exploratory mode](../assets/3_zenlytic_ui/zoe_exploratory_mode_hover.png)
+![The Clarity Engine highlighting re-use in exploratory mode](../.gitbook/assets/zoe_exploratory_mode_hover.png)
 
 Zoë provides clear explanations of her analytical approach, showing you which parts of your semantic model she's reusing through interactive hover text. This transparency helps you understand how your established data definitions contribute to exploratory analysis, bridging the gap between governed and ad-hoc investigation.
 
@@ -153,7 +153,7 @@ Both Default Mode and Exploratory Mode integrate seamlessly with Zenlytic's buil
 * **Advanced analytics** - Perform statistical analysis including clustering, correlation, regression, and forecasting
 * **Custom visualizations** - Create specialized charts and graphs beyond standard business intelligence formats
 
-![The Clarity Engine using Python for advanced analysis](../assets/3_zenlytic_ui/zoe_code_interpreter_results.png)
+![The Clarity Engine using Python for advanced analysis](../.gitbook/assets/zoe_code_interpreter_results.png)
 
 ## Choosing Between Modes
 

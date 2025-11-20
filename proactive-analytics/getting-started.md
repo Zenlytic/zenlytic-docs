@@ -26,7 +26,7 @@ Proactive Agents are ideal for implementing tasks where you need one or all of t
 
 2. To run Proactive Agents from chat, click the ⚡ _Lightning_ icon button in the chat input:
 
-![run-workflows-from-chat](../assets/6_workflows/run-workflows-from-chat.png)
+![run-workflows-from-chat](../.gitbook/assets/run-workflows-from-chat.png)
 
 ## Running Proactive Agents
 
@@ -78,17 +78,17 @@ When running, the Proactive Agent messages will temporarily be unavailable to ed
 
 When the Proactive Agent conversation preview has completed its run, we can inspect its output, run it again, or we can modify the Workflow before running again. The _Trash_ icon button will remove the message from the Proactive Agent. The _Upload_ icon button will allow you to attach files to the Proactive Agent message.
 
-![message-done](../assets/6_workflows/message-done.png)
+![message-done](../.gitbook/assets/message-done.png)
 
 ## Building more advanced Proactive Agents
 
 In the following example, three additional messages have been added to the Proactive Agent we previously ran, and this is represented by the Proactive Agent conversation preview on the right-hand side by three placeholder responses following each message that hasn't been run yet.
 
-![complex-workflow-partial](../assets/6_workflows/complex-workflow-partial.png)
+![complex-workflow-partial](../.gitbook/assets/complex-workflow-partial.png)
 
 When the Play button is clicked in the upper right header, the Proactive Agent starts running from the beginning, and responses are generated for the newly added messages. The image below shows the updated, completed Proactive Agent.
 
-![complex-workflow-completed](../assets/6_workflows/complex-workflow-completed.png)
+![complex-workflow-completed](../.gitbook/assets/complex-workflow-completed.png)
 
 ## Run from Here
 
@@ -96,13 +96,13 @@ When writing new Proactive Agents, you may find yourself making small changes to
 
 When making changes to the Proactive Agent messages, you may find yourself using a combination of running from the start and running from a point as you hone into the perfect message prompts.
 
-![run-from-here](../assets/6_workflows/run-from-here.png)
+![run-from-here](../.gitbook/assets/run-from-here.png)
 
 ## File Attachments
 
 Files can be added to Proactive Agent messages by pressing the _File Upload_ icon button in the message card. When the Proactive Agent has `file attachment` type Inputs available, the Upload icon button will appear as a Plus icon and open a detail menu including the option to attach an uploaded file or require one from the user. Once a file attachment or input is selected, the conversation preview on the right side will add the attachment above the text content. The Upload/Plus icon button within the message card will change to a Chip and indicate that a File is attached or an Input is required.
 
-![file-message](../assets/6_workflows/file-message.png)
+![file-message](../.gitbook/assets/file-message.png)
 
 ## Create Proactive Agent from an existing Conversation
 

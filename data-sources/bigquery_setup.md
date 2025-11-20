@@ -32,7 +32,7 @@ To connect Zenlytic to BigQuery, you'll need to create a service account and dow
 6. Click "Test Connection" to verify it works
 7. Click "Save"
 
-![Bigquery Setup 1](../assets/7_data_sources/bigquery-setup-1.png)
+![Bigquery Setup 1](../.gitbook/assets/bigquery-setup-1.png)
 
 ## Step 4: Configure Permissions
 
@@ -51,16 +51,16 @@ Once connected, you can test by:
 3. Browsing available datasets and tables
 4. Running a simple query to verify everything works
 
-![Bigquery Setup 2](../assets/7_data_sources/bigquery-setup-2.png)
+![Bigquery Setup 2](../.gitbook/assets/bigquery-setup-2.png)
 
-![Bigquery Setup 3](../assets/7_data_sources/bigquery-setup-3.png)
+![Bigquery Setup 3](../.gitbook/assets/bigquery-setup-3.png)
 
-![Bigquery Setup 4](../assets/7_data_sources/bigquery-setup-4.png)
+![Bigquery Setup 4](../.gitbook/assets/bigquery-setup-4.png)
 
-![Bigquery Setup 5](../assets/7_data_sources/bigquery-setup-5.png)
+![Bigquery Setup 5](../.gitbook/assets/bigquery-setup-5.png)
 
-![Bigquery Setup 6](../assets/7_data_sources/bigquery-setup-6.png)
+![Bigquery Setup 6](../.gitbook/assets/bigquery-setup-6.png)
 
-![Bigquery Setup 7](../assets/7_data_sources/bigquery-setup-7.png)
+![Bigquery Setup 7](../.gitbook/assets/bigquery-setup-7.png)
 
-![Bigquery Setup 8](../assets/7_data_sources/bigquery-setup-8.png)
+![Bigquery Setup 8](../.gitbook/assets/bigquery-setup-8.png)

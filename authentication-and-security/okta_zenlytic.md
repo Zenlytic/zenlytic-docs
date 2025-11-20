@@ -65,7 +65,7 @@ Optionally, you may choose to set values for:
    These may already be set up, but make sure those are showing up in the Okta Profile Editor.\
    ​
 
-![Okta Profile Editor](../assets/8_authentication/okta_1.png)
+![Okta Profile Editor](../.gitbook/assets/okta_1.png)
 
 ## Configuration
 
@@ -108,4 +108,4 @@ If you're having issues logging into Zenlytic, make sure you have the `Name` val
 
 ​
 
-<figure><img src="../assets/8_authentication/okta_2.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/okta_2.png" alt=""><figcaption></figcaption></figure>

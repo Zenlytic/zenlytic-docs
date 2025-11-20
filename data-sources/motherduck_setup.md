@@ -21,7 +21,7 @@ To connect Zenlytic to MotherDuck, you'll need to configure the connection using
    * **Service Token**: The token you generated
    * **Database**: Your database name (optional, can be specified later)
 
-![Motherduck Setup 1](../assets/7_data_sources/motherduck-setup-1.png)
+![Motherduck Setup 1](../.gitbook/assets/motherduck-setup-1.png)
 
 ## Step 3: Test Your Connection
 

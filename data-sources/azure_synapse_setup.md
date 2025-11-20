@@ -34,7 +34,7 @@ GRANT SELECT ON SCHEMA::dbo TO zenlytic_user;
    * **Password**: Your database password
    * **Port**: 1433 (or your custom port)
 
-![Azure Synapse Setup 1](../assets/7_data_sources/azure-synapse-setup-1.png)
+![Azure Synapse Setup 1](../.gitbook/assets/azure-synapse-setup-1.png)
 
 ## Step 4: Configure Firewall Rules
 

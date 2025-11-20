@@ -34,7 +34,7 @@ For example, to connect with this [example repo](https://github.com/Zenlytic/dem
 
 Finally, finish filling out your data warehouse's connection information and click save
 
-![Finish Connection](../assets/3_zenlytic_ui/finish-connection.png)
+![Finish Connection](../.gitbook/assets/finish-connection.png)
 
 ## Git
 

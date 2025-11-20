@@ -12,7 +12,7 @@ The styles you define here will _ONLY_ be visible in the embedded application it
 
 You will find the JSON input for defining styles in the Style section of the workspace settings. Only admins in the workspace will have access to this section.
 
-![embedding-style-settings](../assets/4_embedding/embedding-style-settings.png)
+![embedding-style-settings](../.gitbook/assets/embedding-style-settings.png)
 
 To start, you'll see a json that is structured like this:
 
@@ -171,10 +171,10 @@ Since, the styles are only changed in the embedding environment, you'll have to 
 
 For example, if I make that change, and then go to the `/chat` route, I will not see the change in style applied.
 
-![embedded-style-not-applying](../assets/4_embedding/embedded-style-not-applying.png)
+![embedded-style-not-applying](../.gitbook/assets/embedded-style-not-applying.png)
 
 However, if I emulate the embedded environment by going to the `/embed/chat` route instead, I will see the styles applied as I expect.
 
-![embedded-style-applying](../assets/4_embedding/embedded-style-applying.png)
+![embedded-style-applying](../.gitbook/assets/embedded-style-applying.png)
 
 To develop and test changes, you should have one tab open to the workspace settings, where you can make changes to the JSON object that governs the styles, and another tab open to `/embed/chat` where you can refresh the page after making changes to the JSON to see how those changes impact the embedded UI.

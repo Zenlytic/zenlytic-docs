@@ -1,4 +1,4 @@
-# Zoe
+# Zoë
 
 Zoë is an AI data analyst who uses your data to answer questions for you. This section will describe some of her capabilities, and how to get best results.
 
@@ -16,11 +16,11 @@ By pressing the Microphone icon, Zoë will listen through the web browser to cap
 
 Zoë searches across the governed measures and dimensions to use existing fields and know when to create new ones to answer your data questions with compelling summaries and insightful visualizations. She was built on an agentic architecture that gives her ability to plan approaches to problems, to use tools to answer questions on your behalf, and memory to get better over time: all in service of helping you understand complex data. At times she may misunderstand what you are asking about, but you can see exactly what steps she is taking to respond, the reasoning behind her thinking, and the data she queries.
 
-<figure><img src="../assets/3_zenlytic_ui/querying.png" alt=""><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/querying.png" alt=""><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
 
 The left sidebar displays the Chat history, sorted by recent activity, and a button to create a new chat. In the upper left of the main content area, there's a button to collapse the left sidebar, a button to create a new chat, and the 3-Dot options menu that supports link sharing and "Save as Workflow" options.
 
-<figure><img src="../assets/3_zenlytic_ui/chat-drawer.png" alt=""><figcaption><p>Clicking into the Question drawer</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/chat-drawer.png" alt=""><figcaption><p>Clicking into the Question drawer</p></figcaption></figure>
 
 Every tool call and chart that Zoë creates on your behalf can be clicked into, inspected and explored via the drawer, and added back to the conversation with follow up questions or tasks. The Magnifying glass icon represents than an element that will open in the drawer when clicked. The Question drawer header contains the shorthand name of the data question, a switch to show Question SQL, and an icon to close the drawer. The drawer content itself provides a form for exploring the query options available from this question starting point. You can either click the buttons in the drawer or ask Zoë to change the question's chart type, fields, filters & sorts, limits, etc.
 
@@ -28,7 +28,7 @@ Every tool call and chart that Zoë creates on your behalf can be clicked into, 
 
 Zoë also has the ability to write and evaluate Python code. This process occurs in a sandbox environment where she can write any code she needs on top of the governed results pulled from the data model. This gives Zoë a huge amount of flexibility to answer complex questions that involve merging results of separate queries, plugging in assumptions to scenarios, and doing advanced clustering, correlation, regression, and forecast analysis.
 
-<figure><img src="../assets/3_zenlytic_ui/code-interpreter.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/code-interpreter.png" alt=""><figcaption></figcaption></figure>
 
 ## Dynamic Fields
 

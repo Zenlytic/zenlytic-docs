@@ -36,7 +36,7 @@ GRANT SELECT ON SCHEMA::dbo TO zenlytic_user;
    * **Username**: Your database username
    * **Password**: Your database password
 
-![Sql Server Setup 1](../assets/7_data_sources/sql-server-setup-1.png)
+![Sql Server Setup 1](../.gitbook/assets/sql-server-setup-1.png)
 
 ## Step 4: Configure Firewall/Security
 

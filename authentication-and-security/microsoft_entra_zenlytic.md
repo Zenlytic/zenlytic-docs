@@ -30,7 +30,7 @@ After that conversation, they will provide you with these two important values f
 
 Go to the `Enterprise application` section in Microsoft Entra and click `New Application`
 
-![New Application](../assets/8_authentication/entra_zenlytic_image_1.png)
+![New Application](../.gitbook/assets/entra_zenlytic_image_1.png)
 
 Click the `Create your own application` button.
 
@@ -38,7 +38,7 @@ Here we'll give it a name, for example `zenlytic-client-app`, then select the `N
 
 Then click the Create button.
 
-![Create Own Application](../assets/8_authentication/entra_zenlytic_image_2.png)
+![Create Own Application](../.gitbook/assets/entra_zenlytic_image_2.png)
 
 ### 3. Configuring your Zenlytic Application
 
@@ -51,15 +51,15 @@ Before continuing, ensure that you have obtained these values from your Zenlytic
 
 Now go to our newly created application under the `Enterprise applications` section. Go ahead and click the name to open it.
 
-![Enterprise Applications](../assets/8_authentication/entra_zenlytic_image_3.png)
+![Enterprise Applications](../.gitbook/assets/entra_zenlytic_image_3.png)
 
 We'll select the Single sign-on section, then choose SAML as the single sign-on method
 
-![Single Sign-on](../assets/8_authentication/entra_zenlytic_image_4.png)
+![Single Sign-on](../.gitbook/assets/entra_zenlytic_image_4.png)
 
 Click the `Edit` button for `Basic SAML Configuration`
 
-![Basic SML](../assets/8_authentication/entra_zenlytic_image_5.png)
+![Basic SML](../.gitbook/assets/entra_zenlytic_image_5.png)
 
 Choose `Add identifier` for the `Identifier (Entity ID)` section and enter the Entity ID that the Zenlytic support team gave you.
 
@@ -67,7 +67,7 @@ Now under `Reply URL (Assertion Consumer Service URL)`, enter the value the Zenl
 
 Your form should look similar to this:
 
-![Basic SML Config Example](../assets/8_authentication/entra_zenlytic_image_6.png)
+![Basic SML Config Example](../.gitbook/assets/entra_zenlytic_image_6.png)
 
 Hit the Save button and hit the `X` button.
 
@@ -77,7 +77,7 @@ In this section, you'll configure what you send to Zenlytic when a user signs in
 
 Click the `Edit` button for `Attributes & Claims`
 
-![Attributes & Claims](../assets/8_authentication/entra_zenlytic_image_7.png)
+![Attributes & Claims](../.gitbook/assets/entra_zenlytic_image_7.png)
 
 * Zenlytic requires these fields to be mapped:
   * `emailaddress`
@@ -87,17 +87,17 @@ Click the `Edit` button for `Attributes & Claims`
 
 By default, your mappings will look something like this:
 
-![Manage Claim](../assets/8_authentication/entra_zenlytic_image_8.png)
+![Manage Claim](../.gitbook/assets/entra_zenlytic_image_8.png)
 
 In the past we've some users have varying `namespaces` for their claims. So just in case, we'll clear those values out.
 
 Click on each of the claims under `Additional Claims`, and clear out the `Namespace value`
 
-![Manage Claim](../assets/8_authentication/entra_zenlytic_image_9.png)
+![Manage Claim](../.gitbook/assets/entra_zenlytic_image_9.png)
 
 Your claim section should now similar to this:
 
-![Attributes & Claims](../assets/8_authentication/entra_zenlytic_image_10.png)
+![Attributes & Claims](../.gitbook/assets/entra_zenlytic_image_10.png)
 
 It's important to note that your company may be using non-default values to represent your users. Specifically, we've seen some customers not have a value for the `user.mail` field.
 
@@ -129,13 +129,13 @@ Now click the X button to return back to your Application
 
 You may be taken back to the this screen, if so just go back to your application by clicking this section:
 
-![Application Screen](../assets/8_authentication/entra_zenlytic_image_11.png)
+![Application Screen](../.gitbook/assets/entra_zenlytic_image_11.png)
 
 ### 5. Providing Zenlytic your App Federation Metadata Url
 
 * Copy this Url and you'll need to send it to your Zenlytic contact.
 
-![Federation Metadata](../assets/8_authentication/entra_zenlytic_image_12.png)
+![Federation Metadata](../.gitbook/assets/entra_zenlytic_image_12.png)
 
 Once we receive that url, we'll finish up the rest of the setup on our and let you know when you're all set!
 
@@ -145,7 +145,7 @@ With your application selected, click the "Users and Groups" tab.\
 Now click the "Add user/group" button.\
 Assign whomever you'd like to have access to Zenlytic.
 
-![Federation Metadata](../assets/8_authentication/entra_zenlytic_image_13.png)
+![Federation Metadata](../.gitbook/assets/entra_zenlytic_image_13.png)
 
 ### 7. On Completion
 
@@ -163,37 +163,37 @@ For information on available custom claims, see this section.
 
 First we'll go back to the `Single sign-on` section for our App and click `Edit` on `Attributes & Claims`
 
-![Single Sign-on](../assets/8_authentication/entra_zenlytic_image_14.png)
+![Single Sign-on](../.gitbook/assets/entra_zenlytic_image_14.png)
 
 Now click Add new claim
 
-![Add New Claim Attributes](../assets/8_authentication/entra_zenlytic_image_15.png)
+![Add New Claim Attributes](../.gitbook/assets/entra_zenlytic_image_15.png)
 
 We'll set up the `zenlytic_role` field, so in the `Name` input, type `zenlytic_role`
 
-![Manage Claim](../assets/8_authentication/entra_zenlytic_image_16.png)
+![Manage Claim](../.gitbook/assets/entra_zenlytic_image_16.png)
 
 Now open `Claim Conditions` and select Any for your `User type`
 
-![Claim Conditions](../assets/8_authentication/entra_zenlytic_image_17.png)
+![Claim Conditions](../.gitbook/assets/entra_zenlytic_image_17.png)
 
 Now under `Scoped Groups`, select the user group that you'd like to set the `zenlytic_role` for.
 
 In our case, we've created a group called `Zenlytic Admin` which denotes user that should have full access to Zenlytic.
 
-![Select Groups](../assets/8_authentication/entra_zenlytic_image_18.png)
+![Select Groups](../.gitbook/assets/entra_zenlytic_image_18.png)
 
 Select `Attribute` in `Source`
 
-![Attribute](../assets/8_authentication/entra_zenlytic_image_19.png)
+![Attribute](../.gitbook/assets/entra_zenlytic_image_19.png)
 
 Now type in the value that you wish this user group to have for `zenlytic_role`. In our case, we want it to have `admin`. Make sure to hit enter after typing your value.​
 
-![User Type](../assets/8_authentication/entra_zenlytic_image_20.png)
+![User Type](../.gitbook/assets/entra_zenlytic_image_20.png)
 
 Lets say we want all other users to have the lowest level of access, view, you would just add another condition, where here my `Scoped Group` is a group called `All Users`.
 
-![User Type](../assets/8_authentication/entra_zenlytic_image_21.png)
+![User Type](../.gitbook/assets/entra_zenlytic_image_21.png)
 
 ### Debug Steps
 
@@ -203,10 +203,10 @@ If you're attempting to sign in to Zenlytic using Entra, and you're seeing error
 
 You can adjust a user/group role by going to the Users tab and then assigning them a proper role.
 
-![User Role Setting](../assets/8_authentication/entra_zenlytic_image_22.png)
+![User Role Setting](../.gitbook/assets/entra_zenlytic_image_22.png)
 
 If you're seeing an error saying that `email` is a required value in the claim mapping, make sure your user has a valid email in the `Contact Information` section for that user.
 
-![Contact Information](../assets/8_authentication/entra_zenlytic_image_23.png)
+![Contact Information](../.gitbook/assets/entra_zenlytic_image_23.png)
 
 If your company does not provide a value for that field, please make sure to map the field you do use in the Attributes and Claims section.

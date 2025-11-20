@@ -34,7 +34,7 @@ FLUSH PRIVILEGES;
    * **Username**: Your database username
    * **Password**: Your database password
 
-![Mysql Setup 1](../assets/7_data_sources/mysql-setup-1.png)
+![Mysql Setup 1](../.gitbook/assets/mysql-setup-1.png)
 
 ## Step 4: Configure Firewall/Security
 

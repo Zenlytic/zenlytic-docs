@@ -6,7 +6,7 @@ To set a user attribute on a user, go to Workspace Settings, then go to Team Mem
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.26.10 AM.png" alt=""><figcaption></figcaption></figure>
 
-Then make the user attribute you want in the pop up menu and pick its type&#x20;
+Then make the user attribute you want in the pop up menu and pick its type
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.26.58 AM.png" alt=""><figcaption></figcaption></figure>
 
@@ -18,11 +18,11 @@ Now that this user's `Department` attribute is set, their permissions will be de
 
 For example, since the user's attribute for `Department` has been set to `blah`, not one of the allowed options (`Executive`, `Finance`, `Marketing`) this user will not have access to anything restricted by this access grant.
 
-![access-grants](../assets/3_zenlytic_ui/access-grant-example.png)
+![access-grants](../.gitbook/assets/access-grant-example.png)
 
 For example, this user will _not_ have access to this `email` field because the field has the `pii_access` access grant as one of the `required_access_grant` selections.
 
-![access-grant-on-field](../assets/3_zenlytic_ui/access-grant-on-field.png)
+![access-grant-on-field](../.gitbook/assets/access-grant-on-field.png)
 
 For more information on how to apply access grants and filters, look at the documentation on [access controls](../data-modeling/access_grants.md).
 

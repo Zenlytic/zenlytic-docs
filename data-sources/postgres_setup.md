@@ -35,7 +35,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO zenlytic_user;
    * **Username**: Your database username
    * **Password**: Your database password
 
-![Postgres Setup 1](../assets/7_data_sources/postgres-setup-1.png)
+![Postgres Setup 1](../.gitbook/assets/postgres-setup-1.png)
 
 ## Step 4: Configure Firewall/Security
 

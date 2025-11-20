@@ -26,7 +26,7 @@ The embedded analytics will employ the user's authentication from their Zenlytic
 
 Point the iframe's src attribute to the URL of the analytics content. You can copy the whole iframe by going to the three dot menu on the dashboard you want to embed.
 
-![embed-content-menu](../assets/4_embedding/embed-dashboard-menu.png)
+![embed-content-menu](../.gitbook/assets/embed-dashboard-menu.png)
 
 URL's add the `/embed` segement to the url for the embedded view. You can add this to the url in your browser to preview how the embedded dashboard will appear to your embedded user. Here is an example iframe and the URL for embedding a certain dashboard:
 
@@ -48,6 +48,6 @@ Similarly, if you want to embed a chat window, you can use the iframe
 
 You can additionally set some other settings and system prompt context for Zoë in the Embedded settings page in the UI. These settings will apply to all of your tenants.
 
-![embedded-ui-settings](../assets/4_embedding/embedded-ui-settings.png)
+![embedded-ui-settings](../.gitbook/assets/embedded-ui-settings.png)
 
 You can also change the name of Zoë to any name you would like using the Chat Agent Name setting.

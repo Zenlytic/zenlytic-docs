@@ -34,7 +34,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO zenlytic_user;
    * **Username**: Your database username
    * **Password**: Your database password
 
-![Redshift Setup 1](../assets/7_data_sources/redshift-setup-1.png)
+![Redshift Setup 1](../.gitbook/assets/redshift-setup-1.png)
 
 ## Step 4: Configure Security Group
 
@@ -49,7 +49,7 @@ Make sure your Redshift security group allows connections from Zenlytic's IP add
 2. If successful, click "Save"
 3. You should now be able to see your Redshift tables in Zenlytic
 
-![Redshift Setup 2](../assets/7_data_sources/redshift-setup-2.png)
+![Redshift Setup 2](../.gitbook/assets/redshift-setup-2.png)
 
 ## Troubleshooting
 

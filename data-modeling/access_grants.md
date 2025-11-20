@@ -120,6 +120,6 @@ fields:
 
 You can set user attributes by going to the "Team Members" section of the workspace settings and adding user attributes there under the "User Attributes" header, for each team member.
 
-![team-members](../assets/3_zenlytic_ui/settings-team-members-attrs.png)
+![team-members](../.gitbook/assets/settings-team-members-attrs.png)
 
 User attributes are strings that can handle [filter syntax](field_filter.md) for specifying complex comparisons or inclusions in either access grants (column level security) or access filters (row level security).

@@ -13,7 +13,7 @@ To connect Zenlytic to Databricks, you'll need to configure the connection using
 7. Click "Generate"
 8. Copy the token (you won't be able to see it again)
 
-![Databricks Setup 1](../assets/7_data_sources/databricks-setup-1.png)
+![Databricks Setup 1](../.gitbook/assets/databricks-setup-1.png)
 
 ## Step 2: Get Your Workspace URL
 
@@ -21,7 +21,7 @@ To connect Zenlytic to Databricks, you'll need to configure the connection using
 2. It should look like: `https://your-workspace.cloud.databricks.com`
 3. Copy this URL
 
-![Databricks Setup 1](../assets/7_data_sources/databricks-setup-1.png)
+![Databricks Setup 1](../.gitbook/assets/databricks-setup-1.png)
 
 ## Step 3: Add the Connection in Zenlytic
 
@@ -33,7 +33,7 @@ To connect Zenlytic to Databricks, you'll need to configure the connection using
    * **Personal Access Token**: The token you generated
    * **HTTP Path**: Usually `/sql/1.0/warehouses/<warehouse-id>`
 
-![Databricks Setup 2](../assets/7_data_sources/databricks-setup-2.png)
+![Databricks Setup 2](../.gitbook/assets/databricks-setup-2.png)
 
 ## Step 4: Configure HTTP Path
 
@@ -44,7 +44,7 @@ To find your HTTP path:
 3. Look for the "Connection Details" section
 4. Copy the HTTP Path
 
-![Databricks Setup 3](../assets/7_data_sources/databricks-setup-3.png)
+![Databricks Setup 3](../.gitbook/assets/databricks-setup-3.png)
 
 ## Step 5: Test Your Connection
 

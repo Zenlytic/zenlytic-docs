@@ -106,6 +106,5 @@
   * [Data Processing Addendum](legal-and-support/legal/data-processing-addendum.md)
   * [Subprocessors](legal-and-support/legal/subprocessors.md)
 * [Customer Support Policy](legal-and-support/customer-support-policy.md)
-* [End User Terms of Use](https://app.zenlytic.com/end-user-terms-of-use)
 * [Privacy Policy](https://app.zenlytic.com/privacy-policy)
 * [License](legal-and-support/license-doc.md)

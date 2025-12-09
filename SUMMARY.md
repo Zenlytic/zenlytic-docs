@@ -91,8 +91,8 @@
 ## Authentication & Security
 
 * [Microsoft Entra Zenlytic](authentication-and-security/microsoft_entra_zenlytic.md)
-* [Snowflake with Microsoft Entra](authentication-and-security/microsoft_entra_snowflake.md)
-* [Snowflake with Entra - What to Send](authentication-and-security/entra-snowflake-what-to-send.md)
+* [Snowflake with Microsoft Entra](authentication-and-security/microsoft_entra_snowflake/README.md)
+  * [Snowflake with Entra - What to Send](authentication-and-security/microsoft_entra_snowflake/entra-snowflake-what-to-send.md)
 * [Okta Zenlytic](authentication-and-security/okta_zenlytic.md)
 * [Google Workload Identity Federation](authentication-and-security/google_workload_identity_federation.md)
 * [IP Whitelisting](authentication-and-security/ip_whitelisting.md)

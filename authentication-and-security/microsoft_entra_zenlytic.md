@@ -9,15 +9,11 @@ This document will guide you through the process of enabling Microsoft Entra (fo
 * You'll have a custom sign in page with an option to `Sign in with Microsoft Entra`.
 * You'll be able to control access to Zenlytic via Microsoft Entra
 
-### Prerequisites
-
-* Please note that the Microsoft Entra Sign-On integration is exclusively available for workspaces on the Enterprise plan.
-
 ### 1. First Steps
 
 To begin the process, reach out to your Zenlytic contact and let them know you'd like to use Microsoft Entra SSO.
 
-You'll work with them to create a company specific login page on your custom Zenlytic subdomain (`mycompany.zenlytic.com`)
+You'll work with them to decide on the Zenlytic subdomain `(ex.mycompany.zenlytic.com`)
 
 After that conversation, they will provide you with these two important values for future use:
 
@@ -49,7 +45,7 @@ Before continuing, ensure that you have obtained these values from your Zenlytic
 2. `Reply URL (Assertion Consumer Service URL)`
 ```
 
-Now go to our newly created application under the `Enterprise applications` section. Go ahead and click the name to open it.
+Now go to your newly created application under the `Enterprise applications` section. Go ahead and click the name to open it.
 
 ![Enterprise Applications](../.gitbook/assets/entra_zenlytic_image_3.png)
 

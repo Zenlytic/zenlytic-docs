@@ -42,6 +42,7 @@ redirects:
   docs/zenlytic_ui/basket_mix: zenlytic-ui/using_zenlytic.md
   docs/zenlytic_ui/explain_change: zenlytic-ui/using_zenlytic.md
   docs/zenlytic_ui/funnel: zenlytic-ui/using_zenlytic.md
+  docs/zenlytic_ui/legacy: zenlytic-ui/legacy.md
   
   # Data Modeling section
   docs/category/data-modeling: data-modeling/data_modeling.md

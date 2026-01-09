@@ -16,8 +16,7 @@ layout:
 ---
 
 # Clarity Engine
-
-The Clarity Engine serves as the backbone of Zenlytic's LLM-based agent, Zoë, enabling you to transform raw facts to confident decisions. The Clarity Engine operates in two distinctive modes: the Default Mode with Dynamic Fields for structured analysis governed by your semantic model, and Exploratory Mode for more advanced, raw SQL-based analysis that extend beyond the boundaries of the semantic model.
+The Clarity Engine serves as the backbone of Zenlytic's LLM-based agent, Zoë, enabling you to transform raw facts to confident decisions. The Clarity Engine operates in two distinctive modes: the **Default Mode** with Dynamic Fields for structured analysis governed by your semantic model, and **Exploratory Mode** for more advanced, raw SQL-based analysis that extend beyond the boundaries of the semantic model.
 
 ## Just ask!
 
@@ -31,9 +30,9 @@ You can ask Zoë specific questions (e.g. "Show me sales YTD compared to the pri
 
 The chat interface includes several interactive elements:
 
+* **Plus icon**: Add attachments to your message, including images (5MB limit), CSVs, and PDFs (maximum 5 files, 25MB total), and data via the query builder
 * **Microphone icon**: Click to use voice input - Zoë will capture your prompt through real-time voice transcription via your web browser
-* **Lightning icon**: Opens a panel to select and run a Workflow (analytical processes that you or your team have set up previously)
-* **Upload icon**: Add file attachments to your message, including images (5MB limit), CSVs, and PDFs (maximum 5 files, 25MB total)
+* **Lightning icon**: Opens a panel to select and run a Proactive Agent
 * **Model dropdown**: Located on the right side of the input area, this allows you to change the base LLM used for Zenlytic's LLM-based agent
 * **Chat Options**: Opens a toggle for Exploratory mode; when enabled, you'll see a microscope icon appear in the chat input (shown below)
 * **Submit**: Press "Enter" or click the up arrow button to send your message

@@ -17,11 +17,11 @@ By pressing the Microphone icon, Zoë will listen through the web browser to cap
 
 Zoë searches across the governed measures and dimensions to use existing fields and know when to create new ones to answer your data questions with compelling summaries and insightful visualizations. She was built on an agentic architecture that gives her ability to plan approaches to problems, to use tools to answer questions on your behalf, and memory to get better over time: all in service of helping you understand complex data. At times she may misunderstand what you are asking about, but you can see exactly what steps she is taking to respond, the reasoning behind her thinking, and the data she queries.
 
-<figure><img src="../.gitbook/assets/querying.png" alt=""><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/querying.png" alt="Ask Zoe for a bar chart"><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
 
 The left sidebar displays the Chat history, sorted by recent activity, and a button to create a new chat. In the upper left of the main content area, there's a button to collapse the left sidebar, a button to create a new chat, and the 3-Dot options menu that supports link sharing and "Save as Workflow" options.
 
-<figure><img src="../.gitbook/assets/chat-drawer.png" alt=""><figcaption><p>Clicking into the Question drawer</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/chat-drawer.png" alt="Clicking into the Query drawer"><figcaption><p>Clicking into the Query drawer</p></figcaption></figure>
 
 Every chart that Zoë creates on your behalf can be clicked into, inspected and explored via the drawer, and added back to the conversation with follow up questions or tasks. The Magnifying glass icon represents that a component will open in the drawer when clicked. The query drawer header contains the label description of the query, a toggle between data and code, and an icon to close the drawer. The drawer content itself provides a form for exploring the query options available from this starting point. You can either click the buttons in the drawer or ask Zoë to change the question's chart type, fields, filters & sorts, limits, etc.
 
@@ -35,7 +35,7 @@ We, very intentionally, have not given Zoë the ability to automatically modify 
 
 ## Interactive Tool Calls
 
-<figure><img src="../.gitbook/assets/v2_rich_tool_calls.gif" alt=""><figcaption><p>Opening the search fields accordion</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/v2_rich_tool_calls.gif" alt="Opening the search fields accordion"><figcaption><p>Opening the search fields accordion</p></figcaption></figure>
 
 Like chart tiles, every tool call that Zoë dispatches on your behalf while analyzing the data can be clicked into, inspected, and explored via the drawer. Click on rows of text in the chat thread with the Magnifying glass icon to see that tool call's details opened in the drawer. Some examples of tools that Zoë uses in chat:
 
@@ -50,14 +50,14 @@ Like chart tiles, every tool call that Zoë dispatches on your behalf while anal
 
 When users understand the data, they can trust the data: any numbers or query values that Zoë references in text summaries will be cited by a serially indexed element at the end of the paragraph. By interacting with the citation, users can understand the data lineage: where and how the value was calculated.
 
-<figure><img src="../.gitbook/assets/v2_citations.gif" alt=""><figcaption><p>Interacting with citations</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/v2_citations.gif" alt="Interacting with citations"><figcaption><p>Interacting with citations</p></figcaption></figure>
 
 
 ## Switching Agent Models
 
 Use the LLM model dropdown menu in the lower right of the Chat input to pick the right-sized large language model for your current task. You can even change the model mid-conversation, which is particularly useful when following up to Proactive Agent runs with a faster model after letting a slower, more contemplative model build the initial report.
 
-<figure><img src="../.gitbook/assets/v2_switching_models.gif" alt=""><figcaption><p>Opening the search fields accordion</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/v2_switching_models.gif" alt="Switching agent models mid-conversation"><figcaption><p>Switching agent models mid-conversation</p></figcaption></figure>
 
 
 ## Streaming
@@ -71,14 +71,14 @@ The figure from the previous section shows how each message submitted by the use
 
 Zoë also has the ability to write and evaluate Python code. This process occurs in a sandbox environment where she can write any code she needs on top of the governed results pulled from the data model. This gives Zoë a huge amount of flexibility to answer complex questions that involve merging results of separate queries, plugging in assumptions to scenarios,  building custom visualizations, and doing advanced clustering, correlation, regression, and forecast analysis.
 
-<figure><img src="../.gitbook/assets/code-interpreter.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/code-interpreter.png" alt="Running a forecast in Python"><figcaption>Running a forecast in Python</figcaption></figure>
 
 
 ## Edit and Retry Messages
 
 If Zoë has finished responding but the answer did not meet your expectations, use the Edit button under user messages to modify the prompt before running again, or the Retry button under assistant messages to re-run the response with the same prompt.
 
-<figure><img src="../.gitbook/assets/v2_retry.gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/v2_retry.gif" alt="Retry a response to re-run the last user message"><figcaption>Retry a response to re-run the last user message</figcaption></figure>
 
 At any point while Zoë is responding, click the Pause button in the lower right of the Chat input to cause Zoë to quickly exit out of the current task and allow submission of a new user message.
 

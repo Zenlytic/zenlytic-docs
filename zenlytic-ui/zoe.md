@@ -10,7 +10,8 @@ To get started using Zoë, just ask her a question. If you don't know what you c
 
 When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). Zoë can handle both type of questions, and will ask you follow up questions if she isn't able to make reasonable assumptions about what you intend from your question.
 
-By pressing the Microphone icon, Zoë will listen through the web browser to capture your prompt through realtime voice transcription. The Lightning icon opens a panel for selecting a Workflow to run. The Plus icon supports adding file attachments to the message, like images, CSVs, and PDFs (limit 5). A dropdown on the right side of the user input supports changing the LLM model that will be used for the new conversation. Press "Enter" or click the Up Arrow button to submit the message.
+By pressing the Microphone icon, Zoë will listen through the web browser to capture your prompt through realtime voice transcription. The Lightning icon opens a panel for selecting a Workflow to run. The Plus icon supports adding file or query attachments to the message, like images, CSVs, and PDFs (limit 5). A dropdown on the right side of the user input supports changing the LLM model that will be used for the new conversation. Press "Enter" or click the Up Arrow button to submit the message.
+
 
 ## Querying
 
@@ -22,13 +23,8 @@ The left sidebar displays the Chat history, sorted by recent activity, and a but
 
 <figure><img src="../.gitbook/assets/chat-drawer.png" alt=""><figcaption><p>Clicking into the Question drawer</p></figcaption></figure>
 
-Every tool call and chart that Zoë creates on your behalf can be clicked into, inspected and explored via the drawer, and added back to the conversation with follow up questions or tasks. The Magnifying glass icon represents than an element that will open in the drawer when clicked. The Question drawer header contains the shorthand name of the data question, a switch to show Question SQL, and an icon to close the drawer. The drawer content itself provides a form for exploring the query options available from this question starting point. You can either click the buttons in the drawer or ask Zoë to change the question's chart type, fields, filters & sorts, limits, etc.
+Every chart that Zoë creates on your behalf can be clicked into, inspected and explored via the drawer, and added back to the conversation with follow up questions or tasks. The Magnifying glass icon represents that a component will open in the drawer when clicked. The query drawer header contains the label description of the query, a toggle between data and code, and an icon to close the drawer. The drawer content itself provides a form for exploring the query options available from this starting point. You can either click the buttons in the drawer or ask Zoë to change the question's chart type, fields, filters & sorts, limits, etc.
 
-## Code Interpreter
-
-Zoë also has the ability to write and evaluate Python code. This process occurs in a sandbox environment where she can write any code she needs on top of the governed results pulled from the data model. This gives Zoë a huge amount of flexibility to answer complex questions that involve merging results of separate queries, plugging in assumptions to scenarios, and doing advanced clustering, correlation, regression, and forecast analysis.
-
-<figure><img src="../.gitbook/assets/code-interpreter.png" alt=""><figcaption></figcaption></figure>
 
 ## Dynamic Fields
 
@@ -36,9 +32,61 @@ In addition to creating queries on your existing measures and dimensions, Zoë c
 
 We, very intentionally, have not given Zoë the ability to automatically modify the global cognitive layer, to ensure your end users are always getting a consistent and governed experience.
 
+
+## Interactive Tool Calls
+
+<figure><img src="../.gitbook/assets/v2_rich_tool_calls.gif" alt=""><figcaption><p>Opening the search fields accordion</p></figcaption></figure>
+
+Like chart tiles, every tool call that Zoë dispatches on your behalf while analyzing the data can be clicked into, inspected, and explored via the drawer. Click on rows of text in the chat thread with the Magnifying glass icon to see that tool call's details opened in the drawer. Some examples of tools that Zoë uses in chat:
+
+- Search across data model fields, memories, and external sources
+- Generate and run SQL queries, or compile SQL from semantic model code
+- Build interactive charts and accurate text summaries from data
+- Write and run Python scripts for complex data analysis tasks
+- Search across workspace dashboards and create new ones
+
+
+## Citations
+
+When users understand the data, they can trust the data: any numbers or query values that Zoë references in text summaries will be cited by a serially indexed element at the end of the paragraph. By interacting with the citation, users can understand the data lineage: where and how the value was calculated.
+
+<figure><img src="../.gitbook/assets/v2_citations.gif" alt=""><figcaption><p>Interacting with citations</p></figcaption></figure>
+
+
+## Switching Agent Models
+
+Use the LLM model dropdown menu in the lower right of the Chat input to pick the right-sized large language model for your current task. You can even change the model mid-conversation, which is particularly useful when following up to Proactive Agent runs with a faster model after letting a slower, more contemplative model build the initial report.
+
+<figure><img src="../.gitbook/assets/v2_switching_models.gif" alt=""><figcaption><p>Opening the search fields accordion</p></figcaption></figure>
+
+
+## Streaming
+
+Zoë leverages streaming, so that incremental updates from the LLM model are shown to the user as soon as they are available. Tool calls can take up to several minutes to finish, while streaming text is available so quickly it looks like Zoë is using your keyboard directly. Feel free to start other chats simultaneously, navigate around the app, or refresh the page while your conversation is loading: whenever you return, the most recent updates will be streamed into the chat.
+
+The figure from the previous section shows how each message submitted by the user is pinned to the top of the screen while Zoë is responding, with automatically scrolling to follow the response as it streams onto the page. By scrolling up and away from the recent updates, the user can dismiss this automatic scroll behavior. While the conversation is running, click the "follow live updates" pill when it appears to restore the automatic scroll behavior.
+
+
+## Code Interpreter
+
+Zoë also has the ability to write and evaluate Python code. This process occurs in a sandbox environment where she can write any code she needs on top of the governed results pulled from the data model. This gives Zoë a huge amount of flexibility to answer complex questions that involve merging results of separate queries, plugging in assumptions to scenarios,  building custom visualizations, and doing advanced clustering, correlation, regression, and forecast analysis.
+
+<figure><img src="../.gitbook/assets/code-interpreter.png" alt=""><figcaption></figcaption></figure>
+
+
+## Edit and Retry Messages
+
+If Zoë has finished responding but the answer did not meet your expectations, use the Edit button under user messages to modify the prompt before running again, or the Retry button under assistant messages to re-run the response with the same prompt.
+
+<figure><img src="../.gitbook/assets/v2_retry.gif" alt=""><figcaption></figcaption></figure>
+
+At any point while Zoë is responding, click the Pause button in the lower right of the Chat input to cause Zoë to quickly exit out of the current task and allow submission of a new user message.
+
+
 ## Dashboards
 
 Zoë can create new dashboards and add plots to those dashboards or add plots to existing dashboards. She can also search your dashboards for terms so you can answer questions like "What dashboards do we have for revenue and plan?"
+
 
 ## Slack & Teams
 
@@ -57,3 +105,4 @@ Additionally, you can schedule dashboards for delivery in Slack, through the sch
 To set up the Teams integration, contact Zenlytic support, following [these instructions](microsoft_teams_bot.md)
 
 Zoë is available in DMs and in channels, but not in group DMs.
+

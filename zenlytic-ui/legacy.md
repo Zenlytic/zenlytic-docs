@@ -29,7 +29,7 @@ While you can still navigate to unsupported conversations, interact with their t
 
 1. From the unsupported conversation banner, select a model and click the Submit button to migrate the unsupported conversation into a supported conversation.
 
-- The dropdown list of agent models will only contain the models that are compatible with the current conversation and latest version of Zenlytic.
+- The dropdown list of agent models will only contain the models that are compatible with the current conversation and the latest version of Zenlytic.
 - When the Submit button is pressed, a new conversation will be created from each user message as they are re-played with the selected agent model.
 - The chat input will become available again when Zoë has finished running.
 - The unsupported conversation will not be automatically deleted once it has been migrated.

@@ -15,7 +15,7 @@ layout:
     visible: true
 ---
 
-# Unsupported Conversations
+# Unsupported Chats
 
 The Zenlytic web application currently supports `v2` conversations and proactive agents (workflows). For various reasons that we try to prevent from impacting your experience, a previous conversation may become no longer supported to continue running. These reasons include:
 - new workspace preferences and network security rules

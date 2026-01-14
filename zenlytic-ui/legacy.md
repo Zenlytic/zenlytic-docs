@@ -25,7 +25,7 @@ The Zenlytic web application currently supports `v2` conversations and proactive
 
 While you can still navigate to unsupported conversations, interact with their tool call contents, and download linked files and data, unsupported conversations will have a banner at the bottom of the screen preventing access to the chat input. In order to continue the unsupported conversation with new follow-up messages, the conversation must be migrated to the latest version.
 
-### How To Migrate An Unsupported Conversation
+### How To Migrate An Unsupported Chat
 
 1. From the unsupported conversation banner, select a model and click the Submit button to migrate the unsupported conversation into a supported conversation.
 

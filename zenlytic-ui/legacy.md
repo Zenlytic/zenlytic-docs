@@ -17,11 +17,21 @@ layout:
 
 # Unsupported Conversations
 
-The Zenlytic web application currently supports `v2` conversations and workflows. For various reasons, a previous conversation may become no longer supported to continue. These reasons include:
-- updated workspace preferences and network security rules
-- changes to underlying LLM model availability and compatibility
-- updates to Zenlytic services
+The Zenlytic web application currently supports `v2` conversations and proactive agents (workflows). For various reasons that we try to prevent from impacting your experience, a previous conversation may become no longer supported to continue running. These reasons include:
+- new workspace preferences and network security rules
+- changes to underlying LLM agent availability and compatibility
+- planned updates to Zenlytic services
+- unrecoverable errors that occur during runtime
 
-While you can still navigate to unsupported conversations, interact with their tool calls and contents, and download linked files and data, unsupported conversations will have a banner on the bottom of the screen preventing access to the chat input. In order to continue the unsupported conversation with new messages, select a new LLM model and click the Arrow button to migrate the unsupported conversation into a supported conversation. The dropdown list of LLM models will only contain the models that are compatible with the current conversation and latest version of Zenlytic. When the Arrow button is pressed, a new conversation will be created from each user message as it is re-played with the new LLM model. The chat input will become available again when Zoe has finished running.
+While you can still navigate to unsupported conversations, interact with their tool call contents, and download linked files and data, unsupported conversations will have a banner at the bottom of the screen preventing access to the chat input. In order to continue the unsupported conversation with new follow-up messages, the conversation must be migrated to the latest version.
+
+### How To Migrate An Unsupported Conversation
+
+1. From the unsupported conversation banner, select a model and click the Submit button to migrate the unsupported conversation into a supported conversation.
+
+- The dropdown list of agent models will only contain the models that are compatible with the current conversation and latest version of Zenlytic.
+- When the Submit button is pressed, a new conversation will be created from each user message as they are re-played with the selected agent model.
+- The chat input will become available again when Zoë has finished running.
+- The unsupported conversation will not be automatically deleted once it has been migrated.
 
 ![Unsupported Conversations](../.gitbook/assets/unsupported_conversations.png)

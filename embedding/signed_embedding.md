@@ -104,7 +104,7 @@ print(auth_header)
 * `chat_initial_prompts`: (Optional) This is an array of initial prompts to display in Zoë. This helps a user see example questions they can ask. For example, \["What were sales in 2023?", "How many customers joined in the last week?"]
 * `first_name`: (Optional) The first name of the user in your system. Defaults to 'Embedded'.
 * `last_name`: (Optional) The last name of the user in your system. Defaults to 'User'.
-* `role_name`: (Optional) The role you want the user to assume in the application. Options are `embed` and `embedded_with_scheduling` Defaults to `embed`. See [user role details](../zenlytic-ui/user_roles.md) for more information
+* `role_name`: (Optional) The role you want the user to assume in the application. Options are `embed`, `embed_with_sql`, and `embedded_with_scheduling` Defaults to `embed`. See [user role details](../zenlytic-ui/user_roles.md) for more information
 
 ## **Example Body Parameters**
 

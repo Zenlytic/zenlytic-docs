@@ -23,6 +23,7 @@
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [Zoë](zenlytic-ui/zoe.md)
 * [AI Model Selection Guide](zenlytic-ui/ai-model-selection-guide.md)
+* [Attachments](zenlytic-ui/attachments.md)
 * [Memories](zenlytic-ui/memories.md)
 * [Exploring](zenlytic-ui/exploring.md)
 * [Data Model Editor](zenlytic-ui/data_model_editor.md)

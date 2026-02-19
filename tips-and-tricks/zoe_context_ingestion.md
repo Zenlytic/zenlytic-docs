@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # How to Steer Zoë's Answers
 
 Zoë, Zenlytic's AI data analyst, leverages multiple sources of context to understand your organization's data ecosystem, analytical philosophy, and business logic. This document explains the different ways Zoë learns about your data and how to optimize each source for better results.
@@ -25,7 +8,7 @@ Zoë, Zenlytic's AI data analyst, leverages multiple sources of context to under
 
 Zoë learns from examples of successfully answered questions to improve her performance & consistency (more information [here](../zenlytic-ui/memories.md)):
 
-* **User feedback**: When a user hits the Add to Memory button, it will create a memory for Zoë. When asked similar questions in the future she will see that memory and will more consistently answer like that example.&#x20;
+* **User feedback**: When a user hits the Add to Memory button, it will create a memory for Zoë. When asked similar questions in the future she will see that memory and will more consistently answer like that example.
 * **Field Usage**: Zoë sees how often different measures and dimensions are used, which gives her insight into what data is popular vs used for one-off tasks.
 * **Admin control**: Admins have full visibility into all memory training examples for Zoë, under Settings -> Memory
 

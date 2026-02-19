@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Views
 
 Views reference exactly one table in the database. In Zenlytic, they are organized into [topics](topic.md) for usage that define how they join together.

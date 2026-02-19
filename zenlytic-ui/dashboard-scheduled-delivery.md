@@ -1,39 +1,16 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Dashboard Scheduled Delivery
 
 Scheduling dashboards gives users the ability to run a dashboard at a predetermined time or times and send the results to a selected audience. The scheduler can send a PDF version of the dashboard, CSV data download and a link to view the dashboard within the Zenlytic UI. The scheduler can also include a standard or customized AI summary of the results.
 
 ## To schedule a dashboard:
 
-
-
 1. Open the “Scheduled Reports” model at the top right of the dashboard:
 
 <figure><img src="../.gitbook/assets/Dashboard-Scheduler-1.png" alt=""><figcaption></figcaption></figure>
 
-
-
 2. When the model opens, click on “Create New Schedule Report”
 
 <figure><img src="../.gitbook/assets/Dashboard-Scheduler-2.png" alt=""><figcaption></figcaption></figure>
-
-
 
 3. Once the schedule model opens, include the desired parameters:
 
@@ -55,8 +32,6 @@ Scheduling dashboards gives users the ability to run a dashboard at a predetermi
 
 <figure><img src="../.gitbook/assets/Dashboard-Scheduler-4.png" alt=""><figcaption></figcaption></figure>
 
-
-
 4.  Once the schedule has been created, it will appear on the list of scheduled reports. You can click on the **Send a Copy Now** button to the right of the schedule name to send right away.
 
     To run a test of the scheduler you can send to yourself and click **Send a Copy Now** before\
@@ -67,4 +42,3 @@ Scheduling dashboards gives users the ability to run a dashboard at a predetermi
 Example of Email with attachments
 
 <figure><img src="../.gitbook/assets/Dashboard-Scheduler-7.png" alt=""><figcaption></figcaption></figure>
-

@@ -1,25 +1,6 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Subprocessors
 
 **Last updated:** August 3, 2025
-
-
 
 When we share your information with third party subprocessors, such as our vendors and service providers, we remain responsible for it. We work very hard to maintain your trust when we bring on new vendors, and we require all vendors to enter into data protection agreements with us that restrict their processing of Users' Personal Information (as defined in our [Privacy Policy](https://app.zenlytic.com/privacy-policy)).
 

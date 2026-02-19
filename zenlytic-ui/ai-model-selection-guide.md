@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # AI Model Selection Guide
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
@@ -80,4 +63,3 @@ Alternative models for basic queries (not optimized for Zenlytic environment).
 
 * Example: Basic metric queries
 * Example: Simple data summaries
-

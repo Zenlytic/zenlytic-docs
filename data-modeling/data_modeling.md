@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Data Modeling Overview
 
 To understand data modeling in Zenlytic, there are a few key concepts to grasp. If you've used data models like LookML before, these will be intuitive, and you'll be able to go straight to the implementation of your model. To better understand how to define context for Zoë, the AI analyst, check out the [tips & tricks doc.](../tips-and-tricks/zoe_tips_and_tricks.md)

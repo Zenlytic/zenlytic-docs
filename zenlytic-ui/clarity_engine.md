@@ -1,21 +1,5 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Clarity Engine
+
 The Clarity Engine serves as the backbone of Zenlytic's LLM-based agent, Zoë, enabling you to transform raw facts to confident decisions. The Clarity Engine operates in two distinctive modes: the **Default Mode** with Dynamic Fields for structured analysis governed by your semantic model, and **Exploratory Mode** for more advanced, raw SQL-based analysis that extend beyond the boundaries of the semantic model.
 
 ## Just ask!

@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Joins
 
 **Topics are the primary way joins are organized and managed in Zenlytic.** [Topics](topic.md) define collections of views that can be joined together and specify how those joins relate to each other. This approach provides clearer organization, better governance, and more intuitive data relationships.

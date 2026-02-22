@@ -27,6 +27,7 @@
 * [Memories](zenlytic-ui/memories.md)
 * [Patterns](zenlytic-ui/patterns.md)
 * [Exploring](zenlytic-ui/exploring.md)
+* [Workspace Manager](zenlytic-ui/workspace-manager.md)
 * [Data Model Editor](zenlytic-ui/data_model_editor.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)
 * [User Roles](zenlytic-ui/user_roles.md)

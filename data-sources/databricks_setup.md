@@ -46,6 +46,15 @@ To find your HTTP path:
 
 ![Databricks Setup 3](../.gitbook/assets/databricks-setup-3.png)
 
+## IP Whitelisting
+
+If you use IP whitelisting in your data warehouse, whitelist the following IP addresses:
+
+```
+184.73.175.163 
+18.209.132.30
+```
+
 ## Step 5: Test Your Connection
 
 1. Click "Test Connection" to verify it works

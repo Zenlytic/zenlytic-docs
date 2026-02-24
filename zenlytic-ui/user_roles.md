@@ -32,9 +32,26 @@ There are eight (8) roles in Zenlytic that a user can have. Each role correspond
 
 `create_personal_field`: The ability to create a personal field (does not include the ability to promote it to the data model).
 
+`workspace_management`: Grants the ability to create, archive, and manage workspaces and credentials across an organization
+
+
+
+## Organization Admin
+
+The organization admin has _all_ of the above permissions.
+
+In addition to all standard Admin capabilities, Organization Admins can:
+
+* Manage workspaces across the organization: create new workspaces, archive existing ones, and configure SSO provisioning settings for each workspace.
+* Manage credentials across the organization: view all credentials and copy them between workspaces.
+
+When an Organization Admin creates a new workspace, they are automatically assigned the Organization Admin role in that workspace.
+
+_Note: The Organization Admin role only appears as an option in the role selector for users who already have the workspace\_management permission. If your workspace is not part of an organization, this role will not be available._
+
 ## Admin
 
-The admin has _all_ of the above permissions.
+The admin has all of the above permissions _except_ `workspace_management`.
 
 ## Develop
 

@@ -106,7 +106,7 @@
 ## Legal & Support
 
 * [Legal](legal-and-support/legal/README.md)
-  * [Terms of Service](legal-and-support/legal/terms-of-service.md)
+  * [Terms of Service Agreement](legal-and-support/legal/terms-of-service-agreement.md)
   * [Data Processing Addendum](legal-and-support/legal/data-processing-addendum.md)
   * [Subprocessors](legal-and-support/legal/subprocessors.md)
 * [Customer Support Policy](legal-and-support/customer-support-policy.md)

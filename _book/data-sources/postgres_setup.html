@@ -1,0 +1,1539 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Postgres Setup · Zenlytic Documentation</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.0.3">
+        <meta name="author" content="Zenlytic">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="mysql_setup.html" />
+    
+    
+    <link rel="prev" href="redshift_setup.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Getting Started</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Zenlytic Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../getting-started/start_here.html">
+            
+                <a href="../getting-started/start_here.html">
+            
+                    
+                    Start Here
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Tips & Tricks</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../tips-and-tricks/zoe_context_ingestion.html">
+            
+                <a href="../tips-and-tricks/zoe_context_ingestion.html">
+            
+                    
+                    How to Steer Zoë's Answers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../tips-and-tricks/zoe_tips_and_tricks.html">
+            
+                <a href="../tips-and-tricks/zoe_tips_and_tricks.html">
+            
+                    
+                    Working with Zoë Tips and Tricks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../tips-and-tricks/naming-conventions.html">
+            
+                <a href="../tips-and-tricks/naming-conventions.html">
+            
+                    
+                    Naming Conventions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../tips-and-tricks/descriptions-and-synonyms.html">
+            
+                <a href="../tips-and-tricks/descriptions-and-synonyms.html">
+            
+                    
+                    Descriptions and Synonyms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../tips-and-tricks/entity-drills.html">
+            
+                <a href="../tips-and-tricks/entity-drills.html">
+            
+                    
+                    Entity Drills
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../tips-and-tricks/time-metrics.html">
+            
+                <a href="../tips-and-tricks/time-metrics.html">
+            
+                    
+                    Time Metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../tips-and-tricks/voice-commands.html">
+            
+                <a href="../tips-and-tricks/voice-commands.html">
+            
+                    
+                    Voice Commands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../tips-and-tricks/data-indexing.html">
+            
+                <a href="../tips-and-tricks/data-indexing.html">
+            
+                    
+                    Data Indexing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../tips-and-tricks/plot_configuration_tips_and_tricks_with_zoe.html">
+            
+                <a href="../tips-and-tricks/plot_configuration_tips_and_tricks_with_zoe.html">
+            
+                    
+                    Plot Configuration Tips and Tricks with Zoë
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Zenlytic UI</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../zenlytic-ui/using_zenlytic.html">
+            
+                <a href="../zenlytic-ui/using_zenlytic.html">
+            
+                    
+                    Using Zenlytic
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../zenlytic-ui/zoe.html">
+            
+                <a href="../zenlytic-ui/zoe.html">
+            
+                    
+                    Zoë
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../zenlytic-ui/clarity_engine.html">
+            
+                <a href="../zenlytic-ui/clarity_engine.html">
+            
+                    
+                    Clarity Engine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../zenlytic-ui/ai-model-selection-guide.html">
+            
+                <a href="../zenlytic-ui/ai-model-selection-guide.html">
+            
+                    
+                    AI Model Selection Guide
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../zenlytic-ui/memories.html">
+            
+                <a href="../zenlytic-ui/memories.html">
+            
+                    
+                    Memories
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../zenlytic-ui/attachments.html">
+            
+                <a href="../zenlytic-ui/attachments.html">
+            
+                    
+                    Attachments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../zenlytic-ui/patterns.html">
+            
+                <a href="../zenlytic-ui/patterns.html">
+            
+                    
+                    Patterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../zenlytic-ui/artifacts.html">
+            
+                <a href="../zenlytic-ui/artifacts.html">
+            
+                    
+                    Artifacts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="../zenlytic-ui/exploring.html">
+            
+                <a href="../zenlytic-ui/exploring.html">
+            
+                    
+                    Exploring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="../zenlytic-ui/follow_ups.html">
+            
+                <a href="../zenlytic-ui/follow_ups.html">
+            
+                    
+                    Follow Ups
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="../zenlytic-ui/following_up_from_a_dashboard.html">
+            
+                <a href="../zenlytic-ui/following_up_from_a_dashboard.html">
+            
+                    
+                    Follow Ups From a Dashboard
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="../zenlytic-ui/dashboard-scheduled-delivery.html">
+            
+                <a href="../zenlytic-ui/dashboard-scheduled-delivery.html">
+            
+                    
+                    Dashboard Scheduled Delivery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="../zenlytic-ui/workspace-manager.html">
+            
+                <a href="../zenlytic-ui/workspace-manager.html">
+            
+                    
+                    Workspace Manager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="../zenlytic-ui/data_model_editor.html">
+            
+                <a href="../zenlytic-ui/data_model_editor.html">
+            
+                    
+                    Data Model Editor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="../zenlytic-ui/skills.html">
+            
+                <a href="../zenlytic-ui/skills.html">
+            
+                    
+                    Skills
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="../zenlytic-ui/user_attributes.html">
+            
+                <a href="../zenlytic-ui/user_attributes.html">
+            
+                    
+                    User Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="../zenlytic-ui/user_roles.html">
+            
+                <a href="../zenlytic-ui/user_roles.html">
+            
+                    
+                    User Roles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="../zenlytic-ui/workspace_groups_and_permissions.html">
+            
+                <a href="../zenlytic-ui/workspace_groups_and_permissions.html">
+            
+                    
+                    Workspace Groups And Permissions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="../zenlytic-ui/microsoft_teams_bot.html">
+            
+                <a href="../zenlytic-ui/microsoft_teams_bot.html">
+            
+                    
+                    Installing Zenlytic in Microsoft Teams
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="../zenlytic-ui/legacy.html">
+            
+                <a href="../zenlytic-ui/legacy.html">
+            
+                    
+                    Unsupported Chats
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Data Modeling</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../data-modeling/data_modeling.html">
+            
+                <a href="../data-modeling/data_modeling.html">
+            
+                    
+                    Data Modeling Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../data-modeling/model.html">
+            
+                <a href="../data-modeling/model.html">
+            
+                    
+                    Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../data-modeling/dashboard.html">
+            
+                <a href="../data-modeling/dashboard.html">
+            
+                    
+                    Dashboards
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../data-modeling/topic.html">
+            
+                <a href="../data-modeling/topic.html">
+            
+                    
+                    Topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../data-modeling/view.html">
+            
+                <a href="../data-modeling/view.html">
+            
+                    
+                    Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../data-modeling/join.html">
+            
+                <a href="../data-modeling/join.html">
+            
+                    
+                    Joins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../data-modeling/set.html">
+            
+                <a href="../data-modeling/set.html">
+            
+                    
+                    Sets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../data-modeling/access_grants.html">
+            
+                <a href="../data-modeling/access_grants.html">
+            
+                    
+                    Access Grants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../data-modeling/field.html">
+            
+                <a href="../data-modeling/field.html">
+            
+                    
+                    Fields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../data-modeling/dimension.html">
+            
+                <a href="../data-modeling/dimension.html">
+            
+                    
+                    Dimensions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="../data-modeling/dimension_group.html">
+            
+                <a href="../data-modeling/dimension_group.html">
+            
+                    
+                    Dimension Groups
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="../data-modeling/measure.html">
+            
+                <a href="../data-modeling/measure.html">
+            
+                    
+                    Measures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="../data-modeling/field_filter.html">
+            
+                <a href="../data-modeling/field_filter.html">
+            
+                    
+                    Field Filters
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="../data-modeling/formatting.html">
+            
+                <a href="../data-modeling/formatting.html">
+            
+                    
+                    Formatting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.15" data-path="../data-modeling/symmetric_aggregates.html">
+            
+                <a href="../data-modeling/symmetric_aggregates.html">
+            
+                    
+                    Symmetric Aggregates
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.16" data-path="../data-modeling/table_calculation_syntax.html">
+            
+                <a href="../data-modeling/table_calculation_syntax.html">
+            
+                    
+                    Table Calculation Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.17" data-path="../data-modeling/referenceable_attributes.html">
+            
+                <a href="../data-modeling/referenceable_attributes.html">
+            
+                    
+                    Referenceable Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.18" data-path="../data-modeling/dbt_metricflow.html">
+            
+                <a href="../data-modeling/dbt_metricflow.html">
+            
+                    
+                    dbt MetricFlow Integration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.19" data-path="../data-modeling/adding_a_new_table.html">
+            
+                <a href="../data-modeling/adding_a_new_table.html">
+            
+                    
+                    Adding a New Table
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Proactive Analytics</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../proactive-analytics/getting-started.html">
+            
+                <a href="../proactive-analytics/getting-started.html">
+            
+                    
+                    Proactive Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../proactive-analytics/inputs.html">
+            
+                <a href="../proactive-analytics/inputs.html">
+            
+                    
+                    Inputs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../proactive-analytics/publish.html">
+            
+                <a href="../proactive-analytics/publish.html">
+            
+                    
+                    Publish
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../proactive-analytics/schedule-delivery.html">
+            
+                <a href="../proactive-analytics/schedule-delivery.html">
+            
+                    
+                    Schedule Delivery
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../proactive-analytics/run-history.html">
+            
+                <a href="../proactive-analytics/run-history.html">
+            
+                    
+                    Run History
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Embedding</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../embedding/embedding_overview.html">
+            
+                <a href="../embedding/embedding_overview.html">
+            
+                    
+                    Embedding Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../embedding/private_embedding.html">
+            
+                <a href="../embedding/private_embedding.html">
+            
+                    
+                    Private Embedding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../embedding/signed_embedding.html">
+            
+                <a href="../embedding/signed_embedding.html">
+            
+                    
+                    Signed Embedding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="../embedding/permissions_in_embedding.html">
+            
+                <a href="../embedding/permissions_in_embedding.html">
+            
+                    
+                    Permissions in Embedding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="../embedding/embedding_styles.html">
+            
+                <a href="../embedding/embedding_styles.html">
+            
+                    
+                    Embedding Styles
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="../embedding/workflows_in_embedding.html">
+            
+                <a href="../embedding/workflows_in_embedding.html">
+            
+                    
+                    Proactive Agents in Embedding
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Data Sources</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="integrations.html">
+            
+                <a href="integrations.html">
+            
+                    
+                    Integrations Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="bigquery_setup.html">
+            
+                <a href="bigquery_setup.html">
+            
+                    
+                    Bigquery Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="snowflake_setup.html">
+            
+                <a href="snowflake_setup.html">
+            
+                    
+                    Snowflake Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="redshift_setup.html">
+            
+                <a href="redshift_setup.html">
+            
+                    
+                    Redshift Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="7.5" data-path="postgres_setup.html">
+            
+                <a href="postgres_setup.html">
+            
+                    
+                    Postgres Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="mysql_setup.html">
+            
+                <a href="mysql_setup.html">
+            
+                    
+                    Mysql Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="sql_server_setup.html">
+            
+                <a href="sql_server_setup.html">
+            
+                    
+                    Sql Server Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="azure_synapse_setup.html">
+            
+                <a href="azure_synapse_setup.html">
+            
+                    
+                    Azure Synapse Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="databricks_setup.html">
+            
+                <a href="databricks_setup.html">
+            
+                    
+                    Databricks Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.10" data-path="druid_setup.html">
+            
+                <a href="druid_setup.html">
+            
+                    
+                    Druid Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.11" data-path="trino_onboarding.html">
+            
+                <a href="trino_onboarding.html">
+            
+                    
+                    Trino Onboarding
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.12" data-path="motherduck_setup.html">
+            
+                <a href="motherduck_setup.html">
+            
+                    
+                    Motherduck Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Authentication & Security</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../authentication-and-security/microsoft_entra_zenlytic.html">
+            
+                <a href="../authentication-and-security/microsoft_entra_zenlytic.html">
+            
+                    
+                    Microsoft Entra Zenlytic
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../authentication-and-security/microsoft_entra_snowflake/">
+            
+                <a href="../authentication-and-security/microsoft_entra_snowflake/">
+            
+                    
+                    Snowflake with Microsoft Entra
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.2.1" data-path="../authentication-and-security/microsoft_entra_snowflake/entra-snowflake-what-to-send.html">
+            
+                <a href="../authentication-and-security/microsoft_entra_snowflake/entra-snowflake-what-to-send.html">
+            
+                    
+                    Snowflake with Entra - What to Send
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../authentication-and-security/okta_zenlytic.html">
+            
+                <a href="../authentication-and-security/okta_zenlytic.html">
+            
+                    
+                    Okta Zenlytic
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="../authentication-and-security/google_workload_identity_federation.html">
+            
+                <a href="../authentication-and-security/google_workload_identity_federation.html">
+            
+                    
+                    Google Workload Identity Federation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="../authentication-and-security/ip_whitelisting.html">
+            
+                <a href="../authentication-and-security/ip_whitelisting.html">
+            
+                    
+                    IP Whitelisting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="../authentication-and-security/login_troubleshooting.html">
+            
+                <a href="../authentication-and-security/login_troubleshooting.html">
+            
+                    
+                    Login Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="../authentication-and-security/connecting_to_github_with_a_deploy_key.html">
+            
+                <a href="../authentication-and-security/connecting_to_github_with_a_deploy_key.html">
+            
+                    
+                    Connecting To Github With A Deploy Key
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Legal & Support</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../legal-and-support/legal/">
+            
+                <a href="../legal-and-support/legal/">
+            
+                    
+                    Legal
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../legal-and-support/legal/terms-of-service-agreement.html">
+            
+                <a href="../legal-and-support/legal/terms-of-service-agreement.html">
+            
+                    
+                    Terms of Service Agreement
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../legal-and-support/legal/data-processing-addendum.html">
+            
+                <a href="../legal-and-support/legal/data-processing-addendum.html">
+            
+                    
+                    Data Processing Addendum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../legal-and-support/legal/subprocessors.html">
+            
+                <a href="../legal-and-support/legal/subprocessors.html">
+            
+                    
+                    Subprocessors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../legal-and-support/customer-support-policy.html">
+            
+                <a href="../legal-and-support/customer-support-policy.html">
+            
+                    
+                    Customer Support Policy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" >
+            
+                <a target="_blank" href="https://app.zenlytic.com/privacy-policy">
+            
+                    
+                    Privacy Policy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="../legal-and-support/license-doc.html">
+            
+                <a href="../legal-and-support/license-doc.html">
+            
+                    
+                    License
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Postgres Setup</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="postgres-setup">Postgres Setup</h1>
+<p>To connect Zenlytic to PostgreSQL, you'll need to configure the connection with your database credentials. Here's how to do it:</p>
+<h2 id="step-1-gather-connection-information">Step 1: Gather Connection Information</h2>
+<p>You'll need the following information from your PostgreSQL database:</p>
+<ul>
+<li><strong>Host</strong>: Your PostgreSQL server hostname or IP address</li>
+<li><strong>Port</strong>: Usually 5432 (default PostgreSQL port)</li>
+<li><strong>Database</strong>: The database name</li>
+<li><strong>Username</strong>: A database user with appropriate permissions</li>
+<li><strong>Password</strong>: The password for the user</li>
+</ul>
+<h2 id="step-2-create-a-database-user-if-needed">Step 2: Create a Database User (if needed)</h2>
+<p>If you don't have a dedicated user for Zenlytic, create one:</p>
+<pre><code class="lang-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> zenlytic_user <span class="hljs-keyword">WITH</span> PASSWORD <span class="hljs-string">'your_secure_password'</span>;
+<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">CONNECT</span> <span class="hljs-keyword">ON</span> DATABASE your_database <span class="hljs-keyword">TO</span> zenlytic_user;
+<span class="hljs-keyword">GRANT</span> USAGE <span class="hljs-keyword">ON</span> SCHEMA public <span class="hljs-keyword">TO</span> zenlytic_user;
+<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">ALL</span> TABLES <span class="hljs-keyword">IN</span> SCHEMA public <span class="hljs-keyword">TO</span> zenlytic_user;
+</code></pre>
+<h2 id="step-3-add-the-connection-in-zenlytic">Step 3: Add the Connection in Zenlytic</h2>
+<ol>
+<li>In Zenlytic, go to Settings &gt; Data Sources</li>
+<li>Click "Add Data Source"</li>
+<li>Select "PostgreSQL" from the list</li>
+<li>Enter the connection details:<ul>
+<li><strong>Host</strong>: Your PostgreSQL server hostname</li>
+<li><strong>Port</strong>: 5432 (or your custom port)</li>
+<li><strong>Database</strong>: Your database name</li>
+<li><strong>Username</strong>: Your database username</li>
+<li><strong>Password</strong>: Your database password</li>
+</ul>
+</li>
+</ol>
+<p><img src="../.gitbook/assets/postgres-setup-1.png" alt="Postgres Setup 1"></img></p>
+<h2 id="step-4-configure-firewallsecurity">Step 4: Configure Firewall/Security</h2>
+<p>Make sure your PostgreSQL server allows connections from Zenlytic's IP addresses:</p>
+<ul>
+<li><strong>184.73.175.163</strong></li>
+<li><strong>18.209.132.30</strong></li>
+</ul>
+<h2 id="step-5-test-your-connection">Step 5: Test Your Connection</h2>
+<ol>
+<li>Click "Test Connection" to verify it works</li>
+<li>If successful, click "Save"</li>
+<li>You should now be able to see your PostgreSQL tables in Zenlytic</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you encounter connection issues:</p>
+<ol>
+<li>Verify the host and port are correct</li>
+<li>Check that the firewall allows connections from Zenlytic's IPs</li>
+<li>Ensure the user has the necessary permissions</li>
+<li>Verify the database name and credentials are correct</li>
+<li>Check that PostgreSQL is configured to accept remote connections</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="redshift_setup.html" class="navigation navigation-prev " aria-label="Previous page: Redshift Setup">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="mysql_setup.html" class="navigation navigation-next " aria-label="Next page: Mysql Setup">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Postgres Setup","level":"7.5","depth":1,"next":{"title":"Mysql Setup","level":"7.6","depth":1,"path":"data-sources/mysql_setup.md","ref":"data-sources/mysql_setup.md","articles":[]},"previous":{"title":"Redshift Setup","level":"7.4","depth":1,"path":"data-sources/redshift_setup.md","ref":"data-sources/redshift_setup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","highlight","sharing","hints","gitbook-compat","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"hints":{"info":"fa fa-info-circle","tip":"fa fa-mortar-board","danger":"fa fa-exclamation-circle","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"gitbook-compat":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false,"showSummary":true}},"theme":"default","author":"Zenlytic","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"intro.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Zenlytic Documentation","language":"en","gitbook":"*","description":"Documentation for Zenlytic"},"file":{"path":"data-sources/postgres_setup.md","mtime":"2026-03-04T16:40:26.952Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2026-03-04T18:45:22.045Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

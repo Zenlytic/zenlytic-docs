@@ -154,16 +154,12 @@ requests.post(url, headers=headers, data=data)
   * `expires_in`: Expiry in seconds from now.
 *   **Example Response**
 
-    \{% code overflow="wrap" %\}
-
     ```json
     {
         "signed_url": "https://app.zenlytic.com/embed/chat?userID=12345&userJWT=abc123",
         "expires_in": 86400
     }
     ```
-
-    \{% endcode %\}
 
 ### **Error Handling**
 

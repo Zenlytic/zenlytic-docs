@@ -10,7 +10,9 @@
     "plugins": [
         "theme-default",
         "highlight",
-        "sharing"
+        "sharing",
+        "hints",
+        "gitbook-compat"
     ],
     "pluginsConfig": {
         "theme-default": {

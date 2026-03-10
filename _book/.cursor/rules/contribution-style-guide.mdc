@@ -1,0 +1,70 @@
+---
+description: Product documentation style guide for contributors
+alwaysApply: true
+---
+
+This guide ensures consistency, clarity, and quality across all documentation contributions. When reviewing pre-existing content, remember to retain key details through any edits.
+
+## 📝 Writing Standards
+
+### Voice and Tone
+
+**Required Style:** Present tense, second person, imperative mood
+
+✅ **Correct:** "Click the Share button to export your dashboard."  
+❌ **Incorrect:** "Users should click the Share button when they want to export their dashboards."
+
+### Point of View
+
+You are writing directly to the **customer** and **telling them what to do**. Be clear, direct, and action-oriented.
+
+**Example:**
+> To get started using Zoë, just ask her a question. If you don't know what you can ask about, simply ask what data she can see, or what would be a great question to ask next. When you're asking for data, be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). Zoë can handle both types of questions, and will ask you follow-up questions if she isn't able to make reasonable assumptions about what you intend from your question.
+
+### General Writing Guidelines
+
+- **Use active voice:** "Configure the dashboard" not "The dashboard should be configured"
+- **Start with verbs:** "Create a new workflow" not "To create a new workflow"
+- **Avoid jargon:** Use simple, clear language accessible to all skill levels
+- **Define acronyms:** Spell out on first use, then use the acronym
+
+## 📁 File Structure and Organization
+
+### Markdown Files (.md)
+
+1. **Add to existing structure** unless you have a compelling reason to create new sections
+2. **Use markdown preview** in your IDE before committing
+3. **Follow naming conventions:**
+   - Use lowercase with hyphens: `getting-started.md`, `api-reference.md`
+   - Be descriptive but concise: `workflow-automation.md` not `how-to-use-workflow-automation-features.md`
+
+### Content Organization Ideas
+
+Organize content by one of these logical structures:
+
+#### By Component
+- Sharing functionality
+- Drawer interface
+- Chat Input
+- History Sidebar
+- Dashboard Builder
+- Query Editor
+
+#### By User Persona
+- Self-serve question-answering workflows
+- Rigorous exploratory modeling during setup
+- Admin configuration tasks
+- Developer API integration
+
+#### By CRUD Operations
+- Creating resources
+- Reading/viewing data
+- Updating configurations
+- Deleting items
+
+### Section Headers
+
+- Use sentence case for headers: "Setting up your first dashboard" not "Setting Up Your First Dashboard"
+- Keep headers descriptive and searchable
+- Limit to three levels of hierarchy (H1, H2, H3)
+- Include keywords users might search for

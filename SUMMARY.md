@@ -104,6 +104,7 @@
 * [IP Whitelisting](authentication-and-security/ip_whitelisting.md)
 * [Login Troubleshooting](authentication-and-security/login_troubleshooting.md)
 * [Connecting To Github With A Deploy Key](authentication-and-security/connecting_to_github_with_a_deploy_key.md)
+* [SSO Custom Claims Reference](authentication-and-security/sso-custom-claims-reference.md)
 
 ## Legal & Support
 

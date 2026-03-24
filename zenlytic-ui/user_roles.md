@@ -28,9 +28,13 @@ There are eight (8) roles in Zenlytic that a user can have. Each role correspond
 
 `data_model_edit`: The ability to edit the data model.
 
+`create_workflow`: The ability to create a Proactive Agent (previously branded as a 'workflow')&#x20;
+
 `deploy_to_production`: The ability to deploy the data model from one branch to the production branch.
 
-`create_personal_field`: The ability to create a personal field (does not include the ability to promote it to the data model).
+`create_dynamic_field`: The ability to create a dynamic field (does not include the ability to promote it to the data model).
+
+`view_workspace_users`: The ability to view the names of other users in the workspace.
 
 `workspace_management`: Grants the ability to create, archive, and manage workspaces and credentials across an organization
 
@@ -57,13 +61,13 @@ The admin has all of the above permissions _except_ `workspace_management`.
 
 Develop has all of the admin permissions except the ability to edit the workspace settings (`edit_settings`).
 
-\##Develop without Deploy
+## Develop without Deploy
 
 Develop without Deploy has all of the Develop permissions except the ability to deploy the data model to production (`deploy_to_production`).
 
 ## Explore
 
-The Explore role is the most common, and we recommend it as the default. It has `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `download_with_limit`, `download_without_limit`, `see_sql`, and `chat`.
+The Explore role is the most common, and we recommend it as the default. It has `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `download_with_limit`, `download_without_limit`, `see_sql`, `create_workflow`, `create_dynamic_field`, `view_workspace_users`, and `chat`.
 
 ## View
 

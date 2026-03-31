@@ -25,6 +25,7 @@
 * [AI Model Selection Guide](zenlytic-ui/ai-model-selection-guide.md)
 * [Memories](zenlytic-ui/memories.md)
 * [Attachments](zenlytic-ui/attachments.md)
+* [Web Search](zenlytic-ui/web-search.md)
 * [Patterns](zenlytic-ui/patterns.md)
 * [Artifacts](zenlytic-ui/artifacts.md)
 * [Exploring](zenlytic-ui/exploring.md)

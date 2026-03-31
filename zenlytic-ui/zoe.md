@@ -74,6 +74,11 @@ Zoë also has the ability to write and evaluate Python code. This process occurs
 <figure><img src="../.gitbook/assets/code-interpreter.png" alt="Running a forecast in Python"><figcaption>Running a forecast in Python</figcaption></figure>
 
 
+## Web Search
+
+Zoë can search the web for real-time information to supplement her data analysis — for example, comparing your metrics against industry benchmarks or referencing recent market trends. Web Search is currently available only with Anthropic models (e.g. Sonnet 4.6, Opus 4.6). An admin must first enable it in **Settings > Zoë**, after which users can toggle it on per conversation via the **Globe icon** in the Chat input toolbar. See [Web Search](web-search.md) for full setup instructions and details on how cited sources work.
+
+
 ## Edit and Retry Messages
 
 If Zoë has finished responding but the answer did not meet your expectations, use the Edit button under user messages to modify the prompt before running again, or the Retry button under assistant messages to re-run the response with the same prompt.

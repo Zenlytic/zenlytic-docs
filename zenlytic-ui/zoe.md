@@ -74,6 +74,33 @@ Zoë also has the ability to write and evaluate Python code. This process occurs
 <figure><img src="../.gitbook/assets/code-interpreter.png" alt="Running a forecast in Python"><figcaption>Running a forecast in Python</figcaption></figure>
 
 
+## Web Search
+
+Zoë can search the web for real-time information to supplement her data analysis. This is useful when you need external context alongside your internal data — for example, comparing your metrics against industry benchmarks, understanding market trends, or referencing recent events.
+
+> **Note:** Web Search is currently available only when using Anthropic models (e.g. Sonnet 4.6, Opus 4.6). If a non-Anthropic model is selected for the conversation, the Web Search toggle will not appear.
+
+### Enabling Web Search for the Workspace
+
+Web Search must first be enabled at the workspace level by an admin. Navigate to **Settings > Zoë** and toggle **Web Search** on.
+
+<figure><img src="../.gitbook/assets/web-search-settings.png" alt="Enabling Web Search in the Zoë workspace settings"><figcaption><p>Enabling Web Search in the Zoë workspace settings</p></figcaption></figure>
+
+### Enabling Web Search per Conversation
+
+Once the workspace-level setting is enabled, Web Search can be toggled on or off for each individual conversation. Click the **Globe icon** in the toolbar below the Chat input to reveal the Web Search toggle, then switch it on for that conversation. When enabled, Zoë will be able to search the web as part of her response.
+
+<figure><img src="../.gitbook/assets/web-search-conversation.png" alt="Toggling Web Search on for an individual conversation"><figcaption><p>Toggling Web Search on for an individual conversation</p></figcaption></figure>
+
+### Cited Sources
+
+When Zoë uses web search to answer a question, she cites the sources she found directly in her response. Each piece of externally sourced information is accompanied by a domain-level citation badge (e.g. `docs.zenlytic.com`, `snowflake.com`) so you can see exactly where the information came from and verify it yourself.
+
+<figure><img src="../.gitbook/assets/web-search-response.png" alt="Zoë citing web sources in a response"><figcaption><p>Zoë citing web sources in a response</p></figcaption></figure>
+
+These web citations are separate from Zoë's existing data citations, which reference specific query results from your governed data model. When both are present in the same response, you can easily distinguish between externally sourced context and internally queried data.
+
+
 ## Edit and Retry Messages
 
 If Zoë has finished responding but the answer did not meet your expectations, use the Edit button under user messages to modify the prompt before running again, or the Retry button under assistant messages to re-run the response with the same prompt.

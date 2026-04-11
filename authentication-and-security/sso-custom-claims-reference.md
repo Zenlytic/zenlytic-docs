@@ -31,20 +31,30 @@ Controls exactly which workspaces a user has access to within an organization, a
 
 #### Format
 
-A comma-separated list of `workspace_id:role` pairs.
+This claim supports two formats:
+
+**Comma-separated string:**&#x20;
 
 ```
-workspace_id:role
 workspace_id:role, workspace_id:role
 ```
 
-**Example:**
+**SAML list (used by Cognito when receiving multi-valued SAML attributes):**&#x20;
+
+```
+[workspace_id%3Arole, workspace_id%3Arole]
+```
+
+The SAML list format is produced automatically when your identity provider (e.g. Microsoft Entra) sends workspace assignments as a multi-valued SAML attribute. When values are synced with our IdP, they are wrapped in brackets, URL-encodes the colons as `%3A`, and joins them with commas. Both formats are accepted interchangeably.
+
+**Examples:**&#x20;
 
 ```
 workspace-9e49r:develop, workspace-1geh0y:view
+[workspace-9e49r%3Adevelop, workspace-1geh0y%3Aview]
 ```
 
-This grants the user the `develop` role in workspace workspace-9e49r and the `view` role in workspace workspace-1geh0y.
+Both grant `develop` role in `workspace-9e49r` and `view` role in `workspace-1geh0y`.
 
 #### Valid Roles
 
@@ -88,7 +98,7 @@ For a full description of the permissions each role grants, see User Roles.
 * Each entry must contain a colon (`:`) separating workspace ID and role. Entries without a colon are silently skipped.
 * The role must be one of the valid roles listed above. Entries with unrecognized roles are silently skipped.
 * The workspace must exist, belong to the SSO provider's organization, and not be archived. Invalid workspaces are silently skipped.
-* If a workspace ID appears more than once, the last entry wins.
+* Duplicate workspace IDs resolve to the highest-permissioned role. For example, if a workspace appears with both `view` and `develop`, the user receives `develop`. The role hierarchy from lowest to highest is: `restricted` → `view` → `explore` → `develop_without_deploy` → `develop` → `admin` → `organization_admin`
 
 ***
 
@@ -184,12 +194,27 @@ Is zenlytic_workspaces present on the token?
 
 #### Microsoft Entra
 
-Custom claims are configured in the **Attributes & Claims** section of your Zenlytic Enterprise Application. See the How-to Set up Custom Claims in Entra section for step-by-step instructions.
+Custom claims configuration occurs in the **Attributes & Claims** section of your Zenlytic Enterprise Application. Detailed setup instructions appear in the How-to Set up Custom Claims in Entra documentation.
 
-For `zenlytic_workspaces`, create a new claim with:
+For `zenlytic_workspaces`, we recommend using a **multi-valued directory extension property**. This allows each workspace assignment to be a separate value in Entra, which Cognito automatically receives as a SAML list.
 
-* **Name:** `zenlytic_workspaces`
-* **Value:** A claim condition or transform that produces the `workspace_id:role` format described above.
+**Setup overview:**
+
+1.  Create a multi-valued directory extension property on your Zenlytic app registration using Microsoft Graph API:&#x20;
+
+    ```
+     POST https://graph.microsoft.com/v1.0/applications/{app-object-id}/extensionProperties { "name": "zenlyticWorkspaces", "dataType": "String", "isMultiValued": true, "targetObjects": ["User"] }
+    ```
+2.  Assign workspace values to users as an array:&#x20;
+
+    ```
+    PATCH https://graph.microsoft.com/v1.0/users/{user-id} { "extension_{appId}_zenlyticWorkspaces": [ "workspace-abc123:develop", "workspace-def456:view" ] }
+    ```
+3. In the Entra admin center, go to **Enterprise applications** → your Zenlytic app → **Single sign-on** → **Edit** on **Attributes & Claims** → **Add new claim**:
+   * **Name:** `zenlytic_workspaces`
+   * **Source:** select the directory schema extension from your app registration
+
+Our IdP receives the multi-valued SAML attribute and serializes it as `[workspace-abc123%3Adevelop, workspace-def456%3Aview]` in the JWT. Zenlytic parses this automatically.
 
 #### Okta
 
@@ -235,3 +260,23 @@ zenlytic_attributes = "[{\"key\": \"department\", \"value\": \"Marketing\"}]"
 ```
 
 Do **not** set `zenlytic_workspaces` in this case.
+
+#### Example 5: SAML list format from Entra
+
+When using a multi-valued directory extension in Microsoft Entra, Cognito produces the claim in SAML list format:
+
+```
+zenlytic_workspaces = "[workspace-9e49r%3Adevelop, workspace-1geh0y%3Aview]"
+```
+
+This is equivalent to `workspace-9e49r:develop, workspace-1geh0y:view` and is parsed identically.
+
+#### Example 6: Duplicate workspace with different roles
+
+If a user is assigned the same workspace with multiple roles (e.g. from overlapping group assignments in your identity provider):
+
+```
+zenlytic_workspaces = "workspace-9e49r:view, workspace-1geh0y:admin, workspace-9e49r:develop"
+```
+
+Workspace `workspace-9e49r` appears twice. Zenlytic picks the highest-permissioned role. The user receives `develop` (not `view`) for that workspace.

@@ -1,4 +1,25 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+---
+
 # Follow Ups From a Dashboard
+
+{% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
 
 There are two ways you can follow up from a dashboard question in Zenlytic.
 
@@ -7,7 +28,7 @@ There are two ways you can follow up from a dashboard question in Zenlytic.
 
 For both options, select the 3-dot menu in the top right-hand corner of a chart in a dashboard.
 
-You will see both of these options in the hover follow up menu options&#x20;
+You will see both of these options in the hover follow up menu options
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.52.15 AM.png" alt=""><figcaption></figcaption></figure>
 

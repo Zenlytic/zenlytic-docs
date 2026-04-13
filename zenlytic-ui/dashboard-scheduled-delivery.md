@@ -1,5 +1,7 @@
 # Dashboard Scheduled Delivery
 
+{% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
+
 Scheduling dashboards gives users the ability to run a dashboard at a predetermined time or times and send the results to a selected audience. The scheduler can send a PDF version of the dashboard, CSV data download and a link to view the dashboard within the Zenlytic UI. The scheduler can also include a standard or customized AI summary of the results.
 
 ## To schedule a dashboard:

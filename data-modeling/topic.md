@@ -1,4 +1,25 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+---
+
 # Topics
+
+{% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
 
 Topics are collections of tables (views) that can be joined together using foreign keys. They are specified in their own yaml files. Each topic uses its model's `connection` that it is defined in to get data.
 
@@ -47,7 +68,7 @@ always_filter:
 Each view can have the following properties:
 
 * `override_access_filters`: When set to `true`, access filters for this view will be ignored within this topic.
-* `from`: The view to pull from to perform the join. This property is used when you want to join a view in twice to a topic on different conditions. By default, it is the same as the name of the view, and is optional. &#x20;
+* `from`: The view to pull from to perform the join. This property is used when you want to join a view in twice to a topic on different conditions. By default, it is the same as the name of the view, and is optional.
 * `join`: Optional configuration to specify custom join logic:
   * `join_type`: The type of join (e.g., `left_outer`, `inner`, `full_outer`).
   * `relationship`: The cardinality relationship (e.g., `many_to_one`, `one_to_one`, `one_to_many`, `many_to_many`).

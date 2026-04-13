@@ -1,8 +1,35 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+---
+
 # Dashboards
+
+{% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
 
 Dashboards are collections of dashboard elements. Dashboard elements are plots or tables created with a combination of measures and dimensions that can be joined together.
 
 Dashboards are specified in YAML files, like all files in Zenlytic.
+
+## Related topics
+
+* [Artifacts](../zenlytic-ui/artifacts.md) for creating, sharing, refreshing, and delivering modern dashboard-style outputs.
+* [Data Modeling Overview](data_modeling.md) for the core model structure behind dashboards.
+* [Field Filters](field_filter.md) for the filter syntax used by dashboard and element filters.
 
 ## Dashboard Properties
 
@@ -29,11 +56,11 @@ Dashboard elements determine what to display for each element in the dashboard.
 
 ### Dashboard Element Properties
 
-`model`: (Required) The name of the model you want to base this dashboard element from.
+`model`: (Required) The name of the [model](model.md) you want to base this dashboard element from.
 
-`metrics`: (Required) This is a list of metric names to display in the dashboard element. For example, `orders.total_revenue` would reference the `total_revenue` measure in the `orders` view.
+`metrics`: (Required) This is a list of [measure](measure.md) names to display in the dashboard element. For example, `orders.total_revenue` would reference the `total_revenue` measure in the `orders` view.
 
-`slice_by`: This is a list of slices (dimensions or dimension\_groups) to apply to the plot or table. For example, `orders.new_vs_repeat` references the `new_vs_repeat` dimension in the `orders` view, and `orders.order_month` references the dimension\_group `order` using the `month` timeframe.
+`slice_by`: This is a list of slices ([dimensions](dimension.md) or [dimension groups](dimension_group.md)) to apply to the plot or table. For example, `orders.new_vs_repeat` references the `new_vs_repeat` dimension in the `orders` view, and `orders.order_month` references the dimension\_group `order` using the `month` timeframe.
 
 `filters`: This is a list of filters that follow the standard [field filter](field_filter.md) syntax. For example, the following filter ensures that the `product_name` dimension in the `order_lines` view is not equal to "Handbag"
 

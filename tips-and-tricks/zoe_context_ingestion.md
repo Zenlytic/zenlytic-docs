@@ -4,20 +4,7 @@ Zoë, Zenlytic's AI data analyst, leverages multiple sources of context to under
 
 ## Context Sources
 
-### 1. Memories
-
-Zoë learns from examples of successfully answered questions to improve her performance & consistency (more information [here](../zenlytic-ui/memories.md)):
-
-* **User feedback**: When a user hits the Add to Memory button, it will create a memory for Zoë. When asked similar questions in the future she will see that memory and will more consistently answer like that example.
-* **Field Usage**: Zoë sees how often different measures and dimensions are used, which gives her insight into what data is popular vs used for one-off tasks.
-* **Admin control**: Admins have full visibility into all memory training examples for Zoë, under Settings -> Memory
-
-**Optimization Tips:**
-
-* Review Zoë's responses and hit the Add to Memory button to reinforce desired behavior
-* Use the admin panel to remove any undesired or incorrectly marked examples
-
-### 2. Custom System Prompt Context
+### 1. Custom System Prompt Context
 
 You can extend Zoë's default system prompt with domain-specific knowledge that provides high-level organizational context:
 
@@ -29,7 +16,7 @@ You can extend Zoë's default system prompt with domain-specific knowledge that 
 * Document any unique business rules or calculation methodologies that Zoë should always follow in all of her analysis
 * Provide context about data quality considerations, known limitations, or special handling requirements
 
-### 3. YAML-Based Views
+### 2. YAML-Based Views
 
 When using Zenlytic's native semantic layer, Zoë reads directly from your YAML view definitions to understand your data structure (see 4. for dbt Metricflow):
 
@@ -44,7 +31,7 @@ When using Zenlytic's native semantic layer, Zoë reads directly from your YAML 
 * Include business logic explanations in measure and dimension descriptions
 * Document edge cases, calculation nuances, or limitations that Zoë should be aware of
 
-### 4. dbt MetricFlow Integration (Optional)
+### 3. dbt MetricFlow Integration (Optional)
 
 When using dbt MetricFlow as your semantic layer (instead of Zenlytic's native ZenML), Zoë automatically ingests context from your dbt project:
 
@@ -114,6 +101,5 @@ Zoë processes context sources in the following priority order:
 1. **Custom system prompt context** - Company-specific rules, terminology, and high-level organizational knowledge
 2. **Structural relationships** - How data connects through topics and joins, including topic-level descriptions
 3. **Field and view descriptions** - Business context from YAML definitions or dbt documentation at the view, measure, and dimension level
-4. **Memories** - Patterns from previous successful queries and responses that have been marked as helpful
 
 Understanding this hierarchy helps you strategically place your most critical context in the highest-priority locations for maximum impact on Zoë's analytical performance.

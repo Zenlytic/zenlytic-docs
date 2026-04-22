@@ -8,14 +8,14 @@
 ## Tips & Tricks
 
 * [How to Steer Zoë's Answers](tips-and-tricks/zoe_context_ingestion.md)
-* [Working with Zoë Tips and Tricks](tips-and-tricks/zoe_tips_and_tricks.md)
+* [Working with Zoë](tips-and-tricks/zoe_tips_and_tricks.md)
 * [Naming Conventions](tips-and-tricks/naming-conventions.md)
 * [Descriptions and Synonyms](tips-and-tricks/descriptions-and-synonyms.md)
 * [Entity Drills](tips-and-tricks/entity-drills.md)
 * [Time Metrics](tips-and-tricks/time-metrics.md)
 * [Voice Commands](tips-and-tricks/voice-commands.md)
 * [Data Indexing](tips-and-tricks/data-indexing.md)
-* [Plot Configuration Tips and Tricks with Zoë](tips-and-tricks/plot_configuration_tips_and_tricks_with_zoe.md)
+* [Plot Configuration](tips-and-tricks/plot_configuration_tips_and_tricks_with_zoe.md)
 
 ## Zenlytic UI
 

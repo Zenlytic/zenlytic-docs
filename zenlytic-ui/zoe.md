@@ -10,7 +10,7 @@ To get started using Zoë, just ask her a question. If you don't know what you c
 
 When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). Zoë can handle both type of questions, and will ask you follow up questions if she isn't able to make reasonable assumptions about what you intend from your question.
 
-By pressing the Microphone icon, Zoë will listen through the web browser to capture your prompt through realtime voice transcription. The Lightning icon opens a panel for selecting a Workflow to run. The Plus icon supports adding file or query attachments to the message, like images, CSVs, and PDFs (limit 5). A dropdown on the right side of the user input supports changing the LLM model that will be used for the new conversation. Press "Enter" or click the Up Arrow button to submit the message.
+By pressing the Microphone icon, Zoë will listen through the web browser to capture your prompt through realtime voice transcription. The Lightning icon opens a panel for selecting a Proactive Agent to run. The Plus icon supports adding file or query attachments to the message, like images, CSVs, and PDFs (limit 5). A dropdown on the right side of the user input supports changing the LLM model that will be used for the new conversation. Press "Enter" or click the Up Arrow button to submit the message.
 
 
 ## Querying
@@ -19,7 +19,7 @@ Zoë searches across the governed measures and dimensions to use existing fields
 
 <figure><img src="../.gitbook/assets/querying.png" alt="Ask Zoe for a bar chart"><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
 
-The left sidebar displays the Chat history, sorted by recent activity, and a button to create a new chat. In the upper left of the main content area, there's a button to collapse the left sidebar, a button to create a new chat, and the 3-Dot options menu that supports link sharing and "Save as Workflow" options.
+The left sidebar displays the Chat history, sorted by recent activity, and a button to create a new chat. In the upper left of the main content area, there's a button to collapse the left sidebar, a button to create a new chat, and the 3-Dot options menu that supports link sharing and "Save as Proactive Agent" options.
 
 <figure><img src="../.gitbook/assets/chat-drawer.png" alt="Clicking into the Query drawer"><figcaption><p>Clicking into the Query drawer</p></figcaption></figure>
 

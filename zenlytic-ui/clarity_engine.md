@@ -125,7 +125,7 @@ Note: Promoting Dynamic Fields requires developer-level permissions or above.
 
 ![The Clarity Engine promoting a metric](../.gitbook/assets/zoe_clarity_promote_hover.png)
 
-This promotion workflow transforms ad-hoc analysis into governed, reusable components that become available in [Artifacts](artifacts.md), explores, workflows, and future conversations with Zoë. By building your semantic model this way, you create measures and dimensions based on real analytical needs rather than trying to anticipate every possible field upfront.
+This promotion workflow transforms ad-hoc analysis into governed, reusable components that become available in [Artifacts](artifacts.md), explores, [Proactive Agents](../proactive-analytics/getting-started.md), and future conversations with Zoë. By building your semantic model this way, you create measures and dimensions based on real analytical needs rather than trying to anticipate every possible field upfront.
 
 ## Artifacts
 
@@ -145,6 +145,6 @@ The Clarity Engine's two modes handle different analytical scenarios. Most new w
 **Default Mode with Dynamic Fields** is best for:
 
 * **Flexible semantic model expansion** - Leverages your existing data structure while dynamically creating new fields that extend far beyond traditional BI platforms' capabilities, allowing complex analysis while maintaining governance
-* **Platform integration and reusability** - Creates analysis components that integrate natively with [Artifacts](artifacts.md), explores, workflows, and can be promoted into your permanent semantic model for team-wide use
+* **Platform integration and reusability** - Creates analysis components that integrate natively with [Artifacts](artifacts.md), explores, [Proactive Agents](../proactive-analytics/getting-started.md), and can be promoted into your permanent semantic model for team-wide use
 
 Both modes maintain the same high standards for security, governance, and transparency.

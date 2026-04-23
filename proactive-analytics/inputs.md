@@ -20,4 +20,4 @@ Now, when the Proactive Agent is run, the user will first be presented with a mo
 
 ![input-values-modal](../.gitbook/assets/input-values-modal.png)
 
-That's it! Inputs are an important tool in crafting Workflows for your organization that are highly flexible and can incorporate data from outside the data model such as CSVs.
+That's it! Inputs are an important tool in crafting Proactive Agents for your organization that are highly flexible and can incorporate data from outside the data model such as CSVs.

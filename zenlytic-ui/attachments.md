@@ -20,7 +20,7 @@ Upload files when you need Zoë to work with data that lives outside your wareho
 Select a CSV from the upload dialog to attach it to your message. Zoë reads the file contents, infers the schema, and treats the data as first-class context for the rest of the conversation.
 
 {% hint style="info" %}
-**CSV attachments in chat don't persist to your data model.** Files uploaded in a chat conversation go to Zoë's code interpreter only — they don't create views or fields that Zoë can query later. For persistent data, upload the file through the [Data Model Editor](data_model_editor.md) instead; that creates a proper view that Zoë can reference from any question.
+**CSV attachments in chat don't persist to your data model.** Files uploaded in a chat conversation are used only within that conversation (including in any [Artifacts](artifacts.md) Zoë creates) — they don't create views or fields that Zoë can query later. For persistent data, upload the file through the [Data Model Editor](data_model_editor.md) instead; that creates a proper view that Zoë can reference from any question.
 {% endhint %}
 
 <figure><img src="../.gitbook/assets/attachments-csv.png" alt=""><figcaption><p>Attaching a CSV file to the conversation</p></figcaption></figure>

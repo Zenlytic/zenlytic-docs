@@ -67,11 +67,11 @@ Zoë leverages streaming, so that incremental updates from the LLM model are sho
 The figure from the previous section shows how each message submitted by the user is pinned to the top of the screen while Zoë is responding, with automatically scrolling to follow the response as it streams onto the page. By scrolling up and away from the recent updates, the user can dismiss this automatic scroll behavior. While the conversation is running, click the "follow live updates" pill when it appears to restore the automatic scroll behavior.
 
 
-## Code Interpreter
+## Artifacts
 
-Zoë also has the ability to write and evaluate Python code. This process occurs in a sandbox environment where she can write any code she needs on top of the governed results pulled from the data model. This gives Zoë a huge amount of flexibility to answer complex questions that involve merging results of separate queries, plugging in assumptions to scenarios,  building custom visualizations, and doing advanced clustering, correlation, regression, and forecast analysis.
+Zoë can write and evaluate Python code in a secure sandbox and delivers the results as [Artifacts](artifacts.md): rich, interactive outputs like apps, documents, spreadsheets, presentations, and charts. Artifacts give Zoë the flexibility to answer complex questions that involve merging results from multiple queries, plugging in assumptions, building custom visualizations, and running advanced clustering, correlation, regression, and forecasting analysis. Each Artifact has versioned history, can refresh on a schedule, and can be shared or published. See [Artifacts](artifacts.md) for the full feature set.
 
-<figure><img src="../.gitbook/assets/code-interpreter.png" alt="Running a forecast in Python"><figcaption>Running a forecast in Python</figcaption></figure>
+<figure><img src="../.gitbook/assets/code-interpreter.png" alt="Zoë running advanced analysis"><figcaption>Zoë delivering an Artifact with a forecast analysis</figcaption></figure>
 
 
 ## Web Search

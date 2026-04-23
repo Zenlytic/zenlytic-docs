@@ -16,6 +16,10 @@ Dimensions are references to a column in the database or combinations of those r
 
 `zoe_description`: The description of the dimension as shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the field correctly.
 
+{% hint style="info" %}
+**Field-level `description` and `zoe_description` are capped at 1,024 characters.** For longer guidance, move broader context up to the view's `description` or `zoe_description` (up to 10,000 characters) or into a [Skill](../zenlytic-ui/skills.md). See [Context Surfaces](../core-concepts/context-surfaces.md) for the full visibility/char-limit table.
+{% endhint %}
+
 `group_label`: The label of the view the field is put into in the left hand sidebar menu. If not specified it defaults to the name of the view the field is present in.
 
 `primary_key`: A `true` indicates that this field is the primary key of the table. The default is (of course) `false`.
@@ -35,6 +39,10 @@ You can also reference any [referenceable attributes](referenceable_attributes.m
 `drill_fields`: This is a list of field names (dimensions or measures) to include in the drill query for the name of the tag (see below).
 
 `searchable`: A yes (or true) means that you want Zenlytic to index the categories of this dimension for use in natural language search. For example, if you indexed the column `state` you'd be able to search for states just by typing "New York" without having to mention the state field.
+
+{% hint style="warning" %}
+**Reserve `searchable` for categorical columns.** The default category limit is **10,000 values per dimension**. Do not set `searchable: true` on high-cardinality columns such as IDs, timestamps, email addresses, or any column with many unique values — you'll hit the limit and get no useful context back. Use `searchable` on status, type, and category columns where the distinct values determine how the column is used.
+{% endhint %}
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`. This works like a keyword search under the hood, to make fields with synonyms related to the question asked show up in context for Zoë.
 

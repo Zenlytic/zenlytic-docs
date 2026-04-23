@@ -2,6 +2,10 @@
 
 Dimension Groups are a particular type of dimension used for timeframes (referencing the same date column but having slices for it daily, weekly, monthly, etc), and for intervals (referencing the difference between two date columns and slicing it days between, weeks between, months between, etc).
 
+{% hint style="warning" %}
+**Avoid reserved words in dimension group names.** Dimension groups generate sub-fields for each timeframe (e.g., `date`, `week`, `month`). If you name a dimension group generically — for example `__time` or `date` — the generated sub-fields will be aliased as `day`, `month`, `time`, `order`, etc., which are reserved words in some SQL dialects and will produce query errors. Use descriptive names like `order_date`, `created_at`, or `shipped_at` instead.
+{% endhint %}
+
 ## Properties
 
 `name`: (Required) The name of the dimension group. If you reference this dimension group in the `default_date` property you will use this name. If you reference this dimension group elsewhere, in sets, other dimensions, etc you will use syntax as follows: `name_timeframe`. Like all names, it follows [Zenlytic naming conventions](data_modeling.md#naming-conventions)

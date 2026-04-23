@@ -1,5 +1,9 @@
 # Descriptions and Synonyms
 
+Descriptions and synonyms are two of the most impactful properties you can set on a field. Descriptions tell Zoë what a field means and when to use it; synonyms boost the field's search ranking by +20 for terms your users actually say. Together they're the fastest way to improve field-level discoverability and reasoning.
+
+For the full picture of where context goes and why, see [Context Surfaces](../core-concepts/context-surfaces.md).
+
 ## Descriptions help steer Zoë's decisions
 
 You can add a `description` to your metrics (measures) like this:

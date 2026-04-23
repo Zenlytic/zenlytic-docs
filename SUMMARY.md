@@ -23,14 +23,13 @@
 * [Data Indexing](tips-and-tricks/data-indexing.md)
 * [Plot Configuration](tips-and-tricks/plot_configuration_tips_and_tricks_with_zoe.md)
 
-## Zenlytic UI
+## Using Zenlytic
 
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
 * [Zoë](zenlytic-ui/zoe.md)
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [AI Model Selection Guide](zenlytic-ui/ai-model-selection-guide.md)
 * [Skills](zenlytic-ui/skills.md)
-* [Memories](zenlytic-ui/memories.md)
 * [Attachments](zenlytic-ui/attachments.md)
 * [Web Search](zenlytic-ui/web-search.md)
 * [Patterns](zenlytic-ui/patterns.md)
@@ -39,18 +38,20 @@
 * [Follow Ups](zenlytic-ui/follow_ups.md)
 * [Follow Ups From a Dashboard](zenlytic-ui/following_up_from_a_dashboard.md)
 * [Dashboard Scheduled Delivery](zenlytic-ui/dashboard-scheduled-delivery.md)
-* [Workspace Manager](zenlytic-ui/workspace-manager.md)
-* [Data Model Editor](zenlytic-ui/data_model_editor.md)
-* [User Attributes](zenlytic-ui/user_attributes.md)
-* [User Roles](zenlytic-ui/user_roles.md)
-* [Workspace Groups And Permissions](zenlytic-ui/workspace_groups_and_permissions.md)
 * [Installing Zenlytic in Microsoft Teams](zenlytic-ui/microsoft_teams_bot.md)
-* [Unsupported Chats](zenlytic-ui/legacy.md)
+
+## Administration
+
+* [User Roles](zenlytic-ui/user_roles.md)
+* [User Attributes](zenlytic-ui/user_attributes.md)
+* [Workspace Groups And Permissions](zenlytic-ui/workspace_groups_and_permissions.md)
+* [Workspace Manager](zenlytic-ui/workspace-manager.md)
 
 ## Data Modeling
 
 * [Data Modeling Overview](data-modeling/data_modeling.md)
 * [Ask Zoë for Data Model Recommendations](data-modeling/asking-zoe-for-recommendations.md)
+* [Data Model Editor](zenlytic-ui/data_model_editor.md)
 * [Model](data-modeling/model.md)
 * [Relationships](data-modeling/relationships.md)
 * [Views](data-modeling/view.md)
@@ -68,15 +69,12 @@
 * [dbt MetricFlow Integration](data-modeling/dbt_metricflow.md)
 * [Adding a New Table](data-modeling/adding_a_new_table.md)
 * [Cache Refresh](data-modeling/cache-refresh.md)
-* [Dashboards (legacy)](data-modeling/dashboard.md)
-* [Topics (legacy)](data-modeling/topic.md)
-* [Joins (legacy)](data-modeling/join.md)
 
 ## Migrations
 
 * [Migrating from Memories and Topics](migrations/migrating-from-memories-and-topics.md)
 
-## Proactive Analytics
+## Proactive Agents
 
 * [Proactive Getting Started](proactive-analytics/getting-started.md)
 * [Inputs](proactive-analytics/inputs.md)
@@ -119,6 +117,14 @@
 * [Login Troubleshooting](authentication-and-security/login_troubleshooting.md)
 * [Connecting To Github With A Deploy Key](authentication-and-security/connecting_to_github_with_a_deploy_key.md)
 * [SSO Custom Claims Reference](authentication-and-security/sso-custom-claims-reference.md)
+
+## Legacy
+
+* [Dashboards (legacy)](data-modeling/dashboard.md)
+* [Topics (legacy)](data-modeling/topic.md)
+* [Joins (legacy)](data-modeling/join.md)
+* [Memories (legacy)](zenlytic-ui/memories.md)
+* [Unsupported Chats](zenlytic-ui/legacy.md)
 
 ## Legal & Support
 

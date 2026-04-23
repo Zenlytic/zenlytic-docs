@@ -5,6 +5,12 @@
 * [Zenlytic Documentation](intro.md)
 * [Start Here](getting-started/start_here.md)
 
+## Core Concepts
+
+* [Context Surfaces](core-concepts/context-surfaces.md)
+* [Progressive Enrichment](core-concepts/progressive-enrichment.md)
+* [Fixing Zoë's Mistakes](core-concepts/fixing-zoes-mistakes.md)
+
 ## Tips & Tricks
 
 * [How to Steer Zoë's Answers](tips-and-tricks/zoe_context_ingestion.md)
@@ -23,6 +29,7 @@
 * [Zoë](zenlytic-ui/zoe.md)
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [AI Model Selection Guide](zenlytic-ui/ai-model-selection-guide.md)
+* [Skills](zenlytic-ui/skills.md)
 * [Memories](zenlytic-ui/memories.md)
 * [Attachments](zenlytic-ui/attachments.md)
 * [Web Search](zenlytic-ui/web-search.md)
@@ -34,7 +41,6 @@
 * [Dashboard Scheduled Delivery](zenlytic-ui/dashboard-scheduled-delivery.md)
 * [Workspace Manager](zenlytic-ui/workspace-manager.md)
 * [Data Model Editor](zenlytic-ui/data_model_editor.md)
-* [Skills](zenlytic-ui/skills.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)
 * [User Roles](zenlytic-ui/user_roles.md)
 * [Workspace Groups And Permissions](zenlytic-ui/workspace_groups_and_permissions.md)
@@ -45,23 +51,29 @@
 
 * [Data Modeling Overview](data-modeling/data_modeling.md)
 * [Model](data-modeling/model.md)
-* [Dashboards](data-modeling/dashboard.md)
-* [Topics](data-modeling/topic.md)
+* [Relationships](data-modeling/relationships.md)
 * [Views](data-modeling/view.md)
-* [Joins](data-modeling/join.md)
-* [Sets](data-modeling/set.md)
-* [Access Grants](data-modeling/access_grants.md)
 * [Fields](data-modeling/field.md)
 * [Dimensions](data-modeling/dimension.md)
 * [Dimension Groups](data-modeling/dimension_group.md)
 * [Measures](data-modeling/measure.md)
+* [Sets](data-modeling/set.md)
 * [Field Filters](data-modeling/field_filter.md)
 * [Formatting](data-modeling/formatting.md)
 * [Symmetric Aggregates](data-modeling/symmetric_aggregates.md)
 * [Table Calculation Syntax](data-modeling/table_calculation_syntax.md)
 * [Referenceable Attributes](data-modeling/referenceable_attributes.md)
+* [Access Grants](data-modeling/access_grants.md)
 * [dbt MetricFlow Integration](data-modeling/dbt_metricflow.md)
 * [Adding a New Table](data-modeling/adding_a_new_table.md)
+* [Cache Refresh](data-modeling/cache-refresh.md)
+* [Dashboards](data-modeling/dashboard.md)
+* [Topics (legacy)](data-modeling/topic.md)
+* [Joins (legacy)](data-modeling/join.md)
+
+## Migrations
+
+* [Migrating from Memories and Topics](migrations/migrating-from-memories-and-topics.md)
 
 ## Proactive Analytics
 

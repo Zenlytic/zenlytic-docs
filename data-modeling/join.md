@@ -1,14 +1,14 @@
 # Joins
 
-**Topics are the primary way joins are organized and managed in Zenlytic.** [Topics](topic.md) define collections of views that can be joined together and specify how those joins relate to each other. This approach provides clearer organization, better governance, and more intuitive data relationships.
+**[Relationships](relationships.md) defined on the [model](model.md) file are the recommended way to specify joins in Zenlytic.** Relationships live on the model file, are always visible to Zoë, and don't require grouping views into a named collection. See [Relationships](relationships.md) for the full schema and examples.
 
-Topics allow you to:
+Topics and identifiers remain supported for backward compatibility but are no longer recommended for new models. If you're starting fresh, define your joins as [relationships](relationships.md) on the model. If you already have topics or identifiers, they will continue to work — see [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for guidance on moving to the new surface.
 
-* Explicitly specify which views belong together, and how they should join
-* Provide business context about how data relates
-* Apply consistent access controls across related data
+## Alternative: Topics (legacy)
 
-## Topics
+{% hint style="warning" %}
+Topics are a legacy mechanism for organizing joins. New joins should be defined as [relationships](relationships.md) on the model file. The content below is retained as a reference for existing topic-based models.
+{% endhint %}
 
 Topics organize your views into logical groupings and handle the join relationships between them. When creating a topic, you specify:
 
@@ -62,6 +62,10 @@ views:
 Zoë uses topics to understand what data can be joined together and how those relationships work, making her responses more accurate and contextually appropriate.
 
 ## Join As: How to join a table in more than once to a topic
+
+{% hint style="warning" %}
+**Identifiers are legacy.** The `identifiers` block on a view, including the `join_as`, `join_as_label`, and `join_as_field_prefix` sub-properties, is retained for backward compatibility. New self-joins and repeated joins should be defined as [relationships](relationships.md) on the model file using the `join_as` property there. See [Relationships](relationships.md) for the current syntax.
+{% endhint %}
 
 Sometimes you need to join the same table into a topic multiple times with different meanings. For example, you might have an `orders` table that needs to reference `customers` as both "billing customer" and "shipping customer". This is where `join_as` comes in.
 

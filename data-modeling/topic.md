@@ -21,6 +21,14 @@ layout:
 
 {% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
 
+{% hint style="warning" %}
+**Topics are retained for backward compatibility.** New joins should use [Relationships](relationships.md) on the [model](model.md) file rather than new topic files. Existing topics continue to work and Zoë will still read them, but we no longer recommend adding new context here. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side example.
+{% endhint %}
+
+{% hint style="danger" %}
+**Fan-out gotcha with implicit joins.** When a topic's base view has an implicit one-to-many join from the base table to another view, results will fan out and be incorrect. You can fix this by either (a) swapping which table is the base view, or (b) defining the join explicitly at the topic level with the correct cardinality. Implicit joins only behave correctly when the relationship from the base view is one-to-one or many-to-one.
+{% endhint %}
+
 Topics are collections of tables (views) that can be joined together using foreign keys. They are specified in their own yaml files. Each topic uses its model's `connection` that it is defined in to get data.
 
 Topics exist to let you specify sections of your data that join together. They let you specify an explicit base view, and how joins work to connect other views to that base view.

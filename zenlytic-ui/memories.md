@@ -1,3 +1,7 @@
+{% hint style="warning" %}
+**Memories are legacy and are being replaced by [Skills](skills.md).** You can still create and use memories today, and existing memories will be migrated automatically in a future release. For new context, use [Skills](skills.md) — they cover the same ground with fewer limitations. New joins, field-level context, and universal rules should go on the data model or in the system prompt rather than in a memory. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side comparison.
+{% endhint %}
+
 # Memories
 
 Use memories to teach Zoë about your company, your data preferences, and how you want questions answered. Zoë uses these memories to understand your business and remember your preferences in future responses.

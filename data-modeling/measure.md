@@ -114,6 +114,27 @@ The Non Additive Dimension has three properties
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
 
+## Valid and invalid measure patterns
+
+A common source of errors in measure definitions is mismatching `type` with what's inside `sql`. There are only two valid patterns; double-aggregation and missing-aggregation are both invalid.
+
+| Pattern                                | Valid? | Why                                                                                 |
+| -------------------------------------- | ------ | ----------------------------------------------------------------------------------- |
+| `type: number` + `sql: SUM(field)`     | Yes    | The aggregation is explicit in the SQL expression.                                  |
+| `type: sum` + `sql: field`             | Yes    | The `type` provides the aggregation; `sql` references the column.                   |
+| `type: number` + `sql: field`          | **No** | No aggregation. Zoë will silently wrap the SQL but verification will fail.          |
+| `type: sum` + `sql: SUM(field)`        | **No** | Double aggregation — `type: sum` wraps another `SUM()`.                             |
+
+When defining a new measure, always use one of the two valid patterns. If you need a more complex aggregation (cumulative, window-based, distinct-key), use `type: number` with the full SQL expression and add a `zoe_description` explaining what it calculates.
+
+{% hint style="warning" %}
+**`canon_date` overuse.** Setting `canon_date` on many measures has been observed to cause incorrect SQL generation. Prefer setting `default_date` on the [view](view.md) and only use `canon_date` on individual measures when they genuinely need a different date than the view default.
+{% endhint %}
+
+{% hint style="info" %}
+**Where to document what a measure means.** Put user-facing descriptions on `description` and agent-only calculation notes on `zoe_description`. Both are capped at 1,024 characters. For longer guidance, put it in the view `description` / `zoe_description` (up to 10,000 characters) or in a [Skill](../zenlytic-ui/skills.md). See [How to Steer Zoë's Answers](../tips-and-tricks/zoe_context_ingestion.md) for the full surface-vs-visibility table.
+{% endhint %}
+
 ## Examples
 
 The first measure takes the average of price for every order lines row. The second measure, sums up the price value, but it performs the sum uniquely based on each unique order\_id instead of every row in the table, which ensures there is no double counting.

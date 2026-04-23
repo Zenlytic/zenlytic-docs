@@ -4,6 +4,10 @@ To understand data modeling in Zenlytic, there are a few key concepts to grasp. 
 
 Note: You can also use our automatic LookML -> ZenML converter [here](https://lookml-zenml.netlify.app/).
 
+{% hint style="info" %}
+**You don't have to author alone.** Ask Zoë in chat how to add a measure, write a calculation, or model a relationship and she'll recommend specific YAML and explain where it belongs. See [Ask Zoë for Data Model Recommendations](asking-zoe-for-recommendations.md).
+{% endhint %}
+
 ## Key concepts
 
 * [Models](model.md)

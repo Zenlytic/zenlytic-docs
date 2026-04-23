@@ -50,6 +50,7 @@
 ## Data Modeling
 
 * [Data Modeling Overview](data-modeling/data_modeling.md)
+* [Ask Zoë for Data Model Recommendations](data-modeling/asking-zoe-for-recommendations.md)
 * [Model](data-modeling/model.md)
 * [Relationships](data-modeling/relationships.md)
 * [Views](data-modeling/view.md)

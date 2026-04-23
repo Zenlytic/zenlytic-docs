@@ -67,7 +67,7 @@
 * [dbt MetricFlow Integration](data-modeling/dbt_metricflow.md)
 * [Adding a New Table](data-modeling/adding_a_new_table.md)
 * [Cache Refresh](data-modeling/cache-refresh.md)
-* [Dashboards](data-modeling/dashboard.md)
+* [Dashboards (legacy)](data-modeling/dashboard.md)
 * [Topics (legacy)](data-modeling/topic.md)
 * [Joins (legacy)](data-modeling/join.md)
 

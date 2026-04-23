@@ -88,9 +88,9 @@ If Zoë has finished responding but the answer did not meet your expectations, u
 At any point while Zoë is responding, click the Pause button in the lower right of the Chat input to cause Zoë to quickly exit out of the current task and allow submission of a new user message.
 
 
-## Dashboards
+## Dashboards (legacy)
 
-Zoë can create new dashboards and add plots to those dashboards or add plots to existing dashboards. She can also search your dashboards for terms so you can answer questions like "What dashboards do we have for revenue and plan?"
+Dashboards have been replaced by [Artifacts](artifacts.md) for new visual outputs. Existing dashboards continue to work — Zoë can still search them and answer questions like "What dashboards do we have for revenue and plan?" — but new work should be built as Artifacts, which support richer output types, versioning, scheduled refresh, delivery, and web publishing.
 
 
 ## Slack & Teams

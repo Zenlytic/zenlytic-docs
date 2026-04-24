@@ -17,7 +17,7 @@ For example, to connect with this [example repo](https://github.com/Zenlytic/dem
 
 Finally, finish filling out your data warehouse's connection information and click save
 
-![Finish Connection](../.gitbook/assets/finish-connection.png)
+![Finish Connection](../assets/5_data_modeling/finish-connection.png)
 
 ## Git
 
@@ -37,5 +37,3 @@ Use this page as your quick start path:
 
 The full walkthrough for tabs, branch workflows, diffs, and deployment lives on the [Context Manager](../zenlytic-ui/context_manager.md) page.
 
-![Placeholder: open context manager entry points](../.gitbook/assets/placeholder-context-manager-entry-points.png)
-![Placeholder: context manager quick flow](../.gitbook/assets/placeholder-context-manager-quick-flow.png)

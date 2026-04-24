@@ -3,6 +3,7 @@
 ## Getting Started
 
 * [Zenlytic Documentation](intro.md)
+* [Start Here](getting-started/start_here.md)
 
 ## Tips & Tricks
 
@@ -19,7 +20,7 @@
 ## Zenlytic UI
 
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
-* [Setting up Zenlytic](zenlytic-ui/setting_up_zenlytic.md)
+* [Context Manager](zenlytic-ui/context_manager.md)
 * [Zoë](zenlytic-ui/zoe.md)
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [AI Model Selection Guide](zenlytic-ui/ai-model-selection-guide.md)

@@ -1,4 +1,4 @@
-# Setting up Zenlytic
+# Context Manager
 
 We're going to walk through setting up Zenlytic from scratch. You should have received a login to your workspace to begin the setup process.
 

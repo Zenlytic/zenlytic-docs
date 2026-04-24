@@ -1,4 +1,4 @@
-# Start Here
+# Setting up Zenlytic
 
 We're going to walk through setting up Zenlytic from scratch. You should have received a login to your workspace to begin the setup process.
 
@@ -25,17 +25,17 @@ Git should be already connected. You should continue using Zenlytic's default "M
 
 ## Defining your data model
 
-Documentation on defining your data model can be found [here](../data-modeling/data_modeling.md). In the repo you connected earlier, you'll define the [models](../data-modeling/model.md) and [views](../5_data_modeling/5_view.md) you want. Here's an example repo for an direct-to-consumer cosmetics brand in our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
+Documentation on defining your data model can be found [here](../data-modeling/data_modeling.md). In the repo you connected earlier, you'll define the [models](../data-modeling/model.md) and [views](../data-modeling/view.md) you want. Here's an example repo for an direct-to-consumer cosmetics brand in our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
 
-To start defining metrics, go to the [Data Model Editor](https://app.zenlytic.com/data-model-editor) in the Zenlytic UI.
+To start defining metrics, open Context Manager in the Zenlytic UI.
 
-To add a new table click "Create view from table" and select tables to bring into your data model. When you import tables, Zenlytic will use the information\_schema table to pull in metadata, and (for warehouses like Snowflake, BigQuery, and Databricks) pull in column and table level descriptions.
+To add a new table click "Create view from table" and select tables to bring into your data model. When you import tables, Zenlytic will use the information_schema table to pull in metadata, and (for warehouses like Snowflake, BigQuery, and Databricks) pull in column and table level descriptions.
 
 <div align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt=""></div>
 
 Once the table is imported, you'll see a yaml file with dimensions defined. Make sure to select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, organize your views into [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../data-modeling/measure.md)) you want to use.
 
-To make your changes live for other users on the production branch (if you are not making changes on the production branch), click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the AI Analyst) has the latest information on your production metrics.
+To make your changes live for other users on the production branch (if you are not making changes on the production branch), click "Deploy to Production" in the upper right of Context Manager. That will publish your changes and make sure Zoë (the AI Analyst) has the latest information on your production metrics.
 
 ## FAQ
 

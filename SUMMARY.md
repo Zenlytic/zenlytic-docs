@@ -20,7 +20,6 @@
 ## Zenlytic UI
 
 * [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
-* [Context Manager](zenlytic-ui/context_manager.md)
 * [Zoë](zenlytic-ui/zoe.md)
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [AI Model Selection Guide](zenlytic-ui/ai-model-selection-guide.md)
@@ -34,6 +33,7 @@
 * [Follow Ups From a Dashboard](zenlytic-ui/following_up_from_a_dashboard.md)
 * [Dashboard Scheduled Delivery](zenlytic-ui/dashboard-scheduled-delivery.md)
 * [Workspace Manager](zenlytic-ui/workspace-manager.md)
+* [Context Manager](zenlytic-ui/context_manager.md)
 * [Skills](zenlytic-ui/skills.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)
 * [User Roles](zenlytic-ui/user_roles.md)

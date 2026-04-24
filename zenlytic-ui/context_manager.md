@@ -1,63 +1,81 @@
 # Context Manager
 
-We're going to walk through setting up Zenlytic from scratch. You should have received a login to your workspace to begin the setup process.
+Use Context Manager to manage your semantic model files, review changes, and deploy updates to production.
 
-There are two external connections Zenlytic needs to make to function.
+![Placeholder: Context Manager overview](../.gitbook/assets/placeholder-context-manager-overview.png)
 
-1. Your data warehouse.
-2. Git for your data model.
+## Open Context Manager
 
-## Connecting to your data warehouse
+Open Context Manager from the workspace navigation or from chat.
 
-You can click "+ Add Connection" under "Database Connections" in the settings menu. You'll first need to select your warehouse type from the drop down, and name your connection.
+![Placeholder: Open Context Manager entry points](../.gitbook/assets/placeholder-context-manager-entry-points.png)
 
-The naming of the connection is how Zenlytic links database credentials with your data model. The name of the connection here must be the same as the `connection` property in the [model](../data-modeling/model.md) or the same as the dbt `profile` if integrating with dbt Metricflow without a model file
+## Understand the tabs
 
-For example, to connect with this [example repo](https://github.com/Zenlytic/demo-data-model) we'd use the connection name `demo` because that's the value of `connection` in the [model file](https://github.com/Zenlytic/demo-data-model/blob/master/models/pure_organics_model.yml)
+Use the tabs to control model context and query-based learning:
 
-Finally, finish filling out your data warehouse's connection information and click save
+- **Context:** Create and edit model files, view files, folders, and branches
+- **Query history:** Let Zenlytic learn from prior queries to improve query accuracy and speed
 
-![Finish Connection](../.gitbook/assets/finish-connection.png)
+![Placeholder: Context Manager tabs](../.gitbook/assets/placeholder-context-manager-tabs.png)
 
-## Git
+## Manage files in the Context tab
 
-Git should be already connected. You should continue using Zenlytic's default "Managed Repo", which involves no setup. If you want to switch from that to a separate repo, you can contact support.
+Use the file tree to organize and maintain your data model:
 
-## Defining your data model
+- Create files and folders
+- Rename files and folders
+- Open view and model files in the editor
+- Access file actions from the three-dot menu
 
-Documentation on defining your data model can be found [here](../data-modeling/data_modeling.md). In the repo you connected earlier, you'll define the [models](../data-modeling/model.md) and [views](../data-modeling/view.md) you want. Here's an example repo for an direct-to-consumer cosmetics brand in our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
+From the three-dot menu, you can also:
 
-To start defining metrics, open Context Manager in the Zenlytic UI.
+- Show documentation for view and model files
+- Open database preview for view files
 
-To add a new table click "Create view from table" and select tables to bring into your data model. When you import tables, Zenlytic will use the information_schema table to pull in metadata, and (for warehouses like Snowflake, BigQuery, and Databricks) pull in column and table level descriptions.
+![Placeholder: Context tab file tree](../.gitbook/assets/placeholder-context-manager-file-tree.png)
+![Placeholder: Three-dot menu actions](../.gitbook/assets/placeholder-context-manager-file-menu.png)
 
-<div align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt=""></div>
+## Add new model assets
 
-Once the table is imported, you'll see a yaml file with dimensions defined. Make sure to select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, organize your views into [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../data-modeling/measure.md)) you want to use.
+Use the **Add** button to create new assets:
 
-To make your changes live for other users on the production branch (if you are not making changes on the production branch), click "Deploy to Production" in the upper right of Context Manager. That will publish your changes and make sure Zoë (the AI Analyst) has the latest information on your production metrics.
+- **Add view**
+- **Add model file**
 
-## FAQ
+When you add a view, choose one of these methods:
 
-**Not seeing metrics in the Zenlytic interface?**
+- Upload a CSV file
+- Add from a database connection
 
-* If you have the `hidden` property set to `true`, you won't see those metrics or dimensions anywhere in the UI. Make sure you remove the hidden property or set it to `false` if you want those metrics to show up in the UI.
+Use an existing connection or create a new connection during setup.
 
-```yaml
-# This metric won't show up in the UI because hidden is set to true
-- name: number_of_orders
-  field_type: measure
-  type: count_distinct
-  sql: ${order_id}
-  description: "The unique number of orders placed"
-  value_format_name: decimal_0
-  hidden: true
-```
+![Placeholder: Add button options](../.gitbook/assets/placeholder-context-manager-add-options.png)
+![Placeholder: Add view modal](../.gitbook/assets/placeholder-context-manager-add-view.png)
 
-## Where do I go from here?
+## Edit, validate, and review changes
 
-If you want to learn more about how to use the user interface and the different capabilities it has, check out the [documentation on the user interface](../zenlytic-ui/using_zenlytic.md)!
+Edit files directly in the text editor. Use the validation panel to review errors and warnings, then fix issues before deployment.
 
-If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](../data-modeling/data_modeling.md)
+Open diff view to compare branch changes against production before you deploy.
 
-As always, feel free to reach out to your Zenlytic contact if you have questions that aren't answered in the documentation!
+![Placeholder: Editor with validation panel](../.gitbook/assets/placeholder-context-manager-editor-validation.png)
+![Placeholder: Diff view](../.gitbook/assets/placeholder-context-manager-diff-view.png)
+
+## Work with branches safely
+
+Use the branch selector next to the Context Manager title to work on non-production branches.
+
+Enable the workspace setting that blocks direct editing on the production branch when you want to enforce a branch-based workflow.
+
+![Placeholder: Branch selector](../.gitbook/assets/placeholder-context-manager-branch-selector.png)
+![Placeholder: Disable production edits setting](../.gitbook/assets/placeholder-context-manager-disable-production-edits.png)
+
+## Deploy to production
+
+After you commit changes on a development branch, use the action button to deploy to production.
+
+Context Manager saves changes as you type, but you must resolve validation errors before deployment.
+
+![Placeholder: Deploy action](../.gitbook/assets/placeholder-context-manager-deploy.png)
+

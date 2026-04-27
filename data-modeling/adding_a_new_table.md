@@ -1,14 +1,14 @@
 # Adding a New Table
 
-## 1. Go to the data model editor
+## 1. Open Context Manager
 
-Using the left-hand navigation, go to the data model editor.
+Using the left-hand navigation, open Context Manager.
 
 ![add-new-table-data-model-editor](../.gitbook/assets/add-new-table-data-model-editor.png)
 
-## 2. Click the "Add new table" button
+## 2. Click the "Add view" button
 
-Tables can be added by clicking the **"Add new table"** button in the Data Model Editor.
+Tables can be added by clicking the **Add** button, then selecting **Add view** in Context Manager.
 
 Clicking the button will bring up the Add New Table modal.
 

@@ -17,47 +17,23 @@ For example, to connect with this [example repo](https://github.com/Zenlytic/dem
 
 Finally, finish filling out your data warehouse's connection information and click save
 
-![Finish Connection](../.gitbook/assets/finish-connection.png)
+![Finish Connection](../assets/5_data_modeling/finish-connection.png)
 
 ## Git
 
 Git should be already connected. You should continue using Zenlytic's default "Managed Repo", which involves no setup. If you want to switch from that to a separate repo, you can contact support.
 
-## Defining your data model
+## Define your data model in Context Manager
 
-Documentation on defining your data model can be found [here](../data-modeling/data_modeling.md). In the repo you connected earlier, you'll define the [models](../data-modeling/model.md) and [views](../5_data_modeling/5_view.md) you want. Here's an example repo for an direct-to-consumer cosmetics brand in our [standard yaml](https://github.com/Zenlytic/demo-data-model) syntax.
+After you connect your warehouse and Git, open [Context Manager](../zenlytic-ui/context_manager.md) in the Zenlytic UI to define your data model.
 
-To start defining metrics, go to the [Data Model Editor](https://app.zenlytic.com/data-model-editor) in the Zenlytic UI.
+Use this page as your quick start path:
 
-To add a new table click "Create view from table" and select tables to bring into your data model. When you import tables, Zenlytic will use the information\_schema table to pull in metadata, and (for warehouses like Snowflake, BigQuery, and Databricks) pull in column and table level descriptions.
+1. Open Context Manager from the workspace navigation or from chat.
+2. Add a view from the **Context** tab.
+3. Edit your model and view files.
+4. Review diffs and resolve validation errors.
+5. Deploy to production when your changes are ready.
 
-<div align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt=""></div>
+The full walkthrough for tabs, branch workflows, diffs, and deployment lives on the [Context Manager](../zenlytic-ui/context_manager.md) page.
 
-Once the table is imported, you'll see a yaml file with dimensions defined. Make sure to select your desired `default_date` for the [view](../data-modeling/view.md) if you're defining metrics, organize your views into [topics](../data-modeling/topic.md) for joins, and define the aggregates ([metrics / measures](../data-modeling/measure.md)) you want to use.
-
-To make your changes live for other users on the production branch (if you are not making changes on the production branch), click "Deploy to Production" in the upper right of the data model editor page. That will publish your changes and make sure Zoë (the AI Analyst) has the latest information on your production metrics.
-
-## FAQ
-
-**Not seeing metrics in the Zenlytic interface?**
-
-* If you have the `hidden` property set to `true`, you won't see those metrics or dimensions anywhere in the UI. Make sure you remove the hidden property or set it to `false` if you want those metrics to show up in the UI.
-
-```yaml
-# This metric won't show up in the UI because hidden is set to true
-- name: number_of_orders
-  field_type: measure
-  type: count_distinct
-  sql: ${order_id}
-  description: "The unique number of orders placed"
-  value_format_name: decimal_0
-  hidden: true
-```
-
-## Where do I go from here?
-
-If you want to learn more about how to use the user interface and the different capabilities it has, check out the [documentation on the user interface](../zenlytic-ui/using_zenlytic.md)!
-
-If you want to learn about data modeling and how to define your metrics check out the [documentation on the data model](../data-modeling/data_modeling.md)
-
-As always, feel free to reach out to your Zenlytic contact if you have questions that aren't answered in the documentation!

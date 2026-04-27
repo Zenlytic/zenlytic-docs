@@ -33,7 +33,7 @@
 * [Follow Ups From a Dashboard](zenlytic-ui/following_up_from_a_dashboard.md)
 * [Dashboard Scheduled Delivery](zenlytic-ui/dashboard-scheduled-delivery.md)
 * [Workspace Manager](zenlytic-ui/workspace-manager.md)
-* [Data Model Editor](zenlytic-ui/data_model_editor.md)
+* [Context Manager](zenlytic-ui/context_manager.md)
 * [Skills](zenlytic-ui/skills.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)
 * [User Roles](zenlytic-ui/user_roles.md)

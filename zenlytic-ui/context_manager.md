@@ -2,13 +2,13 @@
 
 Use Context Manager to manage your semantic model files, review changes, and deploy updates to production.
 
-![Placeholder: Context Manager overview](../assets/5_data_modeling/context-manager-overview.png)
+![Context Manager overview](../assets/5_data_modeling/context-manager-overview.png)
 
 ## Open Context Manager
 
 Open Context Manager from the workspace navigation or from chat.
 
-![Placeholder: Open Context Manager entry points](../assets/5_data_modeling/context-manager-entry-points.png)
+![Open Context Manager entry points](../assets/5_data_modeling/context-manager-entry-points.png)
 
 ## Understand the tabs
 
@@ -17,7 +17,7 @@ Use the tabs to control model context and query-based learning:
 - **Context:** Create and edit model files, view files, folders, and branches
 - **Query history:** Let Zenlytic learn from prior queries to improve query accuracy and speed
 
-![Placeholder: Context Manager tabs](../assets/5_data_modeling/context-manager-tabs.png)
+![Context Manager tabs](../assets/5_data_modeling/context-manager-tabs.png)
 
 ## Manage files in the Context tab
 
@@ -33,8 +33,8 @@ From the three-dot menu, you can also:
 - Show documentation for view and model files
 - Open database preview for view files
 
-![Placeholder: Context tab file tree](../assets/5_data_modeling/context-manager-file-tree.png)
-![Placeholder: Three-dot menu actions](../assets/5_data_modeling/context-manager-file-menu.png)
+![Context tab file tree](../assets/5_data_modeling/context-manager-file-tree.png)
+![Three-dot menu actions](../assets/5_data_modeling/context-manager-file-menu.png)
 
 ## Add new model assets
 
@@ -50,8 +50,8 @@ When you add a view, choose one of these methods:
 
 Use an existing connection or create a new connection during setup.
 
-![Placeholder: Add button options](../assets/5_data_modeling/context-manager-add-options.png)
-![Placeholder: Add view modal](../assets/5_data_modeling/context-manager-add-view.png)
+![Add button options](../assets/5_data_modeling/context-manager-add-options.png)
+![Add view modal](../assets/5_data_modeling/context-manager-add-view.png)
 
 ## Edit, validate, and review changes
 
@@ -59,8 +59,8 @@ Edit files directly in the text editor. Use the validation panel to review error
 
 Open diff view to compare branch changes against production before you deploy.
 
-![Placeholder: Editor with validation panel](../assets/5_data_modeling/context-manager-editor-validation.png)
-![Placeholder: Diff view](../assets/5_data_modeling/context-manager-diff-view.png)
+![Editor with validation panel](../assets/5_data_modeling/context-manager-editor-validation.png)
+![Diff view](../assets/5_data_modeling/context-manager-diff-view.png)
 
 ## Work with branches safely
 
@@ -68,8 +68,8 @@ Use the branch selector next to the Context Manager title to work on non-product
 
 Enable the workspace setting that blocks direct editing on the production branch when you want to enforce a branch-based workflow.
 
-![Placeholder: Branch selector](../assets/5_data_modeling/context-manager-branch-selector.png)
-![Placeholder: Disable production edits setting](../assets/5_data_modeling/context-manager-disable-production-edits.png)
+![Branch selector](../assets/5_data_modeling/context-manager-branch-selector.png)
+![Disable production edits setting](../assets/5_data_modeling/context-manager-disable-production-edits.png)
 
 ## Deploy to production
 
@@ -77,5 +77,5 @@ After you commit changes on a development branch, use the action button to deplo
 
 Context Manager saves changes as you type, but you must resolve validation errors before deployment.
 
-![Placeholder: Deploy action](../assets/5_data_modeling/context-manager-deploy.png)
+![Deploy action](../assets/5_data_modeling/context-manager-deploy.png)
 

@@ -11,6 +11,8 @@ By default, Zenlytic workspaces accept sign-ins from both:
 
 When the default Cognito provider is disabled for your workspace, only your SSO providers can authenticate users. Username/password sign-in is no longer available.
 
+<figure><img src="../.gitbook/assets/sso-only-login-page.png" alt="Zenlytic Welcome Back sign-in page showing only the Continue With Microsoft Entra button, with no username or password fields"><figcaption><p>The Zenlytic sign-in page in a workspace with the default Cognito provider disabled — only the configured SSO provider is offered.</p></figcaption></figure>
+
 ## When to use this
 
 Common reasons to enforce SSO-only login:

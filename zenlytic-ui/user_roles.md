@@ -1,7 +1,3 @@
-{% hint style="danger" %}
-**DRAFT — pending engineering review.** The permissions tiers and ad-hoc SQL behavior described below (especially the "enforce permissions for admins" toggle) were drafted from the data-model-management skill and have not yet been verified with engineering. Do not publish until confirmed.
-{% endhint %}
-
 # User Roles
 
 Permissions sets that give users the ability to take certain actions in Zenlytic. Each role bundles a set of underlying permissions; roles also determine how much latitude a user has to query data that isn't formally defined in the semantic layer.
@@ -10,11 +6,11 @@ Permissions sets that give users the ability to take certain actions in Zenlytic
 
 Beyond the per-permission bundles below, Zenlytic enforces a tiered model for how much direct warehouse access each role has:
 
-| Tier               | Ad-hoc SQL access                                                                                            |
-| ------------------ | ------------------------------------------------------------------------------------------------------------ |
-| **Admin**          | Full access, including ad-hoc SQL on any table the underlying SQL role can reach.                            |
-| **Developer** and above | Can run ad-hoc queries on tables that aren't explicitly listed in the semantic layer.                   |
-| **Explorer**       | Can only access tables that are defined in the semantic layer.                                               |
+| Roles                                                                                | Ad-hoc SQL access                                                                 |
+| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| **Admin** (Organization Admin, Admin)                                                | Full access, including ad-hoc SQL on any table the underlying SQL role can reach. |
+| **Developer** (Develop, Develop without Deploy)                                      | Full access, including ad-hoc SQL on any table the underlying SQL role can reach. |
+| **Explorer** (Explore, View, Restricted, Embed, Embed with SQL, Embedded with Scheduling) | Limited to tables defined in the semantic layer.                              |
 
 **Enforce permissions for admins toggle.** A workspace-level toggle controls whether Admins are also restricted to the semantic layer or retain full ad-hoc access. When the toggle is **off** (default), Admins can query any table their SQL role can reach, even ones not modeled in Zenlytic. When **on**, Admins follow the same semantic-layer restrictions as everyone else.
 
@@ -75,37 +71,25 @@ When an Organization Admin creates a new workspace, they are automatically assig
 
 _Note: The Organization Admin role only appears as an option in the role selector for users who already have the workspace\_management permission. If your workspace is not part of an organization, this role will not be available._
 
-Ad-hoc SQL tier: **Admin.**
-
 ### Admin
 
-The admin has all of the above permissions _except_ `workspace_management`.
-
-Ad-hoc SQL tier: **Admin.** Subject to the "enforce permissions for admins" toggle.
+The admin has all of the above permissions _except_ `workspace_management`. Subject to the "enforce permissions for admins" toggle described above.
 
 ### Develop
 
 Develop has all of the admin permissions except the ability to edit the workspace settings (`edit_settings`).
 
-Ad-hoc SQL tier: **Developer.** Can run ad-hoc SQL against unlisted warehouse tables.
-
 ### Develop without Deploy
 
 Develop without Deploy has all of the Develop permissions except the ability to deploy the data model to production (`deploy_to_production`).
-
-Ad-hoc SQL tier: **Developer.**
 
 ### Explore
 
 The Explore role is the most common, and we recommend it as the default. It has `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `download_with_limit`, `download_without_limit`, `see_sql`, `create_workflow`, `create_dynamic_field`, `view_workspace_users`, and `chat`.
 
-Ad-hoc SQL tier: **Explorer.** Can only query tables defined in the semantic layer.
-
 ### View
 
 View has the same permissions as Explore but without `download_without_limit`.
-
-Ad-hoc SQL tier: **Explorer.**
 
 ### Restricted
 
@@ -113,25 +97,17 @@ Restricted has ONLY the `view_content` permission. This means the user can only 
 
 _Note:_ This user can change filters on dashboards which means in terms of API access, they have the ability to run queries that are not just the queries present on the dashboard. You should use this role in conjunction with [data access controls](../data-modeling/access_grants.md), not instead of data access controls.
 
-Ad-hoc SQL tier: **Explorer.**
-
 ### Embed
 
 This permission set is not available in the UI but is the default for embedded users. It has `view_content`, `explore_from_here`, `download_with_limit`, and `chat` permissions.
-
-Ad-hoc SQL tier: **Explorer.**
 
 ### Embed with SQL
 
 This permission set is not available in the UI but is the default for embedded users. It has `view_content`, `explore_from_here`, `download_with_limit`, `see_sql`, and `chat` permissions.
 
-Ad-hoc SQL tier: **Explorer.**
-
 ### Embedded with Scheduling
 
 This permission set is not available in the UI but is the default for embedded users. It (predictably) has `schedule_content`, `view_content`, `see_sql`, `explore_from_here`, `download_with_limit`, and `chat` permissions.
-
-Ad-hoc SQL tier: **Explorer.**
 
 ## Related pages
 

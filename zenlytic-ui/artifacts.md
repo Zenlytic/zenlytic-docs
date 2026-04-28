@@ -145,6 +145,8 @@ To view an artifact's memory, click the three-dot menu in the artifact drawer he
 
 Artifacts can include citations that show the data sources Zoë used to create the output. Citations are available from the **Sources** button in the artifact drawer header.
 
+<figure><img src="../.gitbook/assets/citations-artifacts.png" alt="Sources panel open in the artifact drawer, listing the data sources used to build the dashboard"><figcaption><p>The Sources panel listing artifact-level citations</p></figcaption></figure>
+
 Artifact citations are currently **artifact-level**. They explain the main data inputs used to build the artifact as a whole, rather than tracing each individual chart, table, or visualization inside the artifact.
 
 Data sources may include:

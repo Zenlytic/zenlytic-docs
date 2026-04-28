@@ -60,7 +60,7 @@ There are eight role bundles in Zenlytic. Each bundle combines a set of the perm
 
 ### Organization Admin
 
-The organization admin has _all_ of the above permissions.
+The organization admin has _all_ of the above permissions. Subject to the "enforce permissions for admins" toggle described above.
 
 In addition to all standard Admin capabilities, Organization Admins can:
 

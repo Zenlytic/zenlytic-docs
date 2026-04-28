@@ -113,6 +113,7 @@
   * [Snowflake with Entra - What to Send](authentication-and-security/microsoft_entra_snowflake/entra-snowflake-what-to-send.md)
 * [Okta Zenlytic](authentication-and-security/okta_zenlytic.md)
 * [Google Workload Identity Federation](authentication-and-security/google_workload_identity_federation.md)
+* [Enforce SSO-Only Login](authentication-and-security/enforce-sso-only.md)
 * [IP Whitelisting](authentication-and-security/ip_whitelisting.md)
 * [Login Troubleshooting](authentication-and-security/login_troubleshooting.md)
 * [Connecting To Github With A Deploy Key](authentication-and-security/connecting_to_github_with_a_deploy_key.md)

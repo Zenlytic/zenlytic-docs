@@ -2,6 +2,10 @@
 
 Dimension Groups are a particular type of dimension used for timeframes (referencing the same date column but having slices for it daily, weekly, monthly, etc), and for intervals (referencing the difference between two date columns and slicing it days between, weeks between, months between, etc).
 
+{% hint style="warning" %}
+**Avoid reserved words in dimension group names.** Dimension groups generate sub-fields for each timeframe (e.g., `date`, `week`, `month`). If you name a dimension group generically — for example `__time` or `date` — the generated sub-fields will be aliased as `day`, `month`, `time`, `order`, etc., which are reserved words in some SQL dialects and will produce query errors. Use descriptive names like `order_date`, `created_at`, or `shipped_at` instead.
+{% endhint %}
+
 ## Properties
 
 `name`: (Required) The name of the dimension group. If you reference this dimension group in the `default_date` property you will use this name. If you reference this dimension group elsewhere, in sets, other dimensions, etc you will use syntax as follows: `name_timeframe`. Like all names, it follows [Zenlytic naming conventions](data_modeling.md#naming-conventions)
@@ -45,7 +49,7 @@ You can also reference any [referenceable attributes](referenceable_attributes.m
 ```
 {% endcode %}
 
-`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
+`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this field. If you list multiple grants, they must all pass for the user to access this field. A missing user attribute on a grant is non-blocking for that grant, because the grant is not triggered. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`. This works like a keyword search under the hood, to make fields with synonyms related to the question asked show up in context for Zoë.
 

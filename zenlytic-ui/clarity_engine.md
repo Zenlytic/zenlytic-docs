@@ -1,6 +1,6 @@
 # Clarity Engine
 
-The Clarity Engine serves as the backbone of Zenlytic's LLM-based agent, Zoë, enabling you to transform raw facts to confident decisions. The Clarity Engine operates in two distinctive modes: the **Default Mode** with Dynamic Fields for structured analysis governed by your semantic model, and **Exploratory Mode** for more advanced, raw SQL-based analysis that extend beyond the boundaries of the semantic model.
+The Clarity Engine is the backbone of Zenlytic's LLM-based agent, Zoë. It operates in two modes: **Exploratory Mode** (the default for new workspaces), which writes custom SQL directly against your warehouse, and **Default Mode** with Dynamic Fields, which stays within your semantic model's structure. Both modes enforce the same row- and column-level security.
 
 ## Just ask!
 
@@ -18,16 +18,49 @@ The chat interface includes several interactive elements:
 * **Microphone icon**: Click to use voice input - Zoë will capture your prompt through real-time voice transcription via your web browser
 * **Lightning icon**: Opens a panel to select and run a Proactive Agent
 * **Model dropdown**: Located on the right side of the input area, this allows you to change the base LLM used for Zenlytic's LLM-based agent
-* **Chat Options**: Opens a toggle for Exploratory mode; when enabled, you'll see a microscope icon appear in the chat input (shown below)
+* **Chat Options**: Toggle between Exploratory Mode (default) and Default Mode. When Exploratory Mode is active, a microscope icon appears in the chat input (shown below)
 * **Submit**: Press "Enter" or click the up arrow button to send your message
 
 ![Starting a new chat with Zoë in Exploratory mode](../.gitbook/assets/zoe_input_box_exploratory.png)
 
+## Exploratory Mode
+
+Exploratory Mode is the default for new workspaces. It lets the Clarity Engine write custom SQL directly against your data warehouse for advanced analysis that extends beyond your semantic model's current structure.
+
+### How Exploratory Mode Works
+
+When Exploratory Mode is active, the Clarity Engine operates with expanded capabilities:
+
+1. **Writes custom SQL** - Creates queries directly against your tables and views, using full context about your existing semantic model
+2. **Maintains security** - Enforces all row and column-level permissions, ensuring you only access data you're authorized to see
+3. **Highlights reuse** - Identifies and shows you when the SQL leverages existing components from your semantic model
+4. **Provides transparency** - Explains the approach in plain English, including which parts of your semantic model are being referenced
+
+This mode gives you the flexibility to explore complex data relationships while staying within your organization's governance framework.
+
+### Security in Exploratory Mode
+
+Exploratory Mode maintains the same strict security standards as Default Mode:
+
+* **Row-level security**: Your access filters are automatically applied to all SQL queries
+* **Column-level security**: Only columns you have permission to view are included in the generated SQL queries
+* **Semantic model integration**: Existing measures and dimensions from your semantic model are reused whenever possible, preserving their built-in governance
+
+This approach ensures that expanded analytical capabilities never compromise your organization's data security and governance policies.
+
+### Context Reuse Highlighting
+
+When writing custom SQL in Exploratory Mode, the Clarity Engine identifies and highlights when it leverages components from your existing semantic model.
+
+![The Clarity Engine highlighting re-use in exploratory mode](../.gitbook/assets/zoe_exploratory_mode_hover.png)
+
+Zoë provides clear explanations of her analytical approach, showing you which parts of your semantic model she's reusing through interactive hover text. This transparency helps you understand how your established data definitions contribute to exploratory analysis, bridging the gap between governed and ad-hoc investigation.
+
 ## Default Mode with Dynamic Fields
 
-The Default Mode is the primary way Zoë operates within the Clarity Engine. In this mode, Zoë leverages your existing semantic model by referencing fields that have already been defined. When the fields needed to answer your question don't exist in your semantic model yet, she creates Dynamic Fields by writing custom SQL on the fly, building on top of your already defined fields.
+Default Mode keeps Zoë's work within your semantic model. When the fields needed to answer a question don't exist yet, she creates **Dynamic Fields** by writing custom SQL on the fly, building on top of your already-defined fields. Dynamic Fields can be promoted into your semantic layer for reuse.
 
-This approach provides maximum governance while enabling flexible data exploration. With Dynamic Fields, you can interactively build your semantic model by promoting these dynamically created fields into your permanent semantic layer.
+Use Default Mode when you want every answer to route through fields that have been (or can be) governed and reused across the platform.
 
 ### How Dynamic Fields Work
 
@@ -92,64 +125,26 @@ Note: Promoting Dynamic Fields requires developer-level permissions or above.
 
 ![The Clarity Engine promoting a metric](../.gitbook/assets/zoe_clarity_promote_hover.png)
 
-This promotion workflow transforms ad-hoc analysis into governed, reusable components that become available across dashboards, explores, workflows and future conversations with Zoë. By building your semantic model this way, you create measures and dimensions based on real analytical needs rather than trying to anticipate every possible field upfront.
+This promotion workflow transforms ad-hoc analysis into governed, reusable components that become available in [Artifacts](artifacts.md), explores, [Proactive Agents](../proactive-analytics/getting-started.md), and future conversations with Zoë. By building your semantic model this way, you create measures and dimensions based on real analytical needs rather than trying to anticipate every possible field upfront.
 
-## Exploratory Mode
+## Artifacts
 
-Exploratory Mode enables the Clarity Engine to write custom SQL directly against your data warehouse for advanced analysis that extends beyond your semantic model's current structure.
+Both Exploratory Mode and Default Mode produce rich, interactive outputs called [Artifacts](artifacts.md): apps, documents, spreadsheets, presentations, charts, and more. When Zoë's analysis goes beyond a single table or chart — merging results from multiple queries, applying external assumptions, building custom visualizations, or running statistical analysis like clustering, correlation, regression, or forecasting — the result is delivered as an Artifact you can save, share, refresh on a schedule, and publish.
 
-### How Exploratory Mode Works
-
-When you enable Exploratory Mode, the Clarity Engine operates with expanded capabilities:
-
-1. **Writes custom SQL** - Creates queries directly against your tables and views, using full context about your existing semantic model
-2. **Maintains security** - Enforces all row and column-level permissions, ensuring you only access data you're authorized to see
-3. **Highlights reuse** - Identifies and shows you when the SQL leverages existing components from your semantic model
-4. **Provides transparency** - Explains the approach in plain English, including which parts of your semantic model are being referenced
-
-This mode gives you the flexibility to explore complex data relationships while staying within your organization's governance framework.
-
-### Security in Exploratory Mode
-
-Exploratory Mode maintains the same strict security standards as Default Mode:
-
-* **Row-level security**: Your access filters are automatically applied to all SQL queries
-* **Column-level security**: Only columns you have permission to view are included in the generated SQL queries
-* **Semantic model integration**: Existing measures and dimensions from your semantic model are reused whenever possible, preserving their built-in governance
-
-This approach ensures that expanded analytical capabilities never compromise your organization's data security and governance policies.
-
-### Context Reuse Highlighting
-
-When writing custom SQL in Exploratory Mode, the Clarity Engine identifies and highlights when it leverages components from your existing semantic model.
-
-![The Clarity Engine highlighting re-use in exploratory mode](../.gitbook/assets/zoe_exploratory_mode_hover.png)
-
-Zoë provides clear explanations of her analytical approach, showing you which parts of your semantic model she's reusing through interactive hover text. This transparency helps you understand how your established data definitions contribute to exploratory analysis, bridging the gap between governed and ad-hoc investigation.
-
-## Code Interpreter Integration
-
-Both Default Mode and Exploratory Mode integrate seamlessly with Zenlytic's built-in code interpreter, which executes Python code in a secure sandbox environment. This integration expands Zoë's analytical capabilities significantly:
-
-* **Merge results** - Combine results from multiple queries or external data sources
-* **Apply external assumptions** - Incorporate external assumptions into your analysis
-* **Advanced analytics** - Perform statistical analysis including clustering, correlation, regression, and forecasting
-* **Custom visualizations** - Create specialized charts and graphs beyond standard business intelligence formats
-
-![The Clarity Engine using Python for advanced analysis](../.gitbook/assets/zoe_code_interpreter_results.png)
+See [Artifacts](artifacts.md) for the full feature set: saving and organizing artifacts, update history and versioning, auto refresh, scheduled delivery to email or Slack, sharing and permissions, and web publishing.
 
 ## Choosing Between Modes
 
-The Clarity Engine's two modes are designed to handle different analytical scenarios. Understanding when to use each mode helps you get the most effective results from Zoë.
+The Clarity Engine's two modes handle different analytical scenarios. Most new workspaces default to **Exploratory Mode** because it's the most flexible surface. Switch to Default Mode (Dynamic Fields) when you want every answer to flow through your governed semantic model.
 
-**Default Mode with Dynamic Fields** is ideal for:
-
-* **Flexible semantic model expansion** - Leverages your existing data structure while dynamically creating new fields that extend far beyond traditional BI platforms' capabilities, allowing complex analysis while maintaining governance
-* **Platform integration and reusability** - Creates analysis components that integrate natively with dashboards, explores, workflows, and can be promoted into your permanent semantic model for team-wide use
-
-**Exploratory Mode** is perfect for:
+**Exploratory Mode** (default) is best for:
 
 * **Custom analysis beyond semantic constraints** - Handles questions that cannot be answered within the structured relationships of any semantic model, requiring complete flexibility to redefine how data connects and flows
-* **Advanced ad-hoc investigations** - Enables complex analytical techniques that extend beyond the capabilities of any other BI platform, and even beyond our Default Mode, which is already significantly more flexible than traditional solutions
+* **Advanced ad-hoc investigations** - Enables complex analytical techniques that extend beyond traditional BI platforms, and even beyond Default Mode
 
-Both modes maintain the same high standards for security, governance, and transparency while providing the advanced flexibility needed for comprehensive data analysis.
+**Default Mode with Dynamic Fields** is best for:
+
+* **Flexible semantic model expansion** - Leverages your existing data structure while dynamically creating new fields that extend far beyond traditional BI platforms' capabilities, allowing complex analysis while maintaining governance
+* **Platform integration and reusability** - Creates analysis components that integrate natively with [Artifacts](artifacts.md), explores, [Proactive Agents](../proactive-analytics/getting-started.md), and can be promoted into your permanent semantic model for team-wide use
+
+Both modes maintain the same high standards for security, governance, and transparency.

@@ -10,7 +10,7 @@ To get started using Zoë, just ask her a question. If you don't know what you c
 
 When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). Zoë can handle both type of questions, and will ask you follow up questions if she isn't able to make reasonable assumptions about what you intend from your question.
 
-By pressing the Microphone icon, Zoë will listen through the web browser to capture your prompt through realtime voice transcription. The Lightning icon opens a panel for selecting a Workflow to run. The Plus icon supports adding file or query attachments to the message, like images, CSVs, and PDFs (limit 5). A dropdown on the right side of the user input supports changing the LLM model that will be used for the new conversation. Press "Enter" or click the Up Arrow button to submit the message.
+By pressing the Microphone icon, Zoë will listen through the web browser to capture your prompt through realtime voice transcription. The Lightning icon opens a panel for selecting a Proactive Agent to run. The Plus icon supports adding file or query attachments to the message, like images, CSVs, and PDFs (limit 5). A dropdown on the right side of the user input supports changing the LLM model that will be used for the new conversation. Press "Enter" or click the Up Arrow button to submit the message.
 
 
 ## Querying
@@ -19,7 +19,7 @@ Zoë searches across the governed measures and dimensions to use existing fields
 
 <figure><img src="../.gitbook/assets/querying.png" alt="Ask Zoe for a bar chart"><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
 
-The left sidebar displays the Chat history, sorted by recent activity, and a button to create a new chat. In the upper left of the main content area, there's a button to collapse the left sidebar, a button to create a new chat, and the 3-Dot options menu that supports link sharing and "Save as Workflow" options.
+The left sidebar displays the Chat history, sorted by recent activity, and a button to create a new chat. In the upper left of the main content area, there's a button to collapse the left sidebar, a button to create a new chat, and the 3-Dot options menu that supports link sharing and "Save as Proactive Agent" options.
 
 <figure><img src="../.gitbook/assets/chat-drawer.png" alt="Clicking into the Query drawer"><figcaption><p>Clicking into the Query drawer</p></figcaption></figure>
 
@@ -67,11 +67,11 @@ Zoë leverages streaming, so that incremental updates from the LLM model are sho
 The figure from the previous section shows how each message submitted by the user is pinned to the top of the screen while Zoë is responding, with automatically scrolling to follow the response as it streams onto the page. By scrolling up and away from the recent updates, the user can dismiss this automatic scroll behavior. While the conversation is running, click the "follow live updates" pill when it appears to restore the automatic scroll behavior.
 
 
-## Code Interpreter
+## Artifacts
 
-Zoë also has the ability to write and evaluate Python code. This process occurs in a sandbox environment where she can write any code she needs on top of the governed results pulled from the data model. This gives Zoë a huge amount of flexibility to answer complex questions that involve merging results of separate queries, plugging in assumptions to scenarios,  building custom visualizations, and doing advanced clustering, correlation, regression, and forecast analysis.
+Zoë can write and evaluate Python code in a secure sandbox and delivers the results as [Artifacts](artifacts.md): rich, interactive outputs like apps, documents, spreadsheets, presentations, and charts. Artifacts give Zoë the flexibility to answer complex questions that involve merging results from multiple queries, plugging in assumptions, building custom visualizations, and running advanced clustering, correlation, regression, and forecasting analysis. Each Artifact has versioned history, can refresh on a schedule, and can be shared or published. See [Artifacts](artifacts.md) for the full feature set.
 
-<figure><img src="../.gitbook/assets/code-interpreter.png" alt="Running a forecast in Python"><figcaption>Running a forecast in Python</figcaption></figure>
+<figure><img src="../.gitbook/assets/code-interpreter.png" alt="Zoë running advanced analysis"><figcaption>Zoë delivering an Artifact with a forecast analysis</figcaption></figure>
 
 
 ## Web Search
@@ -88,9 +88,9 @@ If Zoë has finished responding but the answer did not meet your expectations, u
 At any point while Zoë is responding, click the Pause button in the lower right of the Chat input to cause Zoë to quickly exit out of the current task and allow submission of a new user message.
 
 
-## Dashboards
+## Dashboards (legacy)
 
-Zoë can create new dashboards and add plots to those dashboards or add plots to existing dashboards. She can also search your dashboards for terms so you can answer questions like "What dashboards do we have for revenue and plan?"
+Dashboards have been replaced by [Artifacts](artifacts.md) for new visual outputs. Existing dashboards continue to work — Zoë can still search them and answer questions like "What dashboards do we have for revenue and plan?" — but new work should be built as Artifacts, which support richer output types, versioning, scheduled refresh, delivery, and web publishing.
 
 
 ## Slack & Teams

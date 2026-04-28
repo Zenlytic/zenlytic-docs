@@ -2,6 +2,10 @@
 
 Passing the `value_format_name` parameter to your [field](field.md) lets you easily format values in a way that's easy to read for business users.
 
+{% hint style="warning" %}
+**Use named formats only.** `value_format_name` must be one of the named formats in the table below (e.g., `usd`, `percent_0`, `decimal_2`). Literal format strings like `"$#,##0.00"` or `"0.0%"` are not supported and will break. If you need a format that isn't listed, contact Zenlytic support rather than passing a literal format string.
+{% endhint %}
+
 ## Options
 
 There are several options. Broadly speaking, there is a format type followed by a number of decimal places. For example, `decimal_1` formats the number like a decimal and rounds to one decimal place.

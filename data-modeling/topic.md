@@ -21,6 +21,14 @@ layout:
 
 {% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
 
+{% hint style="warning" %}
+**Topics are retained for backward compatibility.** New joins should use [Relationships](relationships.md) on the [model](model.md) file rather than new topic files. Existing topics continue to work and Zoë will still read them, but we no longer recommend adding new context here. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side example.
+{% endhint %}
+
+{% hint style="danger" %}
+**Fan-out gotcha with implicit joins.** When a topic's base view has an implicit one-to-many join from the base table to another view, results will fan out and be incorrect. You can fix this by either (a) swapping which table is the base view, or (b) defining the join explicitly at the topic level with the correct cardinality. Implicit joins only behave correctly when the relationship from the base view is one-to-one or many-to-one.
+{% endhint %}
+
 Topics are collections of tables (views) that can be joined together using foreign keys. They are specified in their own yaml files. Each topic uses its model's `connection` that it is defined in to get data.
 
 Topics exist to let you specify sections of your data that join together. They let you specify an explicit base view, and how joins work to connect other views to that base view.
@@ -45,7 +53,7 @@ Topics are how Zoë understands what views join together and how she finds data 
 
 `hidden`: A `true` indicates that this topic should be hidden in the user interface. If a topic is hidden it can still be referenced in the data model, despite not appearing to end users in the UI or to Zoë. The default is false which shows the topic in the UI.
 
-`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this topic. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this topic.
+`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this topic. If you list multiple grants, they must all pass for the user to access this topic. A missing user attribute on a grant is non-blocking for that grant, because the grant is not triggered.
 
 `always_filter`: This is an optional list of filters which use the usual [field filter selection syntax](field_filter.md) and will _always_ be applied to the query. These filters are applied to the entire query, not just a metric or dimension, and if it is not possible to reference or join in the field needed for the filter it will result in an error.
 

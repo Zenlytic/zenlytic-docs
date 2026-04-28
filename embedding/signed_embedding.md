@@ -87,7 +87,7 @@ print(auth_header)
 
 * `external_user_id`: (Required) The identifier of the user for whom the analytics is being embedded. This is the user's unique identifier in _your_ system.
 * `target_url`: (Required) The complete url in your Zenlytic interface for the content you want to embed. For example, `https://app.zenlytic.com/dashboards/73b64533-c027-43b8-b8a8-6069534235413` or `https://app.zenlytic.com/chat`.
-* `user_attributes`: (Optional) The user\_attributes to use when applying row and column level permissions for this user. If you have already requested for a given `external_user_id` then make another request with different `user_attributes` passed, the most recent user\_attributes will be used. The format of user attributes is:
+* `user_attributes`: (Optional) The user\_attributes to use when applying row and column level permissions for this user. If your access grants rely on user attributes, pass an explicit value for every attribute referenced by those grants. A missing attribute does not behave like a denied value; the grant is not triggered and does not block access. If you have already requested for a given `external_user_id` then make another request with different `user_attributes` passed, the most recent user\_attributes will be used. The format of user attributes is:
 
 {% code overflow="wrap" %}
 ```

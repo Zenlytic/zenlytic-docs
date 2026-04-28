@@ -30,7 +30,7 @@ You can also reference any [referenceable attributes](referenceable_attributes.m
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`. This works like a keyword search under the hood, to make fields with synonyms related to the question asked show up in context for Zoë.
 
-`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
+`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this field. If you list multiple grants, they must all pass for the user to access this field. A missing user attribute on a grant is non-blocking for that grant, because the grant is not triggered. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
 `sql_distinct_key`: This tells Zenlytic that the measure you are calculating here is duplicated, and what field or expression it is unique on. For example, if you have a sales amount that is tied to an order but present in a order lines table, you could set this value to `order_id` and the type to `sum_distinct` to correctly sum up the sales amount without double counting. See [symmetric aggregates](symmetric_aggregates.md) for more information.
 
@@ -113,6 +113,27 @@ The Non Additive Dimension has three properties
 {% endcode %}
 
 `extra`: The extra property is like dbt `meta` property, and you can put whatever additional properties you want in here. For example, under this property you could add a property like this `maintainer: "jane doe"`
+
+## Valid and invalid measure patterns
+
+A common source of errors in measure definitions is mismatching `type` with what's inside `sql`. There are only two valid patterns; double-aggregation and missing-aggregation are both invalid.
+
+| Pattern                                | Valid? | Why                                                                                 |
+| -------------------------------------- | ------ | ----------------------------------------------------------------------------------- |
+| `type: number` + `sql: SUM(field)`     | Yes    | The aggregation is explicit in the SQL expression.                                  |
+| `type: sum` + `sql: field`             | Yes    | The `type` provides the aggregation; `sql` references the column.                   |
+| `type: number` + `sql: field`          | **No** | No aggregation. Zoë will silently wrap the SQL but verification will fail.          |
+| `type: sum` + `sql: SUM(field)`        | **No** | Double aggregation — `type: sum` wraps another `SUM()`.                             |
+
+When defining a new measure, always use one of the two valid patterns. If you need a more complex aggregation (cumulative, window-based, distinct-key), use `type: number` with the full SQL expression and add a `zoe_description` explaining what it calculates.
+
+{% hint style="warning" %}
+**`canon_date` overuse.** Setting `canon_date` on many measures has been observed to cause incorrect SQL generation. Prefer setting `default_date` on the [view](view.md) and only use `canon_date` on individual measures when they genuinely need a different date than the view default.
+{% endhint %}
+
+{% hint style="info" %}
+**Where to document what a measure means.** Put user-facing descriptions on `description` and agent-only calculation notes on `zoe_description`. Both are capped at 1,024 characters. For longer guidance, put it in the view `description` / `zoe_description` (up to 10,000 characters) or in a [Skill](../zenlytic-ui/skills.md). See [How to Steer Zoë's Answers](../tips-and-tricks/zoe_context_ingestion.md) for the full surface-vs-visibility table.
+{% endhint %}
 
 ## Examples
 

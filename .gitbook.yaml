@@ -37,7 +37,10 @@ redirects:
   docs/zenlytic_ui/using_zenlytic: zenlytic-ui/using_zenlytic.md
   docs/zenlytic_ui/zoe: zenlytic-ui/zoe.md
   docs/zenlytic_ui/exploring: zenlytic-ui/exploring.md
-  docs/zenlytic_ui/settings: zenlytic-ui/data_model_editor.md
+  docs/zenlytic_ui/settings: zenlytic-ui/context_manager.md
+  # Data Model Editor was renamed to Context Manager
+  zenlytic-ui/data_model_editor: zenlytic-ui/context_manager.md
+  docs/zenlytic_ui/data_model_editor: zenlytic-ui/context_manager.md
   docs/zenlytic_ui/user_attributes: zenlytic-ui/user_attributes.md
   docs/zenlytic_ui/basket_mix: zenlytic-ui/using_zenlytic.md
   docs/zenlytic_ui/explain_change: zenlytic-ui/using_zenlytic.md

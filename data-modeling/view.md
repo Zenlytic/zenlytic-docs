@@ -18,6 +18,10 @@ Views, like all files in Zenlytic, are YAML text files.
 
 `zoe_description`: The description of the view shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the view correctly.
 
+{% hint style="info" %}
+**View-level `description` and `zoe_description` are capped at 10,000 characters each** — plenty of room for join-path guidance, data caveats, and edge cases. Use `description` for user-facing documentation and `zoe_description` for agent-only instructions like which joins to prefer or pitfalls to avoid. See [Context Surfaces](../core-concepts/context-surfaces.md) for when to use views vs. fields vs. the system prompt vs. skills.
+{% endhint %}
+
 `sql_table_name`: This is the table name in the database that the view references. For example, `prod.customers` would be a valid `sql_table_name`.
 
 `derived_table`: This is a property that you can use to define transformed tables using a SQL statement. This SQL statement is run and is considered to be the "base" of the view. Note, we generally prefer using [dbt](https://getdbt.com) over derived tables for better testing and maintainability. This property has a nested property `sql` inside of the `derived_table` property that you use to define the SQL statement.
@@ -49,6 +53,10 @@ derived_table:
 ```
 
 `default_date`: This is the default date [dimension group](dimension_group.md) without a time frame chosen for it. For example, if your dimension group is named `order` you would use the value `order` here, not `order_month` or `order_week` like you would reference elsewhere.
+
+{% hint style="info" %}
+**Set `default_date` on every view that has time-series measures.** It is the single most impactful structural property for temporal queries — it tells Zoë which date dimension to use for questions like "revenue this quarter" against this view. Prefer setting `default_date` on the view over setting `canon_date` on individual measures; `canon_date` should only be used when a specific measure genuinely needs a different date than the view default.
+{% endhint %}
 
 `sets`: This is a list of [sets](set.md) that are defined in this view. Example syntax of the definition is below.
 
@@ -83,7 +91,7 @@ access_filters:
     user_attribute: 'products'
 ```
 
-`required_access_grants`: This is a list of [access grant](access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will _always_ be applied for this view in any join sequence.
+`required_access_grants`: This is a list of [access grant](access_grants.md#access-grants) names that are required to access this view. If you list multiple grants, they must all pass for the user to access this view. A missing user attribute on a grant is non-blocking for that grant, because the grant is not triggered. Note, these access grants will _always_ be applied for this view in any join sequence.
 
 `identifiers`: This is a list of [fields](field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references.
 

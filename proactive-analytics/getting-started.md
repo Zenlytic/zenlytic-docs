@@ -1,6 +1,6 @@
 # Proactive Getting Started
 
-Proactive Agents allow us to build and run entire conversations with Zoë, and then enable others in the organization to re-run those conversations easily. With this feature, Zoë is more proactive and reusable for solving task-specific workflows than ever before.
+Proactive Agents allow us to build and run entire conversations with Zoë, and then enable others in the organization to re-run those conversations easily. With this feature, Zoë is more proactive and reusable for solving task-specific analyses than ever before.
 
 Proactive Agents can be used to automate repetitive data processes, iterate on better Zoë prompts, and much more. Some examples include:
 
@@ -18,9 +18,9 @@ Proactive Agents are ideal for implementing tasks where you need one or all of t
 * You need structured, predictable outputs and consistent, formatted results
 * The task involves conditional logic - different behaviors should be taken based on intermediate results
 
-## Navigating to Proactive Analytics
+## Navigating to Proactive Agents
 
-1. To view your workflows and create new ones, from the left-hand navigational sidebar, click on ⚡Proactive Analytics
+1. To view your Proactive Agents and create new ones, from the left-hand navigational sidebar, click on ⚡Proactive Agents
 
 <figure><img src="../.gitbook/assets/proactive-nav.png" alt=""><figcaption></figcaption></figure>
 
@@ -30,7 +30,7 @@ Proactive Agents are ideal for implementing tasks where you need one or all of t
 
 ## Running Proactive Agents
 
-After clicking on the ⚡ _Lightning_ icon button, the following modal will appear. Search proactive workflows by name, creator, and creation date. Click a Proactive Agents name and press "Submit" to run it. If a Proactive Agents requires user input before it can run, click the "Next" button to provide the required input values first. More on inputs in the [Requiring User Inputs](../workflows/inputs/) section.
+After clicking on the ⚡ _Lightning_ icon button, the following modal will appear. Search Proactive Agents by name, creator, and creation date. Click a Proactive Agent's name and press "Submit" to run it. If a Proactive Agent requires user input before it can run, click the "Next" button to provide the required input values first. More on inputs in the [Requiring User Inputs](inputs.md) section.
 
 <figure><img src="../.gitbook/assets/proactive-trigger-page.png" alt=""><figcaption></figcaption></figure>
 
@@ -40,13 +40,13 @@ While the Proactive Agent runs, the chat input for the Proactive Agent's convers
 
 ## Continuing the Proactive Conversation
 
-That's it! After the Proactive Workflow is completed, the chat input will become available again and we can send follow up messages to continue our analysis with Zoë from wherever the Proactive Workflow completed.
+That's it! After the Proactive Agent is completed, the chat input will become available again and we can send follow up messages to continue our analysis with Zoë from wherever the Proactive Agent completed.
 
 <figure><img src="../.gitbook/assets/proactive-result-in-chat.png" alt=""><figcaption></figcaption></figure>
 
 ## Viewing Proactive Agents
 
-By clicking the _Proactive Analytics_ option in the left-hand navigational sidebar, you will see a list of Proactive Agents that exist in your workspace. The three-dot menu reveals options to run, duplicate, or delete a Proactive Agents. When you click on a Proactive Agent's name or highlighted row, you will be navigated to the Proactive Agent Builder.
+By clicking the _Proactive Agents_ option in the left-hand navigational sidebar, you will see a list of Proactive Agents that exist in your workspace. The three-dot menu reveals options to run, duplicate, or delete a Proactive Agent. When you click on a Proactive Agent's name or highlighted row, you will be navigated to the Proactive Agent Builder.
 
 <figure><img src="../.gitbook/assets/viewing-proactive-agents.png" alt=""><figcaption></figcaption></figure>
 
@@ -76,7 +76,7 @@ Click on the _Play_ button in the upper right-hand section to preview a Run of o
 
 When running, the Proactive Agent messages will temporarily be unavailable to edit. The Proactive Agent run can be cancelled at any time by pressing the _Pause_ button in the upper right-hand section. The current Proactive Agent message being run will be distinguished by a pulsing black outline. The respective message in the Proactive Agents conversation preview will read "Zoë is generating a response…" until it is available.
 
-When the Proactive Agent conversation preview has completed its run, we can inspect its output, run it again, or we can modify the Workflow before running again. The _Trash_ icon button will remove the message from the Proactive Agent. The _Upload_ icon button will allow you to attach files to the Proactive Agent message.
+When the Proactive Agent conversation preview has completed its run, we can inspect its output, run it again, or we can modify the Proactive Agent before running again. The _Trash_ icon button will remove the message from the Proactive Agent. The _Upload_ icon button will allow you to attach files to the Proactive Agent message.
 
 ![message-done](../.gitbook/assets/message-done.png)
 

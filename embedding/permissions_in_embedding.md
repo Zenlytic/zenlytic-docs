@@ -33,7 +33,9 @@ access_grants:
 
 In this example, if you pass the user attribute `{"revenue": "has_revenue"}` the session will have access to all tables governed by the `revenue_access` access grant. Similarly, if you pass the user attribute with any other value besides `"has_revenue"` the session will _not_ have access to the tables governed by that access grant (e.g. `{"revenue": "no_revenue"}`).
 
-You can restrict a view or a field with an access grant by name, by adding the property `required_access_grants` with an array of the grants the user must possess:
+When using access grants in embedding, pass an explicit value for every user attribute referenced by your grants. Do not omit the attribute for users who should be denied. If the attribute is missing, the grant is not triggered and does not block access. Instead, pass a non-granting value such as `"no_revenue"`.
+
+You can restrict a view or a field with an access grant by name, by adding the property `required_access_grants` with an array of the grants the user must possess. If you list multiple grants, they must all pass for the user to have access, except that a missing user attribute on a grant is non-blocking for that grant:
 
 ```yaml
 required_access_grants:

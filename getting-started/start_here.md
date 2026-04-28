@@ -17,7 +17,7 @@ The name matters. It's how Zenlytic links your credentials to your data model �
 
 For a reference, see the [demo data model](https://github.com/Zenlytic/demo-data-model). It uses the connection name `demo` because that's the value of `connection` on the [model file](https://github.com/Zenlytic/demo-data-model/blob/master/models/pure_organics_model.yml).
 
-![Finish Connection](../.gitbook/assets/finish-connection.png)
+![Finish Connection](../assets/5_data_modeling/finish-connection.png)
 
 ## Step 2 — Git for your data model
 
@@ -25,9 +25,7 @@ Git is already connected by default. Keep using Zenlytic's **Managed Repo** unle
 
 ## Step 3 — Import raw tables and ask a question
 
-Open the [Data Model Editor](https://app.zenlytic.com/data-model-editor). Click **Create view from table** and select the tables you want. Zenlytic reads the `information_schema` to pull in metadata and, on warehouses like Snowflake, BigQuery, and Databricks, imports column and table descriptions too.
-
-<div align="center"><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.11.16 AM.png" alt=""></div>
+Open [Context Manager](../zenlytic-ui/context_manager.md) from the workspace navigation or from chat. Add a view from the **Context** tab — you can either upload a CSV or pick tables from your database connection. Zenlytic reads the `information_schema` to pull in metadata and, on warehouses like Snowflake, BigQuery, and Databricks, imports column and table descriptions too.
 
 Once the tables are imported:
 
@@ -35,7 +33,7 @@ Once the tables are imported:
 * Pick a sensible `default_date` for each view that has time-series data. This one property has an outsized effect on temporal questions.
 * **That's enough to start.** Go ask Zoë a question.
 
-You don't need to define every metric, write every description, or set up relationships before testing. Raw tables with decent names will get you surprisingly far.
+You don't need to define every metric, write every description, or set up relationships before testing. Raw tables with decent names will get you surprisingly far. The full walkthrough for the editor, branch workflows, diffs, and deployment lives on the [Context Manager](../zenlytic-ui/context_manager.md) page.
 
 ## Step 4 — Iterate based on what goes wrong
 
@@ -55,7 +53,7 @@ See [Progressive Enrichment](../core-concepts/progressive-enrichment.md) for the
 
 ## Step 5 — Ship it
 
-When your changes are on a development branch and you're ready to make them live, click **Deploy to Production** in the upper right of the Data Model Editor. That publishes the branch so Zoë (and the rest of your org) is using the latest version.
+When your changes are on a development branch and you're ready to make them live, use the **Deploy to production** action in [Context Manager](../zenlytic-ui/context_manager.md). That publishes the branch so Zoë (and the rest of your org) is using the latest version. Resolve any validation errors first.
 
 If changes were pushed to git directly rather than through the UI, use the [force-refresh](../data-modeling/cache-refresh.md) button to rebuild the cache.
 

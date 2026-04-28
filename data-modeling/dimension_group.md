@@ -49,7 +49,7 @@ You can also reference any [referenceable attributes](referenceable_attributes.m
 ```
 {% endcode %}
 
-`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this field. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would be able to access this field. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
+`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this field. If you list multiple grants, they must all pass for the user to access this field. A missing user attribute on a grant is non-blocking for that grant, because the grant is not triggered. Note, if the user has access to the field but does NOT have access to the view the field is defined in, the user will not be able to see the field.
 
 `synonyms`: This is a list of strings phrases or words that you want to act as synonyms for natural language search. For example, if your measure is named `total_revenue` you might have synonyms of `['total sales', 'income']`. This works like a keyword search under the hood, to make fields with synonyms related to the question asked show up in context for Zoë.
 

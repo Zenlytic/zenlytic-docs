@@ -91,7 +91,7 @@ access_filters:
     user_attribute: 'products'
 ```
 
-`required_access_grants`: This is a list of [access grant](access_grants.md#access-grants) names that are required to access this view. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this view. Note, these access grants will _always_ be applied for this view in any join sequence.
+`required_access_grants`: This is a list of [access grant](access_grants.md#access-grants) names that are required to access this view. If you list multiple grants, they must all pass for the user to access this view. A missing user attribute on a grant is non-blocking for that grant, because the grant is not triggered. Note, these access grants will _always_ be applied for this view in any join sequence.
 
 `identifiers`: This is a list of [fields](field.md) with additional information defining what kind of key (primary, foreign) they are to the table the view references.
 

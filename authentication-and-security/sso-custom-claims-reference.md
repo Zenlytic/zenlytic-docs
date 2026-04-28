@@ -148,6 +148,7 @@ A JSON-encoded array of key-value pair objects.
 * **Only applies on first sign-in (signup).** This claim is not read on subsequent sign-ins. To update user attributes after initial provisioning, use the Zenlytic UI or API.
 * The attributes are applied to every workspace the user is auto-provisioned into.
 * User attributes work with Access Grants to control data access. See User Attributes for more detail.
+* If an access grant references an attribute and the user does not have that attribute, the grant is not triggered and does not block access. For default-deny behavior, make sure users receive a non-granting default value for each governed attribute during provisioning, or set that value afterward in Zenlytic.
 * If the JSON cannot be parsed, the attributes are set to empty and a warning is logged.
 * **Ignored when `zenlytic_workspaces` is present.**
 

@@ -16,6 +16,8 @@ You can set a user attribute on either a group or an individual user. To set it 
 
 Now that this user's `Department` attribute is set, their permissions will be determined by that (and any other attributes) set on that user.
 
+> Important: If an access grant references a user attribute, users should have a value for that attribute. Leaving the attribute blank does not behave like a denied value. If a user does not have the referenced attribute at all, that grant is not triggered and does not block access. To make access default to denied, set a non-granting value on the All Users group, then set the allowed value only on the users or groups that should have access.
+
 For example, since the user's attribute for `Department` has been set to `blah`, not one of the allowed options (`Executive`, `Finance`, `Marketing`) this user will not have access to anything restricted by this access grant.
 
 ![access-grants](../.gitbook/assets/access-grant-example.png)

@@ -53,7 +53,7 @@ Topics are how Zoë understands what views join together and how she finds data 
 
 `hidden`: A `true` indicates that this topic should be hidden in the user interface. If a topic is hidden it can still be referenced in the data model, despite not appearing to end users in the UI or to Zoë. The default is false which shows the topic in the UI.
 
-`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this topic. The grant names are always an `OR` condition. For example, if you listed `human_resources` and `executive` under this parameter, users who qualified for `human_resources`, `executive` or both would all be able to access data in this topic.
+`required_access_grants`: This is a list of [access grant](access_grants.md) names that are required to access this topic. If you list multiple grants, they must all pass for the user to access this topic. A missing user attribute on a grant is non-blocking for that grant, because the grant is not triggered.
 
 `always_filter`: This is an optional list of filters which use the usual [field filter selection syntax](field_filter.md) and will _always_ be applied to the query. These filters are applied to the entire query, not just a metric or dimension, and if it is not possible to reference or join in the field needed for the filter it will result in an error.
 

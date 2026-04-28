@@ -5,6 +5,33 @@ Access control is managed in Zenlytic through two concepts.
 1. [Access grants](access_grants.md#access-grants) cover _column-based_ access control
 2. [Access filters](access_grants.md#access-filters) cover _row-based_ access control
 
+## How access grants are evaluated
+
+Access grants are checked against the user attribute named in the grant's `user_attribute` property.
+
+If the user has a value for that attribute, the grant is evaluated by comparing the user's value with the grant's `allowed_values`. A matching value grants access. A non-matching value denies access.
+
+If the user does not have that attribute at all, that grant is not triggered and does not block access. Missing attributes are not treated as denied values.
+
+For default-deny behavior, give every governed user a default value that does not grant access. The usual pattern is to set a non-granting value on the All Users group, such as `revenue: no_revenue`, then set the granting value only on the users or groups that should have access, such as `revenue: has_revenue`.
+
+```yaml
+access_grants:
+  - name: revenue_access
+    user_attribute: revenue
+    allowed_values: ["has_revenue"]
+```
+
+With this grant:
+
+| User's `revenue` attribute | Result |
+| -------------------------- | ------ |
+| `has_revenue`              | Access granted |
+| `no_revenue`               | Access denied |
+| No `revenue` attribute     | Grant is not triggered and does not block access |
+
+When multiple grants are listed in `required_access_grants`, all triggered grants must pass. A missing user attribute on a grant is non-blocking for that grant.
+
 ## Access grants
 
 Access grants are restrictions for certain users on the ability to see various fields and query them in the Zenlytic interface. These access restrictions are based on access to _columns,_ _views,_ and _topics_. For row-based access control look at [access filters](access_grants.md#access-filters).
@@ -31,7 +58,7 @@ access_grants:
 
 ## Examples
 
-Access grants are defined and applied as follows. They're defined in models, and can be applied to any view or field using the `required_access_grants` property. If you specify multiple access grants in that property they must _all_ be true for that user to have access.
+Access grants are defined and applied as follows. They're defined in models, and can be applied to any topic, view, or field using the `required_access_grants` property. If you specify multiple access grants in that property they must _all_ be true for that user to have access, except that a missing user attribute on a grant is non-blocking for that grant.
 
 ```yaml
 version: 1
@@ -52,7 +79,7 @@ This is the view file that applies the `restrict_dept` access grant to restrict 
 
 Additionally, it defines the `exec_only` access grant (used below) to ensure _only_ users with the department "Exec" have access to the `email` field.
 
-As a result, a user with the department "Finance" won't be able to access any field in this view, a user with the department "Marketing" will access every field except for the `email` field, and a user with the "Exec" department will access every field in the view, including the `email` field.
+As a result, a user with the department "Finance" won't be able to access any field in this view, a user with the department "Marketing" will access every field except for the `email` field, and a user with the "Exec" department will access every field in the view, including the `email` field. A user with no `department` attribute would not be blocked by these grants, because the grants would not be triggered for that user.
 
 ```yaml
 version: 1

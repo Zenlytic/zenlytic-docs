@@ -1,7 +1,3 @@
-{% hint style="danger" %}
-**DRAFT — pending engineering review.** The schema/behavior described below was drafted from the data-model-management skill and has not yet been verified with engineering. Do not publish until confirmed.
-{% endhint %}
-
 # Relationships
 
 Relationships are the recommended way to define joins between tables in Zenlytic. They are defined as a list on the [model](model.md) file and are always visible to Zoë when generating SQL, so you don't need to group views into a topic for joins to work.
@@ -12,7 +8,6 @@ Relationships replace both [topics](topic.md) and the `identifiers` block for th
 
 * **Non-obvious joins** — joins where column names don't match across views, where type casting is required, or where multiple columns need to line up. Zoë can't infer these from column names alone, so define them explicitly.
 * **Joins with non-default cardinality or join type** — anything other than a `many_to_one` `left_outer` join that you want handled correctly for fan-out and filter semantics.
-* **Repeated joins** (self-joins, or the same table joined in under different aliases) — use `join_as` on the relationship to handle these in one place.
 
 **Obvious joins don't need to be stored.** If a `customer_id` foreign key obviously maps to a `customer_id` primary key, Zoë will figure it out. Focus your relationship definitions on joins where the connection isn't clear from column names alone. Over-documenting obvious joins can decrease Zoë's performance.
 
@@ -36,17 +31,13 @@ relationships:
 
 Each entry supports the following properties:
 
-| Property                | Required | Description                                                                                                                                                |
-| ----------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `from_table`            | Yes      | The name of the source view.                                                                                                                               |
-| `join_table`            | Yes      | The name of the view to join to.                                                                                                                           |
-| `sql_on`                | Yes      | The join condition using `${view_name.field_name}` syntax. Combine multiple conditions with `AND`.                                                         |
-| `relationship`          | No       | The cardinality of the join: `many_to_one` (default), `one_to_one`, `one_to_many`, `many_to_many`.                                                         |
-| `join_type`             | No       | The SQL join type: `left_outer` (default), `inner`, `full_outer`, `cross`.                                                                                 |
-| `join_as`               | No       | An alias for the joined view. Required when joining the same table in more than once (e.g., `requestor_users` and `assigned_users` both pointing at `cx_users`). |
-| `join_as_label`         | No       | Display label to use for the aliased view in the UI and in Zoë's responses.                                                                                |
-| `join_as_field_prefix`  | No       | Prefix to apply to field names from the aliased view so they don't collide with the original view's fields.                                                |
-| `include_metrics`       | No       | Whether to include measures from the `join_table` when this join is used. Boolean. Defaults to `true`.                                                     |
+| Property       | Required | Description                                                                                        |
+| -------------- | -------- | -------------------------------------------------------------------------------------------------- |
+| `from_table`   | Yes      | The name of the source view.                                                                       |
+| `join_table`   | Yes      | The name of the view to join to.                                                                   |
+| `sql_on`       | Yes      | The join condition using `${view_name.field_name}` syntax. Combine multiple conditions with `AND`. |
+| `relationship` | No       | The cardinality of the join: `many_to_one` (default), `one_to_one`, `one_to_many`, `many_to_many`. |
+| `join_type`    | No       | The SQL join type: `left_outer` (default), `inner`, `full_outer`.                                  |
 
 ## Cardinality matters
 
@@ -119,34 +110,6 @@ relationships:
             AND ${inventory.product_id} = ${warehouse_costs.product_id}
 ```
 
-## Joining the same table in twice (`join_as`)
-
-If you need to join the same table into your model under multiple aliases — e.g., a `users` table serving as both "requestor" and "assignee" on a tickets table — use `join_as`:
-
-{% code overflow="wrap" %}
-```yaml
-relationships:
-  - from_table: tickets
-    join_table: cx_users
-    join_as: requestor_users
-    join_as_label: Requestor
-    relationship: many_to_one
-    join_type: left_outer
-    sql_on: ${tickets.requestor_user_id} = ${requestor_users.user_id}
-
-  - from_table: tickets
-    join_table: cx_users
-    join_as: assigned_users
-    join_as_label: Assigned To
-    join_as_field_prefix: Assignee
-    relationship: many_to_one
-    join_type: left_outer
-    sql_on: ${tickets.assignee_user_id} = ${assigned_users.user_id}
-```
-{% endcode %}
-
-This lets users (and Zoë) reason about "requestor" and "assignee" as distinct views while still pointing at the same underlying `cx_users` table.
-
 ## Natural-language context about joins
 
 Relationships define the structure of joins, but Zoë often needs plain-language context about which join paths are valid, which are pitfalls, and which should happen conditionally. For that:
@@ -166,7 +129,3 @@ Common things to call out in prose:
 Tables at different time granularities — for example, daily vs. hourly — cannot be joined directly and produce correct results. The joined tables must first be aggregated to a common level (e.g., monthly) in separate CTEs, then combined in the final result.
 
 If two tables in your model are at different granularities and users commonly ask questions that span them, add guidance to the system prompt or to the relevant view's `zoe_description` explaining the granularity mismatch and the recommended pattern. Relationships alone don't solve this — Zoë needs the prose context to construct the CTE-first query.
-
-## Fiscal calendars
-
-Industries that use non-standard calendars (e.g., retail 4-5-4) often need fiscal-period logic that goes beyond anything relationships can express. Complex fiscal calendar logic is a good candidate for a [Skill](../zenlytic-ui/skills.md) rather than trying to encode it in relationships or descriptions.

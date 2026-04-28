@@ -2,7 +2,7 @@
 
 You don't have to author your data model alone. Zoë can recommend specific changes directly from chat — new measures, new dimensions, new relationships, calculation logic, or how to restructure something that isn't answering questions the way you'd like.
 
-This is often the fastest way to extend your model. Ask in plain English, take Zoë's recommendation, and apply it in the [Data Model Editor](../zenlytic-ui/data_model_editor.md).
+This is often the fastest way to extend your model. Ask in plain English, take Zoë's recommendation, and apply it in [Context Manager](../zenlytic-ui/context_manager.md).
 
 ## When to ask Zoë instead of authoring from scratch
 
@@ -55,7 +55,7 @@ Zoë will inspect both views and recommend a [relationship](relationships.md) bl
 
 ## Applying the recommendation
 
-1. Open the [Data Model Editor](../zenlytic-ui/data_model_editor.md).
+1. Open [Context Manager](../zenlytic-ui/context_manager.md).
 2. Navigate to the file Zoë named (view, model, or topic).
 3. Paste the snippet in the right place and save.
 4. If the change is significant, deploy to production when you're ready.
@@ -67,7 +67,7 @@ Zoë's recommendations aren't always perfect on the first try. If her suggestion
 
 ## Related
 
-* [Data Model Editor](../zenlytic-ui/data_model_editor.md) — where you apply Zoë's recommendations
+* [Context Manager](../zenlytic-ui/context_manager.md) — where you apply Zoë's recommendations
 * [Context Surfaces](../core-concepts/context-surfaces.md) — when to use `description`, `zoe_description`, synonyms, or the system prompt
 * [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — diagnostic flow when Zoë gives a wrong answer
 * [Measures](measure.md) — valid/invalid aggregation patterns for measure SQL

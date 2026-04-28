@@ -6,7 +6,7 @@ Use this list as a priority order when you're adding context, not as a checklist
 
 ## 1. Start with raw table imports
 
-Import tables into the [Data Model Editor](../zenlytic-ui/data_model_editor.md) and start asking questions. If your tables have sensible names and obvious primary/foreign keys, Zoë can often answer without any additional configuration.
+Import tables into [Context Manager](../zenlytic-ui/context_manager.md) and start asking questions. If your tables have sensible names and obvious primary/foreign keys, Zoë can often answer without any additional configuration.
 
 **Don't build everything before testing.** Ask real questions, see what breaks, and let that drive what you add next.
 

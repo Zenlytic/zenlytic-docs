@@ -10,4 +10,4 @@ To fix this error, activate your VPN like you do to connect to other resources a
 
 ## Username/password sign-in is missing or rejected
 
-If your workspace previously accepted username/password sign-in and that option is no longer available — or your password is being rejected even though you know it's correct — your workspace may have been configured for SSO-only login. See [Enforce SSO-Only Login](enforce-sso-only.md). Sign in via your configured SSO provider instead, or contact your workspace administrator.
+If your workspace previously accepted username/password sign-in and that option is no longer available, your workspace may have been configured for SSO-only login. See [Enforce SSO-Only Login](enforce-sso-only.md). Sign in via your configured SSO provider instead, or contact your workspace administrator.

@@ -32,7 +32,9 @@ Zenlytic will apply the change on your behalf.
 
 ## Recovery
 
-If your IdP becomes unavailable after SSO-only login is enforced and your workspace administrators cannot sign in, contact [support@zenlytic.com](mailto:support@zenlytic.com). Zenlytic can temporarily restore the default Cognito provider so administrators can regain access while the IdP issue is resolved.
+If your IdP becomes unavailable after the default Cognito provider is disabled on the workspace login page, administrators can still sign in by going to [app.zenlytic.com](https://app.zenlytic.com) directly with their username and password, then switching into the affected workspace from the workspace selector. The workspace-level setting only removes the Cognito option from the workspace login page — existing username/password credentials still authenticate at the top-level app entry point.
+
+**Recommendation:** Admin and Organization Admin users should keep both an SSO login and a username/password login on file, so they always have a backup sign-in path if the IdP is ever unavailable.
 
 ## Related
 

@@ -2,7 +2,7 @@
 
 You can add [Proactive Agents](../proactive-analytics/getting-started.md) to the embedding experience by creating the Proactive Agents in the UI, and then sharing those Proactive Agents with "all users" as Viewer (which only gives the ability to _run_ the Proactive Agent).
 
-<figure><img src="../.gitbook/assets/publish-proactive (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/publish-proactive.png" alt=""><figcaption></figcaption></figure>
 
 Once you have those Proactive Agents created and shared, you will see the lightning bolt option in the embedded UI to run the Proactive Agents.
 

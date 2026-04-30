@@ -47,8 +47,6 @@ principalSet://iam.googleapis.com/projects/123456789/locations/global/workloadId
 
 Then paste the full url of the principle that you defined earlier in the principle option and hit enter. After you do that, you can give the principle the required roles for BigQuery.
 
-![google\_workload\_identity\_federation\_image\_6.png](../assets/8_authenticationon/google_workload_identity_federation_image_6.png)
-
 Finally, click Save.
 
 7. Download the config for the principle to connect. In the Workload Identity Pool, click Grant Access to get started

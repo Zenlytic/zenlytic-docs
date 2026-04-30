@@ -16,4 +16,4 @@ To create dashboard level permissions, on the dashboard page, click on the 'Shar
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.32.19 AM.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.32.19 AM (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.32.19 AM.png" alt=""><figcaption></figcaption></figure>

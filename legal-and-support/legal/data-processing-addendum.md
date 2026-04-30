@@ -48,7 +48,7 @@ Customer shall:
 
 {% stepper %}
 {% step %}
-### Zenlytic's processor/subprocessor commitments
+#### Zenlytic's processor/subprocessor commitments
 
 Zenlytic, in its capacity as a Processor or subprocessor of Personal Data, shall:
 
@@ -61,7 +61,7 @@ Zenlytic, in its capacity as a Processor or subprocessor of Personal Data, shall
 {% endstep %}
 
 {% step %}
-### Notifications and breach reporting
+#### Notifications and breach reporting
 
 4.2. Zenlytic shall promptly inform Customer if Zenlytic becomes aware of:
 
@@ -72,7 +72,7 @@ Zenlytic, in its capacity as a Processor or subprocessor of Personal Data, shall
 {% endstep %}
 
 {% step %}
-### Assistance obligations
+#### Assistance obligations
 
 4.4. Zenlytic shall reasonably assist Customer regarding:
 
@@ -136,7 +136,7 @@ The total combined liability of either party towards the other party, whether in
 
 {% stepper %}
 {% step %}
-### Conflict between Addendum and Agreement
+#### Conflict between Addendum and Agreement
 
 **10.1.** In the event of any conflict or inconsistency between:
 
@@ -144,7 +144,7 @@ The total combined liability of either party towards the other party, whether in
 {% endstep %}
 
 {% step %}
-### Conflict involving Standard Contractual Clauses and operational clarifications
+#### Conflict involving Standard Contractual Clauses and operational clarifications
 
 2. any Standard Contractual Clauses that apply pursuant to Section 6 and this Addendum and/or the Agreement, those Standard Contractual Clauses shall prevail in the context of the Restricted Transfer(s) to which they apply to the extent of such conflict or inconsistency; provided that, in order to establish the operational clarity in relation to certain provisions of the Standard Contractual Clauses, it is agreed that the following shall apply:
    1. upon Customer's request under Clause 5(j) of the UK Standard Contractual Clauses that Zenlytic provide copies of the subprocessor agreements to Customer, Zenlytic may remove or redact all commercial information and/or any clauses, recitals, schedules, annexes, appendices, etc., unrelated to the UK Standard Contractual Clauses beforehand;

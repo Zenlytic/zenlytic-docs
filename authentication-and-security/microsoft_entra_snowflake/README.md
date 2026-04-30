@@ -134,7 +134,7 @@ The App Role manifests as follows.
    * Click on **My APIs**.
    *   Click on the **Snowflake OAuth Resource** that you created in [Step 1: Configure Zenlytic in Microsoft Entra ID](./#step-1-configure-zenlytic-in-microsoft-entra-id)
 
-       <figure><img src="../../.gitbook/assets/entra-snowflake_image_5.png" alt=""><figcaption></figcaption></figure>
+       <figure><img src="../../.gitbook/assets/entra-snowflake_image_4.png" alt=""><figcaption></figcaption></figure>
    * Click on the **Application Permissions**.
    * Check on the **Permission** related to the Roles manually defined in the `Manifest` of the Application that you wish to grant to this client.
    * Click **Add Permissions**.

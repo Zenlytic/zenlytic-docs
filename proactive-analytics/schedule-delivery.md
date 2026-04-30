@@ -12,4 +12,4 @@ The following image shows an example delivery from the schedule we created in th
 
 <figure><img src="../.gitbook/assets/proactive-email-pics.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/proactive-email-text (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/proactive-email-text.png" alt=""><figcaption></figcaption></figure>

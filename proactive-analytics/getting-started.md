@@ -54,7 +54,7 @@ By clicking the _Proactive Agents_ option in the left-hand navigational sidebar,
 
 In the upper right-hand side of the screen, you can create new Proactive Agents by pressing _New Proactive Agents_. This button will then navigate you to your new Proactive Agent in the Proactive Agent Builder.
 
-<figure><img src="../.gitbook/assets/viewing-proactive-agents (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/viewing-proactive-agents.png" alt=""><figcaption></figcaption></figure>
 
 ## Editing Proactive Agents
 
@@ -72,7 +72,7 @@ Click the text area labeled "Write a message…" to edit the first message in th
 
 Click on the _Play_ button in the upper right-hand section to preview a Run of our single-message Proactive Agent.
 
-<figure><img src="../.gitbook/assets/proactive-with-message (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/proactive-with-message.png" alt=""><figcaption></figcaption></figure>
 
 When running, the Proactive Agent messages will temporarily be unavailable to edit. The Proactive Agent run can be cancelled at any time by pressing the _Pause_ button in the upper right-hand section. The current Proactive Agent message being run will be distinguished by a pulsing black outline. The respective message in the Proactive Agents conversation preview will read "Zoë is generating a response…" until it is available.
 
@@ -108,4 +108,4 @@ Files can be added to Proactive Agent messages by pressing the _File Upload_ ico
 
 From an existing chat, we can click the "Save as Proactive Agent" button in the three-dot dropdown menu to create a new Proactive Agent from the outline of an existing chat. It will be saved in the Proactive Agents tab, and you can navigate to it in the future by hovering over the left-hand navigation side bar and clicking on 'Proactive Agents'. You can also run the new Proactive Agent immediately by clicking the Lightning icon button in the Chat input box and selecting the latest Proactive Agent.
 
-<figure><img src="../.gitbook/assets/save-as-proactive (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/save-as-proactive.png" alt=""><figcaption></figcaption></figure>

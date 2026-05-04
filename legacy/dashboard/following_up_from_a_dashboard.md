@@ -19,8 +19,6 @@ layout:
 
 # Follow Ups From a Dashboard
 
-{% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
-
 There are two ways you can follow up from a dashboard question in Zenlytic.
 
 1. Entering an explore interface, where you can select metrics, slices, and filters from a list.
@@ -30,13 +28,13 @@ For both options, select the 3-dot menu in the top right-hand corner of a chart 
 
 You will see both of these options in the hover follow up menu options
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.52.15 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2025-07-27 at 10.52.15 AM.png" alt=""><figcaption></figcaption></figure>
 
 ## Explore from here
 
 This opens a graphical explore where you can change the query, filters or chart using controls in the UI.
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.52.35 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2025-07-27 at 10.52.35 AM.png" alt=""><figcaption></figcaption></figure>
 
 ## Start a chat with Zöe
 
@@ -44,4 +42,4 @@ Starting a chat with Zoë from here will open a new chat window and set the tile
 
 You can ask Zoë a question about the result to iterate on it with her.
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.54.24 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2025-07-27 at 10.54.24 AM.png" alt=""><figcaption></figcaption></figure>

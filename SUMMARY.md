@@ -36,8 +36,6 @@
 * [Artifacts](zenlytic-ui/artifacts.md)
 * [Exploring](zenlytic-ui/exploring.md)
 * [Follow Ups](zenlytic-ui/follow_ups.md)
-* [Follow Ups From a Dashboard](zenlytic-ui/following_up_from_a_dashboard.md)
-* [Dashboard Scheduled Delivery](zenlytic-ui/dashboard-scheduled-delivery.md)
 * [Installing Zenlytic in Microsoft Teams](zenlytic-ui/microsoft_teams_bot.md)
 
 ## Administration
@@ -121,7 +119,9 @@
 
 ## Legacy
 
-* [Dashboards (legacy)](data-modeling/dashboard.md)
+* [Dashboards (legacy)](legacy/dashboard/README.md)
+  * [Follow Ups From a Dashboard](legacy/dashboard/following_up_from_a_dashboard.md)
+  * [Dashboard Scheduled Delivery](legacy/dashboard/dashboard-scheduled-delivery.md)
 * [Topics (legacy)](data-modeling/topic.md)
 * [Joins (legacy)](data-modeling/join.md)
 * [Memories (legacy)](zenlytic-ui/memories.md)

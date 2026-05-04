@@ -17,9 +17,7 @@ layout:
     visible: true
 ---
 
-# Topics
-
-{% include "../.gitbook/includes/dashboards-are-a-legacy-fea....md" %}
+# Topics (legacy)
 
 {% hint style="warning" %}
 **Topics are retained for backward compatibility.** New joins should use [Relationships](relationships.md) on the [model](model.md) file rather than new topic files. Existing topics continue to work and Zoë will still read them, but we no longer recommend adding new context here. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side example.

@@ -8,13 +8,13 @@ Skills are the recommended replacement for Memories. Memories you already have w
 
 Skills sit alongside the system prompt and view/field descriptions as one of several ways to give Zoë context. The right surface depends on when Zoë should see the context:
 
-| Surface           | Visibility                                   | Best for                                                                  |
-| ----------------- | -------------------------------------------- | ------------------------------------------------------------------------- |
-| **System prompt** | Every question, always                       | Universal rules, default behaviors, terminology, data freshness, join routing |
-| **Skills**        | On demand — Zoë loads them when relevant     | Complex analysis patterns, fiscal calendars, brand style, multi-step workflows |
-| **View `description` / `zoe_description`** | When the view is in context  | Table-level guidance — join paths, data caveats                           |
-| **Field `description` / `zoe_description`** | After a field search          | Field-level disambiguation and calculation notes                          |
-| **Memories** (legacy) | Top 5 semantically matched per query     | Legacy — prefer skills. Existing memories will migrate automatically.     |
+| Surface                                     | Visibility                               | Best for                                                                       |
+| ------------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------ |
+| **System prompt**                           | Every question, always                   | Universal rules, default behaviors, terminology, data freshness, join routing  |
+| **Skills**                                  | On demand — Zoë loads them when relevant | Complex analysis patterns, fiscal calendars, brand style, multi-step workflows |
+| **View `description` / `zoe_description`**  | When the view is in context              | Table-level guidance — join paths, data caveats                                |
+| **Field `description` / `zoe_description`** | After a field search                     | Field-level disambiguation and calculation notes                               |
+| **Memories** (legacy)                       | Top 5 semantically matched per query     | Legacy — prefer skills. Existing memories will migrate automatically.          |
 
 Good candidates for a skill:
 
@@ -32,9 +32,9 @@ You can access skills in two ways:
 * **Context Manager** — Open the Context Manager from any chat to view and manage your skills.
 * **Workspace Settings** — Navigate to Workspace Settings to manage skills for your organization.
 
-<figure><img src="../.gitbook/assets/skills-context-manager.png" alt=""></figure>
+<figure><img src="../.gitbook/assets/skills-context-manager.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/skills-workspace-settings.png" alt=""></figure>
+<figure><img src="../.gitbook/assets/skills-workspace-settings.png" alt=""><figcaption></figcaption></figure>
 
 ## Setting up your Brand Style Guide
 
@@ -46,7 +46,7 @@ For example, you might write:
 
 Once saved, Zoë will apply your brand style to dashboards, presentations, apps, and every other artifact she builds.
 
-<figure><img src="../.gitbook/assets/skills-brand-style-guide.png" alt=""></figure>
+<figure><img src="../.gitbook/assets/skills-brand-style-guide.png" alt=""><figcaption></figcaption></figure>
 
 ## Uploading reference files
 
@@ -66,7 +66,11 @@ To create a new skill:
 6. Optionally, upload up to 5 reference files.
 7. Save the skill.
 
-<figure><img src="../.gitbook/assets/skills-create-new.png" alt=""></figure>
+<figure><img src="../.gitbook/assets/skills-create-new.png" alt=""><figcaption></figcaption></figure>
+
+## Who can create skills?
+
+Skill management is gated by role. Only **Developer** and **Admin** tier users (Develop, Develop without Deploy, Admin, and Organization Admin) can create, edit, or delete skills, since skills affect context for the entire organization. Users in the **Explorer** tier (Explore, View, Restricted, Embed, Embed with SQL, Embedded with Scheduling) cannot manage skills, but they can still use skills that Developer and Admin users have set up.
 
 ## Skills vs. the system prompt
 
@@ -91,4 +95,4 @@ Memories you have today will migrate to skills automatically. You don't need to 
 
 Once a skill is created, you can see it in action by reading Zoë's tool calls in any conversation. Look for **skill usage** in the tool call details to confirm that Zoë is applying your skill's instructions.
 
-<figure><img src="../.gitbook/assets/skills-tool-call.png" alt=""></figure>
+<figure><img src="../.gitbook/assets/skills-tool-call.png" alt=""><figcaption></figcaption></figure>

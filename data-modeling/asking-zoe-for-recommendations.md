@@ -103,7 +103,7 @@ If either is missing, Zoë will refuse the edit and ask you to switch to a devel
 
 The Allow Edit Production toggle is on by default, and lives at:
 
-**Workspace Settings → Git Settings → Allow Edit Production**
+**Workspace Settings → Git → Allow Edit Production**
 
 Turn it off to enforce a branch-and-deploy workflow where every production change goes through a development branch followed by an explicit deploy step. Turn it on if you want users with `deploy_to_production` to be able to edit the production branch directly, including from chat.
 

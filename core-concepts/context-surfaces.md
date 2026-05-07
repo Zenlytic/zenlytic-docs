@@ -97,7 +97,7 @@ Memories are retained for backward compatibility and will be migrated to skills 
 
 ## Letting Zoë edit context for you
 
-Zoë can also write to these surfaces, not just read them. When enabled for your workspace, you can ask her to add a field, update a view or field description, edit the `system_prompt.md`, or create and update skills, and she'll commit the change to your repository for you.
+Zoë can also write to these surfaces, not just read them. When enabled for your workspace, you can ask her to add a field, update a view or field description, edit the system prompt, or create and update skills, and she'll commit the change to your repository for you.
 
 The full feature, including how to turn it on or off, the role-based permission rules, and how production-branch edits are handled, is documented in [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md).
 

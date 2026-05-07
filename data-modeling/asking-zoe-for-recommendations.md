@@ -1,6 +1,6 @@
 # Ask Zoë for Data Model Recommendations
 
-You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the `system_prompt.md`, or restructuring something that isn't answering questions well. [If you've allowed her to](#turning-context-editing-on-or-off), she can also make those changes for you and save them to your repository on the current branch.
+You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the system prompt, or restructuring something that isn't answering questions well. [If you've allowed her to](#turning-context-editing-on-or-off), she can also make those changes for you and save them to your repository on the current branch.
 
 Ask in plain English. Either let Zoë draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or tell her to make the change for you.
 
@@ -20,8 +20,8 @@ With Zoë's edits turned on for your workspace, you can ask her to "add the meas
 
 1. Read the current state of the relevant files.
 2. Draft the smallest correct edit, such as a new field, an updated `zoe_description`, or a new skill.
-3. Validate the data model with `validate_context` so YAML errors are caught before anything is committed.
-4. Save the change to your repository with `save_context`, which commits and pushes on the current branch.
+3. Validate the data model so YAML errors are caught before anything is committed.
+4. Commit and push the change to your repository on the current branch.
 5. Run a sample query against any new or modified measure, dimension, or dimension group, so you can sanity-check the result.
 6. Report back with what changed and suggest you re-ask the original question.
 
@@ -30,7 +30,7 @@ If validation fails, Zoë reads the error, fixes the referenced files, and valid
 The surfaces Zoë can edit:
 
 * Data model YAML under `views/`, `models/`, `topics/`, and `dashboards/`, plus `zenlytic_project.yml`
-* The workspace `system_prompt.md`, for shared, always-on rules
+* The workspace system prompt, for shared, always-on rules
 * Workspace `skills/`, including `skills/<skill-name>/SKILL.md` and any supporting files
 
 She follows the same authoring rules a human editor would: flat `fields:` lists, valid measure patterns, conservative use of `searchable: true`, and `zoe_description` rather than `description` for agent-only guidance. See [Context Surfaces](../core-concepts/context-surfaces.md) for the full decision tree.

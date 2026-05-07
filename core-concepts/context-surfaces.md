@@ -97,7 +97,7 @@ Memories are retained for backward compatibility and will be migrated to skills 
 
 ## Letting Zoë edit context for you
 
-You can allow Zoë to directly make changes to your data model and tell her to save them, instead of pasting recommendations into [Context Manager](../zenlytic-ui/context_manager.md) yourself. When [this is on](#turn-it-on-or-off), Zoë can read, edit, validate, and commit changes to your repository on the branch you're currently working on.
+You can allow Zoë to make changes to your data model and tell her to save them, instead of pasting her recommendations into [Context Manager](../zenlytic-ui/context_manager.md) yourself. When [this is on](#turn-it-on-or-off), Zoë can read, edit, validate, and commit changes to your repository on the branch you're working on.
 
 The surfaces she can write to:
 
@@ -105,9 +105,9 @@ The surfaces she can write to:
 * The workspace `system_prompt.md`, for universal rules and shared domain knowledge
 * Workspace `skills/`, including `skills/<skill-name>/SKILL.md` and any supporting files
 
-Tell Zoë what you want to change ("add a measure for repeat purchase rate", "update the system prompt to default to net revenue", "create a skill for our fiscal calendar") and ask her to save it. She will draft the smallest correct edit, validate the data model with `validate_context`, commit and push the change with `save_context`, and run a quick sample query to confirm the edit works. If validation fails, she fixes the referenced files and validates again before saving, so no partial commits land.
+Tell Zoë what you want to change ("add a measure for repeat purchase rate", "update the system prompt to default to net revenue", "create a skill for our fiscal calendar") and ask her to save it. She'll draft the smallest correct edit, validate the data model with `validate_context`, commit and push the change with `save_context`, and run a quick sample query to confirm the edit works. If validation fails, she fixes the referenced files and validates again before saving, so no partial commits land.
 
-You can also keep Zoë in a review-only flow without saving anything. If you ask her to "audit the model", "find improvements", or "check whether you have enough context", she will inspect the data model and report recommendations instead of editing.
+If you'd rather have Zoë just review without editing, ask her to "audit the model", "find improvements", or "check whether you have enough context". She'll inspect the data model and report recommendations without saving anything.
 
 ### Turn it on or off
 
@@ -115,21 +115,21 @@ The feature is on by default for workspaces that have access to it. You can togg
 
 **Workspace Settings → Zoë → Context Editing**
 
-When the toggle is **on**, Zoë can save changes to your data model from chat, subject to the permission rules below. When the toggle is **off**, Zoë will still draft snippets when you ask, but she will not write them to your repository.
+When the toggle is **on**, Zoë can save changes to your data model from chat, subject to the permission rules below. When the toggle is **off**, Zoë will still draft snippets when you ask, but she won't write them to your repository.
 
 ### Zoë inherits your permissions
 
 When the toggle is on, Zoë's editing permissions match yours. The data model uses the same role-based rules whether you edit by hand in Context Manager or ask Zoë to do it from chat:
 
-* If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She will draft recommendations instead.
-* If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you are currently on, as long as that branch is not the production branch.
+* If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She'll draft recommendations instead.
+* If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you're currently on, as long as that branch isn't the production branch.
 * Only workspace **Admins** and users with the **Develop** role can deploy a development branch to the production branch. Deployment happens in [Context Manager](../zenlytic-ui/context_manager.md), not from chat.
+
+See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission reference.
 
 #### Editing the production branch directly
 
 You can allow Zoë to save edits on the production branch by turning on the **Allow Edit Production** toggle at **Workspace Settings → Git → Allow Edit Production**. With the toggle on, Zoë will save changes on the production branch for **Admin** and **Develop** users. With it off, she'll refuse production edits and ask you to switch to a development branch. The toggle is on by default and uses the same setting that controls manual production edits in Context Manager. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
-
-See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission reference, and [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) for concrete examples and the iteration playbook.
 
 ## Related pages
 

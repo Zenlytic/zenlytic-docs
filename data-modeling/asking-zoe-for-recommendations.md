@@ -1,8 +1,8 @@
 # Ask Zoë for Data Model Recommendations
 
-You don't have to author your data model alone. Zoë can recommend specific changes directly from chat, and if you've allowed her to, she can also make those changes for you and save them to your repository. The catalog of things she can help with is the same either way: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, the `system_prompt.md`, or restructuring something that isn't answering questions the way you'd like.
+You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the `system_prompt.md`, or restructuring something that isn't answering questions well. If you've allowed her to, she can also make those changes for you and save them to your repository on the current branch.
 
-Ask in plain English. Either let Zoë draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or tell her to make the change for you on the current branch.
+Ask in plain English. Either let Zoë draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or tell her to make the change for you.
 
 ## When to ask Zoë instead of authoring from scratch
 
@@ -16,7 +16,7 @@ Good questions to bring to Zoë:
 
 ## Letting Zoë make the change for you
 
-You can allow Zoë to directly make changes to your data model and tell her to save them. When this is on, you can ask her to "add the measure", "fix the join", "update the system prompt to say...", or "create a skill for our fiscal calendar", and she will:
+With Zoë's edits turned on for your workspace, you can ask her to "add the measure", "fix the join", "update the system prompt to say...", or "create a skill for our fiscal calendar", and she'll:
 
 1. Read the current state of the relevant files.
 2. Draft the smallest correct edit, such as a new field, an updated `zoe_description`, or a new skill.
@@ -35,7 +35,7 @@ The surfaces Zoë can edit:
 
 She follows the same authoring rules a human editor would: flat `fields:` lists, valid measure patterns, conservative use of `searchable: true`, and `zoe_description` rather than `description` for agent-only guidance. See [Context Surfaces](../core-concepts/context-surfaces.md) for the full decision tree.
 
-If you ask Zoë to "audit the model", "recommend changes", or "check whether she has enough context", she will inspect the data model and report findings without editing or committing. She only saves when you explicitly ask her to make the change.
+If you'd rather have Zoë just review without editing, ask her to "audit the model", "recommend changes", or "check whether she has enough context". She'll inspect the data model and report findings without saving anything, and only commits when you explicitly ask her to make the change.
 
 ## Example: adding a measure
 
@@ -88,28 +88,27 @@ Zoë's edits are on by default for workspaces that have access to the feature. Y
 
 When edits are turned on, Zoë's editing permissions match your own. The data model is governed by the same role-based rules whether you edit by hand in Context Manager or ask Zoë to do it from chat:
 
-* If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She will draft recommendations and explain that you or a workspace admin needs to apply them.
-* If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you are currently on, as long as that branch is not the production branch.
+* If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She'll draft recommendations and explain that you or a workspace admin needs to apply them.
+* If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you're currently on, as long as that branch isn't the production branch.
 * Only workspace **Admins** and users with the **Develop** role can deploy a development branch to the production branch. Deployment happens in [Context Manager](../zenlytic-ui/context_manager.md), not from chat.
+
+See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission reference.
 
 ### Editing the production branch directly
 
 You can allow Zoë to save edits on the production branch by turning on the **Allow Edit Production** toggle at **Workspace Settings → Git → Allow Edit Production**. With the toggle on, Zoë will save changes on the production branch for **Admin** and **Develop** users. With it off, she'll refuse production edits and ask you to switch to a development branch. The toggle is on by default and uses the same setting that controls manual production edits in Context Manager. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
 
-See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission reference.
-
 ## What Zoë won't do
 
 Even with edits turned on, Zoë holds the line on a few things:
 
-* Edit production when blocked. If you don't have `deploy_to_production`, or "Allow editing production" is off, Zoë will refuse production edits and suggest switching to a development branch or asking a workspace admin.
-* Edit without `data_model_edit`. If your role doesn't include data model edit access, Zoë will recommend the change and tell you who can apply it.
-* Recommend Memories or Topics for new context. Memories are legacy and being retired in favor of Skills. Topics are legacy/backwards-compatibility only. Zoë will route new context to view and field properties, skills, or the system prompt instead.
+* Save changes she isn't allowed to. If your role lacks `data_model_edit`, or you're on the production branch without the right permission and toggle, Zoë will recommend the change and tell you who can apply it instead.
+* Recommend Memories or Topics for new context. Memories are legacy and being retired in favor of Skills. Topics are legacy and kept only for backwards compatibility. Zoë routes new context to view and field properties, skills, or the system prompt instead.
 * Rewrite a whole file when a small edit will do. Zoë makes the smallest correct change to fix the issue you reported, rather than restructuring on speculation.
 
 ## Iterate based on what goes wrong
 
-Zoë's edits and recommendations aren't always perfect on the first try. If a change doesn't produce the right answer when you test it, tell her (for example, "that measure gave the wrong number, the denominator should exclude internal test accounts") and she'll refine, re-validate, and, when edits are on, commit the fix. This is the same iterative philosophy the whole data model is built on: add context to fix the specific error you observed, rather than trying to anticipate every edge case up front. See [Progressive Enrichment](../core-concepts/progressive-enrichment.md) for the broader playbook.
+Zoë's edits and recommendations aren't always perfect on the first try. If a change doesn't produce the right answer when you test it, tell her what's wrong (for example, "that measure gave the wrong number, the denominator should exclude internal test accounts"). She'll refine the change, re-validate it, and commit the fix when you ask her to. This is the same iterative philosophy the whole data model is built on: add context to fix the specific error you observed, rather than trying to anticipate every edge case up front. See [Progressive Enrichment](../core-concepts/progressive-enrichment.md) for the broader playbook.
 
 ## Related
 

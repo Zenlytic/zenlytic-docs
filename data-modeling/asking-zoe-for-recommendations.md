@@ -89,8 +89,23 @@ Zoë's edits are on by default for workspaces that have access to the feature. Y
 When edits are turned on, Zoë's editing permissions match your own. The data model is governed by the same role-based rules whether you edit by hand in Context Manager or ask Zoë to do it from chat:
 
 * If you are an **Explore** or **View** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She will draft recommendations and explain that you or a workspace admin needs to apply them.
-* If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you are currently on.
-* Only workspace **Admins** and users with the **Develop** role (which carries `deploy_to_production`) can deploy a development branch to the production branch. Direct edits to the production branch from chat additionally require the workspace's "Allow editing production" setting to be enabled; without it, Zoë will refuse and ask you to switch to a development branch.
+* If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you are currently on, as long as that branch is not the production branch.
+* Only workspace **Admins** and users with the **Develop** role (which carries `deploy_to_production`) can deploy a development branch to the production branch. Deployment happens in [Context Manager](../zenlytic-ui/context_manager.md), not from chat.
+
+### Editing the production branch directly
+
+Asking Zoë to save a change while you're on the production branch is a separate, gated flow on top of the rules above. Zoë will only save edits on the production branch when **both** of the following are true:
+
+* You have `deploy_to_production` (so you are an **Admin** or **Develop** user).
+* The workspace's **Allow Edit Production** toggle is on.
+
+If either is missing, Zoë will refuse the edit and ask you to switch to a development branch.
+
+The Allow Edit Production toggle is on by default, and lives at:
+
+**Workspace Settings → Git Settings → Allow Edit Production**
+
+Turn it off to enforce a branch-and-deploy workflow where every production change goes through a development branch followed by an explicit deploy step. Turn it on if you want users with `deploy_to_production` to be able to edit the production branch directly, including from chat.
 
 See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission reference.
 

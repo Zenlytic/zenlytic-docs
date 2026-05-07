@@ -97,7 +97,7 @@ Memories are retained for backward compatibility and will be migrated to skills 
 
 ## Letting Zoë edit context for you
 
-You can allow Zoë to directly make changes to your data model and tell her to save them, instead of pasting recommendations into [Context Manager](../zenlytic-ui/context_manager.md) yourself. When this is on, Zoë can read, edit, validate, and commit changes to your repository on the branch you're currently working on.
+You can allow Zoë to directly make changes to your data model and tell her to save them, instead of pasting recommendations into [Context Manager](../zenlytic-ui/context_manager.md) yourself. When [this is on](#turn-it-on-or-off), Zoë can read, edit, validate, and commit changes to your repository on the branch you're currently working on.
 
 The surfaces she can write to:
 

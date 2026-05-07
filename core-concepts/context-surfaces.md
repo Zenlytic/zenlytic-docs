@@ -123,7 +123,7 @@ When the toggle is on, Zoë's editing permissions match yours. The data model us
 
 * If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She will draft recommendations instead.
 * If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you are currently on, as long as that branch is not the production branch.
-* Only workspace **Admins** and users with the **Develop** role (which carries `deploy_to_production`) can deploy a development branch to the production branch. Deployment happens in [Context Manager](../zenlytic-ui/context_manager.md), not from chat.
+* Only workspace **Admins** and users with the **Develop** role can deploy a development branch to the production branch. Deployment happens in [Context Manager](../zenlytic-ui/context_manager.md), not from chat.
 
 #### Editing the production branch directly
 

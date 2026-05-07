@@ -94,18 +94,7 @@ When edits are turned on, Zoë's editing permissions match your own. The data mo
 
 ### Editing the production branch directly
 
-Asking Zoë to save a change while you're on the production branch is a separate, gated flow on top of the rules above. Zoë will only save edits on the production branch when **both** of the following are true:
-
-* You have `deploy_to_production` (so you are an **Admin** or **Develop** user).
-* The workspace's **Allow Edit Production** toggle is on.
-
-If either is missing, Zoë will refuse the edit and ask you to switch to a development branch.
-
-The Allow Edit Production toggle is on by default, and lives at:
-
-**Workspace Settings → Git → Allow Edit Production**
-
-Turn it off to enforce a branch-and-deploy workflow where every production change goes through a development branch followed by an explicit deploy step. Turn it on if you want users with `deploy_to_production` to be able to edit the production branch directly, including from chat.
+Asking Zoë to save a change on the production branch is gated by the same workspace setting that gates manual production edits in Context Manager: the **Allow Edit Production** toggle at **Workspace Settings → Git → Allow Edit Production** (on by default). Zoë will save on the production branch only if you are an **Admin** or **Develop** user and the toggle is on. Otherwise she'll refuse the edit and ask you to switch to a development branch. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
 
 See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission reference.
 

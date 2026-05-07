@@ -30,11 +30,18 @@ From the three-dot menu, you can also:
 Use the **Add** button to create or upload files:
 
 * **Add view**
-* **Add model file**
+* **Add model**
 * **Add skill**
 * **Create file**
 * **Create folder**
 * **Upload file**
+
+When you add a view, choose one of these methods:
+
+* Upload a CSV file
+* Add from a database connection
+
+Use an existing connection or create a new connection during setup.
 
 ![Add button options](../.gitbook/assets/context-manager-add-options.png) ![Add view modal](../.gitbook/assets/context-manager-add-view.png)
 

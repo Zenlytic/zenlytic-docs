@@ -113,7 +113,7 @@ Zoë's edits and recommendations aren't always perfect on the first try. If a ch
 ## Related
 
 * [Context Manager](../zenlytic-ui/context_manager.md): where you apply Zoë's recommendations or review her commits
-* [Context Surfaces](../core-concepts/context-surfaces.md): when to use `description`, `zoe_description`, synonyms, or the system prompt; also covers the enable/disable toggle and the surfaces Zoë can edit
+* [Context Surfaces](../core-concepts/context-surfaces.md): when to use `description`, `zoe_description`, synonyms, or the system prompt
 * [User Roles](../zenlytic-ui/user_roles.md): the role and permission reference Zoë inherits from
 * [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — diagnostic flow when Zoë gives a wrong answer
 * [Measures](measure.md) — valid/invalid aggregation patterns for measure SQL

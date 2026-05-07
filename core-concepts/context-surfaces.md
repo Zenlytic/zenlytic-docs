@@ -121,7 +121,7 @@ When the toggle is **on**, Zoë can save changes to your data model from chat, s
 
 When the toggle is on, Zoë's editing permissions match yours. The data model uses the same role-based rules whether you edit by hand in Context Manager or ask Zoë to do it from chat:
 
-* If you are an **Explore** or **View** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She will draft recommendations instead.
+* If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She will draft recommendations instead.
 * If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you are currently on, as long as that branch is not the production branch.
 * Only workspace **Admins** and users with the **Develop** role (which carries `deploy_to_production`) can deploy a development branch to the production branch. Deployment happens in [Context Manager](../zenlytic-ui/context_manager.md), not from chat.
 

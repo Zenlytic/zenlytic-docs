@@ -79,7 +79,7 @@ If Zoë's edits are turned off, or you'd rather review the change before it land
 
 Zoë's edits are on by default for workspaces that have access to the feature. You can toggle the behavior per workspace at:
 
-**Workspace Settings → Chat Settings → Context Editing**
+**Workspace Settings → Zoë → Context Editing**
 
 * When the toggle is **on**, Zoë can save changes to your data model from chat, subject to the permission rules below.
 * When the toggle is **off**, Zoë will still draft snippets when you ask, but she will not write them to your repository.

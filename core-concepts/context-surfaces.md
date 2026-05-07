@@ -113,7 +113,7 @@ You can also keep Zoë in a review-only flow without saving anything. If you ask
 
 The feature is on by default for workspaces that have access to it. You can toggle it per workspace at:
 
-**Workspace Settings → Chat Settings → Context Editing**
+**Workspace Settings → Zoë → Context Editing**
 
 When the toggle is **on**, Zoë can save changes to your data model from chat, subject to the permission rules below. When the toggle is **off**, Zoë will still draft snippets when you ask, but she will not write them to your repository.
 

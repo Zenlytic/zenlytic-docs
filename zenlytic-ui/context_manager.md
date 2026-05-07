@@ -61,7 +61,7 @@ Review YAML key documentation by hovering over keys in the text editor.
 
 Use the branch selector to work in non-production branches.
 
-Enable the workspace setting that blocks direct edits on the production branch to enforce a branch-based workflow.
+Disable the workspace setting that allows direct edits on the production branch to enforce a branch-based workflow.
 
 ![Branch selector](../.gitbook/assets/context-manager-branch-selector.png) ![Disable production edits setting](../.gitbook/assets/context-manager-disable-production-edits.png)
 

@@ -1,6 +1,6 @@
 # Context Manager
 
-Use Context Manager to manage your semantic model files, review changes, and deploy updates to production.
+Use Context Manager to manage semantic model files, review changes, and deploy updates to production.
 
 ## Open Context Manager
 
@@ -18,16 +18,16 @@ Use the file tree to organize and maintain your data model:
 * Open view and model files in the editor
 * Access file actions from the three-dot menu
 
-From the three-dot menu, you can also:
+Use the three-dot menu to:
 
 * Show documentation for view and model files
 * Open database preview for view files
 
 ![Context tab file tree](../.gitbook/assets/context-manager-file-tree.png) ![Three-dot menu actions](../.gitbook/assets/context-manager-file-menu.png)
 
-## Add to data model
+## Add to the data model
 
-Use the **Add** button to create or upload files:
+Use the **Add** button to create or upload assets:
 
 * **Add view**
 * **Add model**
@@ -36,12 +36,12 @@ Use the **Add** button to create or upload files:
 * **Create folder**
 * **Upload file**
 
-When you add a view, choose one of these methods:
+When you add a view, choose one of these options:
 
 * Upload a CSV file
 * Add from a database connection
 
-Use an existing connection or create a new connection during setup.
+Use an existing connection or create a new connection during setup. 
 
 ![Add button options](../.gitbook/assets/context-manager-add-options.png) ![Add view modal](../.gitbook/assets/context-manager-add-view.png)
 
@@ -49,25 +49,25 @@ Use an existing connection or create a new connection during setup.
 
 Edit files directly in the text editor. Use the validation panel to review errors and warnings, then fix issues before deployment.
 
-Open diff view to compare branch changes against production before you deploy.
+Open the diff view to compare branch changes against production before deployment.
 
 ![Editor with validation panel](../.gitbook/assets/context-manager-editor-validation.png) ![Diff view](../.gitbook/assets/context-manager-diff-view.png)
 
-View documentation about YAML keys by hovering over those keys in the text editor.
+Review YAML key documentation by hovering over keys in the text editor.
 
 ![Tooltip with documentation](../.gitbook/assets/context-manager-editor-yml-tooltips.png)
 
 ## Work with branches safely
 
-Use the branch selector to work on non-production branches.
+Use the branch selector to work in non-production branches.
 
-Enable the workspace setting that blocks direct editing on the production branch when you want to enforce a branch-based workflow.
+Enable the workspace setting that blocks direct edits on the production branch to enforce a branch-based workflow.
 
 ![Branch selector](../.gitbook/assets/context-manager-branch-selector.png) ![Disable production edits setting](../.gitbook/assets/context-manager-disable-production-edits.png)
 
 ## Deploy to production
 
-After you commit changes on a development branch, use the action button to deploy to production.
+After you commit changes on a development branch, use the deploy action to publish to production.
 
 You must resolve validation errors before deployment.
 

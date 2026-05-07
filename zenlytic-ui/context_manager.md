@@ -7,6 +7,7 @@ Use Context Manager to manage your semantic model files, review changes, and dep
 Open Context Manager from the workspace navigation or from chat.
 
 ![Open Context Manager entry points](../.gitbook/assets/context-manager-entry-points.png)
+![Context Manager overview](../.gitbook/assets/context-manager-overview.png)
 
 ## Manage files
 

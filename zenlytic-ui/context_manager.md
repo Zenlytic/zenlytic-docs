@@ -53,9 +53,13 @@ Open diff view to compare branch changes against production before you deploy.
 
 ![Editor with validation panel](../.gitbook/assets/context-manager-editor-validation.png) ![Diff view](../.gitbook/assets/context-manager-diff-view.png)
 
+View documentation about YAML keys by hovering over those keys in the text editor.
+
+![Tooltip with documentation](../.gitbook/assets/context-manager-editor-yml-tooltips.png)
+
 ## Work with branches safely
 
-Use the branch selector next to the Context Manager title to work on non-production branches.
+Use the branch selector to work on non-production branches.
 
 Enable the workspace setting that blocks direct editing on the production branch when you want to enforce a branch-based workflow.
 
@@ -65,6 +69,6 @@ Enable the workspace setting that blocks direct editing on the production branch
 
 After you commit changes on a development branch, use the action button to deploy to production.
 
-Context Manager saves changes as you type, but you must resolve validation errors before deployment.
+You must resolve validation errors before deployment.
 
 ![Deploy action](../.gitbook/assets/context-manager-deploy.png)

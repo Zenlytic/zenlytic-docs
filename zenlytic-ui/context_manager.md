@@ -8,16 +8,7 @@ Open Context Manager from the workspace navigation or from chat.
 
 ![Open Context Manager entry points](../.gitbook/assets/context-manager-entry-points.png)
 
-## Understand the tabs
-
-Use the tabs to control model context and query-based learning:
-
-* **Context:** Create and edit model files, view files, folders, and branches
-* **Query history:** Let Zenlytic learn from prior queries to improve query accuracy and speed
-
-![Context Manager tabs](../.gitbook/assets/context-manager-tabs.png)
-
-## Manage files in the Context tab
+## Manage files
 
 Use the file tree to organize and maintain your data model:
 
@@ -33,19 +24,16 @@ From the three-dot menu, you can also:
 
 ![Context tab file tree](../.gitbook/assets/context-manager-file-tree.png) ![Three-dot menu actions](../.gitbook/assets/context-manager-file-menu.png)
 
-## Add new model assets
+## Add to data model
 
-Use the **Add** button to create new assets:
+Use the **Add** button to create or upload files:
 
 * **Add view**
 * **Add model file**
-
-When you add a view, choose one of these methods:
-
-* Upload a CSV file
-* Add from a database connection
-
-Use an existing connection or create a new connection during setup.
+* **Add skill**
+* **Create file**
+* **Create folder**
+* **Upload file**
 
 ![Add button options](../.gitbook/assets/context-manager-add-options.png) ![Add view modal](../.gitbook/assets/context-manager-add-view.png)
 

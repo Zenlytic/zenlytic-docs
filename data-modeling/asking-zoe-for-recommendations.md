@@ -1,6 +1,6 @@
 # Ask Zoë for Data Model Recommendations
 
-You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the `system_prompt.md`, or restructuring something that isn't answering questions well. If you've allowed her to, she can also make those changes for you and save them to your repository on the current branch.
+You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the `system_prompt.md`, or restructuring something that isn't answering questions well. [If you've allowed her to](#turning-context-editing-on-or-off), she can also make those changes for you and save them to your repository on the current branch.
 
 Ask in plain English. Either let Zoë draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or tell her to make the change for you.
 
@@ -75,7 +75,7 @@ If Zoë's edits are turned off, or you'd rather review the change before it land
 4. If the change is significant, deploy to production when you're ready.
 5. Re-ask your original question to confirm the change works end-to-end.
 
-## Turning Zoë's edits on or off
+## Turning context editing on or off
 
 Zoë's edits are on by default for workspaces that have access to the feature. You can toggle the behavior per workspace at:
 

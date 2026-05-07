@@ -127,7 +127,7 @@ When the toggle is on, Zoë's editing permissions match yours. The data model us
 
 #### Editing the production branch directly
 
-Asking Zoë to save a change on the production branch is gated by the same workspace setting that gates manual production edits in Context Manager: the **Allow Edit Production** toggle at **Workspace Settings → Git → Allow Edit Production** (on by default). Zoë will save on the production branch only if you are an **Admin** or **Develop** user and the toggle is on. Otherwise she'll refuse the edit and ask you to switch to a development branch. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
+You can allow Zoë to save edits on the production branch by turning on the **Allow Edit Production** toggle at **Workspace Settings → Git → Allow Edit Production**. With the toggle on, Zoë will save changes on the production branch for **Admin** and **Develop** users. With it off, she'll refuse production edits and ask you to switch to a development branch. The toggle is on by default and uses the same setting that controls manual production edits in Context Manager. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
 
 See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission reference, and [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) for concrete examples and the iteration playbook.
 

@@ -95,8 +95,15 @@ Use the following mental model:
 
 Memories are retained for backward compatibility and will be migrated to skills in a future release. Do not add new context to memories. See [Memories](../zenlytic-ui/memories.md) for the existing reference and [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for the recommended replacement.
 
+## Letting Zoë edit context for you
+
+Zoë can also write to these surfaces, not just read them. When enabled for your workspace, you can ask her to add a field, update a view or field description, edit the system prompt, or create and update skills, and she'll commit the change to your repository for you.
+
+The full feature, including how to turn it on or off, the role-based permission rules, and how production-branch edits are handled, is documented in [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md).
+
 ## Related pages
 
+* [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md): how Zoë can write to these surfaces for you
 * [Skills](../zenlytic-ui/skills.md) — how to create and use skills
 * [Views](../data-modeling/view.md) — view-level descriptions
 * [Dimensions](../data-modeling/dimension.md) — field-level descriptions, synonyms, searchable

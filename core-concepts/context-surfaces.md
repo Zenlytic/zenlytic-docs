@@ -95,8 +95,40 @@ Use the following mental model:
 
 Memories are retained for backward compatibility and will be migrated to skills in a future release. Do not add new context to memories. See [Memories](../zenlytic-ui/memories.md) for the existing reference and [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for the recommended replacement.
 
+## Letting Zoë edit context for you
+
+Zoë can do more than recommend changes — she can also create and edit your workspace context directly from chat when you ask her to. The surfaces she can write to:
+
+* **Data model YAML** under `views/`, `models/`, `topics/`, and `dashboards/`, plus `zenlytic_project.yml`
+* **The workspace `system_prompt.md`** — universal rules and shared domain knowledge
+* **Workspace `skills/`** — `skills/<skill-name>/SKILL.md` and supporting files for recurring workflows
+
+When you ask Zoë to make a change, she follows a consistent workflow: she reads the relevant files, drafts the smallest correct edit, validates the result against the data model, commits the change to your repository on the current branch, and then runs a quick sample query to confirm the edit behaves as expected. If validation fails she reads the error, fixes the referenced files, and tries again before saving.
+
+She can also do this in **review-only mode** without saving anything. If you ask Zoë to "audit the model", "find improvements", or "check whether you have enough context", she'll inspect the data model and report targeted recommendations without editing or committing.
+
+### Branch and permission rules
+
+Zoë respects the same branch-and-role rules as a human editor in [Context Manager](../zenlytic-ui/context_manager.md):
+
+* **Non-production branches:** users with `develop_without_deploy` (or higher) can have Zoë edit any file in the data model.
+* **Production branch:** edits require both `deploy_to_production` permission **and** the workspace's "Allow editing production" setting to be enabled. If either is missing, Zoë will refuse the edit and explain how to either switch to a development branch or get the right permission.
+* **Below `develop_without_deploy`:** Zoë treats the workspace as read-only and will not save anything. She'll still recommend changes; you can apply them yourself in [Context Manager](../zenlytic-ui/context_manager.md), or ask a workspace admin.
+
+### Turn it on or off
+
+The feature is on by default for workspaces that have access to it. You can toggle it per workspace at:
+
+**Workspace Settings → Chat Settings → Context Editing**
+
+When the toggle is **on**, Zoë can sync, validate, and save changes to your data model context from chat. When it's **off**, Zoë can still recommend changes — she just won't write them — and you apply the recommendations yourself.
+
+For the full recommend-vs-apply workflow with concrete examples, see [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md).
+
 ## Related pages
 
+* [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) — the recommend vs. apply flow with concrete examples
+* [Context Manager](../zenlytic-ui/context_manager.md) — the UI for browsing, editing, and deploying context manually
 * [Skills](../zenlytic-ui/skills.md) — how to create and use skills
 * [Views](../data-modeling/view.md) — view-level descriptions
 * [Dimensions](../data-modeling/dimension.md) — field-level descriptions, synonyms, searchable

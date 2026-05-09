@@ -59,7 +59,7 @@ Optionally, you may choose to set values for:
     \- view
 2. zenlytic\_user\_attributes\
    a. Allows you to manually control access to data.\
-   b. Read about how user attributes work [here in the Zenlytic Docs](../3_zenlytic_ui/user_attributes/).\
+   b. Read about how user attributes work [here](../zenlytic-ui/user_attributes.md).\
    c. Must be a valid array of key-value pairs\
    d. Ex: `[{\"department\": \"Engineering\"}]`\
    These may already be set up, but make sure those are showing up in the Okta Profile Editor.\

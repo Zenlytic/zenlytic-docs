@@ -1,6 +1,6 @@
 # User Attributes
 
-This section covers how to set user attributes. User attributes are how users are assigned permissions that control their access to data (using [access controls](../data-modeling/access_grants.md)).
+This section covers how to set user attributes. User attributes are how users are assigned permissions that control their access to data (using [access grants](../data-modeling/access_grants.md)).
 
 To set a user attribute on a user, go to Workspace Settings, then go to Team Members then go to Attributes to define the attribute
 
@@ -26,7 +26,7 @@ For example, this user will _not_ have access to this `email` field because the 
 
 ![access-grant-on-field](../.gitbook/assets/access-grant-on-field.png)
 
-For more information on how to apply access grants and filters, look at the documentation on [access controls](../data-modeling/access_grants.md).
+For more information on how to apply access grants and filters, look at the documentation on [access grants](../data-modeling/access_grants.md).
 
 ## User attributes populated automatically
 

@@ -91,7 +91,7 @@
 
 ## MCP
 
-* [MCP Overview](mcp/overview.md)
+* [MCP Overview (Experimental)](mcp/overview.md)
 * [Tableau](mcp/tableau.md)
 * [Power BI](mcp/powerbi.md)
 * [BigQuery](mcp/bigquery.md)

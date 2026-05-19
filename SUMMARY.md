@@ -89,6 +89,14 @@
 * [Embedding Styles](embedding/embedding_styles.md)
 * [Proactive Agents in Embedding](embedding/workflows_in_embedding.md)
 
+## MCP
+
+* [MCP Overview](mcp/overview.md)
+* [Tableau](mcp/tableau.md)
+* [Power BI](mcp/powerbi.md)
+* [BigQuery](mcp/bigquery.md)
+* [dbt](mcp/dbt.md)
+
 ## Data Sources
 
 * [Integrations Overview](data-sources/integrations.md)

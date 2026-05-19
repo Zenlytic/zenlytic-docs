@@ -40,7 +40,45 @@ Add the following in the **Headers** section of the Zenlytic connection modal. H
 
 | Header | Value |
 | --- | --- |
-| `Authorization` | `Bearer YOUR_POWER_BI_ACCESS_TOKEN`. Include the `Bearer ` scheme and a single space before the token. If you're going through an OAuth proxy, use whatever static credential the proxy expects (for example, `Bearer YOUR_PROXY_KEY` or `X-API-Key: YOUR_PROXY_KEY`). |
+| `Authorization` | `Bearer YOUR_POWER_BI_ACCESS_TOKEN`. Include the `Bearer` scheme and a single space before the token. |
+
+The endpoint accepts Microsoft Entra ID bearer tokens scoped to `https://api.fabric.microsoft.com/.default`. If you're going through an OAuth proxy instead of calling Microsoft directly, use whatever static credential the proxy expects (for example, `Bearer YOUR_PROXY_KEY` or `X-API-Key: YOUR_PROXY_KEY`).
+
+### Use your user identity (testing)
+
+For local development and testing, sign in with the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) and print a user-delegated access token:
+
+```bash
+az login
+az account get-access-token --resource https://api.fabric.microsoft.com --query accessToken -o tsv
+```
+
+Tool calls made with this token run as your user account and inherit your Power BI permissions, including **Build** access on the semantic models Zoë needs to query.
+
+### Use a service principal (production)
+
+For production, [register an app in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app), create a client secret, then exchange the client credentials for an access token:
+
+```bash
+curl -X POST "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=${CLIENT_ID}" \
+  -d "client_secret=${CLIENT_SECRET}" \
+  -d "scope=https://api.fabric.microsoft.com/.default"
+```
+
+Two extra steps are easy to miss on the service principal path: your tenant admin must enable **"Allow service principals to use Power BI APIs"** under **Admin portal → Tenant settings → Developer settings**, and the service principal itself needs **Build** permission on every semantic model you want Zoë to query. If either is missing, the token mints fine but tool calls will fail with permission errors.
+
+### Verify the token
+
+Before saving the connection, sanity-check the token against the Fabric REST API — same auth as the MCP endpoint:
+
+```bash
+curl -H "Authorization: Bearer $TOKEN" https://api.fabric.microsoft.com/v1/workspaces
+```
+
+If your workspace list comes back, the token is good and the MCP server will accept it too. Entra ID access tokens expire after **one hour**.
 
 ## Use the connection in chat
 

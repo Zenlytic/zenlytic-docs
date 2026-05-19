@@ -16,7 +16,7 @@ The exact tool surface depends on your Tableau MCP server's configuration. You c
 
 - **A deployed Tableau MCP server with a public HTTPS URL.** Follow Tableau's [deployment guide for Tableau Server customers](https://github.com/tableau/tableau-mcp/blob/main/docs/getting-started.md) to install and expose the server. The endpoint typically ends in `/tableau-mcp` (for example, `https://tableau-mcp.example.com/tableau-mcp`).
 - **Credentials to call the server.** Either a Tableau [Personal Access Token](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) (PAT) or a static credential expected by a proxy in front of your MCP server. See [Configure request headers](#configure-request-headers).
-- **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `edit_settings` permission. See the [MCP overview](overview.md) for the full list.
+- **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See the [MCP overview](overview.md) for the full list.
 
 ## Set up the connection in Zenlytic
 
@@ -70,4 +70,4 @@ A few tips:
 - **`401 Unauthorized`:** The credentials are missing, malformed, or expired. For Option 1, sign into the Tableau REST API again and replace the `X-Tableau-Auth` value. For Option 2, double-check the `Authorization` value matches what your proxy expects.
 - **`Authorization required. Use OAuth 2.1 flow.`** The Tableau MCP server has OAuth enabled and won't accept static-header calls. Reconfigure the server with `DANGEROUSLY_DISABLE_OAUTH=true`, or front it with a proxy that handles the OAuth handshake.
 - **`Method not allowed`:** Expected if you open the URL in a browser — the server only accepts `POST`. If it shows up during **Test Connection**, verify the URL ends in `/tableau-mcp`.
-- **Tools changed after a server upgrade:** Open the connection, click **Refresh Tools**, review the diff, and **Save Changes**.
+- **Tools changed after a server upgrade:** Open the connection, click **Refresh Tools**, review the new set of tools, and **Save Changes**.

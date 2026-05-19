@@ -11,13 +11,7 @@ The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open s
 
 ## How MCP works in Zenlytic
 
-At a high level, every connection follows the same lifecycle:
-
-1. **Add the server.** You register the server's HTTPS endpoint (and any authentication headers) in workspace settings.
-2. **Discover tools.** Zenlytic opens an MCP session, calls `tools/list`, and stores a snapshot of the discovered tools — names, descriptions, and JSON schemas — in your workspace.
-3. **Select tools.** You can toggle individual tools on or off. Only enabled tools are exposed to Zoë; deselected tools are never described to the model.
-4. **Use in chat.** From the chat tool menu, toggle the connection on per message. Zoë sees the enabled tools alongside her native ones for the rest of the conversation.
-5. **Call tools.** When Zoë invokes one of your tools, Zenlytic forwards a `tools/call` request to your server, captures the response, and feeds the result back into the conversation.
+To set up a connection, register the server's HTTPS endpoint and any authentication headers in workspace settings, choose which of the discovered tools Zoë can access, and toggle the connection on per-conversation from the chat tool menu. When Zoë invokes one of your tools, Zenlytic forwards a `tools/call` request to your server, captures the response, and feeds the result back into the conversation.
 
 ## Available integrations
 
@@ -36,11 +30,9 @@ To connect any MCP server, confirm the following:
 
 | Requirement | Detail |
 | --- | --- |
-| **Deployment** | Outbound MCP connections are available on **Zenlytic-hosted** deployments. Self-hosted and on-prem deployments cannot currently make outbound MCP requests. |
 | **Feature flag** | The `mcp-client` flag must be enabled for your workspace. If you don't see an **MCP** entry under **Workspace Settings → Extensions**, ask your Zenlytic contact to enable it. |
-| **Workspace permission** | You need `edit_settings` permission to add, edit, delete, or refresh connections. Members with only `view_content` can see existing connections but can't modify them. |
+| **Workspace permission** | You need `admin` role to view, add, edit, delete, or refresh connections from Workspace Settings. |
 | **A reachable server** | Your server (or the vendor's) must be publicly reachable over HTTPS from Zenlytic's infrastructure. Plain `http://` URLs are rejected at save time. |
-| **Credentials** | Most production servers require authentication. Have a bearer token, API key, or other static credential ready — we pass these through as custom request headers on every call. |
 
 ## Get started
 

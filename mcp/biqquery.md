@@ -21,7 +21,7 @@ Tool calls run as the IAM identity behind the access token, so Zoë can only see
   - `[roles/bigquery.jobUser](https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.jobUser)` — run BigQuery jobs.
   - `[roles/bigquery.dataViewer](https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.dataViewer)` — query data.
 - **A way to mint OAuth access tokens** scoped to `https://www.googleapis.com/auth/bigquery` for that identity (see `gcloud` CLI in [Configure request headers](#configure-request-headers)).
-- **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `edit_settings` permission. See the [MCP overview](overview.md) for the full list.
+- **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See the [MCP overview](overview.md) for the full list.
 
 ## Set up the connection in Zenlytic
 

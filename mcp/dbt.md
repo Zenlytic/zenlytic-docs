@@ -20,7 +20,7 @@ Before you start, confirm the following:
 - A **dbt Cloud** account with [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled.
 - A **production environment** in dbt Cloud (and a **development environment** if you plan to use `execute_sql` or Fusion tools).
 - A **PAT or service token** with at minimum **Semantic Layer**, **Metadata**, and **Developer** permissions.
-- The `mcp-client` flag enabled on your Zenlytic workspace and `edit_settings` permission. See the [MCP overview](overview.md) for full prerequisites.
+- The `mcp-client` flag enabled on your Zenlytic workspace and `admin` role. See the [MCP overview](overview.md) for full prerequisites.
 
 ## Choose a token type
 
@@ -114,7 +114,7 @@ Once the connection has at least one selected tool, it appears in the chat tool 
 ## Manage the integration
 
 - **Rotate the token:** Generate a new PAT or service token in dbt Cloud, then **Edit** the connection in Zenlytic and overwrite the `Authorization` header value. Old tokens remain valid in dbt until you revoke them there.
-- **Refresh tools:** If dbt releases new tools or changes existing tool schemas, the next call fails with a "tools have changed" error. Open the connection, click **Refresh Tools**, review the diff, and **Save Changes**.
+- **Refresh tools:** If dbt releases new tools or changes existing tool schemas, the next call fails with a "tools have changed" error. Open the connection, click **Refresh Tools**, review the new set of tools, and **Save Changes**.
 - **Disable the integration:** Click **Delete** on the connection card to remove it immediately. Zoë stops seeing the dbt tools in any new conversation.
 
 ## Troubleshoot

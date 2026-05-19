@@ -19,7 +19,7 @@ Before you start, confirm the following:
 - **Admin enabled the instance setting.** Your Power BI admin must turn on **"Users can use the Power BI Model Context Protocol server endpoint (preview)"** in the Power BI admin portal. Without this, the endpoint refuses calls from your instance.
 - **Build permissions on at least one semantic model.** The identity you authenticate with needs **Build** permission on every semantic model you want Zoë to query.
 - **(Recommended) Optimized semantic models.** Follow Microsoft's guide to [prepare your semantic models for AI](https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai) — adding AI instructions and verified answers materially improves DAX generation quality.
-- **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `edit_settings` permission. See the [MCP overview](overview.md) for the full list.
+- **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See the [MCP overview](overview.md) for the full list.
 
 ## Set up the connection in Zenlytic
 

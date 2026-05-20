@@ -56,6 +56,26 @@ To edit an artifact, click **Edit in a new chat** from the three-dot menu in the
 
 <figure><img src="../.gitbook/assets/artifact-edit-in-chat.png" alt=""></figure>
 
+## Visual Editor
+
+{% hint style="info" %}
+**The Visual Editor is only available for HTML-based artifacts.** Use it for artifacts like dashboards, charts, and other custom apps.
+{% endhint %}
+
+Open the **Visual Editor** from the artifact menu bar to make targeted changes directly on the artifact. Move your mouse around the document to see a blue rectangle around the element you are selecting. Click the element you want to change, write a short description of the change, and click **Queue change**.
+
+<figure><img src="../.gitbook/assets/visual-editor-making-an-edit.png" alt="Visual Editor selection rectangle and Queue change prompt"></figure>
+
+You can queue up to 20 changes before applying them. Open the queued changes menu to review everything you have queued, edit a change, or remove a change before applying it.
+
+<figure><img src="../.gitbook/assets/visual-editor-queued-changes-menu.png" alt="Queued changes menu with three pending edits"></figure>
+
+When your queued changes are ready, click **Apply Queued Changes**. Review the updated artifact, then click **Save Changes** if you are happy with the result. Saving creates a new version of the artifact in the [update history](#update-history).
+
+<figure><img src="../.gitbook/assets/visual-editor-saving-changes.png" alt="Updated artifact with unsaved changes and Save Changes button"></figure>
+
+If you do not like the result, queue more changes and apply them again, or close the Visual Editor without saving.
+
 ## Update history
 
 Every artifact uses immutable, append-only versioning — nothing is overwritten or deleted. New versions are created when you edit the artifact and save your changes, or when a scheduled refresh runs.

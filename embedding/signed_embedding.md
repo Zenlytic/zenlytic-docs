@@ -154,7 +154,7 @@ requests.post(url, headers=headers, data=data)
   * `expires_in`: Expiry in seconds from now.
 *   **Example Response**
 
-    \{% code overflow="wrap" %\}
+    {% code overflow="wrap" %}
 
     ```json
     {
@@ -163,7 +163,7 @@ requests.post(url, headers=headers, data=data)
     }
     ```
 
-    \{% endcode %\}
+    {% endcode %}
 
 ### **Error Handling**
 

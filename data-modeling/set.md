@@ -41,7 +41,7 @@ fields: [state, city]
 
 Let's define a set for the customer without PII. This will include all fields in the view except for `email`.
 
-{% code overflow="wrap" fullWidth="false" %}
+{% code overflow="wrap" %}
 ```yaml
 name: customer_no_pii
 fields: [ALL_FIELDS*, -email]

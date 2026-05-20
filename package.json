@@ -9,7 +9,6 @@
   "dependencies": {
     "gitbook-plugin-anchors": "^0.7.1",
     "gitbook-plugin-back-to-top-button": "^0.1.4",
-    "gitbook-plugin-gitbook-compat": "file:plugins/gitbook-plugin-gitbook-compat",
     "gitbook-plugin-hints": "^1.0.2",
     "gitbook-plugin-sharing": "^1.0.0",
     "honkit": "^6.0.3"

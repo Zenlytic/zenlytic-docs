@@ -25,10 +25,10 @@ Before you start, confirm the following:
 
 1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
 2. Fill out the form:
-   - **Name** — a label that will appear in the chat tool menu, for example `Power BI`.
-   - **URL** — the remote Power BI MCP endpoint, either Microsoft's directly or your proxy:
-     - Direct: `https://api.fabric.microsoft.com/v1/mcp/powerbi`
-     - Proxy: whatever HTTPS URL your gateway exposes.
+  - **Name** — a label that will appear in the chat tool menu, for example `Power BI`.
+  - **URL** — the remote Power BI MCP endpoint, either Microsoft's directly or your proxy:
+    - Direct: `https://api.fabric.microsoft.com/v1/mcp/powerbi`
+    - Proxy: whatever HTTPS URL your gateway exposes.
 3. Add the `Authorization` header (see [Configure request headers](#configure-request-headers)).
 4. Click **Test Connection**. Zenlytic opens an MCP session against the server and lists the tools it advertises.
 5. Review the tool list and toggle off any tools Zoë shouldn't be able to call.
@@ -38,9 +38,11 @@ Before you start, confirm the following:
 
 Add the following in the **Headers** section of the Zenlytic connection modal. Header values are masked in the UI and encrypted at rest.
 
-| Header | Value |
-| --- | --- |
+
+| Header          | Value                                                                                                 |
+| --------------- | ----------------------------------------------------------------------------------------------------- |
 | `Authorization` | `Bearer YOUR_POWER_BI_ACCESS_TOKEN`. Include the `Bearer` scheme and a single space before the token. |
+
 
 The endpoint accepts Microsoft Entra ID bearer tokens scoped to `https://api.fabric.microsoft.com/.default`. If you're going through an OAuth proxy instead of calling Microsoft directly, use whatever static credential the proxy expects (for example, `Bearer YOUR_PROXY_KEY` or `X-API-Key: YOUR_PROXY_KEY`).
 
@@ -92,8 +94,9 @@ A few specifics to share with your users:
 
 ## Troubleshooting
 
-- **`401 Unauthorized` from Power BI:** The access token is missing, malformed, or expired. Confirm the `Authorization` header includes the `Bearer ` scheme with a single space, and mint a fresh token if it's been more than an hour since you last set it.
+- `**401 Unauthorized` from Power BI:** The access token is missing, malformed, or expired. Confirm the `Authorization` header includes the `Bearer`  scheme with a single space, and mint a fresh token if it's been more than an hour since you last set it.
 - **"Tenant setting not enabled" errors:** Your Power BI admin hasn't turned on **"Users can use the Power BI Model Context Protocol server endpoint (preview)"**. Until that's enabled, every call from your tenant is refused regardless of credentials.
 - **"Insufficient permissions" on a specific semantic model:** The identity behind the token doesn't have **Build** permission on that model. Grant it in the Power BI service and try again.
 - **Zoë can't find a model by name:** Share the semantic model ID explicitly in the prompt rather than relying on the name. IDs are GUIDs visible in the Power BI service URL.
 - **DAX results look off:** Walk through Microsoft's [prepare your semantic models for AI](https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-prepare-data-ai) checklist — most quality issues come from missing descriptions, ambiguous measure names, or lack of verified answers on the underlying model.
+

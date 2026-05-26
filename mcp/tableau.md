@@ -2,6 +2,8 @@
 
 Connect Zoë to a self-hosted [Tableau MCP server](https://github.com/tableau/tableau-mcp) so she can browse Tableau content and query data sources in natural language, right inside Zenlytic. Zenlytic acts as an MCP client and forwards your Tableau credentials to the server on every call, so Zoë's actions inherit the underlying Tableau identity's permissions. Authenticate with a Tableau Personal Access Token (PAT) or a static `Authorization` header.
 
+> For Tableau Cloud customers, as part of the 2026.2 release, Tableau is planning to roll out a cloud-hosted service, available to all editions. The release will unlock the ability for Tableau Cloud customers to self-host Tableau MCP at scale using OAuth. A Tableau MCP deployment guide for Tableau Cloud customers will also be made available with the release.
+
 ## What Zoë can access
 
 Through the Tableau MCP server, Zoë can:
@@ -22,8 +24,8 @@ The exact tool surface depends on your Tableau MCP server's configuration. You c
 
 1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
 2. Fill out the form:
-   - **Name** — a label that will appear in the chat tool menu, for example `Tableau`.
-   - **URL** — the full HTTPS endpoint of your Tableau MCP server, including the `/tableau-mcp` path.
+  - **Name** — a label that will appear in the chat tool menu, for example `Tableau`.
+  - **URL** — the full HTTPS endpoint of your Tableau MCP server, including the `/tableau-mcp` path.
 3. Add credentials (see [Configure request headers](#configure-request-headers)).
 4. Click **Test Connection**. Zenlytic opens an MCP session against the server and lists the tools it advertises.
 5. Review the tool list and toggle off any tools Zoë shouldn't be able to call.
@@ -41,9 +43,11 @@ Use this when your Tableau MCP server is configured with passthrough authenticat
 2. Sign into the Tableau REST API once with that PAT (`POST /api/{version}/auth/signin`) and copy the `token` returned in the response.
 3. Add the header below in Zenlytic:
 
-| Header | Value |
-| --- | --- |
+
+| Header           | Value                          |
+| ---------------- | ------------------------------ |
 | `X-Tableau-Auth` | The session token from step 2. |
+
 
 Session tokens expire after a few hours of inactivity. When that happens, sign in again and overwrite the header value, or stand up a small proxy in front of the MCP server that refreshes the token automatically.
 
@@ -51,9 +55,11 @@ Session tokens expire after a few hours of inactivity. When that happens, sign i
 
 Use this when your Tableau MCP server sits behind a reverse proxy, gateway, or other auth layer that issues its own credentials.
 
-| Header | Value |
-| --- | --- |
+
+| Header          | Value                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------------- |
 | `Authorization` | The credential your proxy expects, exactly as it expects it. For example: `Bearer YOUR_PROXY_KEY`. |
+
 
 ## Use the connection in chat
 
@@ -67,7 +73,8 @@ A few tips:
 
 ## Troubleshooting
 
-- **`401 Unauthorized`:** The credentials are missing, malformed, or expired. For Option 1, sign into the Tableau REST API again and replace the `X-Tableau-Auth` value. For Option 2, double-check the `Authorization` value matches what your proxy expects.
-- **`Authorization required. Use OAuth 2.1 flow.`** The Tableau MCP server has OAuth enabled and won't accept static-header calls. Reconfigure the server with `DANGEROUSLY_DISABLE_OAUTH=true`, or front it with a proxy that handles the OAuth handshake.
-- **`Method not allowed`:** Expected if you open the URL in a browser — the server only accepts `POST`. If it shows up during **Test Connection**, verify the URL ends in `/tableau-mcp`.
+- `**401 Unauthorized`:** The credentials are missing, malformed, or expired. For Option 1, sign into the Tableau REST API again and replace the `X-Tableau-Auth` value. For Option 2, double-check the `Authorization` value matches what your proxy expects.
+- `**Authorization required. Use OAuth 2.1 flow.`** The Tableau MCP server has OAuth enabled and won't accept static-header calls. Reconfigure the server with `DANGEROUSLY_DISABLE_OAUTH=true`, or front it with a proxy that handles the OAuth handshake.
+- `**Method not allowed`:** Expected if you open the URL in a browser — the server only accepts `POST`. If it shows up during **Test Connection**, verify the URL ends in `/tableau-mcp`.
 - **Tools changed after a server upgrade:** Open the connection, click **Refresh Tools**, review the new set of tools, and **Save Changes**.
+

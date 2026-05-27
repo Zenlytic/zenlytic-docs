@@ -98,6 +98,7 @@
 * [Looker](mcp/looker.md)
 * [dbt](mcp/dbt.md)
 * [Atlan](mcp/atlan.md)
+* [Snowflake](mcp/snowflake.md)
 
 ## Data Sources
 

@@ -99,6 +99,7 @@
 * [dbt](mcp/dbt.md)
 * [Atlan](mcp/atlan.md)
 * [Snowflake](mcp/snowflake.md)
+* [Reltio](mcp/reltio.md)
 
 ## Data Sources
 

@@ -38,6 +38,7 @@ Use the following setup guides to connect Zoë to popular tools via their existi
 - [dbt](dbt.md) — explore models, metrics, exposures, and lineage.
 - [Atlan](atlan.md) — explore models, metrics, assets, and data glossaries.
 - [Snowflake](snowflake.md) — query Cortex Analyst, Cortex Search, Cortex Agents, SQL, and your own UDFs.
+- [Reltio](reltio.md) — search entities, traverse relationships, and invoke AgentFlow tools.
 
 These guides are experimental and intended for early testing. You can also bring your own MCP server. Any server that implements the streamable HTTP transport for protocol version `2025-03-26` and exposes `initialize`, `tools/list`, and `tools/call` will work.
 

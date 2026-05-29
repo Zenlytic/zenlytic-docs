@@ -106,4 +106,66 @@ redirects:
   
   # Other pages
   docs/markdown-page: intro.md
-  docs/search: intro.md 
+  docs/search: intro.md
+
+  # ---
+  # Phase 14 — broken-URL cleanup from analytics + Search Console reports
+
+  # Docusaurus section roots (bare URLs, no subpath)
+  docs/embedding: embedding/embedding_overview.md
+  docs/workflows: proactive-analytics/getting-started.md
+  docs/connecting_with_python: getting-started/start_here.md
+  docs/development_environment: getting-started/start_here.md
+  docs/tips_and_tricks: tips-and-tricks/zoe_tips_and_tricks.md
+  docs/authentication-security: authentication-and-security/microsoft_entra_zenlytic.md
+
+  # Old-name Docusaurus pages
+  docs/mcp: intro.md
+  docs/about: getting-started/start_here.md
+  docs/legal: legal-and-support/legal/README.md
+  docs/legal-support: legal-and-support/customer-support-policy.md
+  docs/privacy-policy: https://app.zenlytic.com/privacy-policy
+  docs/data-processing-agreement: legal-and-support/legal/data-processing-addendum.md
+  docs/ip-whitelisting: authentication-and-security/ip_whitelisting.md
+  docs/identity-providers: authentication-and-security/microsoft_entra_zenlytic.md
+  docs/data-sources/motherduck: data-sources/motherduck_setup.md
+  docs/zenlytic_ui/compare: zenlytic-ui/using_zenlytic.md
+  docs/zenlytic_ui/user_journey: zenlytic-ui/using_zenlytic.md
+  docs/development_environment/dbt_files: data-modeling/dbt_metricflow.md
+  docs/development_environment/metricflow_integration: data-modeling/dbt_metricflow.md
+  docs/2_data_modeling/topic: data-modeling/topic.md
+
+  # Numbered hybrid paths (Docusaurus filenames under current folders)
+  zenlytic-ui/3_zenlytic_ui: zenlytic-ui/using_zenlytic.md
+  data-sources/7_data_sources: data-sources/integrations.md
+  embedding/4_embedding: embedding/embedding_overview.md
+  workflows/6_workflows: proactive-analytics/getting-started.md
+  data-modeling/5_data_modeling: data-modeling/data_modeling.md
+  authentication-and-security/8_authentication: authentication-and-security/microsoft_entra_zenlytic.md
+
+  # Bare section roots
+  zenlytic-ui: zenlytic-ui/using_zenlytic.md
+  workflows: proactive-analytics/getting-started.md
+  databricks-setup: data-sources/databricks_setup.md
+
+  # Renamed legal pages
+  legal-and-support/legal/terms-of-service: legal-and-support/legal/terms-of-service-agreement.md
+  legal-and-support/legal/privacy-policy: https://app.zenlytic.com/privacy-policy
+  legal-and-support/legal/end-user-license-agreement: legal-and-support/license-doc.md
+  legal-and-support/privacy-policy: https://app.zenlytic.com/privacy-policy
+  legal-and-support/zenlytic-data-processing-addendum: legal-and-support/legal/data-processing-addendum.md
+  legal-and-support/zenlytic-end-user-license-agreement: legal-and-support/license-doc.md
+
+  # Legacy paths (Search Console crawl)
+  legacy/join: data-modeling/relationships.md
+  legacy/join.md: data-modeling/relationships.md
+  legacy/topic: data-modeling/relationships.md
+  legacy/topic.md: data-modeling/relationships.md
+
+  # Old core-concepts paths (Docusaurus, different from current Core Concepts section)
+  core-concepts/metrics-layer: data-modeling/data_modeling.md
+  core-concepts/data-modeling: data-modeling/data_modeling.md
+
+  # Stray crawl of Druid query endpoint
+  druid/v2/sql: data-sources/druid_setup.md
+  druid/v2/sql/: data-sources/druid_setup.md 

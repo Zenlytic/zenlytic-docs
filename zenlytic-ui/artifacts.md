@@ -123,6 +123,22 @@ Artifacts can be delivered on a recurring schedule to **email** or **Slack**. A 
 * Message with the artifact name and description.
 * Optional file upload to the channel.
 
+### Run history
+
+From the **Schedule Artifact Delivery** modal, click the **Run History** tab to review every past delivery run for the artifact. Use the run history to confirm that a scheduled delivery went out, troubleshoot a missed send, or jump back to the chat that produced a particular delivery.
+
+Each row in the table represents a single run and shows:
+
+* **Schedule** — The delivery schedule that triggered the run.
+* **Triggered** — When the run started, in your local timezone.
+* **Finished** — When the run completed, with the total duration in parentheses. A dash (`—`) means the run is still in progress.
+* **Status** — The current state of the run: **Processing** while it is running, **Delivered** once it has been sent, or an error state if it failed. Hover over the "Failed" chip to see technical details about the issue.
+* **Chat** — A **View chat** link that opens the Zoë conversation behind the run, so you can inspect what Zoë did to generate and send the delivery.
+
+Use the search bar above the table to filter by schedule name, and use the column headers to sort or filter — for example, sort by **Triggered** to see the most recent runs first, or filter **Status** to show only failed runs.
+
+<figure><img src="../.gitbook/assets/artifact-delivery-run-history.png" alt="Run History tab in the Schedule Artifact modal, listing past delivery runs with their triggered time, finished time, status, and a link to the originating chat"><figcaption><p>The Run History tab showing recent delivery runs for an artifact</p></figcaption></figure>
+
 ## Sharing and permissions
 
 Click the **Share** button in the artifact drawer to share an artifact with others in your organization. From the Share tab, select a user group and assign a permission level. Click **+ Add Group** to grant access to additional groups.

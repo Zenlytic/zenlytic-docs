@@ -15,7 +15,18 @@ After clicking Get Started, fill out the next screen
 
 ![google\_workload\_identity\_federation\_image\_3.png](../.gitbook/assets/google_workload_identity_federation_image_3.png)
 
-4. Modify the provider attribute for attribute.aws\_role to become the value assertion.arn.extract('assumed-role/{role}/'), and then click Save at the bottom of the screen.
+4. Configure the following two attribute mappings, then click Save at the bottom of the screen.
+
+| Attribute | Mapping expression |
+|---|---|
+| `google.subject` | `assertion.arn.extract('assumed-role/{role}/')` |
+| `attribute.aws_role` | `assertion.arn.extract('assumed-role/{role}/')` |
+
+{% hint style="warning" %}
+**Important:** `google.subject` appears grayed out in the screenshot below as a placeholder — you must explicitly fill it in with the expression above. Do not leave it empty or set it to `assertion.arn`.
+
+GCP enforces a **127-byte limit** on `google.subject`. Setting it to `assertion.arn` (the full role ARN including the session UUID) can exceed this limit. Using `assertion.arn.extract('assumed-role/{role}/')` maps only the role name (~46 bytes), well within the limit.
+{% endhint %}
 
 ![google\_workload\_identity\_federation\_image\_4.png](../.gitbook/assets/google_workload_identity_federation_image_4.png)
 
@@ -31,7 +42,7 @@ You will fill in those values with the values you have from this process so far,
 
 * `<PROJECT_NUMBER>` is the project number of your GCP project. (e.g. `123456789`)
 * `<POOL_ID>` is the id of the pool you've created (note the light grey text in step 2, for this example the value is zenlytic-aws-federation-pool)
-* `<ATTRIBUTE_VALUE>` you will confirm this with your Zenlytic account contact, but the value will follow a pattern like this, which corresponds to the special purpose AWS role Zenlytic will use to call out to your resources (e.g. \<company\_name>-gcp-workload-identity-federation-role-prod)
+* `<ATTRIBUTE_VALUE>` you will confirm this with your Zenlytic account contact, but the value will follow a pattern like this, which corresponds to the special purpose AWS role Zenlytic will use to call out to your resources (e.g. `<company_name>-gcp-wif-prod`). We recommend keeping this name short to stay well within GCP's 127-byte limit for `google.subject`.
 
 Using those values, the final principle would be
 

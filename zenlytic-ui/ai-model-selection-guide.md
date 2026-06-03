@@ -15,6 +15,8 @@ layout:
     visible: true
   tags:
     visible: true
+  actions:
+    visible: true
 ---
 
 # AI Model Selection Guide
@@ -25,7 +27,7 @@ Zoë supports multiple AI models that you can switch between using the model dro
 **Default model:** Claude Sonnet 4.6 is the default for all workspaces.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/llm-selection.png" alt=""><figcaption></figcaption></figure>
 
 ## Recommended Models
 
@@ -42,9 +44,9 @@ The best balance of speed, accuracy, and analytical depth for most workspaces. S
 
 **Best for:** General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model.
 
-### Claude Opus 4.6
+### Claude Opus 4.8
 
-The most capable model available. Opus 4.6 delivers the deepest analysis and the most autonomous error recovery, making it ideal for complex data models and messy data.
+The most capable model available. Opus 4.8 delivers the deepest analysis and the most autonomous error recovery, making it ideal for complex data models and messy data.
 
 **Strengths:**
 
@@ -73,7 +75,7 @@ A fast, capable model that executes queries quickly with minimal overhead.
 
 **Best for:** Well-structured, clean data models where speed is the priority and data quality issues are rare.
 
-### GPT 5.1
+### GPT 5.4
 
 Available for teams that prefer or require an OpenAI model.
 
@@ -82,18 +84,22 @@ Available for teams that prefer or require an OpenAI model.
 * Highest methodology transparency — structures responses with clear sections explaining what data was queried, what issues were found, and what limitations exist
 * Functional for standard reporting queries, metric extraction, and straightforward analytics
 
-**Considerations:** GPT 5.1 may ask clarifying questions before executing when it encounters ambiguity, which adds round-trips to the conversation. It also provides less autonomous error recovery — when queries fail or return unexpected results, it tends to explain the problem and ask for user guidance rather than self-correcting. Longer field descriptions and complex multi-paragraph guidance may be followed less reliably than with Anthropic models.
+**Considerations:** GPT 5.4 may ask clarifying questions before executing when it encounters ambiguity, which adds round-trips to the conversation. It also provides less autonomous error recovery — when queries fail or return unexpected results, it tends to explain the problem and ask for user guidance rather than self-correcting. Longer field descriptions and complex multi-paragraph guidance may be followed less reliably than with Anthropic models.
 
 **Best for:** Teams that prefer OpenAI, or users who value detailed methodology explanations over speed-to-answer.
+
+### GPT 5.1
+
+Available for teams that prefer or require an older OpenAI model. We would recommend using GPT 5.4 instead of this model in most scenarios.
 
 ## How to Choose
 
 | Scenario                                                 | Recommended Model        |
 | -------------------------------------------------------- | ------------------------ |
 | Day-to-day business questions                            | **Sonnet 4.6** (default) |
-| Complex data model with many joins                       | **Opus 4.6**             |
-| Data has known quality issues (nulls, edge cases)        | **Opus 4.6**             |
+| Complex data model with many joins                       | **Opus 4.8**             |
+| Data has known quality issues (nulls, edge cases)        | **Opus 4.8**             |
 | Speed is the top priority, data model is clean           | **Sonnet 4.5**           |
-| Advanced analysis (elasticity, forecasting, statistical) | **Opus 4.6**             |
-| Team prefers OpenAI                                      | **GPT 5.1**              |
+| Advanced analysis (elasticity, forecasting, statistical) | **Opus 4.8**             |
+| Team prefers OpenAI                                      | **GPT 5.4**              |
 | Not sure which to pick                                   | **Sonnet 4.6** (default) |

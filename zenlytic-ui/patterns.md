@@ -15,6 +15,8 @@ layout:
     visible: true
   tags:
     visible: true
+  actions:
+    visible: true
 ---
 
 # Patterns
@@ -31,13 +33,13 @@ Patterns index that query history so Zoë can use it. When the governed data mod
 
 {% stepper %}
 {% step %}
-#### Sync
+**Sync**
 
 Zenlytic connects to your data warehouse and pulls recent analytical queries. Queries are normalized, deduplicated, and indexed using semantic embeddings so they can be searched by meaning, not just keyword.
 {% endstep %}
 
 {% step %}
-#### Search
+**Search**
 
 During a conversation, when Zoë determines that the data model fields alone can't answer a question, she automatically searches the indexed patterns for similar queries. She selects the most relevant matches, adapts them to the current question, and uses them to generate SQL.
 {% endstep %}

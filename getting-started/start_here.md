@@ -17,7 +17,7 @@ The name matters. It's how Zenlytic links your credentials to your data model â€
 
 For a reference, see the [demo data model](https://github.com/Zenlytic/demo-data-model). It uses the connection name `demo` because that's the value of `connection` on the [model file](https://github.com/Zenlytic/demo-data-model/blob/master/models/pure_organics_model.yml).
 
-![Finish Connection](<../.gitbook/assets/finish-connection (1).png>)
+![Finish Connection](../.gitbook/assets/finish-connection.png)
 
 ## Step 2 â€” Git for your data model
 

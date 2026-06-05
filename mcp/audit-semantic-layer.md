@@ -13,6 +13,8 @@ Any MCP that can read your data-model files will drive this audit. Common choice
 
 Other repo-aware MCPs work the same way — a Bitbucket MCP, a GitLab MCP, or anything that exposes "read this repo" tools to Zoë will produce the same dashboard. The rest of this guide uses the GitHub MCP because it covers both the read and (optional) write halves; alternative-specific notes call out where a read-only MCP like DeepWiki changes a step.
 
+> Enabling write access means Zoe can create, modify, or delete real data in your connected systems. A miscommunication or unexpected instruction could trigger hard-to-reverse data loss or expose sensitive data to the wrong place. Use read-only mode unless you specifically need write capabilities. If using the Github MCP, considering adding the `X-MCP-Readonly: true` Header to disable every write tool, regardless of which toolsets are enabled.
+
 ## What you'll do
 
 1. Connect a repo MCP to the repository that hosts your Zenlytic data model.

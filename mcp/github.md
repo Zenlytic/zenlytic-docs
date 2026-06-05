@@ -62,7 +62,7 @@ PATs replace passwords for programmatic access to GitHub. Each PAT is tied to a 
 6. Review the tool list and toggle off any tools Zoë shouldn't be able to call. Newly-discovered tools are pre-selected.
 7. Click **Add Connection** to save.
 
-> Enabling write access means Zoe can create, modify, or delete real data in your connected systems. A miscommunication or unexpected instruction could trigger hard-to-reverse data loss or expose sensitive data to the wrong place. Use read-only mode unless you specifically need write capabilities.
+> Enabling write access means Zoe can create, modify, or delete real data in your connected systems. A miscommunication or unexpected instruction could trigger hard-to-reverse data loss or expose sensitive data to the wrong place. Use read-only mode unless you specifically need write capabilities. Add the `X-MCP-Readonly: true` Header to disable every write tool, regardless of which toolsets are enabled.
 
 ## Configure request headers
 

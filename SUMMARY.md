@@ -100,6 +100,7 @@
 * [Atlan](mcp/atlan.md)
 * [Snowflake](mcp/snowflake.md)
 * [Reltio](mcp/reltio.md)
+* [Github](mcp/github.md)
 
 ## Data Sources
 

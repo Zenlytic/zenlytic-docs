@@ -1,8 +1,16 @@
-{% hint style="warning" %}
-**Memories are legacy and are being replaced by [Skills](skills.md).** You can still create and use memories today, and existing memories will be migrated automatically in a future release. For new context, use [Skills](skills.md) — they cover the same ground with fewer limitations. New joins, field-level context, and universal rules should go on the data model or in the system prompt rather than in a memory. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side comparison.
+{% hint style="danger" %}
+**Memories are legacy. Do not use them for new context.** Memories are being retired and replaced by [Skills](skills.md). Existing memories will continue to work and will be migrated automatically in a future release, but **for any new context you want to add, do not create a memory**. Use one of these instead:
+
+* **Recurring patterns or domain logic** → create a [Skill](skills.md).
+* **Universal rules and terminology** → add to the system prompt.
+* **Field- or table-specific guidance** → put it on the view or field as a `zoe_description`. See [Context Surfaces](../core-concepts/context-surfaces.md) for the decision tree.
+
+The rest of this page documents the legacy Memories feature for users who already have memories in their workspace. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side comparison.
 {% endhint %}
 
-# Memories
+# Memories (legacy)
+
+> Legacy feature. For new context, use [Skills](skills.md), the system prompt, or `zoe_description` on views and fields.
 
 Use memories to teach Zoë about your company, your data preferences, and how you want questions answered. Zoë uses these memories to understand your business and remember your preferences in future responses.
 

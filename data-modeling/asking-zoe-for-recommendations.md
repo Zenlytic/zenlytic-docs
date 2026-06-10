@@ -1,5 +1,9 @@
 # Ask Zoë for Data Model Recommendations
 
+{% hint style="success" %}
+**There is no separate "training" step for Zoë.** The way to make Zoë good at your data — including new and complex datasets — is to ask her in chat. She'll recommend context to add (descriptions, synonyms, measures, joins, skills, system prompt rules), explain where each change belongs, and with edits enabled save them to your repo. The rest of this page covers how that workflow works in practice.
+{% endhint %}
+
 You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the system prompt, or restructuring something that isn't answering questions well. [If you've allowed her to](#turning-context-editing-on-or-off), she can also make those changes for you and save them to your repository on the current branch.
 
 Ask in plain English. Either let Zoë draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or tell her to make the change for you.
@@ -13,6 +17,8 @@ Good questions to bring to Zoë:
 * **"How should these tables be joined?"** — e.g. "What's the right relationship between `orders` and `shipments`?"
 * **"Why did you pick the wrong field?"** — Zoë can often diagnose why she chose the wrong field and recommend adding a `synonym`, `zoe_description`, or a new measure to prevent it next time. See also [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md).
 * **"What should I add to this view to make it more useful?"** — Zoë can look at a view and recommend missing measures, synonyms, or descriptions.
+* **"Which tables should I import for [use case]?"** — Zoë can read your warehouse's `information_schema` and suggest a starting set of tables based on the analysis you want to do, including tables you haven't imported yet.
+* **"What data would I need to recreate this report?"** — paste a screenshot of an existing dashboard or report (Power BI, Tableau, Looker, etc.) and Zoë will identify the tables and fields you'd need. Because she can see your full warehouse schema, she can recommend new tables to bring in.
 
 ## Letting Zoë make the change for you
 
@@ -36,6 +42,18 @@ The surfaces Zoë can edit:
 She follows the same authoring rules a human editor would: flat `fields:` lists, valid measure patterns, conservative use of `searchable: true`, and `zoe_description` rather than `description` for agent-only guidance. See [Context Surfaces](../core-concepts/context-surfaces.md) for the full decision tree.
 
 If you'd rather have Zoë just review without editing, ask her to "audit the model", "recommend changes", or "check whether she has enough context". She'll inspect the data model and report findings without saving anything, and only commits when you explicitly ask her to make the change.
+
+## For complex datasets
+
+Don't try to model everything before testing. The fastest way to get a complex or unfamiliar dataset working with Zoë is to build context iteratively:
+
+1. **Import the tables.** Ask Zoë which ones to start with if you're not sure. Set `default_date` on time-series views — that one property is the biggest single win for temporal questions.
+2. **Ask a real business question.** Not "explain everything" — something you actually want answered.
+3. **When Zoë gets something wrong, ask her why.** "Why did you pick that field?" or "What context would help you answer this correctly?" She'll diagnose the specific cause and recommend the smallest fix.
+4. **For domain-specific or multi-step logic** (fiscal calendar, custom segmentations, complex joins, industry-specific patterns), have Zoë create a [Skill](../zenlytic-ui/skills.md) instead of stuffing it into individual descriptions.
+5. **Repeat.** Each round narrows the gap between your data and Zoë's accuracy.
+
+This works far better than building a full semantic model upfront. The complexity ends up encoded exactly where it's needed, not speculatively everywhere.
 
 ## Example: adding a measure
 

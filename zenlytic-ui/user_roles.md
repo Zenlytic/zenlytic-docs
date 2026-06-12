@@ -6,11 +6,11 @@ Permissions sets that give users the ability to take certain actions in Zenlytic
 
 Beyond the per-permission bundles below, Zenlytic enforces a tiered model for how much direct warehouse access each role has:
 
-| Roles                                                                                | Ad-hoc SQL access                                                                 |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
-| **Admin** (Organization Admin, Admin)                                                | Full access, including ad-hoc SQL on any table the underlying SQL role can reach. |
-| **Developer** (Develop, Develop without Deploy)                                      | Full access, including ad-hoc SQL on any table the underlying SQL role can reach. |
-| **Explorer** (Explore, View, Restricted, Embed, Embed with SQL, Embedded with Scheduling) | Limited to tables defined in the semantic layer.                              |
+| Roles                                                                                     | Ad-hoc SQL access                                                                 |
+| ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Admin** (Organization Admin, Admin)                                                     | Full access, including ad-hoc SQL on any table the underlying SQL role can reach. |
+| **Developer** (Develop, Develop without Deploy)                                           | Full access, including ad-hoc SQL on any table the underlying SQL role can reach. |
+| **Explorer** (Explore, View, Restricted, Embed, Embed with SQL, Embedded with Scheduling) | Limited to tables defined in the semantic layer.                                  |
 
 **Enforce permissions for admins toggle.** A workspace-level toggle controls whether Admins are also restricted to the semantic layer or retain full ad-hoc access. When the toggle is **off** (default), Admins can query any table their SQL role can reach, even ones not modeled in Zenlytic. When **on**, Admins follow the same semantic-layer restrictions as everyone else.
 
@@ -61,6 +61,8 @@ There are eight role bundles in Zenlytic. Each bundle combines a set of the perm
 ### Organization Admin
 
 The organization admin has _all_ of the above permissions. Subject to the "enforce permissions for admins" toggle described above.
+
+The organization admin also automatically has organization admin level access on _all_ the workspaces inside of an organization. So, if a user has organization admin-level access on any of the workspaces inside of your organization, they will automatically have organization admin-level access on _all_ of the workspaces inside of your organization.
 
 In addition to all standard Admin capabilities, Organization Admins can:
 

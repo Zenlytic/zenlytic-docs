@@ -22,7 +22,7 @@ Each of the role bundles below is built from the following individual permission
 
 `save_content`: This is the ability to save a query result to a dashboard or modify an existing dashboard.
 
-`schedule_content`: This is the ability to schedule a dashboard, artifact, or Proactive Agent for delivery in Slack or email. **Included in: Organization Admin, Admin, Develop, Develop without Deploy, Explore, View, and Embedded with Scheduling.**
+`schedule_content`: This is the ability to schedule a dashboard, artifact, or Proactive Agent for delivery in Slack or email.
 
 `view_content`: This is the ability to view dashboards.
 
@@ -119,22 +119,22 @@ Cross-reference any permission against any role. ✓ means the role includes tha
 
 | Permission                | Org Admin | Admin | Develop | Develop w/o Deploy | Explore | View | Restricted |
 | ------------------------- | :-------: | :---: | :-----: | :----------------: | :-----: | :--: | :--------: |
+| `view_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    | ✓          |
 | `save_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
 | `schedule_content`        | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `view_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    | ✓          |
 | `explore_from_here`       | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `edit_settings`           | ✓         | ✓     |         |                    |         |      |            |
-| `change_branch`           | ✓         | ✓     | ✓       | ✓                  |         |      |            |
-| `download_with_limit`     | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `download_without_limit`  | ✓         | ✓     | ✓       | ✓                  | ✓       |      |            |
-| `see_sql`                 | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `run_sql`                 | ✓         | ✓     | ✓       | ✓                  |         |      |            |
 | `chat`                    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `data_model_edit`         | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `download_with_limit`     | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `see_sql`                 | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
 | `create_workflow`         | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `deploy_to_production`    | ✓         | ✓     | ✓       |                    |         |      |            |
 | `create_dynamic_field`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
 | `view_workspace_users`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `download_without_limit`  | ✓         | ✓     | ✓       | ✓                  | ✓       |      |            |
+| `change_branch`           | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `run_sql`                 | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `data_model_edit`         | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `deploy_to_production`    | ✓         | ✓     | ✓       |                    |         |      |            |
+| `edit_settings`           | ✓         | ✓     |         |                    |         |      |            |
 | `workspace_management`    | ✓         |       |         |                    |         |      |            |
 
 ### Embed roles
@@ -143,12 +143,12 @@ Not available in the role selector — assigned automatically to embedded users.
 
 | Permission                | Embed | Embed with SQL | Embedded with Scheduling |
 | ------------------------- | :---: | :------------: | :----------------------: |
-| `schedule_content`        |       |                | ✓                        |
 | `view_content`            | ✓     | ✓              | ✓                        |
 | `explore_from_here`       | ✓     | ✓              | ✓                        |
 | `download_with_limit`     | ✓     | ✓              | ✓                        |
-| `see_sql`                 |       | ✓              | ✓                        |
 | `chat`                    | ✓     | ✓              | ✓                        |
+| `see_sql`                 |       | ✓              | ✓                        |
+| `schedule_content`        |       |                | ✓                        |
 
 All other permissions are unavailable to embed roles.
 

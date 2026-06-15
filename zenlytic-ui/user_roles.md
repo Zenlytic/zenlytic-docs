@@ -22,7 +22,7 @@ Each of the role bundles below is built from the following individual permission
 
 `save_content`: This is the ability to save a query result to a dashboard or modify an existing dashboard.
 
-`schedule_content`: This is the ability to schedule a dashboard for delivery in Slack or email.
+`schedule_content`: This is the ability to schedule a dashboard, artifact, or Proactive Agent for delivery in Slack or email. **Included in: Organization Admin, Admin, Develop, Develop without Deploy, Explore, View, and Embedded with Scheduling.**
 
 `view_content`: This is the ability to view dashboards.
 
@@ -75,15 +75,21 @@ _Note: The Organization Admin role only appears as an option in the role selecto
 
 ### Admin
 
-The admin has all of the above permissions _except_ `workspace_management`. Subject to the "enforce permissions for admins" toggle described above.
+The Admin role has every permission except `workspace_management`. Subject to the "enforce permissions for admins" toggle described above.
+
+Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `edit_settings`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `deploy_to_production`, `create_dynamic_field`, `view_workspace_users`.
 
 ### Develop
 
-Develop has all of the admin permissions except the ability to edit the workspace settings (`edit_settings`).
+Develop has every Admin permission except `edit_settings`.
+
+Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `deploy_to_production`, `create_dynamic_field`, `view_workspace_users`.
 
 ### Develop without Deploy
 
-Develop without Deploy has all of the Develop permissions except the ability to deploy the data model to production (`deploy_to_production`).
+Develop without Deploy has every Develop permission except `deploy_to_production`.
+
+Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `create_dynamic_field`, `view_workspace_users`.
 
 ### Explore
 
@@ -110,6 +116,65 @@ This permission set is not available in the UI but is the default for embedded u
 ### Embedded with Scheduling
 
 This permission set is not available in the UI but is the default for embedded users. It (predictably) has `schedule_content`, `view_content`, `see_sql`, `explore_from_here`, `download_with_limit`, and `chat` permissions.
+
+## Permissions × roles matrix
+
+Cross-reference any permission against any role. ✓ means the role includes that permission. Blank means it doesn't.
+
+### User-facing roles
+
+| Permission                | Org Admin | Admin | Develop | Develop w/o Deploy | Explore | View | Restricted |
+| ------------------------- | :-------: | :---: | :-----: | :----------------: | :-----: | :--: | :--------: |
+| `save_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `schedule_content`        | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `view_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    | ✓          |
+| `explore_from_here`       | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `edit_settings`           | ✓         | ✓     |         |                    |         |      |            |
+| `change_branch`           | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `download_with_limit`     | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `download_without_limit`  | ✓         | ✓     | ✓       | ✓                  | ✓       |      |            |
+| `see_sql`                 | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `run_sql`                 | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `chat`                    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `data_model_edit`         | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `create_workflow`         | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `deploy_to_production`    | ✓         | ✓     | ✓       |                    |         |      |            |
+| `create_dynamic_field`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `view_workspace_users`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `workspace_management`    | ✓         |       |         |                    |         |      |            |
+
+### Embed roles
+
+Not available in the role selector — assigned automatically to embedded users.
+
+| Permission                | Embed | Embed with SQL | Embedded with Scheduling |
+| ------------------------- | :---: | :------------: | :----------------------: |
+| `schedule_content`        |       |                | ✓                        |
+| `view_content`            | ✓     | ✓              | ✓                        |
+| `explore_from_here`       | ✓     | ✓              | ✓                        |
+| `download_with_limit`     | ✓     | ✓              | ✓                        |
+| `see_sql`                 |       | ✓              | ✓                        |
+| `chat`                    | ✓     | ✓              | ✓                        |
+
+All other permissions are unavailable to embed roles.
+
+## Troubleshooting
+
+### I have the role but I don't see a feature
+
+Role permissions are necessary but not always sufficient — a feature can be gated by both a role permission and a workspace-level configuration. If your role includes the right permission and you still don't see the feature in the UI:
+
+* **Schedule Delivery on a Proactive Agent or artifact.** Confirm the artifact has been saved (scheduling is not available on unsaved artifacts), and that the workspace has Proactive Agents enabled.
+* **Schedule Delivery on a dashboard.** Legacy dashboards have their own delivery setup — see [Dashboard Scheduled Delivery](../legacy/dashboard/dashboard-scheduled-delivery.md).
+* **Chat with Zoë.** Confirm the workspace has chat enabled and that you have the `chat` permission for your role.
+* **Edit the data model in Context Manager.** Confirm you're on a non-production branch, or that **Allow Edit Production** is enabled in workspace settings for your role.
+* **Workspace-by-workspace inconsistency.** If a feature appears in some workspaces but not others, the missing workspace likely has the feature toggled off in settings. Compare workspace settings, or ask a workspace Admin to check.
+
+If none of the above explains it, contact support — there may be a workspace-level feature flag we need to check.
+
+### Organization Admin still can't see a feature
+
+Organization Admin has every permission, so if a feature is missing for an Organization Admin, the cause is almost always **workspace-level configuration** (the feature is disabled in that workspace), not the role. Start by comparing settings against a workspace where the feature does appear.
 
 ## Related pages
 

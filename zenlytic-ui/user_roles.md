@@ -56,13 +56,11 @@ Each of the role bundles below is built from the following individual permission
 
 ## Roles
 
-There are eight role bundles in Zenlytic. Each bundle combines a set of the permissions above and maps to one of the ad-hoc SQL tiers.
+Each role below combines a set of the permissions above and maps to one of the ad-hoc SQL tiers. For the exact permissions each role includes, see the [permissions × roles matrix](#permissions-roles-matrix) at the bottom of the page.
 
 ### Organization Admin
 
-The organization admin has _all_ of the above permissions. Subject to the "enforce permissions for admins" toggle described above.
-
-Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `edit_settings`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `deploy_to_production`, `create_dynamic_field`, `view_workspace_users`, `workspace_management`.
+The organization admin has every permission. Subject to the "enforce permissions for admins" toggle described above.
 
 The organization admin also automatically has organization admin level access on _all_ the workspaces inside of an organization. So, if a user has organization admin-level access on any of the workspaces inside of your organization, they will automatically have organization admin-level access on _all_ of the workspaces inside of your organization.
 
@@ -79,45 +77,39 @@ _Note: The Organization Admin role only appears as an option in the role selecto
 
 The Admin role has every permission except `workspace_management`. Subject to the "enforce permissions for admins" toggle described above.
 
-Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `edit_settings`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `deploy_to_production`, `create_dynamic_field`, `view_workspace_users`.
-
 ### Develop
 
-Develop has every Admin permission except `edit_settings`.
-
-Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `deploy_to_production`, `create_dynamic_field`, `view_workspace_users`.
+Develop has every Admin permission except `edit_settings`. The typical role for a data engineer or analytics engineer maintaining the semantic layer and deploying changes to production.
 
 ### Develop without Deploy
 
-Develop without Deploy has every Develop permission except `deploy_to_production`.
-
-Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `create_dynamic_field`, `view_workspace_users`.
+Develop without Deploy has every Develop permission except `deploy_to_production`. Use this role when modelers should be able to make and validate changes on a development branch but production deploys should be reserved for a separate approver.
 
 ### Explore
 
-The Explore role is the most common, and we recommend it as the default. It has `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `download_with_limit`, `download_without_limit`, `see_sql`, `create_workflow`, `create_dynamic_field`, `view_workspace_users`, and `chat`.
+The most common role and the recommended default for end users — analysts and stakeholders who consume data, ask Zoë questions, save content, and schedule deliveries.
 
 ### View
 
-View has the same permissions as Explore but without `download_without_limit`.
+Like Explore but with downloads capped at the per-limit threshold (no `download_without_limit`). Use for consumers who shouldn't pull large extracts.
 
 ### Restricted
 
-Restricted has ONLY the `view_content` permission. This means the user can only see dashboards, and cannot follow up or ask Zoë questions.
+Restricted has only the `view_content` permission. This user can see dashboards but cannot ask Zoë questions or follow up.
 
-_Note:_ This user can change filters on dashboards which means in terms of API access, they have the ability to run queries that are not just the queries present on the dashboard. You should use this role in conjunction with [data access controls](../data-modeling/access_grants.md), not instead of data access controls.
+_Note:_ This user can change filters on dashboards, which means in terms of API access they have the ability to run queries that are not just the queries present on the dashboard. Use this role in conjunction with [data access controls](../data-modeling/access_grants.md), not instead of them.
 
 ### Embed
 
-This permission set is not available in the UI but is the default for embedded users. It has `view_content`, `explore_from_here`, `download_with_limit`, and `chat` permissions.
+The default permission set for embedded users. Not available in the workspace role selector.
 
 ### Embed with SQL
 
-This permission set is not available in the UI but is the default for embedded users. It has `view_content`, `explore_from_here`, `download_with_limit`, `see_sql`, and `chat` permissions.
+Same as Embed plus `see_sql`. Not available in the workspace role selector.
 
 ### Embedded with Scheduling
 
-This permission set is not available in the UI but is the default for embedded users. It (predictably) has `schedule_content`, `view_content`, `see_sql`, `explore_from_here`, `download_with_limit`, and `chat` permissions.
+Same as Embed plus `schedule_content` and `see_sql`. Not available in the workspace role selector.
 
 ## Permissions × roles matrix
 

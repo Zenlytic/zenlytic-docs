@@ -55,7 +55,7 @@ For example, try uploading your company logo. Give it a description like "Our co
 
 To create a new skill:
 
-1. Open skills from the Context Manager or Workspace Settings.
+1. Open skills from the Context Manager.
 2. Click **Create Skill** (or the equivalent button).
 3. Give the skill a **name** — something descriptive like "Weekly Report Format" or "Brand Style Guide."
 4. Write a **description** — a short summary of what the skill does. Zoë uses the description to decide when to load the skill, so be specific about the kinds of questions or requests that should trigger it.

@@ -30,11 +30,8 @@ Skills have no hard character limit, so they're a good fit for detailed instruct
 You can access skills in two ways:
 
 * **Context Manager** — Open the Context Manager from any chat to view and manage your skills.
-* **Workspace Settings** — Navigate to Workspace Settings to manage skills for your organization.
 
 <figure><img src="../.gitbook/assets/skills-context-manager.png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/skills-workspace-settings.png" alt=""><figcaption></figcaption></figure>
 
 ## Setting up your Brand Style Guide
 

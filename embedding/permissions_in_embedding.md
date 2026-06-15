@@ -1,6 +1,46 @@
 # Permissions in Embedding
 
-You can control permissions in Zenlytic via access controls using both access filters (row-based) and access grants (column-based). Docs on those are [here](../data-modeling/access_grants.md).
+Permissions for embedded users in Zenlytic come in two layers:
+
+* The **role bundle** that determines which Zenlytic features (chat, scheduling, downloads, SQL visibility, etc.) an embedded user can access.
+* **Access controls** — access filters for row-level security and access grants for column-level security — that govern which data they can see.
+
+This page covers both.
+
+## Role bundles for embedded users
+
+Three role bundles are available for embedded users. They aren't selectable in the workspace role picker — they're assigned automatically through the embedding APIs. For the full role and permission reference for non-embed users, see [User Roles](../zenlytic-ui/user_roles.md).
+
+### Embed
+
+The default permission set for embedded users.
+
+### Embed with SQL
+
+Same as Embed plus `see_sql`.
+
+### Embedded with Scheduling
+
+Same as Embed plus `schedule_content` and `see_sql`.
+
+### Permissions × embed roles matrix
+
+✓ means the role includes that permission. Blank means it doesn't.
+
+| Permission                | Embed | Embed with SQL | Embedded with Scheduling |
+| ------------------------- | :---: | :------------: | :----------------------: |
+| `view_content`            | ✓     | ✓              | ✓                        |
+| `explore_from_here`       | ✓     | ✓              | ✓                        |
+| `download_with_limit`     | ✓     | ✓              | ✓                        |
+| `chat`                    | ✓     | ✓              | ✓                        |
+| `see_sql`                 |       | ✓              | ✓                        |
+| `schedule_content`        |       |                | ✓                        |
+
+All other Zenlytic permissions are unavailable to embed roles.
+
+## Access controls
+
+You can control data access in Zenlytic via [access filters (row-based) and access grants (column-based)](../data-modeling/access_grants.md). The sections below walk through configuring access grants for embedded sessions.
 
 ## Setting up the access permissions
 

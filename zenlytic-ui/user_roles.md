@@ -22,7 +22,7 @@ Each of the role bundles below is built from the following individual permission
 
 `save_content`: This is the ability to save a query result to a dashboard or modify an existing dashboard.
 
-`schedule_content`: This is the ability to schedule a dashboard for delivery in Slack or email.
+`schedule_content`: This is the ability to schedule a dashboard, artifact, or Proactive Agent for delivery in Slack or email.
 
 `view_content`: This is the ability to view dashboards.
 
@@ -56,11 +56,11 @@ Each of the role bundles below is built from the following individual permission
 
 ## Roles
 
-There are eight role bundles in Zenlytic. Each bundle combines a set of the permissions above and maps to one of the ad-hoc SQL tiers.
+Each role below combines a set of the permissions above and maps to one of the ad-hoc SQL tiers. For the exact permissions each role includes, see the [permissions × roles matrix](#permissions-roles-matrix) at the bottom of the page.
 
 ### Organization Admin
 
-The organization admin has _all_ of the above permissions. Subject to the "enforce permissions for admins" toggle described above.
+The organization admin has every permission. Subject to the "enforce permissions for admins" toggle described above.
 
 The organization admin also automatically has organization admin level access on _all_ the workspaces inside of an organization. So, if a user has organization admin-level access on any of the workspaces inside of your organization, they will automatically have organization admin-level access on _all_ of the workspaces inside of your organization.
 
@@ -75,41 +75,75 @@ _Note: The Organization Admin role only appears as an option in the role selecto
 
 ### Admin
 
-The admin has all of the above permissions _except_ `workspace_management`. Subject to the "enforce permissions for admins" toggle described above.
+The Admin role has every permission except `workspace_management`. Subject to the "enforce permissions for admins" toggle described above.
 
 ### Develop
 
-Develop has all of the admin permissions except the ability to edit the workspace settings (`edit_settings`).
+Develop has every Admin permission except `edit_settings`. The typical role for a data engineer or analytics engineer maintaining the semantic layer and deploying changes to production.
 
 ### Develop without Deploy
 
-Develop without Deploy has all of the Develop permissions except the ability to deploy the data model to production (`deploy_to_production`).
+Develop without Deploy has every Develop permission except `deploy_to_production`. Use this role when modelers should be able to make and validate changes on a development branch but production deploys should be reserved for a separate approver.
 
 ### Explore
 
-The Explore role is the most common, and we recommend it as the default. It has `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `download_with_limit`, `download_without_limit`, `see_sql`, `create_workflow`, `create_dynamic_field`, `view_workspace_users`, and `chat`.
+The most common role and the recommended default for end users — analysts and stakeholders who consume data, ask Zoë questions, save content, and schedule deliveries.
 
 ### View
 
-View has the same permissions as Explore but without `download_without_limit`.
+Like Explore but with downloads capped at the per-limit threshold (no `download_without_limit`). Use for consumers who shouldn't pull large extracts.
 
 ### Restricted
 
-Restricted has ONLY the `view_content` permission. This means the user can only see dashboards, and cannot follow up or ask Zoë questions.
+Restricted has only the `view_content` permission. This user can see dashboards but cannot ask Zoë questions or follow up.
 
-_Note:_ This user can change filters on dashboards which means in terms of API access, they have the ability to run queries that are not just the queries present on the dashboard. You should use this role in conjunction with [data access controls](../data-modeling/access_grants.md), not instead of data access controls.
+_Note:_ This user can change filters on dashboards, which means in terms of API access they have the ability to run queries that are not just the queries present on the dashboard. Use this role in conjunction with [data access controls](../data-modeling/access_grants.md), not instead of them.
 
-### Embed
+### Embed roles
 
-This permission set is not available in the UI but is the default for embedded users. It has `view_content`, `explore_from_here`, `download_with_limit`, and `chat` permissions.
+Three role bundles are available for embedded users — Embed, Embed with SQL, and Embedded with Scheduling — and are assigned automatically (they don't appear in the workspace role selector). For the permissions each embed role includes, see [Permissions in Embedding](../embedding/permissions_in_embedding.md).
 
-### Embed with SQL
+## Permissions × roles matrix
 
-This permission set is not available in the UI but is the default for embedded users. It has `view_content`, `explore_from_here`, `download_with_limit`, `see_sql`, and `chat` permissions.
+Cross-reference any permission against any role. ✓ means the role includes that permission. Blank means it doesn't. For embed roles, see [Permissions in Embedding](../embedding/permissions_in_embedding.md).
 
-### Embedded with Scheduling
+| Permission                | Org Admin | Admin | Develop | Develop w/o Deploy | Explore | View | Restricted |
+| ------------------------- | :-------: | :---: | :-----: | :----------------: | :-----: | :--: | :--------: |
+| `view_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    | ✓          |
+| `save_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `schedule_content`        | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `explore_from_here`       | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `chat`                    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `download_with_limit`     | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `see_sql`                 | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `create_workflow`         | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `create_dynamic_field`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `view_workspace_users`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
+| `download_without_limit`  | ✓         | ✓     | ✓       | ✓                  | ✓       |      |            |
+| `change_branch`           | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `run_sql`                 | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `data_model_edit`         | ✓         | ✓     | ✓       | ✓                  |         |      |            |
+| `deploy_to_production`    | ✓         | ✓     | ✓       |                    |         |      |            |
+| `edit_settings`           | ✓         | ✓     |         |                    |         |      |            |
+| `workspace_management`    | ✓         |       |         |                    |         |      |            |
 
-This permission set is not available in the UI but is the default for embedded users. It (predictably) has `schedule_content`, `view_content`, `see_sql`, `explore_from_here`, `download_with_limit`, and `chat` permissions.
+## Troubleshooting
+
+### I have the role but I don't see a feature
+
+Role permissions are necessary but not always sufficient — a feature can be gated by both a role permission and a workspace-level configuration. If your role includes the right permission and you still don't see the feature in the UI:
+
+* **Schedule Delivery on a Proactive Agent or artifact.** Confirm the artifact has been saved (scheduling is not available on unsaved artifacts), and that the workspace has Proactive Agents enabled.
+* **Schedule Delivery on a dashboard.** Legacy dashboards have their own delivery setup — see [Dashboard Scheduled Delivery](../legacy/dashboard/dashboard-scheduled-delivery.md).
+* **Chat with Zoë.** Confirm the workspace has chat enabled and that you have the `chat` permission for your role.
+* **Edit the data model in Context Manager.** Confirm you're on a non-production branch, or that **Allow Edit Production** is enabled in workspace settings for your role.
+* **Workspace-by-workspace inconsistency.** If a feature appears in some workspaces but not others, the missing workspace likely has the feature toggled off in settings. Compare workspace settings, or ask a workspace Admin to check.
+
+If none of the above explains it, contact support — there may be a workspace-level feature flag we need to check.
+
+### Organization Admin still can't see a feature
+
+Organization Admin has every permission, so if a feature is missing for an Organization Admin, the cause is almost always **workspace-level configuration** (the feature is disabled in that workspace), not the role. Start by comparing settings against a workspace where the feature does appear.
 
 ## Related pages
 

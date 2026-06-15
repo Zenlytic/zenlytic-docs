@@ -62,6 +62,8 @@ There are eight role bundles in Zenlytic. Each bundle combines a set of the perm
 
 The organization admin has _all_ of the above permissions. Subject to the "enforce permissions for admins" toggle described above.
 
+Explicit list: `save_content`, `schedule_content`, `view_content`, `explore_from_here`, `edit_settings`, `change_branch`, `download_with_limit`, `download_without_limit`, `see_sql`, `run_sql`, `chat`, `data_model_edit`, `create_workflow`, `deploy_to_production`, `create_dynamic_field`, `view_workspace_users`, `workspace_management`.
+
 The organization admin also automatically has organization admin level access on _all_ the workspaces inside of an organization. So, if a user has organization admin-level access on any of the workspaces inside of your organization, they will automatically have organization admin-level access on _all_ of the workspaces inside of your organization.
 
 In addition to all standard Admin capabilities, Organization Admins can:

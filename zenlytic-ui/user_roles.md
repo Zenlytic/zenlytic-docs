@@ -99,23 +99,13 @@ Restricted has only the `view_content` permission. This user can see dashboards 
 
 _Note:_ This user can change filters on dashboards, which means in terms of API access they have the ability to run queries that are not just the queries present on the dashboard. Use this role in conjunction with [data access controls](../data-modeling/access_grants.md), not instead of them.
 
-### Embed
+### Embed roles
 
-The default permission set for embedded users. Not available in the workspace role selector.
-
-### Embed with SQL
-
-Same as Embed plus `see_sql`. Not available in the workspace role selector.
-
-### Embedded with Scheduling
-
-Same as Embed plus `schedule_content` and `see_sql`. Not available in the workspace role selector.
+Three role bundles are available for embedded users — Embed, Embed with SQL, and Embedded with Scheduling — and are assigned automatically (they don't appear in the workspace role selector). For the permissions each embed role includes, see [Permissions in Embedding](../embedding/permissions_in_embedding.md).
 
 ## Permissions × roles matrix
 
-Cross-reference any permission against any role. ✓ means the role includes that permission. Blank means it doesn't.
-
-### User-facing roles
+Cross-reference any permission against any role. ✓ means the role includes that permission. Blank means it doesn't. For embed roles, see [Permissions in Embedding](../embedding/permissions_in_embedding.md).
 
 | Permission                | Org Admin | Admin | Develop | Develop w/o Deploy | Explore | View | Restricted |
 | ------------------------- | :-------: | :---: | :-----: | :----------------: | :-----: | :--: | :--------: |
@@ -136,21 +126,6 @@ Cross-reference any permission against any role. ✓ means the role includes tha
 | `deploy_to_production`    | ✓         | ✓     | ✓       |                    |         |      |            |
 | `edit_settings`           | ✓         | ✓     |         |                    |         |      |            |
 | `workspace_management`    | ✓         |       |         |                    |         |      |            |
-
-### Embed roles
-
-Not available in the role selector — assigned automatically to embedded users.
-
-| Permission                | Embed | Embed with SQL | Embedded with Scheduling |
-| ------------------------- | :---: | :------------: | :----------------------: |
-| `view_content`            | ✓     | ✓              | ✓                        |
-| `explore_from_here`       | ✓     | ✓              | ✓                        |
-| `download_with_limit`     | ✓     | ✓              | ✓                        |
-| `chat`                    | ✓     | ✓              | ✓                        |
-| `see_sql`                 |       | ✓              | ✓                        |
-| `schedule_content`        |       |                | ✓                        |
-
-All other permissions are unavailable to embed roles.
 
 ## Troubleshooting
 

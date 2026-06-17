@@ -21,12 +21,13 @@ Created through **Add to memory** in chat or **Settings → Memory → New Text 
 
 ### After (Skill)
 
-Created in **Workspace Settings → Skills** or the **Context Manager**:
+Created in the **Context Manager**:
 
 * **Name**: Revenue Reporting
 * **Description**: How to answer revenue and sales questions across the business.
-* **Instructions**:
-  > When a user asks about revenue, use `total_net_revenue` from `orders`. For quarterly reporting, group by `order_quarter` and default to the most recent complete quarter unless the user specifies otherwise. Gross revenue is `total_gross_revenue`; only use it when the user explicitly asks for gross.
+*   **Instructions**:
+
+    > When a user asks about revenue, use `total_net_revenue` from `orders`. For quarterly reporting, group by `order_quarter` and default to the most recent complete quarter unless the user specifies otherwise. Gross revenue is `total_gross_revenue`; only use it when the user explicitly asks for gross.
 
 Skills are broader than memories by design. A single skill can cover an entire topic area, an industry-specific calendar, or a multi-step workflow, with no hard character limit. See [Skills](../zenlytic-ui/skills.md).
 
@@ -126,8 +127,8 @@ If the join is obvious from column names (e.g., `orders.customer_id` → `custom
 
 ## Summary table
 
-| Legacy surface             | Replacement                                 | Status                                          |
-| -------------------------- | ------------------------------------------- | ----------------------------------------------- |
-| Memories                   | [Skills](../zenlytic-ui/skills.md)          | Auto-migrates in a future release. Usable now.  |
-| Topics                     | [Relationships](../data-modeling/relationships.md) on the model | Supported indefinitely. Not recommended for new context. |
-| `identifiers` on view      | `join_as` on relationships                  | Supported indefinitely. Not recommended for new context. |
+| Legacy surface        | Replacement                                                     | Status                                                   |
+| --------------------- | --------------------------------------------------------------- | -------------------------------------------------------- |
+| Memories              | [Skills](../zenlytic-ui/skills.md)                              | Auto-migrates in a future release. Usable now.           |
+| Topics                | [Relationships](../data-modeling/relationships.md) on the model | Supported indefinitely. Not recommended for new context. |
+| `identifiers` on view | `join_as` on relationships                                      | Supported indefinitely. Not recommended for new context. |

@@ -73,6 +73,7 @@ To discover more public servers, browse MCP directories like [PulseMCP](https://
 - [Snowflake](snowflake.md) — query Cortex Analyst, Cortex Search, Cortex Agents, SQL, and your own UDFs.
 - [Reltio](reltio.md) — search entities, traverse relationships, and invoke AgentFlow tools.
 - [GitHub](github.md) — browse repositories, triage issues and pull requests, and monitor Actions and security alerts.
+- [Jira](jira.md) — search and create Jira issues, run JQL queries, and interact with Confluence and Compass content.
 
 These guides are provided for general reference, be prepared for some details to vary depending on your specific deployment or license. You can also bring your own MCP server. Any server that implements the streamable HTTP transport for protocol version `2025-03-26` and exposes `initialize`, `tools/list`, and `tools/call` endpoints will work.
 

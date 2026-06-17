@@ -101,6 +101,7 @@
 * [Snowflake](mcp/snowflake.md)
 * [Reltio](mcp/reltio.md)
 * [Github](mcp/github.md)
+* [Jira](mcp/jira.md)
 
 ## Data Sources
 

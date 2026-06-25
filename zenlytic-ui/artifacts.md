@@ -22,6 +22,12 @@ Each artifact displays a thumbnail preview, its name, and when it was last edite
 
 <figure><img src="../.gitbook/assets/artifact-page.png" alt=""></figure>
 
+## Organizing artifacts with folders
+
+Artifact folders let teams organize saved artifacts into shared workspace areas. A personal artifact can be shared directly with users or groups; once it is moved into a folder, the folder controls who can access it.
+
+For more on how folders work, see [Artifact Folders](artifact-folders.md). For access levels, direct shares, groups, and troubleshooting, see [Artifact Folder Permissions](artifact-folder-permissions.md).
+
 ## Artifacts in chat
 
 Zoë creates artifacts automatically whenever a visual output would be helpful — or when you ask her to build something. Artifacts appear inline in the chat, and you can click on one to expand it in the side drawer.

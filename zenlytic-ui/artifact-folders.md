@@ -4,14 +4,14 @@ Artifact folders help teams organize saved artifacts into shared workspace areas
 
 Folders are part of the Artifacts page. They sit alongside personal artifacts, but they change how access works: once an artifact is in a folder, the folder controls who can access it.
 
-## Personal artifacts and folder artifacts
+## Personal artifacts and foldered artifacts
 
 Artifacts can be in one of two states:
 
 | State | What it means | How access works |
 | ----- | ------------- | ---------------- |
 | **Personal artifact** | The artifact does not live inside a folder. It can be shared directly with users or groups. | The creator, workspace admins, and direct shares can access it. |
-| **Folder artifact** | The artifact has been moved into a workspace folder. | The folder's permissions control access. Direct artifact shares do not apply. |
+| **Foldered artifact** | The artifact has been moved into a workspace folder. | The folder's permissions control access. Direct artifact shares do not apply. |
 
 An artifact can only live in one folder at a time. Moving it to another folder changes which folder controls access.
 
@@ -76,7 +76,7 @@ Suppose Dana creates a personal artifact called **FY26 Revenue Dashboard** and s
 
 Later, Dana moves the artifact into the **Finance** folder:
 
-* The artifact becomes a folder artifact.
+* The artifact becomes a foldered artifact.
 * Marco's direct share is removed.
 * Anyone with access to the **Finance** folder can access the artifact.
 * Anyone without access to the **Finance** folder cannot access the artifact, even if they had a direct share before.

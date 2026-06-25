@@ -11,7 +11,7 @@ Zenlytic uses two related permission models for artifacts:
 | Artifact state | Who controls access | What to manage |
 | -------------- | ------------------- | -------------- |
 | **Personal artifact** | The artifact owner, workspace admins, and direct artifact shares | Share the artifact with users or workspace groups. These are artifacts that do not live inside a folder. |
-| **Folder artifact** | The folder the artifact is in | Share the folder with users or workspace groups. |
+| **Foldered artifact** | The folder containing the artifact | Share the folder with users or workspace groups. |
 
 When an artifact is moved into a folder, folder permissions control access to that artifact. Direct artifact shares are removed when the move happens.
 

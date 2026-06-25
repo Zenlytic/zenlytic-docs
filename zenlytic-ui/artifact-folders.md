@@ -70,7 +70,7 @@ When an artifact is moved into a folder:
 
 This is useful when you are promoting a personal artifact into a shared team space. It is also the main behavior to review before moving sensitive artifacts.
 
-## Worked example
+### Worked example
 
 Suppose Dana creates a personal artifact called **FY26 Revenue Dashboard** and shares it directly with Marco.
 
@@ -83,7 +83,7 @@ Later, Dana moves the artifact into the **Finance** folder:
 
 If Priya is an **Owner** on the **Finance** folder, Priya can manage the folder and its artifact permissions. If the **Finance Team** group is a **Viewer** on the folder, everyone in that group can open the artifact but cannot manage folder sharing.
 
-If Dana later moves **FY26 Revenue Dashboard** into the **Executive Reporting** folder, the Finance folder permissions no longer apply. The artifact immediately uses the **Executive Reporting** folder permissions instead.
+If Dana later moves **FY26 Revenue Dashboard** into the **Executive Reporting** folder, the **Finance** folder permissions no longer apply. The artifact immediately uses the **Executive Reporting** folder permissions instead.
 
 ## Moving artifacts between folders
 

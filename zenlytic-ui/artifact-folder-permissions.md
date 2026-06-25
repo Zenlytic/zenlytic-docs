@@ -55,7 +55,7 @@ This has a few important consequences:
 * Removing folder access removes access to the artifacts inside it.
 * Moving an artifact to another folder changes the artifact's access to match the new folder.
 
-## Worked example
+### Worked example
 
 Suppose the **Finance** folder has these permissions:
 

@@ -24,7 +24,7 @@ Each artifact displays a thumbnail preview, its name, and when it was last edite
 
 ## Organizing artifacts with folders
 
-Artifact folders let teams organize saved artifacts into shared workspace areas. An unfoldered artifact can be shared directly with users or groups; once it is moved into a folder, the folder controls who can access it.
+Artifact folders let teams organize saved artifacts into shared workspace areas. A personal artifact can be shared directly with users or groups; once it is moved into a folder, the folder controls who can access it.
 
 For more on how folders work, see [Artifact Folders](artifact-folders.md). For access levels, direct shares, groups, and troubleshooting, see [Artifact Folder Permissions](artifact-folder-permissions.md).
 

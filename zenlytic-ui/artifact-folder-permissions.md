@@ -89,8 +89,6 @@ Workspace admins and organization admins have automatic admin access to workspac
 
 Workspace admins also have access to personal artifacts, but only personal artifacts that have been shared with them appear on the Artifacts page. This keeps the Artifacts page manageable for admins.
 
-If an admin cannot see artifact folders at all, the feature may not be enabled for that workspace, or the user may be in the wrong workspace.
-
 ## Visibility and errors
 
 Zenlytic hides folders and artifacts a user cannot access. If a user opens a folder or artifact they do not have access to, it may appear as if the item does not exist.

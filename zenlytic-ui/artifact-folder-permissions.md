@@ -87,6 +87,8 @@ If you move that artifact out of the folder later, the old direct shares do not 
 
 Workspace admins and organization admins have automatic admin access to workspace folders and the artifacts inside them. This access comes from their role, so it does not appear as a normal folder grant that can be edited or removed.
 
+Workspace admins also have access to personal artifacts, but only personal artifacts that have been shared with them appear on the Artifacts page. This keeps the Artifacts page manageable for admins.
+
 If an admin cannot see artifact folders at all, the feature may not be enabled for that workspace, or the user may be in the wrong workspace.
 
 ## Visibility and errors

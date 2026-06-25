@@ -2,7 +2,7 @@
 
 Artifact folder permissions control who can see and manage artifacts in workspace folders. They are designed for team-managed content: one folder, one access policy, many artifacts.
 
-Use folder permissions when a group of artifacts should be managed together. Use direct artifact sharing when a personal artifact should be shared without moving it into a folder.
+Use folder permissions when a group of artifacts should be managed together. Use direct artifact sharing when an unfoldered artifact should be shared without moving it into a folder.
 
 ## The permission model
 
@@ -10,13 +10,13 @@ Zenlytic uses two related permission models for artifacts:
 
 | Artifact state | Who controls access | What to manage |
 | -------------- | ------------------- | -------------- |
-| **Personal artifact** | The artifact owner, workspace admins, and direct artifact shares | Share the artifact with users or workspace groups. |
+| **Unfoldered artifact** | The artifact owner, workspace admins, and direct artifact shares | Share the artifact with users or workspace groups. These are artifacts that do not live inside a folder. |
 | **Folder artifact** | The folder the artifact is in | Share the folder with users or workspace groups. |
 
 When an artifact is moved into a folder, folder permissions control access to that artifact. Direct artifact shares are removed when the move happens.
 
 {% hint style="info" %}
-If someone could access a personal artifact before it was moved into a folder, they need access to the destination folder to keep seeing it after the move.
+If someone could access an unfoldered artifact before it was moved into a folder, they need access to the destination folder to keep seeing it after the move.
 {% endhint %}
 
 ## Access levels
@@ -55,13 +55,34 @@ This has a few important consequences:
 * Removing folder access removes access to the artifacts inside it.
 * Moving an artifact to another folder changes the artifact's access to match the new folder.
 
+## Worked example
+
+Suppose the **Finance** folder has these permissions:
+
+| User or group | Folder access |
+| ------------- | ------------- |
+| Priya | Owner |
+| Finance Team group | Viewer |
+| Marco | No folder access |
+
+Dana creates an unfoldered artifact called **FY26 Revenue Dashboard** and shares it directly with Marco. At this point, Marco can open the artifact because of the direct artifact share.
+
+When Dana moves **FY26 Revenue Dashboard** into the **Finance** folder:
+
+* Priya can manage the folder and its permissions because she is an **Owner**.
+* Members of the **Finance Team** group can open the artifact because they are **Viewers** on the folder.
+* Marco can no longer open the artifact because his direct artifact share was removed and he does not have access to the **Finance** folder.
+* Dana can only keep access if she also has access to the **Finance** folder, or if she is a workspace admin.
+
+If Marco should keep access, add Marco directly to the **Finance** folder or add him to a group that has access to the folder.
+
 ## Direct artifact shares
 
-Direct artifact shares are for personal artifacts. They let an owner share one artifact with specific users or groups without placing it in a folder.
+Direct artifact shares are for unfoldered artifacts. They let an owner share one artifact with specific users or groups without placing it in a folder.
 
-Direct shares do not apply to artifacts in folders. If a personal artifact has direct shares and you move it into a folder, Zenlytic removes those shares because the folder is now responsible for access.
+Direct shares do not apply to artifacts in folders. If an unfoldered artifact has direct shares and you move it into a folder, Zenlytic removes those shares because the folder is now responsible for access.
 
-If you move that artifact back to personal later, the old direct shares do not come back automatically. Share the artifact again if other people still need access.
+If you move that artifact out of the folder later, the old direct shares do not come back automatically. Share the artifact again if other people still need access.
 
 ## Workspace admins
 
@@ -85,7 +106,7 @@ If a user can see an item but cannot perform an action, they need a higher acces
 
 ### Someone lost access after an artifact was moved
 
-Check the destination folder's permissions. Moving a personal artifact into a folder removes direct artifact shares, so the user needs access through the folder.
+Check the destination folder's permissions. Moving an unfoldered artifact into a folder removes direct artifact shares, so the user needs access through the folder.
 
 ### The artifact creator cannot see their own artifact in a folder
 

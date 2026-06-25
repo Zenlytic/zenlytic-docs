@@ -2,26 +2,26 @@
 
 Artifact folders help teams organize saved artifacts into shared workspace areas. Use folders for artifacts that should be managed by a team, department, project, or recurring business process.
 
-Folders are part of the Artifacts page. They sit alongside personal artifacts, but they change how access works: once an artifact is in a folder, the folder controls who can access it.
+Folders are part of the Artifacts page. They sit alongside unfoldered artifacts, but they change how access works: once an artifact is in a folder, the folder controls who can access it.
 
-## Personal artifacts and folder artifacts
+## Unfoldered artifacts and folder artifacts
 
 Artifacts can be in one of two states:
 
 | State | What it means | How access works |
 | ----- | ------------- | ---------------- |
-| **Personal artifact** | The artifact is not in a folder. It can be shared directly with users or groups. | The creator, workspace admins, and direct shares can access it. |
+| **Unfoldered artifact** | The artifact does not live inside a folder. It can be shared directly with users or groups. | The creator, workspace admins, and direct shares can access it. |
 | **Folder artifact** | The artifact has been moved into a workspace folder. | The folder's permissions control access. Direct artifact shares do not apply. |
 
 An artifact can only live in one folder at a time. Moving it to another folder changes which folder controls access.
 
 {% hint style="warning" %}
-When you move a personal artifact into a folder, Zenlytic removes its direct artifact shares. Anyone who needs access must have access to the destination folder.
+When you move an unfoldered artifact into a folder, Zenlytic removes its direct artifact shares. Anyone who needs access must have access to the destination folder.
 {% endhint %}
 
 ## When to use folders
 
-Use folders when an artifact should be managed as part of a shared collection instead of one person's personal artifact.
+Use folders when an artifact should be managed as part of a shared collection instead of one person's unfoldered artifact.
 
 Common patterns include:
 
@@ -30,7 +30,7 @@ Common patterns include:
 * **Project folders** for artifacts connected to a launch, analysis sprint, or cross-functional initiative.
 * **Operational folders** for dashboards, documents, and spreadsheets that several people need to revisit.
 
-If an artifact is experimental, private, or only shared with a few people temporarily, keep it personal until it is ready for a shared folder.
+If an artifact is experimental, private, or only shared with a few people temporarily, keep it unfoldered until it is ready for a shared folder.
 
 ## Folder structure
 
@@ -68,7 +68,22 @@ When an artifact is moved into a folder:
 * Users who do not have folder access lose access to the artifact.
 * Users who have folder access may gain access, depending on their folder level.
 
-This is useful when you are promoting an artifact from personal work into a shared team space. It is also the main behavior to review before moving sensitive artifacts.
+This is useful when you are promoting an unfoldered artifact into a shared team space. It is also the main behavior to review before moving sensitive artifacts.
+
+## Worked example
+
+Suppose Dana creates an unfoldered artifact called **FY26 Revenue Dashboard** and shares it directly with Marco.
+
+Later, Dana moves the artifact into the **Finance** folder:
+
+* The artifact becomes a folder artifact.
+* Marco's direct share is removed.
+* Anyone with access to the **Finance** folder can access the artifact.
+* Anyone without access to the **Finance** folder cannot access the artifact, even if they had a direct share before.
+
+If Priya is an **Owner** on the **Finance** folder, Priya can manage the folder and its artifact permissions. If the **Finance Team** group is a **Viewer** on the folder, everyone in that group can open the artifact but cannot manage folder sharing.
+
+If Dana later moves **FY26 Revenue Dashboard** into the **Executive Reporting** folder, the Finance folder permissions no longer apply. The artifact immediately uses the **Executive Reporting** folder permissions instead.
 
 ## Moving artifacts between folders
 
@@ -80,11 +95,11 @@ Before moving between folders, confirm:
 * Any users who still need access are included directly or through a workspace group.
 * The new folder's access level is appropriate for what users should be able to do.
 
-## Moving artifacts back to personal
+## Moving artifacts out of folders
 
-Moving an artifact out of a folder makes it personal again. The person who moves it becomes the artifact owner, and folder permissions no longer apply.
+Moving an artifact out of a folder makes it unfoldered again. The person who moves it becomes the artifact owner, and folder permissions no longer apply.
 
-Direct shares are not restored when an artifact is moved back to personal. If other users still need access, share the personal artifact again after moving it.
+Direct shares are not restored when an artifact is moved out of a folder. If other users still need access, share the unfoldered artifact again after moving it.
 
 ## Deleting folders
 
@@ -93,15 +108,8 @@ You can delete a folder only after its artifacts have been moved elsewhere. This
 Before deleting a folder:
 
 * Move artifacts to another folder if they should remain shared.
-* Move artifacts back to personal if they should become individually owned.
+* Move artifacts out of folders if they should become individually owned.
 * Confirm that the folder is no longer part of your team's reporting or review process.
-
-## Limitations
-
-* Artifact folders are flat. Nested folders are not available in this release.
-* An artifact in a folder can only be in one folder.
-* Direct artifact sharing applies to personal artifacts, not artifacts in folders.
-* Moving artifacts into, between, or out of folders can change who has access.
 
 ## Related pages
 

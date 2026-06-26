@@ -1,3 +1,9 @@
+---
+description: >-
+  Use user and query attributes inside SQL for dynamic filtering and query
+  behavior.
+---
+
 # Referenceable Attributes
 
 Referenceable attributes are attributes that can be used in queries either on views or dimensions, dimension groups or measures.

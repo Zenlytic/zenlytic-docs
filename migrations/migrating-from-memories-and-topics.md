@@ -1,3 +1,9 @@
+---
+description: >-
+  Move from legacy memories and topics to skills and relationships without
+  breaking existing behavior.
+---
+
 # Migrating from Memories and Topics
 
 Zenlytic is consolidating two legacy configuration surfaces onto newer, more capable replacements:

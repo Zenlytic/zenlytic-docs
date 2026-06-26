@@ -1,3 +1,9 @@
+---
+description: >-
+  Define non-obvious joins, cardinality, and join types so Zoë generates correct
+  cross-table SQL.
+---
+
 # Relationships
 
 Relationships are the recommended way to define joins between tables in Zenlytic. They are defined as a list on the [model](model.md) file and are always visible to Zoë when generating SQL, so you don't need to group views into a topic for joins to work.
@@ -43,12 +49,12 @@ Each entry supports the following properties:
 
 The `relationship` property tells Zoë how many rows on each side of the join it should expect.
 
-| Type           | Description                                                                                                          |
-| -------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Type           | Description                                                                                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `many_to_one`  | Multiple rows in `from_table` map to one row in `join_table`. The most common case (e.g., `order_lines` → `orders`). Default. |
-| `one_to_one`   | Each row in `from_table` maps to exactly one row in `join_table`.                                                    |
-| `one_to_many`  | One row in `from_table` maps to many rows in `join_table`. Can cause fan-out — use with care.                        |
-| `many_to_many` | Multiple rows on both sides. Easiest to produce fan-out; handle aggregation carefully.                               |
+| `one_to_one`   | Each row in `from_table` maps to exactly one row in `join_table`.                                                             |
+| `one_to_many`  | One row in `from_table` maps to many rows in `join_table`. Can cause fan-out — use with care.                                 |
+| `many_to_many` | Multiple rows on both sides. Easiest to produce fan-out; handle aggregation carefully.                                        |
 
 {% hint style="warning" %}
 **Fan-out warning.** `one_to_many` and `many_to_many` joins can cause rows to multiply and produce incorrect aggregate results. For these joins, aggregate in separate CTEs first or use Zenlytic's symmetric aggregate support via a `primary_key` on the view.

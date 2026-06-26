@@ -1,10 +1,13 @@
 ---
+description: >-
+  Reference the legacy dashboard file format and related concepts still
+  supported in existing projects.
 layout:
   width: default
   title:
     visible: true
   description:
-    visible: false
+    visible: true
   tableOfContents:
     visible: true
   outline:
@@ -14,6 +17,8 @@ layout:
   metadata:
     visible: true
   tags:
+    visible: true
+  actions:
     visible: true
 ---
 

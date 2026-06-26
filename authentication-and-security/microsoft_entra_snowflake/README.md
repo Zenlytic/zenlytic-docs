@@ -1,3 +1,9 @@
+---
+description: >-
+  Configure Snowflake authentication with Microsoft Entra so Zenlytic users can
+  sign in through SSO.
+---
+
 # Snowflake with Microsoft Entra
 
 This document will guide you through the process of enabling Microsoft Entra (formerly Active Directory) as an authentication option with Snowflake.

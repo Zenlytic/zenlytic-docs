@@ -1,10 +1,16 @@
+---
+description: >-
+  Get answers with Zoë, Explore your data directly, and use dashboards to
+  revisit and investigate saved views.
+---
+
 # Using Zenlytic
 
 Zenlytic is a LLM-powered AI data analyst (Zoë) that helps you go from facts to decisions. There are two primary ways to get answers in Zenlytic.
 
 ## How to get answers
 
-* **[Zoë](zoe.md)**
+* [**Zoë**](zoe.md)
   * Zoë is an AI data analyst who uses your cognitive layer to answer questions about your data for you. She can answer questions about anything you can query using the [explore](exploring.md) interface, create rich [Artifacts](artifacts.md) (apps, documents, spreadsheets, presentations, and more) to answer complex data science questions, and integrates with both Slack and Microsoft Teams.
 * [Explore](exploring.md)
   * The explore question is a general purpose interface where you can answer the "What" questions that lead into the "Why" questions. For example, you could look at number of customers by acquisition channel who have spent more than $200 in the last 3 months in this question type. You can [slice](exploring.md#slicing) and [filter](exploring.md#filtering) key metrics easily.

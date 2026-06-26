@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Amazon Redshift to Zenlytic, configure credentials, and test query
+  access.
+---
+
 # Redshift Setup
 
 To connect Zenlytic to Amazon Redshift, you'll need to configure the connection with your database credentials. Here's how to do it:

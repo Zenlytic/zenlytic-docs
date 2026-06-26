@@ -1,3 +1,9 @@
+---
+description: >-
+  Embed Zenlytic for internal users who authenticate with their own Zenlytic
+  accounts inside the iframe.
+---
+
 # Private Embedding
 
 Private embedding enables the integration of Zenlytic content directly into your application using an iframe. This method is designed for scenarios where analytics are embedded within a controlled, authenticated environment. It leverages Zenlytic's existing authentication mechanism to ensure that only authorized users with Zenlytic accounts can access the embedded analytics.

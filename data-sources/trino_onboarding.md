@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Trino to Zenlytic, configure credentials, and confirm access to your
+  catalogs and schemas.
+---
+
 # Trino Onboarding
 
 > How to set up a Trino data warehouse in Zenlytic

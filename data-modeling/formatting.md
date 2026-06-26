@@ -1,3 +1,9 @@
+---
+description: >-
+  Format numbers, currencies, percentages, and images with supported value
+  format names.
+---
+
 # Formatting
 
 Passing the `value_format_name` parameter to your [field](field.md) lets you easily format values in a way that's easy to read for business users.

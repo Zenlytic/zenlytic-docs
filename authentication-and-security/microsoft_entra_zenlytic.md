@@ -1,3 +1,9 @@
+---
+description: >-
+  Set up Microsoft Entra SSO for Zenlytic and map the claims users need to sign
+  in.
+---
+
 # Microsoft Entra Zenlytic
 
 ## How to setup Microsoft Entra to Authenticate in Zenlytic

@@ -1,4 +1,10 @@
-# Cache Refresh After Direct Git Pushes
+---
+description: >-
+  Force-refresh the model cache after direct git changes so Zoë uses the latest
+  context.
+---
+
+# Cache Refresh
 
 Zenlytic caches your data model to keep responses fast. When you edit the model through [Context Manager](../zenlytic-ui/context_manager.md) in the UI, the cache is invalidated automatically. When changes are pushed **directly to the underlying git repository** — bypassing the UI — the cache does not know about them.
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect MySQL to Zenlytic, configure credentials, and confirm table access for
+  modeling.
+---
+
 # Mysql Setup
 
 To connect Zenlytic to MySQL, you'll need to configure the connection with your database credentials. Here's how to do it:

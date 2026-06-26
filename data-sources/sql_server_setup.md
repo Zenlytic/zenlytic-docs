@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect SQL Server to Zenlytic, configure connection details, and validate
+  warehouse access.
+---
+
 # Sql Server Setup
 
 To connect Zenlytic to SQL Server, you'll need to configure the connection with your database credentials. Here's how to do it:

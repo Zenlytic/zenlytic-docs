@@ -1,4 +1,7 @@
 ---
+description: >-
+  Use legacy dashboard follow-ups to drill deeper from a saved visualization
+  into new analysis.
 layout:
   width: default
   title:
@@ -14,6 +17,8 @@ layout:
   metadata:
     visible: true
   tags:
+    visible: true
+  actions:
     visible: true
 ---
 

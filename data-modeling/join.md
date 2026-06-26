@@ -1,6 +1,12 @@
-# Joins
+---
+description: >-
+  Reference the legacy join file format previously used to define cross-view
+  query behavior.
+---
 
-**[Relationships](relationships.md) defined on the [model](model.md) file are the recommended way to specify joins in Zenlytic.** Relationships live on the model file, are always visible to Zoë, and don't require grouping views into a named collection. See [Relationships](relationships.md) for the full schema and examples.
+# Joins (legacy)
+
+[**Relationships**](relationships.md) **defined on the** [**model**](model.md) **file are the recommended way to specify joins in Zenlytic.** Relationships live on the model file, are always visible to Zoë, and don't require grouping views into a named collection. See [Relationships](relationships.md) for the full schema and examples.
 
 Topics and identifiers remain supported for backward compatibility but are no longer recommended for new models. If you're starting fresh, define your joins as [relationships](relationships.md) on the model. If you already have topics or identifiers, they will continue to work — see [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for guidance on moving to the new surface.
 

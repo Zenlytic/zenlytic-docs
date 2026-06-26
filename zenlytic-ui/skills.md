@@ -1,3 +1,9 @@
+---
+description: >-
+  Give Zoë persistent, on-demand instructions and reference material for complex
+  workflows, style guides, and domain context.
+---
+
 # Skills
 
 Skills let you give Zoë persistent instructions, reference material, and complex analysis patterns that she loads on demand. Use skills for anything that's sometimes relevant — a fiscal calendar, a brand style guide, a multi-step reporting workflow — rather than context that needs to apply to every question.

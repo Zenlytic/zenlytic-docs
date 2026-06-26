@@ -1,3 +1,7 @@
+---
+description: Add a warehouse table or CSV, configure metadata, and attach it to your model.
+---
+
 # Adding a New Table
 
 ## 1. Go to Context Manager

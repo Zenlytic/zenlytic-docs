@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Snowflake to Zenlytic with the right role, warehouse, database, and
+  authentication settings.
+---
+
 # Snowflake Setup
 
 > Connect your Snowflake data warehouse to Zenlytic

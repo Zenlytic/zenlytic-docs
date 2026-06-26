@@ -1,3 +1,7 @@
+---
+description: Group reusable fields into named sets so you can reference them consistently.
+---
+
 # Sets
 
 Sets are collections of [fields](field.md) that can be referenced throughout your data model. They're a convenient way to reference several fields over and over again instead of having to re-type the names.

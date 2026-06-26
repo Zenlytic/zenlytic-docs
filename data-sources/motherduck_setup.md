@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect MotherDuck to Zenlytic, provide credentials, and verify access to
+  DuckDB data.
+---
+
 # Motherduck Setup
 
 To connect Zenlytic to MotherDuck, you'll need to configure the connection using a service token. Here's how to do it:

@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect dbt Semantic Layer projects to Zenlytic and extend them with Zenlytic
+  metadata.
+---
+
 # dbt MetricFlow Integration
 
 To integrate Zenlytic's data model with your dbt models, define the dimensions and measures (metrics) in semantic models section of dbt. Follow this page to get started with [Metricflow (dbt Semantic Layer)](https://docs.getdbt.com/docs/get-started-dbt).

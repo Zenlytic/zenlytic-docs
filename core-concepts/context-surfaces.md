@@ -1,3 +1,9 @@
+---
+description: >-
+  Choose the right place for Zoë instructions based on when the context appears
+  and how visible it is.
+---
+
 # Context Surfaces
 
 When users ask "where do I put instructions for Zoë?", the answer depends on **when** Zoë needs to see the context. There's no strict hierarchy — Zoë sees all of your context and uses it as appropriate — but there is a visibility difference. Some context is present on every question, some appears only when a particular view is in scope, and some surfaces only after a field search.
@@ -10,17 +16,17 @@ This page is the canonical reference for which surface to reach for, how visible
 
 ## Surfaces at a glance
 
-| Surface                               | Visibility                                     | Best for                                                                       | Char limit             |
-| ------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------- |
-| **System prompt** (Settings → Prompt) | Every question, always                         | Universal rules, default behaviors, data freshness, join routing, terminology  | 20,000 chars           |
-| **Skills** (Settings → Skills)        | On demand — Zoë decides when relevant          | Complex analysis patterns, fiscal calendars, domain-specific workflows         | No hard limit          |
-| **View `description`**                | When the view is in context                    | Table-level business context shown to both users and Zoë                       | 10,000 chars           |
-| **View `zoe_description`**            | When the view is in context                    | Agent-only table-level instructions (join paths, pitfalls, edge cases)         | 10,000 chars           |
-| **Field `description`**               | After a field search; shown to users           | User-facing field documentation                                                | 1,024 chars            |
-| **Field `zoe_description`**           | After a field search; not shown to users       | Agent-only field instructions and calculation notes                            | 1,024 chars            |
-| **Field `synonyms`**                  | During search; boosted +20 in ranking          | Alternative names users actually say for this field                            | N/A                    |
-| **Field `searchable: true`**          | During search; category values indexed         | Status, type, and category columns where values matter for filtering           | 10k categories default |
-| **Memories** (Settings → Memory)      | Top 5 semantically matched per question        | **Legacy — avoid.** Being replaced by Skills.                                  | N/A                    |
+| Surface                               | Visibility                               | Best for                                                                      | Char limit             |
+| ------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------- | ---------------------- |
+| **System prompt** (Settings → Prompt) | Every question, always                   | Universal rules, default behaviors, data freshness, join routing, terminology | 20,000 chars           |
+| **Skills** (Settings → Skills)        | On demand — Zoë decides when relevant    | Complex analysis patterns, fiscal calendars, domain-specific workflows        | No hard limit          |
+| **View `description`**                | When the view is in context              | Table-level business context shown to both users and Zoë                      | 10,000 chars           |
+| **View `zoe_description`**            | When the view is in context              | Agent-only table-level instructions (join paths, pitfalls, edge cases)        | 10,000 chars           |
+| **Field `description`**               | After a field search; shown to users     | User-facing field documentation                                               | 1,024 chars            |
+| **Field `zoe_description`**           | After a field search; not shown to users | Agent-only field instructions and calculation notes                           | 1,024 chars            |
+| **Field `synonyms`**                  | During search; boosted +20 in ranking    | Alternative names users actually say for this field                           | N/A                    |
+| **Field `searchable: true`**          | During search; category values indexed   | Status, type, and category columns where values matter for filtering          | 10k categories default |
+| **Memories** (Settings → Memory)      | Top 5 semantically matched per question  | **Legacy — avoid.** Being replaced by Skills.                                 | N/A                    |
 
 ## `description` vs. `zoe_description`
 
@@ -75,10 +81,8 @@ Synonyms get a +20 boost in search ranking, so they are the highest-impact lever
 
 Use the following mental model:
 
-1. **Is the rule universal — true for every question, not just ones about a particular table?** → **System prompt.**
-   Examples: default time range for "this year", default to net revenue over gross, data freshness ("our warehouse is updated nightly at 2am UTC"), terminology mapping.
-2. **Is it a complex pattern that only applies sometimes — a fiscal calendar, an industry-specific analysis, a multi-step workflow?** → **Skill.**
-   Skills load on demand. They're for long-form, situational context.
+1. **Is the rule universal — true for every question, not just ones about a particular table?** → **System prompt.** Examples: default time range for "this year", default to net revenue over gross, data freshness ("our warehouse is updated nightly at 2am UTC"), terminology mapping.
+2. **Is it a complex pattern that only applies sometimes — a fiscal calendar, an industry-specific analysis, a multi-step workflow?** → **Skill.** Skills load on demand. They're for long-form, situational context.
 3. **Is it about a specific table — which joins are valid, fan-out pitfalls, data caveats?** → **View `description` / `zoe_description`.**
 4. **Is it about a specific field — how it's calculated, when to use it vs. an alternative?** → **Field `description` / `zoe_description`.**
 5. **Is it about what users call the field — alternative phrasings, industry terms?** → **`synonyms`** on the field. Boosts search ranking +20.

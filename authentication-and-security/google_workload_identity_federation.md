@@ -1,3 +1,9 @@
+---
+description: >-
+  Use workload identity federation to connect BigQuery without storing
+  long-lived service account keys.
+---
+
 # Google Workload Identity Federation
 
 These are the steps a customer needs to take to enable Workload Identity Federation (WIF) to let Zenlytic (hosted in AWS) connect their BigQuery instance (hosted in GCP).
@@ -17,15 +23,15 @@ After clicking Get Started, fill out the next screen
 
 4. Configure the following two attribute mappings, then click Save at the bottom of the screen.
 
-| Attribute | Mapping expression |
-|---|---|
-| `google.subject` | `assertion.arn.extract('assumed-role/{role}/')` |
+| Attribute            | Mapping expression                              |
+| -------------------- | ----------------------------------------------- |
+| `google.subject`     | `assertion.arn.extract('assumed-role/{role}/')` |
 | `attribute.aws_role` | `assertion.arn.extract('assumed-role/{role}/')` |
 
 {% hint style="warning" %}
 **Important:** `google.subject` appears grayed out in the screenshot below as a placeholder — you must explicitly fill it in with the expression above. Do not leave it empty or set it to `assertion.arn`.
 
-GCP enforces a **127-byte limit** on `google.subject`. Setting it to `assertion.arn` (the full role ARN including the session UUID) can exceed this limit. Using `assertion.arn.extract('assumed-role/{role}/')` maps only the role name (~46 bytes), well within the limit.
+GCP enforces a **127-byte limit** on `google.subject`. Setting it to `assertion.arn` (the full role ARN including the session UUID) can exceed this limit. Using `assertion.arn.extract('assumed-role/{role}/')` maps only the role name (\~46 bytes), well within the limit.
 {% endhint %}
 
 ![google\_workload\_identity\_federation\_image\_4.png](../.gitbook/assets/google_workload_identity_federation_image_4.png)

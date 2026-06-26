@@ -1,3 +1,7 @@
+---
+description: Create workspace groups and use them to manage dashboard sharing and access.
+---
+
 # Workspace Groups And Permissions
 
 > Create a group in Workspace Settings, name it, and add team members. This group can govern dashboard access in your workspace.

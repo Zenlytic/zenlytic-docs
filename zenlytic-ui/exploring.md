@@ -1,3 +1,9 @@
+---
+description: >-
+  Use Explore to slice, filter, and analyze governed metrics and dimensions
+  without starting from a new question.
+---
+
 # Exploring
 
 The Slice and Explore Metrics question lets you answer the "What" questions about your data. You can get to this question by asking Zoë and expanding the result, clicking on the New Explore button, or [following up from a dashboard](using_zenlytic.md#dashboards). Once in the Explore interface, you can do several operations on your data.
@@ -17,8 +23,6 @@ To set your filter how you want it you can change the comparison by clicking the
 To set the value to use for the filter you can use the drop down for the value on the right side of the value.
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.22.39 AM.png" alt=""><figcaption></figcaption></figure>
-
-
 
 ## Time periods
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Build reusable multi-step Zoë conversations, run them on demand, and share
+  them across your workspace.
+---
+
 # Proactive Getting Started
 
 Proactive Agents allow us to build and run entire conversations with Zoë, and then enable others in the organization to re-run those conversations easily. With this feature, Zoë is more proactive and reusable for solving task-specific analyses than ever before.

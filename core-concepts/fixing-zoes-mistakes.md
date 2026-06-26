@@ -1,3 +1,9 @@
+---
+description: >-
+  Diagnose wrong answers by error type, then add the smallest context or
+  modeling change that fixes the issue.
+---
+
 # Fixing Zoë's Mistakes
 
 When Zoë produces a wrong answer, resist the urge to guess at a fix. Classify the error first, then add the smallest piece of context that prevents that class of error in the future. This page is a diagnostic router — pick the category that matches what went wrong and follow the link to the specific fix.
@@ -43,7 +49,7 @@ Symptom: Zoë joined the wrong tables, or the result is inflated because of a fa
 
 Fixes:
 
-* **Define a [Relationship](../data-modeling/relationships.md)** on the model file for non-obvious joins.
+* **Define a** [**Relationship**](../data-modeling/relationships.md) on the model file for non-obvious joins.
 * **Add prose context** in the view `description` / `zoe_description` or the system prompt explaining which join paths are valid, which are invalid, and what pitfalls exist.
 * **Improve view labels and descriptions** if table names are cryptic — Zoë needs readable names to reason about joins correctly.
 * **For one-to-many or many-to-many joins**, aggregate in separate CTEs to avoid fan-outs. Document this pattern in the view `zoe_description` or the system prompt.

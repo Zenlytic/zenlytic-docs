@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Zenlytic to GitHub with a deploy key so it can read your model
+  repository.
+---
+
 # Connecting To Github With A Deploy Key
 
 **Step 1:** In Zenlytic, you'll first go into Settings, then Workspace Settings

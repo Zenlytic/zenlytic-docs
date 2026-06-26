@@ -1,3 +1,9 @@
+---
+description: >-
+  Migrate older conversations into the latest supported format so you can
+  continue analyzing with Zoë.
+---
+
 # Unsupported Chats
 
 The Zenlytic web application currently supports `v2` conversations and Proactive Agents. For various reasons that we try to prevent from impacting your experience, a previous conversation may become no longer supported to continue running. These reasons include:

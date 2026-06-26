@@ -1,3 +1,9 @@
+---
+description: >-
+  Control who can view and manage foldered artifacts with shared access levels
+  for users and groups.
+---
+
 # Artifact Folder Permissions
 
 Artifact folder permissions control who can see and manage artifacts in workspace folders. They are designed for team-managed content: one folder, one access policy, many artifacts.
@@ -8,10 +14,10 @@ Use folder permissions when a group of artifacts should be managed together. Use
 
 Zenlytic uses two related permission models for artifacts:
 
-| Artifact state | Who controls access | What to manage |
-| -------------- | ------------------- | -------------- |
+| Artifact state        | Who controls access                                              | What to manage                                                                                           |
+| --------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | **Personal artifact** | The artifact owner, workspace admins, and direct artifact shares | Share the artifact with users or workspace groups. These are artifacts that do not live inside a folder. |
-| **Foldered artifact** | The folder containing the artifact | Share the folder with users or workspace groups. |
+| **Foldered artifact** | The folder containing the artifact                               | Share the folder with users or workspace groups.                                                         |
 
 When an artifact is moved into a folder, folder permissions control access to that artifact. Direct artifact shares are removed when the move happens.
 
@@ -23,12 +29,12 @@ If someone could access a personal artifact before it was moved into a folder, t
 
 Folder permissions use three access levels you can assign: **Viewer**, **Editor**, and **Owner**. Workspace admins and organization admins may also see **Admin** access, which comes from their workspace role and is not assigned from the folder sharing UI.
 
-| Level | What users can do |
-| ----- | ----------------- |
-| **Viewer** | View the folder and open artifacts in it. |
-| **Editor** | View the folder, open artifacts, and add or move artifacts into the folder. |
-| **Owner** | Do everything an Editor can do, plus rename or delete the folder and manage folder permissions. |
-| **Admin** | Workspace or organization admin access. Admin is automatic and cannot be granted as a folder permission. |
+| Level      | What users can do                                                                                        |
+| ---------- | -------------------------------------------------------------------------------------------------------- |
+| **Viewer** | View the folder and open artifacts in it.                                                                |
+| **Editor** | View the folder, open artifacts, and add or move artifacts into the folder.                              |
+| **Owner**  | Do everything an Editor can do, plus rename or delete the folder and manage folder permissions.          |
+| **Admin**  | Workspace or organization admin access. Admin is automatic and cannot be granted as a folder permission. |
 
 Only **Viewer**, **Editor**, and **Owner** can be assigned to users or groups.
 
@@ -59,10 +65,10 @@ This has a few important consequences:
 
 Suppose the **Finance** folder has these permissions:
 
-| User or group | Folder access |
-| ------------- | ------------- |
-| Priya | Owner |
-| Finance Team group | Viewer |
+| User or group      | Folder access |
+| ------------------ | ------------- |
+| Priya              | Owner         |
+| Finance Team group | Viewer        |
 
 Dana creates a personal artifact called **FY26 Revenue Dashboard** and shares it directly with Marco. At this point, Marco can open the artifact because of the direct artifact share.
 

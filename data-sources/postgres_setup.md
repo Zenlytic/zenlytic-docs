@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect PostgreSQL to Zenlytic, supply database credentials, and verify schema
+  access.
+---
+
 # Postgres Setup
 
 To connect Zenlytic to PostgreSQL, you'll need to configure the connection with your database credentials. Here's how to do it:

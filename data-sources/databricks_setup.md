@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect a Databricks SQL warehouse to Zenlytic and verify access to your
+  catalogs and tables.
+---
+
 # Databricks Setup
 
 To connect Zenlytic to Databricks, you'll need to configure the connection using a personal access token. Here's how to do it:

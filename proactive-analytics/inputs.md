@@ -1,3 +1,9 @@
+---
+description: >-
+  Add required text, number, select, and file inputs so each run can capture
+  fresh parameters.
+---
+
 # Inputs
 
 Inputs are used to collect information from the user before the Proactive Agent begins. Consider the following example, where Zoe is taking a look at products in a week over week analysis. With inputs, it's possible to make this Proactive Agent run differently depending on the user's input.

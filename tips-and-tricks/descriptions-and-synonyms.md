@@ -1,3 +1,9 @@
+---
+description: >-
+  Use descriptions and synonyms to improve field discoverability and help Zoë
+  pick the right fields.
+---
+
 # Descriptions and Synonyms
 
 Descriptions and synonyms are two of the most impactful properties you can set on a field. Descriptions tell Zoë what a field means and when to use it; synonyms boost the field's search ranking by +20 for terms your users actually say. Together they're the fastest way to improve field-level discoverability and reasoning.

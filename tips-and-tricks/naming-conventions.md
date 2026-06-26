@@ -1,3 +1,9 @@
+---
+description: >-
+  Name measures and dimensions clearly so Zoë can distinguish similar fields and
+  choose the right one.
+---
+
 # Naming Conventions
 
 Clearly naming your metrics (measures) and dimensions is key for Zoë to perform well for you. If you have two revenue metrics defined as `Revenue first` and `Revenue second`, Zoë, like a human analyst, will have no idea which one to pick.

@@ -1,3 +1,9 @@
+---
+description: >-
+  Assign user attributes for access control, connection overrides, and
+  default-deny security patterns.
+---
+
 # User Attributes
 
 This section covers how to set user attributes. User attributes are how users are assigned permissions that control their access to data (using [access grants](../data-modeling/access_grants.md)).

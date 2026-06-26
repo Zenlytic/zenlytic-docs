@@ -1,3 +1,9 @@
+---
+description: >-
+  Quickly choose between prompts, skills, descriptions, synonyms, and searchable
+  fields to guide Zoë.
+---
+
 # How to Steer Zoë's Answers
 
 {% hint style="info" %}

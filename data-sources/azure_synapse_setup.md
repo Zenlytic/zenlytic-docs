@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Azure Synapse to Zenlytic, authenticate securely, and test query
+  access.
+---
+
 # Azure Synapse Setup
 
 To connect Zenlytic to Azure Synapse Analytics, you'll need to configure the connection with your database credentials. Here's how to do it:

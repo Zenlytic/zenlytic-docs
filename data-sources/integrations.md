@@ -1,3 +1,9 @@
+---
+description: >-
+  Compare supported warehouse connections and choose the right setup guide for
+  your data source.
+---
+
 # Integrations Overview
 
 Zenlytic integrates with the following data warehouses:

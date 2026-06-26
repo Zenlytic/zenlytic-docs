@@ -1,3 +1,9 @@
+---
+description: >-
+  Control embedded access with user attributes, access grants, and signed URL
+  permissions.
+---
+
 # Permissions in Embedding
 
 Permissions for embedded users in Zenlytic come in two layers:
@@ -27,14 +33,14 @@ Same as Embed plus `schedule_content` and `see_sql`.
 
 ✓ means the role includes that permission. Blank means it doesn't.
 
-| Permission                | Embed | Embed with SQL | Embedded with Scheduling |
-| ------------------------- | :---: | :------------: | :----------------------: |
-| `view_content`            | ✓     | ✓              | ✓                        |
-| `explore_from_here`       | ✓     | ✓              | ✓                        |
-| `download_with_limit`     | ✓     | ✓              | ✓                        |
-| `chat`                    | ✓     | ✓              | ✓                        |
-| `see_sql`                 |       | ✓              | ✓                        |
-| `schedule_content`        |       |                | ✓                        |
+| Permission            | Embed | Embed with SQL | Embedded with Scheduling |
+| --------------------- | :---: | :------------: | :----------------------: |
+| `view_content`        |   ✓   |        ✓       |             ✓            |
+| `explore_from_here`   |   ✓   |        ✓       |             ✓            |
+| `download_with_limit` |   ✓   |        ✓       |             ✓            |
+| `chat`                |   ✓   |        ✓       |             ✓            |
+| `see_sql`             |       |        ✓       |             ✓            |
+| `schedule_content`    |       |                |             ✓            |
 
 All other Zenlytic permissions are unavailable to embed roles.
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Create time and duration fields with reusable timeframes, intervals, and
+  timezone behavior.
+---
+
 # Dimension Groups
 
 Dimension Groups are a particular type of dimension used for timeframes (referencing the same date column but having slices for it daily, weekly, monthly, etc), and for intervals (referencing the difference between two date columns and slicing it days between, weeks between, months between, etc).
@@ -78,8 +84,6 @@ All `fiscal_` timeframes are based on the model's `fiscal_month_offset` property
 The available timeframe options are:
 
 <table><thead><tr><th width="242.55078125">Options</th><th width="503.6015625">Description</th></tr></thead><tbody><tr><td>raw</td><td>Shows the raw value and can be used in references, but is not used in the Zenlytic UI</td></tr><tr><td>time</td><td>Shows the raw timestamp</td></tr><tr><td>second</td><td>Shows the value truncated to the second</td></tr><tr><td>minute</td><td>Shows the value truncated to the minute</td></tr><tr><td>hour</td><td>Shows the value truncated to the hour</td></tr><tr><td>date</td><td>Shows the value truncated to the day</td></tr><tr><td>week</td><td>Shows the value truncated to the week</td></tr><tr><td>month</td><td>Shows the value truncated to the month</td></tr><tr><td>quarter</td><td>Shows the value truncated to the quarter</td></tr><tr><td>year</td><td>Shows the value truncated to the year</td></tr><tr><td>fiscal_month</td><td>Shows the value truncated to the fiscal month</td></tr><tr><td>fiscal_quarter</td><td>Shows the value truncated to the fiscal quarter.</td></tr><tr><td>fiscal_year</td><td>Shows the value truncated to the fiscal year</td></tr><tr><td>week_index</td><td>Shows the week of the year as an integer (alias of week_of_year below)</td></tr><tr><td>week_of_year</td><td>Shows the week of the year as an integer</td></tr><tr><td>week_of_month</td><td>Shows the week of the month as an integer</td></tr><tr><td>month_of_year</td><td>Shows the month of the year as a 3 character string ('Jan', 'Feb', 'Mar', etc)</td></tr><tr><td>month_of_year_full_name</td><td>Shows the month of the year as a string ('January', 'February', 'March', etc)</td></tr><tr><td>month_of_year_index</td><td>Shows the month of the year as an integer</td></tr><tr><td>fiscal_month_index</td><td>Shows the fiscal month of the year as an integer. The first fiscal month is the first month of the fiscal year.</td></tr><tr><td>fiscal_month_of_year_index</td><td>Shows the fiscal month of the year as an integer (alias of the fiscal_month_index)</td></tr><tr><td>month_name</td><td>Shows the month of the year as a 3 character string (alias of month_of_year)</td></tr><tr><td>month_index</td><td>Shows the month of the year as an integer (alias of month_of_year_index)</td></tr><tr><td>quarter_of_year</td><td>Shows the quarter of the year as an integer</td></tr><tr><td>fiscal_quarter_of_year</td><td>Shows the fiscal quarter of the year as an integer</td></tr><tr><td>hour_of_day</td><td>Shows the hour of the day as an integer</td></tr><tr><td>day_of_week</td><td>Shows the day of the week as a 3 character string ('Mon', 'Tue', 'Wed', etc)</td></tr><tr><td>day_of_month</td><td>Shows the day of the month as an integer</td></tr><tr><td>day_of_year</td><td>Shows the day of the year as an integer</td></tr></tbody></table>
-
-
 
 ## Intervals
 

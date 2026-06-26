@@ -1,3 +1,9 @@
+---
+description: >-
+  Schedule legacy dashboards for recurring delivery to users by email or other
+  supported channels.
+---
+
 # Dashboard Scheduled Delivery
 
 Scheduling dashboards gives users the ability to run a dashboard at a predetermined time or times and send the results to a selected audience. The scheduler can send a PDF version of the dashboard, CSV data download and a link to view the dashboard within the Zenlytic UI. The scheduler can also include a standard or customized AI summary of the results.

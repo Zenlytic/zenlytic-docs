@@ -1,3 +1,9 @@
+---
+description: >-
+  Set up Okta SSO for Zenlytic and map the claims users need to authenticate
+  correctly.
+---
+
 # Okta Zenlytic
 
 ## Zenlytic: Single Sign-On with Okta

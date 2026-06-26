@@ -1,3 +1,9 @@
+---
+description: >-
+  Enable searchable dimensions so Zoë can index category values and apply the
+  right filters.
+---
+
 # Data Indexing
 
 Let Zoë know about categorical values

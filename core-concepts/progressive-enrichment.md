@@ -1,4 +1,10 @@
-# Progressive Enrichment: What to Configure First
+---
+description: >-
+  Start with raw tables, then add the smallest modeling changes that fix real
+  mistakes and improve Zoë over time.
+---
+
+# Progressive Enrichment
 
 You do not need to build out a full semantic layer before asking Zoë questions. The fastest way to get value from Zenlytic is to import raw tables, start asking questions, observe where Zoë makes mistakes, and add targeted context to fix those specific errors.
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Apache Druid to Zenlytic, configure the connection, and validate query
+  access.
+---
+
 # Druid Setup
 
 > Connect your Apache Druid data warehouse with Zenlytic

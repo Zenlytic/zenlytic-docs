@@ -1,3 +1,9 @@
+---
+description: >-
+  Customize the embedded experience with layout, navigation, and style options
+  that match your product.
+---
+
 # Embedding Styles
 
 You can control UI customization in Zenlytic's embedded environment via a JSON that maps to CSS styles in the Zenlytic embedded product.

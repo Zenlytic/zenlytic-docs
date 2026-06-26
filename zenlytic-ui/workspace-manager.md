@@ -1,12 +1,10 @@
 ---
 description: >-
-  The Workspace Manager is where organization admins can manage their workspaces
-  (agents).
+  Manage workspaces across your organization, reuse connections, and control SSO
+  provisioning from one place.
 ---
 
 # Workspace Manager
-
-
 
 The Workspace Manager lets you create new workspaces, manage existing ones, and control how users are provisioned across your organization, all from a single, self-service interface.
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Embed Zenlytic content with private or signed access, depending on your users
+  and authentication model.
+---
+
 # Embedding Overview
 
 Embedded analytics is the process of taking content you've created in Zenlytic, and making it available to users via an iframe in a separate application. There are two ways to embed Zenlytic content in your application.

@@ -1,3 +1,9 @@
+---
+description: >-
+  Install the Zenlytic bot in Microsoft Teams so users can ask Zoë questions and
+  explore data without leaving Teams.
+---
+
 # Installing Zenlytic in Microsoft Teams
 
 The Zenlytic Bot brings the power of Zoë, Zenlytic's flagship natural language BI assistant, directly into Microsoft Teams. This integration allows users to effortlessly explore and query their organization's data, check available fields, views, and dashboards on specific topics, and even create or modify dashboards - all without ever leaving the convenience of Teams.
@@ -11,7 +17,7 @@ This guide provides step-by-step instructions for IT teams on how to install the
 * Sign in to the Azure portal
 * Browse to "Microsoft Entra ID" > "Properties"
 * Scroll down to the "Tenant ID" section and you will find your tenant ID in the box
-* Send your tenant ID to **`support@zenlytic.com`**  to connect your Zenlytic workspace to your Teams workspace
+* Send your tenant ID to **`support@zenlytic.com`** to connect your Zenlytic workspace to your Teams workspace
 
 ## Step 2: Access the Microsoft Teams Admin Center
 

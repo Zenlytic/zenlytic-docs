@@ -1,3 +1,9 @@
+---
+description: >-
+  Define tables, default dates, descriptions, filters, and fields in reusable
+  view files.
+---
+
 # Views
 
 Views reference exactly one table in the database. In Zenlytic, they are organized into [topics](topic.md) for usage that define how they join together.

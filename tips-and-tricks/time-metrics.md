@@ -1,3 +1,9 @@
+---
+description: >-
+  Use `default_date` and `canon_date` so Zoë trends each metric against the
+  correct time dimension.
+---
+
 # Time Metrics
 
 Each metric in Zenlytic should be associated with a time dimension group. The associated dimension group with a metric is called that metric's `canon_date`.

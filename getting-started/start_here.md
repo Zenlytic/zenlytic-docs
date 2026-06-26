@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect your warehouse, import tables, and ask your first Zoë question in a
+  new workspace.
+---
+
 # Start Here
 
 Welcome to Zenlytic. The shortest path from a blank workspace to a working AI analyst:
@@ -33,7 +39,7 @@ The faster path: **just ask Zoë.** Once your warehouse is connected, Zoë can r
 
 If you're moving from Power BI, Tableau, Looker, or another reporting platform, you don't have to figure out the mapping yourself. **Paste a screenshot of an existing report into chat and ask Zoë what data she'd need to recreate it.** She'll match the report's metrics and dimensions to your warehouse tables, tell you what to import, and — with edits enabled — do the import.
 
-You can also describe the question without a screenshot — *"what data would I need to track new vs. repeat customer revenue by channel?"* — and Zoë will identify the relevant tables and fields the same way.
+You can also describe the question without a screenshot — _"what data would I need to track new vs. repeat customer revenue by channel?"_ — and Zoë will identify the relevant tables and fields the same way.
 
 See [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) for the full workflow.
 
@@ -112,7 +118,7 @@ Git is connected by default. Keep using Zenlytic's **Managed Repo** unless you h
 
 ## Where do I go from here?
 
-* **[Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md)** — the most important page if you want Zoë to help you build context
+* [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) — the most important page if you want Zoë to help you build context
 * [Context Surfaces](../core-concepts/context-surfaces.md) — where each kind of context lives
 * [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — diagnostic flow when answers are off
 * [Using Zenlytic](../zenlytic-ui/using_zenlytic.md) — the rest of the UI

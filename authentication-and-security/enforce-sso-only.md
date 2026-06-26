@@ -1,3 +1,9 @@
+---
+description: >-
+  Restrict workspace login to SSO so users cannot authenticate with passwords or
+  magic links.
+---
+
 # Enforce SSO-Only Login
 
 In SSO-enabled workspaces, the default username and password sign-in path on the workspace login page can be disabled by request. After Zenlytic applies the change, the workspace login page shows only your configured SSO provider as a sign-in option. This is a configuration Zenlytic applies on your behalf — it is not a self-serve setting in the workspace UI.

@@ -1,3 +1,9 @@
+---
+description: >-
+  Use distinct-key aggregates to avoid double counting when joins duplicate
+  metric values.
+---
+
 # Symmetric Aggregates
 
 Symmetric aggregates allow Zenlytic to calculate your metrics accurately even when there's a situation where the joins make that very difficult by duplicating the values to aggregate.

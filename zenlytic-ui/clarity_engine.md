@@ -1,3 +1,9 @@
+---
+description: >-
+  See how the Clarity Engine validates Zoë’s SQL, enforces governance, and turns
+  ad hoc questions into secure, reusable analysis.
+---
+
 # Clarity Engine
 
 The Clarity Engine is the layer of Zenlytic that interprets the SQL Zoë's LLM produces. Whenever Zoë writes a query, the Clarity Engine sits between her output and your warehouse: it validates the SQL against your semantic model, enforces your row- and column-level security, and surfaces exactly which parts of the answer came from your governed model versus which were generated on the fly to answer this question.

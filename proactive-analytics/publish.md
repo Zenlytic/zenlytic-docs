@@ -1,3 +1,9 @@
+---
+description: >-
+  Publish proactive agents so teammates can discover, run, and reuse approved
+  workflows from chat.
+---
+
 # Publish
 
 By default, Proactive Agents are private to you, however, we can allow others in our organization to run and extend our Proactive Agents when they are ready. The following image shows the "Publish Proactive Agent" popover that appears after clicking "Publish" in the Proactive Agent Builder Header.

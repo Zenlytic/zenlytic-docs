@@ -1,3 +1,9 @@
+---
+description: >-
+  Manage model files, validate changes, compare branches, and deploy updates to
+  production.
+---
+
 # Context Manager
 
 Use Context Manager to manage semantic model files, review changes, and deploy updates to production.
@@ -6,8 +12,7 @@ Use Context Manager to manage semantic model files, review changes, and deploy u
 
 Open Context Manager from the workspace navigation or from chat.
 
-![Open Context Manager entry points](../.gitbook/assets/context-manager-entry-points.png)
-![Context Manager overview](../.gitbook/assets/context-manager-overview.png)
+![Open Context Manager entry points](../.gitbook/assets/context-manager-entry-points.png) ![Context Manager overview](../.gitbook/assets/context-manager-overview.png)
 
 ## Manage files
 
@@ -41,7 +46,7 @@ When you add a view, choose one of these options:
 * Upload a CSV file
 * Add from a database connection
 
-Use an existing connection or create a new connection during setup. 
+Use an existing connection or create a new connection during setup.
 
 ![Add button options](../.gitbook/assets/context-manager-add-options.png) ![Add view modal](../.gitbook/assets/context-manager-add-view.png)
 

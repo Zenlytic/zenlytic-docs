@@ -1,3 +1,9 @@
+---
+description: >-
+  Diagnose common Zenlytic login failures across SSO, credentials, permissions,
+  and workspace configuration.
+---
+
 # Login Troubleshooting
 
 > Issues logging in? Read this doc

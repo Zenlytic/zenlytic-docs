@@ -1,3 +1,9 @@
+---
+description: >-
+  Learn how models, views, fields, and relationships work together to give Zoë
+  reliable context.
+---
+
 # Data Modeling Overview
 
 To understand data modeling in Zenlytic, there are a few key concepts to grasp. If you've used data models like LookML before, these will be intuitive, and you'll be able to go straight to the implementation of your model. To better understand how to define context for Zoë, the AI analyst, see [Context Surfaces](../core-concepts/context-surfaces.md).

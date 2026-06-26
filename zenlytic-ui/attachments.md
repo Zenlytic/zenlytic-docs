@@ -1,3 +1,9 @@
+---
+description: >-
+  Attach files and live queries in chat so Zoë can analyze external data and use
+  structured results as context.
+---
+
 # Attachments
 
 Attachments let you bring external files and structured queries directly into your conversation with Zoë. Use them to ground your analysis with specific data — whether that's a CSV from a colleague, a PDF report, or a live query against your data model.

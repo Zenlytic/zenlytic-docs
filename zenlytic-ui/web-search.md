@@ -1,16 +1,20 @@
+---
+description: >-
+  Enable Zoë to search the web for real-time context and cite external sources
+  alongside your internal data.
+---
+
 # Web Search
 
 Zoë can search the web for real-time information to supplement her data analysis. This is useful when you need external context alongside your internal data — for example, comparing your metrics against industry benchmarks, understanding market trends, or referencing recent events.
 
 > **Note:** Web Search is currently available only when using Anthropic models (e.g. Sonnet 4.6, Opus 4.6). If a non-Anthropic model is selected for the conversation, the Web Search toggle will not appear.
 
-
 ## Enabling Web Search for the Workspace
 
 Web Search must first be enabled at the workspace level by an admin. Navigate to **Settings > Zoë** and toggle **Web Search** on. Once enabled, all users in the workspace will have the option to activate Web Search in their conversations.
 
 <figure><img src="../.gitbook/assets/web-search-settings.png" alt="Enabling Web Search in the Zoë workspace settings"><figcaption><p>Enabling Web Search in the Zoë workspace settings</p></figcaption></figure>
-
 
 ## Enabling Web Search per Conversation
 
@@ -20,18 +24,16 @@ Once the workspace-level setting is enabled, Web Search can be toggled on or off
 
 The toggle is persistent for the conversation — once turned on, Zoë will have access to web search for all subsequent messages in that thread until you turn it off.
 
-
 ## How It Works
 
 When Web Search is active and Zoë determines that external information would help answer your question, she will search the web before composing her response. You will see a "Searching the web for..." indicator in the chat while the search is in progress. Zoë synthesizes the search results into a coherent answer, combining external context with any data she pulls from your governed data model.
 
 Common use cases include:
 
-- **Industry benchmarks** — "How does our 15% churn rate compare to the SaaS industry average?"
-- **Market context** — "What macroeconomic trends might explain the drop in Q4 sales?"
-- **Product research** — "What are the latest best practices for customer onboarding?"
-- **Current events** — "Are there any recent supply chain disruptions that could affect our forecast?"
-
+* **Industry benchmarks** — "How does our 15% churn rate compare to the SaaS industry average?"
+* **Market context** — "What macroeconomic trends might explain the drop in Q4 sales?"
+* **Product research** — "What are the latest best practices for customer onboarding?"
+* **Current events** — "Are there any recent supply chain disruptions that could affect our forecast?"
 
 ## Cited Sources
 

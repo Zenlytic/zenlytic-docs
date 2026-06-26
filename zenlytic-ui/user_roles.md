@@ -1,3 +1,9 @@
+---
+description: >-
+  Compare roles, permissions, and ad-hoc SQL access so each user gets the right
+  scope.
+---
+
 # User Roles
 
 Permissions sets that give users the ability to take certain actions in Zenlytic. Each role bundles a set of underlying permissions; roles also determine how much latitude a user has to query data that isn't formally defined in the semantic layer.
@@ -56,7 +62,7 @@ Each of the role bundles below is built from the following individual permission
 
 ## Roles
 
-Each role below combines a set of the permissions above and maps to one of the ad-hoc SQL tiers. For the exact permissions each role includes, see the [permissions × roles matrix](#permissions-roles-matrix) at the bottom of the page.
+Each role below combines a set of the permissions above and maps to one of the ad-hoc SQL tiers. For the exact permissions each role includes, see the [permissions × roles matrix](user_roles.md#permissions-roles-matrix) at the bottom of the page.
 
 ### Organization Admin
 
@@ -107,25 +113,25 @@ Three role bundles are available for embedded users — Embed, Embed with SQL, a
 
 Cross-reference any permission against any role. ✓ means the role includes that permission. Blank means it doesn't. For embed roles, see [Permissions in Embedding](../embedding/permissions_in_embedding.md).
 
-| Permission                | Org Admin | Admin | Develop | Develop w/o Deploy | Explore | View | Restricted |
-| ------------------------- | :-------: | :---: | :-----: | :----------------: | :-----: | :--: | :--------: |
-| `view_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    | ✓          |
-| `save_content`            | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `schedule_content`        | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `explore_from_here`       | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `chat`                    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `download_with_limit`     | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `see_sql`                 | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `create_workflow`         | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `create_dynamic_field`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `view_workspace_users`    | ✓         | ✓     | ✓       | ✓                  | ✓       | ✓    |            |
-| `download_without_limit`  | ✓         | ✓     | ✓       | ✓                  | ✓       |      |            |
-| `change_branch`           | ✓         | ✓     | ✓       | ✓                  |         |      |            |
-| `run_sql`                 | ✓         | ✓     | ✓       | ✓                  |         |      |            |
-| `data_model_edit`         | ✓         | ✓     | ✓       | ✓                  |         |      |            |
-| `deploy_to_production`    | ✓         | ✓     | ✓       |                    |         |      |            |
-| `edit_settings`           | ✓         | ✓     |         |                    |         |      |            |
-| `workspace_management`    | ✓         |       |         |                    |         |      |            |
+| Permission               | Org Admin | Admin | Develop | Develop w/o Deploy | Explore | View | Restricted |
+| ------------------------ | :-------: | :---: | :-----: | :----------------: | :-----: | :--: | :--------: |
+| `view_content`           |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |      ✓     |
+| `save_content`           |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `schedule_content`       |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `explore_from_here`      |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `chat`                   |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `download_with_limit`    |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `see_sql`                |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `create_workflow`        |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `create_dynamic_field`   |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `view_workspace_users`   |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |   ✓  |            |
+| `download_without_limit` |     ✓     |   ✓   |    ✓    |          ✓         |    ✓    |      |            |
+| `change_branch`          |     ✓     |   ✓   |    ✓    |          ✓         |         |      |            |
+| `run_sql`                |     ✓     |   ✓   |    ✓    |          ✓         |         |      |            |
+| `data_model_edit`        |     ✓     |   ✓   |    ✓    |          ✓         |         |      |            |
+| `deploy_to_production`   |     ✓     |   ✓   |    ✓    |                    |         |      |            |
+| `edit_settings`          |     ✓     |   ✓   |         |                    |         |      |            |
+| `workspace_management`   |     ✓     |       |         |                    |         |      |            |
 
 ## Troubleshooting
 

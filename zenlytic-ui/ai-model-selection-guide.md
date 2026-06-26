@@ -1,10 +1,13 @@
 ---
+description: >-
+  Choose the right Zoë model based on your data complexity, speed needs, and
+  preference for autonomy versus transparency.
 layout:
   width: default
   title:
     visible: true
   description:
-    visible: false
+    visible: true
   tableOfContents:
     visible: true
   outline:

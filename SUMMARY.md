@@ -14,7 +14,6 @@
 ## Tips & Tricks
 
 * [How to Steer Zoë's Answers](tips-and-tricks/zoe_context_ingestion.md)
-* [Working with Zoë](tips-and-tricks/zoe_tips_and_tricks.md)
 * [Naming Conventions](tips-and-tricks/naming-conventions.md)
 * [Descriptions and Synonyms](tips-and-tricks/descriptions-and-synonyms.md)
 * [Entity Drills](tips-and-tricks/entity-drills.md)
@@ -135,6 +134,7 @@
 
 ## Legacy
 
+* [Working with Zoë](legacy/zoe_tips_and_tricks.md)
 * [Dashboards (legacy)](legacy/dashboard/README.md)
   * [Follow Ups From a Dashboard](legacy/dashboard/following_up_from_a_dashboard.md)
   * [Dashboard Scheduled Delivery](legacy/dashboard/dashboard-scheduled-delivery.md)

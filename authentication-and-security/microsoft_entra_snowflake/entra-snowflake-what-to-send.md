@@ -1,3 +1,9 @@
+---
+description: >-
+  Send the required Snowflake and Entra details so Zenlytic can finish your SSO
+  setup.
+---
+
 # Snowflake with Entra - What to Send
 
 Before continuing, complete the setup process in this document to configure Zenlytic as an OAuth provider for Snowflake and Microsoft Entra.

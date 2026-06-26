@@ -1,3 +1,9 @@
+---
+description: >-
+  Create a BigQuery service account, connect it in Zenlytic, and verify
+  warehouse access.
+---
+
 # Bigquery Setup
 
 > **Note:** Alternatively to creating a service account, you can use [Workload Identity Federation to connect to BigQuery](../authentication-and-security/google_workload_identity_federation.md).

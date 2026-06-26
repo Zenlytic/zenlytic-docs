@@ -1,3 +1,9 @@
+---
+description: >-
+  Run proactive agents inside embedded Zenlytic experiences and pass users into
+  reusable workflows.
+---
+
 # Proactive Agents in Embedding
 
 You can add [Proactive Agents](../proactive-analytics/getting-started.md) to the embedding experience by creating the Proactive Agents in the UI, and then sharing those Proactive Agents with "all users" as Viewer (which only gives the ability to _run_ the Proactive Agent).

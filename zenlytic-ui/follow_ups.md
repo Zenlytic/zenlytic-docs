@@ -1,3 +1,9 @@
+---
+description: >-
+  Drill deeper from charts and tables with follow-up actions like filtering,
+  drilling by dimension, and drilling into detail.
+---
+
 # Follow Ups
 
 > Ask follow up questions by using filtering, and 'Drill into' features
@@ -40,4 +46,4 @@ Drill by gives you a selector with all dimensions that can be joined into your e
 
 'Drill into' adds slices that provide more detail based on the slice chosen. For example, you can drill into revenue at a user level, order level, or product level.
 
-Each 'Drill into' slice can be configured to your business needs, using a [tag](../data-modeling/dimension.md).&#x20;
+Each 'Drill into' slice can be configured to your business needs, using a [tag](../data-modeling/dimension.md).

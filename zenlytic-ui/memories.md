@@ -1,3 +1,11 @@
+---
+description: >-
+  Reference the legacy memory system that stored reusable context before skills
+  replaced it.
+---
+
+# Memories (legacy)
+
 {% hint style="danger" %}
 **Memories are legacy. Do not use them for new context.** Memories are being retired and replaced by [Skills](skills.md). Existing memories will continue to work and will be migrated automatically in a future release, but **for any new context you want to add, do not create a memory**. Use one of these instead:
 
@@ -8,19 +16,19 @@
 The rest of this page documents the legacy Memories feature for users who already have memories in their workspace. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side comparison.
 {% endhint %}
 
-# Memories (legacy)
+## Memories (legacy)
 
 > Legacy feature. For new context, use [Skills](skills.md), the system prompt, or `zoe_description` on views and fields.
 
 Use memories to teach Zoë about your company, your data preferences, and how you want questions answered. Zoë uses these memories to understand your business and remember your preferences in future responses.
 
-## How memories work
+### How memories work
 
 Click "Add to memory" on helpful responses in chat, or create and manage memories in the memory management portal. When you ask Zoë a question, she automatically finds and uses relevant memories to provide more accurate, consistent answers tailored to your business context and preferences.
 
-## Create a memory
+### Create a memory
 
-### From chat
+#### From chat
 
 Click "Add to memory" under a helpful response to save it.
 
@@ -30,7 +38,7 @@ After saving, you see a confirmation toast that says "Response Added to Memory �
 
 ![Response added toast](../.gitbook/assets/response_remembered.png)
 
-### From the memory management portal
+#### From the memory management portal
 
 Create memories directly in the portal when you want to define behavior outside of a specific chat.
 
@@ -47,7 +55,7 @@ Create memories directly in the portal when you want to define behavior outside 
 
 ![Create an explore memory](../.gitbook/assets/creating_explore_memory.png)
 
-## Manage your memories
+### Manage your memories
 
 View and control all memories in the memory management portal:
 
@@ -57,7 +65,7 @@ View and control all memories in the memory management portal:
 
 ![Editing a memory](../.gitbook/assets/editing_memory.png)
 
-## What memories can't do
+### What memories can't do
 
 Keep these limitations in mind:
 

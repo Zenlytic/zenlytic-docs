@@ -1,3 +1,9 @@
+---
+description: >-
+  Apply user-attribute-based column and row access controls with access grants
+  and access filters.
+---
+
 # Access Grants
 
 Access control is managed in Zenlytic through two concepts.
@@ -24,10 +30,10 @@ access_grants:
 
 With this grant:
 
-| User's `revenue` attribute | Result |
-| -------------------------- | ------ |
-| `has_revenue`              | Access granted |
-| `no_revenue`               | Access denied |
+| User's `revenue` attribute | Result                                           |
+| -------------------------- | ------------------------------------------------ |
+| `has_revenue`              | Access granted                                   |
+| `no_revenue`               | Access denied                                    |
 | No `revenue` attribute     | Grant is not triggered and does not block access |
 
 When multiple grants are listed in `required_access_grants`, all triggered grants must pass. A missing user attribute on a grant is non-blocking for that grant.

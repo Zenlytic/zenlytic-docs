@@ -1,3 +1,9 @@
+---
+description: >-
+  Define metrics, valid aggregation patterns, filters, and non-additive logic
+  for accurate analysis.
+---
+
 # Measures
 
 Measures (or metrics) are aggregations performed inside of a SQL `group by` statement. A simple one is `sum(sales)`, which you could specify in your data model with `type: sum` and `sql: ${TABLE}.sales`. They can get highly complex and are as flexible as your data warehouse's SQL syntax.
@@ -118,12 +124,12 @@ The Non Additive Dimension has three properties
 
 A common source of errors in measure definitions is mismatching `type` with what's inside `sql`. There are only two valid patterns; double-aggregation and missing-aggregation are both invalid.
 
-| Pattern                                | Valid? | Why                                                                                 |
-| -------------------------------------- | ------ | ----------------------------------------------------------------------------------- |
-| `type: number` + `sql: SUM(field)`     | Yes    | The aggregation is explicit in the SQL expression.                                  |
-| `type: sum` + `sql: field`             | Yes    | The `type` provides the aggregation; `sql` references the column.                   |
-| `type: number` + `sql: field`          | **No** | No aggregation. Zoë will silently wrap the SQL but verification will fail.          |
-| `type: sum` + `sql: SUM(field)`        | **No** | Double aggregation — `type: sum` wraps another `SUM()`.                             |
+| Pattern                            | Valid? | Why                                                                        |
+| ---------------------------------- | ------ | -------------------------------------------------------------------------- |
+| `type: number` + `sql: SUM(field)` | Yes    | The aggregation is explicit in the SQL expression.                         |
+| `type: sum` + `sql: field`         | Yes    | The `type` provides the aggregation; `sql` references the column.          |
+| `type: number` + `sql: field`      | **No** | No aggregation. Zoë will silently wrap the SQL but verification will fail. |
+| `type: sum` + `sql: SUM(field)`    | **No** | Double aggregation — `type: sum` wraps another `SUM()`.                    |
 
 When defining a new measure, always use one of the two valid patterns. If you need a more complex aggregation (cumulative, window-based, distinct-key), use `type: number` with the full SQL expression and add a `zoe_description` explaining what it calculates.
 

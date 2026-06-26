@@ -1,3 +1,9 @@
+---
+description: >-
+  Limit Zenlytic access by source IP to enforce network-level controls for your
+  workspace.
+---
+
 # IP Whitelisting
 
 These are the IP addresses to whitelist for a Zenlytic deployment in the US. This is the default deployment area if not specified in your contract.

@@ -1,3 +1,9 @@
+---
+description: >-
+  Run proactive agents on a schedule and deliver the results to users
+  automatically.
+---
+
 # Schedule Delivery
 
 Next to the Run Preview "Play" button, we can click "Schedule Delivery" to open a modal for managing delivery schedules for this Proactive Agent. By default, there will be no schedules, so click "Create New Delivery" to get started.

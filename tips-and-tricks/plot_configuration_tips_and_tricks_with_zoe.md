@@ -1,4 +1,10 @@
-# Plot Configuration Tips and Tricks with Zoe
+---
+description: >-
+  Configure charts with natural-language prompts for colors, axes, labels,
+  series, and annotations.
+---
+
+# Plot Configuration
 
 ## Overview
 

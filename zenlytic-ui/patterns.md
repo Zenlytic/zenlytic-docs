@@ -1,10 +1,13 @@
 ---
+description: >-
+  Index past analytical queries so Zoë can reuse proven SQL patterns when the
+  semantic model alone is not enough.
 layout:
   width: default
   title:
     visible: true
   description:
-    visible: false
+    visible: true
   tableOfContents:
     visible: true
   outline:

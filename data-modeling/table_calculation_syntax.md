@@ -1,3 +1,9 @@
+---
+description: >-
+  Reference supported table calculation functions and arithmetic for post-query
+  analysis.
+---
+
 # Table Calculation Syntax
 
 This is a reference for the functions available to the table calculations, including examples of usage in practice.

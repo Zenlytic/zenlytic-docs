@@ -7,6 +7,7 @@
 
 ## Core Concepts
 
+* [How Zoë Works](core-concepts/how-zoe-works.md)
 * [Context Surfaces](core-concepts/context-surfaces.md)
 * [Progressive Enrichment](core-concepts/progressive-enrichment.md)
 * [Fixing Zoë's Mistakes](core-concepts/fixing-zoes-mistakes.md)

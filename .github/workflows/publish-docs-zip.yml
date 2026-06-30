@@ -1,0 +1,41 @@
+name: Publish docs zip
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.github/**'
+      - '.cursor/**'
+      - '.gitbook/**'
+      - '.gitbook.yaml'
+      - '.gitignore'
+      - '.nvmrc'
+      - 'book.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'legacy/**'
+
+jobs:
+  zip-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docs.zip
+        run: |
+          zip -r docs.zip . \
+            -x '.git/*' \
+            -x '.github/*' \
+            -x '.cursor/*' \
+            -x '.gitbook/*' \
+            -x '.gitbook.yaml' \
+            -x '.gitignore' \
+            -x '.nvmrc' \
+            -x 'book.json' \
+            -x 'package.json' \
+            -x 'package-lock.json' \
+            -x 'legacy/*'
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: docs-latest
+          files: docs.zip

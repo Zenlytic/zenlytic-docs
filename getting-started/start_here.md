@@ -93,7 +93,7 @@ See [Progressive Enrichment](../core-concepts/progressive-enrichment.md) for the
 
 When your changes are on a development branch and you're ready to make them live, use the **Deploy to production** action in [Context Manager](../zenlytic-ui/context_manager.md). That publishes the branch so Zoë (and the rest of your org) is using the latest version. Resolve any validation errors first.
 
-If changes were pushed to git directly rather than through the UI, use the [force-refresh](../data-modeling/cache-refresh.md) button to rebuild the cache.
+If changes were pushed to git directly rather than through the UI, use [Pull from Remote](../data-modeling/cache-refresh.md) to rebuild the cache.
 
 ## Git for your data model
 

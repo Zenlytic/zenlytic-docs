@@ -32,7 +32,7 @@ Folder permissions use three access levels you can assign: **Viewer**, **Editor*
 | Level      | What users can do                                                                                        |
 | ---------- | -------------------------------------------------------------------------------------------------------- |
 | **Viewer** | View the folder and open artifacts in it.                                                                |
-| **Editor** | View the folder, open artifacts, and add or move artifacts into the folder.                              |
+| **Editor** | View the folder, open artifacts, schedule artifacts, and add or move artifacts into the folder.          |
 | **Owner**  | Do everything an Editor can do, plus rename or delete the folder and manage folder permissions.          |
 | **Admin**  | Workspace or organization admin access. Admin is automatic and cannot be granted as a folder permission. |
 

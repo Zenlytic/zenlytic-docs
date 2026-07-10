@@ -71,6 +71,24 @@ To create a new skill:
 
 <figure><img src="../.gitbook/assets/skills-create-new.png" alt=""><figcaption></figcaption></figure>
 
+## Skill properties
+
+Each skill is a markdown file with YAML front matter at the top:
+
+```yaml
+---
+name: Weekly Report Format
+description: How to structure and format the weekly business review.
+enabled: true
+---
+```
+
+* **`name`** (required) — the skill's display name.
+* **`description`** (required) — a short summary of what the skill does. Zoë uses the description to decide when to load the skill, so be specific about when it should apply.
+* **`enabled`** (optional) — controls whether Zoë can see the skill. Set `enabled: false` to hide the skill from Zoë. If `enabled: true` is set, or the property is omitted, Zoë sees the skill.
+
+Skills migrated from memories may also include metadata like a skill ID, migration ID, and migration timestamp. You can safely remove these, but we recommend leaving them in place as a record of when the content was migrated.
+
 ## Who can create skills?
 
 Skill management is gated by role. Only **Developer** and **Admin** tier users (Develop, Develop without Deploy, Admin, and Organization Admin) can create, edit, or delete skills, since skills affect context for the entire organization. Users in the **Explorer** tier (Explore, View, Restricted, Embed, Embed with SQL, Embedded with Scheduling) cannot manage skills, but they can still use skills that Developer and Admin users have set up.

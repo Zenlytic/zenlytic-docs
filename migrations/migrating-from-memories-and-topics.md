@@ -37,6 +37,8 @@ Created in the **Context Manager**:
 
 Skills are broader than memories by design. A single skill can cover an entire topic area, an industry-specific calendar, or a multi-step workflow, with no hard character limit. See [Skills](../zenlytic-ui/skills.md).
 
+Migrated skills include metadata like a skill ID, migration ID, and migration timestamp in their front matter. You can safely remove these, but we recommend leaving them in as a record of when the content was migrated. Only `name` and `description` are required; see [Skill properties](../zenlytic-ui/skills.md#skill-properties).
+
 ### When to move a memory today
 
 You do not need to move existing memories — they will be migrated automatically. But if you are actively adding new context, create a skill instead:

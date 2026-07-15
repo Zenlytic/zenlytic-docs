@@ -49,7 +49,7 @@ In the upper right-hand side of the screen, you can create new Proactive Agents 
 
 By default, the newly created Proactive Agent will be titled "New Proactive Agent" and contain no instruction details. We can click the Proactive Agent title and type to change the title. The new name will be saved with an outside click or "Enter" keypress.
 
-Proactive Agents allow us to define a specific Zoe task that will be run as a conversation. Let's click through the form options on this _New Proactive Agent_ page to get started. Click on the _Test Run_ button in the upper right-hand section to preview a run of our new Proactive Agent.
+Proactive Agents allow us to define a specific Zoe task that will be run as a conversation. Let's click through the form options on this _New Proactive Agent_ page to get started. Click on the _Create Agent_ then the _Test Run_ button in the upper right-hand section to preview a run of our new Proactive Agent.
 
 <figure><img src="../.gitbook/assets/agents/4-proactive-with-message.png" alt=""><figcaption></figcaption></figure>
 

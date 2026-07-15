@@ -35,24 +35,24 @@ Proactive Agents are ideal for implementing tasks where you need one or all of t
 
 By clicking the _Proactive Agents_ option in the left-hand navigational sidebar, you will see a list of Proactive Agents that exist in your workspace. The three-dot menu reveals options to run, duplicate, or delete a Proactive Agent. When you click on a Proactive Agent's name or highlighted row, you will be navigated to the Proactive Agent Builder.
 
+<figure><img src="../.gitbook/assets/agents/2-viewing-proactive-agents.png" alt=""><figcaption></figcaption></figure>
+
+
 ## Creating Proactive Agents
 
 In the upper right-hand side of the screen, you can create new Proactive Agents by pressing _Create a New Agent_. This button will then navigate you to the Proactive Agent Builder.
 
-<figure><img src="../.gitbook/assets/agents/2-viewing-proactive-agents.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/agents/3-new-proactive-agent.png" alt=""><figcaption></figcaption></figure>
 
 
 ## Editing Proactive Agents
 
 By default, the newly created Proactive Agent will be titled "New Proactive Agent" and contain no instruction details. We can click the Proactive Agent title and type to change the title. The new name will be saved with an outside click or "Enter" keypress.
 
-Proactive Agents allow us to define a specific Zoe task that will be run as a conversation. Let's click through the form options on this _New Proactive Agent_ page to get started.
-
-<figure><img src="../.gitbook/assets/agents/3-new-proactive-agent.png" alt=""><figcaption></figcaption></figure>
-
-Click on the _Test Run_ button in the upper right-hand section to preview a run of our new Proactive Agent.
+Proactive Agents allow us to define a specific Zoe task that will be run as a conversation. Let's click through the form options on this _New Proactive Agent_ page to get started. Click on the _Test Run_ button in the upper right-hand section to preview a run of our new Proactive Agent.
 
 <figure><img src="../.gitbook/assets/agents/4-proactive-with-message.png" alt=""><figcaption></figcaption></figure>
+
 
 When the Proactive Agent conversation preview has completed its run, we can inspect its output, run it again, or we can modify the Proactive Agent before running again.
 

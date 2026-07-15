@@ -61,7 +61,7 @@ When the Proactive Agent conversation preview has completed its run, we can insp
 
 ## File Attachments
 
-Files and workspace Artifacts can be added to Proactive Agent instructions as attachments by pressing the _Plus_ icon button in the message card.
+Files and workspace Artifacts can be added to Proactive Agent instructions as attachments by pressing the _Plus_ icon button in the Instruction textarea's bottom left corner.
 
 ## Create Proactive Agent from an existing Conversation
 

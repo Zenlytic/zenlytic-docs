@@ -77,7 +77,6 @@
 ## Proactive Agents
 
 * [Proactive Getting Started](proactive-analytics/getting-started.md)
-* [Inputs](proactive-analytics/inputs.md)
 * [Publish](proactive-analytics/publish.md)
 * [Schedule Delivery](proactive-analytics/schedule-delivery.md)
 * [Run History](proactive-analytics/run-history.md)

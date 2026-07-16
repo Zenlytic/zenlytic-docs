@@ -71,7 +71,6 @@ redirects:
   # Workflows section
   docs/category/workflows: workflows/getting-started.md
   docs/workflows/getting-started: workflows/getting-started.md
-  docs/workflows/inputs: workflows/inputs.md
   docs/workflows/publish: workflows/publish.md
   docs/workflows/schedule-delivery: workflows/schedule-delivery.md
   docs/workflows/run-history: workflows/run-history.md

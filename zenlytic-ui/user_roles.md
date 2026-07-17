@@ -32,7 +32,7 @@ Each of the role bundles below is built from the following individual permission
 
 `view_content`: This is the ability to view dashboards.
 
-`explore_from_here`: This is the ability to "Explore from here" to the graphical UI to change a query found on a dashboard or in Zoë.
+`explore_from_here`: This is the ability to continue analysis from an existing result or dashboard.
 
 `edit_settings`: This is the admin permission to edit the settings of the workspace itself. With this permission, a user can grant him/herself any permission.
 

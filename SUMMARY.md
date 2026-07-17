@@ -25,7 +25,6 @@
 
 ## Using Zenlytic
 
-* [Using Zenlytic](zenlytic-ui/using_zenlytic.md)
 * [Zoë](zenlytic-ui/zoe.md)
 * [Clarity Engine](zenlytic-ui/clarity_engine.md)
 * [AI Model Selection Guide](zenlytic-ui/ai-model-selection-guide.md)
@@ -36,8 +35,6 @@
 * [Artifacts](zenlytic-ui/artifacts.md)
   * [Artifact Folders](zenlytic-ui/artifact-folders.md)
   * [Artifact Folder Permissions](zenlytic-ui/artifact-folder-permissions.md)
-* [Exploring](zenlytic-ui/exploring.md)
-* [Follow Ups](zenlytic-ui/follow_ups.md)
 * [Installing Zenlytic in Microsoft Teams](zenlytic-ui/microsoft_teams_bot.md)
 
 ## Administration
@@ -135,6 +132,9 @@
 ## Legacy
 
 * [Working with Zoë](legacy/zoe_tips_and_tricks.md)
+* [Using Zenlytic (legacy)](zenlytic-ui/using_zenlytic.md)
+* [Exploring (legacy)](zenlytic-ui/exploring.md)
+* [Follow Ups (legacy)](zenlytic-ui/follow_ups.md)
 * [Dashboards (legacy)](legacy/dashboard/README.md)
   * [Follow Ups From a Dashboard](legacy/dashboard/following_up_from_a_dashboard.md)
   * [Dashboard Scheduled Delivery](legacy/dashboard/dashboard-scheduled-delivery.md)

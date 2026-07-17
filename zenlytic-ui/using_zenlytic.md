@@ -4,7 +4,11 @@ description: >-
   revisit and investigate saved views.
 ---
 
-# Using Zenlytic
+{% hint style="danger" %}
+**This page describes a legacy version of the product.** The standalone Explore interface no longer exists. [Zoë](zoe.md) is now how you get answers in Zenlytic — see that page for the current chat experience. The rest of this page is kept for historical reference only.
+{% endhint %}
+
+# Using Zenlytic (legacy)
 
 Zenlytic is a LLM-powered AI data analyst (Zoë) that helps you go from facts to decisions. There are two primary ways to get answers in Zenlytic.
 

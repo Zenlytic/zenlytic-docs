@@ -4,7 +4,11 @@ description: >-
   drilling by dimension, and drilling into detail.
 ---
 
-# Follow Ups
+{% hint style="danger" %}
+**This page describes a legacy interface that no longer exists.** Follow-up drilling now happens in chat with [Zoë](zoe.md) — see **Interactive Tool Calls** and **Citations** on that page for the current way to inspect a result and dig deeper. The rest of this page is kept for historical reference only.
+{% endhint %}
+
+# Follow Ups (legacy)
 
 > Ask follow up questions by using filtering, and 'Drill into' features
 

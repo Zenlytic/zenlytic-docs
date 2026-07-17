@@ -4,7 +4,11 @@ description: >-
   without starting from a new question.
 ---
 
-# Exploring
+{% hint style="danger" %}
+**This page describes a legacy interface that no longer exists.** The standalone Explore UI has been replaced by [Zoë](zoe.md) — ask her directly in chat to slice, filter, or drill into a metric, and she'll build the query for you. The rest of this page is kept for historical reference only.
+{% endhint %}
+
+# Exploring (legacy)
 
 The Slice and Explore Metrics question lets you answer the "What" questions about your data. You can get to this question by asking Zoë and expanding the result, clicking on the New Explore button, or [following up from a dashboard](using_zenlytic.md#dashboards). Once in the Explore interface, you can do several operations on your data.
 

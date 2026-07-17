@@ -121,7 +121,7 @@ Git is connected by default. Keep using Zenlytic's **Managed Repo** unless you h
 * [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) — the most important page if you want Zoë to help you build context
 * [Context Surfaces](../core-concepts/context-surfaces.md) — where each kind of context lives
 * [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — diagnostic flow when answers are off
-* [Using Zenlytic](../zenlytic-ui/using_zenlytic.md) — the rest of the UI
+* [Zoë](../zenlytic-ui/zoe.md) — the rest of the chat experience
 * [Data Modeling Overview](../data-modeling/data_modeling.md) — for hands-on data model authoring
 
 As always, feel free to reach out to your Zenlytic contact or [email support](mailto:support@zenlytic.com) if anything here doesn't match what you're seeing.

@@ -126,9 +126,9 @@ Artifacts can be delivered on a recurring schedule to **email** or **Slack**. A 
 
 ### Email delivery
 
-* Inline thumbnail preview of the artifact.
-* Optional file attachment.
-* "View Online" button if public sharing is enabled.
+* Inline image preview of the artifact. Wide or scrollable content may be cropped in the preview.
+* Optional attachment of the artifact’s current output file in its original format. Attachments are not converted; HTML remains HTML, and PDF is attached only when the output is already a PDF.
+* Optional “View in Zenlytic” link. Recipients must have access to the artifact.
 
 ### Slack delivery
 
@@ -209,7 +209,7 @@ Use artifact citations to review where an artifact's data came from, understand 
 
 ## Supported output types
 
-Artifacts support a range of output formats, all generated on top of your governed data:
+These are formats Zoë can create as artifact outputs. They are not export or email-conversion options. Scheduled delivery attaches the existing output file as-is.
 
 * HTML apps and dashboards
 * Charts and visualizations

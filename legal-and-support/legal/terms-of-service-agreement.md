@@ -1,5 +1,5 @@
 ---
-description: 'Last Updated: February 26, 2026'
+description: 'Last Updated: July 22, 2026'
 ---
 
 # Terms of Service Agreement

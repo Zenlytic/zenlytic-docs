@@ -6,7 +6,7 @@ description: >-
 
 # Relationships
 
-Relationships are the recommended way to define joins between tables in Zenlytic. They are defined as a list on the [model](model.md) file and are always visible to Zoë when generating SQL, so you don't need to group views into a topic for joins to work.
+Relationships are the recommended way to define joins between tables in Zenlytic. They are defined as a list on the [model](model.md) file and are visible to Zoë when generating SQL whenever the user can access both the `from_table` and `join_table` views, so you don't need to group views into a topic for joins to work.
 
 Relationships replace both [topics](topic.md) and the `identifiers` block for the purpose of defining joins. Topics and identifiers continue to be supported for backward compatibility — see [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for guidance on moving existing configuration.
 
@@ -100,7 +100,7 @@ relationships:
 ```
 {% endcode %}
 
-This replaces a corresponding topic definition and is visible to Zoë globally — you don't have to wrap it in a topic to use it.
+This replaces a corresponding topic definition and is visible to Zoë whenever the user can access both views in the relationship — you don't have to wrap it in a topic to use it.
 
 ## Multi-column joins
 

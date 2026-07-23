@@ -34,7 +34,7 @@ Models only have a few core properties:
 
 `mappings`: Mappings equate fields that mean the same thing but are in different, un-joinable tables. For example, you might have a `channel` field on the orders table and a `marketing_channel` field on the `marketing_spend` table, and they represent the same thing and have the same values. You can set up a mapping that connects those two fields in Zenlytic and leaves only one option for the end users to select. Zenlytic will dynamically figure out which field it should use or if it needs to use both. Find out more about mappings [in the join docs](join.md#merged-results--mappings) or in the example below.
 
-`relationships`: Relationships define joins that can happen between any two tables throughout views that are accessible in the model. These are always visible to the agent and help it make better decisions about complex joints.
+`relationships`: Relationships define joins that can happen between any two tables throughout views that are accessible in the model. These are visible to the agent whenever the user can access both views in the relationship, and help it make better decisions about complex joins.
 
 ## Examples
 

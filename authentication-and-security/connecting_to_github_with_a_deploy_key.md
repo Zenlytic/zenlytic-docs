@@ -25,6 +25,8 @@ Check these settings in GitHub, at both the organization and repository level (a
 | Restrict commit metadata (committer email) | Rulesets | Allow `hello@zenlytic.com` |
 | Require signed commits | Rulesets, or classic branch protection | Disable for this repo |
 
+Metadata restrictions (including committer email pattern) require **GitHub Enterprise Cloud or Enterprise Server** — this option won't appear under Rulesets on GitHub Free, Pro, or Team.
+
 The push itself still authenticates with the deploy key you install below — your access control is unchanged. Only the commit metadata carries the Zenlytic service identity.
 
 **Symptom if this isn't configured:** "Save Model Files Unsuccessful / Failed to save model" in Context Manager on every branch. The underlying push is rejected with a rule violation naming the committer email `hello@zenlytic.com`.

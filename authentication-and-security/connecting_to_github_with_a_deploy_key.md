@@ -6,6 +6,33 @@ description: >-
 
 # Connecting To Github With A Deploy Key
 
+## Commit identity and repository rules
+
+Zenlytic writes to your repo every time a user saves model files from Context Manager. Every commit Zenlytic creates uses a fixed identity:
+
+* **Author:** the email of the Zenlytic user who made the change
+* **Committer:** `Zenlytic <hello@zenlytic.com>` on every commit, regardless of who made the change
+* **Signature:** none — Zenlytic does not sign its commits
+
+{% hint style="warning" %}
+If your organization enforces rules on commit metadata, allow `hello@zenlytic.com` **before** you connect. Otherwise branch creation will succeed but every save will fail — these rules apply to every branch, not only protected ones. That's why creating a branch from Context Manager can succeed (no commit is created yet) while the first save fails (a commit is created).
+{% endhint %}
+
+Check these settings in GitHub, at both the organization and repository level (a clean repo-level ruleset doesn't rule out an organization-level one):
+
+| Setting | Where to find it | What to do |
+|---|---|---|
+| Restrict commit metadata (committer email) | Rulesets | Allow `hello@zenlytic.com` |
+| Require signed commits | Rulesets, or classic branch protection | Disable for this repo |
+
+Metadata restrictions (including committer email pattern) require **GitHub Enterprise Cloud or Enterprise Server** — this option won't appear under Rulesets on GitHub Free, Pro, or Team.
+
+The push itself still authenticates with the deploy key you install below — your access control is unchanged. Only the commit metadata carries the Zenlytic service identity.
+
+**Symptom if this isn't configured:** "Save Model Files Unsuccessful / Failed to save model" in Context Manager on every branch. The underlying push is rejected with a rule violation naming the committer email `hello@zenlytic.com`.
+
+## Connecting your repository
+
 **Step 1:** In Zenlytic, you'll first go into Settings, then Workspace Settings
 
 ![Github Deploy Key 1](../.gitbook/assets/github-deploy-key-1.png)

@@ -1,0 +1,11 @@
+# GitBook configuration for the Changelog section.
+#
+# This file is read from this directory because the Changelog space's
+# "Project directory" is set to changelog/ in GitBook's Git Sync settings.
+# Paths below resolve relative to this directory, not the repository root.
+
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md

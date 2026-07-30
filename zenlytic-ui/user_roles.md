@@ -139,7 +139,7 @@ Cross-reference any permission against any role. ✓ means the role includes tha
 
 Role permissions are necessary but not always sufficient — a feature can be gated by both a role permission and a workspace-level configuration. If your role includes the right permission and you still don't see the feature in the UI:
 
-* **Schedule Delivery on a Proactive Agent or artifact.** Confirm the artifact has been saved (scheduling is not available on unsaved artifacts), and that the workspace has Proactive Agents enabled.
+* **Schedule Delivery on a Proactive Agent or artifact.** Confirm the artifact has been saved (scheduling is not available on unsaved artifacts), and that the workspace has Proactive Agents enabled. If a delivery arrives without the artifact file attached, the artifact uses [live data](artifacts.md#delivering-live-artifacts) — those deliveries include a preview image and a link instead.
 * **Schedule Delivery on a dashboard.** Legacy dashboards have their own delivery setup — see [Dashboard Scheduled Delivery](../legacy/dashboard/dashboard-scheduled-delivery.md).
 * **Chat with Zoë.** Confirm the workspace has chat enabled and that you have the `chat` permission for your role.
 * **Edit the data model in Context Manager.** Confirm you're on a non-production branch, or that **Allow Edit Production** is enabled in workspace settings for your role.

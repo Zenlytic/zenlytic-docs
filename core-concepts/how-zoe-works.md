@@ -6,7 +6,9 @@ description: >-
 
 # How Zoë Works
 
-Zoë answers data questions by writing and running SQL against your warehouse in real time. Every query is grounded in **governed, verified field definitions** from your semantic model rather than free-form generation, so answers stay accurate, auditable, and consistent. The output isn't just numbers — she can deliver rich documents, spreadsheets, presentations, and interactive dashboards as [Artifacts](../zenlytic-ui/artifacts.md) using the data she pulls.
+Zoë answers data questions by writing and running SQL against your warehouse in real time. Every query is grounded in **governed, verified field definitions** from your semantic model rather than free-form generation, so answers stay accurate, auditable, and consistent. The output isn't just numbers — she can deliver rich documents, spreadsheets, presentations, and interactive dashboards as [Artifacts](../zenlytic-ui/artifacts.md).
+
+Dashboards, charts, and other HTML Artifacts don't store the numbers Zoë pulled. They store the queries, and re-run them through the same permission-enforced path every time someone opens the artifact — so the data is current and scoped to whoever is looking at it. See [Live and static artifacts](../zenlytic-ui/artifacts.md#live-and-static-artifacts).
 
 This page walks through the architecture: the agentic loop she runs on every question, the tools she has access to, and why the result is trustworthy.
 

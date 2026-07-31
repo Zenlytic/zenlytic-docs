@@ -19,7 +19,7 @@ This document will guide you through the process of enabling Microsoft Entra (fo
 
 ## Understanding the Requirements
 
-Zenlytic will need both access to both of the flows listed in Snowflake's guide:
+Zenlytic needs access to both of the flows listed in Snowflake's guide:
 
 1. The authorization server can grant the OAuth client an access token on behalf of the user.
 2. The authorization server can grant the OAuth client an access token for the OAuth client itself.
@@ -42,11 +42,11 @@ Zenlytic will need both access to both of the flows listed in Snowflake's guide:
 1. Click on **Expose an API**.
 2. Click on the **Add** link next to **Application ID URI** to set the `Application ID URI`.
 
-> **Important**
->
-> The Application ID URI must be unique within your organization's directory, such as https://your.company.com/4d2a8c2b-a5f4-4b86-93ca-294185f45f2e.
->
-> **Tip**: You can use a unique id generator website like [UUID Generator](https://www.uuidgenerator.net/) for the second part of the url
+   > **Important**
+   >
+   > The Application ID URI must be unique within your organization's directory, such as `https://your.company.com/4d2a8c2b-a5f4-4b86-93ca-294185f45f2e`.
+   >
+   > **Tip:** You can use a unique ID generator such as [UUID Generator](https://www.uuidgenerator.net/) for the second part of the URL.
 
 3. Now we'll add the scope for the web app client, click on **Add a scope** to add a scope representing the Snowflake role.
    * Enter the scope by having the name of the Snowflake role with the `session:scope:` prefix. For example, for the Snowflake Analyst role, enter `session:scope:analyst`.
@@ -57,8 +57,7 @@ Zenlytic will need both access to both of the flows listed in Snowflake's guide:
 4. And now we'll add the scope for the api
    * Click on **Manifest**.
    * Locate the `appRoles` element.
-   * Enter an **App Role** with the following settings.
-   * The App Role manifests as follows.
+   * Enter an **App Role** with the settings below.
 
 | Setting            | Description                                                                                                               |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
@@ -99,30 +98,20 @@ The App Role manifests as follows.
 
 4. Under the **Redirect URIs** section, enter `https://<your_company_subdomain>.zenlytic.com`\
    a. Ex: `https://mycompany.zenlytic.com`\
-   b. If you're not sure what your subdomain is, reach out to your Zenlytic contact
-5. Select **Access tokens (used for implicit flows)** and **ID tokens (used for implicit and hybrid flows)**
-6. Click Add a Platform
-7. Choose Single-page application
-8. Click Configure
-
-<figure><img src="../../.gitbook/assets/entra-snowflake_image_2.png" alt=""><figcaption></figcaption></figure>
-
-4. Under the **Redirect URIs** section, enter `https://<your_company_subdomain>.zenlytic.com`\
-   a. Ex: `https://mycompany.zenlytic.com`\
    b. If you're not sure what your subdomain is, reach out to your Zenlytic contact or [email support](mailto:support@zenlytic.com)
 5.  Select **Access tokens (used for implicit flows)** and **ID tokens (used for implicit and hybrid flows)**
 
     <figure><img src="../../.gitbook/assets/entra-snowflake_image_3.png" alt=""><figcaption></figcaption></figure>
-6. Click Configure
+6. Click **Configure**
 
 ## Step 2: Create the OAuth Client
 
-1. In the **Overview** section of your `Zenlytic Snowflake` application , copy the `ClientID` from the **Application (client) ID** field.
+1. In the **Overview** section of your `Zenlytic Snowflake` application, copy the `ClientID` from the **Application (client) ID** field.
 2. Click on **Certificates & secrets** and then **New client secret**.
 3. Add a description of the secret.
 4. Select the time period that you feel comfortable with. Once this secret expires, Zenlytic will lose the ability to authenticate with Snowflake. You'll need to generate and share with Zenlytic a new secret before that expires to avoid downtime.
 5. Click **Add**. Copy the secret for later.
-6. Now we need to configure Delegated permissions for the Zenlytic
+6. Now we need to configure Delegated permissions for Zenlytic
    * Click on **API Permissions**.
    * Click on **Add Permission**.
    * Click on **My APIs**.

@@ -121,7 +121,7 @@ Must be one of these values:\
 ​`zenlytic_user_attributes`
 
 Allows you to manually control access to data.\
-Read about how user attributes work here in [Zenlytic Docs](../3_zenlytic_ui/user_attributes/).\
+Read about how user attributes work here in [User Attributes](../zenlytic-ui/user_attributes.md).\
 Should follow this format. An array of key/value pairs.\
 \- Ex: `[{\"department\": \"Engineering\"}]`
 

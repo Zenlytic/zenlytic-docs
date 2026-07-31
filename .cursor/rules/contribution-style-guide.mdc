@@ -68,3 +68,48 @@ Organize content by one of these logical structures:
 - Keep headers descriptive and searchable
 - Limit to three levels of hierarchy (H1, H2, H3)
 - Include keywords users might search for
+
+## 🖼️ Images and Assets
+
+### Where assets live
+
+Every image belongs in its own section's asset directory: `<section>/.gitbook/assets/`.
+
+This is the only directory GitBook writes to — images uploaded through the GitBook editor land there and sync back to git. A custom folder is git-only, so a mixed team ends up with assets in two places and only one of them maintained.
+
+### Assets do not cross sections
+
+A section resolves assets only within its own project directory. `docs/.gitbook/assets/` is not visible to `developer/`, and there is no shared pool.
+
+For an image used in more than one section, either:
+
+- **Duplicate it** into each section's asset directory — preferred, keeps the repo self-contained
+- **Reference an absolute URL** to an externally hosted copy — avoids duplication, but adds an external dependency
+
+Cross-section *page* links follow the same rule: use absolute URLs, since relative paths like `../data-modeling/foo.md` do not resolve across a section boundary.
+
+### Video and animation
+
+Referencing an `.mp4` with image syntax does **not** produce a video player — GitBook renders it as a clickable download link. Inline playback requires an embed block pointing at a publicly accessible URL:
+
+```
+{% embed url="https://..." %}
+```
+
+That URL cannot be a local repository path, so video must be hosted before it can be embedded.
+
+Practically, an animated GIF is the only inline motion that can be authored entirely from git. Keep them short and small — GitBook's own guidance for video is to stay under 2MB, and a multi-megabyte GIF is a slow page for every reader. For anything longer than a few seconds, host the video and use an embed block.
+
+The upload cap is **100MB per file**, and it applies to Git Sync as well as editor uploads.
+
+### Naming
+
+- Descriptive kebab-case: `user-roles-matrix.png`, not `Screenshot 2025-07-27 at 10.11.16 AM.png`
+- No spaces — they require quoting and break shell globs and scripts
+- Rename auto-generated screenshot names when you touch the page
+
+### Before adding an image
+
+- Confirm it is actually referenced by a page; unreferenced assets accumulate silently
+- Prefer PNG for screenshots and static diagrams
+- Crop to the relevant UI rather than capturing the full window

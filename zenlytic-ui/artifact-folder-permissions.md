@@ -61,6 +61,10 @@ This has a few important consequences:
 * Removing folder access removes access to the artifacts inside it.
 * Moving an artifact to another folder changes the artifact's access to match the new folder.
 
+{% hint style="info" %}
+**Folder access controls who can open an artifact, not what data they see inside it.** Dashboards, charts, and other HTML artifacts are [live](artifacts.md#live-artifacts) — they re-run their queries when someone opens them, using that person's own data permissions. Granting folder access never widens anyone's data access, so two people with the same folder access may still see different numbers in the same artifact.
+{% endhint %}
+
 ### Worked example
 
 Suppose the **Finance** folder has these permissions:

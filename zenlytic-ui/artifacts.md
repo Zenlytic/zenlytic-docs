@@ -1,6 +1,6 @@
 ---
 description: >-
-  Create, organize, share, and refresh the artifacts Zoë builds across your
+  Create, organize, share, and rebuild the artifacts Zoë builds across your
   conversations.
 ---
 
@@ -14,8 +14,30 @@ Each artifact bundles together four components:
 
 * **Output file** — The document you see and share (an HTML dashboard, chart, spreadsheet, PDF, or image).
 * **Source code** — The code Zoë used to generate it.
-* **Data files** — The CSVs and SQL results used as inputs.
+* **Data** — The queries an artifact runs to get its data, and any CSVs or uploaded files baked into it.
 * **Memory** — An auto-generated summary of the artifact's purpose, context, and change history.
+
+## Live and static artifacts
+
+How an artifact gets its data depends on its output type.
+
+### Live artifacts
+
+Dashboards, charts, and other HTML artifacts are **live**. They don't store their data — they store the queries that produce it, and re-run those queries against your warehouse every time you open the artifact. Open a dashboard Zoë built last month and you see this morning's numbers, with no action on your part.
+
+Anything you do inside a live artifact — changing a filter, picking a different date range — runs a fresh query too.
+
+{% hint style="info" %}
+**Live queries run with your permissions.** When you open a live artifact, its queries run as you, scoped to the data you're allowed to see. Two people can open the same artifact and see different numbers, and you will never see data in an artifact that you couldn't query yourself.
+{% endhint %}
+
+Because live queries only run inside Zenlytic, live artifacts can't be [published to the web](artifacts.md#publishing-to-the-web).
+
+### Static artifacts
+
+Presentations (`.pptx`), spreadsheets (`.xlsx`), PDFs, and images are **static**. Their data is baked in when Zoë builds them, and it stays that way — reopening a presentation next quarter shows the same numbers it showed the day it was created.
+
+To bring a static artifact up to date, use [Auto-Rebuild](artifacts.md#auto-rebuild) to regenerate it on a schedule, or click **Rebuild Now** to regenerate it immediately.
 
 ## Viewing your artifacts
 
@@ -60,7 +82,7 @@ Selecting a type opens a new chat with Zoë where you can describe what you'd li
 
 ## Opening and editing an artifact
 
-Click any artifact on the Artifacts page to open it in a side drawer. From the drawer you can preview the artifact, share it with others in your organization, or schedule it for automatic refresh.
+Click any artifact on the Artifacts page to open it in a side drawer. From the drawer you can preview the artifact, share it with others in your organization, or schedule it to rebuild automatically.
 
 <figure><img src="../.gitbook/assets/artifact-drawer.png" alt=""><figcaption></figcaption></figure>
 
@@ -90,7 +112,7 @@ If you do not like the result, queue more changes and apply them again, or close
 
 ## Update history
 
-Every artifact uses immutable, append-only versioning — nothing is overwritten or deleted. New versions are created when you edit the artifact and save your changes, or when a scheduled refresh runs.
+Every artifact uses immutable, append-only versioning — nothing is overwritten or deleted. New versions are created when you edit the artifact and save your changes, or when a scheduled [rebuild](artifacts.md#auto-rebuild) runs. A live artifact pulling fresh data does not create a version; only changes to the artifact itself do.
 
 Click the **Updated** timestamp on an artifact to open its update history. The history panel displays every version of the artifact, letting you time-travel through past states. Each version includes an edit message describing what changed.
 
@@ -102,38 +124,46 @@ From the three-dot menu on any version, you can:
 
 <figure><img src="../.gitbook/assets/artifact-update-history.png" alt=""><figcaption></figcaption></figure>
 
-## Auto refresh
+## Auto-Rebuild
 
-Keep an artifact's data up to date by enabling auto refresh. When turned on, Zoë automatically re-pulls the data and rebuilds the artifact on a schedule — so your dashboard, presentation, or writeup is always ready with live data.
+Auto-Rebuild completely regenerates an artifact on a schedule — Zoë re-runs the analysis, regenerates the sources, and saves a new version.
 
-Click the **Auto-Refresh Off** button in the artifact drawer header to open the auto refresh settings. Toggle **Enable auto refresh**, then configure:
+Use it to keep [static artifacts](artifacts.md#static-artifacts) current, since their data is baked in and won't change on its own. You can also use it on a live artifact when you want Zoë to revisit the analysis itself, not just the numbers. To simply see the latest data in a live artifact, reload the page.
 
-* **Frequency** — How often to refresh (daily, weekly, monthly, or a custom cron expression).
-* **Time** — What time of day to run the refresh, shown in your local timezone.
-* **Instructions** — Optional directions for Zoë to follow during each refresh. For example: "Highlight any outliers in the data and write short blurbs about their trends."
+Click the **Auto-Rebuild Off** button in the artifact drawer header to open the Auto-Rebuild settings. Toggle **Enable Auto-Rebuild**, then configure:
+
+* **Frequency** — How often to rebuild (daily, weekly, monthly, or a custom cron expression).
+* **Time** — What time of day to run the rebuild, shown in your local timezone.
+* **Instructions** — Optional directions for Zoë to follow during each rebuild. For example: "Highlight any outliers in the data and write short blurbs about their trends."
 
 Click **Save** to apply the schedule.
 
 <figure><img src="../.gitbook/assets/artifact-auto-refresh.png" alt=""><figcaption></figcaption></figure>
 
-To run a refresh immediately without waiting for the next scheduled time, click **Refresh now**.
+To rebuild immediately without waiting for the next scheduled time, click **Rebuild Now**.
 
-Every refresh appears in the artifact's [update history](artifacts.md#update-history), so you can see how the artifact has changed over time.
+Every rebuild appears in the artifact's [update history](artifacts.md#update-history), so you can see how the artifact has changed over time.
 
 ## Delivery
 
 Artifacts can be delivered on a recurring schedule to **email** or **Slack**. A single artifact can have multiple delivery schedules — for example, email to leadership on Mondays and Slack to #data-team daily.
 
+Before each delivery, Zenlytic runs a live artifact's queries and renders it with the results, so recipients get current data. Those queries run as the person who owns the delivery schedule, using that person's permissions — so everyone on the schedule sees the schedule owner's view of the data. Keep that in mind when adding recipients whose own access is narrower.
+
 ### Email delivery
 
 * Inline image preview of the artifact. Wide or scrollable content may be cropped in the preview.
-* Optional attachment of the artifact’s current output file in its original format. Attachments are not converted; HTML remains HTML, and PDF is attached only when the output is already a PDF.
+* Optional attachment of the artifact’s current output file in its original format. Attachments are not converted; HTML remains HTML, and PDF is attached only when the output is already a PDF. Live artifacts are not attached — see [Delivering live artifacts](artifacts.md#delivering-live-artifacts).
 * Optional “View in Zenlytic” link. Recipients must have access to the artifact.
 
 ### Slack delivery
 
 * Message with the artifact name and description.
 * Optional file upload to the channel.
+
+### Delivering live artifacts
+
+A live artifact's file can't run its queries outside Zenlytic, so deliveries skip the attachment even when **Include attachments** is on. Recipients get the preview image and a **View in Zenlytic** link instead, along with a short note explaining why no file was attached. Opening the artifact from that link runs the queries with the recipient's own permissions.
 
 ### Run history
 
@@ -149,6 +179,8 @@ Each row in the table represents a single run and shows:
 
 Use the search bar above the table to filter by schedule name, and use the column headers to sort or filter — for example, sort by **Triggered** to see the most recent runs first, or filter **Status** to show only failed runs.
 
+Run history covers deliveries that rebuild the artifact. Deliveries of a live artifact only re-run its queries and re-render it — there's no Zoë conversation behind them, so they don't appear in the table.
+
 <figure><img src="../.gitbook/assets/artifact-delivery-run-history.png" alt="Run History tab in the Schedule Artifact modal, listing past delivery runs with their triggered time, finished time, status, and a link to the originating chat"><figcaption><p>The Run History tab showing recent delivery runs for an artifact</p></figcaption></figure>
 
 ## Sharing and permissions
@@ -159,15 +191,23 @@ Click the **Share** button in the artifact drawer to share an artifact with othe
 
 ### Access levels
 
-| Role       | Capabilities                                                       |
-| ---------- | ------------------------------------------------------------------ |
-| **Owner**  | Full control — edit, delete, share, configure refresh and delivery |
-| **Editor** | Edit name and description, create new versions                     |
-| **Viewer** | Read-only access                                                   |
+| Role       | Capabilities                                                          |
+| ---------- | --------------------------------------------------------------------- |
+| **Owner**  | Full control — edit, delete, share, configure Auto-Rebuild and delivery |
+| **Editor** | Edit name and description, create new versions                        |
+| **Viewer** | Read-only access                                                      |
 
 You can share with workspace groups (including "All Users") or with individual users. Workspace admins always have access.
 
+These access levels control who can open and manage an artifact. They don't widen anyone's data access: when someone opens a [live artifact](artifacts.md#live-artifacts), its queries run with that person's own data permissions, so they only see data they could query themselves.
+
 ## Publishing to the web
+
+{% hint style="warning" %}
+**You can't publish an artifact that uses live data.** A published artifact is served outside Zenlytic to people who may not have a Zenlytic account, so there is no way to run its queries or apply anyone's data permissions — it would publish as an empty shell. Publishing is disabled for live artifacts, and the **Publish** button explains why when you hover it.
+
+To publish something to the web, ask Zoë for a static version of it, or publish a static output type instead.
+{% endhint %}
 
 To make an artifact publicly accessible, click the **Share** button and open the **Publish** tab. Click **Publish** to generate a unique public URL and an embed script that anyone can use to access the artifact — no Zenlytic account required.
 
@@ -177,7 +217,9 @@ Once published, the artifact displays a **Public** chip on the Artifacts page. A
 
 <figure><img src="../.gitbook/assets/artifact-published.png" alt=""><figcaption></figcaption></figure>
 
-Editing or refreshing an artifact does not automatically update the published version. When you're ready for the latest version to go live, click **Publish latest version**. To remove public access entirely, click **Unpublish**.
+Editing or rebuilding an artifact does not automatically update the published version. When you're ready for the latest version to go live, click **Publish latest version**. To remove public access entirely, click **Unpublish**.
+
+If you edit a published artifact and the new version starts using live data, the existing public link keeps working — it's a snapshot of the version you published — but **Publish latest version** is disabled, because the newer version can't run outside Zenlytic.
 
 <figure><img src="../.gitbook/assets/artifact-publish-new-version.png" alt=""><figcaption></figcaption></figure>
 
@@ -189,36 +231,53 @@ To view an artifact's memory, click the three-dot menu in the artifact drawer he
 
 <figure><img src="../.gitbook/assets/artifact-memory.png" alt=""><figcaption></figcaption></figure>
 
-## Artifact citations
+## Sources
 
-Artifacts can include citations that show the data sources Zoë used to create the output. Citations are available from the **Sources** button in the artifact drawer header.
+Click the **Sources** button in the artifact drawer header to see every data source behind an artifact and how fresh each one is.
 
-<figure><img src="../.gitbook/assets/citations-artifacts.png" alt="Sources panel open in the artifact drawer, listing the data sources used to build the dashboard"><figcaption><p>The Sources panel listing artifact-level citations</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/citations-artifacts.png" alt="Sources panel open in the artifact drawer, listing the data sources behind the dashboard"><figcaption><p>The Sources panel listing an artifact's data sources</p></figcaption></figure>
 
-Artifact citations are currently **artifact-level**. They explain the main data inputs used to build the artifact as a whole, rather than tracing each individual chart, table, or visualization inside the artifact.
+Sources are grouped by how they get their data:
 
-Data sources may include:
+* **Live** — Re-queried every time you open the artifact. Updates automatically, so no manual refresh is needed.
+* **Static** — Data captured when the artifact was built, such as query result files, uploaded files, and intermediary files Zoë created. It does not refresh, so it may be outdated.
 
-* Query result files
-* User-uploaded files
-* Intermediary data files created by Zoë
+The panel header shows **Data as of** with the time the live queries last ran. Click the refresh icon to re-run every live query and pull current data without rebuilding the artifact.
 
-Each source includes a short explanation of how it contributed to the artifact. When the same data source is referenced elsewhere in the conversation, citation numbers help you connect it back to the same underlying data.
+### Tracing a source to what it feeds
 
-Use artifact citations to review where an artifact's data came from, understand how Zoë assembled the output, and verify the key inputs behind the result.
+Each source is tied to the part of the artifact it powers, so you can trace any number back to its query:
+
+* Hover a source in the list to outline the chart, table, or tile it feeds.
+* Open a source to spotlight that element — everything else in the artifact dims.
+* While the panel is open, each connected element wears a lettered chip matching its source.
+
+Open a source to see the query behind it, how many rows it returned, and how long ago it ran. If a query fails, the source shows the error and a red chip appears on the affected part of the artifact, so a single broken query doesn't take down the rest.
+
+### Editing a source
+
+Click **Edit this data source** on a source to change the query behind it. Describe what you want and click **Queue change**. Source edits queue alongside your other [Visual Editor](artifacts.md#visual-editor) changes, so click **Apply Queued Changes** to run them and **Save Changes** to keep the result.
+
+Use the Sources panel to review where an artifact's data came from, confirm how current it is, and verify the numbers behind any part of the result.
 
 ## Supported output types
 
-These are formats Zoë can create as artifact outputs. They are not export or email-conversion options. Scheduled delivery attaches the existing output file as-is.
+These are formats Zoë can create as artifact outputs. They are not export or email-conversion options.
 
-* HTML apps and dashboards
-* Charts and visualizations
-* Spreadsheets (.xlsx)
-* Presentations (.pptx)
-* PDFs
-* Images
+| Output type                | Data                                                                    |
+| -------------------------- | ----------------------------------------------------------------------- |
+| HTML apps and dashboards   | [Live](artifacts.md#live-artifacts) — re-queried every time you open it  |
+| Charts and visualizations  | [Live](artifacts.md#live-artifacts) — re-queried every time you open it  |
+| Spreadsheets (.xlsx)       | [Static](artifacts.md#static-artifacts) — baked in at build time         |
+| Presentations (.pptx)      | [Static](artifacts.md#static-artifacts) — baked in at build time         |
+| PDFs                       | [Static](artifacts.md#static-artifacts) — baked in at build time         |
+| Images                     | [Static](artifacts.md#static-artifacts) — baked in at build time         |
+
+Scheduled delivery attaches a static artifact's output file as-is. Live artifacts are delivered as a preview and a link instead — see [Delivering live artifacts](artifacts.md#delivering-live-artifacts).
 
 ## Limitations
 
-* Refresh timeout is 1 hour per run.
+* Artifacts that use live data cannot be published to the web.
+* Individual live queries time out after about 2 minutes.
+* Rebuild timeout is 1 hour per run.
 * Public share links are pinned to a specific version — they do not auto-update when new versions are created.

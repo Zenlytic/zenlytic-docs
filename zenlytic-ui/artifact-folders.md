@@ -119,6 +119,6 @@ Before deleting a folder:
 
 ## Related pages
 
-* [Artifacts](artifacts.md) - creating, editing, refreshing, delivering, and publishing artifacts
+* [Artifacts](artifacts.md) - creating, editing, rebuilding, delivering, and publishing artifacts
 * [Artifact Folder Permissions](artifact-folder-permissions.md) - how folder access levels work
 * [Workspace Groups and Permissions](workspace_groups_and_permissions.md) - creating groups for shared access

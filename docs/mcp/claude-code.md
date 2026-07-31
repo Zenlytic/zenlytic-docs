@@ -10,14 +10,14 @@ Claude Code connects to remote MCP servers over HTTP transport from the command 
 
 ## Before you start
 
-You'll need Zenlytic's MCP URL for your workspace, typically `https://<your-zenlytic-domain>/mcp` (ask your workspace admin if you're not sure).
+You'll need Zenlytic's MCP URL for your workspace. URL: <TBD>
 
 ## Connect with OAuth (recommended)
 
 1. Add the server:
 
 ```bash
-claude mcp add --transport http zenlytic https://<your-zenlytic-domain>/mcp
+claude mcp add --transport http zenlytic <TBD>
 ```
 
 2. Inside Claude Code, run `/mcp`, select **zenlytic**, and click **Authenticate**.
@@ -27,17 +27,14 @@ Claude Code stores the token and refreshes it automatically, so you shouldn't ne
 
 ## Connect with a Personal Access Token (alternative)
 
-If OAuth isn't available for your deployment, add the server with a static bearer header instead:
+If OAuth isn't available, add the server with a static bearer header instead:
 
 1. In Zenlytic, go to **Workspace Settings → Personal Access Tokens** (`/workspace-settings/personal-access-tokens`), click **Create token**, and copy it immediately — it's only shown once.
 2. Add the server with the token as a header:
 
 ```bash
-claude mcp add --transport http zenlytic https://<your-zenlytic-domain>/mcp \
+claude mcp add --transport http zenlytic <TBD> \
   --header "Authorization: Bearer <your-personal-access-token>"
-```
-
-Treat this token like a password — anyone with it can query Zenlytic on your behalf within your workspace's permissions. You can revoke it any time from the same Personal Access Tokens page.
 
 ## Using it
 

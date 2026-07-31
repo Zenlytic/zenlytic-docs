@@ -24,7 +24,7 @@ The exact tool surface depends on your Tableau MCP server's configuration. You c
 
 * **A deployed Tableau MCP server with a public HTTPS URL.** Follow Tableau's [deployment guide for Tableau Server customers](https://github.com/tableau/tableau-mcp/blob/main/docs/getting-started.md) to install and expose the server. The endpoint typically ends in `/tableau-mcp` (for example, `https://tableau-mcp.example.com/tableau-mcp`).
 * **Credentials to call the server.** Either a Tableau [Personal Access Token](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) (PAT) or a static credential expected by a proxy in front of your MCP server. See [Configure request headers](tableau.md#configure-request-headers).
-* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See the [MCP overview](overview.md) for the full list.
+* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](client.md) for the full list.
 
 ## Set up the connection in Zenlytic
 

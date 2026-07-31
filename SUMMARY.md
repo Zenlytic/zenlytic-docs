@@ -89,17 +89,24 @@
 
 ## MCP
 
-* [MCP Overview (Experimental)](mcp/overview.md)
-* [Tableau](mcp/tableau.md)
-* [Power BI](mcp/powerbi.md)
-* [Google](mcp/google.md)
-* [Looker](mcp/looker.md)
-* [dbt](mcp/dbt.md)
-* [Atlan](mcp/atlan.md)
-* [Snowflake](mcp/snowflake.md)
-* [Reltio](mcp/reltio.md)
-* [Github](mcp/github.md)
-* [Jira](mcp/jira.md)
+* [MCP Overview](mcp/overview.md)
+  * [MCP Client (Experimental)](mcp/client.md)
+    * [Tableau](mcp/tableau.md)
+    * [Power BI](mcp/powerbi.md)
+    * [Google](mcp/google.md)
+    * [Looker](mcp/looker.md)
+    * [dbt](mcp/dbt.md)
+    * [Atlan](mcp/atlan.md)
+    * [Snowflake](mcp/snowflake.md)
+    * [Reltio](mcp/reltio.md)
+    * [Github](mcp/github.md)
+    * [Jira](mcp/jira.md)
+  * [MCP Server (Experimental)](mcp/connecting-to-zenlytic.md)
+    * [Claude Desktop / Claude.ai](mcp/claude-desktop.md)
+    * [Claude Code](mcp/claude-code.md)
+    * [Cursor](mcp/cursor.md)
+    * [GitHub Copilot](mcp/github-copilot.md)
+    * [ChatGPT](mcp/chatgpt.md)
 
 ## Data Sources
 

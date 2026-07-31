@@ -26,7 +26,7 @@ Before you start, confirm the following:
 
 * An **Atlan tenant** with **Remote MCP enabled**. If you don't see Remote MCP options in your tenant, contact Atlan Support to turn it on.
 * An Atlan user with **admin** access (or someone who can generate an API key for you) to issue an API key.
-* The `mcp-client` flag enabled on your Zenlytic workspace and `admin` role. See the [MCP overview](overview.md) for full prerequisites.
+* The `mcp-client` flag enabled on your Zenlytic workspace and `admin` role. See [MCP Client](client.md) for full prerequisites.
 
 ## Generate an Atlan API key
 

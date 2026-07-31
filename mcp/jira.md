@@ -27,7 +27,7 @@ Before you start, confirm the following:
 * An **Atlassian Cloud** site with Jira (and optionally Confluence or Compass). The Rovo remote MCP server **does not support Jira Server or Jira Data Center**.
 * A **dedicated Atlassian account** scoped to the least-privileged set of Jira projects and Confluence spaces Zoë needs. You'll create the API token against this account.
 * An **Atlassian organization admin** who has enabled API token authentication in the Rovo MCP server settings. Admins can toggle this under **admin.atlassian.com → Security → Atlassian Rovo MCP server → Authentication**.
-* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See the [MCP overview](overview.md) for the full list.
+* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](client.md) for the full list.
 
 ## Create an Atlassian API token
 

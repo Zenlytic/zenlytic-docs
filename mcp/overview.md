@@ -13,15 +13,15 @@ The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open s
 
 ```mermaid
 flowchart LR
-    subgraph client["MCP Client — Zoë connects out"]
-        direction LR
-        Zoe(["Zenlytic"]) -->|"tools/call"| Ext[["External MCP Servers<br/>Tableau · Snowflake · dbt · GitHub..."]]
-        Ext -->|"results"| Zenlytic
+    subgraph mcpclient[MCP Client: Zoe connects out]
+        Zoe[Zoe, Zenlytic]
+        Ext[External MCP Servers: Tableau, Snowflake, dbt, GitHub]
+        Zoe -->|tools/call| Ext
     end
 
-    subgraph server["MCP Server — AI tools connect in"]
-        direction LR
-        AI(["Your AI Tool<br/>Claude · Cursor · ChatGPT..."]) -->|"ask_zenlytic"| ZenSrv[["Zenlytic MCP Server<br/>governed semantic layer"]]
-        Zenlytic MCP Server -->|"answer + data"| AI
+    subgraph mcpserver[MCP Server: AI tools connect in]
+        AITool[Your AI Tool: Claude, Cursor, ChatGPT]
+        ZenServer[Zenlytic MCP Server]
+        AITool -->|ask_zenlytic| ZenServer
     end
 ```

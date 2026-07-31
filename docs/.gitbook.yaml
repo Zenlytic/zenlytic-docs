@@ -20,11 +20,11 @@ redirects:
   # Getting Started section
   docs/start_here: getting-started/start_here.md
   start_here: getting-started/start_here.md
-  docs/about/license-doc: getting-started/license-doc.md
+  docs/about/license-doc: legal-and-support/license-doc.md
   
   # Tips & Tricks section
-  docs/category/tips-and-tricks: tips-and-tricks/zoe_tips_and_tricks.md
-  docs/tips_and_tricks/getting-started: tips-and-tricks/zoe_tips_and_tricks.md
+  docs/category/tips-and-tricks: legacy/zoe_tips_and_tricks.md
+  docs/tips_and_tricks/getting-started: legacy/zoe_tips_and_tricks.md
   docs/tips_and_tricks/naming-conventions: tips-and-tricks/naming-conventions.md
   docs/tips_and_tricks/descriptions-and-synonyms: tips-and-tricks/descriptions-and-synonyms.md
   docs/tips_and_tricks/entity-drills: tips-and-tricks/entity-drills.md
@@ -51,7 +51,7 @@ redirects:
   docs/category/data-modeling: data-modeling/data_modeling.md
   docs/data_modeling/data_modeling: data-modeling/data_modeling.md
   docs/data_modeling/model: data-modeling/model.md
-  docs/data_modeling/dashboard: data-modeling/dashboard.md
+  docs/data_modeling/dashboard: legacy/dashboard/README.md
   docs/data_modeling/topic: data-modeling/topic.md
   docs/data_modeling/view: data-modeling/view.md
   docs/data_modeling/join: data-modeling/join.md
@@ -69,11 +69,11 @@ redirects:
   docs/data_modeling/dbt_metricflow: data-modeling/dbt_metricflow.md
   
   # Workflows section
-  docs/category/workflows: workflows/getting-started.md
-  docs/workflows/getting-started: workflows/getting-started.md
-  docs/workflows/publish: workflows/publish.md
-  docs/workflows/schedule-delivery: workflows/schedule-delivery.md
-  docs/workflows/run-history: workflows/run-history.md
+  docs/category/workflows: proactive-agents/getting-started.md
+  docs/workflows/getting-started: proactive-agents/getting-started.md
+  docs/workflows/publish: proactive-agents/publish.md
+  docs/workflows/schedule-delivery: proactive-agents/schedule-delivery.md
+  docs/workflows/run-history: proactive-agents/run-history.md
   
   # Embedding section
   docs/category/embedding: embedding/embedding_overview.md
@@ -101,7 +101,7 @@ redirects:
   docs/connecting_with_python/querying/queries: getting-started/start_here.md
   
   # About section (redirect to getting started)
-  docs/category/about: getting-started/license-doc.md
+  docs/category/about: legal-and-support/license-doc.md
   
   # Other pages
   docs/markdown-page: intro.md
@@ -112,10 +112,10 @@ redirects:
 
   # Docusaurus section roots (bare URLs, no subpath)
   docs/embedding: embedding/embedding_overview.md
-  docs/workflows: proactive-analytics/getting-started.md
+  docs/workflows: proactive-agents/getting-started.md
   docs/connecting_with_python: getting-started/start_here.md
   docs/development_environment: getting-started/start_here.md
-  docs/tips_and_tricks: tips-and-tricks/zoe_tips_and_tricks.md
+  docs/tips_and_tricks: legacy/zoe_tips_and_tricks.md
   docs/authentication-security: authentication-and-security/microsoft_entra_zenlytic.md
 
   # Old-name Docusaurus pages
@@ -138,13 +138,13 @@ redirects:
   zenlytic-ui/3_zenlytic_ui: zenlytic-ui/using_zenlytic.md
   data-sources/7_data_sources: data-sources/integrations.md
   embedding/4_embedding: embedding/embedding_overview.md
-  workflows/6_workflows: proactive-analytics/getting-started.md
+  workflows/6_workflows: proactive-agents/getting-started.md
   data-modeling/5_data_modeling: data-modeling/data_modeling.md
   authentication-and-security/8_authentication: authentication-and-security/microsoft_entra_zenlytic.md
 
   # Bare section roots
   zenlytic-ui: zenlytic-ui/using_zenlytic.md
-  workflows: proactive-analytics/getting-started.md
+  workflows: proactive-agents/getting-started.md
   databricks-setup: data-sources/databricks_setup.md
 
   # Renamed legal pages

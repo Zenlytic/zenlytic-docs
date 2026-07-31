@@ -6,7 +6,7 @@ description: >-
 
 # Proactive Agents in Embedding
 
-You can add [Proactive Agents](../proactive-analytics/getting-started.md) to the embedding experience by creating the Proactive Agents in the UI, and then sharing those Proactive Agents with "all users" as Viewer (which only gives the ability to _run_ the Proactive Agent).
+You can add [Proactive Agents](../proactive-agents/getting-started.md) to the embedding experience by creating the Proactive Agents in the UI, and then sharing those Proactive Agents with "all users" as Viewer (which only gives the ability to _run_ the Proactive Agent).
 
 <figure><img src="../.gitbook/assets/publish-proactive.png" alt=""><figcaption></figcaption></figure>
 

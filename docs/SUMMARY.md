@@ -73,10 +73,10 @@
 
 ## Proactive Agents
 
-* [Proactive Getting Started](proactive-analytics/getting-started.md)
-* [Publish](proactive-analytics/publish.md)
-* [Schedule Delivery](proactive-analytics/schedule-delivery.md)
-* [Run History](proactive-analytics/run-history.md)
+* [Proactive Getting Started](proactive-agents/getting-started.md)
+* [Publish](proactive-agents/publish.md)
+* [Schedule Delivery](proactive-agents/schedule-delivery.md)
+* [Run History](proactive-agents/run-history.md)
 
 ## Embedding
 

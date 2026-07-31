@@ -103,7 +103,7 @@ access_filters:
 
 Identifiers can be used to create a `join_as` view, which will allow a table to join into a topic more than once on different keys. More information is in the [joins](join.md) section.
 
-`fields`: This is a list of [fields](../5_data_modeling/9_field.md). Each field must have all required parameters included.
+`fields`: This is a list of [fields](field.md). Each field must have all required parameters included.
 
 ## Joins
 

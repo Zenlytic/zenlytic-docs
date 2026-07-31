@@ -12,7 +12,7 @@ This document will help you connect your Trino data warehouse to Zenlytic to acc
 
 ## Connection Name
 
-First, you'll name your connection. This name is how Zenlytic's [model](../5_data_modeling/model/) connects the credentials you'll enter in the next step to your data warehouse. You can name the credential whatever you want, but we usually recommend naming it something like `my_company_name` to keep things simple.
+First, you'll name your connection. This name is how Zenlytic's [model](../data-modeling/model.md) connects the credentials you'll enter in the next step to your data warehouse. You can name the credential whatever you want, but we usually recommend naming it something like `my_company_name` to keep things simple.
 
 ## Host
 

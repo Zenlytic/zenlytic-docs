@@ -6,14 +6,14 @@ on:
     paths-ignore:
       - '.github/**'
       - '.cursor/**'
-      - '.gitbook/**'
-      - '.gitbook.yaml'
+      - 'docs/.gitbook/**'
+      - 'docs/.gitbook.yaml'
       - '.gitignore'
       - '.nvmrc'
       - 'book.json'
       - 'package.json'
       - 'package-lock.json'
-      - 'legacy/**'
+      - 'docs/legacy/**'
 
 jobs:
   zip-docs:
@@ -23,18 +23,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build docs.zip
+        # Zipped from inside docs/ so archive-internal paths stay identical to
+        # before the restructure (e.g. ./core-concepts/foo.md), keeping any
+        # downstream consumer of docs.zip working unchanged. Repo tooling
+        # (.github, .cursor, book.json, package*.json) now sits outside docs/
+        # and no longer needs excluding.
         run: |
-          zip -r docs.zip . \
-            -x '.git/*' \
-            -x '.github/*' \
-            -x '.cursor/*' \
+          cd docs
+          zip -r ../docs.zip . \
             -x '.gitbook/*' \
             -x '.gitbook.yaml' \
-            -x '.gitignore' \
-            -x '.nvmrc' \
-            -x 'book.json' \
-            -x 'package.json' \
-            -x 'package-lock.json' \
             -x 'legacy/*'
       - uses: softprops/action-gh-release@v2
         with:

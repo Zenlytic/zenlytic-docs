@@ -1,0 +1,10 @@
+# GitBook configuration for the resources section.
+#
+# Read from this directory because this space's "Project directory" is set to
+# resources/ in Git Sync settings. Paths resolve relative to here, not the repo root.
+
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md

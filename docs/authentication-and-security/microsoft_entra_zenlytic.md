@@ -19,14 +19,12 @@ This document will guide you through the process of enabling Microsoft Entra (fo
 
 To begin the process, reach out to your Zenlytic contact and let them know you'd like to use Microsoft Entra SSO.
 
-You'll work with them to decide on the Zenlytic subdomain `(ex.mycompany.zenlytic.com`)
+You'll work with them to decide on the Zenlytic subdomain (e.g. `mycompany.zenlytic.com`)
 
 After that conversation, they will provide you with these two important values for future use:
 
-```
 1. `Identifier (Entity ID)`
 2. `Reply URL (Assertion Consumer Service URL)`
-```
 
 ### 2. Creating an Entra Application for Zenlytic
 
@@ -46,10 +44,8 @@ Then click the Create button.
 
 Before continuing, ensure that you have obtained these values from your Zenlytic contact:
 
-```
 1. `Identifier (Entity ID)`
 2. `Reply URL (Assertion Consumer Service URL)`
-```
 
 Now go to your newly created application under the `Enterprise applications` section. Go ahead and click the name to open it.
 
@@ -91,13 +87,13 @@ By default, your mappings will look something like this:
 
 ![Manage Claim](../.gitbook/assets/entra_zenlytic_image_8.png)
 
-In the past we've some users have varying `namespaces` for their claims. So just in case, we'll clear those values out.
+In the past we've seen some users have varying `namespaces` for their claims. So just in case, we'll clear those values out.
 
 Click on each of the claims under `Additional Claims`, and clear out the `Namespace value`
 
 ![Manage Claim](../.gitbook/assets/entra_zenlytic_image_9.png)
 
-Your claim section should now similar to this:
+Your claim section should now look similar to this:
 
 ![Attributes & Claims](../.gitbook/assets/entra_zenlytic_image_10.png)
 
@@ -139,7 +135,7 @@ You may be taken back to the this screen, if so just go back to your application
 
 ![Federation Metadata](../.gitbook/assets/entra_zenlytic_image_12.png)
 
-Once we receive that url, we'll finish up the rest of the setup on our and let you know when you're all set!
+Once we receive that url, we'll finish up the rest of the setup on our end and let you know when you're all set!
 
 ### 6. Adding Users/Groups to Zenlytic
 
@@ -161,7 +157,7 @@ Your Zenlytic contact will let you know when your SSO onboarding is ready for us
 
 ### How-to Set up Custom Claims in Entra
 
-For information on available custom claims, see this section.
+For the full list of available custom claims and their formats, see the [SSO Custom Claims Reference](sso-custom-claims-reference.md).
 
 First we'll go back to the `Single sign-on` section for our App and click `Edit` on `Attributes & Claims`
 

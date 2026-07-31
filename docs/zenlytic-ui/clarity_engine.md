@@ -107,7 +107,7 @@ Note: Promoting Dynamic Fields requires developer-level permissions or above.
 
 ![The Clarity Engine promoting a metric](../.gitbook/assets/zoe_clarity_promote_hover.png)
 
-This promotion workflow transforms ad-hoc analysis into governed, reusable components that become available in [Artifacts](artifacts.md), explores, [Proactive Agents](../proactive-analytics/getting-started.md), and future conversations with Zoë. By building your semantic model this way, you create measures and dimensions based on real analytical needs rather than trying to anticipate every possible field upfront.
+This promotion workflow transforms ad-hoc analysis into governed, reusable components that become available in [Artifacts](artifacts.md), explores, [Proactive Agents](../proactive-agents/getting-started.md), and future conversations with Zoë. By building your semantic model this way, you create measures and dimensions based on real analytical needs rather than trying to anticipate every possible field upfront.
 
 ## Artifacts
 

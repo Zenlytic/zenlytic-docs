@@ -27,7 +27,7 @@ Before you start, confirm the following:
 * A **dbt Cloud** account with [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled.
 * A **production environment** in dbt Cloud (and a **development environment** if you plan to use `execute_sql` or Fusion tools).
 * A **PAT or service token** with at minimum **Semantic Layer**, **Metadata**, and **Developer** permissions.
-* The `mcp-client` flag enabled on your Zenlytic workspace and `admin` role. See the [MCP overview](overview.md) for full prerequisites.
+* The `mcp-client` flag enabled on your Zenlytic workspace and `admin` role. See [MCP Client](client.md) for full prerequisites.
 
 ## Choose a token type
 

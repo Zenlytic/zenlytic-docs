@@ -21,7 +21,7 @@ Before you start, confirm the following:
 * A **Reltio tenant** with **AgentFlow** and the **MCP server** enabled. If you don't see the MCP endpoint at `https://<namespace>.reltio.com/ai/tools/mcp/`, contact Reltio Support to turn it on.
 * Your assigned Reltio **namespace** (the subdomain that prefixes `.reltio.com` in your tenant URL).
 * A **dedicated service account** in Reltio scoped to the **least-privileged** set of permissions Zoë needs. You'll mint client credentials against this account.
-* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See the [MCP overview](overview.md) for the full list.
+* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](client.md) for the full list.
 
 ## Create Reltio client credentials
 

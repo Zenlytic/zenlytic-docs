@@ -133,7 +133,7 @@ After each fix lands, re-render or re-ask the audit so the score moves and you c
 
 ## Related
 
-- [MCP overview](overview.md) — full list of MCP servers Zoë can connect to, including DeepWiki and other repo-aware options.
+- [MCP Client](client.md) — full list of MCP servers Zoë can connect to, including DeepWiki and other repo-aware options.
 - [GitHub MCP integration](github.md) — how to set up the GitHub connection and scope the PAT.
 - [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) — how Context Editing turns recommendations into commits.
 - [Progressive Enrichment](../core-concepts/progressive-enrichment.md) — the priority order for what to add to a model.

@@ -4,30 +4,33 @@ description: What's new in Zenlytic — product updates, new features, and notab
 
 # Changelog
 
-{% hint style="info" %}
-**Scaffold.** Entries below are abbreviated and exist to verify this section renders and generates an RSS feed. Replace before publishing.
-{% endhint %}
+Product updates, new features, and notable changes to Zenlytic.
+
+<!--
+HOW TO ADD AN ENTRY
+
+Wrap entries in a single {% updates %} block, newest first:
 
 {% updates %}
 
-{% update date="2026-07-30" tags="Git" %}
-## Commit identity documented for GitHub deploy keys
+{% update date="2026-07-31" tags="Context Manager" %}
+## Short, specific headline
 
-Zenlytic commits as `Zenlytic <hello@zenlytic.com>` on every save from Context Manager. Organizations enforcing commit-metadata rules now have setup guidance to allow this before connecting.
-
-See [Connecting to GitHub with a deploy key](https://docs.zenlytic.com/authentication-and-security/connecting_to_github_with_a_deploy_key).
-{% endupdate %}
-
-{% update date="2026-07-15" tags="Context Manager" %}
-## Pull from Remote
-
-Pushed changes directly to your data model repo and Zoë isn't seeing them? **Account settings → Pull from Remote** rebuilds the cache from your remote branch.
-{% endupdate %}
-
-{% update date="2026-06-20" tags="Data Modeling" %}
-## Relationships replace identifiers
-
-Joins are now defined with `relationships:` on the model file. Existing `identifiers:` configurations continue to work, but new joins should use Relationships.
+One or two sentences on what changed and why it matters to a user. Link to
+the relevant docs page using an absolute URL:
+[Pull from Remote](https://docs.zenlytic.com/data-modeling/cache-refresh)
 {% endupdate %}
 
 {% endupdates %}
+
+NOTES
+- date="YYYY-MM-DD" is required. It drives ordering and the RSS feed, so use
+  the real ship date, not the date the entry was written.
+- tags are optional. Keep the vocabulary small and reuse it — for example
+  Zoë, Context Manager, Data Modeling, Embedding, Admin, API.
+- Links to other sections must be ABSOLUTE URLs. Relative paths such as
+  ../data-modeling/foo.md do not resolve across a section boundary and
+  GitBook will silently rewrite them into a GitHub URL that 404s.
+- This is a product changelog. Document what changed in Zenlytic, not what
+  changed in the docs.
+-->

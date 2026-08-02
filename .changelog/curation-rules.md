@@ -195,6 +195,74 @@ longer uses sends readers looking for something that isn't there.
 **How to apply:** translate source terminology before drafting. If an item's
 name is ambiguous, describe the surface the user actually sees.
 
+## Output format (2026-08-02)
+
+**File:** `changelog/README.md`. Nothing else in that directory.
+
+**Never modify:**
+
+- The YAML frontmatter — `description`, the `layout:` block, and the page-level
+  `tags:` list. GitBook manages these; overwriting them resets page settings and
+  breaks tag filtering.
+- The H1 `# Product updates`. It is not "Changelog". It is the page title and
+  drives the page URL.
+- `changelog/SUMMARY.md`, which reads `* [Product updates](README.md "2026")`.
+  The quoted `"2026"` is the navigation label, not part of the title.
+
+**Only edit** inside `{% updates format="full" %}`. Add new entries at the top;
+leave existing entries untouched.
+
+Entry shape:
+
+    {% update date="YYYY-MM-DD" tags="new-features,improvements,fixes" %}
+    ## Short headline naming the most significant change
+
+    One sentence summarizing the release.
+
+    ### New features
+
+    * **Feature name** — What it does and why it matters.
+
+    ### Improvements
+
+    * **Short label** — What changed.
+
+    ### Bug fixes
+
+    * **Short label** — What was fixed.
+    {% endupdate %}
+
+- `date` is the real ship date. It renders in the left gutter and drives both
+  ordering and the RSS feed.
+- The `##` heading is a **headline, never a date**. Not "Week of July 20–26" —
+  the date already displays from the attribute, and this heading populates the
+  on-page navigation and the anchor link. A date here makes the nav a column of
+  dates instead of a scannable list of what shipped.
+- `###` subsections are limited to New features, Improvements, Bug fixes. Omit
+  any with no content.
+- Bullets use `* **Bold label** — description.`
+- Never create year pages such as `2025.md`. The annual rollover is a manual
+  step: archive the closing year into its own page, empty this one, and change
+  the `"2026"` link title.
+
+**Why:** the page header is owned by GitBook and the entries are owned by this
+pipeline, in the same file. Every incident so far came from one side
+overwriting the other's half.
+
+**How to apply:** treat everything above the `{% updates %}` line as read-only.
+
+## Enforcement (2026-08-02)
+
+`.github/workflows/validate-changelog.yml` checks every push and pull request
+touching `changelog/`. It fails on a wrong H1, a tag outside the vocabulary,
+tags that disagree with an entry's subsections, a date used as a headline, an
+unexpected subsection heading, or a relative link.
+
+**Why:** a rules file only works if it is read. CI does not rely on that — a
+run that ignores these rules fails visibly instead of publishing quietly.
+
+**How to apply:** if the check fails, fix the entry rather than the check.
+
 ## Notes
 
 - Exclusions apply to the public, customer-facing changelog only — they do not

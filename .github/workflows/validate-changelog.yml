@@ -1,0 +1,23 @@
+name: Validate changelog
+
+# Enforces the format rules in .changelog/curation-rules.md. The changelog is
+# written by a scheduled agent and edited through the GitBook UI, so a rules
+# file alone is not enough — this fails loudly instead of publishing quietly.
+
+on:
+  pull_request:
+    paths:
+      - 'changelog/**'
+  push:
+    branches: [main]
+    paths:
+      - 'changelog/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check changelog format
+        run: python3 .github/scripts/validate_changelog.py

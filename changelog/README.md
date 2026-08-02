@@ -4,10 +4,10 @@ description: What's new in Zenlytic — product updates, new features, and notab
 
 # Changelog
 
-{% updates %}
+{% updates format="full" %}
 
-{% update date="2026-07-26" tags="Weekly update" %}
-## Week of July 20–26, 2026
+{% update date="2026-07-26" tags="new-releases,improvements,fixes" %}
+## Proactive Agents for all workspaces
 
 Proactive Agents are now available to all workspaces, plus refreshed signup screens, HTML uploads, and chat and query fixes.
 
@@ -31,8 +31,8 @@ Proactive Agents are now available to all workspaces, plus refreshed signup scre
 * **Wide SQL queries no longer time out** — Very wide queries, including large SELECT \* results, skip a detection step that could previously delay or fail responses.
 {% endupdate %}
 
-{% update date="2026-07-19" tags="Weekly update" %}
-## Week of July 13–19, 2026
+{% update date="2026-07-19" tags="improvements,fixes" %}
+## Refreshed signup flow and smarter documentation search
 
 A refreshed signup flow, smarter Zoë documentation searches, and fixes across artifact sharing, Slack deliveries, and warehouse queries.
 
@@ -54,8 +54,8 @@ A refreshed signup flow, smarter Zoë documentation searches, and fixes across a
 * **Cleaner new-chat drawers** — Explore and context drawers initialize and clear correctly for deep-linked questions, without leaking prior-chat state.
 {% endupdate %}
 
-{% update date="2026-07-12" tags="Weekly update" %}
-## Week of July 6–12, 2026
+{% update date="2026-07-12" tags="new-releases,improvements,fixes" %}
+## Zoë looks up product docs before answering
 
 Workspace switching from Add Data, Zoë checking product docs before answering how-to questions, a refreshed login and signup experience, and fixes across MCP connection errors, data model reviews, daily refresh scheduling, SQL generation, and large-workspace exports.
 
@@ -79,8 +79,8 @@ Workspace switching from Add Data, Zoë checking product docs before answering h
 * **More reliable large-workspace exports** — Screenshot, PDF, and CSV rendering for large dashboards and questions is more reliable and less likely to crash.
 {% endupdate %}
 
-{% update date="2026-07-01" tags="Product update" %}
-## July 1, 2026
+{% update date="2026-07-01" tags="new-releases,improvements" %}
+## Artifact folders are generally available
 
 Artifact folders are now generally available, along with table-selection, skill-error, and skill-metadata improvements.
 
@@ -95,8 +95,8 @@ Artifact folders are now generally available, along with table-selection, skill-
 * **Git-backed skill metadata** — Git-backed workspace skills now show their name, description, required status, and file location in Zoë's skills list. (Data Model Editor)
 {% endupdate %}
 
-{% update date="2026-06-30" tags="Product update" %}
-## June 30, 2026
+{% update date="2026-06-30" tags="new-releases,improvements" %}
+## Claude Sonnet 5 in the model picker
 
 Claude Sonnet 5 in the model picker, plus clearer MCP connection error messages.
 
@@ -109,8 +109,8 @@ Claude Sonnet 5 in the model picker, plus clearer MCP connection error messages.
 * **Clearer MCP setup errors** — MCP server connection and setup failures now show specific, useful error messages instead of a generic failure.
 {% endupdate %}
 
-{% update date="2026-06-26" tags="Product update" %}
-## June 26, 2026
+{% update date="2026-06-26" tags="improvements,fixes" %}
+## Expanded file uploads and smarter warehouse location handling
 
 Expanded file upload support, smarter warehouse location handling, and SSO and MCP fixes.
 
@@ -125,8 +125,8 @@ Expanded file upload support, smarter warehouse location handling, and SSO and M
 * **MCP tool discovery** — MCP server tool discovery completes the initialization handshake and parses SSE responses correctly, fixing cases where connected MCP servers showed no tools.
 {% endupdate %}
 
-{% update date="2026-06-25" tags="Product update" %}
-## June 25, 2026
+{% update date="2026-06-25" tags="improvements,fixes" %}
+## Shared-chat and MCP connection fixes
 
 Shared-chat copy and MCP connection fixes.
 
@@ -139,8 +139,8 @@ Shared-chat copy and MCP connection fixes.
 * **MCP protocol version header** — MCP connections send the negotiated MCP-Protocol-Version header after initialization, fixing tool calls against servers that require it. (API)
 {% endupdate %}
 
-{% update date="2026-06-24" tags="Product update" %}
-## June 24, 2026
+{% update date="2026-06-24" tags="new-releases,improvements,fixes" %}
+## Source-data citations on dashboards
 
 Source-data citations on dashboards, Context Manager in chat, plus upload and artifact fixes.
 
@@ -158,8 +158,8 @@ Source-data citations on dashboards, Context Manager in chat, plus upload and ar
 * **Artifact thumbnails in sandboxes** — Thumbnails now generate correctly for artifacts created in agent sandboxes.
 {% endupdate %}
 
-{% update date="2026-06-23" tags="Product update" %}
-## June 23, 2026
+{% update date="2026-06-23" tags="new-releases,improvements,fixes" %}
+## Context Manager reaches more surfaces
 
 Context manager reaches more surfaces, plus sandbox and chat-accuracy fixes.
 
@@ -178,8 +178,8 @@ Context manager reaches more surfaces, plus sandbox and chat-accuracy fixes.
 * **Nested sandbox restore** — Nested directories are restored correctly during sandbox file restore.
 {% endupdate %}
 
-{% update date="2026-06-19" tags="Product update" %}
-## June 19, 2026
+{% update date="2026-06-19" tags="new-releases,fixes" %}
+## Org-admin management and SQL interpretability
 
 Org-admin management and an optional SQL interpretability toggle.
 
@@ -193,8 +193,8 @@ Org-admin management and an optional SQL interpretability toggle.
 * **Discover fixes** — Resolves runtime issues in Discover.
 {% endupdate %}
 
-{% update date="2026-06-17" tags="Product update" %}
-## June 17, 2026
+{% update date="2026-06-17" tags="improvements,fixes" %}
+## Scheduling, picker, and permissions improvements
 
 Scheduling, picker, and permissions improvements, plus chat and SSO fixes.
 
@@ -211,8 +211,8 @@ Scheduling, picker, and permissions improvements, plus chat and SSO fixes.
 * **SSO group assignment** — Re-adding SSO users to groups no longer creates duplicate or errored adds.
 {% endupdate %}
 
-{% update date="2026-06-16" tags="Product update" %}
-## June 16, 2026
+{% update date="2026-06-16" tags="new-releases" %}
+## Try Zenlytic with sample data
 
 A quicker way to try Zenlytic with sample data.
 
@@ -221,8 +221,8 @@ A quicker way to try Zenlytic with sample data.
 * **Demo datasets in self-serve** — Self-service setup now offers demo datasets to start from.
 {% endupdate %}
 
-{% update date="2026-06-15" tags="Product update" %}
-## June 15, 2026
+{% update date="2026-06-15" tags="improvements,fixes" %}
+## Connection setup polish
 
 Connection setup polish.
 
@@ -235,8 +235,8 @@ Connection setup polish.
 * **BigQuery dataset field** — Fixes the dataset textbox in the BigQuery browse step. (Data Model Editor)
 {% endupdate %}
 
-{% update date="2026-06-12" tags="Product update" %}
-## June 12, 2026
+{% update date="2026-06-12" tags="new-releases,improvements,fixes" %}
+## Live editing and onboarding updates
 
 Live editing, onboarding, sharing, and connection fixes.
 
@@ -259,8 +259,8 @@ Live editing, onboarding, sharing, and connection fixes.
 * **Fabric quoting** — Fixes quoting issues in Fabric connections. (Data Model Editor)
 {% endupdate %}
 
-{% update date="2026-06-10" tags="Product update" %}
-## June 10, 2026
+{% update date="2026-06-10" tags="improvements,fixes" %}
+## Recent Updates and citations redesign
 
 Recent Updates and citations redesign, plus several display fixes.
 
@@ -279,8 +279,8 @@ Recent Updates and citations redesign, plus several display fixes.
 * **Duplicate table error** — Clearer error when YAML defines duplicate tables. (Data Model Editor)
 {% endupdate %}
 
-{% update date="2026-06-09" tags="Product update" %}
-## June 9, 2026
+{% update date="2026-06-09" tags="new-releases,improvements,fixes" %}
+## MCP, model, and reliability updates
 
 A large batch of MCP, model, and reliability updates.
 
@@ -310,8 +310,8 @@ A large batch of MCP, model, and reliability updates.
 * **Artifact CSV recovery** — Missing CSVs are regenerated before an artifact rebuilds.
 {% endupdate %}
 
-{% update date="2026-06-04" tags="Product update" %}
-## June 4, 2026
+{% update date="2026-06-04" tags="new-releases,improvements,fixes" %}
+## Connectors settings redesign
 
 Connectors settings redesign, BigQuery improvements, and context manager rework.
 
@@ -335,8 +335,8 @@ Connectors settings redesign, BigQuery improvements, and context manager rework.
 * **Long chat titles** — Retries or truncates chat-title generation when a conversation exceeds context limits.
 {% endupdate %}
 
-{% update date="2026-06-03" tags="Product update" %}
-## June 3, 2026
+{% update date="2026-06-03" tags="new-releases,improvements,fixes" %}
+## Opus 4 and scheduled-delivery run history
 
 Opus 4, scheduled-delivery run history, and context editing settings.
 

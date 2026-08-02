@@ -133,13 +133,12 @@ contains. Never invent one, never use cadence labels like "Weekly update".
 
 | Subsection heading | Tag slug | Library label | Icon |
 | ------------------ | -------- | ------------- | ---- |
-| New features       | `new-releases` | New releases | rocket |
+| New features       | `new-features` | New features | rocket |
 | Improvements       | `improvements` | Improvements | sparkles |
 | Bug fixes          | `fixes`        | Fixes        | wrench / screwdriver |
 
-Note the heading and its tag differ in wording — "New features" groups content
-inside an entry, `new-releases` categorizes the entry for filtering. That
-mismatch is intentional and must not be "corrected" in either direction.
+The tag slug matches its subsection heading in every case, so the mapping is
+mechanical — no translation step, nothing to remember.
 
 The vocabulary lives in **four** places that must agree:
 
@@ -148,11 +147,13 @@ The vocabulary lives in **four** places that must agree:
 3. the space's **Library → Tags** — sets the visible label and icon
 4. this file
 
-**Why:** change request GITBOOK-3 added `new-features` alongside the existing
-`new-releases` rather than replacing it, leaving 11 of 18 entries carrying both
-and one carrying only a value the frontmatter no longer declared. A tag absent
-from the frontmatter matches no filter chip, so those entries were silently
-unfilterable — the page looked fine and the feature simply did nothing.
+**Why:** change request GITBOOK-3 introduced a second spelling alongside the
+first rather than replacing it, leaving 11 of 18 entries carrying both and one
+carrying only a value the frontmatter no longer declared. A tag absent from the
+frontmatter matches no filter chip, so those entries were silently unfilterable
+— the page looked fine and the feature simply did nothing. The vocabulary then
+flipped twice more while we settled on `new-features`, which is what Zenlytic
+has used all along.
 
 **How to apply:** derive tags mechanically from the subsections present. If a
 tag would fall outside the three above, the entry is structured wrong — fix the

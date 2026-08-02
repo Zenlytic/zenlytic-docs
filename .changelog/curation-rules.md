@@ -126,6 +126,74 @@ live in the product and asked Zeta directly. [[release-notes-exclude-feature-fla
 terminal one. The watchlist is the mechanism that keeps pending items in
 front of us until LaunchDarkly confirms GA.
 
+## Tags — canonical vocabulary (2026-08-02)
+
+Exactly three tag slugs, derived from the `###` subsections an entry actually
+contains. Never invent one, never use cadence labels like "Weekly update".
+
+| Subsection heading | Tag slug | Library label | Icon |
+| ------------------ | -------- | ------------- | ---- |
+| New features       | `new-releases` | New releases | rocket |
+| Improvements       | `improvements` | Improvements | sparkles |
+| Bug fixes          | `fixes`        | Fixes        | wrench / screwdriver |
+
+Note the heading and its tag differ in wording — "New features" groups content
+inside an entry, `new-releases` categorizes the entry for filtering. That
+mismatch is intentional and must not be "corrected" in either direction.
+
+The vocabulary lives in **four** places that must agree:
+
+1. `changelog/README.md` frontmatter `tags:` — declares the filter chips
+2. each `{% update %}` block's `tags=` attribute
+3. the space's **Library → Tags** — sets the visible label and icon
+4. this file
+
+**Why:** change request GITBOOK-3 added `new-features` alongside the existing
+`new-releases` rather than replacing it, leaving 11 of 18 entries carrying both
+and one carrying only a value the frontmatter no longer declared. A tag absent
+from the frontmatter matches no filter chip, so those entries were silently
+unfilterable — the page looked fine and the feature simply did nothing.
+
+**How to apply:** derive tags mechanically from the subsections present. If a
+tag would fall outside the three above, the entry is structured wrong — fix the
+structure, not the tag.
+
+## Links (2026-08-02)
+
+Links to Zenlytic docs must be **absolute URLs**:
+
+    [Pull from Remote](https://docs.zenlytic.com/data-modeling/cache-refresh)
+
+**Why:** the changelog is its own GitBook section. A relative path such as
+`../data-modeling/cache-refresh.md` does not resolve across a section boundary,
+and GitBook does not error — it silently rewrites the link into a
+`github.com/Zenlytic/zenlytic-docs/...` URL that 404s. The page builds, the link
+looks normal, and the reader is sent off-site. Four links from the Docusaurus
+migration survived this way until 2026-08-02 precisely because nothing failed.
+
+**How to apply:** never emit a relative path from a changelog entry. Verify a
+target resolves before linking it.
+
+## Terminology (2026-08-02)
+
+Current product names. Earlier terms are correct only when describing history.
+
+| Use | Not |
+| --- | --- |
+| Proactive Agents | Workflows, Proactive Analytics |
+| Context Manager  | Data Model Editor |
+| Relationships    | identifiers, Topics (for new joins) |
+| Skills           | Memories (for new context) |
+| Artifacts        | code interpreter |
+
+**Why:** the product renamed twice in a year, and Zeta's source data still
+carries older names — several existing entries were drafted with "(Data Model
+Editor)" trailing them. A changelog announcing a feature under a name the UI no
+longer uses sends readers looking for something that isn't there.
+
+**How to apply:** translate source terminology before drafting. If an item's
+name is ambiguous, describe the surface the user actually sees.
+
 ## Notes
 
 - Exclusions apply to the public, customer-facing changelog only — they do not

@@ -263,6 +263,136 @@ run that ignores these rules fails visibly instead of publishing quietly.
 
 **How to apply:** if the check fails, fix the entry rather than the check.
 
+## Sourcing and authority (previously only in the job prompt)
+
+These rules governed every run but lived in the scheduled-task prompt rather
+than this file. Recorded here (2026-07-31) so the repo is self-describing; the
+scheduled-task prompt remains the executable spec.
+
+- **Zeta is the sole authority for inputs.** The weekly commit list, every GA
+  determination (LaunchDarkly production flag state), and the end-of-week
+  cutoff SHA all come from Zeta (Slack agent in #troubleshooting-issues).
+  Never compute a diff independently, never infer GA from anything but Zeta's
+  answer. No Zeta reply = no entry and no state change — never a best-effort
+  draft.
+  **Why:** Zeta reads the product repo and LaunchDarkly directly; anything
+  else is guesswork, and a guessed GA call publishes features customers can't
+  see.
+  **How to apply:** if Zeta doesn't answer within the polling window (~40s
+  intervals, ~8 minutes), post the no-response notice to #changelog-upcoming
+  (no Paul tag) and stop without advancing state — the unadvanced cutoff folds
+  the week into the next run automatically.
+
+- **Curation subtracts; it never adds.** These rules may exclude or hold items
+  Zeta reported — including overriding a Zeta GA-yes (Paul's beta-MCP rule) —
+  but may never add or promote an item Zeta didn't confirm.
+  **Why:** keeps a single chain of evidence from commit → Zeta → entry.
+  **How to apply:** if something seems missing from Zeta's list, ask Zeta;
+  don't add it from memory or from the product UI.
+
+- **The product repo's production branch is `origin/master`.** Never `dev`.
+  Unrelated to the docs repo's `main`.
+  **Why:** diffing the wrong branch reports unshipped work.
+  **How to apply:** every Zeta diff request names `origin/master` explicitly.
+
+- **Diff window and cutoff discipline.** Covered week = the most recent
+  complete Mon–Sun. Window = state.json `cutoff_sha` → last Sunday 23:59
+  America/Los_Angeles. The new cutoff is master's SHA at that instant — NOT
+  current HEAD. The cutoff advances only when the week's output is actually
+  delivered; every failure path stops without advancing state.
+  **Why:** commits after Sunday belong to next week; advancing state on a
+  failed run silently drops a week.
+  **How to apply:** ask Zeta for the end-of-Sunday SHA in the same request as
+  the diff; on any failure, post the notice and leave state untouched.
+
+- **Cadence.** Mondays 05:00 America/Los_Angeles, covering the prior Mon–Sun,
+  open-ended. No-change weeks still run: post the one-line notice and commit
+  only the .changelog/ state advance. Never duplicate a week already present
+  in changelog/README.md.
+
+## Publishing pipeline (previously only in the job prompt)
+
+- **Terminology:** the deliverable is the "change log" — that wording in PR
+  titles, commit messages, PR bodies, and Slack.
+
+- **Target and format.** `changelog/README.md` in Zenlytic/zenlytic-docs.
+  The block syntax, tag vocabulary, heading rules, and the parts of the file
+  GitBook owns are defined once in **Output format** above — follow that
+  section rather than restating it here.
+
+  What is specific to this pipeline: new blocks insert immediately after the
+  `{% updates %}` line (newest first); the `date` attribute is the covered
+  week's END date (the Sunday), except recovered watchlist items, which are
+  dated to their flag-flip date; every existing block is preserved verbatim;
+  never publish a week already present in the file.
+
+  **Why:** format was previously specified in two places and drifted. The
+  version here called for a cadence label as the tag, a date as the `##`
+  heading, and a "Changelog" H1 — all three were corrected on 2026-08-02 and
+  are now rejected by CI.
+
+- **Paul's PR merge is the only publish gate.** Never merge a PR; never commit
+  docs content to `main` directly. GitBook Git Sync publishes `main` to the
+  docs site, so merge = publish. The sole permitted direct-to-`main` commit is
+  the no-change-week state advance, which touches only `.changelog/` files.
+  **Why:** human review is the last defense for everything these rules missed.
+  **How to apply:** every content change rides a `changelog/*` branch and PR;
+  the step-9 Slack notification must remind Paul that merging publishes.
+
+- **File allowlist.** Only `changelog/README.md` and `.changelog/*` may be
+  modified. Never `.gitbook.yaml`, `SUMMARY.md`, `book.json`, or workflows.
+
+- **Open-PR guard.** If a `changelog/*` PR is still open, the prior week is
+  unreviewed: notify Paul it's awaiting review, skip the run, and let the
+  unadvanced cutoff fold the week forward. One PR in flight at a time.
+
+- **GitHub access is MCP-connector only for the automated run.** No raw git
+  or curl fallback. If MCP is unavailable or blocked: draft locally to the
+  working folder, post the blocked notice (no Paul tag), stop without
+  advancing state. (Interim exception while the org grant is pending: Greg
+  runs a prepared push script under his own credentials; the automation
+  itself still never falls back.)
+
+- **Branch/PR conventions and evidence chain.** Branch
+  `changelog/{week-start}-to-{week-end}`; commit "docs: change log — week of
+  {range}". PR body carries: item counts by category, the cutoff line (old →
+  new SHA), the Held (not GA) list, the Recovered list (merge + flip dates),
+  any Paul-ruling requests, and permalinks to the Zeta watchlist and diff
+  threads plus each published item's GA determination as Zeta reported it.
+  After pushing, re-read the branch's changelog/README.md and confirm the new
+  entry is present and nothing was lost; fix and recommit if not.
+
+- **State files are the source of truth in the repo.** `.changelog/state.json`
+  (`cutoff_sha`, `last_entry_date`), `held-items.json`, and this file. Read
+  them from the repo each run, not from local copies. Every non-GA exclusion
+  is logged to `held-items.json` `open` — never silently dropped. A markdown
+  draft copy of each week's entry is also saved to the working folder.
+
+- **Notifications.** Review channel: #changelog-upcoming. Paul is tagged ONLY
+  on the PR-ready notification; no-change, Zeta-no-response, and failure
+  notices go untagged. Zeta requests go to #troubleshooting-issues; watchlist
+  re-checks are ONE batched message per run. The retired Notion "TEST Change
+  Log" page is never written to.
+
+- **Feedback loop.** Paul's PR feedback is applied as commits to the same
+  `changelog/*` branch. When feedback establishes a new standing rule, append
+  it to this file in the same commit.
+
+## Additional voice rules
+
+- **Security fixes: calm, factual language.** Describe security-related fixes
+  the way any other fix is described — no alarming language, no urgency, no
+  implication of customer exposure. (Paul's rule.)
+  **Why:** alarmed wording in a public changelog reads as an incident
+  disclosure and triggers unnecessary customer escalations.
+  **How to apply:** state what was hardened or corrected, plainly. If
+  severity context matters, it belongs in the PR body for Paul, not in the
+  published entry.
+
+- **Zenlytic voice.** Plain, direct, factual; no hype, no speed claims, no
+  emojis, no hashtags. Surface tag in parentheses only when the item is not
+  the web app (e.g. "(Slack)", "(API)", "(Data Model Editor)").
+
 ## Notes
 
 - Exclusions apply to the public, customer-facing changelog only — they do not

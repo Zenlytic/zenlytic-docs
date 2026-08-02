@@ -168,3 +168,36 @@ redirects:
   # Stray crawl of Druid query endpoint
   druid/v2/sql: data-sources/druid_setup.md
   druid/v2/sql/: data-sources/druid_setup.md 
+  # ---
+  # Phase 15 — 404s from analytics, Jul 7 – Aug 2 2026
+  # Scanner probes (~50 login/OAuth paths), GitBook page-ID hashes, and
+  # crawler-mangled "&https:/..." URLs are deliberately not redirected.
+
+  # Proactive Agents "inputs" — highest-traffic 404, 19 events across 4 spellings.
+  # No inputs page exists in any naming era; sending to the section landing page.
+  docs/workflows/inputs: proactive-agents/getting-started.md
+  workflows/inputs: proactive-agents/getting-started.md
+  proactive-analytics/inputs: proactive-agents/getting-started.md
+  proactive-agents/inputs: proactive-agents/getting-started.md
+
+  # Bare middle-era section root (the /getting-started etc. variants already resolve)
+  proactive-analytics: proactive-agents/getting-started.md
+
+  # Page exists one level deeper than the requested path
+  legal-and-support/subprocessors: legal-and-support/legal/subprocessors.md
+
+  # Docusaurus-era paths
+  integrations/dbt-metricflow: data-modeling/dbt_metricflow.md
+  tips-and-tricks/2_tips_and_tricks: legacy/zoe_tips_and_tricks.md
+  docs/data_modeling/data_source: data-sources/integrations.md
+
+  # Unsupported Chats lives under zenlytic-ui, not legacy/
+  legacy/unsupported-chats: zenlytic-ui/legacy.md
+
+  # Derived tables are views defined with sql: rather than sql_table_name:
+  derived: data-modeling/view.md
+  derived_table: data-modeling/view.md
+
+  # Marketing content — not documentation
+  pricing: https://www.zenlytic.com/pricing
+  case-studies: https://www.zenlytic.com/case-studies

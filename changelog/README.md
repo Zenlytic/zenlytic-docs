@@ -1,12 +1,33 @@
 ---
 description: What's new in Zenlytic — product updates, new features, and notable changes.
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+tags:
+  - new-features
+  - improvements
+  - fixes
 ---
 
-# Changelog
+# Product updates
 
 {% updates format="full" %}
-
-{% update date="2026-07-26" tags="new-releases,improvements,fixes" %}
+{% update date="2026-07-26" tags="new-releases,new-features,improvements,fixes" %}
 ## Proactive Agents for all workspaces
 
 Proactive Agents are now available to all workspaces, plus refreshed signup screens, HTML uploads, and chat and query fixes.
@@ -54,7 +75,7 @@ A refreshed signup flow, smarter Zoë documentation searches, and fixes across a
 * **Cleaner new-chat drawers** — Explore and context drawers initialize and clear correctly for deep-linked questions, without leaking prior-chat state.
 {% endupdate %}
 
-{% update date="2026-07-12" tags="new-releases,improvements,fixes" %}
+{% update date="2026-07-12" tags="new-releases,new-features,improvements,fixes" %}
 ## Zoë looks up product docs before answering
 
 Workspace switching from Add Data, Zoë checking product docs before answering how-to questions, a refreshed login and signup experience, and fixes across MCP connection errors, data model reviews, daily refresh scheduling, SQL generation, and large-workspace exports.
@@ -79,7 +100,7 @@ Workspace switching from Add Data, Zoë checking product docs before answering h
 * **More reliable large-workspace exports** — Screenshot, PDF, and CSV rendering for large dashboards and questions is more reliable and less likely to crash.
 {% endupdate %}
 
-{% update date="2026-07-01" tags="new-releases,improvements" %}
+{% update date="2026-07-01" tags="new-releases,new-features,improvements" %}
 ## Artifact folders are generally available
 
 Artifact folders are now generally available, along with table-selection, skill-error, and skill-metadata improvements.
@@ -95,7 +116,7 @@ Artifact folders are now generally available, along with table-selection, skill-
 * **Git-backed skill metadata** — Git-backed workspace skills now show their name, description, required status, and file location in Zoë's skills list. (Data Model Editor)
 {% endupdate %}
 
-{% update date="2026-06-30" tags="new-releases,improvements" %}
+{% update date="2026-06-30" tags="new-releases,new-features,improvements" %}
 ## Claude Sonnet 5 in the model picker
 
 Claude Sonnet 5 in the model picker, plus clearer MCP connection error messages.
@@ -139,7 +160,7 @@ Shared-chat copy and MCP connection fixes.
 * **MCP protocol version header** — MCP connections send the negotiated MCP-Protocol-Version header after initialization, fixing tool calls against servers that require it. (API)
 {% endupdate %}
 
-{% update date="2026-06-24" tags="new-releases,improvements,fixes" %}
+{% update date="2026-06-24" tags="new-releases,new-features,improvements,fixes" %}
 ## Source-data citations on dashboards
 
 Source-data citations on dashboards, Context Manager in chat, plus upload and artifact fixes.
@@ -158,7 +179,7 @@ Source-data citations on dashboards, Context Manager in chat, plus upload and ar
 * **Artifact thumbnails in sandboxes** — Thumbnails now generate correctly for artifacts created in agent sandboxes.
 {% endupdate %}
 
-{% update date="2026-06-23" tags="new-releases,improvements,fixes" %}
+{% update date="2026-06-23" tags="new-releases,new-features,improvements,fixes" %}
 ## Context Manager reaches more surfaces
 
 Context manager reaches more surfaces, plus sandbox and chat-accuracy fixes.
@@ -178,7 +199,7 @@ Context manager reaches more surfaces, plus sandbox and chat-accuracy fixes.
 * **Nested sandbox restore** — Nested directories are restored correctly during sandbox file restore.
 {% endupdate %}
 
-{% update date="2026-06-19" tags="new-releases,fixes" %}
+{% update date="2026-06-19" tags="new-releases,improvements,fixes" %}
 ## Org-admin management and SQL interpretability
 
 Org-admin management and an optional SQL interpretability toggle.
@@ -211,7 +232,7 @@ Scheduling, picker, and permissions improvements, plus chat and SSO fixes.
 * **SSO group assignment** — Re-adding SSO users to groups no longer creates duplicate or errored adds.
 {% endupdate %}
 
-{% update date="2026-06-16" tags="new-releases" %}
+{% update date="2026-06-16" tags="new-releases,new-features" %}
 ## Try Zenlytic with sample data
 
 A quicker way to try Zenlytic with sample data.
@@ -235,7 +256,7 @@ Connection setup polish.
 * **BigQuery dataset field** — Fixes the dataset textbox in the BigQuery browse step. (Data Model Editor)
 {% endupdate %}
 
-{% update date="2026-06-12" tags="new-releases,improvements,fixes" %}
+{% update date="2026-06-12" tags="new-releases,new-features,improvements,fixes" %}
 ## Live editing and onboarding updates
 
 Live editing, onboarding, sharing, and connection fixes.
@@ -279,7 +300,7 @@ Recent Updates and citations redesign, plus several display fixes.
 * **Duplicate table error** — Clearer error when YAML defines duplicate tables. (Data Model Editor)
 {% endupdate %}
 
-{% update date="2026-06-09" tags="new-releases,improvements,fixes" %}
+{% update date="2026-06-09" tags="new-releases,new-features,improvements,fixes" %}
 ## MCP, model, and reliability updates
 
 A large batch of MCP, model, and reliability updates.
@@ -310,7 +331,7 @@ A large batch of MCP, model, and reliability updates.
 * **Artifact CSV recovery** — Missing CSVs are regenerated before an artifact rebuilds.
 {% endupdate %}
 
-{% update date="2026-06-04" tags="new-releases,improvements,fixes" %}
+{% update date="2026-06-04" tags="new-releases,new-features,improvements,fixes" %}
 ## Connectors settings redesign
 
 Connectors settings redesign, BigQuery improvements, and context manager rework.
@@ -335,7 +356,7 @@ Connectors settings redesign, BigQuery improvements, and context manager rework.
 * **Long chat titles** — Retries or truncates chat-title generation when a conversation exceeds context limits.
 {% endupdate %}
 
-{% update date="2026-06-03" tags="new-releases,improvements,fixes" %}
+{% update date="2026-06-03" tags="new-releases,new-features,improvements,fixes" %}
 ## Opus 4 and scheduled-delivery run history
 
 Opus 4, scheduled-delivery run history, and context editing settings.
@@ -355,5 +376,4 @@ Opus 4, scheduled-delivery run history, and context editing settings.
 
 * **Artifact citations** — Restores citation generation for artifacts.
 {% endupdate %}
-
 {% endupdates %}

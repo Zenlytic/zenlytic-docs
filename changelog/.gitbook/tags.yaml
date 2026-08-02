@@ -1,0 +1,9 @@
+- tag: improvements
+  label: Improvements
+  icon: sparkles
+- tag: new-features
+  label: New features
+  icon: rocket-launch
+- tag: fixes
+  label: Fixes
+  icon: screwdriver-wrench

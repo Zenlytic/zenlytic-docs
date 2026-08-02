@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Changelog](README.md)
+* [Product updates](README.md "2026")

@@ -12,7 +12,7 @@ Documentation for engineers building on top of Zenlytic.
 
 ## In this section
 
-* [API Reference](api-reference.md) — REST API endpoints, authentication, and schemas
+* [API Reference](/broken/pages/XytnoKeCh0wnJFUG7m7R) — REST API endpoints, authentication, and schemas
 
 ## Also relevant
 

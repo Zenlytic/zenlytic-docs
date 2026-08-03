@@ -12,9 +12,9 @@ Documentation for engineers building on top of Zenlytic.
 
 ## API reference
 
-The REST API reference is generated from Zenlytic's OpenAPI specification rather than written by hand. Once engineering publishes the spec to GitBook, its pages appear in this section automatically — one per tag — and stay in sync as the API changes.
+The REST API reference is generated from Zenlytic's OpenAPI specification rather than written by hand. The current draft spec lives at `openapi.json` in this directory.
 
-Nothing is published here yet.
+Adding it to GitBook generates one page per tag automatically, and those pages stay in sync as the spec changes. Nothing is published here yet.
 
 ## Also relevant
 

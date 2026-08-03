@@ -53,9 +53,9 @@ Claude Opus 5 in the model picker, bulk workspace user management, and fixes acr
 * **Consistent workspace connection creation** — Connections created from Workspace Manager apply the same credential defaults and validation as Workspace Settings.
 * **Memory setting fully respected** — When a workspace turns memory off, the memory button, memory creation, and memory retrieval are all disabled.
 * **Git provider errors shown on model save** — When a Git provider rejects a data model save, Context Manager shows the provider's error instead of a generic failure. (Context Manager)
-* **Model editing hidden without permission** — Users without data-model edit permission no longer see the model-editing tool in chat.
+* **Model-editing toggle hidden without permission** — Proactive Agent configuration no longer shows the data-model editing tool toggle to users without model-edit permission. This was a display-only fix — the underlying capability was already permission-gated.
 * **Clearer SQL-permission errors** — Zoë's permission-emulation error names the exact setting involved and explains the effect of disabling it.
-* **Web search hidden when disabled** — Agent configuration no longer offers web search when the workspace has disabled it.
+* **Web search hidden when disabled** — Proactive Agent configuration no longer offers web search when the workspace has disabled it.
 {% endupdate %}
 {% update date="2026-07-26" tags="new-features,improvements,fixes" %}
 ## Proactive Agents for all workspaces

@@ -393,6 +393,38 @@ scheduled-task prompt remains the executable spec.
   emojis, no hashtags. Surface tag in parentheses only when the item is not
   the web app (e.g. "(Slack)", "(API)", "(Data Model Editor)").
 
+- **Attribute changes to their exact surface.** When a change applies to a
+  specific feature area (e.g. Proactive Agent configuration), name that
+  surface in the bullet — don't describe it generically as "chat" or
+  "agents." (Paul, PR #143 review, 2026-08-03. Example: "Web search hidden
+  when disabled" applied to Proactive Agent configuration specifically.)
+
+- **Display-only permission fixes must say so.** When a fix hides a control
+  the user could see but not actually use (the underlying behavior was
+  already permission-gated), frame it explicitly as a UI/display-only fix so
+  it cannot be read as having closed an access-control or security gap.
+  (Paul, PR #143 review, 2026-08-03. Example: the model-editing tool toggle
+  shown in Proactive Agent configuration was strictly UI — the capability
+  itself was never accessible without permission.)
+
+## Review notifications (Paul, 2026-08-03)
+
+- **Paul's PR notification is ONE LINE.** The step-9 Slack message to Paul is
+  the mention, the bold title "docs: change log — week of {range}", and the
+  PR URL — nothing under it. All detail (item counts, cutoff line,
+  held/recovered lists, ruling requests, evidence chain) lives in the PR body
+  only, including the merging-publishes reminder, which moves to the top line
+  of the PR body. This supersedes the longer step-9 content list in the
+  scheduled-task prompt.
+
+  **Why:** Paul reads the PR itself; a long Slack digest duplicates the PR
+  body and gets skipped. On 2026-08-03 he stopped reading at the PR link, so
+  the ruling requests in Slack went unread.
+
+  **How to apply:** exactly: `<@UGKKW61T6> **docs: change log — week of
+  {range}** {PR URL}` — then stop. Untagged notices (no-change,
+  Zeta-no-response, blocked) keep their existing formats.
+
 ## Notes
 
 - Exclusions apply to the public, customer-facing changelog only — they do not

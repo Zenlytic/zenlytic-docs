@@ -21,6 +21,8 @@ Each artifact bundles together four components:
 
 Live Queries keep an artifact's numbers current. Dashboards, charts, and other HTML artifacts don't store the results Zoë pulled — they store the queries behind them and re-run those queries against your warehouse every time you open the artifact. Open a dashboard Zoë built last month and you see this morning's data, with no action on your part.
 
+Artifacts created before Live Queries were available don't gain them on their own, and rebuilding one won't convert it. To add Live Queries to an existing artifact, ask Zoë to do it.
+
 {% hint style="info" %}
 **Live Queries run with your permissions.** When you open an artifact, its Live Queries run as you, scoped to the data you're allowed to see. Two people can open the same artifact and see different numbers, and you will never see data in an artifact that you couldn't query yourself.
 {% endhint %}
@@ -167,6 +169,8 @@ Before each delivery, Zenlytic re-runs any Live Queries in the artifact and rend
 ### Delivering artifacts with Live Queries
 
 An artifact's file can't run its Live Queries outside Zenlytic, so deliveries skip the attachment even when **Include attachments** is on. Recipients get the preview image and a **View in Zenlytic** link instead, along with a short note explaining why no file was attached. Opening the artifact from that link runs the Live Queries with the recipient's own permissions.
+
+The preview image itself is rendered with the schedule owner's permissions. Deliveries go to email addresses and Slack channels rather than to verified Zenlytic accounts, so there's no recipient identity to scope those queries to.
 
 ### Run history
 

@@ -34,6 +34,6 @@ If OAuth isn't available, use a static header instead:
 
 Once connected, enable the Zenlytic connector in a chat and ask a data question naturally, for example:
 
-> "Ask Zenlytic what our top 5 customers by revenue were last month."
+> "Hey Zoe, who were our top 5 customers by revenue last month?"
 
-ChatGPT will call the `ask_zenlytic` tool and return the answer along with a link back to the full conversation in Zenlytic.
+ChatGPT will call the `ask_zoe` tool and return the answer along with a link back to the full conversation in Zenlytic.

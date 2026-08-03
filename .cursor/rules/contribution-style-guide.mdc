@@ -79,7 +79,7 @@ This is the only directory GitBook writes to — images uploaded through the Git
 
 ### Assets do not cross sections
 
-A section resolves assets only within its own project directory. `docs/.gitbook/assets/` is not visible to `developer/`, and there is no shared pool.
+A section resolves assets only within its own project directory. `docs/.gitbook/assets/` is not visible to `developers/`, and there is no shared pool.
 
 For an image used in more than one section, either:
 

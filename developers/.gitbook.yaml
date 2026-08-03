@@ -1,7 +1,7 @@
-# GitBook configuration for the developer section.
+# GitBook configuration for the developers section.
 #
 # Read from this directory because this space's "Project directory" is set to
-# developer/ in Git Sync settings. Paths resolve relative to here, not the repo root.
+# developers/ in Git Sync settings. Paths resolve relative to here, not the repo root.
 
 root: ./
 

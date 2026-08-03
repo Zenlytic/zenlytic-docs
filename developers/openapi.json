@@ -10,7 +10,7 @@
           "tags": [
             "Groups"
           ],
-          "summary": "Get Groups",
+          "summary": "Get Groups 2",
           "operationId": "get_groups_workspaces__workspace_id__groups_get",
           "security": [
             {

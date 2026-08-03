@@ -113,6 +113,6 @@ This promotion workflow transforms ad-hoc analysis into governed, reusable compo
 
 Outputs produced through the Clarity Engine are delivered as [Artifacts](artifacts.md) — rich, interactive results including apps, documents, spreadsheets, presentations, charts, and more. When Zoë's answer goes beyond a single table or chart — merging results from multiple queries, applying external assumptions, building custom visualizations, or running statistical analysis like clustering, correlation, regression, or forecasting — the result is delivered as an Artifact you can save, share, and rebuild on a schedule.
 
-Dashboards, charts, and other HTML Artifacts are [live](artifacts.md#live-artifacts): they re-run their queries through the Clarity Engine every time you open them, so you always see current data enforced against your own permissions.
+Dashboards, charts, and other HTML Artifacts use [Live Queries](artifacts.md#live-queries): they re-run those queries through the Clarity Engine every time you open them, so you always see current data enforced against your own permissions.
 
-See [Artifacts](artifacts.md) for the full feature set: live and static artifacts, saving and organizing artifacts, update history and versioning, Auto-Rebuild, scheduled delivery to email or Slack, sharing and permissions, and web publishing.
+See [Artifacts](artifacts.md) for the full feature set: Live Queries, saving and organizing artifacts, update history and versioning, Auto-Rebuild, scheduled delivery to email or Slack, sharing and permissions, and web publishing.

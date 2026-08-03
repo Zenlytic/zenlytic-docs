@@ -25,7 +25,7 @@ layout:
 # Dashboards (legacy)
 
 {% hint style="warning" %}
-**Dashboards are a legacy feature.** New visual outputs should be built as [Artifacts](../../zenlytic-ui/artifacts.md), which support apps, documents, spreadsheets, presentations, [live data](../../zenlytic-ui/artifacts.md#live-artifacts), versioning, scheduled rebuilds, delivery, and sharing. Existing dashboard YAML files continue to work, but we no longer recommend creating new dashboards.
+**Dashboards are a legacy feature.** New visual outputs should be built as [Artifacts](../../zenlytic-ui/artifacts.md), which support apps, documents, spreadsheets, presentations, [Live Queries](../../zenlytic-ui/artifacts.md#live-queries), versioning, scheduled rebuilds, delivery, and sharing. Existing dashboard YAML files continue to work, but we no longer recommend creating new dashboards.
 {% endhint %}
 
 Dashboards are collections of dashboard elements. Dashboard elements are plots or tables created with a combination of measures and dimensions that can be joined together.

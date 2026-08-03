@@ -10,8 +10,8 @@
       "merge_date": "2026-06-29",
       "commit_sha": "6e0ccca4f0bd751538ba6fc356cd0e8e9d19ba65",
       "excluded_since": "2026-06-30",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, effective default false; prod has three inactive true rules (closed-beta emails, internal dev/QA, internal-testing segment); prodeu no targeting. Zeta 2026-07-27: mcp-oauth gates the in-app connector prototype only, not the external MCP-server OAuth login."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, served off-variation false; inactive targeting only (closed-beta emails, internal-testing segment, Pure Organics beta + internal QA); prodeu no targeting. Zeta 2026-07-27: mcp-oauth gates the in-app connector prototype only, not the external MCP-server OAuth login."
     },
     {
       "flag": null,
@@ -34,8 +34,8 @@
       "merge_date": "2026-07-10",
       "commit_sha": "f0c9be33aaa3dae65a9e4a0f60196422bda9a54f",
       "excluded_since": "2026-07-13",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, effective default false; inactive targeting rules only."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, served off-variation false; inactive targeting rules only."
     },
     {
       "flag": "pat-auth",
@@ -46,8 +46,8 @@
       "merge_date": "2026-07-12",
       "commit_sha": "921e59f6ed0a42129a24479167874e8337d020b1",
       "excluded_since": "2026-07-13",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, effective default false; no targeting or named-segment rules."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, served off-variation false; no targeting, segments, or rules."
     },
     {
       "flag": "pat-auth",
@@ -58,8 +58,8 @@
       "merge_date": "2026-07-12",
       "commit_sha": "a6bb1db64302ef3aa53f57fc2ebb250d569b136f",
       "excluded_since": "2026-07-13",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, effective default false; no targeting or named-segment rules."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — prod+prodeu flag OFF, configured fallthrough true, served off-variation false; no targeting, segments, or rules. Note: likely superseded by the PAT management settings page merged 2026-07-30 — consolidate on release."
     },
     {
       "flag": "mcp-oauth",
@@ -71,8 +71,8 @@
       "commit_sha": "71333df7f4ed9ee05d50a94a21c47a25d6a1170a",
       "notes": "Original 07-20 note: exposure depends on BOTH mcp-oauth and pat-auth (both off), deploy wiring not on master at cutoff, SaaS/VPC parity unconfirmed. UPDATE 2026-07-27: Zeta clarified mcp-oauth gates only the in-app connector prototype, and the external MCP-server OAuth login (merged 2026-07-22) was confirmed GA and PUBLISHED in the Week of July 20-26 entry. This held item is likely superseded — flagged to Paul for review; resolve manually rather than waiting on an mcp-oauth flip.",
       "excluded_since": "2026-07-20",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "off — mcp-oauth: prod+prodeu OFF, effective default false; but see notes — likely superseded by published OAuth-login items."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — mcp-oauth: prod+prodeu OFF, served off-variation false; but see notes — likely superseded by published OAuth-login items. Paul ruling still pending."
     },
     {
       "flag": "pat-auth",
@@ -83,8 +83,8 @@
       "merge_date": "2026-07-18",
       "commit_sha": "46c612891371b76ae4fa5dc6a964d506f6c1f294",
       "excluded_since": "2026-07-20",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "off — pat-auth: prod+prodeu OFF, configured fallthrough true, effective default false; no targeting rules."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — pat-auth: prod+prodeu OFF, configured fallthrough true, served off-variation false; no targeting rules."
     },
     {
       "flag": "pat-auth",
@@ -96,8 +96,8 @@
       "commit_sha": "5802a1d58e2c053d57abc4c7461c8f9247d95c49",
       "notes": "Zeta 2026-07-27 reported 'no flag / GA yes', but the feature's only entry point is the API Access modal, which is gated by pat-auth (confirmed OFF the same day). Held under pat-auth per default-to-exclude; publish when pat-auth flips.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "off — pat-auth: prod+prodeu OFF, configured fallthrough true, effective default false; no targeting rules."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — pat-auth: prod+prodeu OFF, configured fallthrough true, served off-variation false; no targeting rules."
     },
     {
       "flag": "mcp-oauth",
@@ -109,8 +109,8 @@
       "commit_sha": "4695cbec02a927a91dd0ac4ff516a39395469ac3",
       "notes": "Published in rev 1 of Week of July 20-26 per Zeta's 'no flag / GA yes', then PULLED per Paul's review (2026-07-27): external MCP client connectivity is beta. Release requires Paul's explicit confirmation, not just a flag flip.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes); mcp-oauth prod+prodeu OFF."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes); mcp-oauth prod+prodeu OFF as of 2026-08-03."
     },
     {
       "flag": "mcp-oauth",
@@ -122,8 +122,8 @@
       "commit_sha": "46cc17a44ce081eec9f183aa9f65466c8c451223",
       "notes": "Pulled per Paul's review (2026-07-27): part of the beta external MCP connectivity cluster. Release requires Paul's explicit confirmation.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes)."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes); mcp-oauth prod+prodeu OFF as of 2026-08-03."
     },
     {
       "flag": "mcp-oauth",
@@ -135,8 +135,8 @@
       "commit_sha": "d101e78f6f1768bfe5beb1dddee282324610416f",
       "notes": "Published in rev 1 of Week of July 20-26, then PULLED per Paul's review (2026-07-27): external MCP client connectivity is beta. Release requires Paul's explicit confirmation.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes)."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes); mcp-oauth prod+prodeu OFF as of 2026-08-03."
     },
     {
       "flag": "mcp-oauth",
@@ -148,8 +148,112 @@
       "commit_sha": "9f5858dc4d8ff9bdbf63c0999b04c3c42826ff03",
       "notes": "Published in rev 1 of Week of July 20-26, then PULLED per Paul's review (2026-07-27): external MCP client connectivity is beta. Release requires Paul's explicit confirmation.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-07-27",
-      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes)."
+      "last_checked": "2026-08-03",
+      "last_checked_status": "beta per Paul 2026-07-27 (overrides Zeta GA-yes); mcp-oauth prod+prodeu OFF as of 2026-08-03."
+    },
+    {
+      "flag": null,
+      "feature_title": "MCP artifact deep links",
+      "description": "MCP artifact results link directly to the saved artifact in its conversation.",
+      "surface": "API",
+      "category": "improvement",
+      "merge_date": "2026-07-28",
+      "commit_sha": "151c6c8c73",
+      "notes": "Zeta reported no flag / GA yes, but this is part of the external MCP-server surface — held under Paul's beta ruling (2026-07-27) on external MCP client connectivity. Release on Paul's explicit confirmation; no LD flag to re-check.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "beta per Paul's external-MCP ruling (overrides Zeta GA-yes)."
+    },
+    {
+      "flag": "pat-auth",
+      "feature_title": "Personal Access Token management page",
+      "description": "A paginated settings page for creating, viewing, and deleting personal access tokens.",
+      "surface": "web app",
+      "category": "new feature",
+      "merge_date": "2026-07-30",
+      "commit_sha": "0499cc4715",
+      "notes": "Likely supersedes the held 'Temporary PAT management modal' (2026-07-12) — consolidate the two into one item when pat-auth flips.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — pat-auth: prod+prodeu OFF, configured fallthrough true, served off-variation false; no targeting."
+    },
+    {
+      "flag": "pat-auth",
+      "feature_title": "PATs scoped to organizations",
+      "description": "PATs can no longer authorize workspaces outside their organization, including wildcard tokens.",
+      "surface": "API",
+      "category": "improvement",
+      "merge_date": "2026-07-30",
+      "commit_sha": "b1e097348b",
+      "notes": "Pre-launch hardening of the unreleased PAT feature — fold into the PAT launch item when pat-auth flips rather than listing separately.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — pat-auth: prod+prodeu OFF, configured fallthrough true, served off-variation false; no targeting."
+    },
+    {
+      "flag": "mcp-oauth",
+      "feature_title": "MCP OAuth organization handling fix",
+      "description": "OAuth carries the selected organization through login and validates workspace membership correctly.",
+      "surface": "API",
+      "category": "bug fix",
+      "merge_date": "2026-07-30",
+      "commit_sha": "1479d6af2d",
+      "notes": "Pre-launch fix of the unreleased external MCP OAuth flow — folds into the OAuth-login launch item when the cluster is released (Paul-gated); do not list separately.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — mcp-oauth: prod+prodeu OFF, served off-variation false; also beta per Paul's external-MCP ruling."
+    },
+    {
+      "flag": "observability",
+      "feature_title": "Observability navigation",
+      "description": "Gated routes and navigation for the new Observability area.",
+      "surface": "web app",
+      "category": "new feature",
+      "merge_date": "2026-07-30",
+      "commit_sha": "a8890aa004",
+      "notes": "Publish consolidated with 'Observability UI' (da6041d9af) as a single launch item when the observability flag flips.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — observability: production flag OFF, configured fallthrough true, served off-variation false (Zeta diff 2026-08-03)."
+    },
+    {
+      "flag": "observability",
+      "feature_title": "Observability UI",
+      "description": "Organization/workspace views for users, chats, artifacts, and Proactive Agents.",
+      "surface": "web app",
+      "category": "new feature",
+      "merge_date": "2026-07-30",
+      "commit_sha": "da6041d9af",
+      "notes": "Publish consolidated with 'Observability navigation' (a8890aa004) as a single launch item when the observability flag flips.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "off — observability: production flag OFF, configured fallthrough true, served off-variation false (Zeta diff 2026-08-03)."
+    },
+    {
+      "flag": "live-artifacts",
+      "feature_title": "Live queries in artifacts",
+      "description": "Live data sources, an artifact data bridge, source inspection/editing, refreshed deliveries, and supporting docs/Slack rendering.",
+      "surface": "web app / Slack / docs",
+      "category": "new feature",
+      "merge_date": "2026-07-31",
+      "commit_sha": "a48de78afb",
+      "notes": "Zeta flagged this as sandbox-backend-touching — before publishing on a flip, review the description for VPC-vs-SaaS parity tells per curation rules.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "not GA — live-artifacts: production flag ON but fallthrough false; only targeted beta users receive true (Zeta diff 2026-08-03)."
+    },
+    {
+      "flag": null,
+      "feature_title": "PAT and gateway authentication hardening",
+      "description": "Issuer-aware JWT validation and a curated public-API deployment mode.",
+      "surface": "API",
+      "category": "improvement",
+      "merge_date": "2026-07-31",
+      "commit_sha": "ff4ad6ae82",
+      "notes": "Deployment-gated by IS_PUBLIC_API (not LaunchDarkly) — no flag to re-check. Zeta flagged SaaS/API-gateway parity. Even if released, likely excluded as implementation detail and/or parity tell — Paul to rule; hold for manual review.",
+      "excluded_since": "2026-08-03",
+      "last_checked": "2026-08-03",
+      "last_checked_status": "not GA as a general product capability; deployment-gated. Manual review only."
     }
   ],
   "resolved": [

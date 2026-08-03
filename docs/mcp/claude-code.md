@@ -40,9 +40,9 @@ claude mcp add --transport http zenlytic <TBD> \
 
 Once connected, ask Claude Code a data question naturally, for example:
 
-> "Ask Zenlytic what our top 5 customers by revenue were last month."
+> "Hey Zoe, who were our top 5 customers by revenue last month?"
 
-Claude will call the `ask_zenlytic` tool and return the answer along with a link back to the full conversation in Zenlytic.
+Claude will call the `ask_zoe` tool and return the answer along with a link back to the full conversation in Zenlytic.
 
 ## Troubleshooting
 

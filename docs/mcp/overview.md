@@ -22,6 +22,6 @@ flowchart LR
     subgraph mcpserver[MCP Server: AI tools connect in]
         AITool[Your AI Tool: Claude, Cursor, ChatGPT]
         ZenServer[Zenlytic MCP Server]
-        AITool -->|ask_zenlytic| ZenServer
+        AITool -->|ask_zoe| ZenServer
     end
 ```

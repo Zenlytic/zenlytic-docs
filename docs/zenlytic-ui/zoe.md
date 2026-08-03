@@ -68,7 +68,7 @@ The figure from the previous section shows how each message submitted by the use
 
 ## Artifacts
 
-Zoë can write and evaluate Python code in a secure sandbox and delivers the results as [Artifacts](artifacts.md): rich, interactive outputs like apps, documents, spreadsheets, presentations, and charts. Artifacts give Zoë the flexibility to answer complex questions that involve merging results from multiple queries, plugging in assumptions, building custom visualizations, and running advanced clustering, correlation, regression, and forecasting analysis. Dashboards, charts, and other HTML Artifacts are [live](artifacts.md#live-artifacts) — they re-query your warehouse every time you open them, using your own permissions. Each Artifact has versioned history, can rebuild on a schedule, and can be shared. See [Artifacts](artifacts.md) for the full feature set.
+Zoë can write and evaluate Python code in a secure sandbox and delivers the results as [Artifacts](artifacts.md): rich, interactive outputs like apps, documents, spreadsheets, presentations, and charts. Artifacts give Zoë the flexibility to answer complex questions that involve merging results from multiple queries, plugging in assumptions, building custom visualizations, and running advanced clustering, correlation, regression, and forecasting analysis. Dashboards, charts, and other HTML Artifacts use [Live Queries](artifacts.md#live-queries) — they re-query your warehouse every time you open them, using your own permissions. Each Artifact has versioned history, can rebuild on a schedule, and can be shared. See [Artifacts](artifacts.md) for the full feature set.
 
 <figure><img src="../.gitbook/assets/code-interpreter.png" alt="Zoë running advanced analysis"><figcaption><p>Zoë delivering an Artifact with a forecast analysis</p></figcaption></figure>
 
@@ -86,7 +86,7 @@ At any point while Zoë is responding, click the Pause button in the lower right
 
 ## Dashboards (legacy)
 
-Dashboards have been replaced by [Artifacts](artifacts.md) for new visual outputs. Existing dashboards continue to work — Zoë can still search them and answer questions like "What dashboards do we have for revenue and plan?" — but new work should be built as Artifacts, which support richer output types, [live data](artifacts.md#live-artifacts), versioning, scheduled rebuilds, and delivery.
+Dashboards have been replaced by [Artifacts](artifacts.md) for new visual outputs. Existing dashboards continue to work — Zoë can still search them and answer questions like "What dashboards do we have for revenue and plan?" — but new work should be built as Artifacts, which support richer output types, [Live Queries](artifacts.md#live-queries), versioning, scheduled rebuilds, and delivery.
 
 ## Slack & Teams
 

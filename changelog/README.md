@@ -27,6 +27,36 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-08-02" tags="new-features,improvements,fixes" %}
+## Claude Opus 5 and bulk user management
+
+Claude Opus 5 in the model picker, bulk workspace user management, and fixes across chat, deliveries, and Proactive Agents.
+
+### New features
+
+* **Claude Opus 5** — Opus 5 is available in the chat model picker; Opus 4.8 remains available.
+* **Bulk user management** — Admins can select multiple workspace users and change their roles or remove them in one action.
+
+### Improvements
+
+* **Verified-field styling** — Modeled fields use a verified style across queries and dashboards, making them easier to distinguish from dynamic fields.
+* **Artifact links open the exact version** — Links to an artifact version open the right conversation, select the matching version, and scroll it into view.
+* **Background indexing control** — Admins can turn off scheduled background search-index queries for a workspace.
+* **Microphone beside Send** — The voice transcription button now sits next to the send button in chat.
+
+### Bug fixes
+
+* **Markdown tables render in delivery emails** — Scheduled-delivery emails convert Markdown tables, links, bold, and italic text into styled HTML.
+* **Chat failures end cleanly** — Provider errors, oversized inputs, interrupted streams, and failed agent or MCP connection setup now show a clear error instead of leaving the chat hanging.
+* **Files preserved during agent runs** — Generated and uploaded files no longer disappear during Proactive Agent runs.
+* **Proactive Agent feedback and filtering** — Thumbs-down feedback and status filtering work correctly in the Proactive Agents list.
+* **Consistent workspace connection creation** — Connections created from Workspace Manager apply the same credential defaults and validation as Workspace Settings.
+* **Memory setting fully respected** — When a workspace turns memory off, the memory button, memory creation, and memory retrieval are all disabled.
+* **Git provider errors shown on model save** — When a Git provider rejects a data model save, Context Manager shows the provider's error instead of a generic failure. (Context Manager)
+* **Model editing hidden without permission** — Users without data-model edit permission no longer see the model-editing tool in chat.
+* **Clearer SQL-permission errors** — Zoë's permission-emulation error names the exact setting involved and explains the effect of disabling it.
+* **Web search hidden when disabled** — Agent configuration no longer offers web search when the workspace has disabled it.
+{% endupdate %}
 {% update date="2026-07-26" tags="new-features,improvements,fixes" %}
 ## Proactive Agents for all workspaces
 

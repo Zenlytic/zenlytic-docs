@@ -2,7 +2,7 @@
 description: Build on Zenlytic — REST API, embedding, and MCP integrations.
 ---
 
-# Developer
+# Developers
 
 {% hint style="warning" %}
 **Scaffold — keep this section in Draft until it has real content.**
@@ -10,9 +10,11 @@ description: Build on Zenlytic — REST API, embedding, and MCP integrations.
 
 Documentation for engineers building on top of Zenlytic.
 
-## In this section
+## API reference
 
-* [API Reference](/broken/pages/XytnoKeCh0wnJFUG7m7R) — REST API endpoints, authentication, and schemas
+The REST API reference is generated from Zenlytic's OpenAPI specification rather than written by hand. Once engineering publishes the spec to GitBook, its pages appear in this section automatically — one per tag — and stay in sync as the API changes.
+
+Nothing is published here yet.
 
 ## Also relevant
 

@@ -27,7 +27,7 @@ You don't have to get the role right at invite time. It can be changed later fro
 
 ## Access is granted per workspace
 
-This is the part that surprises people. **Inviting someone to a workspace gives them access to that workspace only.** If your organization has three workspaces and someone needs all three, they have to be invited to each one, and their role is set separately in each.
+**Inviting someone to a workspace gives them access to that workspace only.** If your organization has three workspaces and someone needs all three, they have to be invited to each one, and their role is set separately in each.
 
 **Organization Admin is the one exception.** It applies across every workspace in the organization automatically — grant it in one place and it takes effect everywhere. That's also why it's the only role that can create new workspaces.
 

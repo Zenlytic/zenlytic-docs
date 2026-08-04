@@ -1,0 +1,30 @@
+name: Check links
+
+# GitBook does not fail a build on a broken internal link — it silently
+# rewrites the link into a github.com URL that 404s. Nothing surfaces the
+# problem, so this check is the only thing standing between a bad link and
+# a reader being sent off-site.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'changelog/**'
+      - 'developers/**'
+      - 'resources/**'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'changelog/**'
+      - 'developers/**'
+      - 'resources/**'
+  workflow_dispatch:
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check internal links
+        run: python3 .github/scripts/check_links.py

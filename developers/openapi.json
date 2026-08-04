@@ -2334,10 +2334,6 @@
             "type": "string",
             "title": "Name"
           },
-          "is_all_users": {
-            "type": "boolean",
-            "title": "Is All Users"
-          },
           "user_attribute_precedence": {
             "type": "integer",
             "title": "User Attribute Precedence"
@@ -2355,7 +2351,6 @@
           "id",
           "workspace_id",
           "name",
-          "is_all_users",
           "user_attribute_precedence",
           "users"
         ],

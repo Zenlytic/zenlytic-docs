@@ -31,7 +31,7 @@ You can find the Workspace Manager from the navigation bar, next to Settings. Th
 
 For each workspace, you can:
 
-* **Toggle SSO User Provisioning** — When enabled, users who sign in through SSO are automatically added to this workspace. When disabled, users must be manually invited.
+* **Toggle SSO User Provisioning** — When enabled, the workspace inherits the users from your main organization workspace. When disabled, users must be [invited manually](inviting-users.md).
 * **Delete a workspace** — Removes the workspace from active use. You'll be asked to type the workspace name to confirm. Deleted workspaces are deactivated and hidden but not permanently destroyed. You cannot delete the workspace you are currently signed into.
 
 ***
@@ -43,7 +43,7 @@ Click **"Create New Workspace"** to walk through a guided setup:
 #### Step 1: Name and Provisioning
 
 * Enter a name for the new workspace.
-* Choose whether to enable **SSO User Provisioning** (off by default).
+* Choose whether to enable **SSO User Provisioning** (off by default). When enabled, the new workspace inherits all the users from your main organization workspace. When left off, it starts empty and every member has to be [invited manually](inviting-users.md).
 
 #### Step 2: Add Database Connections
 

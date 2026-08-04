@@ -39,6 +39,7 @@
 
 ## Administration
 
+* [Inviting and Managing Users](zenlytic-ui/inviting-users.md)
 * [User Roles](zenlytic-ui/user_roles.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)
 * [Workspace Groups And Permissions](zenlytic-ui/workspace_groups_and_permissions.md)

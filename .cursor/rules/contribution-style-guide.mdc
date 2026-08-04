@@ -28,6 +28,24 @@ You are writing directly to the **customer** and **telling them what to do**. Be
 - **Avoid jargon:** Use simple, clear language accessible to all skill levels
 - **Define acronyms:** Spell out on first use, then use the acronym
 
+### Never editorialize about the reader
+
+Describe the product. Do not narrate how the reader is expected to feel about it, and do not stage-manage their attention.
+
+❌ **Never write:**
+
+- "This is the part that surprises people."
+- "This trips people up."
+- "Here's the thing…" / "The good news is…" / "Don't panic."
+- "You might think X, but actually Y."
+- "Believe it or not" / "counterintuitively" / "the catch is"
+
+✅ **Write the fact directly instead:**
+
+> Inviting someone to a workspace gives them access to that workspace only.
+
+If a behavior genuinely needs emphasis, use bold or a `{% hint %}` — not a sentence telling the reader they're about to be surprised. Assume the reader is capable and short on time. Anything that would sound patronizing read aloud does not belong on the page.
+
 ## 📁 File Structure and Organization
 
 ### Markdown Files (.md)

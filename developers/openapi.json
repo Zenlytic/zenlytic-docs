@@ -11,6 +11,7 @@
           "Groups"
         ],
         "summary": "Get Groups",
+        "description": "List every group in the workspace, including the built-in \"All Users\" group.\n\nEach group carries its member ids and its ``user_attribute_precedence``. A warning is\nreturned when two groups in the workspace share a precedence value, since the winning\nuser attribute is then undefined.",
         "operationId": "get_groups_workspaces__workspace_id__groups_get",
         "security": [
           {
@@ -69,6 +70,7 @@
           "Groups"
         ],
         "summary": "Create Group",
+        "description": "Create a group in the workspace.\n\n``user_attribute_precedence`` must be greater than 0 and decides which group's value wins\nwhen a member belongs to several groups that set the same user attribute. A warning is\nreturned when the new group duplicates an existing precedence value.",
         "operationId": "create_group_workspaces__workspace_id__groups_post",
         "security": [
           {
@@ -139,6 +141,7 @@
           "Groups"
         ],
         "summary": "Get Group",
+        "description": "Retrieve a single group in the workspace by id.\n\nReturns 404 if no group with that id exists in the workspace.",
         "operationId": "get_group_workspaces__workspace_id__groups__group_id__get",
         "security": [
           {
@@ -206,6 +209,7 @@
           "Groups"
         ],
         "summary": "Update Group",
+        "description": "Update a group's name, members, or user attribute precedence.\n\nThe built-in \"All Users\" group cannot be updated; its membership always tracks the\nworkspace roster.",
         "operationId": "update_group_workspaces__workspace_id__groups__group_id__patch",
         "security": [
           {
@@ -283,6 +287,7 @@
           "Groups"
         ],
         "summary": "Delete Group",
+        "description": "Delete a group and the user attributes attached to it.\n\nMembers are not deleted, only their membership. The built-in \"All Users\" group cannot be\ndeleted.",
         "operationId": "delete_group_workspaces__workspace_id__groups__group_id__delete",
         "security": [
           {
@@ -345,6 +350,7 @@
           "User Attributes"
         ],
         "summary": "Get User Attribute Definitions",
+        "description": "List the user attribute definitions in the workspace.\n\nA definition declares the ``name``, ``label``, and ``data_type`` of an attribute. The\nper-member and per-group endpoints then assign values against these definitions.",
         "operationId": "get_user_attribute_definitions_workspaces__workspace_id__user_attribute_definitions_get",
         "security": [
           {
@@ -403,6 +409,7 @@
           "User Attributes"
         ],
         "summary": "Create User Attribute Definition",
+        "description": "Create a user attribute definition in the workspace.\n\n``name`` must be unique within the workspace; a duplicate returns 409. The ``data_type``\nis fixed at creation time and cannot be changed afterwards.",
         "operationId": "create_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions_post",
         "security": [
           {
@@ -473,6 +480,7 @@
           "User Attributes"
         ],
         "summary": "Delete User Attribute Definition",
+        "description": "Delete a user attribute definition and every value assigned against it.\n\nThis removes the attribute from all members and groups in the workspace.",
         "operationId": "delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete",
         "security": [
           {
@@ -533,6 +541,7 @@
           "User Attributes"
         ],
         "summary": "Update User Attribute Definition",
+        "description": "Update a user attribute definition's label.\n\nOnly ``label`` is mutable \u2014 ``name`` and ``data_type`` are fixed once created, because\nassigned values and data model references depend on them.",
         "operationId": "update_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__patch",
         "security": [
           {
@@ -612,6 +621,7 @@
           "Workspaces"
         ],
         "summary": "Get Workspace Manager",
+        "description": "Retrieve the organization that owns ``workspace_id``, with its workspaces.\n\n``workspace_id`` identifies the caller's current workspace; the response describes the whole\norganization, not just that workspace. Archived workspaces are excluded unless\n``include_archived`` is true.",
         "operationId": "get_workspace_manager_workspace_manager__workspace_id__get",
         "security": [
           {
@@ -682,6 +692,7 @@
           "Workspaces"
         ],
         "summary": "Create Workspace",
+        "description": "Create a new workspace in the organization that owns ``workspace_id``.\n\nThe new workspace gets an \"All Users\" group, the calling user as an organization admin, and\nevery other org admin added automatically. It inherits the source workspace's data\nprocessing region, and any enterprise LLM credentials are copied over.",
         "operationId": "create_workspace_workspace_manager__workspace_id__workspaces_post",
         "security": [
           {
@@ -752,6 +763,7 @@
           "Workspaces"
         ],
         "summary": "Archive Workspace",
+        "description": "Archive a workspace in the caller's organization.\n\nThis is a soft delete: the workspace is marked archived and inactive, and its users are\nreassigned to another workspace in the organization. ``confirmation_name`` must match the\ntarget workspace's name, and you cannot archive the workspace you are currently in.",
         "operationId": "archive_workspace_workspace_manager__workspace_id__workspaces__target_workspace_id__archive_post",
         "security": [
           {
@@ -1242,6 +1254,7 @@
           "Groups"
         ],
         "summary": "Get Group User Attributes",
+        "description": "List the user attribute values set on a group.\n\nThese apply to every member of the group. When a member is in several groups that set the\nsame attribute, the group with the highest ``user_attribute_precedence`` wins.",
         "operationId": "get_group_user_attributes_workspaces__workspace_id__groups__group_id__user_attributes_get",
         "security": [
           {
@@ -1309,6 +1322,7 @@
           "Groups"
         ],
         "summary": "Create Group User Attribute",
+        "description": "Set a user attribute value on a group.\n\n``user_attribute_definition_id`` must reference an existing definition in the workspace. A\ngroup can only set each definition once; a second value for the same definition returns\n409 \u2014 patch the existing value instead.",
         "operationId": "create_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes_post",
         "security": [
           {
@@ -1387,8 +1401,9 @@
         "tags": [
           "Groups"
         ],
-        "summary": "Delete Group User Attributes",
-        "operationId": "delete_group_user_attributes_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__delete",
+        "summary": "Delete Group User Attribute",
+        "description": "Remove a user attribute value from a group.\n\nThe definition itself is untouched \u2014 only this group's value for it is deleted.",
+        "operationId": "delete_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__delete",
         "security": [
           {
             "HTTPBearer": []
@@ -1457,6 +1472,7 @@
           "Groups"
         ],
         "summary": "Update Group User Attribute",
+        "description": "Update the value of a user attribute already set on a group.\n\nOnly ``value`` is mutable; to point at a different definition, delete this value and\ncreate a new one.",
         "operationId": "update_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__patch",
         "security": [
           {
@@ -1545,6 +1561,7 @@
           "User Attributes"
         ],
         "summary": "Get Member User Attributes",
+        "description": "List the user attribute values that apply to a workspace member.\n\nIncludes values inherited from the member's groups as well as values set directly on the\nmember. ``is_overridden`` marks a group-inherited value that a higher-precedence value has\nsuperseded, so the effective set is the entries where it is false.",
         "operationId": "get_member_user_attributes_workspaces__workspace_id__members__member_id__user_attributes_get",
         "security": [
           {
@@ -1612,6 +1629,7 @@
           "User Attributes"
         ],
         "summary": "Create Member User Attribute",
+        "description": "Set a user attribute value directly on a workspace member.\n\nA value set here takes precedence over any value the member inherits from a group. Each\nmember can only set a given definition once; a duplicate returns 409 \u2014 patch the existing\nvalue instead.",
         "operationId": "create_member_user_attribute_workspaces__workspace_id__members__member_id__user_attributes_post",
         "security": [
           {
@@ -1691,6 +1709,7 @@
           "User Attributes"
         ],
         "summary": "Delete Member User Attribute",
+        "description": "Remove a user attribute value set directly on a workspace member.\n\nOnly values set on the member can be deleted here; group-inherited values are managed on\nthe group. Once removed, any group value for that definition applies again.",
         "operationId": "delete_member_user_attribute_workspaces__workspace_id__members__member_id__user_attributes__user_attribute_id__delete",
         "security": [
           {
@@ -1760,6 +1779,7 @@
           "User Attributes"
         ],
         "summary": "Update Group User Attribute",
+        "description": "Update the value of a user attribute set directly on a workspace member.\n\nOnly ``value`` is mutable; to point at a different definition, delete this value and\ncreate a new one.",
         "operationId": "update_group_user_attribute_workspaces__workspace_id__members__member_id__user_attributes__user_attribute_id__patch",
         "security": [
           {

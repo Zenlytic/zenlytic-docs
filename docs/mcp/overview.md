@@ -4,7 +4,7 @@ description: >-
   tools, or connect your own AI tools in to Zenlytic.
 ---
 
-# MCP Overview
+# MCP Overview (Experimental)
 
 The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open standard for exposing tools to LLM-powered agents. Zenlytic supports MCP in both directions, depending on which side you want Zenlytic to play:
 

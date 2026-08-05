@@ -2744,5 +2744,25 @@
         "name": "X-API-Key"
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Org Admin"
+    },
+    {
+      "name": "Admin"
+    },
+    {
+      "name": "Workspaces",
+      "x-parent": "Org Admin"
+    },
+    {
+      "name": "Groups",
+      "x-parent": "Admin"
+    },
+    {
+      "name": "User Attributes",
+      "x-parent": "Admin"
+    }
+  ]
 }

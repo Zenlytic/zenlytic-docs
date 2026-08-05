@@ -4,6 +4,26 @@
     "title": "FastAPI",
     "version": "0.1.0"
   },
+  "tags": [
+    {
+      "name": "Org Admin"
+    },
+    {
+      "name": "Admin"
+    },
+    {
+      "name": "Workspaces",
+      "x-parent": "Org Admin"
+    },
+    {
+      "name": "Groups",
+      "x-parent": "Admin"
+    },
+    {
+      "name": "User Attributes",
+      "x-parent": "Admin"
+    }
+  ],
   "paths": {
     "/workspaces/{workspace_id}/groups": {
       "get": {

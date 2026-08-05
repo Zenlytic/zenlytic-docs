@@ -12,7 +12,7 @@ GitHub Copilot Chat in VS Code reads MCP servers from an `mcp.json` file. See [M
 
 ## Before you start
 
-You'll need Zenlytic's MCP URL for your workspace. URL: <TBD>
+You'll need Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com/mcp
 
 ## Connect with OAuth (recommended)
 
@@ -24,7 +24,7 @@ You'll need Zenlytic's MCP URL for your workspace. URL: <TBD>
   "servers": {
     "zenlytic": {
       "type": "http",
-      "url": "<TBD>"
+      "url": "https://mcp.zenlytic.com/mcp"
     }
   }
 }
@@ -45,7 +45,7 @@ If OAuth isn't available for your deployment, add the token as a static header i
   "servers": {
     "zenlytic": {
       "type": "http",
-      "url": "<TBD>",
+      "url": "https://mcp.zenlytic.com/mcp",
       "headers": {
         "Authorization": "Bearer <your-personal-access-token>"
       }

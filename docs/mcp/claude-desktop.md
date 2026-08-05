@@ -10,7 +10,7 @@ Claude Desktop and Claude.ai support MCP custom connectors with OAuth out of the
 
 ## Before you start
 
-You'll need Zenlytic's MCP URL for your workspace. URL: <TBD>
+You'll need Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com/mcp
 
 ## Connect with OAuth (recommended)
 

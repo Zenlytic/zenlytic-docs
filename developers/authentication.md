@@ -1,30 +1,24 @@
-# Personal access tokens
+# Authentication
 
 Personal access tokens (PATs) authenticate API requests to Zenlytic on behalf of your user account, without requiring an interactive login for each request. Use a PAT for scripts, CI pipelines, BI tool integrations, and other automated access to the Zenlytic API.
 
-## What is a personal access token?
-
-A personal access token is a long-lived credential tied to your user account and scoped to a specific workspace. Use it to authenticate API requests in place of a session login.
-
-- **Scope:** Tied to the workspace that was active when you created the token.
-- **Access:** Has the same permissions as your user account within that workspace.
+| Scope | Endpoints | Access |
+| --- | --- | --- |
+| **Admin** | `/workspaces/...` | Tied to the workspace that was active when you created the token. Has the same permissions as your user account within that workspace. |
+| **Org admin** | `/workspace-manager/...` | Org-wide. Authenticates requests across every workspace in your organization. Has the same permissions as your user account, which requires the Org Admin role for these endpoints. Since org admins also have admin permissions in every workspace, this token can additionally call the admin endpoints (`/workspaces/...`) to manage groups and user attributes in any workspace. |
 
 ## Creating a personal access token
 
 1. Click your user avatar/name in the bottom-left corner of the navigation bar.
 2. Select **API Access** from the user menu.
 
-
    ![](.gitbook/assets/pat-user-menu.png)
-
 
 3. On the Personal Access Tokens page, click **Create Token**.
 
 4. Enter a descriptive name for the token so you can identify its purpose later.
 
-
    ![](.gitbook/assets/pat-create-token-modal.png)
-
 
 5. Click **Create**. Your new token displays once.
 6. Copy the token immediately and store it somewhere secure, such as a secrets manager or password manager. Zenlytic does not store the raw token, and you cannot view it again after closing this dialog.
@@ -37,11 +31,18 @@ Include the token as a bearer token in the `Authorization` header of your API re
 Authorization: Bearer <your_personal_access_token>
 ```
 
-Example using `curl`:
+Example calling an admin endpoint using `curl`:
 
 ```bash
 curl -H "Authorization: Bearer <your_personal_access_token>" \
   https://api.zenlytic.com/v2/workspaces/<workspace_id>/...
+```
+
+Example calling an org admin endpoint using `curl`:
+
+```bash
+curl -H "Authorization: Bearer <your_personal_access_token>" \
+  https://api.zenlytic.com/v2/workspace-manager/<workspace_id>/...
 ```
 
 ## Managing existing tokens
@@ -64,4 +65,4 @@ This action is immediate and permanent. Once deleted:
 ## FAQ
 **What permissions does my token have?**
 
-The same permissions your user account has in the scoped workspace. A PAT does not grant elevated access beyond what you can already do when logged in.
+The same permissions your user account has, scoped to either the workspace (admin token) or the organization (org admin token). A PAT does not grant elevated access beyond what you can already do when logged in.

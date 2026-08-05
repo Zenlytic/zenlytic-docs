@@ -4,7 +4,7 @@ description: >-
   chat.
 ---
 
-# MCP Client (Experimental)
+# MCP Client
 
 > Looking to connect an AI tool like Claude Desktop, Claude Code, or Cursor *to* Zenlytic instead? See [MCP Server](connecting-to-zenlytic.md) — that page covers the reverse direction, where Zenlytic is the server.
 

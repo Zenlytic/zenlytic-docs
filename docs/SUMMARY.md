@@ -91,7 +91,7 @@
 ## MCP
 
 * [MCP Overview](mcp/overview.md)
-  * [MCP Client (Experimental)](mcp/client.md)
+  * [MCP Client](mcp/client.md)
     * [Tableau](mcp/tableau.md)
     * [Power BI](mcp/powerbi.md)
     * [Google](mcp/google.md)
@@ -102,7 +102,7 @@
     * [Reltio](mcp/reltio.md)
     * [Github](mcp/github.md)
     * [Jira](mcp/jira.md)
-  * [MCP Server (Experimental)](mcp/connecting-to-zenlytic.md)
+  * [MCP Server](mcp/connecting-to-zenlytic.md)
     * [Claude Desktop / Claude.ai](mcp/claude-desktop.md)
     * [Claude Code](mcp/claude-code.md)
     * [Cursor](mcp/cursor.md)

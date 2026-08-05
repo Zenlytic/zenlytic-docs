@@ -30,7 +30,7 @@ You'll need:
 * A Zenlytic account with access to the workspace you want to query
 * Chat permission in that workspace
 * An MCP-capable client (Claude Desktop, Claude Code, Cursor, GitHub Copilot, ChatGPT, or similar)
-* Zenlytic's MCP URL for your workspace. URL: <TBD>
+* Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com/mcp
 
 ## Option 1: Connect with OAuth (recommended for most clients)
 
@@ -54,7 +54,7 @@ Some clients don't support the OAuth flow and instead want a static token in the
 {
   "mcpServers": {
     "zenlytic": {
-      "url": "<TBD>",
+      "url": "https://mcp.zenlytic.com/mcp",
       "headers": {
         "Authorization": "Bearer <your-personal-access-token>"
       }

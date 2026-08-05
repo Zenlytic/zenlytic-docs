@@ -12,7 +12,7 @@ Connecting a custom MCP server to ChatGPT requires **Developer mode**, which is 
 
 You'll need:
 
-* Zenlytic's MCP URL for your workspace. URL: <TBD>
+* Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com/mcp
 * Developer mode enabled for your ChatGPT workspace — an admin may need to turn this on first under **Workspace Settings → Permissions & Roles → Connected Data → Create custom MCP connectors**
 
 ## Connect with OAuth (recommended)

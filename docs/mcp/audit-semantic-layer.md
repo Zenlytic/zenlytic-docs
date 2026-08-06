@@ -2,13 +2,13 @@
 
 Point Zoë at an MCP server that can read the repository holding your Zenlytic data model so she can scan every topic, view, measure, dimension, join, and access grant at once — then have her render a single interactive **model health report** you can read at a glance. This is the fastest way to turn an existing semantic layer — yours or an inherited one — into something whose structural risks, documentation gaps, and definition drift are visible on one screen instead of buried across dozens of files.
 
-This guide walks through that flow end to end using the "PeoplePulse" B2B-SaaS model — a people-and-revenue-ops model with `account` at the hub, joined out to `sales_pipeline`, `customer`, `nps_survey`, `ticket`, `events`, and more. The walkthrough uses the [GitHub MCP](github.md) because it gives Zoë read access to public or private repos and, optionally, the commit tools to apply her recommendations afterward — but this workflow produces the same dashboard with any repo-aware MCP.
+This guide walks through that flow end to end using the "PeoplePulse" B2B-SaaS model — a people-and-revenue-ops model with `account` at the hub, joined out to `sales_pipeline`, `customer`, `nps_survey`, `ticket`, `events`, and more. The walkthrough uses the [GitHub MCP](client/github.md) because it gives Zoë read access to public or private repos and, optionally, the commit tools to apply her recommendations afterward — but this workflow produces the same dashboard with any repo-aware MCP.
 
 ## Pick a repo MCP
 
 Any MCP that can read your data-model files will drive this audit. Common choices:
 
-- **[GitHub MCP](github.md)** — direct access to public or private GitHub repos via a fine-grained PAT. Includes commit and pull-request tools, so once you've reviewed the dashboard you can ask Zoë to apply fixes on a branch in the same conversation. Best when your model lives in a private repo, when you want the apply step in-loop, or when you want fine-grained control over which toolsets Zoë sees.
+- **[GitHub MCP](client/github.md)** — direct access to public or private GitHub repos via a fine-grained PAT. Includes commit and pull-request tools, so once you've reviewed the dashboard you can ask Zoë to apply fixes on a branch in the same conversation. Best when your model lives in a private repo, when you want the apply step in-loop, or when you want fine-grained control over which toolsets Zoë sees.
 - **DeepWiki MCP** — Devin's free Q&A-and-structure server for **public** GitHub repositories, served at `https://mcp.deepwiki.com/mcp` with no auth. DeepWiki indexes a repo into a wiki with architecture diagrams and links back to source, then exposes read-only tools. Best when your repo is public, when you only need the audit (not the commit), or when you want a fast architecture-aware overview before drilling into files.
 
 Other repo-aware MCPs work the same way — a Bitbucket MCP, a GitLab MCP, or anything that exposes "read this repo" tools to Zoë will produce the same dashboard. The rest of this guide uses the GitHub MCP because it covers both the read and (optional) write halves; alternative-specific notes call out where a read-only MCP like DeepWiki changes a step.
@@ -26,14 +26,14 @@ Other repo-aware MCPs work the same way — a Bitbucket MCP, a GitLab MCP, or an
 
 ## Prerequisites
 
-- An active MCP connection to the repository that holds your Zenlytic data model. The walkthrough below uses the [GitHub MCP](github.md); if you're using DeepWiki, register `https://mcp.deepwiki.com/mcp` with no headers and confirm your model repo is public on GitHub.
+- An active MCP connection to the repository that holds your Zenlytic data model. The walkthrough below uses the [GitHub MCP](client/github.md); if you're using DeepWiki, register `https://mcp.deepwiki.com/mcp` with no headers and confirm your model repo is public on GitHub.
 - A repository containing a Zenlytic data model. The examples use `Zenlytic/peoplepulse-qhhfghl`; substitute your own org and repo name in any prompt.
 - **Read access is all the audit needs.** The dashboard flow is entirely read-only, so DeepWiki or a `Contents: Read-only` PAT is enough to produce the full report. You only need **Context Editing** (see [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md)) and a write-enabled connection if you go on to Step 6's *apply* path.
 - If you do plan to apply fixes, a development branch you're comfortable letting Zoë commit to. Don't commit against production unless **Allow Edit Production** is intentionally on.
 
 ## Step 1 — Connect the repo MCP
 
-Follow the [GitHub MCP setup guide](github.md) to mint a fine-grained PAT scoped to the data-model repository and add the connection in **Workspace Settings → Extensions → MCP**. For an audit, the **default toolset** (`context`, `repos`, `issues`, `pull_requests`, `users`) is enough — Zoë only needs read access to repository contents.
+Follow the [GitHub MCP setup guide](client/github.md) to mint a fine-grained PAT scoped to the data-model repository and add the connection in **Workspace Settings → Extensions → MCP**. For an audit, the **default toolset** (`context`, `repos`, `issues`, `pull_requests`, `users`) is enough — Zoë only needs read access to repository contents.
 
 **Scope the PAT tightly.** Grant `Contents: Read-only` and `Metadata: Read-only` on just the data-model repo. Add `Pull requests: Read and write` only if you intend to let Zoë open a PR with her fixes in Step 6.
 
@@ -98,7 +98,7 @@ When she's done, Zoë renders the inventory and findings as one interactive arti
 **An interactive join graph.** Node size encodes fan-in, color encodes role (hub / lookup / fact / orphan), a red dot marks a missing PK, an amber dot marks PII, and dashed red edges are the risky `many_to_many` / `full_outer` joins. Clicking a view drills in. Quick-read cards above the findings call out the standouts: `account` as the top hub (7 in), 3 orphan views, 3 views without a PK, 2 risky joins.
 
 
-**Treat the findings list as a backlog, not a checklist.** Fix the thing that's actively producing wrong numbers (the chasm trap, the open PII) before the cosmetic nits. See [Progressive Enrichment](../core-concepts/progressive-enrichment.md).
+**Treat the findings list as a backlog, not a checklist.** Fix the thing that's actively producing wrong numbers (the chasm trap, the open PII) before the cosmetic nits. See [Progressive Enrichment](../getting-started/progressive-enrichment.md).
 
 
 <figure><img src="../.gitbook/assets/repo-mcp-4.png" alt="Example 1"></figure>
@@ -121,22 +121,22 @@ From here you can stop — the dashboard is a shareable health report on its own
 
 **With Context Editing turned off:** ask Zoë to draft the YAML in chat, then paste each block into the relevant view in [Context Manager](../zenlytic-ui/context_manager.md), where validation and the sample query happen instead. Take this path when your role lacks `data_model_edit`, when you've toggled Context Editing off for the workspace, or when you simply want to review every change by hand before it lands.
 
-After each fix lands, re-render or re-ask the audit so the score moves and you can confirm the finding is actually gone — the same iterative loop described in [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md).
+After each fix lands, re-render or re-ask the audit so the score moves and you can confirm the finding is actually gone — the same iterative loop described in [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md).
 
 ## Tips
 
 - **Re-run the audit periodically.** Models drift. A quarterly conversation pointed at the same repo surfaces new columns added without descriptions, new tables added without a `default_date`, or a metric that quietly forked into a second definition.
 - **Audit one folder at a time on large repos.** If `views/` has hundreds of files, ask Zoë to audit a subset (`views/sales/`, then `views/people/`) so each pass stays focused and the tool-call budget doesn't blow up.
 - **Use issues to track what you didn't fix.** If your repo MCP exposes issue tools (the GitHub MCP's `issues` toolset, for example), ask Zoë to file an issue per finding you're deferring, so the backlog lives next to the code.
-- **Keep the first audit read-only.** Run it against a read-only MCP — DeepWiki, or the GitHub MCP with `X-MCP-Readonly: true` (see [Customize the toolset](github.md#customize-the-toolset)). Once you're happy with what she's recommending, swap to a write-enabled PAT for the apply step.
+- **Keep the first audit read-only.** Run it against a read-only MCP — DeepWiki, or the GitHub MCP with `X-MCP-Readonly: true` (see [Customize the toolset](client/github.md#customize-the-toolset)). Once you're happy with what she's recommending, swap to a write-enabled PAT for the apply step.
 - **Save the dashboard.** Use **Save to my artifacts** on the report so the health snapshot — tied to its commit hash — is there to diff against on the next run.
 
 ## Related
 
-- [MCP Client](client.md) — full list of MCP servers Zoë can connect to, including DeepWiki and other repo-aware options.
-- [GitHub MCP integration](github.md) — how to set up the GitHub connection and scope the PAT.
+- [MCP Client](client/README.md) — full list of MCP servers Zoë can connect to, including DeepWiki and other repo-aware options.
+- [GitHub MCP integration](client/github.md) — how to set up the GitHub connection and scope the PAT.
 - [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) — how Context Editing turns recommendations into commits.
-- [Progressive Enrichment](../core-concepts/progressive-enrichment.md) — the priority order for what to add to a model.
-- [Context Surfaces](../core-concepts/context-surfaces.md) — where each kind of context belongs (system prompt, view, field, skill).
-- [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — the diagnostic loop for refining a measure after the first attempt.
+- [Progressive Enrichment](../getting-started/progressive-enrichment.md) — the priority order for what to add to a model.
+- [Context Surfaces](../getting-started/context-surfaces.md) — where each kind of context belongs (system prompt, view, field, skill).
+- [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md) — the diagnostic loop for refining a measure after the first attempt.
 - [Measures](../data-modeling/measure.md) — valid/invalid SQL patterns for the fixes Zoë proposes.

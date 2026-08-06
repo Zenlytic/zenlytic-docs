@@ -161,7 +161,8 @@ redirects:
   legacy/topic: data-modeling/relationships.md
   legacy/topic.md: data-modeling/relationships.md
 
-  # Old core-concepts paths (Docusaurus, different from current Core Concepts section)
+  # Old Docusaurus core-concepts paths. The Core Concepts section was folded
+  # into Getting Started, so these point at data modeling instead.
   core-concepts/metrics-layer: data-modeling/data_modeling.md
   core-concepts/data-modeling: data-modeling/data_modeling.md
 

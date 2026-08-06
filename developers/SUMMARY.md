@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Developers](README.md)
+* [Overview](README.md)
 * [Authentication](authentication.md)
 
 ## API Reference

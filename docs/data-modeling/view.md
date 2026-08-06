@@ -25,7 +25,7 @@ Views, like all files in Zenlytic, are YAML text files.
 `zoe_description`: The description of the view shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the view correctly.
 
 {% hint style="info" %}
-**View-level `description` and `zoe_description` are capped at 10,000 characters each** — plenty of room for join-path guidance, data caveats, and edge cases. Use `description` for user-facing documentation and `zoe_description` for agent-only instructions like which joins to prefer or pitfalls to avoid. See [Context Surfaces](../core-concepts/context-surfaces.md) for when to use views vs. fields vs. the system prompt vs. skills.
+**View-level `description` and `zoe_description` are capped at 10,000 characters each** — plenty of room for join-path guidance, data caveats, and edge cases. Use `description` for user-facing documentation and `zoe_description` for agent-only instructions like which joins to prefer or pitfalls to avoid. See [Context Surfaces](../getting-started/context-surfaces.md) for when to use views vs. fields vs. the system prompt vs. skills.
 {% endhint %}
 
 `sql_table_name`: This is the table name in the database that the view references. For example, `prod.customers` would be a valid `sql_table_name`.

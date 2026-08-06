@@ -9,8 +9,8 @@ description: >-
 {% hint style="info" %}
 **This page has moved.** The canonical homes for steering-Zoë guidance are now:
 
-* [Context Surfaces](../core-concepts/context-surfaces.md) — where to put descriptions, `zoe_description`, synonyms, `searchable`, Skills, and the system prompt.
-* [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — a diagnostic router from an observed error to the minimal context addition that fixes it.
+* [Context Surfaces](../getting-started/context-surfaces.md) — where to put descriptions, `zoe_description`, synonyms, `searchable`, Skills, and the system prompt.
+* [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md) — a diagnostic router from an observed error to the minimal context addition that fixes it.
 {% endhint %}
 
 For per-topic references, see the rest of the Tips & Tricks section:

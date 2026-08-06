@@ -87,7 +87,7 @@ For shortcuts:
 * **Wrong date or date range?** Check `default_date`; use `canon_date` sparingly on individual measures.
 * **Invalid measure?** Check the valid/invalid patterns on the [Measures](../data-modeling/measure.md) page.
 
-See [Progressive Enrichment](../core-concepts/progressive-enrichment.md) for the priority order of what to reach for, [Context Surfaces](../core-concepts/context-surfaces.md) for where each kind of context lives, and [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) for the full diagnostic flow.
+See [Progressive Enrichment](progressive-enrichment.md) for the priority order of what to reach for, [Context Surfaces](context-surfaces.md) for where each kind of context lives, and [Fixing Zoë's Mistakes](fixing-zoes-mistakes.md) for the full diagnostic flow.
 
 ## Step 5 — Ship it
 
@@ -119,8 +119,8 @@ Git is connected by default. Keep using Zenlytic's **Managed Repo** unless you h
 ## Where do I go from here?
 
 * [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) — the most important page if you want Zoë to help you build context
-* [Context Surfaces](../core-concepts/context-surfaces.md) — where each kind of context lives
-* [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — diagnostic flow when answers are off
+* [Context Surfaces](context-surfaces.md) — where each kind of context lives
+* [Fixing Zoë's Mistakes](fixing-zoes-mistakes.md) — diagnostic flow when answers are off
 * [Zoë](../zenlytic-ui/zoe.md) — the rest of the chat experience
 * [Data Modeling Overview](../data-modeling/data_modeling.md) — for hands-on data model authoring
 

@@ -21,7 +21,7 @@ Good questions to bring to Zoë:
 * **"How do I add a measure for X?"** — e.g. "How do I add a measure for repeat order rate?" or "How do I define customer lifetime value?"
 * **"How should I write this calculation?"** — e.g. "Write me the SQL for days between first and second order" or "How do I compute rolling 30-day revenue?"
 * **"How should these tables be joined?"** — e.g. "What's the right relationship between `orders` and `shipments`?"
-* **"Why did you pick the wrong field?"** — Zoë can often diagnose why she chose the wrong field and recommend adding a `synonym`, `zoe_description`, or a new measure to prevent it next time. See also [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md).
+* **"Why did you pick the wrong field?"** — Zoë can often diagnose why she chose the wrong field and recommend adding a `synonym`, `zoe_description`, or a new measure to prevent it next time. See also [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md).
 * **"What should I add to this view to make it more useful?"** — Zoë can look at a view and recommend missing measures, synonyms, or descriptions.
 * **"Which tables should I import for \[use case]?"** — Zoë can read your warehouse's `information_schema` and suggest a starting set of tables based on the analysis you want to do, including tables you haven't imported yet.
 * **"What data would I need to recreate this report?"** — paste a screenshot of an existing dashboard or report (Power BI, Tableau, Looker, etc.) and Zoë will identify the tables and fields you'd need. Because she can see your full warehouse schema, she can recommend new tables to bring in.
@@ -45,7 +45,7 @@ The surfaces Zoë can edit:
 * The workspace system prompt, for shared, always-on rules
 * Workspace `skills/`, including `skills/<skill-name>/SKILL.md` and any supporting files
 
-She follows the same authoring rules a human editor would: flat `fields:` lists, valid measure patterns, conservative use of `searchable: true`, and `zoe_description` rather than `description` for agent-only guidance. See [Context Surfaces](../core-concepts/context-surfaces.md) for the full decision tree.
+She follows the same authoring rules a human editor would: flat `fields:` lists, valid measure patterns, conservative use of `searchable: true`, and `zoe_description` rather than `description` for agent-only guidance. See [Context Surfaces](../getting-started/context-surfaces.md) for the full decision tree.
 
 If you'd rather have Zoë just review without editing, ask her to "audit the model", "recommend changes", or "check whether she has enough context". She'll inspect the data model and report findings without saving anything, and only commits when you explicitly ask her to make the change.
 
@@ -132,12 +132,12 @@ Even with edits turned on, Zoë holds the line on a few things:
 
 ## Iterate based on what goes wrong
 
-Zoë's edits and recommendations aren't always perfect on the first try. If a change doesn't produce the right answer when you test it, tell her what's wrong (for example, "that measure gave the wrong number, the denominator should exclude internal test accounts"). She'll refine the change, re-validate it, and commit the fix when you ask her to. This is the same iterative philosophy the whole data model is built on: add context to fix the specific error you observed, rather than trying to anticipate every edge case up front. See [Progressive Enrichment](../core-concepts/progressive-enrichment.md) for the broader playbook.
+Zoë's edits and recommendations aren't always perfect on the first try. If a change doesn't produce the right answer when you test it, tell her what's wrong (for example, "that measure gave the wrong number, the denominator should exclude internal test accounts"). She'll refine the change, re-validate it, and commit the fix when you ask her to. This is the same iterative philosophy the whole data model is built on: add context to fix the specific error you observed, rather than trying to anticipate every edge case up front. See [Progressive Enrichment](../getting-started/progressive-enrichment.md) for the broader playbook.
 
 ## Related
 
 * [Context Manager](../zenlytic-ui/context_manager.md): where you apply Zoë's recommendations or review her commits
-* [Context Surfaces](../core-concepts/context-surfaces.md): when to use `description`, `zoe_description`, synonyms, or the system prompt
+* [Context Surfaces](../getting-started/context-surfaces.md): when to use `description`, `zoe_description`, synonyms, or the system prompt
 * [User Roles](../zenlytic-ui/user_roles.md): the role and permission reference Zoë inherits from
-* [Fixing Zoë's Mistakes](../core-concepts/fixing-zoes-mistakes.md) — diagnostic flow when Zoë gives a wrong answer
+* [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md) — diagnostic flow when Zoë gives a wrong answer
 * [Measures](measure.md) — valid/invalid aggregation patterns for measure SQL

@@ -23,7 +23,7 @@ Dimensions are references to a column in the database or combinations of those r
 `zoe_description`: The description of the dimension as shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the field correctly.
 
 {% hint style="info" %}
-**Field-level `description` and `zoe_description` are capped at 1,024 characters.** For longer guidance, move broader context up to the view's `description` or `zoe_description` (up to 10,000 characters) or into a [Skill](../zenlytic-ui/skills.md). See [Context Surfaces](../core-concepts/context-surfaces.md) for the full visibility/char-limit table.
+**Field-level `description` and `zoe_description` are capped at 1,024 characters.** For longer guidance, move broader context up to the view's `description` or `zoe_description` (up to 10,000 characters) or into a [Skill](../zenlytic-ui/skills.md). See [Context Surfaces](../getting-started/context-surfaces.md) for the full visibility/char-limit table.
 {% endhint %}
 
 `group_label`: The label of the view the field is put into in the left hand sidebar menu. If not specified it defaults to the name of the view the field is present in.

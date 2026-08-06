@@ -11,7 +11,7 @@ description: >-
 
 * **Recurring patterns or domain logic** → create a [Skill](skills.md).
 * **Universal rules and terminology** → add to the system prompt.
-* **Field- or table-specific guidance** → put it on the view or field as a `zoe_description`. See [Context Surfaces](../core-concepts/context-surfaces.md) for the decision tree.
+* **Field- or table-specific guidance** → put it on the view or field as a `zoe_description`. See [Context Surfaces](../getting-started/context-surfaces.md) for the decision tree.
 
 The rest of this page documents the legacy Memories feature for users who already have memories in their workspace. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for a side-by-side comparison.
 {% endhint %}

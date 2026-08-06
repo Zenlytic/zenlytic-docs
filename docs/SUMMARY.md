@@ -1,16 +1,15 @@
 # Table of contents
 
+* [Overview](intro.md)
+
 ## Getting Started
 
-* [Zenlytic Documentation](intro.md)
+* [Zenlytic Documentation](<intro (1).md>)
 * [Start Here](getting-started/start_here.md)
-
-## Core Concepts
-
-* [How Zoë Works](core-concepts/how-zoe-works.md)
-* [Context Surfaces](core-concepts/context-surfaces.md)
-* [Progressive Enrichment](core-concepts/progressive-enrichment.md)
-* [Fixing Zoë's Mistakes](core-concepts/fixing-zoes-mistakes.md)
+* [How Zoë Works](getting-started/how-zoe-works.md)
+* [Context Surfaces](getting-started/context-surfaces.md)
+* [Progressive Enrichment](getting-started/progressive-enrichment.md)
+* [Fixing Zoë's Mistakes](getting-started/fixing-zoes-mistakes.md)
 
 ## Tips & Tricks
 
@@ -68,25 +67,12 @@
 * [Adding a New Table](data-modeling/adding_a_new_table.md)
 * [Cache Refresh](data-modeling/cache-refresh.md)
 
-## Migrations
-
-* [Migrating from Memories and Topics](migrations/migrating-from-memories-and-topics.md)
-
 ## Proactive Agents
 
 * [Proactive Getting Started](proactive-agents/getting-started.md)
 * [Publish](proactive-agents/publish.md)
 * [Schedule Delivery](proactive-agents/schedule-delivery.md)
 * [Run History](proactive-agents/run-history.md)
-
-## Embedding
-
-* [Embedding Overview](embedding/embedding_overview.md)
-* [Private Embedding](embedding/private_embedding.md)
-* [Signed Embedding](embedding/signed_embedding.md)
-* [Permissions in Embedding](embedding/permissions_in_embedding.md)
-* [Embedding Styles](embedding/embedding_styles.md)
-* [Proactive Agents in Embedding](embedding/workflows_in_embedding.md)
 
 ## MCP
 
@@ -136,6 +122,19 @@
 * [Login Troubleshooting](authentication-and-security/login_troubleshooting.md)
 * [Connecting To Github With A Deploy Key](authentication-and-security/connecting_to_github_with_a_deploy_key.md)
 * [SSO Custom Claims Reference](authentication-and-security/sso-custom-claims-reference.md)
+
+## Embedding
+
+* [Embedding Overview](embedding/embedding_overview.md)
+* [Private Embedding](embedding/private_embedding.md)
+* [Signed Embedding](embedding/signed_embedding.md)
+* [Permissions in Embedding](embedding/permissions_in_embedding.md)
+* [Embedding Styles](embedding/embedding_styles.md)
+* [Proactive Agents in Embedding](embedding/workflows_in_embedding.md)
+
+## Migrations
+
+* [Migrating from Memories and Topics](migrations/migrating-from-memories-and-topics.md)
 
 ## Legacy
 

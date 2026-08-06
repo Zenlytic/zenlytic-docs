@@ -7,12 +7,12 @@ description: >-
 # How to Steer Zoë's Answers
 
 {% hint style="info" %}
-**This page has moved.** The canonical home for how Zoë ingests context — the surfaces, their visibility, character limits, and when to use each — is now [Context Surfaces](../core-concepts/context-surfaces.md).
+**This page has moved.** The canonical home for how Zoë ingests context — the surfaces, their visibility, character limits, and when to use each — is now [Context Surfaces](../getting-started/context-surfaces.md).
 {% endhint %}
 
 Zoë uses multiple sources of context to answer questions accurately — the system prompt, skills, view and field descriptions, synonyms, and searchable values. Each source has different visibility and different character limits.
 
-For the full reference, see [Context Surfaces](../core-concepts/context-surfaces.md), which covers:
+For the full reference, see [Context Surfaces](../getting-started/context-surfaces.md), which covers:
 
 * The complete surfaces/visibility/char-limits table
 * When to reach for each surface
@@ -31,4 +31,4 @@ The shortest version:
 * **What users call the field?** `synonyms` on the field.
 * **What values exist in a column?** `searchable: true` on the dimension.
 
-See [Context Surfaces](../core-concepts/context-surfaces.md) for the detailed version.
+See [Context Surfaces](../getting-started/context-surfaces.md) for the detailed version.

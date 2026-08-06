@@ -4,7 +4,6 @@
 
 ## Getting Started
 
-* [Zenlytic Documentation](<intro (1).md>)
 * [Start Here](getting-started/start_here.md)
 * [How Zoë Works](getting-started/how-zoe-works.md)
 * [Context Surfaces](getting-started/context-surfaces.md)

@@ -1734,6 +1734,277 @@
           }
         }
       }
+    },
+    "/workspaces/{workspace_id}/user_attribute_definitions": {
+      "get": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Get User Attribute Definitions",
+        "description": "List the user attribute definitions in the workspace.\n\nA definition declares the ``name``, ``label``, and ``data_type`` of an attribute. The\nper-member and per-group endpoints then assign values against these definitions.",
+        "operationId": "get_user_attribute_definitions_workspaces__workspace_id__user_attribute_definitions_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeDefinitionSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Create User Attribute Definition",
+        "description": "Create a user attribute definition in the workspace.\n\n``name`` must be unique within the workspace; a duplicate returns 409. The ``data_type``\nis fixed at creation time and cannot be changed afterwards.",
+        "operationId": "create_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserAttributeDefinitionSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}": {
+      "delete": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Delete User Attribute Definition",
+        "description": "Delete a user attribute definition and every value assigned against it.\n\nThis removes the attribute from all members and groups in the workspace.",
+        "operationId": "delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "user_attribute_definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Attribute Definition Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Update User Attribute Definition",
+        "description": "Update a user attribute definition's label.\n\nOnly ``label`` is mutable \u2014 ``name`` and ``data_type`` are fixed once created, because\nassigned values and data model references depend on them.",
+        "operationId": "update_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "user_attribute_definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Attribute Definition Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserAttributeDefinitionSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
     }
   },
   "components": {

@@ -6,11 +6,11 @@
   },
   "servers": [
     {
-      "url": "https://api-external.zenlytic.com",
+      "url": "https://api-external.zenlytic.com/api/v2",
       "description": "US"
     },
     {
-      "url": "https://euapi-external.zenlytic.com",
+      "url": "https://euapi-external.zenlytic.com/api/v2",
       "description": "EU"
     }
   ],
@@ -21,7 +21,7 @@
           "Me"
         ],
         "summary": "Get Me",
-        "description": "Retrieve the organization and workspaces a personal access token can see.\n\nNo workspace_id path param required - the response is bound to the token's own\norganization_id/workspace_ids claims. Bearer sessions authenticate fine but get a 404\nfrom the service, since they carry no equivalent single scoped claim to bind to.",
+        "description": "Retrieve your organization and the workspaces you can see.",
         "operationId": "get_me_me_get",
         "responses": {
           "200": {
@@ -40,7 +40,7 @@
                     "workspaces": [
                       {
                         "id": "ws_456",
-                        "shop_name": "acme-prod"
+                        "name": "acme-prod"
                       }
                     ]
                   },
@@ -90,7 +90,7 @@
           "Workspaces"
         ],
         "summary": "List Workspaces For Organization",
-        "description": "List the workspaces under the calling personal access token's organization.\n\nPAT-only, like ``/me`` - organization_scoped Auth derives organization_id from the\ntoken's own claim rather than a path param, so there's nothing here for a bearer\nsession to bind to.",
+        "description": "List the workspaces in your organization.\n\nArchived workspaces are excluded unless ``include_archived`` is true.",
         "operationId": "list_workspaces_for_organization_workspaces_get",
         "security": [
           {
@@ -124,7 +124,7 @@
                   "data": [
                     {
                       "id": "ws_456",
-                      "shop_name": "acme-prod",
+                      "name": "acme-prod",
                       "provision_by_default": true
                     }
                   ],
@@ -164,7 +164,7 @@
           "Workspaces"
         ],
         "summary": "Create Workspace In Organization",
-        "description": "Create a new workspace directly under the calling personal access token's\norganization - for a PAT scoped to the org but not yet a member of any workspace in\nit. The caller must have workspace_management permission on every workspace they\nbelong to in the organization (enforced by the ``organization_scoped`` Auth\ndependency). PAT-only, like ``/me`` - see ``list_workspaces_for_organization`` above.",
+        "description": "Create a new workspace in your organization.\n\nRequires workspace_management permission on every workspace you belong to in the\norganization.",
         "operationId": "create_workspace_in_organization_workspaces_post",
         "security": [
           {
@@ -195,7 +195,7 @@
                 "example": {
                   "data": {
                     "id": "ws_789",
-                    "shop_name": "acme-staging",
+                    "name": "acme-staging",
                     "provision_by_default": false
                   },
                   "meta": {
@@ -230,14 +230,14 @@
         }
       }
     },
-    "/workspaces/{target_workspace_id}": {
+    "/workspaces/{workspace_id}": {
       "delete": {
         "tags": [
           "Workspaces"
         ],
         "summary": "Archive Workspace For Organization",
-        "description": "Archive a workspace under the calling personal access token's organization.\n\nUnlike ``archive_workspace`` above, this doesn't require the caller to already belong\nto a specific \"current\" workspace in the org, so there's no \"cannot archive your\ncurrent workspace\" guard here. Also takes no body - many clients/proxies drop DELETE\nbodies, so there's no reliable confirmation_name check here either. PAT-only, like\n``/me`` - see ``list_workspaces_for_organization`` above.",
-        "operationId": "archive_workspace_for_organization_workspaces__target_workspace_id__delete",
+        "description": "Archive a workspace in your organization.\n\nThis is a soft delete: the workspace is marked archived and inactive, and its users\nare reassigned to another workspace in the organization. There's no confirmation\nstep, so double check ``workspace_id`` before calling.",
+        "operationId": "archive_workspace_for_organization_workspaces__workspace_id__delete",
         "security": [
           {
             "HTTPBearer": []
@@ -248,12 +248,12 @@
         ],
         "parameters": [
           {
-            "name": "target_workspace_id",
+            "name": "workspace_id",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "title": "Target Workspace Id"
+              "title": "Workspace Id"
             }
           }
         ],
@@ -290,7 +290,7 @@
           "Groups"
         ],
         "summary": "Get Group User Attributes",
-        "description": "List the user attribute values set on a group.\n\nThese apply to every member of the group. When a member is in several groups that set the\nsame attribute, the group with the highest ``user_attribute_precedence`` wins.",
+        "description": "List the user attribute values set on a group.\n\nThese apply to every member of the group. When a member is in several groups that set the\nsame attribute, the group with the highest ``user_attribute_precedence`` wins.\n\n``source`` is always ``\"group\"`` and ``source_id`` always matches this group's ID here \u2014\nboth only vary on the member user attributes endpoint, where a value can come from any of a\nmember's groups or be set directly on the member.",
         "operationId": "get_group_user_attributes_workspaces__workspace_id__groups__group_id__user_attributes_get",
         "security": [
           {
@@ -378,7 +378,7 @@
           "Groups"
         ],
         "summary": "Create Group User Attribute",
-        "description": "Set a user attribute value on a group.\n\n``user_attribute_definition_id`` must reference an existing definition in the workspace. A\ngroup can only set each definition once; a second value for the same definition returns\n409 \u2014 patch the existing value instead.",
+        "description": "Set a user attribute value on a group.\n\n``user_attribute_definition_id`` must reference an existing definition in the workspace. A\ngroup can only set each definition once; a second value for the same definition returns\n409 \u2014 patch the existing value instead.\n\n``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric\nstring for ``number``.",
         "operationId": "create_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes_post",
         "security": [
           {
@@ -546,7 +546,7 @@
           "Groups"
         ],
         "summary": "Update Group User Attribute",
-        "description": "Update the value of a user attribute already set on a group.\n\nOnly ``value`` is mutable; to point at a different definition, delete this value and\ncreate a new one.",
+        "description": "Update the value of a user attribute already set on a group.\n\nOnly ``value`` is mutable; to point at a different definition, delete this value and\ncreate a new one. ``value`` must match the existing definition's ``data_type``:\n``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.",
         "operationId": "update_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__patch",
         "security": [
           {
@@ -907,7 +907,7 @@
           "Groups"
         ],
         "summary": "Update Group",
-        "description": "Update a group's name, members, or user attribute precedence.\n\nThe built-in \"All Users\" group cannot be updated; its membership always tracks the\nworkspace roster.",
+        "description": "Update a group's name or user attribute precedence.\n\nThe built-in \"All Users\" group cannot be updated; its membership always tracks the\nworkspace roster. A warning is returned if the update makes this group's precedence\nmatch another group's in the workspace.",
         "operationId": "update_group_workspaces__workspace_id__groups__group_id__patch",
         "security": [
           {
@@ -1066,7 +1066,7 @@
           "User Attributes"
         ],
         "summary": "Get Member User Attributes",
-        "description": "List the user attribute values that apply to a workspace member.\n\nIncludes values inherited from the member's groups as well as values set directly on the\nmember. ``is_overridden`` marks a group-inherited value that a higher-precedence value has\nsuperseded, so the effective set is the entries where it is false.",
+        "description": "List the user attribute values that apply to a workspace member.\n\nIncludes values inherited from the member's groups as well as values set directly on the\nmember. ``is_overridden`` marks a group-inherited value that a higher-precedence group's\nvalue, or a value set directly on the member, has superseded - so the effective set is\nthe entries where it is false. ``user_attribute_precedence`` is ``null`` exactly when\n``source`` is ``\"user\"`` (a directly-set value) - only groups carry a precedence.",
         "operationId": "get_member_user_attributes_workspaces__workspace_id__members__member_id__user_attributes_get",
         "security": [
           {
@@ -1115,6 +1115,17 @@
                       "source": "user",
                       "source_id": "usr_111",
                       "is_overridden": false
+                    },
+                    {
+                      "id": "ua_790",
+                      "user_attribute_definition_id": "uad_124",
+                      "value": "2024-01-15",
+                      "data_type": "date",
+                      "name": "renewal_date",
+                      "source": "group",
+                      "source_id": "grp_123",
+                      "user_attribute_precedence": 1,
+                      "is_overridden": true
                     }
                   ],
                   "meta": {
@@ -1153,7 +1164,7 @@
           "User Attributes"
         ],
         "summary": "Create Member User Attribute",
-        "description": "Set a user attribute value directly on a workspace member.\n\nA value set here takes precedence over any value the member inherits from a group. Each\nmember can only set a given definition once; a duplicate returns 409 \u2014 patch the existing\nvalue instead.",
+        "description": "Set a user attribute value directly on a workspace member.\n\nA value set here takes precedence over any value the member inherits from a group. Each\nmember can only set a given definition once; a duplicate returns 409 \u2014 patch the existing\nvalue instead.\n\n``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric\nstring for ``number``.",
         "operationId": "create_member_user_attribute_workspaces__workspace_id__members__member_id__user_attributes_post",
         "security": [
           {
@@ -1319,9 +1330,9 @@
         "tags": [
           "User Attributes"
         ],
-        "summary": "Update Group User Attribute",
-        "description": "Update the value of a user attribute set directly on a workspace member.\n\nOnly ``value`` is mutable; to point at a different definition, delete this value and\ncreate a new one.",
-        "operationId": "update_group_user_attribute_workspaces__workspace_id__members__member_id__user_attributes__user_attribute_id__patch",
+        "summary": "Update Member User Attribute",
+        "description": "Update the value of a user attribute set directly on a workspace member.\n\nOnly ``value`` is mutable; to point at a different definition, delete this value and\ncreate a new one. ``value`` must match the existing definition's ``data_type``:\n``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.",
+        "operationId": "update_member_user_attribute_workspaces__workspace_id__members__member_id__user_attributes__user_attribute_id__patch",
         "security": [
           {
             "HTTPBearer": []
@@ -1734,277 +1745,6 @@
           }
         }
       }
-    },
-    "/workspaces/{workspace_id}/user_attribute_definitions": {
-      "get": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Get User Attribute Definitions",
-        "description": "List the user attribute definitions in the workspace.\n\nA definition declares the ``name``, ``label``, and ``data_type`` of an attribute. The\nper-member and per-group endpoints then assign values against these definitions.",
-        "operationId": "get_user_attribute_definitions_workspaces__workspace_id__user_attribute_definitions_get",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeDefinitionSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Create User Attribute Definition",
-        "description": "Create a user attribute definition in the workspace.\n\n``name`` must be unique within the workspace; a duplicate returns 409. The ``data_type``\nis fixed at creation time and cannot be changed afterwards.",
-        "operationId": "create_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserAttributeDefinitionSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}": {
-      "delete": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Delete User Attribute Definition",
-        "description": "Delete a user attribute definition and every value assigned against it.\n\nThis removes the attribute from all members and groups in the workspace.",
-        "operationId": "delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "user_attribute_definition_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "User Attribute Definition Id"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful Response"
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Update User Attribute Definition",
-        "description": "Update a user attribute definition's label.\n\nOnly ``label`` is mutable \u2014 ``name`` and ``data_type`` are fixed once created, because\nassigned values and data model references depend on them.",
-        "operationId": "update_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__patch",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "user_attribute_definition_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "User Attribute Definition Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserAttributeDefinitionSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -2181,6 +1921,11 @@
         ],
         "title": "ApiV2Response[UserAttributeSchema]"
       },
+      "BaseErrorMetadata": {
+        "properties": {},
+        "type": "object",
+        "title": "BaseErrorMetadata"
+      },
       "CreateGroupSchema": {
         "properties": {
           "name": {
@@ -2189,7 +1934,8 @@
           },
           "user_attribute_precedence": {
             "type": "integer",
-            "title": "User Attribute Precedence"
+            "title": "User Attribute Precedence",
+            "description": "Must be greater than 0; 0 is reserved for the all_users group."
           }
         },
         "type": "object",
@@ -2264,9 +2010,9 @@
             "type": "string",
             "title": "Id"
           },
-          "shop_name": {
+          "name": {
             "type": "string",
-            "title": "Shop Name"
+            "title": "Name"
           },
           "provision_by_default": {
             "type": "boolean",
@@ -2276,15 +2022,15 @@
         "type": "object",
         "required": [
           "id",
-          "shop_name",
+          "name",
           "provision_by_default"
         ],
         "title": "CreateWorkspaceResponseSchema",
         "examples": [
           {
             "id": "ws_789",
-            "provision_by_default": false,
-            "shop_name": "acme-staging"
+            "name": "acme-staging",
+            "provision_by_default": false
           }
         ]
       },
@@ -2354,7 +2100,7 @@
           "error_metadata": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/FieldAlreadyExistsErrorMetadata"
+                "$ref": "#/components/schemas/BaseErrorMetadata"
               },
               {
                 "type": "null"
@@ -2374,22 +2120,6 @@
             "status_code": 404
           }
         ]
-      },
-      "FieldAlreadyExistsErrorMetadata": {
-        "properties": {
-          "existing_column_ids": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Existing Column Ids"
-          }
-        },
-        "type": "object",
-        "required": [
-          "existing_column_ids"
-        ],
-        "title": "FieldAlreadyExistsErrorMetadata"
       },
       "GroupResponseSchema": {
         "properties": {
@@ -2473,7 +2203,7 @@
             "workspaces": [
               {
                 "id": "ws_456",
-                "shop_name": "acme-prod"
+                "name": "acme-prod"
               }
             ]
           }
@@ -2553,21 +2283,21 @@
             "type": "string",
             "title": "Id"
           },
-          "shop_name": {
+          "name": {
             "type": "string",
-            "title": "Shop Name"
+            "title": "Name"
           }
         },
         "type": "object",
         "required": [
           "id",
-          "shop_name"
+          "name"
         ],
         "title": "MyWorkspaceSchema",
         "examples": [
           {
             "id": "ws_456",
-            "shop_name": "acme-prod"
+            "name": "acme-prod"
           }
         ]
       },
@@ -2601,7 +2331,8 @@
                 "type": "null"
               }
             ],
-            "title": "User Attribute Precedence"
+            "title": "User Attribute Precedence",
+            "description": "Must be greater than 0; 0 is reserved for the all_users group."
           }
         },
         "type": "object",
@@ -2802,9 +2533,9 @@
             "type": "string",
             "title": "Id"
           },
-          "shop_name": {
+          "name": {
             "type": "string",
-            "title": "Shop Name"
+            "title": "Name"
           },
           "provision_by_default": {
             "type": "boolean",
@@ -2826,15 +2557,15 @@
         "type": "object",
         "required": [
           "id",
-          "shop_name",
+          "name",
           "provision_by_default"
         ],
         "title": "WorkspaceManagerWorkspaceSchema",
         "examples": [
           {
             "id": "ws_456",
-            "provision_by_default": true,
-            "shop_name": "acme-prod"
+            "name": "acme-prod",
+            "provision_by_default": true
           }
         ]
       }

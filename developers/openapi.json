@@ -2,23 +2,13 @@
   "openapi": "3.1.0",
   "info": {
     "title": "FastAPI",
-    "version": "2.0.0"
+    "version": "0.1.0"
   },
-  "servers": [
-    {
-      "url": "https://api-external.zenlytic.com",
-      "description": "US"
-    },
-    {
-      "url": "https://euapi-external.zenlytic.com",
-      "description": "EU"
-    }
-  ],
   "paths": {
-    "/me": {
+    "/api/v2/me": {
       "get": {
         "tags": [
-          "Me"
+          "Workspaces"
         ],
         "summary": "Get Me",
         "description": "Retrieve the organization and workspaces a personal access token can see.\n\nNo workspace_id path param required - the response is bound to the token's own\norganization_id/workspace_ids claims. Bearer sessions authenticate fine but get a 404\nfrom the service, since they carry no equivalent single scoped claim to bind to.",
@@ -30,25 +20,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_MeSchema_"
-                },
-                "example": {
-                  "data": {
-                    "organization": {
-                      "id": "org_123",
-                      "name": "Acme Corp"
-                    },
-                    "workspaces": [
-                      {
-                        "id": "ws_456",
-                        "shop_name": "acme-prod"
-                      }
-                    ]
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -84,14 +55,14 @@
         ]
       }
     },
-    "/workspaces": {
+    "/api/v2/workspace-manager/{workspace_id}": {
       "get": {
         "tags": [
           "Workspaces"
         ],
-        "summary": "List Workspaces For Organization",
-        "description": "List the workspaces under the calling personal access token's organization.\n\nPAT-only, like ``/me`` - organization_scoped Auth derives organization_id from the\ntoken's own claim rather than a path param, so there's nothing here for a bearer\nsession to bind to.",
-        "operationId": "list_workspaces_for_organization_workspaces_get",
+        "summary": "Get Workspace Manager",
+        "description": "Retrieve the organization that owns ``workspace_id``, with its workspaces.\n\n``workspace_id`` identifies the caller's current workspace; the response describes the whole\norganization, not just that workspace. Archived workspaces are excluded unless\n``include_archived`` is true.",
+        "operationId": "get_workspace_manager_workspace_manager__workspace_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -101,6 +72,15 @@
           }
         ],
         "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
           {
             "name": "include_archived",
             "in": "query",
@@ -118,91 +98,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiV2CollectionResponse_WorkspaceManagerWorkspaceSchema_"
-                },
-                "example": {
-                  "data": [
-                    {
-                      "id": "ws_456",
-                      "shop_name": "acme-prod",
-                      "provision_by_default": true
-                    }
-                  ],
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Workspaces"
-        ],
-        "summary": "Create Workspace In Organization",
-        "description": "Create a new workspace directly under the calling personal access token's\norganization - for a PAT scoped to the org but not yet a member of any workspace in\nit. The caller must have workspace_management permission on every workspace they\nbelong to in the organization (enforced by the ``organization_scoped`` Auth\ndependency). PAT-only, like ``/me`` - see ``list_workspaces_for_organization`` above.",
-        "operationId": "create_workspace_in_organization_workspaces_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateWorkspaceSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_CreateWorkspaceResponseSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "ws_789",
-                    "shop_name": "acme-staging",
-                    "provision_by_default": false
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
+                  "$ref": "#/components/schemas/ApiV2Response_WorkspaceManagerOrgSchema_"
                 }
               }
             }
@@ -230,14 +126,14 @@
         }
       }
     },
-    "/workspaces/{target_workspace_id}": {
-      "delete": {
+    "/api/v2/workspace-manager/{workspace_id}/workspaces": {
+      "post": {
         "tags": [
           "Workspaces"
         ],
-        "summary": "Archive Workspace For Organization",
-        "description": "Archive a workspace under the calling personal access token's organization.\n\nUnlike ``archive_workspace`` above, this doesn't require the caller to already belong\nto a specific \"current\" workspace in the org, so there's no \"cannot archive your\ncurrent workspace\" guard here. Also takes no body - many clients/proxies drop DELETE\nbodies, so there's no reliable confirmation_name check here either. PAT-only, like\n``/me`` - see ``list_workspaces_for_organization`` above.",
-        "operationId": "archive_workspace_for_organization_workspaces__target_workspace_id__delete",
+        "summary": "Create Workspace",
+        "description": "Create a new workspace in the organization that owns ``workspace_id``.\n\nThe new workspace gets an \"All Users\" group, the calling user as an organization admin, and\nevery other org admin added automatically. It inherits the source workspace's data\nprocessing region, and any enterprise LLM credentials are copied over.",
+        "operationId": "create_workspace_workspace_manager__workspace_id__workspaces_post",
         "security": [
           {
             "HTTPBearer": []
@@ -248,6 +144,86 @@
         ],
         "parameters": [
           {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkspaceSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_CreateWorkspaceResponseSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v2/workspace-manager/{workspace_id}/workspaces/{target_workspace_id}/archive": {
+      "post": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "Archive Workspace",
+        "description": "Archive a workspace in the caller's organization.\n\nThis is a soft delete: the workspace is marked archived and inactive, and its users are\nreassigned to another workspace in the organization. ``confirmation_name`` must match the\ntarget workspace's name, and you cannot archive the workspace you are currently in.",
+        "operationId": "archive_workspace_workspace_manager__workspace_id__workspaces__target_workspace_id__archive_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
             "name": "target_workspace_id",
             "in": "path",
             "required": true,
@@ -257,6 +233,16 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteWorkspaceSchema"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Successful Response"
@@ -284,7 +270,425 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/groups/{group_id}/user_attributes": {
+    "/api/v2/workspace-manager/{workspace_id}/workspaces/{target_workspace_id}/provisioning": {
+      "put": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "Update Provisioning",
+        "operationId": "update_provisioning_workspace_manager__workspace_id__workspaces__target_workspace_id__provisioning_put",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "target_workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Target Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProvisioningSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_WorkspaceManagerOrgSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v2/workspace-manager/{workspace_id}/require-sso": {
+      "put": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "Update Require Sso",
+        "operationId": "update_require_sso_workspace_manager__workspace_id__require_sso_put",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRequireSsoSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_WorkspaceManagerOrgSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v2/workspace-manager/{workspace_id}/credentials": {
+      "get": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "List Credentials",
+        "operationId": "list_credentials_workspace_manager__workspace_id__credentials_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2CollectionResponse_CredentialSummarySchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v2/workspace-manager/{workspace_id}/workspaces/{target_workspace_id}/copy-credentials": {
+      "post": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "Copy Credentials",
+        "operationId": "copy_credentials_workspace_manager__workspace_id__workspaces__target_workspace_id__copy_credentials_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "target_workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Target Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CopyCredentialsSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_CopyCredentialsResponseSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v2/workspace-manager/{workspace_id}/org-admins": {
+      "get": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "List Org Admins",
+        "operationId": "list_org_admins_workspace_manager__workspace_id__org_admins_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2CollectionResponse_OrgAdminSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v2/workspace-manager/{workspace_id}/org-admins/demote": {
+      "post": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "Demote Org Admin",
+        "operationId": "demote_org_admin_workspace_manager__workspace_id__org_admins_demote_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DemoteOrgAdminSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2CollectionResponse_OrgAdminSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/api/v2/workspaces/{workspace_id}/groups/{group_id}/user_attributes": {
       "get": {
         "tags": [
           "Groups"
@@ -327,26 +731,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_"
-                },
-                "example": {
-                  "data": [
-                    {
-                      "id": "ua_789",
-                      "user_attribute_definition_id": "uad_123",
-                      "value": "west",
-                      "data_type": "string",
-                      "name": "region",
-                      "source": "group",
-                      "source_id": "grp_123",
-                      "user_attribute_precedence": 1,
-                      "is_overridden": false
-                    }
-                  ],
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -425,24 +809,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "ua_789",
-                    "user_attribute_definition_id": "uad_123",
-                    "value": "west",
-                    "data_type": "string",
-                    "name": "region",
-                    "source": "group",
-                    "source_id": "grp_123",
-                    "user_attribute_precedence": 1,
-                    "is_overridden": false
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -470,7 +836,7 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/groups/{group_id}/user_attributes/{user_attribute_id}": {
+    "/api/v2/workspaces/{workspace_id}/groups/{group_id}/user_attributes/{user_attribute_id}": {
       "delete": {
         "tags": [
           "Groups"
@@ -602,24 +968,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "ua_789",
-                    "user_attribute_definition_id": "uad_123",
-                    "value": "east",
-                    "data_type": "string",
-                    "name": "region",
-                    "source": "group",
-                    "source_id": "grp_123",
-                    "user_attribute_precedence": 1,
-                    "is_overridden": false
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -647,7 +995,7 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/groups": {
+    "/api/v2/workspaces/{workspace_id}/groups": {
       "get": {
         "tags": [
           "Groups"
@@ -681,26 +1029,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_GroupResponseSchema_"
-                },
-                "example": {
-                  "data": [
-                    {
-                      "id": "grp_123",
-                      "workspace_id": "ws_456",
-                      "name": "Sales",
-                      "is_all_users": false,
-                      "user_attribute_precedence": 1,
-                      "users": [
-                        "usr_111",
-                        "usr_222"
-                      ]
-                    }
-                  ],
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -770,24 +1098,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "grp_123",
-                    "workspace_id": "ws_456",
-                    "name": "Sales",
-                    "is_all_users": false,
-                    "user_attribute_precedence": 1,
-                    "users": [
-                      "usr_111",
-                      "usr_222"
-                    ]
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -815,7 +1125,7 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/groups/{group_id}": {
+    "/api/v2/workspaces/{workspace_id}/groups/{group_id}": {
       "get": {
         "tags": [
           "Groups"
@@ -858,24 +1168,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "grp_123",
-                    "workspace_id": "ws_456",
-                    "name": "Sales",
-                    "is_all_users": false,
-                    "user_attribute_precedence": 1,
-                    "users": [
-                      "usr_111",
-                      "usr_222"
-                    ]
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -954,24 +1246,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "grp_123",
-                    "workspace_id": "ws_456",
-                    "name": "Sales Team",
-                    "is_all_users": false,
-                    "user_attribute_precedence": 2,
-                    "users": [
-                      "usr_111",
-                      "usr_222"
-                    ]
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -1060,7 +1334,7 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/members/{member_id}/user_attributes": {
+    "/api/v2/workspaces/{workspace_id}/members/{member_id}/user_attributes": {
       "get": {
         "tags": [
           "User Attributes"
@@ -1103,25 +1377,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_"
-                },
-                "example": {
-                  "data": [
-                    {
-                      "id": "ua_789",
-                      "user_attribute_definition_id": "uad_123",
-                      "value": "west",
-                      "data_type": "string",
-                      "name": "region",
-                      "source": "user",
-                      "source_id": "usr_111",
-                      "is_overridden": false
-                    }
-                  ],
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -1200,23 +1455,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "ua_789",
-                    "user_attribute_definition_id": "uad_123",
-                    "value": "west",
-                    "data_type": "string",
-                    "name": "region",
-                    "source": "user",
-                    "source_id": "usr_111",
-                    "is_overridden": false
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -1244,7 +1482,7 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/members/{member_id}/user_attributes/{user_attribute_id}": {
+    "/api/v2/workspaces/{workspace_id}/members/{member_id}/user_attributes/{user_attribute_id}": {
       "delete": {
         "tags": [
           "User Attributes"
@@ -1376,23 +1614,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "ua_789",
-                    "user_attribute_definition_id": "uad_123",
-                    "value": "east",
-                    "data_type": "string",
-                    "name": "region",
-                    "source": "user",
-                    "source_id": "usr_111",
-                    "is_overridden": false
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
                 }
               }
             }
@@ -1420,322 +1641,7 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/user_attribute_definitions": {
-      "get": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Get User Attribute Definitions",
-        "description": "List the user attribute definitions in the workspace.\n\nA definition declares the ``name``, ``label``, and ``data_type`` of an attribute. The\nper-member and per-group endpoints then assign values against these definitions.",
-        "operationId": "get_user_attribute_definitions_workspaces__workspace_id__user_attribute_definitions_get",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeDefinitionSchema_"
-                },
-                "example": {
-                  "data": [
-                    {
-                      "id": "uad_123",
-                      "workspace_id": "ws_456",
-                      "name": "region",
-                      "data_type": "string",
-                      "label": "Region"
-                    }
-                  ],
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Create User Attribute Definition",
-        "description": "Create a user attribute definition in the workspace.\n\n``name`` must be unique within the workspace; a duplicate returns 409. The ``data_type``\nis fixed at creation time and cannot be changed afterwards.",
-        "operationId": "create_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserAttributeDefinitionSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "uad_123",
-                    "workspace_id": "ws_456",
-                    "name": "region",
-                    "data_type": "string",
-                    "label": "Region"
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}": {
-      "delete": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Delete User Attribute Definition",
-        "description": "Delete a user attribute definition and every value assigned against it.\n\nThis removes the attribute from all members and groups in the workspace.",
-        "operationId": "delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "user_attribute_definition_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "User Attribute Definition Id"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful Response"
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Update User Attribute Definition",
-        "description": "Update a user attribute definition's label.\n\nOnly ``label`` is mutable \u2014 ``name`` and ``data_type`` are fixed once created, because\nassigned values and data model references depend on them.",
-        "operationId": "update_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__patch",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "user_attribute_definition_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "User Attribute Definition Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserAttributeDefinitionSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
-                },
-                "example": {
-                  "data": {
-                    "id": "uad_123",
-                    "workspace_id": "ws_456",
-                    "name": "region",
-                    "data_type": "string",
-                    "label": "Sales Region"
-                  },
-                  "meta": {
-                    "status": "success",
-                    "errors": [],
-                    "warnings": []
-                  }
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/workspaces/{workspace_id}/user_attribute_definitions": {
+    "/api/v2/workspaces/{workspace_id}/user_attribute_definitions": {
       "get": {
         "tags": [
           "User Attributes"
@@ -1865,7 +1771,7 @@
         }
       }
     },
-    "/workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}": {
+    "/api/v2/workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}": {
       "delete": {
         "tags": [
           "User Attributes"
@@ -2009,6 +1915,26 @@
   },
   "components": {
     "schemas": {
+      "ApiV2CollectionResponse_CredentialSummarySchema_": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/CredentialSummarySchema"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaSchema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "ApiV2CollectionResponse[CredentialSummarySchema]"
+      },
       "ApiV2CollectionResponse_GroupResponseSchema_": {
         "properties": {
           "data": {
@@ -2028,6 +1954,26 @@
           "meta"
         ],
         "title": "ApiV2CollectionResponse[GroupResponseSchema]"
+      },
+      "ApiV2CollectionResponse_OrgAdminSchema_": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/OrgAdminSchema"
+            },
+            "type": "array",
+            "title": "Data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaSchema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "ApiV2CollectionResponse[OrgAdminSchema]"
       },
       "ApiV2CollectionResponse_UserAttributeDefinitionSchema_": {
         "properties": {
@@ -2069,26 +2015,6 @@
         ],
         "title": "ApiV2CollectionResponse[UserAttributeSchema]"
       },
-      "ApiV2CollectionResponse_WorkspaceManagerWorkspaceSchema_": {
-        "properties": {
-          "data": {
-            "items": {
-              "$ref": "#/components/schemas/WorkspaceManagerWorkspaceSchema"
-            },
-            "type": "array",
-            "title": "Data"
-          },
-          "meta": {
-            "$ref": "#/components/schemas/MetaSchema"
-          }
-        },
-        "type": "object",
-        "required": [
-          "data",
-          "meta"
-        ],
-        "title": "ApiV2CollectionResponse[WorkspaceManagerWorkspaceSchema]"
-      },
       "ApiV2ErrorResponse": {
         "properties": {
           "meta": {
@@ -2100,6 +2026,22 @@
           "meta"
         ],
         "title": "ApiV2ErrorResponse"
+      },
+      "ApiV2Response_CopyCredentialsResponseSchema_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CopyCredentialsResponseSchema"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaSchema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "ApiV2Response[CopyCredentialsResponseSchema]"
       },
       "ApiV2Response_CreateWorkspaceResponseSchema_": {
         "properties": {
@@ -2180,6 +2122,54 @@
           "meta"
         ],
         "title": "ApiV2Response[UserAttributeSchema]"
+      },
+      "ApiV2Response_WorkspaceManagerOrgSchema_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/WorkspaceManagerOrgSchema"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaSchema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "ApiV2Response[WorkspaceManagerOrgSchema]"
+      },
+      "CopyCredentialsResponseSchema": {
+        "properties": {
+          "new_credential_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "New Credential Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "new_credential_ids"
+        ],
+        "title": "CopyCredentialsResponseSchema"
+      },
+      "CopyCredentialsSchema": {
+        "properties": {
+          "credential_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Credential Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "credential_ids"
+        ],
+        "title": "CopyCredentialsSchema"
       },
       "CreateGroupSchema": {
         "properties": {
@@ -2311,6 +2301,70 @@
             "provision_by_default": false
           }
         ]
+      },
+      "CredentialSummarySchema": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "workspace_id": {
+            "type": "string",
+            "title": "Workspace Id"
+          },
+          "workspace_name": {
+            "type": "string",
+            "title": "Workspace Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "workspace_id",
+          "workspace_name"
+        ],
+        "title": "CredentialSummarySchema"
+      },
+      "DeleteWorkspaceSchema": {
+        "properties": {
+          "confirmation_name": {
+            "type": "string",
+            "title": "Confirmation Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "confirmation_name"
+        ],
+        "title": "DeleteWorkspaceSchema"
+      },
+      "DemoteOrgAdminSchema": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "new_role": {
+            "type": "string",
+            "title": "New Role"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "new_role"
+        ],
+        "title": "DemoteOrgAdminSchema"
       },
       "ErrorSchema": {
         "properties": {
@@ -2571,6 +2625,46 @@
           }
         ]
       },
+      "OrgAdminSchema": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email"
+          },
+          "first_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Name"
+          },
+          "last_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "email"
+        ],
+        "title": "OrgAdminSchema"
+      },
       "ResponseStatus": {
         "type": "string",
         "enum": [
@@ -2612,6 +2706,32 @@
             "user_attribute_precedence": 2
           }
         ]
+      },
+      "UpdateProvisioningSchema": {
+        "properties": {
+          "provision_by_default": {
+            "type": "boolean",
+            "title": "Provision By Default"
+          }
+        },
+        "type": "object",
+        "required": [
+          "provision_by_default"
+        ],
+        "title": "UpdateProvisioningSchema"
+      },
+      "UpdateRequireSsoSchema": {
+        "properties": {
+          "require_sso": {
+            "type": "boolean",
+            "title": "Require Sso"
+          }
+        },
+        "type": "object",
+        "required": [
+          "require_sso"
+        ],
+        "title": "UpdateRequireSsoSchema"
       },
       "UpdateUserAttributeDefinitionSchema": {
         "properties": {
@@ -2796,6 +2916,51 @@
           }
         ]
       },
+      "WorkspaceManagerOrgSchema": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "require_sso": {
+            "type": "boolean",
+            "title": "Require Sso",
+            "default": false
+          },
+          "workspaces": {
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceManagerWorkspaceSchema"
+            },
+            "type": "array",
+            "title": "Workspaces"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "workspaces"
+        ],
+        "title": "WorkspaceManagerOrgSchema",
+        "examples": [
+          {
+            "id": "org_123",
+            "name": "Acme Corp",
+            "require_sso": false,
+            "workspaces": [
+              {
+                "id": "ws_456",
+                "provision_by_default": true,
+                "shop_name": "acme-prod"
+              }
+            ]
+          }
+        ]
+      },
       "WorkspaceManagerWorkspaceSchema": {
         "properties": {
           "id": {
@@ -2857,9 +3022,6 @@
     },
     {
       "name": "Admin"
-    },
-    {
-      "name": "Me"
     },
     {
       "name": "Workspaces",

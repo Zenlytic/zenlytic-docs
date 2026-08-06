@@ -1,14 +1,12 @@
 ---
 description: >-
-  Connect GitHub Copilot Chat in VS Code to Zenlytic's MCP server so it can
-  query your business data directly from your editor.
+  Connect Cursor to Zenlytic's MCP server so it can query your business data
+  directly from your editor.
 ---
 
-# Connecting GitHub Copilot to Zenlytic
+# Cursor
 
-GitHub Copilot Chat in VS Code reads MCP servers from an `mcp.json` file. See [MCP Server](connecting-to-zenlytic.md) for what you get once connected and general prerequisites.
-
-> Note the top-level key here is `servers`, not `mcpServers` like Cursor and Claude Desktop use — a common copy-paste mistake.
+Cursor supports both native OAuth and static tokens for remote MCP servers, configured in an `mcp.json` file. See [MCP Server](./) for what you get once connected and general prerequisites.
 
 ## Before you start
 
@@ -16,22 +14,20 @@ You'll need Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com
 
 ## Connect with OAuth (recommended)
 
-1. Open the Command Palette and run **MCP: Open User Configuration** (for a config available in every workspace), or create `.vscode/mcp.json` in your project for a project-scoped config.
+1. Create or open `.cursor/mcp.json` in your project (or `~/.cursor/mcp.json` for a config available in every project).
 2. Add an entry for Zenlytic:
 
 ```json
 {
-  "servers": {
+  "mcpServers": {
     "zenlytic": {
-      "type": "http",
       "url": "https://mcp.zenlytic.com/mcp"
     }
   }
 }
 ```
 
-3. VS Code will prompt you to trust the server the first time it starts — approve it.
-4. Click **Auth** in the CodeLens above the server entry in `mcp.json` to complete the OAuth flow in your browser.
+3. Open **Cursor Settings → MCP**, find **zenlytic**, and click **Connect** — Cursor will detect that OAuth is supported, open a browser window to log in, and handle token storage and refresh for you.
 
 ## Connect with a Personal Access Token (alternative)
 
@@ -42,9 +38,8 @@ If OAuth isn't available for your deployment, add the token as a static header i
 
 ```json
 {
-  "servers": {
+  "mcpServers": {
     "zenlytic": {
-      "type": "http",
       "url": "https://mcp.zenlytic.com/mcp",
       "headers": {
         "Authorization": "Bearer <your-personal-access-token>"
@@ -53,9 +48,10 @@ If OAuth isn't available for your deployment, add the token as a static header i
   }
 }
 ```
+
 ## Using it
 
-Once connected, ask Copilot Chat a data question naturally, for example:
+Once connected, ask Cursor's agent a data question naturally, for example:
 
 > "Hey Zoe, who were our top 5 customers by revenue last month?"
 

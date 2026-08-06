@@ -1,7 +1,7 @@
 ---
 description: >-
-  Connect AI tools like Claude Desktop, Claude Code, Cursor, GitHub Copilot,
-  and ChatGPT to Zenlytic's MCP server so they can query your business data
+  Connect AI tools like Claude Desktop, Claude Code, Cursor, GitHub Copilot, and
+  ChatGPT to Zenlytic's MCP server so they can query your business data
   directly.
 ---
 
@@ -11,7 +11,7 @@ Zenlytic supports the [Model Context Protocol (MCP)](https://modelcontextprotoco
 
 This guide walks through connecting an MCP client to Zenlytic and what to expect once you do.
 
-> This is the reverse of [MCP Client](client.md): here, **Zenlytic is the MCP server** and your AI tool is the client. If you're instead looking to connect Zoë to an external MCP server, see [MCP Client](client.md).
+> This is the reverse of [MCP Client](../client/): here, **Zenlytic is the MCP server** and your AI tool is the client. If you're instead looking to connect Zoë to an external MCP server, see [MCP Client](../client/).
 
 ## What you get
 

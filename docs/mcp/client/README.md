@@ -6,7 +6,7 @@ description: >-
 
 # MCP Client
 
-> Looking to connect an AI tool like Claude Desktop, Claude Code, or Cursor *to* Zenlytic instead? See [MCP Server](connecting-to-zenlytic.md) — that page covers the reverse direction, where Zenlytic is the server.
+> Looking to connect an AI tool like Claude Desktop, Claude Code, or Cursor _to_ Zenlytic instead? See [MCP Server](../connecting-to-zenlytic/) — that page covers the reverse direction, where Zenlytic is the server.
 
 Zenlytic acts as an **MCP client**: point Zoë at a compatible remote MCP server, and the tools that server advertises become available alongside Zoë's native ones. When enabled, Zoë can then pull data and trigger workflows from external systems directly from the Zenlytic chat experience.
 
@@ -35,20 +35,20 @@ To connect any MCP server, confirm the following:
 
 1. Open **Workspace Settings → Extensions → MCP Connectors** in Zenlytic.
 
-<figure><img src="../.gitbook/assets/new-mcp-connection.png" alt="MCP Connectors page with no MCPs added yet"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/new-mcp-connection.png" alt="MCP Connectors page with no MCPs added yet"><figcaption></figcaption></figure>
 
 2. To connect one of the examples listed below, follow the linked setup guide.
 3. To connect an MCP server, click **Add a New Connector**, fill in the name, Access grant, HTTPS endpoint URL, and any authentication headers, then click **Test Connection**.
 
-<figure><img src="../.gitbook/assets/adding-mcp-connection.png" alt="Adding MCP connection details"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/adding-mcp-connection.png" alt="Adding MCP connection details"><figcaption></figcaption></figure>
 
 4. Review the discovered tools and toggle off any that Zoë shouldn't be able to call.
 
-<figure><img src="../.gitbook/assets/add-new-connection.png" alt="Testing MCP connection details"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/add-new-connection.png" alt="Testing MCP connection details"><figcaption></figcaption></figure>
 
 5. Click **Add Connection** to save.
 
-<figure><img src="../.gitbook/assets/mcp-connections-list.png" alt="Testing MCP connection details"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/mcp-connections-list.png" alt="Testing MCP connection details"><figcaption></figcaption></figure>
 
 Once a connection is active, open any chat, toggle the connection on from the tool menu, and ask Zoë a question that uses it. Admins can manage, rotate credentials, refresh tools, or delete any MCP connection at any time from the MCP Connectors page in Workspace Settings.
 
@@ -83,4 +83,4 @@ These guides are provided for general reference, be prepared for some details to
 
 End-to-end walkthroughs that combine an MCP connection with Zoë to solve a specific problem:
 
-* [Audit a semantic layer with a repo MCP](audit-semantic-layer.md) — point Zoë at the repo that holds your Zenlytic data model so she can read every view at once and recommend the highest-leverage additions. Uses the GitHub MCP for a practical example, with DeepWiki as a read-only alternative for public repos.
+* [Audit a semantic layer with a repo MCP](../audit-semantic-layer.md) — point Zoë at the repo that holds your Zenlytic data model so she can read every view at once and recommend the highest-leverage additions. Uses the GitHub MCP for a practical example, with DeepWiki as a read-only alternative for public repos.

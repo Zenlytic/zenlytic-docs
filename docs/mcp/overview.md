@@ -1,27 +1,28 @@
 ---
 description: >-
-  MCP works in both directions in Zenlytic — connect Zoë out to external
-  tools, or connect your own AI tools in to Zenlytic.
+  Connect your AI tools in to Zenlytic, or connect Zoë out to the rest of your
+  stack.
 ---
 
-# MCP Overview (Experimental)
+# MCP Overview
 
 The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open standard for exposing tools to LLM-powered agents. Zenlytic supports MCP in both directions, depending on which side you want Zenlytic to play:
 
-* **[MCP Client](client.md)** — Zoë connects *out* to external MCP servers (Tableau, Snowflake, dbt, GitHub, and more), so she can pull data and trigger workflows from other systems directly from the Zenlytic chat experience.
-* **[MCP Server](connecting-to-zenlytic.md)** — your own AI tools (Claude Desktop, Claude Code, ChatGPT, Cursor, GitHub Copilot) connect *in* to Zenlytic's MCP server to ask questions and query your governed business data.
+<figure><img src="../.gitbook/assets/mcp-overview.png" alt=""><figcaption></figcaption></figure>
 
-```mermaid
-flowchart LR
-    subgraph mcpclient[MCP Client: Zoe connects out]
-        Zoe[Zoe, Zenlytic]
-        Ext[External MCP Servers: Tableau, Snowflake, dbt, GitHub]
-        Zoe -->|tools/call| Ext
-    end
+## Which one do I need?
 
-    subgraph mcpserver[MCP Server: AI tools connect in]
-        AITool[Your AI Tool: Claude, Cursor, ChatGPT]
-        ZenServer[Zenlytic MCP Server]
-        AITool -->|ask_zoe| ZenServer
-    end
-```
+* _Want to ask Zoë questions from Claude, Cursor, or ChatGPT?_ → **MCP Server**
+* _Want Zoë to reach Tableau, Snowflake, dbt, or GitHub from chat?_ → **MCP Client**
+
+### [**MCP Server**](connecting-to-zenlytic/)
+
+Your own AI tools (Claude Desktop, Claude Code, ChatGPT, Cursor, GitHub Copilot) connect _in_ to Zenlytic's MCP server to ask questions and query your governed business data.
+
+<figure><img src="../.gitbook/assets/mcp-server.png" alt=""><figcaption></figcaption></figure>
+
+### [**MCP Client**](client/)
+
+Zoë connects _out_ to external MCP servers (Tableau, Snowflake, dbt, GitHub, and more), so she can pull data and trigger workflows from other systems directly from the Zenlytic chat experience.
+
+<figure><img src="../.gitbook/assets/mcp-client.png" alt=""><figcaption></figcaption></figure>

@@ -4,9 +4,9 @@ description: >-
   data directly from the command line.
 ---
 
-# Connecting Claude Code to Zenlytic
+# Claude Code
 
-Claude Code connects to remote MCP servers over HTTP transport from the command line. See [MCP Server](connecting-to-zenlytic.md) for what you get once connected and general prerequisites.
+Claude Code connects to remote MCP servers over HTTP transport from the command line. See [MCP Server](./) for what you get once connected and general prerequisites.
 
 ## Before you start
 
@@ -49,3 +49,4 @@ Claude will call the `ask_zoe` tool and return the answer along with a link back
 * **"Unauthorized" or repeated login prompts:** run `/mcp`, select **zenlytic**, and re-authenticate, or generate a new Personal Access Token.
 * **Server not found:** double-check the URL with `claude mcp list`, and confirm it with your workspace admin.
 * **Not sure what got asked/answered:** open Zenlytic and check your conversation history — MCP conversations appear there just like conversations started in the app.
+```

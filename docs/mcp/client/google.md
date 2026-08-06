@@ -8,7 +8,7 @@ description: >-
 
 Connect Zoë to [Google's BigQuery remote MCP server](https://docs.cloud.google.com/bigquery/docs/use-bigquery-mcp) — a Google-hosted MCP endpoint at `https://bigquery.googleapis.com/mcp` that exposes BigQuery metadata and SQL execution as MCP tools — so she can explore datasets and run SQL in natural language. Zenlytic acts as an MCP client and forwards a Google Cloud OAuth 2.0 access token to the server on every call, so Zoë's actions inherit the underlying IAM identity's BigQuery permissions. Authenticate with a static `Authorization` header.
 
-> If you only need BigQuery as a data warehouse for the Zenlytic semantic layer, follow [BigQuery setup](../data-sources/bigquery_setup.md) instead. MCP is purpose-built for agentic, on-demand access from Zoë.
+> If you only need BigQuery as a data warehouse for the Zenlytic semantic layer, follow [BigQuery setup](../../data-sources/bigquery_setup.md) instead. MCP is purpose-built for agentic, on-demand access from Zoë.
 
 ## What Zoë can access
 
@@ -28,7 +28,7 @@ Tool calls run as the IAM identity behind the access token, so Zoë can only see
   * `[roles/bigquery.jobUser](https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.jobUser)` — run BigQuery jobs.
   * `[roles/bigquery.dataViewer](https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.dataViewer)` — query data.
 * **A way to mint OAuth access tokens** scoped to `https://www.googleapis.com/auth/bigquery` for that identity (see `gcloud` CLI in [Configure request headers](google.md#configure-request-headers)).
-* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](client.md) for the full list.
+* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](./) for the full list.
 
 ## Set up the connection in Zenlytic
 

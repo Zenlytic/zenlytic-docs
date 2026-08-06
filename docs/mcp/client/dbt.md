@@ -8,7 +8,7 @@ description: >-
 
 Connect Zoë to the [dbt remote MCP server](https://docs.getdbt.com/docs/dbt-ai/setup-remote-mcp) to let her explore your transformation layer — models, metrics, lineage, and (optionally) ad-hoc SQL — without leaving Zenlytic. This integration uses **token-based authentication** with a dbt Personal Access Token (PAT) or service token.
 
-> For semantic-layer-specific workflows, see [dbt MetricFlow integration](../data-modeling/dbt_metricflow.md). The MCP integration covers project-wide metadata and tool execution, while the MetricFlow integration focuses on querying semantic models.
+> For semantic-layer-specific workflows, see [dbt MetricFlow integration](../../data-modeling/dbt_metricflow.md). The MCP integration covers project-wide metadata and tool execution, while the MetricFlow integration focuses on querying semantic models.
 
 ## What Zoë can access
 
@@ -27,7 +27,7 @@ Before you start, confirm the following:
 * A **dbt Cloud** account with [AI features](https://docs.getdbt.com/docs/cloud/enable-dbt-copilot) enabled.
 * A **production environment** in dbt Cloud (and a **development environment** if you plan to use `execute_sql` or Fusion tools).
 * A **PAT or service token** with at minimum **Semantic Layer**, **Metadata**, and **Developer** permissions.
-* The `mcp-client` flag enabled on your Zenlytic workspace and `admin` role. See [MCP Client](client.md) for full prerequisites.
+* The `mcp-client` flag enabled on your Zenlytic workspace and `admin` role. See [MCP Client](./) for full prerequisites.
 
 ## Choose a token type
 

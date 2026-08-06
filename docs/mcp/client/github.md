@@ -29,7 +29,7 @@ Before you start, confirm the following:
 * A **GitHub.com** account or a **GitHub Enterprise Cloud** tenant (with or without data residency). The remote MCP server **does not support GitHub Enterprise Server**.
 * A **dedicated GitHub user account** scoped to the **least-privileged** set of permissions Zoë needs. You'll mint the PAT against this account.
 * For organization-owned content, any applicable [organization policies](https://github.com/github/github-mcp-server/blob/main/docs/policies-and-governance.md) that allow MCP access.
-* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](client.md) for the full list.
+* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](./) for the full list.
 
 ## Generate a GitHub Personal Access Token
 

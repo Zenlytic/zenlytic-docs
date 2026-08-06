@@ -4,9 +4,9 @@ description: >-
   query your business data directly.
 ---
 
-# Connecting Claude Desktop / Claude.ai to Zenlytic
+# Claude Desktop / Claude.ai
 
-Claude Desktop and Claude.ai support MCP custom connectors with OAuth out of the box, so this is one of the easiest clients to connect to Zenlytic. See [MCP Server](connecting-to-zenlytic.md) for what you get once connected and general prerequisites.
+Claude Desktop and Claude.ai support MCP custom connectors with OAuth out of the box, so this is one of the easiest clients to connect to Zenlytic. See [MCP Server](./) for what you get once connected and general prerequisites.
 
 ## Before you start
 
@@ -20,7 +20,6 @@ You'll need Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com
 4. Click **Connect**, complete the OAuth login/approval flow in the browser window that opens, and pick your workspace.
 
 Your connector is now authorized — you won't need to log in again unless you revoke access.
-
 
 ## Connect with a Personal Access Token (alternative)
 

@@ -4,9 +4,9 @@ description: >-
   directly from a chat.
 ---
 
-# Connecting ChatGPT to Zenlytic
+# ChatGPT
 
-Connecting a custom MCP server to ChatGPT requires **Developer mode**, which is only available on ChatGPT Business, Enterprise, or Edu plans. See [MCP Server](connecting-to-zenlytic.md) for what you get once connected and general prerequisites.
+Connecting a custom MCP server to ChatGPT requires **Developer mode**, which is only available on ChatGPT Business, Enterprise, or Edu plans. See [MCP Server](./) for what you get once connected and general prerequisites.
 
 ## Before you start
 

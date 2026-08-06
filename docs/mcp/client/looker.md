@@ -29,7 +29,7 @@ Before you start, confirm the following:
 * A **Looker instance** with API access enabled and a **Looker API3 Client ID and Client Secret** for the user (typically a dedicated service account) whose permissions Zoë should inherit.
 * A **Google Cloud project** where you can deploy services to **Cloud Run** and manage **Secret Manager** and **IAM**.
 * A way to mint **Google identity tokens** scoped to your Cloud Run service URL (see `gcloud` CLI in [Configure request headers](looker.md#configure-request-headers)).
-* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](client.md) for the full list.
+* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](./) for the full list.
 
 ## Create a Looker API3 credential
 

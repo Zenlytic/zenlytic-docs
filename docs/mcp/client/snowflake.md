@@ -28,7 +28,7 @@ Before you start, confirm the following:
 * An identity with **`CREATE MCP SERVER`** on the database/schema where you'll put the server, and the privileges below on each underlying object you want to expose (Cortex Search Service, semantic view, agent, UDF, or stored procedure).
 * A **dedicated Snowflake role** scoped to the **least-privileged** set of grants Zoë needs. You'll attach this role to the PAT.
 * A **warehouse** that has the privileges to run any SQL-execution or UDF/procedure tools you plan to expose.
-* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](client.md) for the full list.
+* **Zenlytic requirements.** The `mcp-client` flag enabled on your workspace and `admin` role. See [MCP Client](./) for the full list.
 
 ## Create the MCP server in Snowflake
 

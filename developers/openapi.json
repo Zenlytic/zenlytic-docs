@@ -4,11 +4,21 @@
     "title": "FastAPI",
     "version": "2.0.0"
   },
+  "servers": [
+    {
+      "url": "https://api-external.zenlytic.com",
+      "description": "US"
+    },
+    {
+      "url": "https://euapi-external.zenlytic.com",
+      "description": "EU"
+    }
+  ],
   "paths": {
     "/me": {
       "get": {
         "tags": [
-          "Workspaces"
+          "Me"
         ],
         "summary": "Get Me",
         "description": "Retrieve the organization and workspaces a personal access token can see.\n\nNo workspace_id path param required - the response is bound to the token's own\norganization_id/workspace_ids claims. Bearer sessions authenticate fine but get a 404\nfrom the service, since they carry no equivalent single scoped claim to bind to.",
@@ -20,6 +30,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_MeSchema_"
+                },
+                "example": {
+                  "data": {
+                    "organization": {
+                      "id": "org_123",
+                      "name": "Acme Corp"
+                    },
+                    "workspaces": [
+                      {
+                        "id": "ws_456",
+                        "shop_name": "acme-prod"
+                      }
+                    ]
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -99,6 +128,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_WorkspaceManagerOrgSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "org_123",
+                    "name": "Acme Corp",
+                    "require_sso": false,
+                    "workspaces": [
+                      {
+                        "id": "ws_456",
+                        "shop_name": "acme-prod",
+                        "provision_by_default": true
+                      }
+                    ]
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -170,6 +218,18 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_CreateWorkspaceResponseSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "ws_789",
+                    "shop_name": "acme-staging",
+                    "provision_by_default": false
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -197,14 +257,14 @@
         }
       }
     },
-    "/organizations/{organization_id}/workspaces": {
+    "/workspaces": {
       "get": {
         "tags": [
           "Workspaces"
         ],
         "summary": "List Workspaces For Organization",
-        "description": "List the workspaces directly under an organization.\n\nFollows the same organization_id path pattern as create_workspace_in_organization below.",
-        "operationId": "list_workspaces_for_organization_organizations__organization_id__workspaces_get",
+        "description": "List the workspaces under the calling personal access token's organization.\n\nPAT-only, like ``/me`` - organization_scoped Auth derives organization_id from the\ntoken's own claim rather than a path param, so there's nothing here for a bearer\nsession to bind to.",
+        "operationId": "list_workspaces_for_organization_workspaces_get",
         "security": [
           {
             "HTTPBearer": []
@@ -214,15 +274,6 @@
           }
         ],
         "parameters": [
-          {
-            "name": "organization_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Organization Id"
-            }
-          },
           {
             "name": "include_archived",
             "in": "query",
@@ -241,6 +292,20 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_WorkspaceManagerWorkspaceSchema_"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "ws_456",
+                      "shop_name": "acme-prod",
+                      "provision_by_default": true
+                    }
+                  ],
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -272,25 +337,14 @@
           "Workspaces"
         ],
         "summary": "Create Workspace In Organization",
-        "description": "Create a new workspace directly under an organization.\n\nUnlike ``create_workspace`` above, this doesn't require the caller to already belong\nto a specific workspace in the org \u2014 for a PAT scoped to the org but not yet a member\nof any workspace in it. The caller must have workspace_management permission on every\nworkspace they belong to in the organization (enforced by the ``organization_scoped``\nAuth dependency).",
-        "operationId": "create_workspace_in_organization_organizations__organization_id__workspaces_post",
+        "description": "Create a new workspace directly under the calling personal access token's\norganization - for a PAT scoped to the org but not yet a member of any workspace in\nit. The caller must have workspace_management permission on every workspace they\nbelong to in the organization (enforced by the ``organization_scoped`` Auth\ndependency). PAT-only, like ``/me`` - see ``list_workspaces_for_organization`` above.",
+        "operationId": "create_workspace_in_organization_workspaces_post",
         "security": [
           {
             "HTTPBearer": []
           },
           {
             "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "organization_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Organization Id"
-            }
           }
         ],
         "requestBody": {
@@ -310,6 +364,18 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_CreateWorkspaceResponseSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "ws_789",
+                    "shop_name": "acme-staging",
+                    "provision_by_default": false
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -410,14 +476,14 @@
         }
       }
     },
-    "/organizations/{organization_id}/workspaces/{target_workspace_id}": {
+    "/workspaces/{target_workspace_id}": {
       "delete": {
         "tags": [
           "Workspaces"
         ],
         "summary": "Archive Workspace For Organization",
-        "description": "Archive a workspace directly under an organization.\n\nUnlike ``archive_workspace`` above, this doesn't require the caller to already belong\nto a specific \"current\" workspace in the org, so there's no \"cannot archive your\ncurrent workspace\" guard here. Also takes no body - many clients/proxies drop DELETE\nbodies, so there's no reliable confirmation_name check here either.",
-        "operationId": "archive_workspace_for_organization_organizations__organization_id__workspaces__target_workspace_id__delete",
+        "description": "Archive a workspace under the calling personal access token's organization.\n\nUnlike ``archive_workspace`` above, this doesn't require the caller to already belong\nto a specific \"current\" workspace in the org, so there's no \"cannot archive your\ncurrent workspace\" guard here. Also takes no body - many clients/proxies drop DELETE\nbodies, so there's no reliable confirmation_name check here either. PAT-only, like\n``/me`` - see ``list_workspaces_for_organization`` above.",
+        "operationId": "archive_workspace_for_organization_workspaces__target_workspace_id__delete",
         "security": [
           {
             "HTTPBearer": []
@@ -427,15 +493,6 @@
           }
         ],
         "parameters": [
-          {
-            "name": "organization_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Organization Id"
-            }
-          },
           {
             "name": "target_workspace_id",
             "in": "path",
@@ -525,6 +582,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_WorkspaceManagerOrgSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "org_123",
+                    "name": "Acme Corp",
+                    "require_sso": false,
+                    "workspaces": [
+                      {
+                        "id": "ws_456",
+                        "shop_name": "acme-prod",
+                        "provision_by_default": true
+                      }
+                    ]
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -595,6 +671,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_WorkspaceManagerOrgSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "org_123",
+                    "name": "Acme Corp",
+                    "require_sso": false,
+                    "workspaces": [
+                      {
+                        "id": "ws_456",
+                        "shop_name": "acme-prod",
+                        "provision_by_default": true
+                      }
+                    ]
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -934,6 +1029,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "ua_789",
+                      "user_attribute_definition_id": "uad_123",
+                      "value": "west",
+                      "data_type": "string",
+                      "name": "region",
+                      "source": "group",
+                      "source_id": "grp_123",
+                      "user_attribute_precedence": 1,
+                      "is_overridden": false
+                    }
+                  ],
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1012,6 +1127,24 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "ua_789",
+                    "user_attribute_definition_id": "uad_123",
+                    "value": "west",
+                    "data_type": "string",
+                    "name": "region",
+                    "source": "group",
+                    "source_id": "grp_123",
+                    "user_attribute_precedence": 1,
+                    "is_overridden": false
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1171,6 +1304,24 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "ua_789",
+                    "user_attribute_definition_id": "uad_123",
+                    "value": "east",
+                    "data_type": "string",
+                    "name": "region",
+                    "source": "group",
+                    "source_id": "grp_123",
+                    "user_attribute_precedence": 1,
+                    "is_overridden": false
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1232,6 +1383,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_GroupResponseSchema_"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "grp_123",
+                      "workspace_id": "ws_456",
+                      "name": "Sales",
+                      "is_all_users": false,
+                      "user_attribute_precedence": 1,
+                      "users": [
+                        "usr_111",
+                        "usr_222"
+                      ]
+                    }
+                  ],
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1301,6 +1472,24 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "grp_123",
+                    "workspace_id": "ws_456",
+                    "name": "Sales",
+                    "is_all_users": false,
+                    "user_attribute_precedence": 1,
+                    "users": [
+                      "usr_111",
+                      "usr_222"
+                    ]
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1371,6 +1560,24 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "grp_123",
+                    "workspace_id": "ws_456",
+                    "name": "Sales",
+                    "is_all_users": false,
+                    "user_attribute_precedence": 1,
+                    "users": [
+                      "usr_111",
+                      "usr_222"
+                    ]
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1449,6 +1656,24 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "grp_123",
+                    "workspace_id": "ws_456",
+                    "name": "Sales Team",
+                    "is_all_users": false,
+                    "user_attribute_precedence": 2,
+                    "users": [
+                      "usr_111",
+                      "usr_222"
+                    ]
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1580,6 +1805,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "ua_789",
+                      "user_attribute_definition_id": "uad_123",
+                      "value": "west",
+                      "data_type": "string",
+                      "name": "region",
+                      "source": "user",
+                      "source_id": "usr_111",
+                      "is_overridden": false
+                    }
+                  ],
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1658,6 +1902,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "ua_789",
+                    "user_attribute_definition_id": "uad_123",
+                    "value": "west",
+                    "data_type": "string",
+                    "name": "region",
+                    "source": "user",
+                    "source_id": "usr_111",
+                    "is_overridden": false
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1817,6 +2078,23 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "ua_789",
+                    "user_attribute_definition_id": "uad_123",
+                    "value": "east",
+                    "data_type": "string",
+                    "name": "region",
+                    "source": "user",
+                    "source_id": "usr_111",
+                    "is_overridden": false
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1878,6 +2156,22 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeDefinitionSchema_"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "uad_123",
+                      "workspace_id": "ws_456",
+                      "name": "region",
+                      "data_type": "string",
+                      "label": "Region"
+                    }
+                  ],
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -1947,6 +2241,20 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "uad_123",
+                    "workspace_id": "ws_456",
+                    "name": "region",
+                    "data_type": "string",
+                    "label": "Region"
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -2088,6 +2396,20 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
+                },
+                "example": {
+                  "data": {
+                    "id": "uad_123",
+                    "workspace_id": "ws_456",
+                    "name": "region",
+                    "data_type": "string",
+                    "label": "Sales Region"
+                  },
+                  "meta": {
+                    "status": "success",
+                    "errors": [],
+                    "warnings": []
+                  }
                 }
               }
             }
@@ -3245,6 +3567,9 @@
     },
     {
       "name": "Admin"
+    },
+    {
+      "name": "Me"
     },
     {
       "name": "Workspaces",

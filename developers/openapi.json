@@ -5,144 +5,46 @@
     "version": "0.1.0"
   },
   "paths": {
-    "/workspaces/{workspace_id}/groups": {
+    "/me": {
       "get": {
         "tags": [
-          "Groups"
+          "Workspaces"
         ],
-        "summary": "Get Groups",
-        "description": "List every group in the workspace, including the built-in \"All Users\" group.\n\nEach group carries its member ids and its ``user_attribute_precedence``. A warning is\nreturned when two groups in the workspace share a precedence value, since the winning\nuser attribute is then undefined.",
-        "operationId": "get_groups_workspaces__workspace_id__groups_get",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
+        "summary": "Get Me",
+        "description": "Retrieve the organization and workspaces a personal access token can see.\n\nNo workspace_id path param required - the response is bound to the token's own\norganization_id/workspace_ids claims. Bearer sessions authenticate fine but get a 404\nfrom the service, since they carry no equivalent single scoped claim to bind to.",
+        "operationId": "get_me_me_get",
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiV2CollectionResponse_GroupResponseSchema_"
+                  "$ref": "#/components/schemas/ApiV2Response_MeSchema_"
                 }
               }
             }
           },
           "4XX": {
+            "description": "Client Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2ErrorResponse"
                 }
               }
-            },
-            "description": "Client Error"
+            }
           },
           "5XX": {
+            "description": "Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ApiV2ErrorResponse"
                 }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Groups"
-        ],
-        "summary": "Create Group",
-        "description": "Create a group in the workspace.\n\n``user_attribute_precedence`` must be greater than 0 and decides which group's value wins\nwhen a member belongs to several groups that set the same user attribute. A warning is\nreturned when the new group duplicates an existing precedence value.",
-        "operationId": "create_group_workspaces__workspace_id__groups_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateGroupSchema"
               }
             }
           }
         },
-        "responses": {
-          "201": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/workspaces/{workspace_id}/groups/{group_id}": {
-      "get": {
-        "tags": [
-          "Groups"
-        ],
-        "summary": "Get Group",
-        "description": "Retrieve a single group in the workspace by id.\n\nReturns 404 if no group with that id exists in the workspace.",
-        "operationId": "get_group_workspaces__workspace_id__groups__group_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -150,469 +52,7 @@
           {
             "APIKeyHeader": []
           }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "group_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Group Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Groups"
-        ],
-        "summary": "Update Group",
-        "description": "Update a group's name, members, or user attribute precedence.\n\nThe built-in \"All Users\" group cannot be updated; its membership always tracks the\nworkspace roster.",
-        "operationId": "update_group_workspaces__workspace_id__groups__group_id__patch",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "group_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Group Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateGroupSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Groups"
-        ],
-        "summary": "Delete Group",
-        "description": "Delete a group and the user attributes attached to it.\n\nMembers are not deleted, only their membership. The built-in \"All Users\" group cannot be\ndeleted.",
-        "operationId": "delete_group_workspaces__workspace_id__groups__group_id__delete",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "group_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Group Id"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful Response"
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/workspaces/{workspace_id}/user_attribute_definitions": {
-      "get": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Get User Attribute Definitions",
-        "description": "List the user attribute definitions in the workspace.\n\nA definition declares the ``name``, ``label``, and ``data_type`` of an attribute. The\nper-member and per-group endpoints then assign values against these definitions.",
-        "operationId": "get_user_attribute_definitions_workspaces__workspace_id__user_attribute_definitions_get",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeDefinitionSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Create User Attribute Definition",
-        "description": "Create a user attribute definition in the workspace.\n\n``name`` must be unique within the workspace; a duplicate returns 409. The ``data_type``\nis fixed at creation time and cannot be changed afterwards.",
-        "operationId": "create_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserAttributeDefinitionSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      }
-    },
-    "/workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}": {
-      "delete": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Delete User Attribute Definition",
-        "description": "Delete a user attribute definition and every value assigned against it.\n\nThis removes the attribute from all members and groups in the workspace.",
-        "operationId": "delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "user_attribute_definition_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "User Attribute Definition Id"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful Response"
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "User Attributes"
-        ],
-        "summary": "Update User Attribute Definition",
-        "description": "Update a user attribute definition's label.\n\nOnly ``label`` is mutable \u2014 ``name`` and ``data_type`` are fixed once created, because\nassigned values and data model references depend on them.",
-        "operationId": "update_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__patch",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "workspace_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Workspace Id"
-            }
-          },
-          {
-            "name": "user_attribute_definition_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "User Attribute Definition Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserAttributeDefinitionSchema"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Client Error"
-          },
-          "5XX": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
-                }
-              }
-            },
-            "description": "Server Error"
-          }
-        }
+        ]
       }
     },
     "/workspace-manager/{workspace_id}": {
@@ -1555,6 +995,345 @@
         }
       }
     },
+    "/workspaces/{workspace_id}/groups": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Get Groups",
+        "description": "List every group in the workspace, including the built-in \"All Users\" group.\n\nEach group carries its member ids and its ``user_attribute_precedence``. A warning is\nreturned when two groups in the workspace share a precedence value, since the winning\nuser attribute is then undefined.",
+        "operationId": "get_groups_workspaces__workspace_id__groups_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2CollectionResponse_GroupResponseSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Create Group",
+        "description": "Create a group in the workspace.\n\n``user_attribute_precedence`` must be greater than 0 and decides which group's value wins\nwhen a member belongs to several groups that set the same user attribute. A warning is\nreturned when the new group duplicates an existing precedence value.",
+        "operationId": "create_group_workspaces__workspace_id__groups_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/workspaces/{workspace_id}/groups/{group_id}": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Get Group",
+        "description": "Retrieve a single group in the workspace by id.\n\nReturns 404 if no group with that id exists in the workspace.",
+        "operationId": "get_group_workspaces__workspace_id__groups__group_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Group Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Update Group",
+        "description": "Update a group's name, members, or user attribute precedence.\n\nThe built-in \"All Users\" group cannot be updated; its membership always tracks the\nworkspace roster.",
+        "operationId": "update_group_workspaces__workspace_id__groups__group_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Group Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_GroupResponseSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Delete Group",
+        "description": "Delete a group and the user attributes attached to it.\n\nMembers are not deleted, only their membership. The built-in \"All Users\" group cannot be\ndeleted.",
+        "operationId": "delete_group_workspaces__workspace_id__groups__group_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Group Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
     "/workspaces/{workspace_id}/members/{member_id}/user_attributes": {
       "get": {
         "tags": [
@@ -1861,6 +1640,277 @@
           }
         }
       }
+    },
+    "/workspaces/{workspace_id}/user_attribute_definitions": {
+      "get": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Get User Attribute Definitions",
+        "description": "List the user attribute definitions in the workspace.\n\nA definition declares the ``name``, ``label``, and ``data_type`` of an attribute. The\nper-member and per-group endpoints then assign values against these definitions.",
+        "operationId": "get_user_attribute_definitions_workspaces__workspace_id__user_attribute_definitions_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2CollectionResponse_UserAttributeDefinitionSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Create User Attribute Definition",
+        "description": "Create a user attribute definition in the workspace.\n\n``name`` must be unique within the workspace; a duplicate returns 409. The ``data_type``\nis fixed at creation time and cannot be changed afterwards.",
+        "operationId": "create_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserAttributeDefinitionSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}": {
+      "delete": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Delete User Attribute Definition",
+        "description": "Delete a user attribute definition and every value assigned against it.\n\nThis removes the attribute from all members and groups in the workspace.",
+        "operationId": "delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "user_attribute_definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Attribute Definition Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "User Attributes"
+        ],
+        "summary": "Update User Attribute Definition",
+        "description": "Update a user attribute definition's label.\n\nOnly ``label`` is mutable \u2014 ``name`` and ``data_type`` are fixed once created, because\nassigned values and data model references depend on them.",
+        "operationId": "update_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "APIKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workspace Id"
+            }
+          },
+          {
+            "name": "user_attribute_definition_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Attribute Definition Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserAttributeDefinitionSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2Response_UserAttributeDefinitionSchema_"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Client Error"
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiV2ErrorResponse"
+                }
+              }
+            },
+            "description": "Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2025,6 +2075,22 @@
         ],
         "title": "ApiV2Response[GroupResponseSchema]"
       },
+      "ApiV2Response_MeSchema_": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/MeSchema"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaSchema"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data",
+          "meta"
+        ],
+        "title": "ApiV2Response[MeSchema]"
+      },
       "ApiV2Response_UserAttributeDefinitionSchema_": {
         "properties": {
           "data": {
@@ -2121,7 +2187,13 @@
           "name",
           "user_attribute_precedence"
         ],
-        "title": "CreateGroupSchema"
+        "title": "CreateGroupSchema",
+        "examples": [
+          {
+            "name": "Sales",
+            "user_attribute_precedence": 1
+          }
+        ]
       },
       "CreateUserAttributeDefinitionSchema": {
         "properties": {
@@ -2143,7 +2215,14 @@
           "data_type",
           "label"
         ],
-        "title": "CreateUserAttributeDefinitionSchema"
+        "title": "CreateUserAttributeDefinitionSchema",
+        "examples": [
+          {
+            "data_type": "string",
+            "label": "Region",
+            "name": "region"
+          }
+        ]
       },
       "CreateUserAttributeSchema": {
         "properties": {
@@ -2161,7 +2240,13 @@
           "user_attribute_definition_id",
           "value"
         ],
-        "title": "CreateUserAttributeSchema"
+        "title": "CreateUserAttributeSchema",
+        "examples": [
+          {
+            "user_attribute_definition_id": "uad_123",
+            "value": "west"
+          }
+        ]
       },
       "CreateWorkspaceResponseSchema": {
         "properties": {
@@ -2184,7 +2269,14 @@
           "shop_name",
           "provision_by_default"
         ],
-        "title": "CreateWorkspaceResponseSchema"
+        "title": "CreateWorkspaceResponseSchema",
+        "examples": [
+          {
+            "id": "ws_789",
+            "provision_by_default": false,
+            "shop_name": "acme-staging"
+          }
+        ]
       },
       "CreateWorkspaceSchema": {
         "properties": {
@@ -2202,7 +2294,13 @@
         "required": [
           "name"
         ],
-        "title": "CreateWorkspaceSchema"
+        "title": "CreateWorkspaceSchema",
+        "examples": [
+          {
+            "name": "acme-staging",
+            "provision_by_default": false
+          }
+        ]
       },
       "CredentialSummarySchema": {
         "properties": {
@@ -2322,7 +2420,14 @@
         "required": [
           "message"
         ],
-        "title": "ErrorSchema"
+        "title": "ErrorSchema",
+        "examples": [
+          {
+            "message": "Workspace not found",
+            "occurred_at": "2026-08-05T12:00:00Z",
+            "status_code": 404
+          }
+        ]
       },
       "FieldAlreadyExistsErrorMetadata": {
         "properties": {
@@ -2379,7 +2484,54 @@
           "user_attribute_precedence",
           "users"
         ],
-        "title": "GroupResponseSchema"
+        "title": "GroupResponseSchema",
+        "examples": [
+          {
+            "id": "grp_123",
+            "is_all_users": false,
+            "name": "Sales",
+            "user_attribute_precedence": 1,
+            "users": [
+              "usr_111",
+              "usr_222"
+            ],
+            "workspace_id": "ws_456"
+          }
+        ]
+      },
+      "MeSchema": {
+        "properties": {
+          "organization": {
+            "$ref": "#/components/schemas/MyOrganizationSchema"
+          },
+          "workspaces": {
+            "items": {
+              "$ref": "#/components/schemas/MyWorkspaceSchema"
+            },
+            "type": "array",
+            "title": "Workspaces"
+          }
+        },
+        "type": "object",
+        "required": [
+          "organization",
+          "workspaces"
+        ],
+        "title": "MeSchema",
+        "examples": [
+          {
+            "organization": {
+              "id": "org_123",
+              "name": "Acme Corp"
+            },
+            "workspaces": [
+              {
+                "id": "ws_456",
+                "shop_name": "acme-prod"
+              }
+            ]
+          }
+        ]
       },
       "MetaSchema": {
         "properties": {
@@ -2416,7 +2568,62 @@
         "required": [
           "status"
         ],
-        "title": "MetaSchema"
+        "title": "MetaSchema",
+        "examples": [
+          {
+            "errors": [],
+            "status": "success",
+            "warnings": []
+          }
+        ]
+      },
+      "MyOrganizationSchema": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "MyOrganizationSchema",
+        "examples": [
+          {
+            "id": "org_123",
+            "name": "Acme Corp"
+          }
+        ]
+      },
+      "MyWorkspaceSchema": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "shop_name": {
+            "type": "string",
+            "title": "Shop Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "shop_name"
+        ],
+        "title": "MyWorkspaceSchema",
+        "examples": [
+          {
+            "id": "ws_456",
+            "shop_name": "acme-prod"
+          }
+        ]
       },
       "OrgAdminSchema": {
         "properties": {
@@ -2492,7 +2699,13 @@
           }
         },
         "type": "object",
-        "title": "UpdateGroupSchema"
+        "title": "UpdateGroupSchema",
+        "examples": [
+          {
+            "name": "Sales Team",
+            "user_attribute_precedence": 2
+          }
+        ]
       },
       "UpdateProvisioningSchema": {
         "properties": {
@@ -2531,7 +2744,12 @@
         "required": [
           "label"
         ],
-        "title": "UpdateUserAttributeDefinitionSchema"
+        "title": "UpdateUserAttributeDefinitionSchema",
+        "examples": [
+          {
+            "label": "Sales Region"
+          }
+        ]
       },
       "UpdateUserAttributeSchema": {
         "properties": {
@@ -2544,7 +2762,12 @@
         "required": [
           "value"
         ],
-        "title": "UpdateUserAttributeSchema"
+        "title": "UpdateUserAttributeSchema",
+        "examples": [
+          {
+            "value": "east"
+          }
+        ]
       },
       "UserAttributeDataType": {
         "type": "string",
@@ -2585,7 +2808,16 @@
           "data_type",
           "label"
         ],
-        "title": "UserAttributeDefinitionSchema"
+        "title": "UserAttributeDefinitionSchema",
+        "examples": [
+          {
+            "data_type": "string",
+            "id": "uad_123",
+            "label": "Region",
+            "name": "region",
+            "workspace_id": "ws_456"
+          }
+        ]
       },
       "UserAttributeSchema": {
         "properties": {
@@ -2643,7 +2875,20 @@
           "user_attribute_precedence",
           "is_overridden"
         ],
-        "title": "UserAttributeSchema"
+        "title": "UserAttributeSchema",
+        "examples": [
+          {
+            "data_type": "string",
+            "id": "ua_789",
+            "is_overridden": false,
+            "name": "region",
+            "source": "group",
+            "source_id": "grp_123",
+            "user_attribute_definition_id": "uad_123",
+            "user_attribute_precedence": 1,
+            "value": "west"
+          }
+        ]
       },
       "UserAttributeSource": {
         "type": "string",
@@ -2664,7 +2909,12 @@
         "required": [
           "message"
         ],
-        "title": "WarningSchema"
+        "title": "WarningSchema",
+        "examples": [
+          {
+            "message": "3 rows were skipped due to invalid formatting"
+          }
+        ]
       },
       "WorkspaceManagerOrgSchema": {
         "properties": {
@@ -2695,7 +2945,21 @@
           "name",
           "workspaces"
         ],
-        "title": "WorkspaceManagerOrgSchema"
+        "title": "WorkspaceManagerOrgSchema",
+        "examples": [
+          {
+            "id": "org_123",
+            "name": "Acme Corp",
+            "require_sso": false,
+            "workspaces": [
+              {
+                "id": "ws_456",
+                "provision_by_default": true,
+                "shop_name": "acme-prod"
+              }
+            ]
+          }
+        ]
       },
       "WorkspaceManagerWorkspaceSchema": {
         "properties": {
@@ -2730,7 +2994,14 @@
           "shop_name",
           "provision_by_default"
         ],
-        "title": "WorkspaceManagerWorkspaceSchema"
+        "title": "WorkspaceManagerWorkspaceSchema",
+        "examples": [
+          {
+            "id": "ws_456",
+            "provision_by_default": true,
+            "shop_name": "acme-prod"
+          }
+        ]
       }
     },
     "securitySchemes": {
@@ -2744,5 +3015,25 @@
         "name": "X-API-Key"
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Org Admin"
+    },
+    {
+      "name": "Admin"
+    },
+    {
+      "name": "Workspaces",
+      "x-parent": "Org Admin"
+    },
+    {
+      "name": "Groups",
+      "x-parent": "Admin"
+    },
+    {
+      "name": "User Attributes",
+      "x-parent": "Admin"
+    }
+  ]
 }

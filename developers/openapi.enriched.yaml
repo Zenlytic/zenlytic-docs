@@ -186,8 +186,10 @@ paths:
         required: false
         schema:
           type: boolean
+          description: Include archived workspaces in the results.
           default: false
           title: Include Archived
+        description: Include archived workspaces in the results.
       responses:
         '200':
           description: Successful Response
@@ -1757,11 +1759,17 @@ components:
         name:
           type: string
           title: Name
+          description: A stable, unique key for this definition within the workspace, referenced by the
+            data model - unlike `label`, it can't be changed after creation.
         data_type:
           $ref: '#/components/schemas/UserAttributeDataType'
+          description: 'Determines the format required in `value` wherever this definition is used: "string"
+            allows free text, "number" requires a parseable number, "date" requires `YYYY-MM-DD`.'
         label:
           type: string
           title: Label
+          description: The human-facing display text for this definition; unlike `name`, this can be changed
+            at any time.
       type: object
       required:
       - name
@@ -1777,9 +1785,12 @@ components:
         user_attribute_definition_id:
           type: string
           title: User Attribute Definition Id
+          description: ID of an existing definition in this workspace - see `GET .../user_attribute_definitions`.
         value:
           type: string
           title: Value
+          description: 'Must match the referenced definition''s `data_type` format: "string" allows free
+            text, "number" requires a parseable number, "date" requires `YYYY-MM-DD`.'
       type: object
       required:
       - user_attribute_definition_id
@@ -1799,6 +1810,8 @@ components:
         provision_by_default:
           type: boolean
           title: Provision By Default
+          description: When true, new users signing in via SSO are automatically granted access to this
+            workspace; when false, they need an explicit invite.
       type: object
       required:
       - id
@@ -1817,6 +1830,8 @@ components:
         provision_by_default:
           type: boolean
           title: Provision By Default
+          description: When true, new users signing in via SSO are automatically granted access to this
+            workspace; when false, they need an explicit invite.
           default: false
       type: object
       required:
@@ -1835,20 +1850,25 @@ components:
           - type: integer
           - type: 'null'
           title: Status Code
+          description: Matches this response's actual HTTP status code.
         occurred_at:
           anyOf:
           - type: string
           - type: 'null'
           title: Occurred At
+          description: ISO 8601 UTC timestamp.
         error_code:
           anyOf:
           - type: string
           - type: 'null'
           title: Error Code
+          description: Machine-readable code for errors that need special handling (e.g. "SSO_REQUIRED")
+            rather than being shown generically; null for most errors.
         error_metadata:
           anyOf:
           - $ref: '#/components/schemas/BaseErrorMetadata'
           - type: 'null'
+          description: Additional structured detail for specific error conditions; usually null.
       type: object
       required:
       - message
@@ -1871,14 +1891,19 @@ components:
         is_all_users:
           type: boolean
           title: Is All Users
+          description: Whether this is the built-in group containing every workspace member; its membership
+            always tracks the roster and can't be edited directly.
         user_attribute_precedence:
           type: integer
           title: User Attribute Precedence
+          description: Determines which group's value wins when a member is in several groups that set
+            the same user attribute; higher wins.
         users:
           items:
             type: string
           type: array
           title: Users
+          description: IDs of the group's members.
       type: object
       required:
       - id
@@ -1906,6 +1931,8 @@ components:
             $ref: '#/components/schemas/MyWorkspaceSchema'
           type: array
           title: Workspaces
+          description: Workspaces in your organization that you're a member of and, for a PAT scoped to
+            specific workspaces, within the token's scope. Archived workspaces are excluded.
       type: object
       required:
       - organization
@@ -1927,16 +1954,21 @@ components:
             $ref: '#/components/schemas/ErrorSchema'
           type: array
           title: Errors
+          description: Non-empty exactly when `status` is "error".
         warnings:
           items:
             $ref: '#/components/schemas/WarningSchema'
           type: array
           title: Warnings
+          description: Can be non-empty even when `status` is "success" - a non-fatal issue with an otherwise-successful
+            request.
         request_source:
           anyOf:
           - type: string
           - type: 'null'
           title: Request Source
+          description: Which auth mechanism served this request (e.g. "api_key", "pat"); null when not
+            tracked for this endpoint.
       type: object
       required:
       - status
@@ -2006,6 +2038,8 @@ components:
         label:
           type: string
           title: Label
+          description: The human-facing display text for this definition; unlike `name`, this can be changed
+            at any time.
       type: object
       required:
       - label
@@ -2017,6 +2051,8 @@ components:
         value:
           type: string
           title: Value
+          description: 'Must match the existing definition''s `data_type` format: "string" allows free
+            text, "number" requires a parseable number, "date" requires `YYYY-MM-DD`.'
       type: object
       required:
       - value
@@ -2041,11 +2077,17 @@ components:
         name:
           type: string
           title: Name
+          description: A stable, unique key for this definition within the workspace, referenced by the
+            data model - unlike `label`, it can't be changed after creation.
         data_type:
           $ref: '#/components/schemas/UserAttributeDataType'
+          description: 'Determines the format required in `value` wherever this definition is used: "string"
+            allows free text, "number" requires a parseable number, "date" requires `YYYY-MM-DD`.'
         label:
           type: string
           title: Label
+          description: The human-facing display text for this definition; unlike `name`, this can be changed
+            at any time.
       type: object
       required:
       - id
@@ -2071,24 +2113,36 @@ components:
         value:
           type: string
           title: Value
+          description: 'Formatted per `data_type`: "string" allows free text, "number" requires a parseable
+            number, "date" requires `YYYY-MM-DD`.'
         data_type:
           $ref: '#/components/schemas/UserAttributeDataType'
+          description: 'Determines `value`''s format: "string" allows free text, "number" requires a parseable
+            number, "date" requires `YYYY-MM-DD`.'
         name:
           type: string
           title: Name
+          description: The referenced `user_attribute_definition_id`'s `name`.
         source:
           $ref: '#/components/schemas/UserAttributeSource'
+          description: Whether this value is set directly on the member ("user") or inherited from a group
+            ("group").
         source_id:
           type: string
           title: Source Id
+          description: ID of the group or member (matching `source`) this value comes from.
         user_attribute_precedence:
           anyOf:
           - type: integer
           - type: 'null'
           title: User Attribute Precedence
+          description: The source group's precedence; null when `source` is "user" - only groups carry
+            a precedence.
         is_overridden:
           type: boolean
           title: Is Overridden
+          description: True if a higher-precedence group value, or a directly-set member value, takes
+            effect instead of this one.
       type: object
       required:
       - id
@@ -2139,12 +2193,15 @@ components:
         provision_by_default:
           type: boolean
           title: Provision By Default
+          description: When true, new users signing in via SSO are automatically granted access to this
+            workspace; when false, they need an explicit invite.
         archived_at:
           anyOf:
           - type: string
             format: date-time
           - type: 'null'
           title: Archived At
+          description: When this workspace was archived; null while active.
       type: object
       required:
       - id

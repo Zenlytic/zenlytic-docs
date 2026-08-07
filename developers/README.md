@@ -38,7 +38,7 @@ A token's scope is fixed at creation time, based on your role in the workspace y
 
     ![](.gitbook/assets/pat-create-token-modal.png)
     
-    Select "All Workspaces" in the dropdown if you're an org admin to gain access to org admin APIs
+    Select "All Workspaces" from the dropdown if you're an org admin to gain access to the org admin APIs.
 
     ![](.gitbook/assets/pat-create-token-modal-select-workspace-scope.png)
 

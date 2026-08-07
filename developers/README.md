@@ -37,6 +37,11 @@ A token's scope is fixed at creation time, based on your role in the workspace y
 4.  Enter a descriptive name for the token so you can identify its purpose later.
 
     ![](.gitbook/assets/pat-create-token-modal.png)
+    
+    Select "All Workspaces" if you're an org admin to gain access to org admin APIs
+
+    ![](.gitbook/assets/pat-create-token-modal-select-workspace-scope.png)
+
 5. Click **Create**. Your new token displays once.
 6. Copy the token immediately and store it somewhere secure, such as a secrets manager or password manager. Zenlytic does not store the raw token, and you cannot view it again after closing this dialog.
 

@@ -77,9 +77,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ]
       }
@@ -95,9 +92,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -169,9 +163,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "requestBody": {
@@ -236,14 +227,11 @@
           "Workspaces"
         ],
         "summary": "Archive Workspace For Organization",
-        "description": "Archive a workspace in your organization.\n\nThis is a soft delete: the workspace is marked archived and inactive, and its users\nare reassigned to another workspace in the organization. There's no confirmation\nstep, so double check ``workspace_id`` before calling.",
+        "description": "Archive a workspace in your organization.",
         "operationId": "archive_workspace_for_organization_workspaces__workspace_id__delete",
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -295,9 +283,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -383,9 +368,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -481,9 +463,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -551,9 +530,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -658,9 +634,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -737,9 +710,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -826,9 +796,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -912,9 +879,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1008,9 +972,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1071,9 +1032,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1169,9 +1127,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1266,9 +1221,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1336,9 +1288,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1442,9 +1391,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1517,9 +1463,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1602,9 +1545,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -1663,9 +1603,6 @@
         "security": [
           {
             "HTTPBearer": []
-          },
-          {
-            "APIKeyHeader": []
           }
         ],
         "parameters": [
@@ -2573,36 +2510,50 @@
     "securitySchemes": {
       "HTTPBearer": {
         "type": "http",
+        "description": "A Personal Access Token (PAT).",
         "scheme": "bearer"
-      },
-      "APIKeyHeader": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "X-API-Key"
       }
     }
   },
   "tags": [
     {
-      "name": "Org Admin"
+      "name": "Org Admin",
+      "x-page-title": "Org Admin",
+      "x-page-icon": "building",
+      "x-page-description": "Organization-wide administration, spanning every workspace you belong to."
     },
     {
-      "name": "Admin"
+      "name": "Admin",
+      "x-page-title": "Admin",
+      "x-page-icon": "user-shield",
+      "x-page-description": "Administration scoped to a single workspace."
     },
     {
-      "name": "Me"
+      "name": "Me",
+      "x-page-title": "Me",
+      "x-page-icon": "id-card",
+      "x-page-description": "Your own organization and workspace access."
     },
     {
       "name": "Workspaces",
-      "x-parent": "Org Admin"
+      "x-parent": "Org Admin",
+      "x-page-title": "Workspaces",
+      "x-page-icon": "layer-group",
+      "x-page-description": "Create, list, and archive workspaces in your organization. Requires an org admin personal access token."
     },
     {
       "name": "Groups",
-      "x-parent": "Admin"
+      "x-parent": "Admin",
+      "x-page-title": "Groups",
+      "x-page-icon": "users",
+      "x-page-description": "Manage groups and the user attribute values set on them."
     },
     {
       "name": "User Attributes",
-      "x-parent": "Admin"
+      "x-parent": "Admin",
+      "x-page-title": "User Attributes",
+      "x-page-icon": "sliders",
+      "x-page-description": "Define custom attributes and set their values on groups and members."
     }
   ]
 }

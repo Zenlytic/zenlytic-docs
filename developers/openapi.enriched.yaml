@@ -196,7 +196,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiV2CollectionResponse_WorkspaceManagerWorkspaceSchema_'
+                $ref: '#/components/schemas/ApiV2CollectionResponse_WorkspaceSchema_'
               example:
                 data:
                 - id: ws_456
@@ -1656,11 +1656,11 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[UserAttributeSchema]
-    ApiV2CollectionResponse_WorkspaceManagerWorkspaceSchema_:
+    ApiV2CollectionResponse_WorkspaceSchema_:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/WorkspaceManagerWorkspaceSchema'
+            $ref: '#/components/schemas/WorkspaceSchema'
           type: array
           title: Data
         meta:
@@ -1669,7 +1669,7 @@ components:
       required:
       - data
       - meta
-      title: ApiV2CollectionResponse[WorkspaceManagerWorkspaceSchema]
+      title: ApiV2CollectionResponse[WorkspaceSchema]
     ApiV2ErrorResponse:
       properties:
         meta:
@@ -2182,7 +2182,7 @@ components:
       title: WarningSchema
       examples:
       - message: 3 rows were skipped due to invalid formatting
-    WorkspaceManagerWorkspaceSchema:
+    WorkspaceSchema:
       properties:
         id:
           type: string
@@ -2207,7 +2207,7 @@ components:
       - id
       - name
       - provision_by_default
-      title: WorkspaceManagerWorkspaceSchema
+      title: WorkspaceSchema
       examples:
       - id: ws_456
         name: acme-prod

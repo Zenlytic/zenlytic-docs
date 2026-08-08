@@ -101,9 +101,11 @@
             "required": false,
             "schema": {
               "type": "boolean",
+              "description": "Include archived workspaces in the results.",
               "default": false,
               "title": "Include Archived"
-            }
+            },
+            "description": "Include archived workspaces in the results."
           }
         ],
         "responses": {
@@ -112,7 +114,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiV2CollectionResponse_WorkspaceManagerWorkspaceSchema_"
+                  "$ref": "#/components/schemas/ApiV2CollectionResponse_WorkspaceSchema_"
                 },
                 "example": {
                   "data": [
@@ -1746,11 +1748,11 @@
         ],
         "title": "ApiV2CollectionResponse[UserAttributeSchema]"
       },
-      "ApiV2CollectionResponse_WorkspaceManagerWorkspaceSchema_": {
+      "ApiV2CollectionResponse_WorkspaceSchema_": {
         "properties": {
           "data": {
             "items": {
-              "$ref": "#/components/schemas/WorkspaceManagerWorkspaceSchema"
+              "$ref": "#/components/schemas/WorkspaceSchema"
             },
             "type": "array",
             "title": "Data"
@@ -1764,7 +1766,7 @@
           "data",
           "meta"
         ],
-        "title": "ApiV2CollectionResponse[WorkspaceManagerWorkspaceSchema]"
+        "title": "ApiV2CollectionResponse[WorkspaceSchema]"
       },
       "ApiV2ErrorResponse": {
         "properties": {
@@ -1892,14 +1894,17 @@
         "properties": {
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "A stable, unique key for this definition within the workspace, referenced by the data model - unlike `label`, it can't be changed after creation."
           },
           "data_type": {
-            "$ref": "#/components/schemas/UserAttributeDataType"
+            "$ref": "#/components/schemas/UserAttributeDataType",
+            "description": "Determines the format required in `value` wherever this definition is used: \"string\" allows free text, \"number\" requires a parseable number, \"date\" requires `YYYY-MM-DD`."
           },
           "label": {
             "type": "string",
-            "title": "Label"
+            "title": "Label",
+            "description": "The human-facing display text for this definition; unlike `name`, this can be changed at any time."
           }
         },
         "type": "object",
@@ -1921,11 +1926,13 @@
         "properties": {
           "user_attribute_definition_id": {
             "type": "string",
-            "title": "User Attribute Definition Id"
+            "title": "User Attribute Definition Id",
+            "description": "ID of an existing definition in this workspace - see `GET .../user_attribute_definitions`."
           },
           "value": {
             "type": "string",
-            "title": "Value"
+            "title": "Value",
+            "description": "Must match the referenced definition's `data_type` format: \"string\" allows free text, \"number\" requires a parseable number, \"date\" requires `YYYY-MM-DD`."
           }
         },
         "type": "object",
@@ -1953,7 +1960,8 @@
           },
           "provision_by_default": {
             "type": "boolean",
-            "title": "Provision By Default"
+            "title": "Provision By Default",
+            "description": "When true, new users signing in via SSO are automatically granted access to this workspace; when false, they need an explicit invite."
           }
         },
         "type": "object",
@@ -1980,6 +1988,7 @@
           "provision_by_default": {
             "type": "boolean",
             "title": "Provision By Default",
+            "description": "When true, new users signing in via SSO are automatically granted access to this workspace; when false, they need an explicit invite.",
             "default": false
           }
         },
@@ -2010,7 +2019,8 @@
                 "type": "null"
               }
             ],
-            "title": "Status Code"
+            "title": "Status Code",
+            "description": "Matches this response's actual HTTP status code."
           },
           "occurred_at": {
             "anyOf": [
@@ -2021,7 +2031,8 @@
                 "type": "null"
               }
             ],
-            "title": "Occurred At"
+            "title": "Occurred At",
+            "description": "ISO 8601 UTC timestamp."
           },
           "error_code": {
             "anyOf": [
@@ -2032,7 +2043,8 @@
                 "type": "null"
               }
             ],
-            "title": "Error Code"
+            "title": "Error Code",
+            "description": "Machine-readable code for errors that need special handling (e.g. \"SSO_REQUIRED\") rather than being shown generically; null for most errors."
           },
           "error_metadata": {
             "anyOf": [
@@ -2042,7 +2054,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "Additional structured detail for specific error conditions; usually null."
           }
         },
         "type": "object",
@@ -2074,18 +2087,21 @@
           },
           "is_all_users": {
             "type": "boolean",
-            "title": "Is All Users"
+            "title": "Is All Users",
+            "description": "Whether this is the built-in group containing every workspace member; its membership always tracks the roster and can't be edited directly."
           },
           "user_attribute_precedence": {
             "type": "integer",
-            "title": "User Attribute Precedence"
+            "title": "User Attribute Precedence",
+            "description": "Determines which group's value wins when a member is in several groups that set the same user attribute; higher wins."
           },
           "users": {
             "items": {
               "type": "string"
             },
             "type": "array",
-            "title": "Users"
+            "title": "Users",
+            "description": "IDs of the group's members."
           }
         },
         "type": "object",
@@ -2122,7 +2138,8 @@
               "$ref": "#/components/schemas/MyWorkspaceSchema"
             },
             "type": "array",
-            "title": "Workspaces"
+            "title": "Workspaces",
+            "description": "Workspaces in your organization that you're a member of and, for a PAT scoped to specific workspaces, within the token's scope. Archived workspaces are excluded."
           }
         },
         "type": "object",
@@ -2156,14 +2173,16 @@
               "$ref": "#/components/schemas/ErrorSchema"
             },
             "type": "array",
-            "title": "Errors"
+            "title": "Errors",
+            "description": "Non-empty exactly when `status` is \"error\"."
           },
           "warnings": {
             "items": {
               "$ref": "#/components/schemas/WarningSchema"
             },
             "type": "array",
-            "title": "Warnings"
+            "title": "Warnings",
+            "description": "Can be non-empty even when `status` is \"success\" - a non-fatal issue with an otherwise-successful request."
           },
           "request_source": {
             "anyOf": [
@@ -2174,7 +2193,8 @@
                 "type": "null"
               }
             ],
-            "title": "Request Source"
+            "title": "Request Source",
+            "description": "Which auth mechanism served this request (e.g. \"api_key\", \"pat\"); null when not tracked for this endpoint."
           }
         },
         "type": "object",
@@ -2285,7 +2305,8 @@
         "properties": {
           "label": {
             "type": "string",
-            "title": "Label"
+            "title": "Label",
+            "description": "The human-facing display text for this definition; unlike `name`, this can be changed at any time."
           }
         },
         "type": "object",
@@ -2303,7 +2324,8 @@
         "properties": {
           "value": {
             "type": "string",
-            "title": "Value"
+            "title": "Value",
+            "description": "Must match the existing definition's `data_type` format: \"string\" allows free text, \"number\" requires a parseable number, \"date\" requires `YYYY-MM-DD`."
           }
         },
         "type": "object",
@@ -2338,14 +2360,17 @@
           },
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "A stable, unique key for this definition within the workspace, referenced by the data model - unlike `label`, it can't be changed after creation."
           },
           "data_type": {
-            "$ref": "#/components/schemas/UserAttributeDataType"
+            "$ref": "#/components/schemas/UserAttributeDataType",
+            "description": "Determines the format required in `value` wherever this definition is used: \"string\" allows free text, \"number\" requires a parseable number, \"date\" requires `YYYY-MM-DD`."
           },
           "label": {
             "type": "string",
-            "title": "Label"
+            "title": "Label",
+            "description": "The human-facing display text for this definition; unlike `name`, this can be changed at any time."
           }
         },
         "type": "object",
@@ -2379,21 +2404,26 @@
           },
           "value": {
             "type": "string",
-            "title": "Value"
+            "title": "Value",
+            "description": "Formatted per `data_type`: \"string\" allows free text, \"number\" requires a parseable number, \"date\" requires `YYYY-MM-DD`."
           },
           "data_type": {
-            "$ref": "#/components/schemas/UserAttributeDataType"
+            "$ref": "#/components/schemas/UserAttributeDataType",
+            "description": "Determines `value`'s format: \"string\" allows free text, \"number\" requires a parseable number, \"date\" requires `YYYY-MM-DD`."
           },
           "name": {
             "type": "string",
-            "title": "Name"
+            "title": "Name",
+            "description": "The referenced `user_attribute_definition_id`'s `name`."
           },
           "source": {
-            "$ref": "#/components/schemas/UserAttributeSource"
+            "$ref": "#/components/schemas/UserAttributeSource",
+            "description": "Whether this value is set directly on the member (\"user\") or inherited from a group (\"group\")."
           },
           "source_id": {
             "type": "string",
-            "title": "Source Id"
+            "title": "Source Id",
+            "description": "ID of the group or member (matching `source`) this value comes from."
           },
           "user_attribute_precedence": {
             "anyOf": [
@@ -2404,11 +2434,13 @@
                 "type": "null"
               }
             ],
-            "title": "User Attribute Precedence"
+            "title": "User Attribute Precedence",
+            "description": "The source group's precedence; null when `source` is \"user\" - only groups carry a precedence."
           },
           "is_overridden": {
             "type": "boolean",
-            "title": "Is Overridden"
+            "title": "Is Overridden",
+            "description": "True if a higher-precedence group value, or a directly-set member value, takes effect instead of this one."
           }
         },
         "type": "object",
@@ -2464,7 +2496,7 @@
           }
         ]
       },
-      "WorkspaceManagerWorkspaceSchema": {
+      "WorkspaceSchema": {
         "properties": {
           "id": {
             "type": "string",
@@ -2476,7 +2508,8 @@
           },
           "provision_by_default": {
             "type": "boolean",
-            "title": "Provision By Default"
+            "title": "Provision By Default",
+            "description": "When true, new users signing in via SSO are automatically granted access to this workspace; when false, they need an explicit invite."
           },
           "archived_at": {
             "anyOf": [
@@ -2488,7 +2521,8 @@
                 "type": "null"
               }
             ],
-            "title": "Archived At"
+            "title": "Archived At",
+            "description": "When this workspace was archived; null while active."
           }
         },
         "type": "object",
@@ -2497,7 +2531,7 @@
           "name",
           "provision_by_default"
         ],
-        "title": "WorkspaceManagerWorkspaceSchema",
+        "title": "WorkspaceSchema",
         "examples": [
           {
             "id": "ws_456",

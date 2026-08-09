@@ -1,20 +1,15 @@
 openapi: 3.1.0
 info:
   title: FastAPI
+  contact:
+    email: support@zenlytic.com
   version: 2.0.0
   description: |
     # Welcome to the Zenlytic API
 
-    Use the Zenlytic API to manage workspaces, groups, and user attributes programmatically. The API is organized into two endpoint groups:
+    # Servers & Authentication
 
-    * **Org admin endpoints** (`GET /workspaces`, `POST /workspaces`, `DELETE /workspaces/{workspace_id}`) — list, create, and archive workspaces in your organization. The organization is always the calling token's own organization; none of these endpoints take an organization ID. Org admins also have admin permissions in every workspace, so an org admin token can call the admin endpoints below to manage groups and user attributes across any workspace.
-    * **Admin endpoints** (`/workspaces/{workspace_id}/...`) — manage a single workspace, including groups, user attribute definitions, and user attribute assignments for groups and members.
-
-    Every request is authenticated with a [personal access token](README.md#authentication).
-
-    ## Servers & Authentication
-
-    ### Servers
+    ## Servers
 
     Zenlytic runs separate API hosts per region. Use the host matching where your organization is hosted.
 
@@ -30,7 +25,7 @@ info:
     {% endtab %}
     {% endtabs %}
 
-    ### Authentication
+    ## Authentication
 
     Include your personal access token as a bearer token in the `Authorization` header:
 
@@ -42,7 +37,7 @@ info:
     A token's scope — a single workspace (**Admin**) or your entire organization (**Org admin**) — is fixed when the token is created, based on your role in the workspace you created it from. It isn't visible from the token itself, so call `GET /me` to see what a given token can actually reach before building against it. See [Overview](README.md#discovering-your-tokens-scope) for the full scope table.
     {% endhint %}
 
-    ## Getting started
+    # Getting started
 
     {% stepper %}
     {% step %}
@@ -61,7 +56,7 @@ info:
     {% endstep %}
     {% endstepper %}
 
-    ## Response envelope
+    # Response envelope
 
     Every response, success or error, is wrapped in the same `meta` envelope:
 
@@ -78,7 +73,7 @@ info:
 
     `meta.warnings` can carry non-fatal notices alongside a successful response — for example, two groups in a workspace sharing the same `user_attribute_precedence`.
 
-    ## Error responses
+    # Error responses
 
     Errors set `meta.status` to `"error"` and populate `meta.errors` with one entry per problem:
 
@@ -100,8 +95,20 @@ info:
     ```
 
     {% hint style="warning" %}
-    `error_code` and `error_metadata` are optional and may be `null` — key off `status_code` and `message` first.
+    `occurred_at`, `error_code`, and `error_metadata` are optional and may be `null` — key off `status_code` and `message` first.
     {% endhint %}
+
+    | Code | Meaning | When it happens |
+    | --- | --- | --- |
+    | `400` | Bad Request | An application-level validation rule failed — not a schema/type error, but a business rule (e.g. a value out of range, an inferred setting with no valid value). |
+    | `401` | Invalid token | The bearer token fails gateway-level verification — wrong issuer/key-id, wrong signing algorithm, bad signature, failed claims, or an empty subject. |
+    | `403` | Forbidden | Any authentication or authorization failure — missing/invalid credential, a PAT used against a workspace outside its scope, insufficient permission, or a `workspace_id`/`group_id`/etc. that doesn't exist or isn't visible to this token. These deliberately share one generic message — the API does not reveal which case applies. |
+    | `404` | Not Found | A specific named resource wasn't found within a scope you can otherwise access — distinct from the 403 case above, which covers the *scope itself* (e.g. the `workspace_id`) being inaccessible. Also returned for a request path that doesn't match any route. |
+    | `405` | Method Not Allowed | Valid path, wrong HTTP verb (e.g. `PUT` on a route that only defines `GET`/`POST`). |
+    | `409` | Conflict | Trying to create something that already exists in a way that would collide — a duplicate attribute-definition name in a workspace, an attribute already set on this group/member, or an existing group membership. |
+    | `422` | Unprocessable Entity | The request itself doesn't match the expected shape — malformed JSON, a required field missing, or a field of the wrong type — caught by schema validation before any application logic runs. |
+    | `429` | Too Many Requests | Rate limit exceeded. See [Rate limiting](#rate-limiting). |
+    | `500` | Internal Server Error | An unexpected, unhandled error. The message is always the same generic string — no internal detail is ever leaked to the client. |
 servers:
 - url: https://api-external.zenlytic.com/api/v2
   description: US
@@ -240,8 +247,10 @@ paths:
       description: |-
         Create a new workspace in your organization.
 
-        Requires workspace_management permission on every workspace you belong to in the
-        organization.
+        Not a blank slate: the caller and every existing organization admin are auto-added as
+        organization admins, so they'll immediately appear in the workspace's "All Users" group,
+        whose membership always tracks the roster. Other org members aren't added until
+        separately granted access.
       operationId: create_workspace_in_organization_workspaces_post
       security:
       - HTTPBearer: []
@@ -663,6 +672,151 @@ paths:
               json={'value': 'east'}
           )
           print(r.json())
+  /workspaces/{workspace_id}/groups/{group_id}/members:
+    post:
+      tags:
+      - Groups
+      summary: Add Group Member
+      description: |-
+        Add a workspace member to the group.
+
+        ``user_id`` must already be a member of the workspace, or this returns 404. Adding a user
+        who is already in the group returns 409. Cannot be used on the built-in "All Users" group,
+        whose membership always tracks the workspace roster instead.
+      operationId: add_group_member_workspaces__workspace_id__groups__group_id__members_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddGroupMemberSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_GroupResponseSchema_'
+              example:
+                data:
+                  id: grp_123
+                  workspace_id: ws_456
+                  name: Sales
+                  is_all_users: false
+                  user_attribute_precedence: 1
+                  users:
+                  - usr_111
+                  - usr_222
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members \
+            -H 'Authorization: Bearer YOUR_API_KEY' \
+            -H 'Content-Type: application/json' \
+            -d '{"user_id": "usr_111"}'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'},
+              json={'user_id': 'usr_111'}
+          )
+          print(r.json())
+  /workspaces/{workspace_id}/groups/{group_id}/members/{user_id}:
+    delete:
+      tags:
+      - Groups
+      summary: Remove Group Member
+      description: |-
+        Remove a member from the group.
+
+        Returns 404 if the user is not currently a member of the group. Cannot be used on the
+        built-in "All Users" group, whose membership always tracks the workspace roster instead.
+      operationId: remove_group_member_workspaces__workspace_id__groups__group_id__members__user_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members/<user_id> \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members/<user_id>',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
   /workspaces/{workspace_id}/groups:
     get:
       tags:
@@ -1019,6 +1173,71 @@ paths:
               'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>',
               headers={'Authorization': 'Bearer YOUR_API_KEY'}
           )
+  /workspaces/{workspace_id}/members:
+    get:
+      tags:
+      - Members
+      summary: Get Workspace Members
+      description: List every member of the workspace.
+      operationId: get_workspace_members_workspaces__workspace_id__members_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_MemberSchema_'
+              example:
+                data:
+                - id: usr_111
+                  workspace_id: ws_456
+                  role: admin
+                  first_name: Ada
+                  last_name: Lovelace
+                  email: ada@acme.com
+                  email_verified: true
+                  mfa_enabled: false
+                  identity_provider: google
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
   /workspaces/{workspace_id}/members/{member_id}/user_attributes:
     get:
       tags:
@@ -1614,6 +1833,17 @@ paths:
           print(r.json())
 components:
   schemas:
+    AddGroupMemberSchema:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+      type: object
+      required:
+      - user_id
+      title: AddGroupMemberSchema
+      examples:
+      - user_id: usr_111
     ApiV2CollectionResponse_GroupResponseSchema_:
       properties:
         data:
@@ -1628,6 +1858,20 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[GroupResponseSchema]
+    ApiV2CollectionResponse_MemberSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/MemberSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[MemberSchema]
     ApiV2CollectionResponse_UserAttributeDefinitionSchema_:
       properties:
         data:
@@ -1945,6 +2189,67 @@ components:
         workspaces:
         - id: ws_456
           name: acme-prod
+    MemberSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        workspace_id:
+          type: string
+          title: Workspace Id
+        role:
+          type: string
+          title: Role
+        external_user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: External User Id
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+        email:
+          type: string
+          title: Email
+        email_verified:
+          type: boolean
+          title: Email Verified
+        mfa_enabled:
+          type: boolean
+          title: Mfa Enabled
+        identity_provider:
+          type: string
+          title: Identity Provider
+      type: object
+      required:
+      - id
+      - workspace_id
+      - role
+      - external_user_id
+      - first_name
+      - last_name
+      - email
+      - email_verified
+      - mfa_enabled
+      - identity_provider
+      title: MemberSchema
+      examples:
+      - email: ada@acme.com
+        email_verified: true
+        first_name: Ada
+        id: usr_111
+        identity_provider: google
+        last_name: Lovelace
+        mfa_enabled: false
+        role: admin
+        workspace_id: ws_456
     MetaSchema:
       properties:
         status:
@@ -2236,6 +2541,11 @@ tags:
   x-page-icon: layer-group
   x-page-description: Create, list, and archive workspaces in your organization. Requires an org admin
     personal access token.
+- name: Members
+  x-parent: Admin
+  x-page-title: Members
+  x-page-icon: user
+  x-page-description: List the members of a workspace.
 - name: Groups
   x-parent: Admin
   x-page-title: Groups

@@ -129,7 +129,6 @@ info:
           }
         ],
         "warnings": [],
-        "request_source": "pat"
       }
     }
     ```
@@ -701,6 +700,80 @@ paths:
           )
           print(r.json())
   /workspaces/{workspace_id}/groups/{group_id}/members:
+    get:
+      tags:
+      - Groups
+      summary: Get Group Members
+      description: |-
+        List every member of the group.
+
+        For the built-in "All Users" group, this returns every member of the workspace, since
+        its membership always tracks the workspace roster.
+      operationId: get_group_members_workspaces__workspace_id__groups__group_id__members_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_MemberSchema_'
+              example:
+                data:
+                - id: usr_111
+                  workspace_id: ws_456
+                  role: admin
+                  first_name: Ada
+                  last_name: Lovelace
+                  email: ada@acme.com
+                  email_verified: true
+                  mfa_enabled: false
+                  identity_provider: google
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
     post:
       tags:
       - Groups
@@ -2295,13 +2368,6 @@ components:
           title: Warnings
           description: Can be non-empty even when `status` is "success" - a non-fatal issue with an otherwise-successful
             request.
-        request_source:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Request Source
-          description: Which auth mechanism served this request (e.g. "api_key", "pat"); null when not
-            tracked for this endpoint.
       type: object
       required:
       - status

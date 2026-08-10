@@ -6,7 +6,7 @@ description: >-
 
 # MCP Client
 
-> Looking to connect an AI tool like Claude Desktop, Claude Code, or Cursor _to_ Zenlytic instead? See [MCP Server](../connecting-to-zenlytic/) — that page covers the reverse direction, where Zenlytic is the server.
+> Looking to connect an AI tool like Claude.ai, Claude Code, or Cursor _to_ Zenlytic instead? See [MCP Server](../connecting-to-zenlytic/) — that page covers the reverse direction, where Zenlytic is the server.
 
 Zenlytic acts as an **MCP client**: point Zoë at a compatible remote MCP server, and the tools that server advertises become available alongside Zoë's native ones. When enabled, Zoë can then pull data and trigger workflows from external systems directly from the Zenlytic chat experience.
 

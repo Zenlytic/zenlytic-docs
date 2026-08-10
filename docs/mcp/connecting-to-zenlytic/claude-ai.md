@@ -1,12 +1,12 @@
 ---
 description: >-
-  Connect Claude Desktop or Claude.ai to Zenlytic's MCP server so Claude can
+  Connect Claude.ai to Zenlytic's MCP server so Claude can
   query your business data directly.
 ---
 
-# Claude Desktop / Claude.ai
+# Claude.ai
 
-Claude Desktop and Claude.ai support MCP custom connectors with OAuth out of the box, so this is one of the easiest clients to connect to Zenlytic. See [MCP Server](./) for what you get once connected and general prerequisites.
+Claude.ai support MCP custom connectors with OAuth out of the box, so this is one of the easiest clients to connect to Zenlytic. See [MCP Server](./) for what you get once connected and general prerequisites.
 
 ## Before you start
 

@@ -17,7 +17,7 @@ The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open s
 
 ### [**MCP Server**](connecting-to-zenlytic/)
 
-Your own AI tools (Claude Desktop, Claude Code, ChatGPT, Cursor, GitHub Copilot) connect _in_ to Zenlytic's MCP server to ask questions and query your governed business data.
+Your own AI tools (Claude.ai, Claude Code, ChatGPT) connect _in_ to Zenlytic's MCP server to ask questions and query your governed business data.
 
 <figure><img src="../.gitbook/assets/mcp-server.png" alt=""><figcaption></figcaption></figure>
 

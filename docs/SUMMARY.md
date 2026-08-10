@@ -77,10 +77,8 @@
 
 * [MCP Overview](mcp/overview.md)
 * [MCP Server](mcp/connecting-to-zenlytic/README.md)
-  * [Claude Desktop / Claude.ai](mcp/connecting-to-zenlytic/claude-desktop.md)
+  * [Claude.ai](mcp/connecting-to-zenlytic/claude-ai.md)
   * [Claude Code](mcp/connecting-to-zenlytic/claude-code.md)
-  * [Cursor](mcp/connecting-to-zenlytic/cursor.md)
-  * [GitHub Copilot](mcp/connecting-to-zenlytic/github-copilot.md)
   * [ChatGPT](mcp/connecting-to-zenlytic/chatgpt.md)
 * [MCP Client](mcp/client/README.md)
   * [Tableau](mcp/client/tableau.md)

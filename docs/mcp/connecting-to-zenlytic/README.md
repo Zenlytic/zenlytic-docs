@@ -1,13 +1,13 @@
 ---
 description: >-
-  Connect AI tools like Claude Desktop, Claude Code, Cursor, GitHub Copilot, and
+  Connect AI tools like Claude.ai, Claude Code, and
   ChatGPT to Zenlytic's MCP server so they can query your business data
   directly.
 ---
 
 # MCP Server
 
-Zenlytic supports the [Model Context Protocol (MCP)](https://modelcontextprotocol.io), which lets AI tools like **Claude Desktop**, **Claude Code**, **Cursor**, **GitHub Copilot**, and **ChatGPT** ask Zoe questions about your business data directly — no copy-pasting numbers back and forth. Once connected, you can ask your AI assistant things like "What was our revenue last quarter, broken out by region?" and it will query Zenlytic's governed semantic layer and return a real answer, grounded in your actual metrics.
+Zenlytic supports the [Model Context Protocol (MCP)](https://modelcontextprotocol.io), which lets AI tools like **Claude.ai**, **Claude Code**, and **ChatGPT** ask Zoe questions about your business data directly — no copy-pasting numbers back and forth. Once connected, you can ask your AI assistant things like "What was our revenue last quarter, broken out by region?" and it will query Zenlytic's governed semantic layer and return a real answer, grounded in your actual metrics.
 
 This guide walks through connecting an MCP client to Zenlytic and what to expect once you do.
 
@@ -29,12 +29,12 @@ You'll need:
 
 * A Zenlytic account with access to the workspace you want to query
 * Chat permission in that workspace
-* An MCP-capable client (Claude Desktop, Claude Code, Cursor, GitHub Copilot, ChatGPT, or similar)
+* An MCP-capable client (Claude.ai, Claude Code, ChatGPT, or similar)
 * Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com/mcp
 
 ## Option 1: Connect with OAuth (recommended for most clients)
 
-If your client supports MCP connectors with OAuth (this includes Claude Desktop, Claude.ai, Claude Code, Cursor, VS Code/GitHub Copilot, and ChatGPT Developer mode), this is the easiest path — you don't need to generate or manage any tokens yourself.
+If your client supports MCP connectors with OAuth (this includes Claude.ai, Claude.ai, Claude Code, and ChatGPT Developer mode), this is the easiest path — you don't need to generate or manage any tokens yourself.
 
 1. In your MCP client, add a new connector/server pointing at Zenlytic's MCP URL
 2. Your client will open a browser window and redirect you to Zenlytic's login page.
@@ -46,7 +46,7 @@ If your client supports MCP connectors with OAuth (this includes Claude Desktop,
 Some clients don't support the OAuth flow and instead want a static token in their config file.
 
 1. In Zenlytic, go to **Workspace Settings → Personal Access Tokens** (`/workspace-settings/personal-access-tokens`).
-2. Click **Create token**, give it a name (e.g. "Cursor MCP"), and save it.
+2. Click **Create token**, give it a name (e.g. "Claude MCP"), and save it.
 3. **Copy the token immediately** — it's only shown once, right after creation.
 4. Add it to your MCP client's config as a bearer token. For example:
 
@@ -69,10 +69,8 @@ Some clients don't support the OAuth flow and instead want a static token in the
 
 The steps above are general — each client has its own place to add a connector and its own quirks. Follow the guide for your client:
 
-* [Claude Desktop / Claude.ai](claude-desktop.md)
+* [Claude.ai](claude-ai.md)
 * [Claude Code](claude-code.md)
-* [Cursor](cursor.md)
-* [GitHub Copilot (VS Code)](github-copilot.md)
 * [ChatGPT](chatgpt.md)
 
 ## Using it

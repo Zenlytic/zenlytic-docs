@@ -71,7 +71,6 @@ The steps above are general — each client has its own place to add a connector
 
 * [Claude.ai](claude-ai.md)
 * [Claude Code](claude-code.md)
-* [ChatGPT](chatgpt.md)
 
 ## Using it
 

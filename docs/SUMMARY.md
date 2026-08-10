@@ -79,7 +79,6 @@
 * [MCP Server](mcp/connecting-to-zenlytic/README.md)
   * [Claude.ai](mcp/connecting-to-zenlytic/claude-ai.md)
   * [Claude Code](mcp/connecting-to-zenlytic/claude-code.md)
-  * [ChatGPT](mcp/connecting-to-zenlytic/chatgpt.md)
 * [MCP Client](mcp/client/README.md)
   * [Tableau](mcp/client/tableau.md)
   * [Power BI](mcp/client/powerbi.md)

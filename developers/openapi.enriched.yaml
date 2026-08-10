@@ -105,7 +105,7 @@ info:
     | `405` | Method Not Allowed | Valid path, wrong HTTP verb (e.g. `PUT` on a route that only defines `GET`/`POST`). |
     | `409` | Conflict | Trying to create something that already exists in a way that would collide — a duplicate attribute-definition name in a workspace, an attribute already set on this group/member, or an existing group membership. |
     | `422` | Unprocessable Entity | The request itself doesn't match the expected shape — malformed JSON, a required field missing, or a field of the wrong type — caught by schema validation before any application logic runs. |
-    | `429` | Too Many Requests | Rate limit exceeded. See [Rate limiting](#rate-limiting). |
+    | `429` | Too Many Requests | Rate limit exceeded. |
     | `500` | Internal Server Error | An unexpected, unhandled error. The message is always the same generic string — no internal detail is ever leaked to the client. |
 
     ## Rate limiting

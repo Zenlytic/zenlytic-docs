@@ -107,6 +107,36 @@ info:
     | `422` | Unprocessable Entity | The request itself doesn't match the expected shape — malformed JSON, a required field missing, or a field of the wrong type — caught by schema validation before any application logic runs. |
     | `429` | Too Many Requests | Rate limit exceeded. See [Rate limiting](#rate-limiting). |
     | `500` | Internal Server Error | An unexpected, unhandled error. The message is always the same generic string — no internal detail is ever leaked to the client. |
+
+    ## Rate limiting
+
+    The API enforces rate limits, keyed by your personal access token. Limits vary by endpoint, so don't assume a single number applies everywhere — check your current quota from the response headers instead of a fixed value from documentation:
+
+    - `X-RateLimit-Limit` — your quota for the current window
+    - `X-RateLimit-Remaining` — requests left in the current window
+    - `X-RateLimit-Reset` — seconds until the window resets
+
+    When a request is rejected, the API returns `429` with the standard error envelope:
+
+    ```json
+    {
+      "meta": {
+        "status": "error",
+        "errors": [
+          {
+            "message": "Rate limit exceeded",
+            "status_code": 429
+          }
+        ],
+        "warnings": [],
+        "request_source": "pat"
+      }
+    }
+    ```
+
+    {% hint style="info" %}
+    On a `429`, back off exponentially and use `X-RateLimit-Reset` to know when it's safe to retry, rather than a fixed retry delay.
+    {% endhint %}
 servers:
 - url: https://api-external.zenlytic.com/api/v2
   description: US

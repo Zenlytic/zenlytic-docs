@@ -5,9 +5,9 @@ info:
     email: support@zenlytic.com
   version: 2.0.0
   description: |
-    # Servers & Authentication
+    ## Servers & Authentication
 
-    ## Servers
+    ### Servers
 
     Zenlytic runs separate API hosts per region. Use the host matching where your organization is hosted.
 
@@ -23,7 +23,7 @@ info:
     {% endtab %}
     {% endtabs %}
 
-    ## Authentication
+    ### Authentication
 
     Include your personal access token as a bearer token in the `Authorization` header:
 
@@ -35,7 +35,7 @@ info:
     A token's scope — a single workspace (**Admin**) or your entire organization (**Org admin**) — is fixed when the token is created, based on your role in the workspace you created it from. It isn't visible from the token itself, so call `GET /me` to see what a given token can actually reach before building against it. See [Overview](README.md#discovering-your-tokens-scope) for the full scope table.
     {% endhint %}
 
-    # Getting started
+    ## Getting started
 
     {% stepper %}
     {% step %}
@@ -54,7 +54,7 @@ info:
     {% endstep %}
     {% endstepper %}
 
-    # Response envelope
+    ## Response envelope
 
     Every response, success or error, is wrapped in the same `meta` envelope:
 
@@ -71,7 +71,7 @@ info:
 
     `meta.warnings` can carry non-fatal notices alongside a successful response — for example, two groups in a workspace sharing the same `user_attribute_precedence`.
 
-    # Error responses
+    ## Error responses
 
     Errors set `meta.status` to `"error"` and populate `meta.errors` with one entry per problem:
 

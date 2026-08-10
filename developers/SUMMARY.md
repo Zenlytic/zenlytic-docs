@@ -6,7 +6,7 @@
 
 * ```yaml
   props:
-    models: true
+    models: false
     downloadLink: true
     grouping: by-tag
   type: builtin:openapi

@@ -27,6 +27,43 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-08-09" tags="new-features,improvements,fixes" %}
+## Attach artifacts from chat
+
+Attach saved artifacts directly in chat, new Public API endpoints, artifact folder polish, and fixes across deletion dialogs, chat filters, and Slack installs.
+
+### New features
+
+* **Attach artifacts from chat** — Search for and attach saved artifacts directly in the chat composer, with previews and thumbnails.
+* **File URLs in the Public API** — File endpoints now return accessible file URLs. (API)
+* **Filter chat history by source** — Filter your chat list by where a conversation originated.
+* **Public API `/me` endpoint** — API clients can identify the authenticated user, organization, and accessible workspaces through a new endpoint. (API)
+* **Organization-scoped workspace API** — New API operations let you create, list, and archive workspaces at the organization level. (API)
+* **Default MCP connectors in Slack chats** — New Slack conversations automatically use connectors marked enabled by default, and show configuration errors in the thread. (Slack)
+* **Public workspace and group membership APIs** — New endpoints list workspace members and retrieve group membership. (API)
+
+### Improvements
+
+* **Scoped database-tree search** — Limit search to selected databases in Context Manager, with better pagination and tree state. (Context Manager)
+* **GPT-5.6 Luna replaces GPT-5.5** — GPT-5.6 Luna is now the default high-reasoning model in the model picker.
+* **Improved artifact folders** — Folder breadcrumbs, scoped table navigation, and better drawer behavior for organizing artifacts.
+* **Richer Public API reference** — Added endpoint descriptions and response documentation to the generated API schema. (API)
+* **Grouped API reference navigation** — API reference navigation is organized into clearer groups. (API)
+* **Human attribution on Zoë model commits** — Zoë-authored data model commits now record the initiating human as co-author. (Context Manager)
+* **Consolidated API documentation** — Retired the built-in `/docs` and `/redoc` pages; the published API reference is now the source of truth. (API)
+
+### Bug fixes
+
+* **Safer, consistent deletion dialogs** — Standardized confirmation dialogs and fixed loading and error handling when deleting agents, folders, artifacts, schedules, and credentials.
+* **Block conflicting Slack installations** — A second Zenlytic workspace can no longer silently take over an already-connected Slack workspace; you'll see a clear error instead. (Slack)
+* **Teradata pagination fixed** — Table browsing and previews use Teradata-compatible pagination. (Context Manager)
+* **Clear Git permission errors** — Save Model now explains revoked deploy keys and credential denials instead of a generic failure. (Context Manager)
+* **Mobile chat filters fixed** — Chat source-filter menus position, close, scroll, and respond to Escape correctly on mobile.
+* **Artifacts wait for chat completion** — The artifact drawer no longer opens prematurely while a chat is still streaming.
+* **Signup name fixed** — New signups no longer fail due to a missing required name field.
+* **Deep links open the right workspace** — Resource links now open in the workspace that actually owns the resource.
+* **Workspace-region validation fixed** — Workspace operations no longer treat a missing region value as a conflict. (API)
+{% endupdate %}
 {% update date="2026-08-02" tags="new-features,improvements,fixes" %}
 ## Claude Opus 5 and bulk user management
 

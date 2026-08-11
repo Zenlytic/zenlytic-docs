@@ -1802,7 +1802,7 @@ paths:
   /workspaces/{workspace_id}/user_attribute_definitions:
     get:
       tags:
-      - User Attributes
+      - User Attribute Definitions
       summary: Get User Attribute Definitions
       description: |-
         List the user attribute definitions in the workspace.
@@ -1866,7 +1866,7 @@ paths:
           print(r.json())
     post:
       tags:
-      - User Attributes
+      - User Attribute Definitions
       summary: Create User Attribute Definition
       description: |-
         Create a user attribute definition in the workspace.
@@ -1940,7 +1940,7 @@ paths:
   /workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}:
     delete:
       tags:
-      - User Attributes
+      - User Attribute Definitions
       summary: Delete User Attribute Definition
       description: |-
         Delete a user attribute definition and every value assigned against it.
@@ -1993,7 +1993,7 @@ paths:
           )
     patch:
       tags:
-      - User Attributes
+      - User Attribute Definitions
       summary: Update User Attribute Definition
       description: |-
         Update a user attribute definition's label.
@@ -2863,8 +2863,8 @@ tags:
   x-page-title: Groups
   x-page-icon: users
   x-page-description: Manage groups and the user attribute values set on them.
-- name: User Attributes
+- name: User Attribute Definitions
   x-parent: Admin
-  x-page-title: User Attributes
+  x-page-title: User Attribute Definitions
   x-page-icon: sliders
   x-page-description: Define the custom attributes available to groups and members.

@@ -2848,23 +2848,23 @@ tags:
   x-page-title: Workspaces
   x-page-icon: layer-group
   x-page-description: Create, list, and archive workspaces in your organization.
-- name: Members
-  x-parent: Admin
-  x-page-title: Members
-  x-page-icon: user
-  x-page-description: List a workspace's members and manage their custom attribute values.
 - name: Invites
   x-parent: Admin
   x-page-title: Invites
   x-page-icon: envelope
   x-page-description: Invite new members to a workspace and view pending invites.
-- name: Groups
-  x-parent: Admin
-  x-page-title: Groups
-  x-page-icon: users
-  x-page-description: Manage groups and the user attribute values set on them.
 - name: User Attribute Definitions
   x-parent: Admin
   x-page-title: User Attribute Definitions
   x-page-icon: sliders
   x-page-description: Define the custom attributes available to groups and members.
+- name: Members
+  x-parent: Admin
+  x-page-title: Members
+  x-page-icon: user
+  x-page-description: List a workspace's members and manage their custom attribute values.
+- name: Groups
+  x-parent: Admin
+  x-page-title: Groups
+  x-page-icon: users
+  x-page-description: Manage groups and the user attribute values set on them.

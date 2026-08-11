@@ -1339,6 +1339,144 @@ paths:
               headers={'Authorization': 'Bearer YOUR_API_KEY'}
           )
           print(r.json())
+  /workspaces/{workspace_id}/members/invites:
+    get:
+      tags:
+      - Members
+      summary: List Invites
+      description: |-
+        List every pending invite for the workspace.
+
+        Invites that have already been accepted no longer appear here — they show up in
+        ``GET /workspaces/{workspace_id}/members`` instead.
+      operationId: list_invites_workspaces__workspace_id__members_invites_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_InviteSchema_'
+              example:
+                data:
+                - id: invite_123
+                  workspace_id: ws_456
+                  email: ada@acme.com
+                  role: explore
+                  invite_url: https://app.zenlytic.com/join-workspace/invite_123?shopName=acme
+                  created_date: '2026-01-01T00:00:00Z'
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
+    post:
+      tags:
+      - Members
+      summary: Create Invite
+      description: |-
+        Invite a new member to the workspace by email.
+
+        Reuses the same invite creation and email-send flow as the in-product "Invite" action.
+        ``role`` is optional and defaults to the workspace's configured default role. Returns 409 if
+        the email is already a member of the workspace or already has a pending invite.
+      operationId: create_invite_workspaces__workspace_id__members_invites_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInviteSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_InviteSchema_'
+              example:
+                data:
+                  id: invite_123
+                  workspace_id: ws_456
+                  email: ada@acme.com
+                  role: explore
+                  invite_url: https://app.zenlytic.com/join-workspace/invite_123?shopName=acme
+                  created_date: '2026-01-01T00:00:00Z'
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
   /workspaces/{workspace_id}/members/{member_id}/user_attributes:
     get:
       tags:
@@ -1959,6 +2097,20 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[GroupResponseSchema]
+    ApiV2CollectionResponse_InviteSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/InviteSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[InviteSchema]
     ApiV2CollectionResponse_MemberSchema_:
       properties:
         data:
@@ -2045,6 +2197,17 @@ components:
       - data
       - meta
       title: ApiV2Response[GroupResponseSchema]
+    ApiV2Response_InviteSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/InviteSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[InviteSchema]
     ApiV2Response_MeSchema_:
       properties:
         data:
@@ -2099,6 +2262,20 @@ components:
       examples:
       - name: Sales
         user_attribute_precedence: 1
+    CreateInviteSchema:
+      properties:
+        email:
+          type: string
+          title: Email
+        role:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Role
+      type: object
+      required:
+      - email
+      title: CreateInviteSchema
     CreateUserAttributeDefinitionSchema:
       properties:
         name:
@@ -2266,6 +2443,43 @@ components:
         users:
         - usr_111
         - usr_222
+        workspace_id: ws_456
+    InviteSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        workspace_id:
+          type: string
+          title: Workspace Id
+        email:
+          type: string
+          title: Email
+        role:
+          type: string
+          title: Role
+        invite_url:
+          type: string
+          title: Invite Url
+        created_date:
+          type: string
+          format: date-time
+          title: Created Date
+      type: object
+      required:
+      - id
+      - workspace_id
+      - email
+      - role
+      - invite_url
+      - created_date
+      title: InviteSchema
+      examples:
+      - created_date: '2026-01-01T00:00:00Z'
+        email: ada@acme.com
+        id: invite_123
+        invite_url: https://app.zenlytic.com/join-workspace/invite_123?shopName=acme
+        role: explore
         workspace_id: ws_456
     MeSchema:
       properties:

@@ -1339,148 +1339,10 @@ paths:
               headers={'Authorization': 'Bearer YOUR_API_KEY'}
           )
           print(r.json())
-  /workspaces/{workspace_id}/members/invites:
-    get:
-      tags:
-      - Members
-      summary: List Invites
-      description: |-
-        List every pending invite for the workspace.
-
-        Invites that have already been accepted no longer appear here — they show up in
-        ``GET /workspaces/{workspace_id}/members`` instead.
-      operationId: list_invites_workspaces__workspace_id__members_invites_get
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2CollectionResponse_InviteSchema_'
-              example:
-                data:
-                - id: invite_123
-                  workspace_id: ws_456
-                  email: ada@acme.com
-                  role: explore
-                  invite_url: https://app.zenlytic.com/join-workspace/invite_123?shopName=acme
-                  created_date: '2026-01-01T00:00:00Z'
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.get(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-          print(r.json())
-    post:
-      tags:
-      - Members
-      summary: Create Invite
-      description: |-
-        Invite a new member to the workspace by email.
-
-        Reuses the same invite creation and email-send flow as the in-product "Invite" action.
-        ``role`` is optional and defaults to the workspace's configured default role. Returns 409 if
-        the email is already a member of the workspace or already has a pending invite.
-      operationId: create_invite_workspaces__workspace_id__members_invites_post
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateInviteSchema'
-      responses:
-        '201':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2Response_InviteSchema_'
-              example:
-                data:
-                  id: invite_123
-                  workspace_id: ws_456
-                  email: ada@acme.com
-                  role: explore
-                  invite_url: https://app.zenlytic.com/join-workspace/invite_123?shopName=acme
-                  created_date: '2026-01-01T00:00:00Z'
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.post(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/invites',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-          print(r.json())
   /workspaces/{workspace_id}/members/{member_id}/user_attributes:
     get:
       tags:
-      - User Attributes
+      - Members
       summary: Get Member User Attributes
       description: |-
         List the user attribute values that apply to a workspace member.
@@ -1565,7 +1427,7 @@ paths:
           print(r.json())
     post:
       tags:
-      - User Attributes
+      - Members
       summary: Create Member User Attribute
       description: |-
         Set a user attribute value directly on a workspace member.
@@ -1652,7 +1514,7 @@ paths:
   /workspaces/{workspace_id}/members/{member_id}/user_attributes/{user_attribute_id}:
     delete:
       tags:
-      - User Attributes
+      - Members
       summary: Delete Member User Attribute
       description: |-
         Remove a user attribute value set directly on a workspace member.
@@ -1712,7 +1574,7 @@ paths:
           )
     patch:
       tags:
-      - User Attributes
+      - Members
       summary: Update Member User Attribute
       description: |-
         Update the value of a user attribute set directly on a workspace member.
@@ -1797,6 +1659,144 @@ paths:
               'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes/<user_attribute_id>',
               headers={'Authorization': 'Bearer YOUR_API_KEY'},
               json={'value': 'east'}
+          )
+          print(r.json())
+  /workspaces/{workspace_id}/invites:
+    get:
+      tags:
+      - Invites
+      summary: List Invites
+      description: |-
+        List every pending invite for the workspace.
+
+        Invites that have already been accepted no longer appear here — they show up in
+        ``GET /workspaces/{workspace_id}/members`` instead.
+      operationId: list_invites_workspaces__workspace_id__invites_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_InviteSchema_'
+              example:
+                data:
+                - id: invite_123
+                  workspace_id: ws_456
+                  email: ada@acme.com
+                  role: explore
+                  invite_url: https://app.zenlytic.com/join-workspace/invite_123?shopName=acme
+                  created_date: '2026-01-01T00:00:00Z'
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/invites \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/invites',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
+    post:
+      tags:
+      - Invites
+      summary: Create Invite
+      description: |-
+        Invite a new member to the workspace by email.
+
+        Reuses the same invite creation and email-send flow as the in-product "Invite" action.
+        ``role`` is optional and defaults to the workspace's configured default role. Returns 409 if
+        the email is already a member of the workspace or already has a pending invite.
+      operationId: create_invite_workspaces__workspace_id__invites_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInviteSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_InviteSchema_'
+              example:
+                data:
+                  id: invite_123
+                  workspace_id: ws_456
+                  email: ada@acme.com
+                  role: explore
+                  invite_url: https://app.zenlytic.com/join-workspace/invite_123?shopName=acme
+                  created_date: '2026-01-01T00:00:00Z'
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/invites \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/invites',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
           )
           print(r.json())
   /workspaces/{workspace_id}/user_attribute_definitions:
@@ -2847,13 +2847,17 @@ tags:
   x-parent: Org Admin
   x-page-title: Workspaces
   x-page-icon: layer-group
-  x-page-description: Create, list, and archive workspaces in your organization. Requires an org admin
-    personal access token.
+  x-page-description: Create, list, and archive workspaces in your organization.
 - name: Members
   x-parent: Admin
   x-page-title: Members
   x-page-icon: user
-  x-page-description: List the members of a workspace.
+  x-page-description: List a workspace's members and manage their custom attribute values.
+- name: Invites
+  x-parent: Admin
+  x-page-title: Invites
+  x-page-icon: envelope
+  x-page-description: Invite new members to a workspace and view pending invites.
 - name: Groups
   x-parent: Admin
   x-page-title: Groups
@@ -2863,4 +2867,4 @@ tags:
   x-parent: Admin
   x-page-title: User Attributes
   x-page-icon: sliders
-  x-page-description: Define custom attributes and set their values on groups and members.
+  x-page-description: Define the custom attributes available to groups and members.

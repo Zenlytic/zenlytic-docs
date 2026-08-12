@@ -8,7 +8,7 @@
   props:
     models: false
     downloadLink: true
-    grouping: by-tag
+    grouping: by-operation
   type: builtin:openapi
   dependencies:
     spec:

@@ -35,26 +35,26 @@ info:
     A token's scope — a single workspace (**Admin**) or your entire organization (**Org admin**) — is fixed when the token is created, based on your role in the workspace you created it from. It isn't visible from the token itself, so call `GET /me` to see what a given token can actually reach before building against it. See [Overview](README.md#discovering-your-tokens-scope) for the full scope table.
     {% endhint %}
 
-    ## Getting started
+    ## Getting Started
 
     {% stepper %}
     {% step %}
-    ## Create a personal access token
+    ## Create a Personal Access Token
     See [Overview](README.md#creating-a-personal-access-token) for how to create one from your user menu.
     {% endstep %}
 
     {% step %}
-    ## Check your token's scope
+    ## Check Your Token's Scope
     Call `GET /me` with your new token. It returns your organization and the workspaces the token can see — one workspace for an admin-scoped token, or every workspace in the organization for an org admin token.
     {% endstep %}
 
     {% step %}
-    ## Make your first request
+    ## Make Your First Request
     Org admin token: call `GET /workspaces` to list every workspace in your organization. Admin token: call `GET /workspaces/{workspace_id}/groups` for a workspace your token can see.
     {% endstep %}
     {% endstepper %}
 
-    ## Response envelope
+    ## Response Envelope
 
     Every response, success or error, is wrapped in the same `meta` envelope:
 
@@ -71,7 +71,7 @@ info:
 
     `meta.warnings` can carry non-fatal notices alongside a successful response — for example, two groups in a workspace sharing the same `user_attribute_precedence`.
 
-    ## Error responses
+    ## Error Responses
 
     Errors set `meta.status` to `"error"` and populate `meta.errors` with one entry per problem:
 
@@ -108,7 +108,7 @@ info:
     | `429` | Too Many Requests | Rate limit exceeded. |
     | `500` | Internal Server Error | An unexpected, unhandled error. The message is always the same generic string — no internal detail is ever leaked to the client. |
 
-    ## Rate limiting
+    ## Rate Limiting
 
     The API enforces rate limits, keyed by your personal access token. Limits vary by endpoint, so don't assume a single number applies everywhere — check your current quota from the response headers instead of a fixed value from documentation:
 
@@ -128,7 +128,7 @@ info:
             "status_code": 429
           }
         ],
-        "warnings": [],
+        "warnings": []
       }
     }
     ```
@@ -341,6 +341,9 @@ paths:
       description: |-
         Archive a workspace in your organization.
 
+        Any user whose current workspace is the one being archived is silently reassigned to
+        another workspace they belong to (or none, if they have no other workspace).
+
         {% hint style="danger" %}
         There is no confirmation step. Double-check `workspace_id` before calling — this is a soft delete, but the workspace's users are reassigned to another workspace in the organization immediately.
         {% endhint %}
@@ -383,322 +386,6 @@ paths:
               'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>',
               headers={'Authorization': 'Bearer YOUR_API_KEY'}
           )
-  /workspaces/{workspace_id}/groups/{group_id}/user_attributes:
-    get:
-      tags:
-      - Groups
-      summary: Get Group User Attributes
-      description: |-
-        List the user attribute values set on a group.
-
-        These apply to every member of the group. When a member is in several groups that set the
-        same attribute, the group with the highest ``user_attribute_precedence`` wins.
-
-        ``source`` is always ``"group"`` and ``source_id`` always matches this group's ID here —
-        both only vary on the member user attributes endpoint, where a value can come from any of a
-        member's groups or be set directly on the member.
-      operationId: get_group_user_attributes_workspaces__workspace_id__groups__group_id__user_attributes_get
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: group_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Group Id
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_'
-              example:
-                data:
-                - id: ua_789
-                  user_attribute_definition_id: uad_123
-                  value: west
-                  data_type: string
-                  name: region
-                  source: group
-                  source_id: grp_123
-                  user_attribute_precedence: 1
-                  is_overridden: false
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.get(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-          print(r.json())
-    post:
-      tags:
-      - Groups
-      summary: Create Group User Attribute
-      description: |-
-        Set a user attribute value on a group.
-
-        ``user_attribute_definition_id`` must reference an existing definition in the workspace. A
-        group can only set each definition once; a second value for the same definition returns
-        409 — patch the existing value instead.
-
-        ``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric
-        string for ``number``.
-      operationId: create_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes_post
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: group_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Group Id
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateUserAttributeSchema'
-      responses:
-        '201':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
-              example:
-                data:
-                  id: ua_789
-                  user_attribute_definition_id: uad_123
-                  value: west
-                  data_type: string
-                  name: region
-                  source: group
-                  source_id: grp_123
-                  user_attribute_precedence: 1
-                  is_overridden: false
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes \
-            -H 'Authorization: Bearer YOUR_API_KEY' \
-            -H 'Content-Type: application/json' \
-            -d '{"user_attribute_definition_id": "uad_123", "value": "west"}'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.post(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'},
-              json={'user_attribute_definition_id': 'uad_123', 'value': 'west'}
-          )
-          print(r.json())
-  /workspaces/{workspace_id}/groups/{group_id}/user_attributes/{user_attribute_id}:
-    delete:
-      tags:
-      - Groups
-      summary: Delete Group User Attribute
-      description: |-
-        Remove a user attribute value from a group.
-
-        The definition itself is untouched — only this group's value for it is deleted.
-      operationId: delete_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__delete
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: group_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Group Id
-      - name: user_attribute_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: User Attribute Id
-      responses:
-        '204':
-          description: Successful Response
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id> \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          requests.delete(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id>',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-    patch:
-      tags:
-      - Groups
-      summary: Update Group User Attribute
-      description: |-
-        Update the value of a user attribute already set on a group.
-
-        Only ``value`` is mutable; to point at a different definition, delete this value and
-        create a new one. ``value`` must match the existing definition's ``data_type``:
-        ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
-      operationId: update_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__patch
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: group_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Group Id
-      - name: user_attribute_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: User Attribute Id
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateUserAttributeSchema'
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
-              example:
-                data:
-                  id: ua_789
-                  user_attribute_definition_id: uad_123
-                  value: east
-                  data_type: string
-                  name: region
-                  source: group
-                  source_id: grp_123
-                  user_attribute_precedence: 1
-                  is_overridden: false
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id> \
-            -H 'Authorization: Bearer YOUR_API_KEY' \
-            -H 'Content-Type: application/json' \
-            -d '{"value": "east"}'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.patch(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id>',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'},
-              json={'value': 'east'}
-          )
-          print(r.json())
   /workspaces/{workspace_id}/groups/{group_id}/members:
     get:
       tags:
@@ -742,7 +429,7 @@ paths:
                   email: ada@acme.com
                   email_verified: true
                   mfa_enabled: false
-                  identity_provider: google
+                  identity_provider: Google
                 meta:
                   status: success
                   errors: []
@@ -1307,7 +994,7 @@ paths:
                   email: ada@acme.com
                   email_verified: true
                   mfa_enabled: false
-                  identity_provider: google
+                  identity_provider: Google
                 meta:
                   status: success
                   errors: []
@@ -1337,328 +1024,6 @@ paths:
           r = requests.get(
               'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members',
               headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-          print(r.json())
-  /workspaces/{workspace_id}/members/{member_id}/user_attributes:
-    get:
-      tags:
-      - Members
-      summary: Get Member User Attributes
-      description: |-
-        List the user attribute values that apply to a workspace member.
-
-        Includes values inherited from the member's groups as well as values set directly on the
-        member. ``is_overridden`` marks a group-inherited value that a higher-precedence group's
-        value, or a value set directly on the member, has superseded - so the effective set is
-        the entries where it is false. ``user_attribute_precedence`` is ``null`` exactly when
-        ``source`` is ``"user"`` (a directly-set value) - only groups carry a precedence.
-      operationId: get_member_user_attributes_workspaces__workspace_id__members__member_id__user_attributes_get
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: member_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Member Id
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_'
-              example:
-                data:
-                - id: ua_789
-                  user_attribute_definition_id: uad_123
-                  value: west
-                  data_type: string
-                  name: region
-                  source: user
-                  source_id: usr_111
-                  is_overridden: false
-                - id: ua_790
-                  user_attribute_definition_id: uad_124
-                  value: '2024-01-15'
-                  data_type: date
-                  name: renewal_date
-                  source: group
-                  source_id: grp_123
-                  user_attribute_precedence: 1
-                  is_overridden: true
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.get(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-          print(r.json())
-    post:
-      tags:
-      - Members
-      summary: Create Member User Attribute
-      description: |-
-        Set a user attribute value directly on a workspace member.
-
-        A value set here takes precedence over any value the member inherits from a group. Each
-        member can only set a given definition once; a duplicate returns 409 — patch the existing
-        value instead.
-
-        ``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric
-        string for ``number``.
-      operationId: create_member_user_attribute_workspaces__workspace_id__members__member_id__user_attributes_post
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: member_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Member Id
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateUserAttributeSchema'
-      responses:
-        '201':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
-              example:
-                data:
-                  id: ua_789
-                  user_attribute_definition_id: uad_123
-                  value: west
-                  data_type: string
-                  name: region
-                  source: user
-                  source_id: usr_111
-                  is_overridden: false
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes \
-            -H 'Authorization: Bearer YOUR_API_KEY' \
-            -H 'Content-Type: application/json' \
-            -d '{"user_attribute_definition_id": "uad_123", "value": "west"}'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.post(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'},
-              json={'user_attribute_definition_id': 'uad_123', 'value': 'west'}
-          )
-          print(r.json())
-  /workspaces/{workspace_id}/members/{member_id}/user_attributes/{user_attribute_id}:
-    delete:
-      tags:
-      - Members
-      summary: Delete Member User Attribute
-      description: |-
-        Remove a user attribute value set directly on a workspace member.
-
-        Only values set on the member can be deleted here; group-inherited values are managed on
-        the group. Once removed, any group value for that definition applies again.
-      operationId: delete_member_user_attribute_workspaces__workspace_id__members__member_id__user_attributes__user_attribute_id__delete
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: member_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Member Id
-      - name: user_attribute_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: User Attribute Id
-      responses:
-        '204':
-          description: Successful Response
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes/<user_attribute_id> \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          requests.delete(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes/<user_attribute_id>',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-    patch:
-      tags:
-      - Members
-      summary: Update Member User Attribute
-      description: |-
-        Update the value of a user attribute set directly on a workspace member.
-
-        Only ``value`` is mutable; to point at a different definition, delete this value and
-        create a new one. ``value`` must match the existing definition's ``data_type``:
-        ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
-      operationId: update_member_user_attribute_workspaces__workspace_id__members__member_id__user_attributes__user_attribute_id__patch
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: member_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Member Id
-      - name: user_attribute_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: User Attribute Id
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateUserAttributeSchema'
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
-              example:
-                data:
-                  id: ua_789
-                  user_attribute_definition_id: uad_123
-                  value: east
-                  data_type: string
-                  name: region
-                  source: user
-                  source_id: usr_111
-                  is_overridden: false
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes/<user_attribute_id> \
-            -H 'Authorization: Bearer YOUR_API_KEY' \
-            -H 'Content-Type: application/json' \
-            -d '{"value": "east"}'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.patch(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<member_id>/user_attributes/<user_attribute_id>',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'},
-              json={'value': 'east'}
           )
           print(r.json())
   /workspaces/{workspace_id}/invites:
@@ -1735,8 +1100,20 @@ paths:
         Invite a new member to the workspace by email.
 
         Reuses the same invite creation and email-send flow as the in-product "Invite" action.
-        ``role`` is optional and defaults to the workspace's configured default role. Returns 409 if
-        the email is already a member of the workspace or already has a pending invite.
+        ``role`` is optional and defaults to the workspace's configured default role.
+
+        Returns 409 if the email is already a member of the workspace or already has a pending invite.
+
+        Returns 403 if ``role`` is ``organization_admin`` and the caller doesn't already hold
+        organization-admin access on this workspace - only an existing organization admin can invite
+        another one. On a free-tier workspace, ``role`` must be ``admin``; any other role returns 400.
+
+        Returns 403 if the workspace is on a self-service plan and this invite would exceed its
+        seat limit, its billing subscription isn't set up yet, or its subscription status doesn't
+        currently allow billing changes (e.g. past due).
+
+        Returns 400 if the workspace's SSO provider restricts allowed email domains and ``email``'s
+        domain isn't one of them.
       operationId: create_invite_workspaces__workspace_id__invites_post
       security:
       - HTTPBearer: []
@@ -1802,7 +1179,7 @@ paths:
   /workspaces/{workspace_id}/user_attribute_definitions:
     get:
       tags:
-      - User Attribute Definitions
+      - Attribute Definitions
       summary: Get User Attribute Definitions
       description: |-
         List the user attribute definitions in the workspace.
@@ -1866,7 +1243,7 @@ paths:
           print(r.json())
     post:
       tags:
-      - User Attribute Definitions
+      - Attribute Definitions
       summary: Create User Attribute Definition
       description: |-
         Create a user attribute definition in the workspace.
@@ -1940,7 +1317,7 @@ paths:
   /workspaces/{workspace_id}/user_attribute_definitions/{user_attribute_definition_id}:
     delete:
       tags:
-      - User Attribute Definitions
+      - Attribute Definitions
       summary: Delete User Attribute Definition
       description: |-
         Delete a user attribute definition and every value assigned against it.
@@ -1993,7 +1370,7 @@ paths:
           )
     patch:
       tags:
-      - User Attribute Definitions
+      - Attribute Definitions
       summary: Update User Attribute Definition
       description: |-
         Update a user attribute definition's label.
@@ -2068,6 +1445,644 @@ paths:
               'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/user_attribute_definitions/<user_attribute_definition_id>',
               headers={'Authorization': 'Bearer YOUR_API_KEY'},
               json={'label': 'Sales Region'}
+          )
+          print(r.json())
+  /workspaces/{workspace_id}/groups/{group_id}/user_attributes:
+    get:
+      tags:
+      - Attribute Values - Groups
+      summary: Get Group User Attributes
+      description: |-
+        List the user attribute values set on a group.
+
+        These apply to every member of the group. When a member is in several groups that set the
+        same attribute, the group with the highest ``user_attribute_precedence`` wins.
+
+        ``source`` is always ``"group"`` and ``source_id`` always matches this group's ID here —
+        both only vary on the member user attributes endpoint, where a value can come from any of a
+        member's groups or be set directly on the member.
+      operationId: get_group_user_attributes_workspaces__workspace_id__groups__group_id__user_attributes_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_'
+              example:
+                data:
+                - id: ua_789
+                  user_attribute_definition_id: uad_123
+                  value: west
+                  data_type: string
+                  name: region
+                  source: group
+                  source_id: grp_123
+                  user_attribute_precedence: 1
+                  is_overridden: false
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
+    post:
+      tags:
+      - Attribute Values - Groups
+      summary: Create Group User Attribute
+      description: |-
+        Set a user attribute value on a group.
+
+        ``user_attribute_definition_id`` must reference an existing definition in the workspace. A
+        group can only set each definition once; a second value for the same definition returns
+        409 — patch the existing value instead.
+
+        ``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric
+        string for ``number``.
+      operationId: create_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserAttributeSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
+              example:
+                data:
+                  id: ua_789
+                  user_attribute_definition_id: uad_123
+                  value: west
+                  data_type: string
+                  name: region
+                  source: group
+                  source_id: grp_123
+                  user_attribute_precedence: 1
+                  is_overridden: false
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes \
+            -H 'Authorization: Bearer YOUR_API_KEY' \
+            -H 'Content-Type: application/json' \
+            -d '{"user_attribute_definition_id": "uad_123", "value": "west"}'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'},
+              json={'user_attribute_definition_id': 'uad_123', 'value': 'west'}
+          )
+          print(r.json())
+  /workspaces/{workspace_id}/groups/{group_id}/user_attributes/{user_attribute_id}:
+    delete:
+      tags:
+      - Attribute Values - Groups
+      summary: Delete Group User Attribute
+      description: |-
+        Remove a user attribute value from a group.
+
+        The definition itself is untouched — only this group's value for it is deleted.
+      operationId: delete_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: user_attribute_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Attribute Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id> \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id>',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+    patch:
+      tags:
+      - Attribute Values - Groups
+      summary: Update Group User Attribute
+      description: |-
+        Update the value of a user attribute already set on a group.
+
+        Only ``value`` is mutable; to point at a different definition, delete this value and
+        create a new one. ``value`` must match the existing definition's ``data_type``:
+        ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
+      operationId: update_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: user_attribute_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Attribute Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserAttributeSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
+              example:
+                data:
+                  id: ua_789
+                  user_attribute_definition_id: uad_123
+                  value: east
+                  data_type: string
+                  name: region
+                  source: group
+                  source_id: grp_123
+                  user_attribute_precedence: 1
+                  is_overridden: false
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id> \
+            -H 'Authorization: Bearer YOUR_API_KEY' \
+            -H 'Content-Type: application/json' \
+            -d '{"value": "east"}'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.patch(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/user_attributes/<user_attribute_id>',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'},
+              json={'value': 'east'}
+          )
+          print(r.json())
+  /workspaces/{workspace_id}/members/{user_id}/user_attributes:
+    get:
+      tags:
+      - Attribute Values - Members
+      summary: Get Member User Attributes
+      description: |-
+        List the user attribute values that apply to a workspace member.
+
+        Includes values inherited from the member's groups as well as values set directly on the
+        member. ``is_overridden`` marks a group-inherited value that a higher-precedence group's
+        value, or a value set directly on the member, has superseded - so the effective set is
+        the entries where it is false. ``user_attribute_precedence`` is ``null`` exactly when
+        ``source`` is ``"user"`` (a directly-set value) - only groups carry a precedence.
+      operationId: get_member_user_attributes_workspaces__workspace_id__members__user_id__user_attributes_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_'
+              example:
+                data:
+                - id: ua_789
+                  user_attribute_definition_id: uad_123
+                  value: west
+                  data_type: string
+                  name: region
+                  source: user
+                  source_id: usr_111
+                  is_overridden: false
+                - id: ua_790
+                  user_attribute_definition_id: uad_124
+                  value: '2024-01-15'
+                  data_type: date
+                  name: renewal_date
+                  source: group
+                  source_id: grp_123
+                  user_attribute_precedence: 1
+                  is_overridden: true
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
+    post:
+      tags:
+      - Attribute Values - Members
+      summary: Create Member User Attribute
+      description: |-
+        Set a user attribute value directly on a workspace member.
+
+        A value set here takes precedence over any value the member inherits from a group. Each
+        member can only set a given definition once; a duplicate returns 409 — patch the existing
+        value instead.
+
+        ``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric
+        string for ``number``.
+      operationId: create_member_user_attribute_workspaces__workspace_id__members__user_id__user_attributes_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserAttributeSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
+              example:
+                data:
+                  id: ua_789
+                  user_attribute_definition_id: uad_123
+                  value: west
+                  data_type: string
+                  name: region
+                  source: user
+                  source_id: usr_111
+                  is_overridden: false
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes \
+            -H 'Authorization: Bearer YOUR_API_KEY' \
+            -H 'Content-Type: application/json' \
+            -d '{"user_attribute_definition_id": "uad_123", "value": "west"}'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'},
+              json={'user_attribute_definition_id': 'uad_123', 'value': 'west'}
+          )
+          print(r.json())
+  /workspaces/{workspace_id}/members/{user_id}/user_attributes/{user_attribute_id}:
+    delete:
+      tags:
+      - Attribute Values - Members
+      summary: Delete Member User Attribute
+      description: |-
+        Remove a user attribute value set directly on a workspace member.
+
+        Only values set on the member can be deleted here; group-inherited values are managed on
+        the group. Once removed, any group value for that definition applies again.
+      operationId: delete_member_user_attribute_workspaces__workspace_id__members__user_id__user_attributes__user_attribute_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      - name: user_attribute_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Attribute Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes/<user_attribute_id> \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes/<user_attribute_id>',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+    patch:
+      tags:
+      - Attribute Values - Members
+      summary: Update Member User Attribute
+      description: |-
+        Update the value of a user attribute set directly on a workspace member.
+
+        Only ``value`` is mutable; to point at a different definition, delete this value and
+        create a new one. ``value`` must match the existing definition's ``data_type``:
+        ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
+      operationId: update_member_user_attribute_workspaces__workspace_id__members__user_id__user_attributes__user_attribute_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      - name: user_attribute_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Attribute Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserAttributeSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
+              example:
+                data:
+                  id: ua_789
+                  user_attribute_definition_id: uad_123
+                  value: east
+                  data_type: string
+                  name: region
+                  source: user
+                  source_id: usr_111
+                  is_overridden: false
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes/<user_attribute_id> \
+            -H 'Authorization: Bearer YOUR_API_KEY' \
+            -H 'Content-Type: application/json' \
+            -d '{"value": "east"}'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.patch(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/user_attributes/<user_attribute_id>',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'},
+              json={'value': 'east'}
           )
           print(r.json())
 components:
@@ -2270,8 +2285,21 @@ components:
         role:
           anyOf:
           - type: string
+            enum:
+            - organization_admin
+            - admin
+            - develop
+            - develop_without_deploy
+            - explore
+            - view
+            - restricted
+            - embed
+            - embedded_with_scheduling
+            - embed_with_sql
           - type: 'null'
           title: Role
+          description: The role to grant once the invite is accepted; defaults to the workspace's configured
+            default role if omitted.
       type: object
       required:
       - email
@@ -2444,6 +2472,15 @@ components:
         - usr_111
         - usr_222
         workspace_id: ws_456
+    InferredProviderType:
+      type: string
+      enum:
+      - Okta
+      - Entra
+      - Google
+      - Email
+      - Unknown
+      title: InferredProviderType
     InviteSchema:
       properties:
         id:
@@ -2457,10 +2494,24 @@ components:
           title: Email
         role:
           type: string
+          enum:
+          - organization_admin
+          - admin
+          - develop
+          - develop_without_deploy
+          - explore
+          - view
+          - restricted
+          - embed
+          - embedded_with_scheduling
+          - embed_with_sql
           title: Role
+          description: The role this invite will grant once accepted.
         invite_url:
           type: string
           title: Invite Url
+          description: The signup link for the invitee to accept this invite; the same link sent in the
+            invite email.
         created_date:
           type: string
           format: date-time
@@ -2514,12 +2565,26 @@ components:
           title: Workspace Id
         role:
           type: string
+          enum:
+          - organization_admin
+          - admin
+          - develop
+          - develop_without_deploy
+          - explore
+          - view
+          - restricted
+          - embed
+          - embedded_with_scheduling
+          - embed_with_sql
           title: Role
+          description: The member's access level in this workspace.
         external_user_id:
           anyOf:
           - type: string
           - type: 'null'
           title: External User Id
+          description: The member's ID in an embedding customer's own system, set when this member was
+            provisioned through the embedded-analytics token flow; null otherwise.
         first_name:
           anyOf:
           - type: string
@@ -2540,8 +2605,8 @@ components:
           type: boolean
           title: Mfa Enabled
         identity_provider:
-          type: string
-          title: Identity Provider
+          $ref: '#/components/schemas/InferredProviderType'
+          description: The identity provider the member's account was created with.
       type: object
       required:
       - id
@@ -2560,7 +2625,7 @@ components:
         email_verified: true
         first_name: Ada
         id: usr_111
-        identity_provider: google
+        identity_provider: Google
         last_name: Lovelace
         mfa_enabled: false
         role: admin
@@ -2723,6 +2788,7 @@ components:
         user_attribute_definition_id:
           type: string
           title: User Attribute Definition Id
+          description: ID of the definition this value is set against - see `GET .../user_attribute_definitions`.
         value:
           type: string
           title: Value
@@ -2831,40 +2897,51 @@ components:
       description: A Personal Access Token (PAT).
       scheme: bearer
 tags:
-- name: Org Admin
-  x-page-title: Org Admin
+- name: Organization Administration
+  x-page-title: Organization Administration
   x-page-icon: building
-  x-page-description: Organization-wide administration, spanning every workspace you belong to.
-- name: Admin
-  x-page-title: Admin
+  x-page-description: Organization-wide administration, spanning every workspace you belong to. Requires
+    the Organization Admin role.
+- name: Workspace Administration
+  x-page-title: Workspace Administration
   x-page-icon: user-shield
-  x-page-description: Administration scoped to a single workspace.
+  x-page-description: Administration scoped to a single workspace. Requires the Admin role.
 - name: Me
   x-page-title: Me
   x-page-icon: id-card
   x-page-description: Your own organization and workspace access.
 - name: Workspaces
-  x-parent: Org Admin
+  x-parent: Organization Administration
   x-page-title: Workspaces
   x-page-icon: layer-group
   x-page-description: Create, list, and archive workspaces in your organization.
 - name: Invites
-  x-parent: Admin
+  x-parent: Workspace Administration
   x-page-title: Invites
   x-page-icon: envelope
   x-page-description: Invite new members to a workspace and view pending invites.
-- name: User Attribute Definitions
-  x-parent: Admin
-  x-page-title: User Attribute Definitions
+- name: Attribute Definitions
+  x-parent: Workspace Administration
+  x-page-title: Attribute Definitions
   x-page-icon: sliders
   x-page-description: Define the custom attributes available to groups and members.
+- name: Attribute Values - Groups
+  x-parent: Attribute Definitions
+  x-page-title: Attribute Values - Groups
+  x-page-icon: users
+  x-page-description: Set and manage user attribute values on a group.
+- name: Attribute Values - Members
+  x-parent: Attribute Definitions
+  x-page-title: Attribute Values - Members
+  x-page-icon: user
+  x-page-description: Set and manage user attribute values on a workspace member.
 - name: Members
-  x-parent: Admin
+  x-parent: Workspace Administration
   x-page-title: Members
   x-page-icon: user
-  x-page-description: List a workspace's members and manage their custom attribute values.
+  x-page-description: List a workspace's members.
 - name: Groups
-  x-parent: Admin
+  x-parent: Workspace Administration
   x-page-title: Groups
   x-page-icon: users
-  x-page-description: Manage groups and the user attribute values set on them.
+  x-page-description: Manage groups and their membership.

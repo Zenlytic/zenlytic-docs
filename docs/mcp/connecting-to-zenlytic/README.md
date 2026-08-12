@@ -7,7 +7,7 @@ description: >-
 
 # MCP Server
 
-Zenlytic supports the [Model Context Protocol (MCP)](https://modelcontextprotocol.io), which lets AI tools like **Claude.ai**, **Claude Code**, and **ChatGPT** ask Zoe questions about your business data directly — no copy-pasting numbers back and forth. Once connected, you can ask your AI assistant things like "What was our revenue last quarter, broken out by region?" and it will query Zenlytic's governed semantic layer and return a real answer, grounded in your actual metrics.
+Zenlytic supports the [Model Context Protocol (MCP)](https://modelcontextprotocol.io), which lets AI tools like **Claude.ai**, **Claude Code**, and **ChatGPT** ask Zoë questions about your business data directly — no copy-pasting numbers back and forth. Once connected, you can ask your AI assistant things like "What was our revenue last quarter, broken out by region?" and it will query Zenlytic's governed semantic layer and return a real answer, grounded in your actual metrics.
 
 This guide walks through connecting an MCP client to Zenlytic and what to expect once you do.
 
@@ -76,6 +76,6 @@ The steps above are general — each client has its own place to add a connector
 
 Once connected, just ask your AI assistant a data question naturally — for example:
 
-> "Hey Zoe, who were our top 5 customers by revenue last month?"
+> "Hey Zoë, who were our top 5 customers by revenue last month?"
 
 Your assistant will recognize this needs live data, call `ask_zoe`, and return the answer along with a link you can click to open the full conversation (and any charts or query results) in Zenlytic.

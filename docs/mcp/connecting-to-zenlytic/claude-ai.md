@@ -34,6 +34,6 @@ If OAuth isn't available, you can authenticate with a static token instead:
 
 Once connected, ask Claude a data question naturally, for example:
 
-> "Hey Zoe, who were our top 5 customers by revenue last month?"
+> "Hey Zoë, who were our top 5 customers by revenue last month?"
 
 Claude will call the `ask_zoe` tool and return the answer along with a link back to the full conversation in Zenlytic.

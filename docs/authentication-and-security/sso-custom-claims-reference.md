@@ -64,7 +64,7 @@ Both grant `develop` role in `workspace-9e49r` and `view` role in `workspace-1ge
 | `admin`                  | Full access to the workspace except workspace management           |
 | `develop`                | All admin permissions except editing workspace settings            |
 | `develop_without_deploy` | Same as develop, without the ability to deploy to production       |
-| `explore`                | Can view dashboards, explore data, download, and chat with Zoe     |
+| `explore`                | Can view dashboards, explore data, download, and chat with Zoë     |
 | `view`                   | Same as explore but without unlimited downloads                    |
 | `restricted`             | Can only view dashboards; no chat, no explore, no downloads        |
 

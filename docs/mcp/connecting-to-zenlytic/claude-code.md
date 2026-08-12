@@ -40,7 +40,7 @@ claude mcp add --transport http zenlytic https://mcp.zenlytic.com/mcp \
 
 Once connected, ask Claude Code a data question naturally, for example:
 
-> "Hey Zoe, who were our top 5 customers by revenue last month?"
+> "Hey Zoë, who were our top 5 customers by revenue last month?"
 
 Claude will call the `ask_zoe` tool and return the answer along with a link back to the full conversation in Zenlytic.
 

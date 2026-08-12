@@ -141,7 +141,7 @@
     {
       "flag": "mcp-oauth",
       "feature_title": "Accurate MCP tool capability metadata",
-      "description": "MCP clients receive standardized annotations describing the Ask Zoe tool, including its non-destructive but potentially write-capable behavior.",
+      "description": "MCP clients receive standardized annotations describing the Ask Zoë tool, including its non-destructive but potentially write-capable behavior.",
       "surface": "API",
       "category": "improvement",
       "merge_date": "2026-07-24",

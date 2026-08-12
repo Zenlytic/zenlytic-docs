@@ -22,7 +22,7 @@ By pressing the Microphone icon, Zoë will listen through the web browser to cap
 
 Zoë searches across the governed measures and dimensions to use existing fields and know when to create new ones to answer your data questions with compelling summaries and insightful visualizations. She was built on an agentic architecture that gives her ability to plan approaches to problems, to use tools to answer questions on your behalf, and memory to get better over time: all in service of helping you understand complex data. At times she may misunderstand what you are asking about, but you can see exactly what steps she is taking to respond, the reasoning behind her thinking, and the data she queries.
 
-<figure><img src="../.gitbook/assets/querying.png" alt="Ask Zoe for a bar chart"><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/querying.png" alt="Ask Zoë for a bar chart"><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
 
 The left sidebar displays the Chat history, sorted by recent activity, and a button to create a new chat. In the upper left of the main content area, there's a button to collapse the left sidebar, a button to create a new chat, and the 3-Dot options menu that supports link sharing and "Save as Proactive Agent" options.
 

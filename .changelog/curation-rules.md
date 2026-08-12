@@ -82,6 +82,29 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   timezone, run-history, and display "fixes" were pre-GA polish of the
   Proactive Agents launch and were folded into the launch bullet.)
 
+- **The public API is beta — exclude everything that mentions it.** The
+  Zenlytic public API and every item describing it (endpoints, endpoint
+  behavior, its generated reference, its documentation structure, and fixes to
+  API-surface behavior) is in beta and not generally available. Drop these
+  items entirely; do not reword them into a generic form. Paul's ruling
+  overrides Zeta's GA determination for this cluster, exactly as with external
+  MCP connectivity — items go on the held-items watchlist and release only on
+  Paul's explicit confirmation, not on a flag flip (most carry no flag at all).
+  (Paul's rule, PR #203 review, 2026-08-11. Eight items were pulled from the
+  Week of August 3–9, 2026 entry before merge: "File URLs in the Public API",
+  "Public API `/me` endpoint", "Organization-scoped workspace API", "Public
+  workspace and group membership APIs", "Richer Public API reference",
+  "Grouped API reference navigation", "Consolidated API documentation", and
+  "Workspace-region validation fixed".) Note: this does NOT cover the `(API)`
+  surface tag used for non-public-API items such as MCP protocol headers or
+  regional processing routing — the test is whether the item describes the
+  customer-facing public API, not whether the word "API" appears.
+  **Open question for Paul (asked on PR #203, unresolved):** the `developers/`
+  section of this repo publishes the full public API reference — `/me`,
+  org-scoped workspace endpoints, PAT creation — on docs.zenlytic.com with no
+  beta label, and an automated job keeps its OpenAPI schema current. Until
+  that's reconciled, the changelog exclusion hides less than it appears to.
+
 ## Voice and framing (Paul, 2026-07-27)
 
 - **Lead features with user value, not UI rework.** A launch bullet should
@@ -406,6 +429,25 @@ scheduled-task prompt remains the executable spec.
   (Paul, PR #143 review, 2026-08-03. Example: the model-editing tool toggle
   shown in Proactive Agent configuration was strictly UI — the capability
   itself was never accessible without permission.)
+
+- **Model-picker items must state the model's actual role.** Don't call a
+  model "the default" or "the default high-reasoning model" unless it is
+  literally the selected default. Say what the picker actually shows — e.g.
+  the highlighted model for its provider — and name the provider when the
+  change is provider-specific. (Paul, PR #203 review, 2026-08-11. Example:
+  "GPT-5.6 Luna is now the default high-reasoning model" was corrected to "the
+  highlighted OpenAI model in the model picker.") Model-lineup items recur
+  most weeks, so confirm the picker's actual state with Zeta rather than
+  carrying forward last entry's phrasing.
+
+- **Lead the bug-fix list with the fix customers feel most.** Bug fixes are
+  not ordered by commit order, severity label, or surface. Put first the fix
+  that resolves the friction customers actually complain about; the rest
+  follow. (Paul, PR #203 review, 2026-08-11. Example: "Deep links open the
+  right workspace" was moved to the top of the Week of August 3–9 fixes as the
+  most-felt item.) The same judgment applies to the entry's `##` headline and
+  one-sentence summary — both should reflect what readers care about most, not
+  what happens to be first in the list.
 
 ## Review notifications (Paul, 2026-08-03)
 

@@ -1,0 +1,19 @@
+# Markdown snippets to append to an operation's existing `description`, keyed
+# by operationId. Only operations with a matching key here are touched -
+# everything else's description passes through untouched.
+#
+# These should say something the raw spec's own description doesn't already
+# say - FastAPI already generates a real description per route, so re-stating
+# it here in a hint box is pure noise. Overlapping with content/intro.md is
+# fine (a different page, reinforcing the same point is good); duplicating
+# the operation's own description in the same spec is not.
+
+get_me_me_get: |
+  {% hint style="info" %}
+  Call this first when building against a new token. It tells you whether the token is scoped to a single workspace (**Admin**) or your whole organization (**Org admin**), which decides which endpoints below it can call.
+  {% endhint %}
+
+archive_workspace_for_organization_workspaces__workspace_id__delete: |
+  {% hint style="danger" %}
+  There is no confirmation step. Double-check `workspace_id` before calling — this is a soft delete, but the workspace's users are reassigned to another workspace in the organization immediately.
+  {% endhint %}

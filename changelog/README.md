@@ -27,6 +27,35 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-08-09" tags="new-features,improvements,fixes" %}
+## Attach artifacts from chat
+
+Attach saved artifacts directly in chat, scoped database-tree search, artifact folder polish, and fixes across deep links, deletion dialogs, chat filters, and Slack installs.
+
+### New features
+
+* **Attach artifacts from chat** — Search for and attach saved artifacts directly in the chat composer, with previews and thumbnails.
+* **Filter chat history by source** — Filter your chat list by where a conversation originated.
+* **Default MCP connectors in Slack chats** — New Slack conversations automatically use connectors marked enabled by default, and show configuration errors in the thread. (Slack)
+
+### Improvements
+
+* **Scoped database-tree search** — Limit search to selected databases in Context Manager, with better pagination and tree state. (Context Manager)
+* **GPT-5.6 Luna replaces GPT-5.5** — GPT-5.6 Luna is now the highlighted OpenAI model in the model picker.
+* **Improved artifact folders** — Folder breadcrumbs, scoped table navigation, and better drawer behavior for organizing artifacts.
+* **Human attribution on Zoë model commits** — Zoë-authored data model commits now record the initiating human as co-author. (Context Manager)
+
+### Bug fixes
+
+* **Deep links open the right workspace** — Resource links now open in the workspace that actually owns the resource.
+* **Safer, consistent deletion dialogs** — Standardized confirmation dialogs and fixed loading and error handling when deleting agents, folders, artifacts, schedules, and credentials.
+* **Block conflicting Slack installations** — A second Zenlytic workspace can no longer silently take over an already-connected Slack workspace; you'll see a clear error instead. (Slack)
+* **Teradata pagination fixed** — Table browsing and previews use Teradata-compatible pagination. (Context Manager)
+* **Clear Git permission errors** — Save Model now explains revoked deploy keys and credential denials instead of a generic failure. (Context Manager)
+* **Mobile chat filters fixed** — Chat source-filter menus position, close, scroll, and respond to Escape correctly on mobile.
+* **Artifacts wait for chat completion** — The artifact drawer no longer opens prematurely while a chat is still streaming.
+* **Signup name fixed** — New signups no longer fail due to a missing required name field.
+{% endupdate %}
 {% update date="2026-08-02" tags="new-features,improvements,fixes" %}
 ## Claude Opus 5 and bulk user management
 

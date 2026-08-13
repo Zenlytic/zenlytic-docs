@@ -207,7 +207,7 @@ paths:
     get:
       tags:
       - Workspaces
-      summary: List Workspaces For Organization
+      summary: List Workspaces
       description: |-
         List the workspaces in your organization.
 
@@ -271,7 +271,7 @@ paths:
     post:
       tags:
       - Workspaces
-      summary: Create Workspace In Organization
+      summary: Create Workspace
       description: |-
         Create a new workspace in your organization.
 
@@ -338,7 +338,7 @@ paths:
     delete:
       tags:
       - Workspaces
-      summary: Archive Workspace For Organization
+      summary: Archive Workspace
       description: |-
         Archive a workspace in your organization.
 
@@ -391,7 +391,7 @@ paths:
     get:
       tags:
       - Groups
-      summary: Get Groups
+      summary: List Groups
       description: |-
         List every group in the workspace, including the built-in "All Users" group.
 
@@ -751,7 +751,7 @@ paths:
     get:
       tags:
       - Group Members
-      summary: Get Group Members
+      summary: List Group Members
       description: |-
         List every member of the group.
 
@@ -975,7 +975,7 @@ paths:
     get:
       tags:
       - Workspace Members
-      summary: Get Workspace Members
+      summary: List Workspace Members
       description: List every member of the workspace.
       operationId: get_workspace_members_workspaces__workspace_id__members_get
       security:
@@ -1190,7 +1190,7 @@ paths:
     get:
       tags:
       - Attribute Definitions
-      summary: Get User Attribute Definitions
+      summary: List Attribute Definitions
       description: |-
         List the user attribute definitions in the workspace.
 
@@ -1254,7 +1254,7 @@ paths:
     post:
       tags:
       - Attribute Definitions
-      summary: Create User Attribute Definition
+      summary: Create Attribute Definition
       description: |-
         Create a user attribute definition in the workspace.
 
@@ -1329,7 +1329,7 @@ paths:
     delete:
       tags:
       - Attribute Definitions
-      summary: Delete User Attribute Definition
+      summary: Delete Attribute Definition
       description: |-
         Delete a user attribute definition and every value assigned against it.
 
@@ -1382,7 +1382,7 @@ paths:
     patch:
       tags:
       - Attribute Definitions
-      summary: Update User Attribute Definition
+      summary: Update Attribute Definition
       description: |-
         Update a user attribute definition's label.
 
@@ -1462,7 +1462,7 @@ paths:
     get:
       tags:
       - Group Attribute Values
-      summary: Get Group User Attributes
+      summary: List Group Attribute Values
       description: |-
         List the user attribute values set on a group.
 
@@ -1540,7 +1540,7 @@ paths:
     post:
       tags:
       - Group Attribute Values
-      summary: Create Group User Attribute
+      summary: Create Group Attribute Value
       description: |-
         Set a user attribute value on a group.
 
@@ -1630,7 +1630,7 @@ paths:
     delete:
       tags:
       - Group Attribute Values
-      summary: Delete Group User Attribute
+      summary: Delete Group Attribute Value
       description: |-
         Remove a user attribute value from a group.
 
@@ -1689,7 +1689,7 @@ paths:
     patch:
       tags:
       - Group Attribute Values
-      summary: Update Group User Attribute
+      summary: Update Group Attribute Value
       description: |-
         Update the value of a user attribute already set on a group.
 
@@ -1782,7 +1782,7 @@ paths:
     get:
       tags:
       - User Attribute Values
-      summary: Get Member User Attributes
+      summary: List User Attribute Values
       description: |-
         List the user attribute values that apply to a user.
 
@@ -1867,7 +1867,7 @@ paths:
     post:
       tags:
       - User Attribute Values
-      summary: Create Member User Attribute
+      summary: Create User Attribute Value
       description: |-
         Set a user attribute value directly on a user.
 
@@ -1958,7 +1958,7 @@ paths:
     delete:
       tags:
       - User Attribute Values
-      summary: Delete Member User Attribute
+      summary: Delete User Attribute Value
       description: |-
         Remove a user attribute value set directly on a user.
 
@@ -2018,7 +2018,7 @@ paths:
     patch:
       tags:
       - User Attribute Values
-      summary: Update Member User Attribute
+      summary: Update User Attribute Value
       description: |-
         Update the value of a user attribute set directly on a user.
 

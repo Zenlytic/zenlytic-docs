@@ -3064,7 +3064,7 @@ tags:
 - name: Me
   x-page-title: Me
   x-page-icon: id-card
-  x-page-description: Your own organization and workspace access.
+  x-page-description: Your own user ID, organization, and workspace access.
 - name: Workspaces
   x-parent: Organization Administration
   x-page-title: Workspaces

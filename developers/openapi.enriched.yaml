@@ -148,7 +148,7 @@ paths:
       - Me
       summary: Get Me
       description: |-
-        Retrieve your organization and the workspaces you can see.
+        Retrieve your own user ID, organization, and the workspaces you can see.
 
         {% hint style="info" %}
         Call this first when building against a new token. It tells you whether the token is scoped to a single workspace (**Admin**) or your whole organization (**Org admin**), which decides which endpoints below it can call.
@@ -163,6 +163,7 @@ paths:
                 $ref: '#/components/schemas/ApiV2Response_MeSchema_'
               example:
                 data:
+                  user_id: usr_111
                   organization:
                     id: org_123
                     name: Acme Corp
@@ -384,225 +385,6 @@ paths:
           import requests
           requests.delete(
               'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-  /workspaces/{workspace_id}/groups/{group_id}/members:
-    get:
-      tags:
-      - Groups
-      summary: Get Group Members
-      description: |-
-        List every member of the group.
-
-        For the built-in "All Users" group, this returns every member of the workspace, since
-        its membership always tracks the workspace roster.
-      operationId: get_group_members_workspaces__workspace_id__groups__group_id__members_get
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: group_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Group Id
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2CollectionResponse_MemberSchema_'
-              example:
-                data:
-                - id: usr_111
-                  workspace_id: ws_456
-                  role: admin
-                  first_name: Ada
-                  last_name: Lovelace
-                  email: ada@acme.com
-                  email_verified: true
-                  mfa_enabled: false
-                  identity_provider: Google
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.get(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'}
-          )
-          print(r.json())
-    post:
-      tags:
-      - Groups
-      summary: Add Group Member
-      description: |-
-        Add a workspace member to the group.
-
-        ``user_id`` must already be a member of the workspace, or this returns 404. Adding a user
-        who is already in the group returns 409. Cannot be used on the built-in "All Users" group,
-        whose membership always tracks the workspace roster instead.
-      operationId: add_group_member_workspaces__workspace_id__groups__group_id__members_post
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: group_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Group Id
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddGroupMemberSchema'
-      responses:
-        '201':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2Response_GroupResponseSchema_'
-              example:
-                data:
-                  id: grp_123
-                  workspace_id: ws_456
-                  name: Sales
-                  is_all_users: false
-                  user_attribute_precedence: 1
-                  users:
-                  - usr_111
-                  - usr_222
-                meta:
-                  status: success
-                  errors: []
-                  warnings: []
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members \
-            -H 'Authorization: Bearer YOUR_API_KEY' \
-            -H 'Content-Type: application/json' \
-            -d '{"user_id": "usr_111"}'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          r = requests.post(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members',
-              headers={'Authorization': 'Bearer YOUR_API_KEY'},
-              json={'user_id': 'usr_111'}
-          )
-          print(r.json())
-  /workspaces/{workspace_id}/groups/{group_id}/members/{user_id}:
-    delete:
-      tags:
-      - Groups
-      summary: Remove Group Member
-      description: |-
-        Remove a member from the group.
-
-        Returns 404 if the user is not currently a member of the group. Cannot be used on the
-        built-in "All Users" group, whose membership always tracks the workspace roster instead.
-      operationId: remove_group_member_workspaces__workspace_id__groups__group_id__members__user_id__delete
-      security:
-      - HTTPBearer: []
-      parameters:
-      - name: workspace_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Workspace Id
-      - name: group_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: Group Id
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: string
-          title: User Id
-      responses:
-        '204':
-          description: Successful Response
-        4XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Client Error
-        5XX:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApiV2ErrorResponse'
-          description: Server Error
-      x-codeSamples:
-      - lang: cURL
-        label: CLI
-        source: |
-          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members/<user_id> \
-            -H 'Authorization: Bearer YOUR_API_KEY'
-      - lang: Python
-        label: Python
-        source: |
-          import requests
-          requests.delete(
-              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members/<user_id>',
               headers={'Authorization': 'Bearer YOUR_API_KEY'}
           )
   /workspaces/{workspace_id}/groups:
@@ -831,9 +613,11 @@ paths:
       description: |-
         Update a group's name or user attribute precedence.
 
-        The built-in "All Users" group cannot be updated; its membership always tracks the
-        workspace roster. A warning is returned if the update makes this group's precedence
-        match another group's in the workspace.
+        Returns 400 if the group is the built-in "All Users" group, whose membership always
+        tracks the workspace roster and can't be renamed or reweighted.
+
+        A warning is returned if the update makes this group's precedence match another
+        group's in the workspace.
       operationId: update_group_workspaces__workspace_id__groups__group_id__patch
       security:
       - HTTPBearer: []
@@ -914,8 +698,10 @@ paths:
       description: |-
         Delete a group and the user attributes attached to it.
 
-        Members are not deleted, only their membership. The built-in "All Users" group cannot be
-        deleted.
+        Members are not deleted, only their membership.
+
+        Returns 400 if the group is the built-in "All Users" group, whose membership always
+        tracks the workspace roster and can't be deleted.
       operationId: delete_group_workspaces__workspace_id__groups__group_id__delete
       security:
       - HTTPBearer: []
@@ -961,10 +747,234 @@ paths:
               'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>',
               headers={'Authorization': 'Bearer YOUR_API_KEY'}
           )
+  /workspaces/{workspace_id}/groups/{group_id}/members:
+    get:
+      tags:
+      - Group Members
+      summary: Get Group Members
+      description: |-
+        List every member of the group.
+
+        For the built-in "All Users" group, this returns every member of the workspace, since
+        its membership always tracks the workspace roster.
+      operationId: get_group_members_workspaces__workspace_id__groups__group_id__members_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_MemberSchema_'
+              example:
+                data:
+                - id: usr_111
+                  workspace_id: ws_456
+                  role: admin
+                  first_name: Ada
+                  last_name: Lovelace
+                  email: ada@acme.com
+                  email_verified: true
+                  mfa_enabled: false
+                  identity_provider: Google
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
+          print(r.json())
+    post:
+      tags:
+      - Group Members
+      summary: Add Group Member
+      description: |-
+        Add a user to the group.
+
+        Returns 404 if ``user_id`` is not already a member of the workspace.
+
+        Returns 409 if the user is already in the group.
+
+        Returns 400 if the group is the built-in "All Users" group, whose membership always
+        tracks the workspace roster instead and can't be modified directly.
+      operationId: add_group_member_workspaces__workspace_id__groups__group_id__members_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddGroupMemberSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_GroupResponseSchema_'
+              example:
+                data:
+                  id: grp_123
+                  workspace_id: ws_456
+                  name: Sales
+                  is_all_users: false
+                  user_attribute_precedence: 1
+                  users:
+                  - usr_111
+                  - usr_222
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members \
+            -H 'Authorization: Bearer YOUR_API_KEY' \
+            -H 'Content-Type: application/json' \
+            -d '{"user_id": "usr_111"}'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'},
+              json={'user_id': 'usr_111'}
+          )
+          print(r.json())
+  /workspaces/{workspace_id}/groups/{group_id}/members/{user_id}:
+    delete:
+      tags:
+      - Group Members
+      summary: Remove Group Member
+      description: |-
+        Remove a member from the group.
+
+        Returns 404 if the user is not currently a member of the group.
+
+        Returns 400 if the group is the built-in "All Users" group, whose membership always
+        tracks the workspace roster instead and can't be modified directly.
+      operationId: remove_group_member_workspaces__workspace_id__groups__group_id__members__user_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        label: CLI
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members/<user_id> \
+            -H 'Authorization: Bearer YOUR_API_KEY'
+      - lang: Python
+        label: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/members/<user_id>',
+              headers={'Authorization': 'Bearer YOUR_API_KEY'}
+          )
   /workspaces/{workspace_id}/members:
     get:
       tags:
-      - Members
+      - Workspace Members
       summary: Get Workspace Members
       description: List every member of the workspace.
       operationId: get_workspace_members_workspaces__workspace_id__members_get
@@ -1185,7 +1195,7 @@ paths:
         List the user attribute definitions in the workspace.
 
         A definition declares the ``name``, ``label``, and ``data_type`` of an attribute. The
-        per-member and per-group endpoints then assign values against these definitions.
+        per-user and per-group endpoints then assign values against these definitions.
       operationId: get_user_attribute_definitions_workspaces__workspace_id__user_attribute_definitions_get
       security:
       - HTTPBearer: []
@@ -1248,8 +1258,9 @@ paths:
       description: |-
         Create a user attribute definition in the workspace.
 
-        ``name`` must be unique within the workspace; a duplicate returns 409. The ``data_type``
-        is fixed at creation time and cannot be changed afterwards.
+        Returns 409 if ``name`` is already used by another definition in the workspace.
+
+        The ``data_type`` is fixed at creation time and cannot be changed afterwards.
       operationId: create_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions_post
       security:
       - HTTPBearer: []
@@ -1322,7 +1333,7 @@ paths:
       description: |-
         Delete a user attribute definition and every value assigned against it.
 
-        This removes the attribute from all members and groups in the workspace.
+        This removes the attribute from all users and groups in the workspace.
       operationId: delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete
       security:
       - HTTPBearer: []
@@ -1450,17 +1461,17 @@ paths:
   /workspaces/{workspace_id}/groups/{group_id}/user_attributes:
     get:
       tags:
-      - Attribute Values - Groups
+      - Group Attribute Values
       summary: Get Group User Attributes
       description: |-
         List the user attribute values set on a group.
 
-        These apply to every member of the group. When a member is in several groups that set the
+        These apply to every user in the group. When a user is in several groups that set the
         same attribute, the group with the highest ``user_attribute_precedence`` wins.
 
         ``source`` is always ``"group"`` and ``source_id`` always matches this group's ID here —
-        both only vary on the member user attributes endpoint, where a value can come from any of a
-        member's groups or be set directly on the member.
+        both only vary on the user attribute values endpoint, where a value can come from any of a
+        user's groups or be set directly on the user.
       operationId: get_group_user_attributes_workspaces__workspace_id__groups__group_id__user_attributes_get
       security:
       - HTTPBearer: []
@@ -1528,17 +1539,19 @@ paths:
           print(r.json())
     post:
       tags:
-      - Attribute Values - Groups
+      - Group Attribute Values
       summary: Create Group User Attribute
       description: |-
         Set a user attribute value on a group.
 
-        ``user_attribute_definition_id`` must reference an existing definition in the workspace. A
-        group can only set each definition once; a second value for the same definition returns
-        409 — patch the existing value instead.
+        Returns 404 if ``user_attribute_definition_id`` doesn't reference an existing
+        definition in the workspace.
 
-        ``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric
-        string for ``number``.
+        Returns 409 if the group already has a value set for that definition - patch the
+        existing value instead.
+
+        Returns 400 if ``value`` doesn't match the definition's ``data_type`` format:
+        ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
       operationId: create_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes_post
       security:
       - HTTPBearer: []
@@ -1616,7 +1629,7 @@ paths:
   /workspaces/{workspace_id}/groups/{group_id}/user_attributes/{user_attribute_id}:
     delete:
       tags:
-      - Attribute Values - Groups
+      - Group Attribute Values
       summary: Delete Group User Attribute
       description: |-
         Remove a user attribute value from a group.
@@ -1675,13 +1688,15 @@ paths:
           )
     patch:
       tags:
-      - Attribute Values - Groups
+      - Group Attribute Values
       summary: Update Group User Attribute
       description: |-
         Update the value of a user attribute already set on a group.
 
         Only ``value`` is mutable; to point at a different definition, delete this value and
-        create a new one. ``value`` must match the existing definition's ``data_type``:
+        create a new one.
+
+        Returns 400 if ``value`` doesn't match the existing definition's ``data_type`` format:
         ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
       operationId: update_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__patch
       security:
@@ -1766,14 +1781,14 @@ paths:
   /workspaces/{workspace_id}/members/{user_id}/user_attributes:
     get:
       tags:
-      - Attribute Values - Members
+      - User Attribute Values
       summary: Get Member User Attributes
       description: |-
-        List the user attribute values that apply to a workspace member.
+        List the user attribute values that apply to a user.
 
-        Includes values inherited from the member's groups as well as values set directly on the
-        member. ``is_overridden`` marks a group-inherited value that a higher-precedence group's
-        value, or a value set directly on the member, has superseded - so the effective set is
+        Includes values inherited from the user's groups as well as values set directly on the
+        user. ``is_overridden`` marks a group-inherited value that a higher-precedence group's
+        value, or a value set directly on the user, has superseded - so the effective set is
         the entries where it is false. ``user_attribute_precedence`` is ``null`` exactly when
         ``source`` is ``"user"`` (a directly-set value) - only groups carry a precedence.
       operationId: get_member_user_attributes_workspaces__workspace_id__members__user_id__user_attributes_get
@@ -1851,17 +1866,21 @@ paths:
           print(r.json())
     post:
       tags:
-      - Attribute Values - Members
+      - User Attribute Values
       summary: Create Member User Attribute
       description: |-
-        Set a user attribute value directly on a workspace member.
+        Set a user attribute value directly on a user.
 
-        A value set here takes precedence over any value the member inherits from a group. Each
-        member can only set a given definition once; a duplicate returns 409 — patch the existing
-        value instead.
+        A value set here takes precedence over any value the user inherits from a group.
 
-        ``value`` must match the definition's ``data_type``: ``YYYY-MM-DD`` for ``date``, a numeric
-        string for ``number``.
+        Returns 404 if ``user_attribute_definition_id`` doesn't reference an existing
+        definition in the workspace.
+
+        Returns 409 if the user already has a value set for that definition - patch the
+        existing value instead.
+
+        Returns 400 if ``value`` doesn't match the definition's ``data_type`` format:
+        ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
       operationId: create_member_user_attribute_workspaces__workspace_id__members__user_id__user_attributes_post
       security:
       - HTTPBearer: []
@@ -1938,12 +1957,12 @@ paths:
   /workspaces/{workspace_id}/members/{user_id}/user_attributes/{user_attribute_id}:
     delete:
       tags:
-      - Attribute Values - Members
+      - User Attribute Values
       summary: Delete Member User Attribute
       description: |-
-        Remove a user attribute value set directly on a workspace member.
+        Remove a user attribute value set directly on a user.
 
-        Only values set on the member can be deleted here; group-inherited values are managed on
+        Only values set on the user can be deleted here; group-inherited values are managed on
         the group. Once removed, any group value for that definition applies again.
       operationId: delete_member_user_attribute_workspaces__workspace_id__members__user_id__user_attributes__user_attribute_id__delete
       security:
@@ -1998,13 +2017,15 @@ paths:
           )
     patch:
       tags:
-      - Attribute Values - Members
+      - User Attribute Values
       summary: Update Member User Attribute
       description: |-
-        Update the value of a user attribute set directly on a workspace member.
+        Update the value of a user attribute set directly on a user.
 
         Only ``value`` is mutable; to point at a different definition, delete this value and
-        create a new one. ``value`` must match the existing definition's ``data_type``:
+        create a new one.
+
+        Returns 400 if ``value`` doesn't match the existing definition's ``data_type`` format:
         ``YYYY-MM-DD`` for ``date``, a numeric string for ``number``.
       operationId: update_member_user_attribute_workspaces__workspace_id__members__user_id__user_attributes__user_attribute_id__patch
       security:
@@ -2534,6 +2555,9 @@ components:
         workspace_id: ws_456
     MeSchema:
       properties:
+        user_id:
+          type: string
+          title: User Id
         organization:
           $ref: '#/components/schemas/MyOrganizationSchema'
         workspaces:
@@ -2545,6 +2569,7 @@ components:
             specific workspaces, within the token's scope. Archived workspaces are excluded.
       type: object
       required:
+      - user_id
       - organization
       - workspaces
       title: MeSchema
@@ -2552,6 +2577,7 @@ components:
       - organization:
           id: org_123
           name: Acme Corp
+        user_id: usr_111
         workspaces:
         - id: ws_456
           name: acme-prod
@@ -2804,12 +2830,12 @@ components:
           description: The referenced `user_attribute_definition_id`'s `name`.
         source:
           $ref: '#/components/schemas/UserAttributeSource'
-          description: Whether this value is set directly on the member ("user") or inherited from a group
+          description: Whether this value is set directly on the user ("user") or inherited from a group
             ("group").
         source_id:
           type: string
           title: Source Id
-          description: ID of the group or member (matching `source`) this value comes from.
+          description: ID of the group or user (matching `source`) this value comes from.
         user_attribute_precedence:
           anyOf:
           - type: integer
@@ -2820,8 +2846,8 @@ components:
         is_overridden:
           type: boolean
           title: Is Overridden
-          description: True if a higher-precedence group value, or a directly-set member value, takes
-            effect instead of this one.
+          description: True if a higher-precedence group value, or a directly-set user value, takes effect
+            instead of this one.
       type: object
       required:
       - id
@@ -2924,24 +2950,29 @@ tags:
   x-parent: Workspace Administration
   x-page-title: Attribute Definitions
   x-page-icon: sliders
-  x-page-description: Define the custom attributes available to groups and members.
-- name: Attribute Values - Groups
-  x-parent: Attribute Definitions
-  x-page-title: Attribute Values - Groups
-  x-page-icon: users
+  x-page-description: Define the custom attributes available to groups and users.
+- name: Group Attribute Values
+  x-parent: Groups
+  x-page-title: Group Attribute Values
+  x-page-icon: tags
   x-page-description: Set and manage user attribute values on a group.
-- name: Attribute Values - Members
-  x-parent: Attribute Definitions
-  x-page-title: Attribute Values - Members
-  x-page-icon: user
-  x-page-description: Set and manage user attribute values on a workspace member.
-- name: Members
+- name: User Attribute Values
+  x-parent: Workspace Members
+  x-page-title: User Attribute Values
+  x-page-icon: user-tag
+  x-page-description: Set and manage user attribute values on a user.
+- name: Workspace Members
   x-parent: Workspace Administration
-  x-page-title: Members
+  x-page-title: Workspace Members
   x-page-icon: user
   x-page-description: List a workspace's members.
 - name: Groups
   x-parent: Workspace Administration
   x-page-title: Groups
   x-page-icon: users
-  x-page-description: Manage groups and their membership.
+  x-page-description: Manage groups.
+- name: Group Members
+  x-parent: Groups
+  x-page-title: Group Members
+  x-page-icon: user-group
+  x-page-description: Add, remove, and list the members of a group.

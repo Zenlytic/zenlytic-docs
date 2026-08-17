@@ -27,6 +27,22 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-08-16" tags="improvements,fixes" %}
+## Claude Opus retired from the model picker
+
+Claude Opus is no longer offered for new chats, alongside more relevant field search, more reliable chat titles, and restored access to Workspace Settings.
+
+### Improvements
+
+* **Claude Opus retired from the model picker** — Opus models are no longer available for new chats. Existing conversations and Proactive Agents pinned to Opus continue to work, and Sonnet 5 is the system default.
+* **More relevant field search** — Zoë's field search drops zero-relevance matches and duplicates, so results better reflect your model.
+* **More reliable chat titles and citations** — Titles are generated from your messages, and citation generation is bounded to reduce failures and off-topic titles.
+* **More usable MCP connections table** — The MCP section of settings has clearer column widths and horizontal scrolling for wide tables.
+
+### Bug fixes
+
+* **Workspace Settings and chat admin reachable again** — Workspace Settings, account settings, All Chats, and feedback are available from navigation again.
+{% endupdate %}
 {% update date="2026-08-09" tags="new-features,improvements,fixes" %}
 ## Attach artifacts from chat
 

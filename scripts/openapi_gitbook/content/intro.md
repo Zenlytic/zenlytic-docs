@@ -11,7 +11,7 @@ Zenlytic runs separate API hosts per region. Use the host matching where your or
 Include your personal access token as a bearer token in the `Authorization` header:
 
 ```
-Authorization: Bearer YOUR_API_KEY
+Authorization: Bearer YOUR_TOKEN
 ```
 
 {% hint style="info" %}

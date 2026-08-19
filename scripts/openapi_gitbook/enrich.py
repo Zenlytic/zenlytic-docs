@@ -20,7 +20,7 @@ import yaml
 
 HTTP_METHODS = {"get", "put", "post", "delete", "options", "head", "patch", "trace"}
 SERVERS_TABS_TOKEN = "{{SERVERS_TABS}}"
-PLACEHOLDER_TOKEN = "YOUR_API_KEY"
+PLACEHOLDER_TOKEN = "YOUR_TOKEN"
 
 
 class _BlockLiteralDumper(yaml.SafeDumper):

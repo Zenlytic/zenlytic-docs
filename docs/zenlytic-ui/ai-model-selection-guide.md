@@ -47,26 +47,9 @@ Strengths:
 
 Best for: General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model.
 
-### Claude Opus 4.8
-
-The most capable model available. Opus 4.8 delivers the deepest analysis and the most autonomous error recovery, making it ideal for complex data models and messy data.
-
-**Strengths:**
-
-* Fully autonomous — makes reasonable assumptions and delivers answers without asking clarifying questions
-* Systematic error recovery — when a query returns unexpected results (nulls, zero values, broken data), Opus investigates the root cause across multiple queries and resolves the issue without user intervention
-* Domain-aware — discovers business context like fiscal calendar boundaries and applies them automatically
-* Highest SQL complexity ceiling — handles the most sophisticated analytical queries
-
-**Best for:** Complex data models with many joins, workspaces with known data quality issues (null values, promotional records, inconsistent categorization), strategic analysis, and advanced analytical questions like price elasticity or forecasting.
-
-**Trade-off:** Slower and more expensive per query than Sonnet models. For simple, well-structured data models with straightforward queries, Sonnet 5 may be equally effective and faster.
-
-## Additional Available Models
-
 ### Claude Sonnet 4.6
 
-The best balance of speed, accuracy, and analytical depth for most workspaces. Sonnet 4.6 is the default model and the recommended starting point for all users.
+The previous default. Sonnet 4.6 is faster than Sonnet 5 on straightforward questions and remains a strong choice for clean, well-structured data models.
 
 **Strengths:**
 
@@ -75,33 +58,31 @@ The best balance of speed, accuracy, and analytical depth for most workspaces. S
 * Proactive interpretation — flags data anomalies, provides contextual narratives, and suggests follow-up analysis
 * Handles complex multi-step queries including CTEs, window functions, and cross-table comparisons
 
-**Best for:** General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model.
+**Best for:** General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model, particularly when speed matters more than depth on longer analytical chains.
 
-### GPT 5.5
+## Additional Available Models
 
-Available for teams that prefer or require an OpenAI model.
+### GPT-5.6 Luna
 
-**Strengths:**
+The current OpenAI model in the picker, replacing GPT-5.5. Available for teams that prefer or require an OpenAI model.
 
-* Highest methodology transparency — structures responses with clear sections explaining what data was queried, what issues were found, and what limitations exist
-* Functional for standard reporting queries, metric extraction, and straightforward analytics
-
-**Considerations:** GPT 5.5 may ask clarifying questions before executing when it encounters ambiguity, which adds round-trips to the conversation. It also provides less autonomous error recovery — when queries fail or return unexpected results, it tends to explain the problem and ask for user guidance rather than self-correcting. Longer field descriptions and complex multi-paragraph guidance may be followed less reliably than with Anthropic models.
-
-**Best for:** Teams that prefer OpenAI, or users who value detailed methodology explanations over speed-to-answer.
+**Best for:** Teams with a policy or preference for OpenAI models.
 
 ### GPT 5.1
 
-Available for teams that prefer or require an older OpenAI model. We would recommend using GPT 5.5 instead of this model in most scenarios.
+Available for teams that prefer or require an older OpenAI model. We would recommend using GPT-5.6 Luna instead of this model in most scenarios.
+
+{% hint style="info" %}
+**Claude Opus is no longer offered for new chats.** Existing conversations and Proactive Agents pinned to an Opus model continue to work.
+{% endhint %}
 
 ## How to Choose
 
-| Scenario                                                 | Recommended Model      |
-| -------------------------------------------------------- | ---------------------- |
-| The best combination of speed and intelligence           | **Sonnet 5** (default) |
-| Complex data model with many joins                       | **Opus 4.8**           |
-| Data has known quality issues (nulls, edge cases)        | **Opus 4.8**           |
-| Speed is the top priority, data model is clean           | **Sonnet 4.6**         |
-| Advanced analysis (elasticity, forecasting, statistical) | **Opus 4.8**           |
-| Team prefers OpenAI                                      | **GPT 5.5**            |
-| Not sure which to pick                                   | **Sonnet 5** (default) |
+| Scenario                                          | Recommended Model      |
+| ------------------------------------------------- | ---------------------- |
+| The best combination of speed and intelligence    | **Sonnet 5** (default) |
+| Complex data model with many joins                | **Sonnet 5**           |
+| Data has known quality issues (nulls, edge cases) | **Sonnet 5**           |
+| Speed is the top priority, data model is clean    | **Sonnet 4.6**         |
+| Team prefers OpenAI                               | **GPT-5.6 Luna**       |
+| Not sure which to pick                            | **Sonnet 5** (default) |

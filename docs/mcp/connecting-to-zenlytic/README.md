@@ -79,3 +79,23 @@ Once connected, just ask your AI assistant a data question naturally — for exa
 > "Hey Zoë, who were our top 5 customers by revenue last month?"
 
 Your assistant will recognize this needs live data, call `ask_zoe`, and return the answer along with a link you can click to open the full conversation (and any charts or query results) in Zenlytic.
+
+## Which data model MCP uses
+
+An MCP conversation is pinned to the branch your workspace is set to when the conversation starts, exactly like a conversation started in the app. If you've switched to a development branch, `ask_zoe` answers from that branch, not production.
+
+To check which branch you're on, ask:
+
+> "Which branch are you using?"
+
+To switch branches, change the branch in the Zenlytic UI, then start a new conversation in your MCP client.
+
+{% hint style="warning" %}
+Answers you get through MCP won't match what your users see in production while you're on a development branch. Confirm your branch before you act on an MCP answer, and before you make a change based on one.
+{% endhint %}
+
+If your workspace has [Context Editing](../../data-modeling/asking-zoe-for-recommendations.md) disabled, Zoë has no branch awareness and can't answer that question. Open the conversation in Zenlytic using the link `ask_zoe` returns to see which branch it ran against.
+
+After you change a branch's data model, start a new conversation. An ongoing conversation keeps using the version of the model it cached when it started, so your change won't appear until you start a fresh one.
+
+If a new conversation still returns the old model, the change was most likely pushed straight to git rather than made through the UI. See [Cache Refresh](../../data-modeling/cache-refresh.md).

@@ -30,7 +30,7 @@ tags:
 {% update date="2026-08-23" tags="new-features,improvements,fixes" %}
 ## Live data in artifacts
 
-Artifacts can now run live queries against your data, artifacts are available to anyone with chat access, and organization admins can manage shared settings across their workspaces — plus fixes across chat reliability, scheduling, and workspace switching.
+Artifacts can now run live queries against your data, and organization admins can manage shared settings across their workspaces — plus fixes across chat reliability, scheduling, and workspace switching.
 
 ### New features
 
@@ -39,7 +39,6 @@ Artifacts can now run live queries against your data, artifacts are available to
 
 ### Improvements
 
-* **Artifacts available with chat access** — Artifacts no longer sit behind a separate entitlement; anyone who can chat can create and open them.
 * **Improved group-member management** — Group membership uses the full users table, with search, filtering, multi-column sorting, saved view preferences, and selection counts.
 
 ### Bug fixes
@@ -51,7 +50,6 @@ Artifacts can now run live queries against your data, artifacts are available to
 * **Database search respects your selection** — Add Data search displays and scans only the databases chosen in Databases to Search. (Context Manager)
 * **Reliable workspace switching** — Switching workspaces clears workspace-scoped state and waits for the new workspace to be identified before rendering.
 * **Artifact data provenance protected** — Generated question data and query files can no longer be edited after the fact, so refreshed artifacts don't pick up stale or fabricated values.
-* **Inert rendering of agent-generated markup** — Agent-generated form controls render as inert markup, and placeholder file references no longer trigger invalid lookups.
 * **Names collected when joining a workspace** — Invited users can enter their first and last name during signup, so member records are complete.
 {% endupdate %}
 {% update date="2026-08-16" tags="improvements,fixes" %}

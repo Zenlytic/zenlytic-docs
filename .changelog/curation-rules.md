@@ -449,6 +449,33 @@ scheduled-task prompt remains the executable spec.
   one-sentence summary — both should reflect what readers care about most, not
   what happens to be first in the list.
 
+- **A removed code gate is not an availability claim.** When a diff removes a
+  feature flag, tier check, or entitlement gate, that is a change to how the
+  code is gated — it is not evidence that packaging or customer entitlements
+  changed. Do not translate "gate removed" into "now available to everyone" or
+  any similar availability statement without confirming the actual entitlement
+  with Paul. (Paul, PR #226 review, 2026-08-24. Example: "Artifacts available
+  with chat access" was drafted from Zeta reporting that the core `artifacts`
+  gate and its tier exception had been removed, and was pulled as untrue —
+  along with the matching clause in the entry's summary sentence.)
+  **Why:** availability and packaging claims are the ones customers act on and
+  sales gets asked about; a wrong one is worse than an omission.
+  **How to apply:** if a bullet would tell a reader they can now use something
+  they previously could not, it needs an explicit confirmation, not an
+  inference from the diff.
+
+- **Hardening and internal-mechanism items get dropped, not reworded.** If a
+  change cannot be stated as an outcome the reader would recognize, leave it
+  out. Rewording internal mechanics into changelog voice produces a bullet that
+  is technically accurate and meaningless to the audience. (Paul, PR #226
+  review, 2026-08-24. Example: "Inert rendering of agent-generated markup" —
+  agent-generated form controls rendering inertly — was pulled as not making
+  sense to a reader.) This extends the implementation-detail exclusion above to
+  hardening work, and like that rule these are permanent editorial exclusions
+  that do NOT go on the held-items watchlist.
+  **How to apply:** draft the bullet, then ask what a customer would do
+  differently knowing it. If there is no answer, cut it.
+
 ## Review notifications (Paul, 2026-08-03)
 
 - **Paul's PR notification is ONE LINE.** The step-9 Slack message to Paul is

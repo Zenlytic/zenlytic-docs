@@ -27,6 +27,31 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-08-23" tags="new-features,improvements,fixes" %}
+## Live data in artifacts
+
+Artifacts can now run live queries against your data, and organization admins can manage shared settings across their workspaces — plus fixes across chat reliability, scheduling, and workspace switching.
+
+### New features
+
+* **Live queries in artifacts** — Artifacts can pull current data from your model instead of a fixed snapshot. You can inspect and edit the data sources behind an artifact, and scheduled deliveries send refreshed results.
+* **Organization-level workspace settings** — Organization admins can set and lock shared settings across their workspaces, see where individual workspaces diverge, apply changes in bulk, and set seat budgets for the organization.
+
+### Improvements
+
+* **Improved group-member management** — Group membership uses the full users table, with search, filtering, multi-column sorting, saved view preferences, and selection counts.
+
+### Bug fixes
+
+* **Chat cancellation and reconnection fixed** — Zoë no longer gets stuck cancelling, and stale submissions are no longer reconnected after you cancel, navigate away, or hit a slow connection.
+* **No duplicate or partial replies** — Completed conversations release their run lock and stop polling, so replies no longer arrive twice or half-finished.
+* **Reliable cached reruns** — Rerunning identical SQL uses the cache correctly, while Refresh data still forces fresh results from your warehouse.
+* **Scheduled times shown in the workspace timezone** — Scheduled artifact times display in the workspace's timezone rather than the viewer's browser timezone.
+* **Database search respects your selection** — Add Data search displays and scans only the databases chosen in Databases to Search. (Context Manager)
+* **Reliable workspace switching** — Switching workspaces clears workspace-scoped state and waits for the new workspace to be identified before rendering.
+* **Artifact data provenance protected** — Generated question data and query files can no longer be edited after the fact, so refreshed artifacts don't pick up stale or fabricated values.
+* **Names collected when joining a workspace** — Invited users can enter their first and last name during signup, so member records are complete.
+{% endupdate %}
 {% update date="2026-08-16" tags="improvements,fixes" %}
 ## Claude Opus retired from the model picker
 

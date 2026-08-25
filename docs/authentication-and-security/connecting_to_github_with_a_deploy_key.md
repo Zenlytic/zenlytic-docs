@@ -33,7 +33,7 @@ The push itself still authenticates with the deploy key you install below — yo
 
 ## Connecting your repository
 
-**Step 1:** In Zenlytic, you'll first go into Settings, then Workspace Settings
+**Step 1:** In Zenlytic, open **Settings**, then select **Git**.
 
 ![Github Deploy Key 1](../.gitbook/assets/github-deploy-key-1.png)
 
@@ -67,6 +67,6 @@ Make sure to use the "SSH" format of the git URL. The format looks like `git@git
 
 ![Github Deploy Key 8](../.gitbook/assets/github-deploy-key-8.png)
 
-**Step 9:** Then click "Save" in the Zenlytic UI. If this saves without an error, you can close the window. You're fully connected to Github!
+**Step 9:** Return to Zenlytic. The GitHub repo URL and production branch save automatically when you leave those fields. If they save without an error, you're fully connected to Github!
 
 ![Github Deploy Key 9](../.gitbook/assets/github-deploy-key-9.png)

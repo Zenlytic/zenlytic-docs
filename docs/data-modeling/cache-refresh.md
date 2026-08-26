@@ -12,13 +12,9 @@ If you or a teammate pushed changes straight to git and Zoë still appears to be
 
 ## How to pull from remote
 
-1. Click your workspace name in the lower left of the screen.
-2. In the menu that opens, click **Account Settings**.
-3. In the panel that opens, under **Preferences**, click **Pull from Remote**.
-
-<figure><img src="../.gitbook/assets/account-settings-menu.png" alt="Workspace sidebar menu showing Workspace Manager, Account Settings, Feedback, and Log Out"><figcaption><p>Step 1–2: open the workspace menu and select Account Settings.</p></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/pull-from-remote.png" alt="Account Settings panel showing Pull from Remote under Preferences"><figcaption><p>Step 3: Pull from Remote lives under Preferences in Account Settings.</p></figcaption></figure>
+1. Open **Settings**.
+2. Select **Git**.
+3. Click **Pull from Remote**.
 
 After the pull completes, Zoë will pick up your latest changes on the next question.
 

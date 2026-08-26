@@ -120,7 +120,7 @@ See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission 
 
 ### Editing the production branch directly
 
-You can allow Zoë to save edits on the production branch by turning on the **Allow Edit Production** toggle at **Workspace Settings → Git → Allow Edit Production**. With the toggle on, Zoë will save changes on the production branch for **Admin** and **Develop** users. With it off, she'll refuse production edits and ask you to switch to a development branch. The toggle is on by default and uses the same setting that controls manual production edits in Context Manager. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
+You can allow Zoë to save edits on the production branch by turning on the **Allow Edit Production** toggle at **Settings → Git → Allow Edit Production**. With the toggle on, Zoë will save changes on the production branch for **Admin** and **Develop** users. With it off, she'll refuse production edits and ask you to switch to a development branch. The toggle is on by default and uses the same setting that controls manual production edits in Context Manager. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
 
 ## What Zoë won't do
 

@@ -20,10 +20,10 @@ If your organization enforces rules on commit metadata, allow `hello@zenlytic.co
 
 Check these settings in GitHub, at both the organization and repository level (a clean repo-level ruleset doesn't rule out an organization-level one):
 
-| Setting | Where to find it | What to do |
-|---|---|---|
-| Restrict commit metadata (committer email) | Rulesets | Allow `hello@zenlytic.com` |
-| Require signed commits | Rulesets, or classic branch protection | Disable for this repo |
+| Setting                                    | Where to find it                       | What to do                 |
+| ------------------------------------------ | -------------------------------------- | -------------------------- |
+| Restrict commit metadata (committer email) | Rulesets                               | Allow `hello@zenlytic.com` |
+| Require signed commits                     | Rulesets, or classic branch protection | Disable for this repo      |
 
 Metadata restrictions (including committer email pattern) require **GitHub Enterprise Cloud or Enterprise Server** — this option won't appear under Rulesets on GitHub Free, Pro, or Team.
 
@@ -33,7 +33,7 @@ The push itself still authenticates with the deploy key you install below — yo
 
 ## Connecting your repository
 
-**Step 1:** In Zenlytic, open **Settings**, then select **Git**.
+**Step 1:** In Zenlytic, open **Workspace** **Settings**, then select Workspace.
 
 ![Github Deploy Key 1](../.gitbook/assets/github-deploy-key-1.png)
 
@@ -69,4 +69,4 @@ Make sure to use the "SSH" format of the git URL. The format looks like `git@git
 
 **Step 9:** Return to Zenlytic. The GitHub repo URL and production branch save automatically when you leave those fields. If they save without an error, you're fully connected to Github!
 
-![Github Deploy Key 9](../.gitbook/assets/github-deploy-key-9.png)
+![](<../.gitbook/assets/github-deploy-key-3 (1).png>)

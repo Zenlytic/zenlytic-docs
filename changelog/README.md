@@ -27,6 +27,31 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-08-30" tags="new-features,improvements,fixes" %}
+## Proactive Agents can review their own run history
+
+Proactive Agents can now look back at their earlier runs, alongside chat updates and fixes across uploads, access filters, and artifacts.
+
+### New features
+
+* **Run history for Proactive Agents** — A Proactive Agent can inspect its own completed runs and use them as context, so a scheduled agent can reference what it reported previously. Enabled per agent.
+
+### Improvements
+
+* **More web searches per turn** — Zoë can run up to 20 web searches in a single turn instead of five, so questions that need several sources are researched more completely.
+* **Chat history shows activity times** — Conversations in the sidebar show when they were last active, in the workspace's timezone.
+
+### Bug fixes
+
+* **CSV uploads preserve existing model files** — Saving an uploaded CSV or a new connection model in Add Data no longer removes model files that were already there. (Context Manager)
+* **Access filters honor referenced fields** — Access-filter SQL is correct when a view's always-filter references another field instead of the primary key.
+* **Generated files retained in scheduled deliveries** — When a generated file is rejected on write, Zoë rebuilds it from its source script, so scheduled emails keep their attachments.
+* **Longer timeout for MCP tool calls** — Slower MCP tools used in chat have more time to respond before the call fails.
+* **Artifact embeds render in iframes** — The base artifact embed route is recognized as embeddable, so embedded artifacts load.
+* **Memory saves on long artifact histories** — Conversations with long artifact histories no longer fail to save memory when the generated entry reaches the output limit.
+* **No flash of the previous reply** — The prior answer no longer briefly reappears while the next response streams.
+* **Cleaner navigation tooltips** — Workspace navigation tooltips no longer show a stray diamond.
+{% endupdate %}
 {% update date="2026-08-23" tags="new-features,improvements,fixes" %}
 ## Live data in artifacts
 

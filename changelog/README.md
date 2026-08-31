@@ -30,7 +30,7 @@ tags:
 {% update date="2026-08-30" tags="new-features,improvements,fixes" %}
 ## Proactive Agents can review their own run history
 
-Proactive Agents can now look back at their earlier runs, alongside model picker and chat updates and fixes across uploads, access filters, and artifacts.
+Proactive Agents can now look back at their earlier runs, alongside chat updates and fixes across uploads, access filters, and artifacts.
 
 ### New features
 
@@ -39,7 +39,6 @@ Proactive Agents can now look back at their earlier runs, alongside model picker
 ### Improvements
 
 * **More web searches per turn** — Zoë can run up to 20 web searches in a single turn instead of five, so questions that need several sources are researched more completely.
-* **Sonnet 4.6 in the model picker** — Sonnet 4.6 is now the model shown as "Sonnet" in the picker, and Sonnet 5 is no longer in the default list. Existing conversations continue to work, and eligible enterprise credentials retain access to earlier models.
 * **Chat history shows activity times** — Conversations in the sidebar show when they were last active, in the workspace's timezone.
 
 ### Bug fixes

@@ -1,8 +1,8 @@
 {
   "_comment": "Production state for the weekly change log job. Lives at .changelog/state.json in zenlytic/zenlytic-docs once bootstrapped; the repo copy is the single source of truth after bootstrap. cutoff_sha tracks origin/master of the product repo as of end of the last covered week (per Zeta).",
-  "last_entry_date": "2026-08-23",
+  "last_entry_date": "2026-08-30",
   "backfill_window_start": "2026-06-01",
-  "cutoff_sha": "5b5c6b65569ee9203f067f469ee0b5ad9c62b498",
+  "cutoff_sha": "fc026734ce1f3210f10f323771050388f5ddc273",
   "held_items_file": "held-items.json",
   "branch": "master",
   "changelog_path": "changelog/README.md",

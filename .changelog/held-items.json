@@ -10,8 +10,8 @@
       "merge_date": "2026-06-29",
       "commit_sha": "6e0ccca4f0bd751538ba6fc356cd0e8e9d19ba65",
       "excluded_since": "2026-06-30",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -34,8 +34,8 @@
       "merge_date": "2026-07-10",
       "commit_sha": "f0c9be33aaa3dae65a9e4a0f60196422bda9a54f",
       "excluded_since": "2026-07-13",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "pat-auth",
@@ -46,8 +46,8 @@
       "merge_date": "2026-07-12",
       "commit_sha": "921e59f6ed0a42129a24479167874e8337d020b1",
       "excluded_since": "2026-07-13",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": "pat-auth",
@@ -58,8 +58,8 @@
       "merge_date": "2026-07-12",
       "commit_sha": "a6bb1db64302ef3aa53f57fc2ebb250d569b136f",
       "excluded_since": "2026-07-13",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": "mcp-oauth",
@@ -71,8 +71,8 @@
       "commit_sha": "71333df7f4ed9ee05d50a94a21c47a25d6a1170a",
       "notes": "Original 07-20 note: exposure depends on BOTH mcp-oauth and pat-auth (both off), deploy wiring not on master at cutoff, SaaS/VPC parity unconfirmed. UPDATE 2026-07-27: Zeta clarified mcp-oauth gates only the in-app connector prototype, and the external MCP-server OAuth login (merged 2026-07-22) was confirmed GA and PUBLISHED in the Week of July 20-26 entry. This held item is likely superseded — flagged to Paul for review; resolve manually rather than waiting on an mcp-oauth flip.",
       "excluded_since": "2026-07-20",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "pat-auth",
@@ -83,8 +83,8 @@
       "merge_date": "2026-07-18",
       "commit_sha": "46c612891371b76ae4fa5dc6a964d506f6c1f294",
       "excluded_since": "2026-07-20",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": "pat-auth",
@@ -96,8 +96,8 @@
       "commit_sha": "5802a1d58e2c053d57abc4c7461c8f9247d95c49",
       "notes": "Zeta 2026-07-27 reported 'no flag / GA yes', but the feature's only entry point is the API Access modal, which is gated by pat-auth (confirmed OFF the same day). Held under pat-auth per default-to-exclude; publish when pat-auth flips.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": "mcp-oauth",
@@ -109,8 +109,8 @@
       "commit_sha": "4695cbec02a927a91dd0ac4ff516a39395469ac3",
       "notes": "Published in rev 1 of Week of July 20-26 per Zeta's 'no flag / GA yes', then PULLED per Paul's review (2026-07-27): external MCP client connectivity is beta. Release requires Paul's explicit confirmation, not just a flag flip.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "mcp-oauth",
@@ -122,8 +122,8 @@
       "commit_sha": "46cc17a44ce081eec9f183aa9f65466c8c451223",
       "notes": "Pulled per Paul's review (2026-07-27): part of the beta external MCP connectivity cluster. Release requires Paul's explicit confirmation.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "mcp-oauth",
@@ -135,8 +135,8 @@
       "commit_sha": "d101e78f6f1768bfe5beb1dddee282324610416f",
       "notes": "Published in rev 1 of Week of July 20-26, then PULLED per Paul's review (2026-07-27): external MCP client connectivity is beta. Release requires Paul's explicit confirmation.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "mcp-oauth",
@@ -148,8 +148,8 @@
       "commit_sha": "9f5858dc4d8ff9bdbf63c0999b04c3c42826ff03",
       "notes": "Published in rev 1 of Week of July 20-26, then PULLED per Paul's review (2026-07-27): external MCP client connectivity is beta. Release requires Paul's explicit confirmation.",
       "excluded_since": "2026-07-27",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -174,8 +174,8 @@
       "commit_sha": "0499cc4715",
       "notes": "Likely supersedes the held 'Temporary PAT management modal' (2026-07-12) — consolidate the two into one item when pat-auth flips.",
       "excluded_since": "2026-08-03",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": "pat-auth",
@@ -187,8 +187,8 @@
       "commit_sha": "b1e097348b",
       "notes": "Pre-launch hardening of the unreleased PAT feature — fold into the PAT launch item when pat-auth flips rather than listing separately.",
       "excluded_since": "2026-08-03",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": "mcp-oauth",
@@ -200,8 +200,8 @@
       "commit_sha": "1479d6af2d",
       "notes": "Pre-launch fix of the unreleased external MCP OAuth flow — folds into the OAuth-login launch item when the cluster is released (Paul-gated); do not list separately.",
       "excluded_since": "2026-08-03",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "observability",
@@ -213,8 +213,8 @@
       "commit_sha": "a8890aa004",
       "notes": "Publish consolidated with 'Observability UI' (da6041d9af), 'Cleaner observability screens' (e3d1355add), and 'Observability chats use the current conversations API' (7eea0cac049a) as a single launch item when the observability flag flips.",
       "excluded_since": "2026-08-03",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; two internal users targeted true, one internal user and golden-demo-segment explicitly false. prodeu OFF, serves false. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; Tale and Nick explicitly receive true, Joe and golden-demo-segment receive false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "observability",
@@ -226,8 +226,8 @@
       "commit_sha": "da6041d9af",
       "notes": "Publish consolidated with the other observability items as a single launch item when the observability flag flips.",
       "excluded_since": "2026-08-03",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; two internal users targeted true, one internal user and golden-demo-segment explicitly false. prodeu OFF, serves false. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; Tale and Nick explicitly receive true, Joe and golden-demo-segment receive false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -252,8 +252,8 @@
       "commit_sha": "48ef8016f747bc5c622b15b51d358e06b6c672bd",
       "notes": "Consolidate with the other 'settings'-flagged items into a single launch item when the flag flips.",
       "excluded_since": "2026-08-10",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -278,8 +278,8 @@
       "commit_sha": "ef7269e85654c4b9c7d9508a39bfc82d7c615b2b",
       "notes": "Zeta flagged VPC/SaaS parity touch: includes VPC-specific visibility and sandbox-context controls. Review description for parity tells per curation rules before publishing on flip.",
       "excluded_since": "2026-08-10",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "settings",
@@ -290,8 +290,8 @@
       "merge_date": "2026-08-04",
       "commit_sha": "fed9952f2b47dc2de5ff0618ba4743a896f52caa",
       "excluded_since": "2026-08-10",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "settings",
@@ -303,8 +303,8 @@
       "commit_sha": "af9ba212b1d596b2cf08a7cddd4a79a00b50630f",
       "notes": "Zeta flagged VPC/SaaS parity touch: changes VPC visibility for integrations, embedding, and sandbox-backed context editing. Review for parity tells before publishing on flip.",
       "excluded_since": "2026-08-10",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -394,8 +394,8 @@
       "commit_sha": "2b899ed5cae7031397fa9cb67a0478d941c76d41",
       "notes": "Likely consolidates with the existing held PAT items into a single PAT launch item when pat-auth flips.",
       "excluded_since": "2026-08-10",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": null,
@@ -550,8 +550,8 @@
       "commit_sha": "5daefdd400f2",
       "notes": "New flag on the watchlist. No direct flag on the commit, but the surface depends on managed-database access, which Zeta reports as true by default in US prod and false in EU prod — not GA globally, so held under default-to-exclude. Publishing while EU is off would also risk a regional-parity tell; review wording on flip.",
       "excluded_since": "2026-08-17",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "not GA globally — prod ON and defaults true; prodeu OFF and serves false. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "not GA globally — prod ON with fallthrough true and no restrictive rules (two redundant true targets); prodeu OFF, serves false. Publishing while EU is off would also risk a regional-parity tell. (Zeta 2026-08-31)"
     },
     {
       "flag": "mcp-server-settings",
@@ -563,8 +563,8 @@
       "commit_sha": "a0d4a1115e21",
       "notes": "New flag on the watchlist. Also part of the external MCP-server surface held under Paul's beta ruling (2026-07-27) — release requires Paul's confirmation, not just a flag flip.",
       "excluded_since": "2026-08-17",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA AND ARCHIVED — prod and prodeu both ON with default true as of 2026-08-19; flag archived 2026-08-20 as 'available for everybody', which did not change evaluation state (Zeta 2026-08-24). NOT auto-recovered: this is the external MCP-server surface held under Paul's beta ruling (2026-07-27), which releases on his explicit confirmation rather than a flag flip."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "ARCHIVED 2026-08-20 — stored configuration is ON with fallthrough true in both prod and prodeu, so it serves true to everyone, but the flag is retired rather than actively GA (Zeta 2026-08-31). NOT auto-recovered: external MCP-server surface held under Paul's beta ruling (2026-07-27), which releases on his explicit confirmation rather than a flag flip."
     },
     {
       "flag": "settings",
@@ -576,8 +576,8 @@
       "commit_sha": "77c734bda9e6",
       "notes": "Consolidate with the other 'settings'-flagged items into a single launch item when the flag flips.",
       "excluded_since": "2026-08-17",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -602,8 +602,8 @@
       "commit_sha": "b88d6a350026",
       "notes": "Pre-launch fix of the unreleased external MCP OAuth flow — fold into the OAuth-login launch item when the cluster is released (Paul-gated); do not list separately.",
       "excluded_since": "2026-08-17",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod and prodeu both toggle OFF, so both serve false regardless of the configured true fallthrough. US retains dormant closed-beta/internal-testing rules; EU has none. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod toggle OFF (configured fallthrough true, OFF serve false); three inactive true carve-outs (closed-beta emails, internal-testing, internal QA). prodeu toggle OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -628,8 +628,8 @@
       "commit_sha": "7eea0cac049a",
       "notes": "Pre-launch fix of the unreleased Observability area — fold into the consolidated observability launch item when the flag flips; do not list separately.",
       "excluded_since": "2026-08-17",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; two internal users targeted true, one internal user and golden-demo-segment explicitly false. prodeu OFF, serves false. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; Tale and Nick explicitly receive true, Joe and golden-demo-segment receive false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "settings",
@@ -641,8 +641,8 @@
       "commit_sha": "5cd47fb73044",
       "notes": "Consolidate with the other 'settings'-flagged items into a single launch item when the flag flips.",
       "excluded_since": "2026-08-17",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": null,
@@ -680,8 +680,8 @@
       "commit_sha": "28415f23336e089cb35a44c1f7b2d679af77c4fb",
       "notes": "External MCP-server surface — held under Paul's beta ruling (2026-07-27). Release requires Paul's explicit confirmation, not a flag flip. Also parity-sensitive: Zeta flagged that removing the runtime/env gate aligns SaaS and configured VPC visibility, so the wording needs a parity review before it is ever published. Consolidate with the held 'Zenlytic MCP server setup card' (a0d4a1115e21) on release.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA AND ARCHIVED — prod and prodeu both ON with default true as of 2026-08-19; flag archived 2026-08-20 as 'available for everybody', which did not change evaluation state (Zeta 2026-08-24). NOT auto-recovered: this is the external MCP-server surface held under Paul's beta ruling (2026-07-27), which releases on his explicit confirmation rather than a flag flip."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "ARCHIVED 2026-08-20 — stored configuration is ON with fallthrough true in both prod and prodeu, so it serves true to everyone, but the flag is retired rather than actively GA (Zeta 2026-08-31). NOT auto-recovered: external MCP-server surface held under Paul's beta ruling (2026-07-27), which releases on his explicit confirmation rather than a flag flip."
     },
     {
       "flag": null,
@@ -706,8 +706,8 @@
       "commit_sha": "c2fe1c266d12d1af3678b1c07d718602c797c6b2",
       "notes": "pat-auth is GA in both regions as of 2026-08-18, so this is not flag-blocked. Held on the same judgment as the rest of the PAT cluster: PATs authenticate only the public API and the Zenlytic MCP server, both ruled beta by Paul. Consolidate with the other held PAT items into a single launch item on Paul's confirmation.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "FLAG IS NOW GA — prod and prodeu both ON, default true, no targeting or carve-outs (US default flipped and old targets removed 2026-08-18; EU turned on the same day; Zeta 2026-08-24). HELD ANYWAY pending Paul's ruling: personal access tokens exist to authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag flip alone."
+      "last_checked": "2026-08-31",
+      "last_checked_status": "FLAG IS GA — prod and prodeu both ON, fallthrough true, no rules or targets (Zeta 2026-08-31). HELD ANYWAY pending Paul's ruling: PATs authenticate the public API and the Zenlytic MCP server, both of which Paul has ruled beta. Publish on Paul's explicit confirmation, not on this flag state."
     },
     {
       "flag": "settings",
@@ -719,8 +719,8 @@
       "commit_sha": "8c58944b03b9e4826614aa7f712e30619a6ed3d1",
       "notes": "Consolidate with the other 'settings'-flagged items into a single launch item when the flag flips.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "settings",
@@ -732,8 +732,8 @@
       "commit_sha": "8c58944b03b9e4826614aa7f712e30619a6ed3d1",
       "notes": "Consolidate with the other 'settings'-flagged items into a single launch item when the flag flips.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "api-keys",
@@ -745,8 +745,8 @@
       "commit_sha": "8c58944b03b9e4826614aa7f712e30619a6ed3d1",
       "notes": "New flag on the watchlist. Double-gated: the settings flag hides the surface and api-keys gates the capability. Distinct from personal access tokens — add api-keys to the batched watchlist query going forward.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — settings defaults false in prod and is off in prodeu; api-keys prod ON with fallthrough false, prodeu OFF serving false. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; Jennifer explicitly receives true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "settings",
@@ -758,8 +758,8 @@
       "commit_sha": "8c58944b03b9e4826614aa7f712e30619a6ed3d1",
       "notes": "Held behind the settings flag. Its Zenlytic MCP server card is separately covered by Paul's external-MCP beta ruling, so a settings flip alone does not release that portion.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "settings",
@@ -771,8 +771,8 @@
       "commit_sha": "8c58944b03b9e4826614aa7f712e30619a6ed3d1",
       "notes": "Consolidate with the other 'settings'-flagged items on flip. Zeta flagged the Require SSO policy: it exposes the existing policy and does not add or alter custom-SAML provider configuration, but the wording needs an SSO review before publishing.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; five named users and the 'Pure Organics (beta)' workspace receive true, golden-demo-segment explicitly false. prodeu OFF, serves false. 2026-08-19: one additional user added to the true targets. Still a targeted rollout, not GA. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
     },
     {
       "flag": "observability",
@@ -784,8 +784,268 @@
       "commit_sha": "8c58944b03b9e4826614aa7f712e30619a6ed3d1",
       "notes": "Consolidate with the other observability items into a single launch item when the observability flag flips.",
       "excluded_since": "2026-08-24",
-      "last_checked": "2026-08-24",
-      "last_checked_status": "off — prod ON but defaults false; two internal users targeted true, one internal user and golden-demo-segment explicitly false. prodeu OFF, serves false. No change since 2026-08-17. (Zeta 2026-08-24)"
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; Tale and Nick explicitly receive true, Joe and golden-demo-segment receive false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "zoe-git-v2",
+      "feature_title": "Zoë Git workflow",
+      "description": "Lets Zoë sync, modify, and push context changes through Git.",
+      "surface": "Context Manager",
+      "category": "new feature",
+      "merge_date": "2026-08-25",
+      "commit_sha": "e0b4855c24ec694adc5db8a1e5d88a315aac7eb3",
+      "notes": "New flag on the watchlist — add zoe-git-v2 to the batched watchlist query going forward. Prerequisite flag zoe-context-editor already defaults true in both environments, so zoe-git-v2 is the only gate.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod and prodeu both off (configured fallthrough true, served false); prerequisite zoe-context-editor defaults true in both. Not GA. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "observability",
+      "feature_title": "Observability UX redesign",
+      "description": "Adds admin-view controls, a chats view, and updated observability navigation and details.",
+      "surface": "web app",
+      "category": "improvement",
+      "merge_date": "2026-08-25",
+      "commit_sha": "73b4de6eac3747ea42b6f4e3bbf96137a765d4eb",
+      "notes": "Consolidate with the other observability items into a single launch item when the observability flag flips.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; Tale and Nick explicitly receive true, Joe and golden-demo-segment receive false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "observability",
+      "feature_title": "Observability filter polish",
+      "description": "Improves scope controls, scheduled-send filtering, and empty-state presentation.",
+      "surface": "web app",
+      "category": "improvement",
+      "merge_date": "2026-08-26",
+      "commit_sha": "19854a71910048ef864505e32ce3b5e7ea540af9",
+      "notes": "Pre-launch polish of the unreleased Observability area — fold into the consolidated observability launch item when the flag flips; do not list separately.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; Tale and Nick explicitly receive true, Joe and golden-demo-segment receive false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Settings search matches visible controls",
+      "description": "Search results respect the same permissions, flags, product-tier, and deployment visibility as the forms.",
+      "surface": "web app",
+      "category": "bug fix",
+      "merge_date": "2026-08-25",
+      "commit_sha": "d4e210c0fa04760e771c4fc7869badb03ffdd346",
+      "notes": "Pre-launch fix of the unreleased Settings redesign — fold into the settings launch item when the flag flips; do not list separately. Zeta noted it also keys off deployment visibility, so review for VPC/SaaS parity tells before publishing.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Admin pages restored in Settings",
+      "description": "All Chats, Chat Feedback, and Scheduled Reports return within the redesigned Settings experience.",
+      "surface": "web app",
+      "category": "improvement",
+      "merge_date": "2026-08-25",
+      "commit_sha": "f742ff1f52c2201bae782d77846e63ffd5751972",
+      "notes": "Consolidate with the other settings-flagged items into a single launch item when the flag flips.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "New Settings billing and workspace flows",
+      "description": "Adds redesigned self-service billing, workspace creation, connection setup, and account navigation.",
+      "surface": "web app",
+      "category": "new feature",
+      "merge_date": "2026-08-26",
+      "commit_sha": "e0a70af49f669094fff35c40a623081e278a3f18",
+      "notes": "Consolidate with the other settings-flagged items into a single launch item when the flag flips.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "SSO provisioning during workspace creation",
+      "description": "Admins can choose automatic SSO-user provisioning when creating a workspace.",
+      "surface": "web app",
+      "category": "new feature",
+      "merge_date": "2026-08-26",
+      "commit_sha": "e0a70af49f669094fff35c40a623081e278a3f18",
+      "notes": "Zeta flagged this as an SSO item. It concerns provisioning users through SSO, not custom SAML connection handling, so it is held under the settings flag rather than dropped under the custom-SAML exclusion — but Paul should confirm that reading before it is ever published.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Workspace-table help text",
+      "description": "Adds explanatory tooltips for SSO user provisioning and workspace seat limits.",
+      "surface": "web app",
+      "category": "improvement",
+      "merge_date": "2026-08-26",
+      "commit_sha": "2e35e09b37d93597e00261c167925c46468e0789",
+      "notes": "Zeta flagged this as an SSO item; it is tooltip copy about SSO provisioning and seat limits, not custom SAML connection handling. Held under the settings flag. Likely too minor to publish on its own — fold into the settings launch item.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Organization SSO provider management",
+      "description": "New Settings supports creating and editing Okta or Microsoft Entra providers plus workspace auto-provisioning controls.",
+      "surface": "web app",
+      "category": "new feature",
+      "merge_date": "2026-08-26",
+      "commit_sha": "67d20766d0d280d1a58e8c3d374b3a5ab26457c7",
+      "notes": "PAUL RULING REQUESTED. Zeta flagged this CUSTOM SSO but reported that no literal SAML-specific code change was found — it manages Okta and Microsoft Entra providers. If Paul reads this as custom SAML/SSO connection handling it is a permanent exclusion under that rule and should be removed from the watchlist entirely; if not, it stays held behind the settings flag and joins the settings launch item. Held rather than dropped so the decision is not lost.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Redesigned MCP connection editor",
+      "description": "Adds connection testing and workspace/user access controls to the MCP connection editor.",
+      "surface": "web app",
+      "category": "improvement",
+      "merge_date": "2026-08-26",
+      "commit_sha": "67d20766d0d280d1a58e8c3d374b3a5ab26457c7",
+      "notes": "Held behind the settings flag, which contains the page. Zeta: base MCP is mcp-client (GA) but the OAuth options are mcp-oauth (not GA) and the containing page is settings, so not GA overall. Its external MCP portions are separately covered by Paul's external-MCP beta ruling, so a settings flip alone does not release all of it.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Unified All Chats admin hub",
+      "description": "Adds conversation, feedback, and scheduled-activity views with filtering and resolution actions.",
+      "surface": "web app",
+      "category": "new feature",
+      "merge_date": "2026-08-27",
+      "commit_sha": "2ce2da81b2a5b7832077ab72bb856492e8605147",
+      "notes": "Consolidate with the other settings-flagged items into a single launch item when the flag flips. Related to the held 'Admin pages restored in Settings' (f742ff1f52) — combine the two on release.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Settings QA and autosave fixes",
+      "description": "Corrects layout, forms, tables, autosave, connections, auth-provider, and navigation issues in redesigned Settings.",
+      "surface": "web app",
+      "category": "bug fix",
+      "merge_date": "2026-08-27",
+      "commit_sha": "0529c2709e1f1544913e287c223b5bc3e77a61cd",
+      "notes": "Pre-launch polish of the unreleased Settings redesign — customers never saw the broken state. Fold into the settings launch item on flip; do not list separately.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": "settings",
+      "feature_title": "Second Settings QA pass",
+      "description": "Fixes connection defaults, caching dates, form validation, chat layout, autosave, and workspace-creation edge cases.",
+      "surface": "web app",
+      "category": "bug fix",
+      "merge_date": "2026-08-27",
+      "commit_sha": "512a384243b9426c8375467f1c2eb9c6ebc6de46",
+      "notes": "Pre-launch polish of the unreleased Settings redesign — customers never saw the broken state. Fold into the settings launch item on flip; do not list separately.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "off — prod ON but fallthrough serves false; users whose email contains @zenlytic receive true, golden-demo-segment receives false. prodeu OFF, serves false. Not GA in either environment. (Zeta 2026-08-31)"
+    },
+    {
+      "flag": null,
+      "feature_title": "MCP Apps",
+      "description": "MCP clients can render Zenlytic questions, artifacts, and results as interactive apps.",
+      "surface": "API",
+      "category": "new feature",
+      "merge_date": "2026-08-27",
+      "commit_sha": "a60faa07f9953195b842dfa51a5949730d2216c6",
+      "notes": "Zeta reported no flag / GA yes, but this is the external MCP-client surface held under Paul's beta ruling (2026-07-27). This is the launch item for the MCP Apps cluster — the four MCP Apps items that follow are pre-launch polish and fold into it on release. Release on Paul's explicit confirmation, not a flag flip.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "beta per Paul's external-MCP ruling (overrides Zeta GA-yes)."
+    },
+    {
+      "flag": null,
+      "feature_title": "Reliable MCP live-artifact loading",
+      "description": "Moves live-data resolution to background workers to avoid blocking and timeouts in MCP Apps.",
+      "surface": "API",
+      "category": "bug fix",
+      "merge_date": "2026-08-27",
+      "commit_sha": "0072012e5968fc4c3783a5ae928f759d7a19b2ce",
+      "notes": "External MCP-server surface — held under Paul's beta ruling (2026-07-27). Zeta: gated by live-artifacts, which is GA by default, but the MCP Apps surface it serves is not released. Pre-launch fix of MCP Apps; fold into the MCP Apps launch item (a60faa07f9) on release.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "beta per Paul's external-MCP ruling (overrides Zeta GA-yes)."
+    },
+    {
+      "flag": null,
+      "feature_title": "Artifact loading shell in MCP Apps",
+      "description": "Shows the artifact immediately with a loading state while live data resolves.",
+      "surface": "API",
+      "category": "improvement",
+      "merge_date": "2026-08-28",
+      "commit_sha": "04dcd17c70abbe7e9f2e2539228fb56a98891875",
+      "notes": "External MCP-server surface — held under Paul's beta ruling (2026-07-27). Pre-launch polish of MCP Apps; fold into the MCP Apps launch item (a60faa07f9) on release.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "beta per Paul's external-MCP ruling (overrides Zeta GA-yes)."
+    },
+    {
+      "flag": null,
+      "feature_title": "Cleaner MCP Apps result UI",
+      "description": "Tightens result presentation and loading and error states in MCP Apps.",
+      "surface": "API",
+      "category": "improvement",
+      "merge_date": "2026-08-28",
+      "commit_sha": "b214c57422fafe93e7260ad91a0a326679a94f29",
+      "notes": "External MCP-server surface — held under Paul's beta ruling (2026-07-27). Pre-launch polish of MCP Apps; fold into the MCP Apps launch item (a60faa07f9) on release.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "beta per Paul's external-MCP ruling (overrides Zeta GA-yes)."
+    },
+    {
+      "flag": null,
+      "feature_title": "Faster MCP Apps rendering",
+      "description": "Reduces repeat work and adds backoff while polling result state in MCP Apps.",
+      "surface": "API",
+      "category": "improvement",
+      "merge_date": "2026-08-28",
+      "commit_sha": "8c31e13957a964ccce583f89622570d1c68e1d2c",
+      "notes": "External MCP-server surface — held under Paul's beta ruling (2026-07-27). Pre-launch polish of MCP Apps; fold into the MCP Apps launch item (a60faa07f9) on release. If ever published, drop the speed claim per the Zenlytic voice rule.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "beta per Paul's external-MCP ruling (overrides Zeta GA-yes)."
+    },
+    {
+      "flag": null,
+      "feature_title": "Correct MCP conversation links",
+      "description": "Prevents partial streamed conversation IDs from producing broken \"Open in Zenlytic\" links.",
+      "surface": "API",
+      "category": "bug fix",
+      "merge_date": "2026-08-27",
+      "commit_sha": "038efd0c1018a91333016a07c510792463da469b",
+      "notes": "External MCP-server surface — held under Paul's beta ruling (2026-07-27). Release on Paul's explicit confirmation, not a flag flip.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "beta per Paul's external-MCP ruling (overrides Zeta GA-yes)."
+    },
+    {
+      "flag": null,
+      "feature_title": "Independent API rate limits",
+      "description": "MCP, public API, and web-backend traffic no longer share concurrency counters; MCP and public API concurrency rises from 10 to 20.",
+      "surface": "API",
+      "category": "bug fix",
+      "merge_date": "2026-08-27",
+      "commit_sha": "719d210fd74d0a91d879805bf8b2d0900a36893f",
+      "notes": "PAUL RULING REQUESTED. Held under the public-API beta ruling (PR #203, 2026-08-11) because it describes public API behavior, and separately under the external-MCP ruling. It is also very likely a permanent implementation-detail exclusion — concurrency counters are plumbing, and the item carries a speed/throughput claim we would not publish. If Paul agrees it is implementation detail, remove it from the watchlist entirely rather than holding it.",
+      "excluded_since": "2026-08-31",
+      "last_checked": "2026-08-31",
+      "last_checked_status": "beta per Paul's public-API and external-MCP rulings (override Zeta GA-yes)."
     }
   ],
   "resolved": [

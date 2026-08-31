@@ -15,11 +15,13 @@ This guide walks through connecting an MCP client to Zenlytic and what to expect
 
 ## What you get
 
-Zenlytic exposes one tool to MCP clients: **`ask_zoe`**. Your AI assistant calls this tool whenever you ask it a question that requires querying your business data. Behind the scenes, it:
+The main tool Zenlytic exposes to MCP clients is **`ask_zoe`**. Your AI assistant calls this tool whenever you ask it a question that requires querying your business data. Behind the scenes, it:
 
 * Starts (or continues) a Zenlytic conversation with your question
 * Waits for Zenlytic's AI analyst to answer, including running any needed queries
 * Returns the answer, a link back to the full conversation in the Zenlytic app, and any resulting data/charts
+
+In MCP clients that support **MCP Apps** (an interactive-widget extension to MCP), like Claude.ai, `ask_zoe`'s answer renders as a live, interactive result view instead of plain text — clients without that support just get the same answer as plain text and data.
 
 Every conversation started this way shows up in Zenlytic's conversation history like any other, tagged as an **MCP** conversation, so you (and your workspace admins) can always see what was asked and how it was answered.
 
@@ -30,7 +32,11 @@ You'll need:
 * A Zenlytic account with access to the workspace you want to query
 * Chat permission in that workspace
 * An MCP-capable client (Claude.ai, Claude Code, ChatGPT, or similar)
-* Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com/mcp
+* Zenlytic's MCP URL for your workspace: `https://mcp.zenlytic.com/mcp`
+
+{% hint style="info" %}
+If your org logs in at a custom vanity subdomain (e.g. `acme.zenlytic.com`), use that subdomain in front of the MCP host instead: `https://acme.mcp.zenlytic.com/mcp`. The exact URL for your org is shown in **Workspace Settings → MCP**.
+{% endhint %}
 
 ## Option 1: Connect with OAuth (recommended for most clients)
 
@@ -45,10 +51,14 @@ If your client supports MCP connectors with OAuth (this includes Claude.ai, Clau
 
 Some clients don't support the OAuth flow and instead want a static token in their config file.
 
+{% hint style="info" %}
+Creating a personal access token requires the Admin (or Organization Admin) role in the workspace. See [Personal Access Tokens](../../../developers/README.md#creating-a-personal-access-token).
+{% endhint %}
+
 1. In Zenlytic, go to **Workspace Settings → Personal Access Tokens** (`/workspace-settings/personal-access-tokens`).
 2. Click **Create token**, give it a name (e.g. "Claude MCP"), and save it.
 3. **Copy the token immediately** — it's only shown once, right after creation.
-4. Add it to your MCP client's config as a bearer token. For example:
+4. Add it to your MCP client's config as a bearer token, using your org's MCP URL from **Workspace Settings → MCP**. For example:
 
 ```json
 {

@@ -10,7 +10,7 @@ Claude.ai support MCP custom connectors with OAuth out of the box, so this is on
 
 ## Before you start
 
-You'll need Zenlytic's MCP URL for your workspace. URL: https://mcp.zenlytic.com/mcp
+You'll need Zenlytic's MCP URL for your workspace: `https://mcp.zenlytic.com/mcp` (orgs on a vanity subdomain use a different URL — see [Before you start](./#before-you-start)).
 
 ## Connect with OAuth (recommended)
 
@@ -23,7 +23,7 @@ Your connector is now authorized — you won't need to log in again unless you r
 
 ## Connect with a Personal Access Token (alternative)
 
-If OAuth isn't available, you can authenticate with a static token instead:
+If OAuth isn't available, you can authenticate with a static token instead. Creating one requires the Admin (or Organization Admin) role — see [Option 2](./#option-2-connect-with-a-personal-access-token-for-static-config-clients-or-when-oauth-isnt-available).
 
 1. In Zenlytic, go to **Workspace Settings → Personal Access Tokens** (`/workspace-settings/personal-access-tokens`), click **Create token**, and copy it immediately — it's only shown once.
 2. In the **Add custom connector** dialog, open **Advanced settings**.

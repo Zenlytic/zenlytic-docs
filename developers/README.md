@@ -8,6 +8,10 @@ Personal access tokens (PATs) authenticate API requests to Zenlytic on behalf of
 
 ### Creating a Personal Access Token
 
+{% hint style="info" %}
+Creating, viewing, and revoking personal access tokens requires the [Admin or Organization Admin role](../docs/zenlytic-ui/user_roles.md) in the workspace you're doing it from. If you don't have this role, the **API Access** item won't appear in your user menu, and the Personal Access Tokens page isn't reachable even by direct link.
+{% endhint %}
+
 A token's scope is fixed at creation time, based on your role in the workspace you're creating it from — it has nothing to do with which endpoint you later call. If you hold the Org Admin role there, the token you create is org-wide; otherwise it's scoped to that workspace only. Two tokens can look identical — same format, same header — while one reaches your whole organization and the other reaches a single workspace, so confirm your role before creating a token, or call `GET /me` afterward to check what you actually got.
 
 1. Click your user avatar/name in the bottom-left corner of the navigation bar.

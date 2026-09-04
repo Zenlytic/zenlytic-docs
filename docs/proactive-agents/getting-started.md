@@ -45,6 +45,17 @@ In the upper right-hand side of the screen, you can create new Proactive Agents 
 <figure><img src="../.gitbook/assets/agents/3-new-proactive-agent.png" alt=""><figcaption></figcaption></figure>
 
 
+## Creating Proactive Agents from Chat
+
+Zoë can create Proactive Agents for you — just ask. When your message indicates you want something sent on a schedule to email or Slack (e.g. "send me this chart every morning at 8a"), Zoë creates the agent for you using the _Create Proactive Agent_ tool call. Review the agent's name, instructions, and schedule in the tool call drawer, or open it from the Proactive Agents page like any other agent.
+
+<figure><img src="../.gitbook/assets/agents/10-create-agent-from-chat.png" alt=""><figcaption></figcaption></figure>
+
+A few things to keep in mind:
+
+* Zoë can edit a Proactive Agent only from the chat where it was originally created. Previous versions of the agent are read-only and are accessible only from the tool call drawer in that chat.
+* Zoë can only create and edit Proactive Agents that send to you, the logged-in user. To send to other destinations, add them manually in the Proactive Agent Builder.
+
 ## Editing Proactive Agents
 
 By default, the newly created Proactive Agent will be titled "New Proactive Agent" and contain no instruction details. We can click the Proactive Agent title and type to change the title. The new name will be saved with an outside click or "Enter" keypress.

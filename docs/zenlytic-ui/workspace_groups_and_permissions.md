@@ -12,7 +12,7 @@ To create a group for sharing permissions, click on your account icon in the top
 
 Create a group, name the group, and lastly, add desired team members to the group. This group can be used on the dashboard level to govern access to reports in your workspace. ​
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.30.28 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/team-groups-detail.png" alt="Group detail page showing group attributes and group members for the Marketing group"><figcaption></figcaption></figure>
 
 ## Creating Dashboard Level Permissions
 

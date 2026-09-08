@@ -10,15 +10,15 @@ This section covers how to set user attributes. User attributes are how users ar
 
 To set a user attribute on a user, go to **Settings → Team → Attributes** to define the attribute
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.26.10 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/team-attributes-list.png" alt="Settings → Team → Attributes tab"><figcaption></figcaption></figure>
 
 Then make the user attribute you want in the pop up menu and pick its type
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.26.58 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/team-create-attribute.png" alt="Create New Attribute popup with a Department attribute being defined"><figcaption></figcaption></figure>
 
 You can set a user attribute on either a group or an individual user. To set it on an individual user, click on Users, and set the attribute on the user. This example sets the user attribute `Department` to `blah` on this user.
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.27.53 AM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/team-set-user-attribute.png" alt="Department attribute set to blah on an individual user"><figcaption></figcaption></figure>
 
 Now that this user's `Department` attribute is set, their permissions will be determined by that (and any other attributes) set on that user.
 

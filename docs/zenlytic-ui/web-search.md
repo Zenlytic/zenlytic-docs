@@ -12,9 +12,9 @@ Zoë can search the web for real-time information to supplement her data analysi
 
 ## Enabling Web Search for the Workspace
 
-Web Search must first be enabled at the workspace level by an admin. Navigate to **Settings > Zoë** and toggle **Web Search** on. Once enabled, all users in the workspace will have the option to activate Web Search in their conversations.
+Web Search must first be enabled at the workspace level by an admin. Navigate to **Settings → Chat** (**Workspace Settings → Zoë** if your workspace hasn't moved to the new Settings experience yet) and toggle **Web Search** on. Once enabled, all users in the workspace will have the option to activate Web Search in their conversations.
 
-<figure><img src="../.gitbook/assets/web-search-settings.png" alt="Enabling Web Search in the Zoë workspace settings"><figcaption><p>Enabling Web Search in the Zoë workspace settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/web-search-settings.png" alt="Enabling Web Search in Settings → Chat"><figcaption><p>Enabling Web Search in Settings → Chat</p></figcaption></figure>
 
 ## Enabling Web Search per Conversation
 

@@ -33,7 +33,7 @@ Other repo-aware MCPs work the same way — a Bitbucket MCP, a GitLab MCP, or an
 
 ## Step 1 — Connect the repo MCP
 
-Follow the [GitHub MCP setup guide](client/github.md) to mint a fine-grained PAT scoped to the data-model repository and add the connection in **Workspace Settings → Extensions → MCP**. For an audit, the **default toolset** (`context`, `repos`, `issues`, `pull_requests`, `users`) is enough — Zoë only needs read access to repository contents.
+Follow the [GitHub MCP setup guide](client/github.md) to mint a fine-grained PAT scoped to the data-model repository and add the connection in **Settings → MCP** (**Workspace Settings → Extensions → MCP** if your workspace hasn't moved to the new Settings experience). For an audit, the **default toolset** (`context`, `repos`, `issues`, `pull_requests`, `users`) is enough — Zoë only needs read access to repository contents.
 
 **Scope the PAT tightly.** Grant `Contents: Read-only` and `Metadata: Read-only` on just the data-model repo. Add `Pull requests: Read and write` only if you intend to let Zoë open a PR with her fixes in Step 6.
 

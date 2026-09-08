@@ -48,7 +48,7 @@ API tokens replace passwords for programmatic access to Atlassian Cloud. Each to
 
 ## Set up the connection in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
+1. Open **Settings → MCP** and click **Add Connection**. (Don't see **Settings** in the nav yet? Use **Workspace Settings → Extensions → MCP** instead — same page, old name.)
 2. Fill out the form:
    * **Name** — a label that will appear in the chat tool menu, for example `Jira`.
    *   **URL** — the Atlassian Rovo MCP endpoint:

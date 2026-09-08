@@ -50,7 +50,7 @@ The response is a JSON document with an `access_token` field. Copy that value �
 
 ## Set up the connection in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
+1. Open **Settings → MCP** and click **Add Connection**. (Don't see **Settings** in the nav yet? Use **Workspace Settings → Extensions → MCP** instead — same page, old name.)
 2. Fill out the form:
 
 * **Name** — a label that will appear in the chat tool menu, for example `Reltio (prod)`.
@@ -107,5 +107,5 @@ A few specifics to share with your users:
 * **`403 Forbidden` on a tool call:** The role attached to the service account doesn't have permission for the action Zoë attempted. Either tighten the tool list in the Zenlytic connection modal so Zoë can't call that tool, or expand the role's permissions in Reltio.
 * **Tool list looks short or empty:** AgentFlow or the MCP server may not be enabled on your Reltio tenant, or the service account's role has limited permissions. Contact Reltio Support to confirm the MCP server is on, and double-check the role's permissions.
 * **`Invalid namespace` or DNS errors when saving:** The `<namespace>` in the URL doesn't match a Reltio tenant. Confirm the value with your Reltio administrator and ensure the URL is exactly `https://<namespace>.reltio.com/ai/tools/mcp/` (trailing slash included).
-* **Connection works in Test Connection but fails in chat:** Either the access token expired between test and use, or Reltio's tool surface has changed since you saved. Mint a fresh token, then open the connection in workspace settings and click **Refresh Tools**.
+* **Connection works in Test Connection but fails in chat:** Either the access token expired between test and use, or Reltio's tool surface has changed since you saved. Mint a fresh token, then open the connection in **Settings → MCP** and click **Refresh Tools**.
 * **Can't reach the MCP endpoint:** Confirm outbound HTTPS to `<namespace>.reltio.com` and `auth.reltio.com` is allowed from Zenlytic's network. If your Reltio tenant is on a private VPC or restricted egress, contact Reltio Support — the public AgentFlow MCP endpoint must be reachable from Zenlytic.

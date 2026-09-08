@@ -43,7 +43,7 @@ Before you start, confirm the following:
 
 ## Set up the connection in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
+1. Open **Settings → MCP** and click **Add Connection**. (Don't see **Settings** in the nav yet? Use **Workspace Settings → Extensions → MCP** instead — same page, old name.)
 2. Fill out the form:
 
 * **Name** — a label that will appear in the chat tool menu, for example `Atlan (prod)`.
@@ -82,5 +82,5 @@ Once the connection has at least one selected tool, it appears in the chat tool 
 * **`401 Unauthorized` from Atlan:** Confirm the `Authorization` header contains the raw API key with no `Bearer` or `Token` prefix and no leading/trailing whitespace, and that the key is still active in **Admin Settings → API Keys / Tokens**.
 * **`403 Forbidden` on a tool call:** The API key doesn't have permission for the action Zoë attempted. Either tighten the tool list in the Zenlytic connection modal so Zoë can't call that tool, or expand the key's permissions in Atlan.
 * **`Tool list looks short`:** Remote MCP may not be enabled on your Atlan tenant, or the API key has limited scopes. Contact Atlan Support to confirm Remote MCP is on, and double-check the key's permissions.
-* **Connection works in Test Connection but fails in chat:** Atlan's tool surface has likely changed since you saved. Open the connection in workspace settings and click **Refresh Tools**.
+* **Connection works in Test Connection but fails in chat:** Atlan's tool surface has likely changed since you saved. Open the connection in **Settings → MCP** and click **Refresh Tools**.
 * **Can't reach the MCP endpoint:** Confirm outbound HTTPS to `mcp.atlan.com` is allowed from Zenlytic's network. If your Atlan tenant is on a private VPC or restricted egress, contact Atlan Support — the public `mcp.atlan.com` endpoint must be reachable from Zenlytic.

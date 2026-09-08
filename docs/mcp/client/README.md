@@ -27,13 +27,13 @@ To connect any MCP server, confirm the following:
 
 | Requirement              | Detail                                                                                                                                                                         |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Feature flag**         | The `mcp-client` flag must be enabled for your workspace. Look for an **MCP** entry under **Settings** — or, if your workspace hasn't yet moved to the new Settings experience, under **Workspace Settings → Extensions**. If you don't see it in either place, ask your Zenlytic contact to enable it. |
+| **Feature flag**         | The `mcp-client` flag must be enabled for your workspace. Look for an **MCP** entry under **Settings**. If you don't see it, ask your Zenlytic contact to enable it. |
 | **Workspace permission** | You need `admin` role to view, add, edit, delete, or refresh connections from Settings.                                                                                        |
 | **A reachable server**   | Your server (or the vendor's) must be publicly reachable over HTTPS from Zenlytic's infrastructure.                                                                            |
 
 ## Get started
 
-1. Open **Settings → MCP** in Zenlytic. (On workspaces still on the legacy experience, this is **Workspace Settings → Extensions → MCP Connectors**.)
+1. Open **Settings → MCP** in Zenlytic.
 
 <figure><img src="../../.gitbook/assets/new-mcp-connection.png" alt="MCP Connectors page with no MCPs added yet"><figcaption></figcaption></figure>
 

@@ -94,7 +94,7 @@ Zoë integrates with both Slack and Microsoft Teams. You can ask questions, and 
 
 ### Slack
 
-To set up the Slack integration, you can install it from the **Integrations** section of **Settings** (the **Slack Integration** tab of **Workspace Settings** if your workspace hasn't moved to the new Settings experience yet).
+To set up the Slack integration, you can install it from the **Integrations** section of **Settings**.
 
 To make Zoë receive a message you must tag `@Zenlytic` in every message you want Zoë to see. Unfortunately, Zoë does not automatically see messages that are added to a thread without that tag.
 

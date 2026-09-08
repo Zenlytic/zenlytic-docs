@@ -16,7 +16,7 @@ The styles you define here will _ONLY_ be visible in the embedded application it
 
 ## Defining styles
 
-You will find the JSON input for defining styles in the **Branding** section of **Settings** (the **Style** section of **Workspace Settings** if your workspace hasn't moved to the new Settings experience yet). Only admins in the workspace will have access to this section.
+You will find the JSON input for defining styles in the **Branding** section of **Settings**. Only admins in the workspace will have access to this section.
 
 ![embedding-style-settings](../.gitbook/assets/embedding-style-settings.png)
 

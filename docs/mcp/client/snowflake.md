@@ -152,7 +152,7 @@ For details and CLI options, see [Snowflake's Programmatic Access Token guide](h
 
 ## Set up the connection in Zenlytic
 
-1. Open **Settings → MCP** and click **Add Connection**. (Don't see **Settings** in the nav yet? Use **Workspace Settings → Extensions → MCP** instead — same page, old name.)
+1. Open **Settings → MCP** and click **Add Connection**.
 2. Fill out the form:
 
 * **Name** — a label that will appear in the chat tool menu, for example `Snowflake (prod)`.

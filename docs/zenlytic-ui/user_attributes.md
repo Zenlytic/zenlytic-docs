@@ -8,7 +8,7 @@ description: >-
 
 This section covers how to set user attributes. User attributes are how users are assigned permissions that control their access to data (using [access grants](../data-modeling/access_grants.md)).
 
-To set a user attribute on a user, go to **Settings → Team → Attributes** to define the attribute (**Workspace Settings → Team Members → Attributes** if your workspace hasn't moved to the new Settings experience yet)
+To set a user attribute on a user, go to **Settings → Team → Attributes** to define the attribute
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-07-27 at 10.26.10 AM.png" alt=""><figcaption></figcaption></figure>
 

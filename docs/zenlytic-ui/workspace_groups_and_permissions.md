@@ -8,7 +8,7 @@ description: Create workspace groups and use them to manage dashboard sharing an
 
 ## Creating Workspace Groups
 
-To create a group for sharing permissions, click on your account icon in the top right hand corner (green circle), and select **Settings**. Navigate to the **Team** section. Select the **Groups** tab. (If your workspace hasn't moved to the new Settings experience yet, select **Workspace Settings** instead, then **Team Members**.)
+To create a group for sharing permissions, click on your account icon in the top right hand corner (green circle), and select **Settings**. Navigate to the **Team** section. Select the **Groups** tab.
 
 Create a group, name the group, and lastly, add desired team members to the group. This group can be used on the dashboard level to govern access to reports in your workspace. ​
 

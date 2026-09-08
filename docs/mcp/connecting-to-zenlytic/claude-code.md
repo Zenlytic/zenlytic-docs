@@ -29,7 +29,7 @@ Claude Code stores the token and refreshes it automatically, so you shouldn't ne
 
 If OAuth isn't available, add the server with a static bearer header instead. Creating one requires the Admin (or Organization Admin) role — see [Option 2](./#option-2-connect-with-a-personal-access-token-for-static-config-clients-or-when-oauth-isnt-available).
 
-1. In Zenlytic, go to **Workspace Settings → Personal Access Tokens** (`/workspace-settings/personal-access-tokens`), click **Create token**, and copy it immediately — it's only shown once.
+1. In Zenlytic, go to **Settings → Profile → Personal Access Tokens** (`/personal-access-tokens`), click **Create token**, and copy it immediately — it's only shown once.
 2. Add the server with the token as a header (swap in your org's URL from [Before you start](#before-you-start) if you're on a vanity subdomain):
 
 ```bash

@@ -100,7 +100,7 @@ Your Zenlytic contact will have added you as the admin to your Zenlytic Workspac
 
 As the admin, you are responsible for manually adding your team members to your Zenlytic Workspace.
 
-This can be done via `Workspace Settings -> Team Members -> Invite Member`.
+This can be done via **Settings → Team**, then **+ Team Member**.
 
 Once added, the user may use the `Sign In with Okta` functionality.
 

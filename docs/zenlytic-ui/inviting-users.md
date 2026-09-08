@@ -6,11 +6,11 @@ description: >-
 
 # Inviting and Managing Users
 
-Every person who uses Zenlytic belongs to one or more workspaces. You add them from **Workspace Settings → Team**.
+Every person who uses Zenlytic belongs to one or more workspaces. You add them from **Settings → Team**.
 
 ## Invite someone
 
-1. Go to **Workspace Settings → Team**.
+1. Go to **Settings → Team**.
 2. Click **+ Team Member**.
 3. Enter their **email address**.
 4. Choose a **role**. This is required — there's no default.

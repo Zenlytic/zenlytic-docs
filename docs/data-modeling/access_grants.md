@@ -151,7 +151,7 @@ fields:
 
 ## User attributes
 
-You can set user attributes by going to the "Team Members" section of the workspace settings and adding user attributes there under the "User Attributes" header, for each team member.
+You can set user attributes by going to the **Team** section of **Settings** and adding user attributes there under the "User Attributes" header, for each team member.
 
 ![team-members](../.gitbook/assets/settings-team-members-attrs.png)
 

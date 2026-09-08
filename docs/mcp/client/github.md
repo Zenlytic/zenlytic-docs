@@ -53,7 +53,7 @@ PATs replace passwords for programmatic access to GitHub. Each PAT is tied to a 
 
 ## Set up the connection in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
+1. Open **Settings → MCP** and click **Add Connection**.
 2. Fill out the form:
 
 * **Name** — a label that will appear in the chat tool menu, for example `GitHub`.
@@ -140,5 +140,5 @@ Inherited from GitHub's remote MCP server:
 * **`403 Forbidden` on a tool call:** The PAT doesn't have the permission required to invoke that tool (for example, `Issues: Write` for `issue_write`, or `Actions: Read` for the `actions_*` tools). Grant the missing permission on the PAT and retry — no Zenlytic update needed.
 * **Tool list looks short or empty:** The PAT's scopes only enable a subset of toolsets, or the URL path / `X-MCP-Toolsets` header is narrower than expected. Widen the PAT permissions or remove the restriction and click **Refresh Tools**.
 * **Org-owned repositories or teams are invisible:** SSO or fine-grained PAT authorization may be missing. Open the PAT in GitHub and click **Configure SSO** (for classic PATs) or confirm the **resource owner** is the organization (for fine-grained PATs). Org admins may also need to approve the token under **Organization settings → Personal access tokens**.
-* **Connection works in Test Connection but fails in chat:** Either the PAT expired between test and use, or GitHub's tool surface has changed since you saved. Generate a fresh token if needed, then open the connection in workspace settings and click **Refresh Tools**.
+* **Connection works in Test Connection but fails in chat:** Either the PAT expired between test and use, or GitHub's tool surface has changed since you saved. Generate a fresh token if needed, then open the connection in **Settings → MCP** and click **Refresh Tools**.
 * **GitHub Enterprise Server URL is rejected or unreachable:** The remote server does not support GHES. GHES customers must self-host the local GitHub MCP server, which Zenlytic cannot reach today.

@@ -1,18 +1,22 @@
 ---
 description: >-
   Manage workspaces, organization-wide settings, seat limits, admins, and SSO
-  controls from one place.
+  controls from the Organization section of Settings.
 ---
 
-# Workspace Manager
+# Organization
 
-The Workspace Manager lets you manage every workspace in an organization from one place. You can create workspaces, control user provisioning and seat limits, manage Organization Admins, and apply settings across the organization.
+Settings includes an **Organization** section that lets you manage every workspace in an organization from one place. You can create workspaces, control user provisioning and seat limits, manage Organization Admins, and apply settings across the organization.
+
+{% hint style="info" %}
+This used to live in its own **Workspace Manager** page, separate from Settings. That page has been folded into Settings — everything described below now lives under **Settings → Organization**.
+{% endhint %}
 
 ***
 
 ## Who Can Use It
 
-The Workspace Manager is available to **Organization Admins**, a role that sits above the existing Admin role. To see the Workspace Manager, you must be an Organization Admin in a workspace that belongs to an organization.
+The Organization section is available to **Organization Admins**, a role that sits above the existing Admin role. To see it, you must be an Organization Admin in a workspace that belongs to an organization.
 
 ### Organization Admin vs. Admin
 
@@ -27,7 +31,7 @@ Only an Organization Admin can change or remove another Organization Admin's rol
 
 ## Managing Workspaces
 
-You can find the Workspace Manager from the navigation bar, next to Settings. The **Workspaces** tab shows a searchable table of all active workspaces in your organization.
+You'll find these controls under **Settings → Workspaces**, in the Organization section of the Settings side menu. It shows a searchable table of all active workspaces in your organization.
 
 For each workspace, you can:
 
@@ -46,13 +50,13 @@ Enter a number in the **Seat Limit** column and press **Enter**, or click outsid
 
 A seat limit controls access to the workspace. It does not change the workspace's billing or subscription configuration.
 
-<figure><img src="../.gitbook/assets/workspace-manager-seat-limits.jpg" alt="The Workspaces tab showing SSO User Provisioning, seat-limit fields, and current member counts for two workspaces"><figcaption><p>Set each workspace's provisioning and seat limit from the Workspaces tab</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/workspace-manager-seat-limits.jpg" alt="The Workspaces settings page showing SSO User Provisioning, seat-limit fields, and current member counts for two workspaces"><figcaption><p>Set each workspace's provisioning and seat limit from Settings → Workspaces</p></figcaption></figure>
 
 ***
 
-## Managing the Organization Admin Role
+## Managing the Organization Admins Role
 
-The **Org Admins** tab lists the Organization Admins who are automatically added to every workspace in the organization. Changing an Organization Admin's role updates it across the organization and removes their automatic access to new workspaces.
+**Settings → Organization Admins** lists the Organization Admins who are automatically added to every workspace in the organization. Changing an Organization Admin's role updates it across the organization and removes their automatic access to new workspaces.
 
 When you invite a new member or edit an existing member's role, you'll see **Organization Admin** as a role option. Regular Admins do not see this option.
 
@@ -63,7 +67,7 @@ When you invite a new member or edit an existing member's role, you'll see **Org
 
 ## Managing Organization Settings
 
-Use the **Org Settings** tab to manage selected workspace settings across the organization. These include workspace appearance, Git behavior, chat and model configuration, agent tools, and artifact publishing.
+Use **Settings → Organization Settings** to manage selected workspace settings across the organization. These include workspace appearance, Git behavior, chat and model configuration, agent tools, and artifact publishing.
 
 Each row shows the setting, its **Organization Value**, and whether it is **Locked**:
 
@@ -73,7 +77,7 @@ Each row shows the setting, its **Organization Value**, and whether it is **Lock
 
 New workspaces receive every organization value that is set when the workspace is created.
 
-<figure><img src="../.gitbook/assets/workspace-manager-org-settings.jpg" alt="The Org Settings tab showing organization values, locked and unlocked settings, and settings that are not set at the organization level"><figcaption><p>Manage organization values and locks from the Org Settings tab</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/workspace-manager-org-settings.jpg" alt="The Organization Settings page showing organization values, locked and unlocked settings, and settings that are not set at the organization level"><figcaption><p>Manage organization values and locks from Settings → Organization Settings</p></figcaption></figure>
 
 ### Applying an Organization Value
 
@@ -103,23 +107,23 @@ Unlocking a setting allows future workspace-level changes, but it does not resto
 
 ## Managing SSO
 
-The Workspace Manager contains two related SSO controls:
+The Organization section has two related SSO controls:
 
-* **SSO User Provisioning** on the Workspaces tab controls which workspaces automatically add users who sign in through SSO. Automatic provisioning still respects each workspace's seat limit.
-* **Require SSO** on the SSO tab requires access to the organization's workspaces through one of its configured SSO providers. Username/password and unconfigured social logins are rejected, including already signed-in sessions, and the username/password option is removed from the login page.
+* **SSO User Provisioning**, under **Settings → Workspaces**, controls which workspaces automatically add users who sign in through SSO. Automatic provisioning still respects each workspace's seat limit.
+* **Require SSO**, under **Settings → SSO**, requires access to the organization's workspaces through one of its configured SSO providers. Username/password and unconfigured social logins are rejected, including already signed-in sessions, and the username/password option is removed from the login page.
 
 ***
 
 ## Creating a New Workspace
 
-Click **Create New Workspace** to walk through a guided setup:
+From **Settings → Workspaces**, click **Create New Workspace** to walk through a guided setup:
 
 ### Step 1: Name and Provisioning
 
 * Enter a name for the new workspace.
 * Choose whether to enable **SSO User Provisioning** (off by default). When enabled, the workspace automatically adds users who sign in through SSO. When disabled, members must be [invited manually](inviting-users.md).
 
-Any organization settings that currently have an organization value are applied to the new workspace. You can set a seat limit from the Workspaces tab after creation.
+Any organization settings that currently have an organization value are applied to the new workspace. You can set a seat limit from **Settings → Workspaces** after creation.
 
 ### Step 2: Add Database Connections
 

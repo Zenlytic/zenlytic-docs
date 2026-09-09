@@ -41,7 +41,7 @@
 * [User Roles](zenlytic-ui/user_roles.md)
 * [User Attributes](zenlytic-ui/user_attributes.md)
 * [Workspace Groups And Permissions](zenlytic-ui/workspace_groups_and_permissions.md)
-* [Workspace Manager](zenlytic-ui/workspace-manager.md)
+* [Organization](zenlytic-ui/workspace-manager.md)
 
 ## Data Modeling
 

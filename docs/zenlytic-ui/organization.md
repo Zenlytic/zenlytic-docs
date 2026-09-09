@@ -8,10 +8,6 @@ description: >-
 
 Settings includes an **Organization** section that lets you manage every workspace in an organization from one place. You can create workspaces, control user provisioning and seat limits, manage Organization Admins, and apply settings across the organization.
 
-{% hint style="info" %}
-This used to live in its own **Workspace Manager** page, separate from Settings. That page has been folded into Settings — everything described below now lives under **Settings → Organization**.
-{% endhint %}
-
 ***
 
 ## Who Can Use It
@@ -50,7 +46,7 @@ Enter a number in the **Seat Limit** column and press **Enter**, or click outsid
 
 A seat limit controls access to the workspace. It does not change the workspace's billing or subscription configuration.
 
-<figure><img src="../.gitbook/assets/workspace-manager-seat-limits.jpg" alt="The Workspaces settings page showing SSO User Provisioning, seat-limit fields, and current member counts for two workspaces"><figcaption><p>Set each workspace's provisioning and seat limit from Settings → Workspaces</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/organization-seat-limits.jpg" alt="The Workspaces settings page showing SSO User Provisioning, seat-limit fields, and current member counts for two workspaces"><figcaption><p>Set each workspace's provisioning and seat limit from Settings → Workspaces</p></figcaption></figure>
 
 ***
 
@@ -77,7 +73,7 @@ Each row shows the setting, its **Organization Value**, and whether it is **Lock
 
 New workspaces receive every organization value that is set when the workspace is created.
 
-<figure><img src="../.gitbook/assets/workspace-manager-org-settings.jpg" alt="The Organization Settings page showing organization values, locked and unlocked settings, and settings that are not set at the organization level"><figcaption><p>Manage organization values and locks from Settings → Organization Settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/organization-settings.jpg" alt="The Organization Settings page showing organization values, locked and unlocked settings, and settings that are not set at the organization level"><figcaption><p>Manage organization values and locks from Settings → Organization Settings</p></figcaption></figure>
 
 ### Applying an Organization Value
 

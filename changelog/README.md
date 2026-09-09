@@ -27,6 +27,24 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-09-06" tags="new-features,fixes" %}
+## Set up Proactive Agents without leaving the conversation
+
+Zoë can now create and adjust Proactive Agents directly in chat, alongside fixes across field search, the Context Manager, and group management.
+
+### New features
+
+* **Proactive Agents from chat** — Ask Zoë to create or update a Proactive Agent during a conversation, including its schedule, delivery, and attachments.
+
+### Bug fixes
+
+* **Field search handles inaccessible fields** — A malformed field, or one referencing a view you don't have access to, is skipped instead of breaking field search and SQL generation entirely.
+* **Dimension groups no longer appear twice** — Dimension groups and their expanded dimensions each show up once. (Context Manager)
+* **Git style guides no longer missed** — Zoë now consistently picks up a `style-guide` skill from your connected repository, which it sometimes skipped before. (Context Manager)
+* **Deleting a group that shares agents** — Removing a group also removes its Proactive Agent shares instead of returning an error.
+* **Role filter on the users table** — Filtering by role matches both the underlying role and the label shown.
+* **Stable MCP tool definitions** — Tools from connected MCP servers no longer shift between requests in ways that could make them fail.
+{% endupdate %}
 {% update date="2026-08-30" tags="new-features,improvements,fixes" %}
 ## Proactive Agents can review their own run history
 

@@ -35,12 +35,12 @@ Zoë can now create and adjust Proactive Agents directly in chat, alongside fixe
 ### New features
 
 * **Proactive Agents from chat** — Ask Zoë to create or update a Proactive Agent during a conversation, including its schedule, delivery, and attachments.
-* **Custom Git style guides** — A `style-guide` skill in your connected repository can fully replace Zenlytic's built-in instructions and assets. (Context Manager)
 
 ### Bug fixes
 
 * **Field search handles inaccessible fields** — A malformed field, or one referencing a view you don't have access to, is skipped instead of breaking field search and SQL generation entirely.
 * **Dimension groups no longer appear twice** — Dimension groups and their expanded dimensions each show up once. (Context Manager)
+* **Git style guides no longer missed** — Zoë now consistently picks up a `style-guide` skill from your connected repository, which it sometimes skipped before. (Context Manager)
 * **Deleting a group that shares agents** — Removing a group also removes its Proactive Agent shares instead of returning an error.
 * **Role filter on the users table** — Filtering by role matches both the underlying role and the label shown.
 * **Stable MCP tool definitions** — Tools from connected MCP servers no longer shift between requests in ways that could make them fail.

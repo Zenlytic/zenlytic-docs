@@ -19,7 +19,22 @@ Zenlytic acts as an **MCP client**: point Zoë at a compatible remote MCP server
 
 ## How MCP works in Zenlytic
 
-To set up a connection, register the server's HTTPS endpoint and any authentication headers in Settings, choose which of the discovered tools Zoë can access, and toggle the connection on per-conversation from the chat tool menu. When Zoë invokes one of your tools, Zenlytic forwards a `tools/call` request to your server, captures the response, and feeds the result back into the conversation.
+To set up a connection, register it in workspace settings, choose which of the discovered tools Zoë can access, and toggle the connection on per-conversation from the chat tool menu. When Zoë invokes one of your tools, Zenlytic forwards a `tools/call` request to the server, captures the response, and feeds the result back into the conversation.
+
+Zenlytic supports two kinds of MCP connector:
+
+| Method     | How it authenticates                                                                                                                                         | Who it runs as                                                                | Available for                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Custom** | You enter the server's HTTPS endpoint and any static authentication headers (for example, a bearer token or API key).                                        | One shared credential. Every user in the workspace calls tools as that identity. | Any MCP server that implements the streamable HTTP transport.                                            |
+| **OAuth**  | Zenlytic supplies the server URL, OAuth endpoints, and scopes for a supported provider. You supply only the provider-specific details Zenlytic cannot know. | Each user. Users sign in with their own account before they can use the connector. | [Google Workspace](google-workspace.md) (Drive, Docs, Sheets, Slides). |
+
+### OAuth connectors
+
+OAuth connectors behave differently from custom connections in a few ways:
+
+* **Each user connects their own account.** Creating the connector does not authorize anyone. In the chat tool menu, an OAuth connector appears as a **Connect** row until the user signs in with the provider in a popup. After that it becomes a normal toggle. Zoë calls tools with that user's token, so she sees exactly what the user can see.
+* **Credentials are fixed at creation.** Client credentials and tenant IDs cannot be edited. To rotate them, delete the connector and create it again. Name, access grants, and the enabled-by-default setting remain editable.
+* **Enabled by default applies only to connected users.** A user who has not connected their account must connect before the connector turns on in their chats.
 
 ## Before you begin
 
@@ -27,9 +42,10 @@ To connect any MCP server, confirm the following:
 
 | Requirement              | Detail                                                                                                                                                                         |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Feature flag**         | The `mcp-client` flag must be enabled for your workspace. Look for an **MCP** entry under **Settings**. If you don't see it, ask your Zenlytic contact to enable it. |
-| **Workspace permission** | You need `admin` role to view, add, edit, delete, or refresh connections from Settings.                                                                                        |
-| **A reachable server**   | Your server (or the vendor's) must be publicly reachable over HTTPS from Zenlytic's infrastructure.                                                                            |
+| **Feature flag**         | The `mcp-client` flag must be enabled for your workspace. If you don't see an **MCP** entry under **Workspace Settings → Extensions**, ask your Zenlytic contact to enable it. |
+| **OAuth feature flag**   | For Google Workspace, the `mcp-oauth` flag must also be enabled. If you don't see **OAuth** as a method when adding a connector, ask your Zenlytic contact.      |
+| **Workspace permission** | You need `admin` role to view, add, edit, delete, or refresh connections from Workspace Settings.                                                                              |
+| **A reachable server**   | For custom connections, your server (or the vendor's) must be publicly reachable over HTTPS from Zenlytic's infrastructure.                                                    |
 
 ## Get started
 
@@ -38,7 +54,7 @@ To connect any MCP server, confirm the following:
 <figure><img src="../../.gitbook/assets/new-mcp-connection.png" alt="MCP Connectors page with no MCPs added yet"><figcaption></figcaption></figure>
 
 2. To connect one of the examples listed below, follow the linked setup guide.
-3. To connect an MCP server, click **Add a New Connector**, fill in the name, Access grant, HTTPS endpoint URL, and any authentication headers, then click **Test Connection**.
+3. To connect a custom MCP server, click **Add a New Connector**, fill in the name, Access grant, HTTPS endpoint URL, and any authentication headers, then click **Test Connection**. To connect Google Workspace instead, choose **OAuth** as the method and follow the [Google Workspace](google-workspace.md) guide.
 
 <figure><img src="../../.gitbook/assets/adding-mcp-connection.png" alt="Adding MCP connection details"><figcaption></figcaption></figure>
 
@@ -50,7 +66,7 @@ To connect any MCP server, confirm the following:
 
 <figure><img src="../../.gitbook/assets/mcp-connections-list.png" alt="Testing MCP connection details"><figcaption></figcaption></figure>
 
-Once a connection is active, open any chat, toggle the connection on from the tool menu, and ask Zoë a question that uses it. Admins can manage, rotate credentials, refresh tools, or delete any MCP connection at any time from the **MCP** page in Settings.
+Once a connection is active, open any chat, toggle the connection on from the tool menu, and ask Zoë a question that uses it. For OAuth connectors, click **Connect** in the tool menu and sign in with the provider first. Admins can manage access, refresh tools, or delete any MCP connection at any time from the MCP Connectors page in Workspace Settings. Static headers on custom connections can be rotated in place; OAuth connector credentials are fixed, so rotate them by deleting and recreating the connector.
 
 ## Example MCP Connectors
 
@@ -64,11 +80,21 @@ Connect Zoë to public MCP servers such as the following by adding connections i
 * **Fetch Webpage** — `https://refetch.cloud/mcp` — fetch and parse live webpage content into clean Markdown for Zoë to read. Requires an `X-API-Key` header (free tier at [refetch.cloud](https://refetch.cloud))
 * **Crypto Prices** — `https://gateway.pipeworx.io/crypto/mcp` — look up live cryptocurrency prices and market data (no auth)
 
-To discover more public servers, browse MCP directories like [PulseMCP](https://www.pulsemcp.com/) and [Remote MCP Servers](https://mcpservers.org/remote-mcp-servers). Use the following setup guides to connect Zoë to popular tools via their official MCP servers:
+To discover more public servers, browse MCP directories like [PulseMCP](https://www.pulsemcp.com/) and [Remote MCP Servers](https://mcpservers.org/remote-mcp-servers).
+
+### OAuth connectors
+
+These providers use per-user OAuth. Zenlytic supplies the endpoints; you supply the provider-specific details.
+
+* [Google Workspace](google-workspace.md) — search Drive, and read and edit Docs, Sheets, and Slides as the signed-in user.
+
+### Custom connectors
+
+Use the following setup guides to connect Zoë to popular tools via their official MCP servers:
 
 * [Tableau](tableau.md) — read workbook, view, and data source metadata.
 * [Power BI](powerbi.md) — connect to workspaces, datasets, and reports.
-* [Google](google.md) — query tables and inspect schemas directly.
+* [Google](google.md) — query BigQuery tables and inspect schemas directly.
 * [Looker](looker.md) - query semantic models and dashboards.
 * [dbt](dbt.md) — explore models, metrics, exposures, and lineage.
 * [Atlan](atlan.md) — explore models, metrics, assets, and data glossaries.

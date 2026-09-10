@@ -129,7 +129,7 @@ A few specifics to share with your users:
 
 Inherited from GitHub's remote MCP server:
 
-* **No OAuth in Zenlytic.** Zenlytic does not yet support OAuth-based MCP connections. The PAT path described here is the supported authentication method.
+* **No OAuth for GitHub.** Zenlytic's OAuth connectors cover Google Workspace and SharePoint only at this time. The PAT path described here is the supported authentication method for GitHub.
 * **GitHub Enterprise Server is not supported on the remote server.** GHES customers must self-host the local Docker-based GitHub MCP server, which Zenlytic cannot currently reach.
 * **Organization policies can block access.** Org admins can disable PAT access or restrict the GitHub MCP server through [policies and governance](https://github.com/github/github-mcp-server/blob/main/docs/policies-and-governance.md). Confirm the relevant policies are enabled if `tools/list` returns an empty result for org content.
 * **Lockdown mode filters public-repo content.** If the server is running in lockdown mode, comments and content from users without push access to the repository are filtered out of public-repo responses.

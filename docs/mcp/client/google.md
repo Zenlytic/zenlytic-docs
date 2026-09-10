@@ -10,6 +10,8 @@ Connect Zoë to [Google's BigQuery remote MCP server](https://docs.cloud.google.
 
 > If you only need BigQuery as a data warehouse for the Zenlytic semantic layer, follow [BigQuery setup](../../data-sources/bigquery_setup.md) instead. MCP is purpose-built for agentic, on-demand access from Zoë.
 
+> Looking for Drive, Docs, Sheets, or Slides? See [Google Workspace](google-workspace.md), which uses per-user OAuth rather than a static token.
+
 ## What Zoë can access
 
 Through the BigQuery remote MCP server, Zoë can:

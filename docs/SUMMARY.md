@@ -80,6 +80,8 @@
   * [Claude.ai](mcp/connecting-to-zenlytic/claude-ai.md)
   * [Claude Code](mcp/connecting-to-zenlytic/claude-code.md)
 * [MCP Client](mcp/client/README.md)
+  * [Google Workspace](mcp/client/google-workspace.md)
+  * [SharePoint](mcp/client/sharepoint.md)
   * [Tableau](mcp/client/tableau.md)
   * [Power BI](mcp/client/powerbi.md)
   * [Google](mcp/client/google.md)

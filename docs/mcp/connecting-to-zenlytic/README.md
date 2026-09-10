@@ -35,7 +35,7 @@ You'll need:
 * Zenlytic's MCP URL for your workspace: `https://mcp.zenlytic.com/mcp`
 
 {% hint style="info" %}
-If your org logs in at a custom vanity subdomain (e.g. `acme.zenlytic.com`), use that subdomain in front of the MCP host instead: `https://acme.mcp.zenlytic.com/mcp`. The exact URL for your org is shown in **Workspace Settings → MCP**.
+If your org logs in at a custom vanity subdomain (e.g. `acme.zenlytic.com`), use that subdomain in front of the MCP host instead: `https://acme.mcp.zenlytic.com/mcp`. The exact URL for your org is shown in **Settings → MCP**.
 {% endhint %}
 
 ## Option 1: Connect with OAuth (recommended for most clients)
@@ -55,10 +55,10 @@ Some clients don't support the OAuth flow and instead want a static token in the
 Creating a personal access token requires the Admin (or Organization Admin) role in the workspace. See [Personal Access Tokens](../../../developers/README.md#creating-a-personal-access-token).
 {% endhint %}
 
-1. In Zenlytic, go to **Workspace Settings → Personal Access Tokens** (`/workspace-settings/personal-access-tokens`).
+1. In Zenlytic, go to **Settings → Profile → Personal Access Tokens** (`/personal-access-tokens`).
 2. Click **Create token**, give it a name (e.g. "Claude MCP"), and save it.
 3. **Copy the token immediately** — it's only shown once, right after creation.
-4. Add it to your MCP client's config as a bearer token, using your org's MCP URL from **Workspace Settings → MCP**. For example:
+4. Add it to your MCP client's config as a bearer token, using your org's MCP URL from **Settings → MCP**. For example:
 
 ```json
 {

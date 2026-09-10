@@ -28,7 +28,7 @@ The exact tool surface depends on your Tableau MCP server's configuration. You c
 
 ## Set up the connection in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
+1. Open **Settings → MCP** and click **Add Connection**.
 2. Fill out the form:
 
 * **Name** — a label that will appear in the chat tool menu, for example `Tableau`.

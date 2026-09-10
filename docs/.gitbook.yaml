@@ -41,6 +41,9 @@ redirects:
   # Data Model Editor was renamed to Context Manager
   zenlytic-ui/data_model_editor: zenlytic-ui/context_manager.md
   docs/zenlytic_ui/data_model_editor: zenlytic-ui/context_manager.md
+  # Workspace Manager was merged into Settings; the page now covers the
+  # Organization section of Settings and was renamed to match.
+  zenlytic-ui/workspace-manager: zenlytic-ui/organization.md
   docs/zenlytic_ui/user_attributes: zenlytic-ui/user_attributes.md
   docs/zenlytic_ui/basket_mix: zenlytic-ui/using_zenlytic.md
   docs/zenlytic_ui/explain_change: zenlytic-ui/using_zenlytic.md

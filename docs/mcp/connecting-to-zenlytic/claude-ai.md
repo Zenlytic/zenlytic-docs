@@ -25,7 +25,7 @@ Your connector is now authorized — you won't need to log in again unless you r
 
 If OAuth isn't available, you can authenticate with a static token instead. Creating one requires the Admin (or Organization Admin) role — see [Option 2](./#option-2-connect-with-a-personal-access-token-for-static-config-clients-or-when-oauth-isnt-available).
 
-1. In Zenlytic, go to **Workspace Settings → Personal Access Tokens** (`/workspace-settings/personal-access-tokens`), click **Create token**, and copy it immediately — it's only shown once.
+1. In Zenlytic, go to **Settings → Profile → Personal Access Tokens** (`/personal-access-tokens`), click **Create token**, and copy it immediately — it's only shown once.
 2. In the **Add custom connector** dialog, open **Advanced settings**.
 3. Add a request header named `Authorization` with the value `Bearer <your-personal-access-token>`, and mark it required.
 4. Click **Add**, then **Connect**.

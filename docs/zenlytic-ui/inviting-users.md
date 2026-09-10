@@ -6,11 +6,11 @@ description: >-
 
 # Inviting and Managing Users
 
-Every person who uses Zenlytic belongs to one or more workspaces. You add them from **Workspace Settings → Team**.
+Every person who uses Zenlytic belongs to one or more workspaces. You add them from **Settings → Team**.
 
 ## Invite someone
 
-1. Go to **Workspace Settings → Team**.
+1. Go to **Settings → Team**.
 2. Click **+ Team Member**.
 3. Enter their **email address**.
 4. Choose a **role**. This is required — there's no default.
@@ -54,7 +54,7 @@ Only Organization Admins can create workspaces, and the first step asks whether 
 
 Turning it on is the difference between a workspace your team can use immediately and one you have to populate by hand, so decide deliberately at creation time.
 
-Provisioning can also be toggled later for an existing workspace from [Workspace Manager](workspace-manager.md).
+Provisioning can also be toggled later for an existing workspace under **Settings → Workspaces**. See [Organization](organization.md) for details.
 
 {% hint style="warning" %}
 If your organization signs in through SSO, workspace access can also be driven by claims in the SSO assertion. Workspaces removed from a user's claim are revoked on their next sign-in **even if access was originally granted by invitation**. See the [SSO Custom Claims Reference](../authentication-and-security/sso-custom-claims-reference.md).
@@ -64,5 +64,5 @@ If your organization signs in through SSO, workspace access can also be driven b
 
 * [User Roles](user_roles.md) — what each role can do, and the permissions behind them
 * [Workspace Groups and Permissions](workspace_groups_and_permissions.md) — grouping users and assigning access at scale
-* [Workspace Manager](workspace-manager.md) — creating workspaces and managing them across an organization
+* [Organization](organization.md) — creating workspaces and managing them across an organization
 * [User Attributes](user_attributes.md) — controlling which data a user can see

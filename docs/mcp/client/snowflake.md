@@ -152,7 +152,7 @@ For details and CLI options, see [Snowflake's Programmatic Access Token guide](h
 
 ## Set up the connection in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
+1. Open **Settings → MCP** and click **Add Connection**.
 2. Fill out the form:
 
 * **Name** — a label that will appear in the chat tool menu, for example `Snowflake (prod)`.
@@ -228,5 +228,5 @@ Inherited from Snowflake's MCP server:
 * **`403 Forbidden` on a tool call:** The role attached to the PAT doesn't have the privilege required to invoke that tool (`USAGE` on the Search service or agent, `SELECT` on the semantic view, `USAGE` on the UDF/procedure or warehouse). Grant the missing privilege and retry — no Zenlytic update needed.
 * **Connection times out or refuses TLS:** Confirm the account identifier in the URL uses hyphens, not underscores. Snowflake MCP endpoints have known connection issues with underscored hostnames.
 * **Tool list looks short or empty:** Re-check the MCP server specification with `DESCRIBE MCP SERVER` and confirm the role on the PAT has `USAGE` on the server. The server returns only the tools the caller has privileges to see.
-* **Connection works in Test Connection but fails in chat:** The MCP server's specification has likely changed since you saved. Open the connection in workspace settings and click **Refresh Tools**.
+* **Connection works in Test Connection but fails in chat:** The MCP server's specification has likely changed since you saved. Open the connection in **Settings → MCP** and click **Refresh Tools**.
 * **`Semantic model is not supported` error from a Cortex Analyst tool:** The tool's `identifier` points at a semantic model, not a semantic view. The Snowflake-managed MCP server only supports semantic views with Cortex Analyst.

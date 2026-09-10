@@ -58,7 +58,7 @@ From your dbt Cloud account, collect:
 
 ## Set up the connection in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP** and click **Add Connection**.
+1. Open **Settings → MCP** and click **Add Connection**.
 2. Fill out the form:
 
 * **Name** — a label that will appear in the chat tool menu, for example `dbt (prod)`.
@@ -126,4 +126,4 @@ Once the connection has at least one selected tool, it appears in the chat tool 
 * `**execute_sql` is not callable:\*\* You're authenticating with a service token. Switch the `Authorization` header to a PAT and add `x-dbt-user-id` and `x-dbt-dev-environment-id`.
 * **"Invalid environment" errors:** Make sure the environment ID headers contain numeric IDs only, not full dbt URLs.
 * **Tool list looks short:** Check the `x-dbt-disable-tools` and `x-dbt-disable-toolsets` headers — they remove tools before Zenlytic ever sees them. Per-tool toggles in the Zenlytic UI act on top of whatever dbt returns.
-* **Connection works in Test Connection but fails in chat:** dbt's tool surface has likely changed since you saved. Open the connection in workspace settings and click **Refresh Tools**.
+* **Connection works in Test Connection but fails in chat:** dbt's tool surface has likely changed since you saved. Open the connection in **Settings → MCP** and click **Refresh Tools**.

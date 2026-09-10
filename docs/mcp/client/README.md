@@ -49,7 +49,7 @@ To connect any MCP server, confirm the following:
 
 ## Get started
 
-1. Open **Workspace Settings → Extensions → MCP Connectors** in Zenlytic.
+1. Open **Settings → MCP** in Zenlytic.
 
 <figure><img src="../../.gitbook/assets/new-mcp-connection.png" alt="MCP Connectors page with no MCPs added yet"><figcaption></figcaption></figure>
 
@@ -70,7 +70,7 @@ Once a connection is active, open any chat, toggle the connection on from the to
 
 ## Example MCP Connectors
 
-Connect Zoë to public MCP servers such as the following by adding connections in workspace settings:
+Connect Zoë to public MCP servers such as the following by adding connections in **Settings → MCP**:
 
 * **DeepWiki** — `https://mcp.deepwiki.com/mcp` — ask questions, read structure, and pull docs for any public GitHub repo indexed on DeepWiki (no auth)
 * **Hugging Face** — `https://huggingface.co/mcp` — search models, datasets, and Spaces on the HF Hub. Optionally pass an `Authorization: Bearer <HF_TOKEN>` header for higher limits and access to gated content

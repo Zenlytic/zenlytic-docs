@@ -13,7 +13,7 @@ The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open s
 ## Which one do I need?
 
 * _Want to ask Zoë questions from Claude, Cursor, or ChatGPT?_ → **MCP Server**
-* _Want Zoë to reach Google Workspace, SharePoint, Tableau, Snowflake, or dbt from chat?_ → **MCP Client**
+* _Want Zoë to reach Google Workspace, Tableau, Snowflake, or dbt from chat?_ → **MCP Client**
 
 ### [**MCP Server**](connecting-to-zenlytic/)
 
@@ -23,6 +23,6 @@ Your own AI tools (Claude.ai, Claude Code, ChatGPT) connect _in_ to Zenlytic's M
 
 ### [**MCP Client**](client/)
 
-Zoë connects _out_ to external MCP servers (Google Workspace, SharePoint, Tableau, Snowflake, dbt, GitHub, and more), so she can pull data and trigger workflows from other systems directly from the Zenlytic chat experience.
+Zoë connects _out_ to external MCP servers (Google Workspace, Tableau, Snowflake, dbt, GitHub, and more), so she can pull data and trigger workflows from other systems directly from the Zenlytic chat experience.
 
 <figure><img src="../.gitbook/assets/mcp-client.png" alt=""><figcaption></figcaption></figure>

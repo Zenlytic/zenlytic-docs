@@ -43,7 +43,7 @@ To connect any MCP server, confirm the following:
 | Requirement              | Detail                                                                                                                                                                         |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Feature flag**         | The `mcp-client` flag must be enabled for your workspace. If you don't see an **MCP** entry under **Workspace Settings → Extensions**, ask your Zenlytic contact to enable it. |
-| **OAuth feature flag**   | For Google Workspace or SharePoint, the `mcp-oauth` flag must also be enabled. If you don't see **OAuth** as a method when adding a connector, ask your Zenlytic contact.      |
+| **OAuth feature flag**   | For Google Workspace, the `mcp-oauth` flag must also be enabled. If you don't see **OAuth** as a method when adding a connector, ask your Zenlytic contact.      |
 | **Workspace permission** | You need `admin` role to view, add, edit, delete, or refresh connections from Workspace Settings.                                                                              |
 | **A reachable server**   | For custom connections, your server (or the vendor's) must be publicly reachable over HTTPS from Zenlytic's infrastructure.                                                    |
 
@@ -54,7 +54,7 @@ To connect any MCP server, confirm the following:
 <figure><img src="../../.gitbook/assets/new-mcp-connection.png" alt="MCP Connectors page with no MCPs added yet"><figcaption></figcaption></figure>
 
 2. To connect one of the examples listed below, follow the linked setup guide.
-3. To connect a custom MCP server, click **Add a New Connector**, fill in the name, Access grant, HTTPS endpoint URL, and any authentication headers, then click **Test Connection**. To connect Google Workspace or SharePoint instead, choose **OAuth** as the method and follow the [Google Workspace](google-workspace.md) or [SharePoint](sharepoint.md) guide.
+3. To connect a custom MCP server, click **Add a New Connector**, fill in the name, Access grant, HTTPS endpoint URL, and any authentication headers, then click **Test Connection**. To connect Google Workspace instead, choose **OAuth** as the method and follow the [Google Workspace](google-workspace.md) guide.
 
 <figure><img src="../../.gitbook/assets/adding-mcp-connection.png" alt="Adding MCP connection details"><figcaption></figcaption></figure>
 
@@ -87,7 +87,6 @@ To discover more public servers, browse MCP directories like [PulseMCP](https://
 These providers use per-user OAuth. Zenlytic supplies the endpoints; you supply the provider-specific details.
 
 * [Google Workspace](google-workspace.md) — search Drive, and read and edit Docs, Sheets, and Slides as the signed-in user.
-* [SharePoint](sharepoint.md) — find sites, files, folders, and list items as the signed-in user.
 
 ### Custom connectors
 

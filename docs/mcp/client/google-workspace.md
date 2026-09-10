@@ -27,9 +27,8 @@ All tool calls run as the signed-in user, so Zoë can only see and change files 
 
 Google Workspace differs from a custom MCP connection in a few ways:
 
-* **Zenlytic supplies the endpoints.** You do not enter a server URL, authorize URL, token URL, or scopes. Zenlytic fills these in for each module.
 * **Each user connects their own account.** Creating the connector does not authorize anyone. Each user clicks **Connect** in the chat tool menu and signs in with Google before the connector is available to them. Tokens are stored per user and per connector.
-* **Credentials are fixed at creation.** The Client ID and Client Secret cannot be edited. To rotate them, delete the connector and create it again. Name, access grants, and the enabled-by-default setting remain editable.
+* **Credentials are fixed at creation.** The Client ID and Client Secret cannot be edited. To rotate them, delete the connector and create it again. Name, Zenlytic workspace access grants, and the enabled-by-default setting remain editable.
 
 ## Prerequisites
 
@@ -40,7 +39,7 @@ Complete the following in **your own** Google Cloud project. Zenlytic only needs
 Google's hosted Workspace MCP servers are available only to Google Cloud projects accepted into the [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview). Enrollment is an application tied to a specific Workspace account and Google Cloud project, and approval takes a few days. Service accounts cannot be enrolled.
 
 {% hint style="warning" %}
-If the project has not been accepted, the sign-in flow and tool list still succeed, but every tool call fails with `The caller does not have permission`. Zenlytic surfaces this error in chat with a hint pointing at preview enrollment and API setup.
+If the project has not been accepted, the sign-in flow and tool list still succeed, but every tool call fails with `The caller does not have permission`.
 {% endhint %}
 
 {% hint style="info" %}
@@ -49,7 +48,7 @@ Google's preview terms restrict preview features from being used in public appli
 
 ### 2. Enable the APIs for each module
 
-Enable **both** the base API and the MCP API for every module you plan to turn on. Enabling only the MCP API is not sufficient.
+Enable **both** the base API and the MCP for every module you plan to turn on. Enabling only the MCP is not sufficient. For example, search the Google Cloud Console to enable both "Google Drive API" and "Google Drive MCP" from the APIs & Services dashboard.
 
 | Module     | Base API                | MCP API                    | Google setup guide                                                                                                  |
 | ---------- | ----------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -71,7 +70,7 @@ Follow [Configure the OAuth consent screen](https://developers.google.com/worksp
 | **Sheets** | `https://www.googleapis.com/auth/spreadsheets`, `https://www.googleapis.com/auth/drive.readonly`      |
 | **Slides** | `https://www.googleapis.com/auth/presentations`, `https://www.googleapis.com/auth/drive.readonly`     |
 
-Set the audience to **Internal**. This is the correct choice for a Workspace organization: no app verification and no test-user list. If you choose **External**, every user must be added as a test user until Google verifies the app.
+Set the audience to **Internal**. This is the correct choice for a Workspace organization: no app verification and no test-user list.
 
 Docs, Sheets, and Slides use the read/write scopes because their `update_*` tools require them. The connector UI does not expose scope editing.
 
@@ -98,16 +97,16 @@ Read Google's [Configure security for Google Workspace MCP servers](https://deve
 
 ## Set up the connector in Zenlytic
 
-1. Open **Workspace Settings → Extensions → MCP Connectors** and click **Add a New Connector**.
-2. Under **Method**, choose **OAuth**, then choose **Google Workspace** as the provider.
+1. Open **Settings → MCP** and click **Create New Connector**.
+2. Choose **Google Workspace** as the connector.
 3. Fill out the form:
    * **Name** — a label that will appear in the chat tool menu, for example `Google Workspace`.
-   * **Client ID** — the OAuth client ID from your Google Cloud project. If your mail or chat client turned it into a link, paste it anyway; Zenlytic strips a leading `https://` and trailing `/`.
-   * **Client Secret** — the OAuth client secret. The secret is write-only and is never shown again.
-   * **Modules** — switch on Drive, Docs, Sheets, or Slides. Each module lists the tools it exposes. Enable only modules whose APIs and scopes you configured above.
    * **Access** — the users or groups who can see and connect this connector.
    * **Enabled by default** (optional) — turn the connector on automatically in new chats for users who have already connected their account.
-4. Click **Add Connection** to save.
+   * **Client ID** — the OAuth client ID from your Google Cloud project.
+   * **Client Secret** — the OAuth client secret. The secret is write-only and is never shown again.
+   * **Modules** — switch on Drive, Docs, Sheets, or Slides. Each module lists the tools it exposes. Enable only modules whose APIs and scopes you configured above.
+4. Click **Create New Connector** to save.
 5. Click **Connect** in the connector modal and sign in with your Google account to confirm everything is working as expected.
 
 ## Use the connector in chat
@@ -125,7 +124,7 @@ A few specifics to share with your users:
 ## Troubleshoot
 
 * **`invalid_client` or "The OAuth client was not found":** The Client ID is wrong, or the OAuth client lives in a different Google Cloud project than the one whose APIs you enabled. Confirm the Client ID and project, then recreate the connector.
-* **`redirect_uri_mismatch`:** Zenlytic's callback URL is missing from the OAuth client's **Authorized redirect URIs**, or does not match exactly. Add `https://devapi.zenlytic.com/api/v2/mcp_connections/oauth/callback` (or the URL for your deployment) and try again.
+* **`redirect_uri_mismatch`:** Zenlytic's callback URL is missing from the OAuth client's **Authorized redirect URIs**, or does not match exactly. Add `https://api.zenlytic.com/api/v2/mcp_connections/oauth/callback` (or the URL for your deployment) and try again.
 * **Sign-in and tool list work, but every tool call fails with `The caller does not have permission`:** The Google Cloud project has not been accepted into the Developer Preview Program, or the base API or MCP API for that module is not enabled. See steps 1 and 2 above.
 * **"This app is blocked" or a request to add test users:** The consent screen audience is **External** and the app is unverified. Switch the audience to **Internal** or add each user as a test user.
 * **"Invalid or expired OAuth state":** More than 10 minutes passed between clicking **Connect** and completing sign-in, or the sign-in link was reused. Click **Connect** again.

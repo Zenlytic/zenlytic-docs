@@ -8,7 +8,7 @@ description: >-
 
 Connect Zoë to the [Atlassian Rovo remote MCP server](https://github.com/atlassian/atlassian-mcp-server) — Atlassian's official hosted endpoint for AI tools — so she can search and create Jira issues, run JQL queries, and interact with Confluence and Compass content directly from Zenlytic chats. Authenticate with a static `Authorization` header containing a Base64-encoded Atlassian API token.
 
-> Zenlytic does not currently support OAuth-based MCP connections. The API token path described here is the supported authentication method. API token authentication must be enabled by an Atlassian organization admin before it can be used.
+> Zenlytic's per-user OAuth connectors are available only for [Google Workspace](google-workspace.md) at this time. Atlassian connections use the API token path described here. API token authentication must be enabled by an Atlassian organization admin before it can be used.
 
 ## What Zoë can access
 
@@ -93,7 +93,7 @@ A few specifics to share with your users:
 ## Limitations
 
 * **Atlassian Cloud only.** Jira Server and Jira Data Center are not supported by the Rovo remote MCP server.
-* **No OAuth in Zenlytic.** Zenlytic does not yet support OAuth-based MCP connections. The API token Basic auth path described here is the only supported authentication method.
+* **No OAuth for Atlassian.** The API token Basic auth path described here is the only supported authentication method for Atlassian.
 * **API token auth must be admin-enabled.** An Atlassian org admin must explicitly enable API token authentication in the Rovo MCP server settings before this setup will work.
 * **Token scope is user-wide.** API tokens aren't restricted to specific Atlassian sites or projects. All access is governed by the Atlassian account's existing project roles and space permissions.
 

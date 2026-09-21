@@ -27,10 +27,23 @@ tags:
 # Product updates
 
 {% updates format="full" %}
-{% update date="2026-09-20" tags="new-features,improvements,fixes" %}
+{% update date="2026-09-20" tags="improvements,fixes" %}
+## Dynamic Fields return to Settings
+
+Dynamic Fields are back in the Settings navigation, and database connection tests and saves are fixed.
+
+### Improvements
+
+* **Dynamic Fields back in Settings** — The Dynamic Fields management page is available again in Settings navigation, for admins.
+
+### Bug fixes
+
+* **Database connections test and save correctly** — Connection tests and saves no longer fail on default authentication methods or on credential fields you didn't touch.
+{% endupdate %}
+{% update date="2026-09-13" tags="new-features,improvements,fixes" %}
 ## A single, searchable home for Settings
 
-The redesigned Settings area is now available to everyone, alongside workspace-aware deep links and fixes across charts, connections, and Zoë's responses.
+The redesigned Settings area is now available to everyone, alongside workspace-aware deep links and fixes across charts and Zoë's responses.
 
 ### New features
 
@@ -40,14 +53,12 @@ The redesigned Settings area is now available to everyone, alongside workspace-a
 
 * **Workspace-aware deep links** — A link can name a specific workspace, and opening it switches you to that workspace before the page loads.
 * **Query analysis runs in the background** — Zoë's analysis of how it interpreted your question now runs on background workers, so it no longer competes with the rest of your session.
-* **Dynamic Fields back in Settings** — The Dynamic Fields management page is available again in Settings navigation, for admins.
 * **Updated privacy policy provider list** — The in-app privacy policy now includes Microsoft Azure and uses standardized provider names and links. (Docs)
 
 ### Bug fixes
 
 * **Generated charts use the right columns** — Zoë now receives the exact column headers your query returned, so charts no longer come back empty or mismatched when fields are renamed.
 * **Chart editing indicators render correctly** — Edit markers and loading overlays appear in the right place on charts and stay correct when a chart rerenders.
-* **Database connections test and save correctly** — Connection tests and saves no longer fail on default authentication methods or on credential fields you didn't touch.
 * **The response cursor appears right away** — The activity cursor shows as soon as Zoë starts responding, instead of waiting for the first content to arrive.
 {% endupdate %}
 {% update date="2026-09-06" tags="new-features,fixes" %}

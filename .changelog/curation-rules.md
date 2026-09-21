@@ -498,3 +498,25 @@ scheduled-task prompt remains the executable spec.
 
 - Exclusions apply to the public, customer-facing changelog only — they do not
   change what Zeta reports internally.
+
+## Fold-forward weeks are merged, not stacked (Paul, PR #237 review, 2026-09-21)
+
+When a run is blocked or skipped and `cutoff_sha` does not advance, the next
+successful run covers more than one week. Publish that as **one** entry, dated to
+the later week's end date. Do not split the diff into one dated block per week
+stacked on top of each other.
+
+(Paul, PR #237 review, 2026-09-21: *"The stacking of the two options here feels
+weird. Feels like the two weeks should be merged instead of just stacked on top
+of each other visually."* The 2026-09-07 → 2026-09-20 entry had been split into
+separate 2026-09-13 and 2026-09-20 blocks and was merged back on this ruling.)
+
+**Why:** two adjacent blocks originating from a single PR read as one item split
+in half rather than as two weeks — especially when the later week is thin and
+shares a subject with the earlier one. In PR #237 the 2026-09-20 block carried two
+bullets and both headlines were about Settings.
+
+**How to apply:** one PR, one entry. The normal weekly cadence already produces
+exactly one entry per run, so this rule only governs the catch-up case. It does not
+change the dating rule: the `date` attribute is still the covered period's end
+Sunday, and recovered watchlist items are still dated to their flag-flip date.

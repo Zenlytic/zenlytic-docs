@@ -46,8 +46,8 @@ The redesigned Settings area is now available to everyone, alongside workspace d
 
 ### Bug fixes
 
-* **Chart editing indicators render correctly** — Edit markers and loading overlays now appear in the right place on charts and stay correct when a chart rerenders.
 * **Generated charts use the right columns** — Zoë now receives the exact column headers your query returned, so charts no longer come back empty or mismatched when fields are renamed.
+* **Chart editing indicators render correctly** — Edit markers and loading overlays now appear in the right place on charts and stay correct when a chart rerenders.
 * **Safer Context Manager uploads** — Binary files such as ZIPs keep their contents, files over 25 MB are rejected before the upload starts, and large or binary files show clearer download and rename options. (Context Manager)
 {% endupdate %}
 {% update date="2026-09-06" tags="new-features,fixes" %}

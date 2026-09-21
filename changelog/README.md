@@ -27,6 +27,29 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-09-13" tags="new-features,improvements,fixes" %}
+## A single, searchable home for Settings
+
+The redesigned Settings area is now available to everyone, alongside workspace deep links and fixes across charts and Context Manager uploads.
+
+### New features
+
+* **Redesigned Settings** — Account, personalization, workspace, connection, billing, and organization administration settings now live in one searchable Settings area, with admin pages and the All Chats hub included.
+* **Workspace deep links** — A link can point at a specific workspace, and opening it switches you to that workspace before the page loads.
+
+### Improvements
+
+* **Query analysis runs in the background** — Zoë analyzes how it interpreted your question in the background, so heavy analysis no longer holds up the rest of the app.
+* **The response cursor appears right away** — The activity cursor shows as soon as Zoë starts responding, instead of waiting for the first content to arrive.
+* **Steadier artifact and deck creation** — Artifact and slide generation completes more reliably, and slide delivery is only held back for high-severity visual issues.
+* **Updated privacy policy provider list** — The in-app privacy policy now includes Microsoft Azure and uses standardized provider names and links. (Docs)
+
+### Bug fixes
+
+* **Chart editing indicators render correctly** — Edit markers and loading overlays now appear in the right place on charts and stay correct when a chart rerenders.
+* **Generated charts use the right columns** — Zoë now receives the exact column headers your query returned, so charts no longer come back empty or mismatched when fields are renamed.
+* **Safer Context Manager uploads** — Binary files such as ZIPs keep their contents, files over 25 MB are rejected before the upload starts, and large or binary files show clearer download and rename options. (Context Manager)
+{% endupdate %}
 {% update date="2026-09-06" tags="new-features,fixes" %}
 ## Set up Proactive Agents without leaving the conversation
 

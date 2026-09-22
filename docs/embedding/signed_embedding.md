@@ -34,7 +34,7 @@ Signed embedding is particularly useful in:
 ## **Implementation Guide**
 
 {% hint style="info" %}
-Signed URl Security
+Signed URL Security
 
 Protect this signed URL as you would an access token or password credentials - do not write it to disk, do not pass it to a third party, and only pass it through a secure HTTPS encrypted transport
 {% endhint %}
@@ -160,7 +160,7 @@ headers = {
     "Content-Type": "application/json"
 }
 url = "https://api.zenlytic.com/api/v1/embed/signed_url"
-requests.post(url, headers=headers, data=data)
+requests.post(url, headers=headers, json=data)
 ```
 {% endcode %}
 

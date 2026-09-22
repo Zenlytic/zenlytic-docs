@@ -8,6 +8,21 @@ description: >-
 
 Signed embedding provides a seamless and secure way to integrate Zenlytic content into your application using dynamically generated signed URLs. This method is especially suitable for scenarios where smooth experience and controlled access to analytics data are paramount. The signed URL ensures that each embedded analytics instance is secure, time-limited, and tailored to individual user permissions.
 
+## Credentials
+
+{% hint style="warning" %}
+Signed embedding requires a `client_id` and `client_secret` provisioned by Zenlytic. These credentials cannot be created in the Zenlytic UI. Personal access tokens and workspace API keys will not work with the signed URL endpoint.
+{% endhint %}
+
+* **Workspace-scoped.** Each credential pair belongs to exactly one Zenlytic workspace. The signed URL endpoint determines the workspace from the `client_id` alone; `target_url` does not select the workspace. To embed content from a different workspace, request a separate credential pair for that workspace.
+* **Provisioning.** Contact your Zenlytic representative to create, rotate, or revoke signed-embedding credentials.
+
+| Credential | How you get it | How it's sent | Works with `/api/v1/embed/signed_url`? |
+|---|---|---|---|
+| Signed-embedding client credentials | Provisioned by Zenlytic | `Authorization: Basic base64(client_id:client_secret)` | Yes |
+| Personal access token | Self-serve: user menu → API Access → Create Token | `Authorization: Bearer <token>` (API v2) | No |
+| Workspace API key (`sk_...`) | Self-serve: workspace Integrations settings | `X-API-Key: <key>` (API v2) | No |
+
 ## **Use Cases**
 
 Signed embedding is particularly useful in:
@@ -19,7 +34,7 @@ Signed embedding is particularly useful in:
 ## **Implementation Guide**
 
 {% hint style="info" %}
-Signed URl Security
+Signed URL Security
 
 Protect this signed URL as you would an access token or password credentials - do not write it to disk, do not pass it to a third party, and only pass it through a secure HTTPS encrypted transport
 {% endhint %}
@@ -28,7 +43,7 @@ Protect this signed URL as you would an access token or password credentials - d
 
 1. **API Request for a Signed URL**
    * Make a request to the API endpoint to obtain a signed URL.
-   * Include necessary authentication credentials (client\_id and client\_secret you receive from your Zenlytic representative) and user-specific parameters in the request.
+   * Include your signed-embedding credentials (the `client_id` and `client_secret` provisioned by your Zenlytic representative for this workspace; see [Credentials](#credentials)) and user-specific parameters in the request.
    * See details in [API Reference](signed_embedding.md#api-reference) below
 2.  **Parameters for iframe**
 
@@ -57,7 +72,7 @@ Protect this signed URL as you would an access token or password credentials - d
 ### **Request**
 
 * **Method:** `POST`
-* **Headers:** Include basic authentication header. You will need to base64 encode your credentials in the form `client_id:client_secret`, then pass under the `Authorization` header with the `Basic` prefix. Python code to create the header is given below:
+* **Headers:** Include a Basic authentication header: `Authorization: Basic base64(client_id:client_secret)`. Bearer tokens and `X-API-Key` headers are not accepted by this endpoint. You will need to base64 encode your credentials in the form `client_id:client_secret`, then pass under the `Authorization` header with the `Basic` prefix. Python code to create the header is given below:
 
 {% code overflow="wrap" %}
 ```python
@@ -145,7 +160,7 @@ headers = {
     "Content-Type": "application/json"
 }
 url = "https://api.zenlytic.com/api/v1/embed/signed_url"
-requests.post(url, headers=headers, data=data)
+requests.post(url, headers=headers, json=data)
 ```
 {% endcode %}
 
@@ -184,7 +199,7 @@ Note: You cannot set both of these properties at the same time.
 
 ## Embedded UI Settings
 
-You can additionally set some other settings and system prompt context for Zoë in the Embedded settings page in the UI. These settings will apply to all of your tenants.
+You can additionally set some other settings and system prompt context for Zoë in the Embedded settings page in the UI. These settings will apply to all of your tenants. Embedded settings configure the embedded experience only. They do not create or manage signed-embedding credentials.
 
 ![embedded-ui-settings](../.gitbook/assets/embedded-ui-settings.png)
 

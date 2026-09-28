@@ -27,6 +27,20 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-09-27" tags="improvements,fixes" %}
+## Safer Excel formula handling in Zoë
+
+Zoë now preserves existing formulas when analyzing and editing Excel workbooks, alongside multi-source chat filtering for admins and a fix to artifact citation validation.
+
+### Improvements
+
+* **Safer Excel formula handling** — Zoë now sees a workbook's existing formulas during analysis and is instructed to preserve them when making edits.
+* **Multi-select source filtering in All Chats** — Admins can filter chat history by multiple conversation sources at once, including API-originated chats, with server-side filtering and persisted selections.
+
+### Bug fixes
+
+* **Stricter artifact source-tag validation** — Artifact builds now fail when a live query is missing a matching source tag, preventing broken citations and source highlighting.
+{% endupdate %}
 {% update date="2026-09-20" tags="new-features,improvements,fixes" %}
 ## A single, searchable home for Settings
 

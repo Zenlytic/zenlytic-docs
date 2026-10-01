@@ -33,6 +33,7 @@
 * [Artifacts](zenlytic-ui/artifacts.md)
   * [Artifact Folders](zenlytic-ui/artifact-folders.md)
   * [Artifact Folder Permissions](zenlytic-ui/artifact-folder-permissions.md)
+* [Installing Zenlytic in Slack](zenlytic-ui/slack-app.md)
 * [Installing Zenlytic in Microsoft Teams](zenlytic-ui/microsoft_teams_bot.md)
 
 ## Administration

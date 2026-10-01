@@ -19,11 +19,17 @@ Connecting Slack is self-serve and takes about a minute. The connection applies 
 
 ## Connect Slack
 
-1. In Zenlytic, open **Workspace Settings**.
-2. Under **Extensions**, select **Slack Integration**.
-3. Click **Connect**. Zenlytic sends you to Slack to authorize the app.
-4. Select the Slack workspace you want to connect. Check this before approving if you belong to more than one.
-5. Review the requested permissions and approve the Zenlytic app. If your Slack workspace requires admin approval for new apps, submit the request and wait for a Slack admin to approve it before continuing.
+1. In Zenlytic, open **Settings**.
+2. Under **Workspace**, select **Integrations**.
+3. In the **Slack** section, click **Connect**.
+
+<figure><img src="../.gitbook/assets/slack-integrations-connect.png" alt="The Integrations page in Zenlytic settings, showing the Slack section and the Connect button"><figcaption><p>Settings → Integrations, where you connect Slack.</p></figcaption></figure>
+
+4. Zenlytic sends you to Slack. Under **Where do you want to use "Zenlytic"?**, select the Slack workspace you want to connect — check this before continuing if you belong to more than one.
+5. Review the app permissions and click **Allow**. If your Slack workspace requires admin approval for new apps, submit the request and wait for a Slack admin to approve it before continuing.
+
+<figure><img src="../.gitbook/assets/slack-authorize-app.png" alt="Slack's authorization screen for the Zenlytic app, showing the workspace picker and the requested permissions"><figcaption><p>Slack's authorization screen. Confirm the workspace, then click Allow.</p></figcaption></figure>
+
 6. Slack returns you to Zenlytic, which shows **Successfully connected Slack**. Click **Go to chat**.
 
 Everyone in the Zenlytic workspace can now use Zoë in Slack.
@@ -34,23 +40,28 @@ Everyone in the Zenlytic workspace can now use Zoë in Slack.
 
 Open the Zenlytic app in Slack and send Zoë a data question, the same way you'd ask her in the app:
 
-> What were sales last month, broken out by region?
+> What was gross revenue by month for the last 6 months?
 
-Zoë acknowledges the request, posts the answer in Slack, and includes a link to the full conversation in Zenlytic where you can see the charts and query results.
+Zoë acknowledges the request, posts the answer in Slack, and includes a **View full conversation in Zenlytic** link that opens the full conversation with its charts and query results.
 
 ### In a channel
 
-1. Invite the app to the channel:
+First, add the app to the channel. Either:
 
-    ```
-    /invite @Zenlytic
-    ```
-2. Ask your question with the mention:
+* Type `/invite @Zenlytic` in the channel, or
+* Click the channel name, open the **Agents & apps** tab, click **Add agents and apps**, and select **Zenlytic**
 
-    ```
-    @Zenlytic what were sales last month, broken out by region?
-    ```
-3. Zoë replies in a thread on your message. Keep follow-up questions in that thread.
+<figure><img src="../.gitbook/assets/slack-channel-add-app.png" alt="A Slack channel's Agents and apps tab, listing the Zenlytic app"><figcaption><p>The Zenlytic app added to a channel, shown under Agents &#x26; apps.</p></figcaption></figure>
+
+Then ask your question with the mention:
+
+```
+@Zenlytic what was gross revenue by month for the last 6 months?
+```
+
+Zoë replies in a thread on your message. Keep follow-up questions in that thread so the conversation stays together.
+
+<figure><img src="../.gitbook/assets/slack-thread-conversation.png" alt="A Slack thread where Zoë answers a revenue question and then a follow-up question, each reply ending with a link back to Zenlytic"><figcaption><p>A thread conversation. Note that the follow-up question mentions the app again.</p></figcaption></figure>
 
 Private channels need an explicit invite — the app can't see a private channel until someone adds it.
 
@@ -70,7 +81,7 @@ Test a workflow in a single channel before rolling it out. Whether Zoë receives
 
 ## What Zenlytic can access
 
-When you approve the app, you grant it permission to:
+Slack's authorization screen groups the permissions into what the app can view and what it can do. In practice, Zenlytic uses them to:
 
 * **Read messages that mention the app**, and the conversations those mentions happen in, so Zoë has the context to answer
 * **Identify users by email address**, to match a Slack user to their Zenlytic account and apply their permissions
@@ -78,12 +89,12 @@ When you approve the app, you grant it permission to:
 * **Upload files**, to deliver artifacts, charts, and query results
 * **List and join channels**, so the app can be added to channels and respond there
 
-Zoë answers with the permissions of the Zenlytic user who asked, so Slack access doesn't widen what anyone can see. See [User Roles](user_roles.md) and [Access Grants](../data-modeling/access_grants.md).
+Zoë answers with the permissions of the Zenlytic user who asked, so connecting Slack doesn't widen what anyone can see. See [User Roles](user_roles.md) and [Access Grants](../data-modeling/access_grants.md).
 
 ## Disconnecting Slack
 
-1. Open **Workspace Settings → Extensions → Slack Integration**.
-2. Click **Disconnect Slack**.
+1. Open **Settings → Integrations**.
+2. In the **Slack** section, click **Disconnect**.
 
 {% hint style="warning" %}
 Disconnecting affects everyone in the Zenlytic workspace. Zoë stops responding in Slack, and any [scheduled deliveries](../proactive-agents/schedule-delivery.md) addressed to Slack channels stop being sent. Check your delivery schedules before disconnecting.

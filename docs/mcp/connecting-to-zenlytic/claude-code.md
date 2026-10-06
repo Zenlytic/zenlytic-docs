@@ -10,11 +10,11 @@ Claude Code connects to remote MCP servers over HTTP transport from the command 
 
 ## Before you start
 
-You'll need Zenlytic's MCP URL for your workspace: `https://mcp.zenlytic.com/mcp` (orgs on a vanity subdomain use a different URL — see [Before you start](./#before-you-start)).
+You'll need the MCP URL that matches your Zenlytic instance. The US, EU, and company-specific patterns are listed in [Before you start](./#before-you-start) on the MCP Server page.
 
 ## Connect with OAuth (recommended)
 
-1. Add the server (swap in your org's URL from [Before you start](#before-you-start) if you're on a vanity subdomain):
+1. Add the server. The command below uses the US URL — if you're on the EU instance or a company-specific URL, swap in [the one for your instance](./#before-you-start):
 
 ```bash
 claude mcp add --transport http zenlytic https://mcp.zenlytic.com/mcp
@@ -30,7 +30,7 @@ Claude Code stores the token and refreshes it automatically, so you shouldn't ne
 If OAuth isn't available, add the server with a static bearer header instead. Creating one requires the Admin (or Organization Admin) role — see [Option 2](./#option-2-connect-with-a-personal-access-token-for-static-config-clients-or-when-oauth-isnt-available).
 
 1. In Zenlytic, go to **Settings → Profile → Personal Access Tokens** (`/personal-access-tokens`), click **Create token**, and copy it immediately — it's only shown once.
-2. Add the server with the token as a header (swap in your org's URL from [Before you start](#before-you-start) if you're on a vanity subdomain):
+2. Add the server with the token as a header, again swapping in [the URL for your instance](./#before-you-start) if you're not on the US instance:
 
 ```bash
 claude mcp add --transport http zenlytic https://mcp.zenlytic.com/mcp \

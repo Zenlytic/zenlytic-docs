@@ -32,10 +32,17 @@ You'll need:
 * A Zenlytic account with access to the workspace you want to query
 * Chat permission in that workspace
 * An MCP-capable client (Claude.ai, Claude Code, ChatGPT, or similar)
-* Zenlytic's MCP URL for your workspace: `https://mcp.zenlytic.com/mcp`
+* The MCP URL that matches your Zenlytic instance (see below)
 
 {% hint style="info" %}
-If your org logs in at a custom vanity subdomain (e.g. `acme.zenlytic.com`), use that subdomain in front of the MCP host instead: `https://acme.mcp.zenlytic.com/mcp`. The exact URL for your org is shown in **Settings → MCP**.
+You'll need the MCP URL that matches your Zenlytic instance:
+
+* If you sign in at `app.zenlytic.com`, use `https://mcp.zenlytic.com/mcp`.
+* If you sign in at `eu.zenlytic.com`, use `https://mcp-eu.zenlytic.com/mcp`.
+* If your organization uses a company-specific URL on the US instance, use `https://<company>.mcp.zenlytic.com/mcp`. For example, Acme would use `https://acme.mcp.zenlytic.com/mcp`.
+* If your organization uses a company-specific URL on the EU instance, use `https://<company>.mcp-eu.zenlytic.com/mcp`. For example, Acme would use `https://acme.mcp-eu.zenlytic.com/mcp`.
+
+If you're unsure which Zenlytic instance your organization uses, ask your Zenlytic administrator.
 {% endhint %}
 
 ## Option 1: Connect with OAuth (recommended for most clients)
@@ -58,7 +65,7 @@ Creating a personal access token requires the Admin (or Organization Admin) role
 1. In Zenlytic, go to **Settings → Profile → Personal Access Tokens** (`/personal-access-tokens`).
 2. Click **Create token**, give it a name (e.g. "Claude MCP"), and save it.
 3. **Copy the token immediately** — it's only shown once, right after creation.
-4. Add it to your MCP client's config as a bearer token, using your org's MCP URL from **Settings → MCP**. For example:
+4. Add it to your MCP client's config as a bearer token, using the MCP URL for your Zenlytic instance. For example:
 
 ```json
 {

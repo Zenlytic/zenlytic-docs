@@ -10,13 +10,20 @@ Claude.ai support MCP custom connectors with OAuth out of the box, so this is on
 
 ## Before you start
 
-You'll need Zenlytic's MCP URL for your workspace: `https://mcp.zenlytic.com/mcp` (orgs on a vanity subdomain use a different URL — see [Before you start](./#before-you-start)).
+You'll need the MCP URL that matches your Zenlytic instance:
+
+* If you sign in at `app.zenlytic.com`, use `https://mcp.zenlytic.com/mcp`.
+* If you sign in at `eu.zenlytic.com`, use `https://mcp-eu.zenlytic.com/mcp`.
+* If your organization uses a company-specific URL on the US instance, use `https://<company>.mcp.zenlytic.com/mcp`. For example, Acme would use `https://acme.mcp.zenlytic.com/mcp`.
+* If your organization uses a company-specific URL on the EU instance, use `https://<company>.mcp-eu.zenlytic.com/mcp`. For example, Acme would use `https://acme.mcp-eu.zenlytic.com/mcp`.
+
+If you're unsure which Zenlytic instance your organization uses, ask your Zenlytic administrator.
 
 ## Connect with OAuth (recommended)
 
 1. Open **Settings → Connectors**
 2. Click **Add**, then choose **Add custom connector**.
-3. Paste in Zenlytic's MCP URL and click **Add**.
+3. Paste in the MCP URL for your Zenlytic instance and click **Add**.
 4. Click **Connect**, complete the OAuth login/approval flow in the browser window that opens, and pick your workspace.
 
 Your connector is now authorized — you won't need to log in again unless you revoke access.

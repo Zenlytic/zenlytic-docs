@@ -34,8 +34,6 @@ Zoë supports multiple AI models that you can switch between using the model dro
 **Using your own model credentials?** Workspaces on enterprise or bring-your-own model credentials may stay pinned to a different model — Sonnet 5.5 is only selected by default where it's actually reachable. Check the model dropdown, or ask your Zenlytic representative, if your workspace shows something else.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/llm-selection.png" alt=""><figcaption></figcaption></figure>
-
 ## Recommended Models
 
 ### **Claude Sonnet 5.5 (Default)**
@@ -77,10 +75,6 @@ Faster than the newer Sonnet models on straightforward questions, and still a st
 The current OpenAI model in the picker, replacing GPT-5.5. Available for teams that prefer or require an OpenAI model.
 
 **Best for:** Teams with a policy or preference for OpenAI models.
-
-### GPT 5.1
-
-Available for teams that prefer or require an older OpenAI model. We would recommend using GPT-5.6 Luna instead of this model in most scenarios.
 
 {% hint style="info" %}
 **Claude Opus is no longer offered for new chats.** Existing conversations and Proactive Agents pinned to an Opus model continue to work.

@@ -407,7 +407,7 @@ Scheduling, picker, and permissions improvements, plus chat and SSO fixes.
 
 ### Bug fixes
 
-* **Deleted chats filter** — Deleted conversations now appear under All Chats → Deleted.
+* **Deleted chats filter** — Admins can review deleted conversations under **Settings → All Chats → Deleted**.
 * **Sandbox file re-uploads** — Re-uploading a file with the same name overwrites the old sandbox copy instead of keeping stale content.
 * **SSO group assignment** — Re-adding SSO users to groups no longer creates duplicate or errored adds.
 {% endupdate %}

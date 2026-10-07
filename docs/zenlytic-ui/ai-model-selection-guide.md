@@ -38,35 +38,29 @@ Zoë supports multiple AI models that you can switch between using the model dro
 
 ### **Claude Sonnet 5.5 (Default)**
 
-The current default model and the recommended starting point for all users.
+The current default and the right choice for almost every workspace. Sonnet 5.5 outperforms both earlier Sonnet models on the work Zoë does.
 
-**Best for:** General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model.
+**Strengths:**
+
+* **Fastest Sonnet model** — Anthropic reports over 30% faster output generation than Sonnet 5, which shows up directly in how quickly answers come back
+* **Fewer round-trips to an answer** — reaches a result in meaningfully fewer tool calls, so multi-step questions resolve with less back-and-forth
+* **Strongest instruction adherence** — follows guidance in field descriptions, topic descriptions, and system prompts more reliably than either earlier Sonnet
+* **Self-correcting** — detects data quality issues mid-query and resolves them without user intervention
+* **Highest query-complexity ceiling** — CTEs, window functions, and cross-table comparisons, with the most consistency on long analytical chains
+
+**Best for:** Everything. Start here, and only switch if you have a specific reason to.
 
 ### Claude Sonnet 5
 
 The previous default, still available in the model dropdown.
 
-Strengths:
-
-* Self-correcting — detects data quality issues mid-query and fixes them automatically without user intervention
-* Strong instruction adherence — reliably follows guidance in field descriptions, topic descriptions, and system prompts
-* Proactive interpretation — flags data anomalies, provides contextual narratives, and suggests follow-up analysis
-* Handles complex multi-step queries including CTEs, window functions, and cross-table comparisons, with improved consistency on longer analytical chains than Sonnet 4.6
-
-Best for: General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model.
+* Strong general-purpose analytics, superseded by Sonnet 5.5 on speed, consistency, and complex multi-step questions
 
 ### Claude Sonnet 4.6
 
-Faster than the newer Sonnet models on straightforward questions, and still a strong choice for clean, well-structured data models.
+An earlier model, still available for workspaces that standardized on it.
 
-**Strengths:**
-
-* Self-correcting — detects data quality issues mid-query and fixes them automatically without user intervention
-* Strong instruction adherence — reliably follows guidance in field descriptions, topic descriptions, and system prompts
-* Proactive interpretation — flags data anomalies, provides contextual narratives, and suggests follow-up analysis
-* Handles complex multi-step queries including CTEs, window functions, and cross-table comparisons
-
-**Best for:** General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model, particularly when speed matters more than depth on longer analytical chains.
+* Less capable than either newer Sonnet on complex joins, messy data, and long analytical chains
 
 ## Additional Available Models
 
@@ -82,11 +76,8 @@ The current OpenAI model in the picker, replacing GPT-5.5. Available for teams t
 
 ## How to Choose
 
-| Scenario                                          | Recommended Model      |
-| ------------------------------------------------- | ---------------------- |
-| The best combination of speed and intelligence    | **Sonnet 5.5** (default) |
-| Complex data model with many joins                | **Sonnet 5.5**           |
-| Data has known quality issues (nulls, edge cases) | **Sonnet 5.5**           |
-| Speed is the top priority, data model is clean    | **Sonnet 4.6**           |
-| Team prefers OpenAI                               | **GPT-5.6 Luna**         |
-| Not sure which to pick                            | **Sonnet 5.5** (default) |
+| Scenario                                                              | Recommended Model        |
+| --------------------------------------------------------------------- | ------------------------ |
+| Almost everything                                                     | **Sonnet 5.5** (default) |
+| Your team requires an OpenAI model                                    | **GPT-5.6 Luna**         |
+| Your workspace is pinned to an earlier model by its own credentials   | **Sonnet 5** or **Sonnet 4.6** |

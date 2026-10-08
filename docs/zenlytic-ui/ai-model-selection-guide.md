@@ -27,38 +27,40 @@ layout:
 Zoë supports multiple AI models that you can switch between using the model dropdown in the chat interface. Each model has different strengths, and the best choice depends on your data model complexity, the types of questions your team asks, and your preference for speed versus depth.
 
 {% hint style="info" %}
-**Default model:** Claude Sonnet 5 is the default for all workspaces.
+**Default model:** Claude Sonnet 5.5 is the default for all workspaces.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/llm-selection.png" alt=""><figcaption></figcaption></figure>
+{% hint style="info" %}
+**Using your own model credentials?** Workspaces on enterprise or bring-your-own model credentials may stay pinned to a different model — Sonnet 5.5 is only selected by default where it's actually reachable. Check the model dropdown, or ask your Zenlytic representative, if your workspace shows something else.
+{% endhint %}
 
 ## Recommended Models
 
-### **Claude Sonnet 5 (Default)**
+### **Claude Sonnet 5.5 (Default)**
 
-The best balance of speed, accuracy, and analytical depth for most workspaces. Sonnet 5 is the default model and the recommended starting point for all users.
-
-Strengths:
-
-* Self-correcting — detects data quality issues mid-query and fixes them automatically without user intervention
-* Strong instruction adherence — reliably follows guidance in field descriptions, topic descriptions, and system prompts
-* Proactive interpretation — flags data anomalies, provides contextual narratives, and suggests follow-up analysis
-* Handles complex multi-step queries including CTEs, window functions, and cross-table comparisons, with improved consistency on longer analytical chains over the previous default
-
-Best for: General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model.
-
-### Claude Sonnet 4.6
-
-The previous default. Sonnet 4.6 is faster than Sonnet 5 on straightforward questions and remains a strong choice for clean, well-structured data models.
+The current default and the right choice for almost every workspace. Sonnet 5.5 outperforms both earlier Sonnet models on the work Zoë does.
 
 **Strengths:**
 
-* Self-correcting — detects data quality issues mid-query and fixes them automatically without user intervention
-* Strong instruction adherence — reliably follows guidance in field descriptions, topic descriptions, and system prompts
-* Proactive interpretation — flags data anomalies, provides contextual narratives, and suggests follow-up analysis
-* Handles complex multi-step queries including CTEs, window functions, and cross-table comparisons
+* **Fastest Sonnet model** — Anthropic reports over 30% faster output generation than Sonnet 5, which shows up directly in how quickly answers come back
+* **Fewer round-trips to an answer** — reaches a result in meaningfully fewer tool calls, so multi-step questions resolve with less back-and-forth
+* **Strongest instruction adherence** — follows guidance in field descriptions, topic descriptions, and system prompts more reliably than either earlier Sonnet
+* **Self-correcting** — detects data quality issues mid-query and resolves them without user intervention
+* **Highest query-complexity ceiling** — CTEs, window functions, and cross-table comparisons, with the most consistency on long analytical chains
 
-**Best for:** General-purpose analytics, business reporting, trend analysis, and most day-to-day questions across any data model, particularly when speed matters more than depth on longer analytical chains.
+**Best for:** Everything. Start here, and only switch if you have a specific reason to.
+
+### Claude Sonnet 5
+
+The previous default, still available in the model dropdown.
+
+* Strong general-purpose analytics, superseded by Sonnet 5.5 on speed, consistency, and complex multi-step questions
+
+### Claude Sonnet 4.6
+
+An earlier model, still available for workspaces that standardized on it.
+
+* Less capable than either newer Sonnet on complex joins, messy data, and long analytical chains
 
 ## Additional Available Models
 
@@ -68,21 +70,14 @@ The current OpenAI model in the picker, replacing GPT-5.5. Available for teams t
 
 **Best for:** Teams with a policy or preference for OpenAI models.
 
-### GPT 5.1
-
-Available for teams that prefer or require an older OpenAI model. We would recommend using GPT-5.6 Luna instead of this model in most scenarios.
-
 {% hint style="info" %}
 **Claude Opus is no longer offered for new chats.** Existing conversations and Proactive Agents pinned to an Opus model continue to work.
 {% endhint %}
 
 ## How to Choose
 
-| Scenario                                          | Recommended Model      |
-| ------------------------------------------------- | ---------------------- |
-| The best combination of speed and intelligence    | **Sonnet 5** (default) |
-| Complex data model with many joins                | **Sonnet 5**           |
-| Data has known quality issues (nulls, edge cases) | **Sonnet 5**           |
-| Speed is the top priority, data model is clean    | **Sonnet 4.6**         |
-| Team prefers OpenAI                               | **GPT-5.6 Luna**       |
-| Not sure which to pick                            | **Sonnet 5** (default) |
+| Scenario                                                              | Recommended Model        |
+| --------------------------------------------------------------------- | ------------------------ |
+| Almost everything                                                     | **Sonnet 5.5** (default) |
+| Your team requires an OpenAI model                                    | **GPT-5.6 Luna**         |
+| Your workspace is pinned to an earlier model by its own credentials   | **Sonnet 5** or **Sonnet 4.6** |

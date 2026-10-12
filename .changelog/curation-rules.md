@@ -15,7 +15,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   handling (token lifetimes, redirect behavior, connection setup, etc.) only
   affect in-VPC customers, even when the item isn't explicitly labeled VPC.
   Treat these as covered by the VPC exclusion above and drop them entirely.
-  (Paul's rule, 2026-07-07. Example: "Longer SAML sessions" — a SAML
+  (Reviewer rule, 2026-07-07. Example: "Longer SAML sessions" — a SAML
   access-token-lifetime change — was pulled from the July 6, 2026 entry
   after publishing; it only affects custom SAML connections used by
   in-VPC customers, and describing it without that context implied it
@@ -29,7 +29,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   regressed, between in-VPC and SaaS deployments. The changelog should not
   let readers infer that the two deployment models' underlying feature sets
   diverge or that one had a bug the other didn't.
-  (Paul's rule, 2026-07-13. Example: "Zoë context manager works across
+  (Reviewer rule, 2026-07-13. Example: "Zoë context manager works across
   sandbox backends" was pulled from the Week of July 6–12, 2026 entry after
   publishing — the item existed because it fixed a difference in sandbox
   infrastructure between in-VPC and SaaS, and describing the fix in the
@@ -48,19 +48,19 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   "Merged to main" is not enough; availability is decided by the flag's prod
   default, which Aime reads from the source / LaunchDarkly. Ask Aime, per change,
   for: gating flag name (if any), the flag's prod default, and a yes/no on GA.
-  (Paul's rule, 2026-06-26; tightened to GA-confirmation 2026-06-26. Example:
+  (Reviewer rule, 2026-06-26; tightened to GA-confirmation 2026-06-26. Example:
   the `artifact-foldering` flag defaulted off in prod, so artifact folders /
   table+gallery were correctly excluded.)
 
-- **External MCP-server / AI-client connectivity is beta — exclude until Paul
+- **External MCP-server / AI-client connectivity is beta — exclude until the reviewer
   confirms public availability.** The Zenlytic MCP server and everything that
   lets external AI clients connect to Zenlytic (OAuth login for MCP clients,
   the MCP authorization/connection screen, MCP tool capability metadata,
   multi-workspace MCP tokens) is not public or out of beta, even where Aime
-  reports no gating flag / GA-yes. Paul's ruling overrides Aime's GA
+  reports no gating flag / GA-yes. The reviewer's ruling overrides Aime's GA
   determination for this cluster. Items live on the held-items watchlist;
-  release only on Paul's explicit confirmation, not on a flag flip alone.
-  (Paul's rule, 2026-07-27. Example: "Connect AI clients to Zenlytic over
+  release only on the reviewer's explicit confirmation, not on a flag flip alone.
+  (Reviewer rule, 2026-07-27. Example: "Connect AI clients to Zenlytic over
   MCP", "Improved MCP connection screen", and "Accurate MCP tool capability
   metadata" were pulled from the Week of July 20–26, 2026 entry after
   publishing.) Note: this does NOT cover in-app MCP connections used inside
@@ -70,7 +70,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
 - **No implementation-detail items.** The changelog describes user outcomes,
   not plumbing. Exclude items whose substance is an endpoint's filter/sort
   parameters, delivery mechanics, or other technical implementation details —
-  even when GA. (Paul's rule, 2026-07-27. Examples pulled from the July 20–26
+  even when GA. (Reviewer rule, 2026-07-27. Examples pulled from the July 20–26
   entry: "Agent list search/sort/filter API", "Shareable chats in agent
   deliveries".) These are permanent editorial exclusions — they do NOT go on
   the held-items watchlist.
@@ -80,7 +80,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   customers could see it is not a separate bug fix or improvement — customers
   never experienced the broken state. Fold it into the launch item or drop
   it. Only list a fix separately if the broken behavior was live for
-  customers. (Paul's rule, 2026-07-27. Example: agent result-delivery,
+  customers. (Reviewer rule, 2026-07-27. Example: agent result-delivery,
   timezone, run-history, and display "fixes" were pre-GA polish of the
   Proactive Agents launch and were folded into the launch bullet.)
 
@@ -88,11 +88,11 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   Zenlytic public API and every item describing it (endpoints, endpoint
   behavior, its generated reference, its documentation structure, and fixes to
   API-surface behavior) is in beta and not generally available. Drop these
-  items entirely; do not reword them into a generic form. Paul's ruling
+  items entirely; do not reword them into a generic form. The reviewer's ruling
   overrides Aime's GA determination for this cluster, exactly as with external
   MCP connectivity — items go on the held-items watchlist and release only on
-  Paul's explicit confirmation, not on a flag flip (most carry no flag at all).
-  (Paul's rule, PR #203 review, 2026-08-11. Eight items were pulled from the
+  the reviewer's explicit confirmation, not on a flag flip (most carry no flag at all).
+  (Reviewer rule, PR #203 review, 2026-08-11. Eight items were pulled from the
   Week of August 3–9, 2026 entry before merge: "File URLs in the Public API",
   "Public API `/me` endpoint", "Organization-scoped workspace API", "Public
   workspace and group membership APIs", "Richer Public API reference",
@@ -101,13 +101,13 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   surface tag used for non-public-API items such as MCP protocol headers or
   regional processing routing — the test is whether the item describes the
   customer-facing public API, not whether the word "API" appears.
-  **Open question for Paul (asked on PR #203, unresolved):** the `developers/`
+  **Open question for the reviewer (asked on PR #203, unresolved):** the `developers/`
   section of this repo publishes the full public API reference — `/me`,
   org-scoped workspace endpoints, PAT creation — on docs.zenlytic.com with no
   beta label, and an automated job keeps its OpenAPI schema current. Until
   that's reconciled, the changelog exclusion hides less than it appears to.
 
-## Voice and framing (Paul, 2026-07-27)
+## Voice and framing (reviewer, 2026-07-27)
 
 - **Lead features with user value, not UI rework.** A launch bullet should
   say what the feature does for the user (e.g. agents that sync context via
@@ -309,7 +309,7 @@ scheduled-task prompt remains the executable spec.
   the week into the next run automatically.
 
 - **Curation subtracts; it never adds.** These rules may exclude or hold items
-  Aime reported — including overriding an Aime GA-yes (Paul's beta-MCP rule) —
+  Aime reported — including overriding an Aime GA-yes (the reviewer's beta-MCP rule) —
   but may never add or promote an item Aime didn't confirm.
   **Why:** keeps a single chain of evidence from commit → Aime → entry.
   **How to apply:** if something seems missing from Aime's list, ask Aime;
@@ -410,11 +410,11 @@ scheduled-task prompt remains the executable spec.
 
 - **Security fixes: calm, factual language.** Describe security-related fixes
   the way any other fix is described — no alarming language, no urgency, no
-  implication of customer exposure. (Paul's rule.)
+  implication of customer exposure. (Reviewer rule.)
   **Why:** alarmed wording in a public changelog reads as an incident
   disclosure and triggers unnecessary customer escalations.
   **How to apply:** state what was hardened or corrected, plainly. If
-  severity context matters, it belongs in the PR body for Paul, not in the
+  severity context matters, it belongs in the PR body for the reviewer, not in the
   published entry.
 
 - **Zenlytic voice.** Plain, direct, factual; no hype, no speed claims, no
@@ -424,14 +424,14 @@ scheduled-task prompt remains the executable spec.
 - **Attribute changes to their exact surface.** When a change applies to a
   specific feature area (e.g. Proactive Agent configuration), name that
   surface in the bullet — don't describe it generically as "chat" or
-  "agents." (Paul, PR #143 review, 2026-08-03. Example: "Web search hidden
+  "agents." (Reviewer, PR #143 review, 2026-08-03. Example: "Web search hidden
   when disabled" applied to Proactive Agent configuration specifically.)
 
 - **Display-only permission fixes must say so.** When a fix hides a control
   the user could see but not actually use (the underlying behavior was
   already permission-gated), frame it explicitly as a UI/display-only fix so
   it cannot be read as having closed an access-control or security gap.
-  (Paul, PR #143 review, 2026-08-03. Example: the model-editing tool toggle
+  (Reviewer, PR #143 review, 2026-08-03. Example: the model-editing tool toggle
   shown in Proactive Agent configuration was strictly UI — the capability
   itself was never accessible without permission.)
 
@@ -439,7 +439,7 @@ scheduled-task prompt remains the executable spec.
   model "the default" or "the default high-reasoning model" unless it is
   literally the selected default. Say what the picker actually shows — e.g.
   the highlighted model for its provider — and name the provider when the
-  change is provider-specific. (Paul, PR #203 review, 2026-08-11. Example:
+  change is provider-specific. (Reviewer, PR #203 review, 2026-08-11. Example:
   "GPT-5.6 Luna is now the default high-reasoning model" was corrected to "the
   highlighted OpenAI model in the model picker.") Model-lineup items recur
   most weeks, so confirm the picker's actual state with Aime rather than
@@ -448,7 +448,7 @@ scheduled-task prompt remains the executable spec.
 - **Lead the bug-fix list with the fix customers feel most.** Bug fixes are
   not ordered by commit order, severity label, or surface. Put first the fix
   that resolves the friction customers actually complain about; the rest
-  follow. (Paul, PR #203 review, 2026-08-11. Example: "Deep links open the
+  follow. (Reviewer, PR #203 review, 2026-08-11. Example: "Deep links open the
   right workspace" was moved to the top of the Week of August 3–9 fixes as the
   most-felt item.) The same judgment applies to the entry's `##` headline and
   one-sentence summary — both should reflect what readers care about most, not
@@ -459,7 +459,7 @@ scheduled-task prompt remains the executable spec.
   code is gated — it is not evidence that packaging or customer entitlements
   changed. Do not translate "gate removed" into "now available to everyone" or
   any similar availability statement without confirming the actual entitlement
-  with Paul. (Paul, PR #226 review, 2026-08-24. Example: "Artifacts available
+  with the reviewer. (Reviewer, PR #226 review, 2026-08-24. Example: "Artifacts available
   with chat access" was drafted from the source agent reporting that the core `artifacts`
   gate and its tier exception had been removed, and was pulled as untrue —
   along with the matching clause in the entry's summary sentence.)
@@ -472,7 +472,7 @@ scheduled-task prompt remains the executable spec.
 - **Hardening and internal-mechanism items get dropped, not reworded.** If a
   change cannot be stated as an outcome the reader would recognize, leave it
   out. Rewording internal mechanics into changelog voice produces a bullet that
-  is technically accurate and meaningless to the audience. (Paul, PR #226
+  is technically accurate and meaningless to the audience. (Reviewer, PR #226
   review, 2026-08-24. Example: "Inert rendering of agent-generated markup" —
   agent-generated form controls rendering inertly — was pulled as not making
   sense to a reader.) This extends the implementation-detail exclusion above to
@@ -504,14 +504,14 @@ scheduled-task prompt remains the executable spec.
 - Exclusions apply to the public, customer-facing changelog only — they do not
   change what Aime reports internally.
 
-## Fold-forward weeks are merged, not stacked (Paul, PR #237 review, 2026-09-21)
+## Fold-forward weeks are merged, not stacked (Reviewer, PR #237 review, 2026-09-21)
 
 When a run is blocked or skipped and `cutoff_sha` does not advance, the next
 successful run covers more than one week. Publish that as **one** entry, dated to
 the later week's end date. Do not split the diff into one dated block per week
 stacked on top of each other.
 
-(Paul, PR #237 review, 2026-09-21: *"The stacking of the two options here feels
+(Reviewer, PR #237 review, 2026-09-21: *"The stacking of the two options here feels
 weird. Feels like the two weeks should be merged instead of just stacked on top
 of each other visually."* The 2026-09-07 → 2026-09-20 entry had been split into
 separate 2026-09-13 and 2026-09-20 blocks and was merged back on this ruling.)

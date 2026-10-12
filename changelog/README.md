@@ -27,6 +27,22 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-10-11" tags="new-features,fixes" %}
+## Claude Sonnet 5.5 in the model picker
+
+Claude Sonnet 5.5 is now available and is the default for new workspaces, alongside fixes for Entra-connected Snowflake connections, MCP connection retries, and artifact dashboards.
+
+### New features
+
+* **Claude Sonnet 5.5** — Sonnet 5.5 is now selectable in the model picker and is the default for new workspaces and workspaces without a pinned model.
+
+### Bug fixes
+
+* **Entra-connected Snowflake connections stay connected** — Zenlytic now saves refreshed Entra tokens, so regularly used Snowflake connections no longer fail when the original token reaches its inactivity limit.
+* **Temporary MCP failures retry correctly** — Rate limits, server errors, and connectivity failures on connected MCP servers are now retried when appropriate, and error messages no longer ask admins to reconnect when reconnecting isn't needed.
+* **Missing artifact datasets caught before delivery** — Artifact builds now detect missing static CSV datasets, preventing dashboard tiles from loading indefinitely.
+* **Sonnet 5.5 artifact operations** — Fixed Sonnet 5.5 failures when generating artifact memory and using AI editing.
+{% endupdate %}
 {% update date="2026-09-27" tags="improvements,fixes" %}
 ## Safer Excel formula handling in Zoë
 

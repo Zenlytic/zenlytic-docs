@@ -52,14 +52,14 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   the `artifact-foldering` flag defaulted off in prod, so artifact folders /
   table+gallery were correctly excluded.)
 
-- **External MCP-server / AI-client connectivity is beta — exclude until the reviewer
+- **External MCP-server / AI-client connectivity is beta — exclude until engineering
   confirms public availability.** The Zenlytic MCP server and everything that
   lets external AI clients connect to Zenlytic (OAuth login for MCP clients,
   the MCP authorization/connection screen, MCP tool capability metadata,
   multi-workspace MCP tokens) is not public or out of beta, even where Aime
-  reports no gating flag / GA-yes. The reviewer's ruling overrides Aime's GA
+  reports no gating flag / GA-yes. Engineering's ruling overrides Aime's GA
   determination for this cluster. Items live on the held-items watchlist;
-  release only on the reviewer's explicit confirmation, not on a flag flip alone.
+  release only on engineering's explicit confirmation, not on a flag flip alone.
   (Reviewer rule, 2026-07-27. Example: "Connect AI clients to Zenlytic over
   MCP", "Improved MCP connection screen", and "Accurate MCP tool capability
   metadata" were pulled from the Week of July 20–26, 2026 entry after
@@ -91,7 +91,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   items entirely; do not reword them into a generic form. The reviewer's ruling
   overrides Aime's GA determination for this cluster, exactly as with external
   MCP connectivity — items go on the held-items watchlist and release only on
-  the reviewer's explicit confirmation, not on a flag flip (most carry no flag at all).
+  engineering's explicit confirmation, not on a flag flip (most carry no flag at all).
   (Reviewer rule, PR #203 review, 2026-08-11. Eight items were pulled from the
   Week of August 3–9, 2026 entry before merge: "File URLs in the Public API",
   "Public API `/me` endpoint", "Organization-scoped workspace API", "Public
@@ -101,7 +101,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   surface tag used for non-public-API items such as MCP protocol headers or
   regional processing routing — the test is whether the item describes the
   customer-facing public API, not whether the word "API" appears.
-  **Open question for the reviewer (asked on PR #203, unresolved):** the `developers/`
+  **Open question for engineering (asked on PR #203, unresolved):** the `developers/`
   section of this repo publishes the full public API reference — `/me`,
   org-scoped workspace endpoints, PAT creation — on docs.zenlytic.com with no
   beta label, and an automated job keeps its OpenAPI schema current. Until
@@ -309,7 +309,7 @@ scheduled-task prompt remains the executable spec.
   the week into the next run automatically.
 
 - **Curation subtracts; it never adds.** These rules may exclude or hold items
-  Aime reported — including overriding an Aime GA-yes (the reviewer's beta-MCP rule) —
+  Aime reported — including overriding an Aime GA-yes (engineering's beta-MCP rule) —
   but may never add or promote an item Aime didn't confirm.
   **Why:** keeps a single chain of evidence from commit → Aime → entry.
   **How to apply:** if something seems missing from Aime's list, ask Aime;

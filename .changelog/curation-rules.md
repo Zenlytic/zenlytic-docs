@@ -8,18 +8,18 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
 
 - **VPC** — Anything related to VPC / customer VPC deployments. Drop the item
   entirely; do not reword or generalize it. If a day's only change is VPC, that
-  day produces no entry. Also state this exclusion in the Zeta request so Zeta
+  day produces no entry. Also state this exclusion in the Aime request so Aime
   omits VPC changes up front.
 
 - **Custom SAML/SSO connections** — Changes to custom SAML/SSO connection
   handling (token lifetimes, redirect behavior, connection setup, etc.) only
   affect in-VPC customers, even when the item isn't explicitly labeled VPC.
   Treat these as covered by the VPC exclusion above and drop them entirely.
-  (Paul's rule, 2026-07-07. Example: "Longer SAML sessions" — a SAML
+  (Reviewer rule, 2026-07-07. Example: "Longer SAML sessions" — a SAML
   access-token-lifetime change — was pulled from the July 6, 2026 entry
   after publishing; it only affects custom SAML connections used by
   in-VPC customers, and describing it without that context implied it
-  applied to standard/non-VPC SSO too. Ask Zeta to flag custom-SAML items
+  applied to standard/non-VPC SSO too. Ask Aime to flag custom-SAML items
   explicitly going forward so they can be excluded up front rather than
   caught in review.)
 
@@ -29,36 +29,38 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   regressed, between in-VPC and SaaS deployments. The changelog should not
   let readers infer that the two deployment models' underlying feature sets
   diverge or that one had a bug the other didn't.
-  (Paul's rule, 2026-07-13. Example: "Zoë context manager works across
+  (Reviewer rule, 2026-07-13. Example: "Zoë context manager works across
   sandbox backends" was pulled from the Week of July 6–12, 2026 entry after
   publishing — the item existed because it fixed a difference in sandbox
   infrastructure between in-VPC and SaaS, and describing the fix in the
-  changelog revealed that gap/regression. Ask Zeta to flag items that touch
+  changelog revealed that gap/regression. Ask Aime to flag items that touch
   sandbox-backend or infra parity between VPC and SaaS explicitly going
   forward so they can be excluded or reworded up front rather than caught in
   review.)
 
-- **GA-only — include an item ONLY if Zeta confirms it is generally available.**
-  Default to exclude. An item qualifies only when Zeta confirms either no gating
+- **GA-only — include an item ONLY if Aime confirms it is generally available.**
+  Default to exclude. An item qualifies only when Aime confirms either no gating
   feature flag, or that the gating flag's production default/fallthrough is `on`
   for all users. If an item is behind a flag that defaults off (or to targeted
-  beta), or Zeta cannot confirm GA, leave it out — do not soften or hedge.
-  "Merged to master" is not enough; availability is decided by the flag's prod
-  default, which Zeta reads from the source / LaunchDarkly. Ask Zeta, per change,
+  beta), or Aime cannot confirm GA, leave it out — do not soften or hedge. Both regions count: the flag must be
+  effectively on for everyone in BOTH prod and prodeu (accounting for the On/Off
+  switch, not just the fallthrough). Prod on / prodeu off is NOT GA.
+  "Merged to main" is not enough; availability is decided by the flag's prod
+  default, which Aime reads from the source / LaunchDarkly. Ask Aime, per change,
   for: gating flag name (if any), the flag's prod default, and a yes/no on GA.
-  (Paul's rule, 2026-06-26; tightened to GA-confirmation 2026-06-26. Example:
+  (Reviewer rule, 2026-06-26; tightened to GA-confirmation 2026-06-26. Example:
   the `artifact-foldering` flag defaulted off in prod, so artifact folders /
   table+gallery were correctly excluded.)
 
-- **External MCP-server / AI-client connectivity is beta — exclude until Paul
+- **External MCP-server / AI-client connectivity is beta — exclude until engineering
   confirms public availability.** The Zenlytic MCP server and everything that
   lets external AI clients connect to Zenlytic (OAuth login for MCP clients,
   the MCP authorization/connection screen, MCP tool capability metadata,
-  multi-workspace MCP tokens) is not public or out of beta, even where Zeta
-  reports no gating flag / GA-yes. Paul's ruling overrides Zeta's GA
+  multi-workspace MCP tokens) is not public or out of beta, even where Aime
+  reports no gating flag / GA-yes. Engineering's ruling overrides Aime's GA
   determination for this cluster. Items live on the held-items watchlist;
-  release only on Paul's explicit confirmation, not on a flag flip alone.
-  (Paul's rule, 2026-07-27. Example: "Connect AI clients to Zenlytic over
+  release only on engineering's explicit confirmation, not on a flag flip alone.
+  (Reviewer rule, 2026-07-27. Example: "Connect AI clients to Zenlytic over
   MCP", "Improved MCP connection screen", and "Accurate MCP tool capability
   metadata" were pulled from the Week of July 20–26, 2026 entry after
   publishing.) Note: this does NOT cover in-app MCP connections used inside
@@ -68,7 +70,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
 - **No implementation-detail items.** The changelog describes user outcomes,
   not plumbing. Exclude items whose substance is an endpoint's filter/sort
   parameters, delivery mechanics, or other technical implementation details —
-  even when GA. (Paul's rule, 2026-07-27. Examples pulled from the July 20–26
+  even when GA. (Reviewer rule, 2026-07-27. Examples pulled from the July 20–26
   entry: "Agent list search/sort/filter API", "Shareable chats in agent
   deliveries".) These are permanent editorial exclusions — they do NOT go on
   the held-items watchlist.
@@ -78,7 +80,7 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   customers could see it is not a separate bug fix or improvement — customers
   never experienced the broken state. Fold it into the launch item or drop
   it. Only list a fix separately if the broken behavior was live for
-  customers. (Paul's rule, 2026-07-27. Example: agent result-delivery,
+  customers. (Reviewer rule, 2026-07-27. Example: agent result-delivery,
   timezone, run-history, and display "fixes" were pre-GA polish of the
   Proactive Agents launch and were folded into the launch bullet.)
 
@@ -86,11 +88,11 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   Zenlytic public API and every item describing it (endpoints, endpoint
   behavior, its generated reference, its documentation structure, and fixes to
   API-surface behavior) is in beta and not generally available. Drop these
-  items entirely; do not reword them into a generic form. Paul's ruling
-  overrides Zeta's GA determination for this cluster, exactly as with external
+  items entirely; do not reword them into a generic form. The reviewer's ruling
+  overrides Aime's GA determination for this cluster, exactly as with external
   MCP connectivity — items go on the held-items watchlist and release only on
-  Paul's explicit confirmation, not on a flag flip (most carry no flag at all).
-  (Paul's rule, PR #203 review, 2026-08-11. Eight items were pulled from the
+  engineering's explicit confirmation, not on a flag flip (most carry no flag at all).
+  (Reviewer rule, PR #203 review, 2026-08-11. Eight items were pulled from the
   Week of August 3–9, 2026 entry before merge: "File URLs in the Public API",
   "Public API `/me` endpoint", "Organization-scoped workspace API", "Public
   workspace and group membership APIs", "Richer Public API reference",
@@ -99,13 +101,13 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   surface tag used for non-public-API items such as MCP protocol headers or
   regional processing routing — the test is whether the item describes the
   customer-facing public API, not whether the word "API" appears.
-  **Open question for Paul (asked on PR #203, unresolved):** the `developers/`
+  **Open question for engineering (asked on PR #203, unresolved):** the `developers/`
   section of this repo publishes the full public API reference — `/me`,
   org-scoped workspace endpoints, PAT creation — on docs.zenlytic.com with no
   beta label, and an automated job keeps its OpenAPI schema current. Until
   that's reconciled, the changelog exclusion hides less than it appears to.
 
-## Voice and framing (Paul, 2026-07-27)
+## Voice and framing (reviewer, 2026-07-27)
 
 - **Lead features with user value, not UI rework.** A launch bullet should
   say what the feature does for the user (e.g. agents that sync context via
@@ -123,7 +125,7 @@ specific account or org (e.g. one enterprise customer opted out, or a
 Salesforce/Verizon-style segment rule). Publish the item; don't hold it for
 a single-account carve-out. Only hold items where the *fallthrough itself*
 is off or targeted-beta.
-(Confirmed via Zeta 2026-07-01 on `artifact-foldering`: fallthrough on for
+(Confirmed via the source agent 2026-07-01 on `artifact-foldering`: fallthrough on for
 prod + prodeu, with one segment rule off for `verizon-saas-organizations`.
 Treated as GA and published.)
 
@@ -132,7 +134,7 @@ Treated as GA and published.)
 Every item dropped as non-GA must be logged to `held-items.json` (open
 watchlist), not just silently discarded. Each run, before doing the normal
 commit-diff query, re-check every open watchlist item's flag against
-LaunchDarkly's CURRENT production state via Zeta. If a flag has flipped from
+LaunchDarkly's CURRENT production state vian Aime. If a flag has flipped from
 off/targeted to on, the item is "recovered": publish it dated to the FLIP
 date (when it became visible to users), not its original merge date, then
 move it from the open watchlist to the resolved log.
@@ -143,7 +145,7 @@ correctly excluded on 2026-06-26 (flag off), and because its commit SHA fell
 behind the cutoff on every later run, it would never have been asked about
 again — even after the flag flipped on 2026-07-01 — without a separate,
 flag-based re-check. Caught 2026-07-01 only because Greg noticed the feature
-live in the product and asked Zeta directly. [[release-notes-exclude-feature-flagged]]
+live in the product and asked the source agent directly. [[release-notes-exclude-feature-flagged]]
 
 **How to apply:** treat "excluded for not-GA" as a pending state, not a
 terminal one. The watchlist is the mechanism that keeps pending items in
@@ -210,7 +212,7 @@ Current product names. Earlier terms are correct only when describing history.
 | Skills           | Memories (for new context) |
 | Artifacts        | code interpreter |
 
-**Why:** the product renamed twice in a year, and Zeta's source data still
+**Why:** the product renamed twice in a year, and the source data still
 carries older names — several existing entries were drafted with "(Data Model
 Editor)" trailing them. A changelog announcing a feature under a name the UI no
 longer uses sends readers looking for something that isn't there.
@@ -292,43 +294,44 @@ These rules governed every run but lived in the scheduled-task prompt rather
 than this file. Recorded here (2026-07-31) so the repo is self-describing; the
 scheduled-task prompt remains the executable spec.
 
-- **Zeta is the sole authority for inputs.** The weekly commit list, every GA
+- **Aime is the sole authority for inputs.** The weekly commit list, every GA
   determination (LaunchDarkly production flag state), and the end-of-week
-  cutoff SHA all come from Zeta (Slack agent in #troubleshooting-issues).
-  Never compute a diff independently, never infer GA from anything but Zeta's
-  answer. No Zeta reply = no entry and no state change — never a best-effort
+  cutoff SHA all come from Aime (Slack agent in the source channel).
+  Never compute a diff independently, never infer GA from anything but Aime's
+  answer. No Aime reply = no entry and no state change — never a best-effort
   draft.
-  **Why:** Zeta reads the product repo and LaunchDarkly directly; anything
+  **Why:** Aime reads the product repo and LaunchDarkly directly; anything
   else is guesswork, and a guessed GA call publishes features customers can't
   see.
-  **How to apply:** if Zeta doesn't answer within the polling window (~40s
-  intervals, ~8 minutes), post the no-response notice to #changelog-upcoming
-  (no Paul tag) and stop without advancing state — the unadvanced cutoff folds
+  **How to apply:** if Aime doesn't answer within the polling window (~40s
+  intervals, ~8 minutes), post the no-response notice to the review channel
+  (no mentions) and stop without advancing state — the unadvanced cutoff folds
   the week into the next run automatically.
 
 - **Curation subtracts; it never adds.** These rules may exclude or hold items
-  Zeta reported — including overriding a Zeta GA-yes (Paul's beta-MCP rule) —
-  but may never add or promote an item Zeta didn't confirm.
-  **Why:** keeps a single chain of evidence from commit → Zeta → entry.
-  **How to apply:** if something seems missing from Zeta's list, ask Zeta;
+  Aime reported — including overriding an Aime GA-yes (engineering's beta-MCP rule) —
+  but may never add or promote an item Aime didn't confirm.
+  **Why:** keeps a single chain of evidence from commit → Aime → entry.
+  **How to apply:** if something seems missing from Aime's list, ask Aime;
   don't add it from memory or from the product UI.
 
-- **The product repo's production branch is `origin/master`.** Never `dev`.
+- **The product repo's production branch is `origin/main`** (renamed from
+  `master` in Oct 2026). Never `dev`.
   Unrelated to the docs repo's `main`.
   **Why:** diffing the wrong branch reports unshipped work.
-  **How to apply:** every Zeta diff request names `origin/master` explicitly.
+  **How to apply:** every Aime diff request names `origin/main` explicitly.
 
 - **Diff window and cutoff discipline.** Covered week = the most recent
   complete Mon–Sun. Window = state.json `cutoff_sha` → last Sunday 23:59
-  America/Los_Angeles. The new cutoff is master's SHA at that instant — NOT
+  America/Los_Angeles. The new cutoff is main's SHA at that instant — NOT
   current HEAD. The cutoff advances only when the week's output is actually
   delivered; every failure path stops without advancing state.
   **Why:** commits after Sunday belong to next week; advancing state on a
   failed run silently drops a week.
-  **How to apply:** ask Zeta for the end-of-Sunday SHA in the same request as
+  **How to apply:** ask Aime for the end-of-Sunday SHA in the same request as
   the diff; on any failure, post the notice and leave state untouched.
 
-- **Cadence.** Mondays 05:00 America/Los_Angeles, covering the prior Mon–Sun,
+- **Cadence.** Mondays 02:00 America/Los_Angeles, covering the prior Mon–Sun,
   open-ended. No-change weeks still run: post the one-line notice and commit
   only the .changelog/ state advance. Never duplicate a week already present
   in changelog/README.md.
@@ -354,25 +357,25 @@ scheduled-task prompt remains the executable spec.
   heading, and a "Changelog" H1 — all three were corrected on 2026-08-02 and
   are now rejected by CI.
 
-- **Paul's PR merge is the only publish gate.** Never merge a PR; never commit
+- **The reviewer's PR merge is the only publish gate.** Never merge a PR; never commit
   docs content to `main` directly. GitBook Git Sync publishes `main` to the
   docs site, so merge = publish. The sole permitted direct-to-`main` commit is
   the no-change-week state advance, which touches only `.changelog/` files.
   **Why:** human review is the last defense for everything these rules missed.
   **How to apply:** every content change rides a `changelog/*` branch and PR;
-  the step-9 Slack notification must remind Paul that merging publishes.
+  the step-9 Slack notification must remind the reviewer that merging publishes.
 
 - **File allowlist.** Only `changelog/README.md` and `.changelog/*` may be
   modified. Never `.gitbook.yaml`, `SUMMARY.md`, `book.json`, or workflows.
 
 - **Open-PR guard.** If a `changelog/*` PR is still open, the prior week is
-  unreviewed: notify Paul it's awaiting review, skip the run, and let the
+  unreviewed: notify the review channel (no mentions) that it's awaiting review, skip the run, and let the
   unadvanced cutoff fold the week forward. One PR in flight at a time.
 
 - **GitHub access is MCP-connector only for the automated run.** No raw git
   or curl fallback. If MCP is unavailable or blocked: draft locally to the
-  working folder, post the blocked notice (no Paul tag), stop without
-  advancing state. (Interim exception while the org grant is pending: Greg
+  working folder, post nothing to Slack, rely on the scheduled task's own
+  notification to reach Greg, stop without advancing state. (Interim exception while the org grant is pending: Greg
   runs a prepared push script under his own credentials; the automation
   itself still never falls back.)
 
@@ -380,8 +383,8 @@ scheduled-task prompt remains the executable spec.
   `changelog/{week-start}-to-{week-end}`; commit "docs: change log — week of
   {range}". PR body carries: item counts by category, the cutoff line (old →
   new SHA), the Held (not GA) list, the Recovered list (merge + flip dates),
-  any Paul-ruling requests, and permalinks to the Zeta watchlist and diff
-  threads plus each published item's GA determination as Zeta reported it.
+  any reviewer-ruling requests, and permalinks to the Aime watchlist and diff
+  threads plus each published item's GA determination as Aime reported it.
   After pushing, re-read the branch's changelog/README.md and confirm the new
   entry is present and nothing was lost; fix and recommit if not.
 
@@ -391,13 +394,15 @@ scheduled-task prompt remains the executable spec.
   is logged to `held-items.json` `open` — never silently dropped. A markdown
   draft copy of each week's entry is also saved to the working folder.
 
-- **Notifications.** Review channel: #changelog-upcoming. Paul is tagged ONLY
-  on the PR-ready notification; no-change, Zeta-no-response, and failure
-  notices go untagged. Zeta requests go to #troubleshooting-issues; watchlist
-  re-checks are ONE batched message per run. The retired Notion "TEST Change
+- **Notifications.** The source and review channels are the Chord channels named
+  in the scheduled-task prompt. Nobody is tagged in the review channel; the
+  only mention anywhere is Aime in the source channel. No-change and
+  Aime-no-response notices go to the review channel untagged. Aime requests go
+  to the source channel; watchlist re-checks are ONE batched message per run.
+  Blocked or failed runs post nothing to Slack. The retired Notion "TEST Change
   Log" page is never written to.
 
-- **Feedback loop.** Paul's PR feedback is applied as commits to the same
+- **Feedback loop.** The reviewer's PR feedback is applied as commits to the same
   `changelog/*` branch. When feedback establishes a new standing rule, append
   it to this file in the same commit.
 
@@ -405,11 +410,11 @@ scheduled-task prompt remains the executable spec.
 
 - **Security fixes: calm, factual language.** Describe security-related fixes
   the way any other fix is described — no alarming language, no urgency, no
-  implication of customer exposure. (Paul's rule.)
+  implication of customer exposure. (Reviewer rule.)
   **Why:** alarmed wording in a public changelog reads as an incident
   disclosure and triggers unnecessary customer escalations.
   **How to apply:** state what was hardened or corrected, plainly. If
-  severity context matters, it belongs in the PR body for Paul, not in the
+  severity context matters, it belongs in the PR body for the reviewer, not in the
   published entry.
 
 - **Zenlytic voice.** Plain, direct, factual; no hype, no speed claims, no
@@ -419,14 +424,14 @@ scheduled-task prompt remains the executable spec.
 - **Attribute changes to their exact surface.** When a change applies to a
   specific feature area (e.g. Proactive Agent configuration), name that
   surface in the bullet — don't describe it generically as "chat" or
-  "agents." (Paul, PR #143 review, 2026-08-03. Example: "Web search hidden
+  "agents." (Reviewer, PR #143 review, 2026-08-03. Example: "Web search hidden
   when disabled" applied to Proactive Agent configuration specifically.)
 
 - **Display-only permission fixes must say so.** When a fix hides a control
   the user could see but not actually use (the underlying behavior was
   already permission-gated), frame it explicitly as a UI/display-only fix so
   it cannot be read as having closed an access-control or security gap.
-  (Paul, PR #143 review, 2026-08-03. Example: the model-editing tool toggle
+  (Reviewer, PR #143 review, 2026-08-03. Example: the model-editing tool toggle
   shown in Proactive Agent configuration was strictly UI — the capability
   itself was never accessible without permission.)
 
@@ -434,16 +439,16 @@ scheduled-task prompt remains the executable spec.
   model "the default" or "the default high-reasoning model" unless it is
   literally the selected default. Say what the picker actually shows — e.g.
   the highlighted model for its provider — and name the provider when the
-  change is provider-specific. (Paul, PR #203 review, 2026-08-11. Example:
+  change is provider-specific. (Reviewer, PR #203 review, 2026-08-11. Example:
   "GPT-5.6 Luna is now the default high-reasoning model" was corrected to "the
   highlighted OpenAI model in the model picker.") Model-lineup items recur
-  most weeks, so confirm the picker's actual state with Zeta rather than
+  most weeks, so confirm the picker's actual state with Aime rather than
   carrying forward last entry's phrasing.
 
 - **Lead the bug-fix list with the fix customers feel most.** Bug fixes are
   not ordered by commit order, severity label, or surface. Put first the fix
   that resolves the friction customers actually complain about; the rest
-  follow. (Paul, PR #203 review, 2026-08-11. Example: "Deep links open the
+  follow. (Reviewer, PR #203 review, 2026-08-11. Example: "Deep links open the
   right workspace" was moved to the top of the Week of August 3–9 fixes as the
   most-felt item.) The same judgment applies to the entry's `##` headline and
   one-sentence summary — both should reflect what readers care about most, not
@@ -454,8 +459,8 @@ scheduled-task prompt remains the executable spec.
   code is gated — it is not evidence that packaging or customer entitlements
   changed. Do not translate "gate removed" into "now available to everyone" or
   any similar availability statement without confirming the actual entitlement
-  with Paul. (Paul, PR #226 review, 2026-08-24. Example: "Artifacts available
-  with chat access" was drafted from Zeta reporting that the core `artifacts`
+  with the reviewer. (Reviewer, PR #226 review, 2026-08-24. Example: "Artifacts available
+  with chat access" was drafted from the source agent reporting that the core `artifacts`
   gate and its tier exception had been removed, and was pulled as untrue —
   along with the matching clause in the entry's summary sentence.)
   **Why:** availability and packaging claims are the ones customers act on and
@@ -467,7 +472,7 @@ scheduled-task prompt remains the executable spec.
 - **Hardening and internal-mechanism items get dropped, not reworded.** If a
   change cannot be stated as an outcome the reader would recognize, leave it
   out. Rewording internal mechanics into changelog voice produces a bullet that
-  is technically accurate and meaningless to the audience. (Paul, PR #226
+  is technically accurate and meaningless to the audience. (Reviewer, PR #226
   review, 2026-08-24. Example: "Inert rendering of agent-generated markup" —
   agent-generated form controls rendering inertly — was pulled as not making
   sense to a reader.) This extends the implementation-detail exclusion above to
@@ -476,37 +481,37 @@ scheduled-task prompt remains the executable spec.
   **How to apply:** draft the bullet, then ask what a customer would do
   differently knowing it. If there is no answer, cut it.
 
-## Review notifications (Paul, 2026-08-03)
+## Review notifications (updated 2026-10-12)
 
-- **Paul's PR notification is ONE LINE.** The step-9 Slack message to Paul is
-  the mention, the bold title "docs: change log — week of {range}", and the
-  PR URL — nothing under it. All detail (item counts, cutoff line,
-  held/recovered lists, ruling requests, evidence chain) lives in the PR body
-  only, including the merging-publishes reminder, which moves to the top line
-  of the PR body. This supersedes the longer step-9 content list in the
-  scheduled-task prompt.
+- **The review post is one short message with no mentions.** When a change log
+  PR exists, the job posts exactly one message in the review channel: the bold
+  title "docs: change log — week of {range}", the PR URL, and "Ready for review.
+  Merging the PR publishes to the docs site via GitBook." No change list,
+  counts, or held/recovered summaries — all detail lives in the PR body, whose
+  top line is the merging-publishes reminder. The job never @-mentions anyone;
+  Greg tags the reviewer manually.
 
-  **Why:** Paul reads the PR itself; a long Slack digest duplicates the PR
-  body and gets skipped. On 2026-08-03 he stopped reading at the PR link, so
-  the ruling requests in Slack went unread.
+  **Why:** the reviewer reads the PR itself, and a long Slack digest duplicates
+  the PR body and gets skipped (2026-08-03). The reviewer is also no longer in
+  the Slack workspace the job posts to.
 
-  **How to apply:** exactly: `<@UGKKW61T6> **docs: change log — week of
-  {range}** {PR URL}` — then stop. Untagged notices (no-change,
-  Zeta-no-response, blocked) keep their existing formats.
+  **How to apply:** exactly: `**docs: change log — week of {range}** {PR URL} —
+  Ready for review. Merging the PR publishes to the docs site via GitBook.` Other
+  notices (no-change, Aime-no-response) keep their existing formats, untagged.
 
 ## Notes
 
 - Exclusions apply to the public, customer-facing changelog only — they do not
-  change what Zeta reports internally.
+  change what Aime reports internally.
 
-## Fold-forward weeks are merged, not stacked (Paul, PR #237 review, 2026-09-21)
+## Fold-forward weeks are merged, not stacked (Reviewer, PR #237 review, 2026-09-21)
 
 When a run is blocked or skipped and `cutoff_sha` does not advance, the next
 successful run covers more than one week. Publish that as **one** entry, dated to
 the later week's end date. Do not split the diff into one dated block per week
 stacked on top of each other.
 
-(Paul, PR #237 review, 2026-09-21: *"The stacking of the two options here feels
+(Reviewer, PR #237 review, 2026-09-21: *"The stacking of the two options here feels
 weird. Feels like the two weeks should be merged instead of just stacked on top
 of each other visually."* The 2026-09-07 → 2026-09-20 entry had been split into
 separate 2026-09-13 and 2026-09-20 blocks and was merged back on this ruling.)

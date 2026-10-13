@@ -1,16 +1,13 @@
 {
-  "_comment": "Production state for the weekly change log job. Lives at .changelog/state.json in zenlytic/zenlytic-docs once bootstrapped; the repo copy is the single source of truth after bootstrap. cutoff_sha tracks origin/master of the product repo as of end of the last covered week (per Zeta).",
-  "last_entry_date": "2026-10-04",
+  "_comment": "Production state for the weekly change log job. Lives at .changelog/state.json in zenlytic/zenlytic-docs; the repo copy is the single source of truth. cutoff_sha tracks origin/main of the product repo as of end of the last covered week (per Aime).",
+  "last_entry_date": "2026-10-11",
   "backfill_window_start": "2026-06-01",
-  "cutoff_sha": "3f4e7e22153b89babce707a9e8490f5aca5a1d4b",
+  "cutoff_sha": "7e8e44717f4be2812a0f2b8daa416ce8e84296f3",
   "held_items_file": "held-items.json",
-  "branch": "master",
+  "branch": "main",
   "changelog_path": "changelog/README.md",
-  "notify_channel": "C0AHF78RNV6",
-  "notify_channel_name": "changelog-upcoming",
-  "reviewer_user": "UGKKW61T6",
-  "reviewer_name": "Paul",
-  "zeta_channel": "C0B7C7440SC",
-  "zeta_user": "U0AKE67H1D2",
-  "cadence": "weekly, Monday 05:00 America/Los_Angeles, covers prior Mon-Sun, open-ended until Greg disables the task"
+  "notify_channel": "C0C75K2C15E",
+  "source_channel": "C0C8CSA22E9",
+  "source_agent_user": "U0C62GA94H5",
+  "cadence": "weekly, Monday 02:00 America/Los_Angeles, covers prior Mon-Sun, open-ended until Greg disables the task"
 }

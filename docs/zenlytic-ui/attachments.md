@@ -31,7 +31,7 @@ Select a CSV from the upload dialog to attach it to your message. Zoë reads the
 
 <figure><img src="../.gitbook/assets/attachments-csv.png" alt=""><figcaption><p>Attaching a CSV file to the conversation</p></figcaption></figure>
 
-Once the file is attached, ask Zoë to chart the data, compute summary statistics, or surface trends. She has full access to the file contents and can reference specific rows and columns in her responses.
+Once the file is attached, ask Zoë to chart the data, compute summary statistics, or surface trends. The full file contents are available, so responses can reference specific rows and columns.
 
 <figure><img src="../.gitbook/assets/attachments-csv-response.png" alt=""><figcaption><p>Zoë analyzing an attached CSV with charts and narrative insights</p></figcaption></figure>
 
@@ -53,12 +53,12 @@ Select **Run a query** from the attachments dropdown, then search for metrics an
 
 ### Visualizations
 
-After you attach a query, Zoë can generate charts and visualizations from the results. She identifies the appropriate chart type based on the data shape and highlights key takeaways automatically.
+After you attach a query, Zoë can generate charts and visualizations from the results, automatically choosing the appropriate chart type for the data shape and highlighting key takeaways.
 
 <figure><img src="../.gitbook/assets/attachments-query-response.png" alt=""><figcaption><p>Zoë generating a visualization from attached query results</p></figcaption></figure>
 
 ### Citations
 
-When Zoë references specific values from an attached query in her written analysis, each value includes a citation. Click any citation to trace it back to the exact row and calculation in the source data — giving you full transparency into how every number was calculated.
+When Zoë's written analysis references specific values from an attached query, each value includes a citation. Click any citation to trace it back to the exact row and calculation in the source data — giving you full transparency into how every number was calculated.
 
 <figure><img src="../.gitbook/assets/attachments-query-citations.png" alt=""><figcaption><p>Inline citations linking narrative text back to query results</p></figcaption></figure>

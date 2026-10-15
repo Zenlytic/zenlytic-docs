@@ -38,7 +38,7 @@ Topics exist to let you specify sections of your data that join together. They l
 
 You do not need to specify a join to add a view to a topic if there is already a join from the view you're adding to the base view of the topic. If you want to override that existing join, you can do so on the topic, and that will change the logic of how the view you're adding is joined into the topic.
 
-Topics are how Zoë understands what views join together and how she finds data that is related to each other.
+Topics are how Zoë understands what views join together and finds related data.
 
 ## Properties
 

@@ -6,7 +6,7 @@ description: >-
 
 # Power BI
 
-Connect Zoë to the [remote Power BI MCP server](https://learn.microsoft.com/en-us/power-bi/developer/mcp/remote-mcp-server-get-started) — Microsoft's hosted MCP endpoint for Power BI semantic models — to let her chat with your published models in natural language. The server translates Zoë's prompts into DAX queries against the semantic models you point her at, executes them, and returns results. Authenticate with a static `Authorization` header.
+Connect Zoë to the [remote Power BI MCP server](https://learn.microsoft.com/en-us/power-bi/developer/mcp/remote-mcp-server-get-started) — Microsoft's hosted MCP endpoint for Power BI semantic models — to chat with your published models in natural language. The server translates Zoë's prompts into DAX queries against the semantic models you choose, executes them, and returns results. Authenticate with a static `Authorization` header.
 
 ## What Zoë can access
 

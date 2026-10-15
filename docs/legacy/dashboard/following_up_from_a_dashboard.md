@@ -45,6 +45,6 @@ This opens a graphical explore where you can change the query, filters or chart 
 
 Starting a chat with Zoë from here will open a new chat window and set the tile you asked about as context for Zoë.
 
-You can ask Zoë a question about the result to iterate on it with her.
+You can ask Zoë a question about the result to iterate on it.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2025-07-27 at 10.54.24 AM.png" alt=""><figcaption></figcaption></figure>

@@ -6,7 +6,7 @@ description: >-
 
 # Google
 
-Connect Zoë to [Google's BigQuery remote MCP server](https://docs.cloud.google.com/bigquery/docs/use-bigquery-mcp) — a Google-hosted MCP endpoint at `https://bigquery.googleapis.com/mcp` that exposes BigQuery metadata and SQL execution as MCP tools — so she can explore datasets and run SQL in natural language. Zenlytic acts as an MCP client and forwards a Google Cloud OAuth 2.0 access token to the server on every call, so Zoë's actions inherit the underlying IAM identity's BigQuery permissions. Authenticate with a static `Authorization` header.
+Connect Zoë to [Google's BigQuery remote MCP server](https://docs.cloud.google.com/bigquery/docs/use-bigquery-mcp) — a Google-hosted MCP endpoint at `https://bigquery.googleapis.com/mcp` that exposes BigQuery metadata and SQL execution as MCP tools — to explore datasets and run SQL in natural language. Zenlytic acts as an MCP client and forwards a Google Cloud OAuth 2.0 access token to the server on every call, so Zoë's actions inherit the underlying IAM identity's BigQuery permissions. Authenticate with a static `Authorization` header.
 
 > If you only need BigQuery as a data warehouse for the Zenlytic semantic layer, follow [BigQuery setup](../../data-sources/bigquery_setup.md) instead. MCP is purpose-built for agentic, on-demand access from Zoë.
 

@@ -6,7 +6,7 @@ description: >-
 
 # Looker
 
-Connect Zoë to a self-hosted Looker MCP server — deployed via [MCP Toolbox for Databases](https://mcp-toolbox.dev/) on Google Cloud Run — so she can explore your Looker content (models, explores, fields, dashboards, and queries) without leaving Zenlytic. The MCP Toolbox container holds a Looker API3 credential and proxies Zoë's calls to your Looker instance. Authenticate with a static `Authorization` header containing a Google identity token.
+Connect Zoë to a self-hosted Looker MCP server — deployed via [MCP Toolbox for Databases](https://mcp-toolbox.dev/) on Google Cloud Run — to explore your Looker content (models, explores, fields, dashboards, and queries) without leaving Zenlytic. The MCP Toolbox container holds a Looker API3 credential and proxies Zoë's calls to your Looker instance. Authenticate with a static `Authorization` header containing a Google identity token.
 
 > Looker doesn't publish an official hosted remote MCP endpoint. The supported path is to deploy [MCP Toolbox by Google](https://mcp-toolbox.dev/integrations/looker/samples/looker_cloud_run/) in Cloud Run and point Zenlytic at it. Most of the setup happens in Google Cloud and Looker, not in Zenlytic.
 

@@ -34,7 +34,7 @@ Each of the role bundles below is built from the following individual permission
 
 `explore_from_here`: This is the ability to continue analysis from an existing result or dashboard.
 
-`edit_settings`: This is the admin permission to edit the settings of the workspace itself. With this permission, a user can grant him/herself any permission.
+`edit_settings`: This is the admin permission to edit the settings of the workspace itself. With this permission, a user can grant themselves any permission.
 
 `change_branch`: This is the ability to change the branch the workspace is looking at. By default, the branch will always be the production branch.
 

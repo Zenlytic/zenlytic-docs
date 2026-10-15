@@ -10,8 +10,8 @@ When Zoë produces a wrong answer, resist the urge to guess at a fix. Classify t
 
 ## The diagnostic process
 
-1. **Look at what happened.** What question did the user ask? What fields did Zoë search for? What SQL did she write?
-2. **Identify where she went wrong.** Wrong field? Wrong join? Missing filter? Wrong aggregation? Wrong date?
+1. **Look at what happened.** What question did the user ask? What fields did Zoë search for? What SQL ran?
+2. **Identify where the answer went wrong.** Wrong field? Wrong join? Missing filter? Wrong aggregation? Wrong date?
 3. **Classify the error** into one of the categories below.
 4. **Make the minimal context addition** that prevents that class of error. Don't try to anticipate every edge case — fix observed problems.
 5. **Re-ask the original question** to verify the fix works.
@@ -20,7 +20,7 @@ When Zoë produces a wrong answer, resist the urge to guess at a fix. Classify t
 
 ### Discoverability — Zoë couldn't find the right field
 
-Symptom: Zoë answered using the wrong field, or said she couldn't find a metric you know exists.
+Symptom: Zoë answered using the wrong field, or reported no match for a metric you know exists.
 
 Most common fixes, in order:
 

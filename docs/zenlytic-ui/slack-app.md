@@ -38,7 +38,7 @@ Everyone in the Zenlytic workspace can now use Zoë in Slack.
 
 ### In a direct message
 
-Open the Zenlytic app in Slack and send Zoë a data question, the same way you'd ask her in the app:
+Open the Zenlytic app in Slack and send Zoë a data question, just as you would in the app:
 
 > What was gross revenue by month for the last 6 months?
 
@@ -68,10 +68,10 @@ Private channels need an explicit invite — the app can't see a private channel
 ## Mention Zoë in every message
 
 {% hint style="warning" %}
-Zoë only receives messages that mention `@Zenlytic`. This applies inside threads as well: a follow-up posted in Zoë's own thread without the mention does not reach her, and she will not reply.
+Zoë only receives messages that mention `@Zenlytic`. This applies inside threads as well: a follow-up posted in Zoë's own thread without the mention isn't received and gets no reply.
 {% endhint %}
 
-Every question needs the mention, including the second and third questions in a conversation she started. A thread keeps the conversation together and preserves context, but it does not remove the mention requirement.
+Every question needs the mention, including the second and third questions in an existing thread. A thread keeps the conversation together and preserves context, but it does not remove the mention requirement.
 
 If the repetition gets tedious for a team that uses Zoë heavily in one channel, Slack's [Workflow Builder](https://slack.com/help/articles/17542172840595-Create-a-new-workflow-in-Slack) can post a message on your behalf, which lets you wrap the mention in a form or an emoji reaction instead of typing it each time.
 
@@ -108,7 +108,7 @@ Disconnect first if you need to move the Slack workspace to a different Zenlytic
 
 **Slack workspace is already connected.** A Slack workspace can connect to only one active Zenlytic workspace at a time. Disconnect it from the other Zenlytic workspace first, then connect it here.
 
-**Zoë doesn't reply in a thread.** Check that the message mentions `@Zenlytic`. Messages in a thread without the mention don't reach her.
+**Zoë doesn't reply in a thread.** Check that the message mentions `@Zenlytic`. Messages in a thread without the mention don't reach Zoë.
 
 ## Related pages
 

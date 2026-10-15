@@ -7,12 +7,12 @@ description: >-
 # Ask Zoë for Data Model Recommendations
 
 {% hint style="success" %}
-**There is no separate "training" step for Zoë.** The way to make Zoë good at your data — including new and complex datasets — is to ask her in chat. She'll recommend context to add (descriptions, synonyms, measures, joins, skills, system prompt rules), explain where each change belongs, and with edits enabled save them to your repo. The rest of this page covers how that workflow works in practice.
+**There is no separate "training" step for Zoë.** The way to make Zoë good at your data — including new and complex datasets — is to ask in chat. Zoë recommends context to add (descriptions, synonyms, measures, joins, skills, system prompt rules), explains where each change belongs, and, with edits enabled, saves them to your repo. The rest of this page covers how that workflow works in practice.
 {% endhint %}
 
-You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the system prompt, or restructuring something that isn't answering questions well. [If you've allowed her to](asking-zoe-for-recommendations.md#turning-context-editing-on-or-off), she can also make those changes for you and save them to your repository on the current branch.
+You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the system prompt, or restructuring something that isn't answering questions well. [If you've turned on context editing](asking-zoe-for-recommendations.md#turning-context-editing-on-or-off), Zoë can also make those changes for you and save them to your repository on the current branch.
 
-Ask in plain English. Either let Zoë draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or tell her to make the change for you.
+Ask in plain English. Either ask Zoë to draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or to make the change for you.
 
 ## When to ask Zoë instead of authoring from scratch
 
@@ -21,14 +21,14 @@ Good questions to bring to Zoë:
 * **"How do I add a measure for X?"** — e.g. "How do I add a measure for repeat order rate?" or "How do I define customer lifetime value?"
 * **"How should I write this calculation?"** — e.g. "Write me the SQL for days between first and second order" or "How do I compute rolling 30-day revenue?"
 * **"How should these tables be joined?"** — e.g. "What's the right relationship between `orders` and `shipments`?"
-* **"Why did you pick the wrong field?"** — Zoë can often diagnose why she chose the wrong field and recommend adding a `synonym`, `zoe_description`, or a new measure to prevent it next time. See also [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md).
+* **"Why did you pick the wrong field?"** — Zoë can often diagnose the cause of the wrong pick and recommend adding a `synonym`, `zoe_description`, or a new measure to prevent it next time. See also [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md).
 * **"What should I add to this view to make it more useful?"** — Zoë can look at a view and recommend missing measures, synonyms, or descriptions.
 * **"Which tables should I import for \[use case]?"** — Zoë can read your warehouse's `information_schema` and suggest a starting set of tables based on the analysis you want to do, including tables you haven't imported yet.
-* **"What data would I need to recreate this report?"** — paste a screenshot of an existing dashboard or report (Power BI, Tableau, Looker, etc.) and Zoë will identify the tables and fields you'd need. Because she can see your full warehouse schema, she can recommend new tables to bring in.
+* **"What data would I need to recreate this report?"** — paste a screenshot of an existing dashboard or report (Power BI, Tableau, Looker, etc.) and Zoë will identify the tables and fields you'd need. Because Zoë can see your full warehouse schema, the answer can include new tables to bring in.
 
 ## Letting Zoë make the change for you
 
-With Zoë's edits turned on for your workspace, you can ask her to "add the measure", "fix the join", "update the system prompt to say...", or "create a skill for our fiscal calendar", and she'll:
+With Zoë's edits turned on for your workspace, you can ask for changes like "add the measure", "fix the join", "update the system prompt to say...", or "create a skill for our fiscal calendar". For each request, Zoë will:
 
 1. Read the current state of the relevant files.
 2. Draft the smallest correct edit, such as a new field, an updated `zoe_description`, or a new skill.
@@ -45,9 +45,9 @@ The surfaces Zoë can edit:
 * The workspace system prompt, for shared, always-on rules
 * Workspace `skills/`, including `skills/<skill-name>/SKILL.md` and any supporting files
 
-She follows the same authoring rules a human editor would: flat `fields:` lists, valid measure patterns, conservative use of `searchable: true`, and `zoe_description` rather than `description` for agent-only guidance. See [Context Surfaces](../getting-started/context-surfaces.md) for the full decision tree.
+The same authoring rules apply as for a human editor: flat `fields:` lists, valid measure patterns, conservative use of `searchable: true`, and `zoe_description` rather than `description` for agent-only guidance. See [Context Surfaces](../getting-started/context-surfaces.md) for the full decision tree.
 
-If you'd rather have Zoë just review without editing, ask her to "audit the model", "recommend changes", or "check whether she has enough context". She'll inspect the data model and report findings without saving anything, and only commits when you explicitly ask her to make the change.
+If you'd rather get a review without edits, ask Zoë to "audit the model", "recommend changes", or "check whether you have enough context". Zoë inspects the data model and reports findings without saving anything, and commits only when you explicitly ask for the change.
 
 ## For complex datasets
 
@@ -55,7 +55,7 @@ Don't try to model everything before testing. The fastest way to get a complex o
 
 1. **Import the tables.** Ask Zoë which ones to start with if you're not sure. Set `default_date` on time-series views — that one property is the biggest single win for temporal questions.
 2. **Ask a real business question.** Not "explain everything" — something you actually want answered.
-3. **When Zoë gets something wrong, ask her why.** "Why did you pick that field?" or "What context would help you answer this correctly?" She'll diagnose the specific cause and recommend the smallest fix.
+3. **When Zoë gets something wrong, ask why.** "Why did you pick that field?" or "What context would help you answer this correctly?" You'll get a diagnosis of the specific cause and a recommendation for the smallest fix.
 4. **For domain-specific or multi-step logic** (fiscal calendar, custom segmentations, complex joins, industry-specific patterns), have Zoë create a [Skill](../zenlytic-ui/skills.md) instead of stuffing it into individual descriptions.
 5. **Repeat.** Each round narrows the gap between your data and Zoë's accuracy.
 
@@ -79,7 +79,7 @@ Zoë might respond with something like:
   zoe_description: Use this for retention questions. Numerator is customers with 2+ orders; denominator excludes null customer_ids.
 ```
 
-…along with a note explaining that she used `type: number` with a ratio SQL expression (one of the two valid measure patterns — see [Measures](measure.md) for the full rule), and a pointer to add synonyms like "retention rate" or "repeat rate" so she picks this measure on future questions.
+…along with a note explaining the choice of `type: number` with a ratio SQL expression (one of the two valid measure patterns — see [Measures](measure.md) for the full rule), and a pointer to add synonyms like "retention rate" or "repeat rate" so Zoë picks this measure on future questions.
 
 ## Example: asking about a relationship
 
@@ -91,7 +91,7 @@ Zoë will inspect both views and recommend a [relationship](relationships.md) bl
 
 ## Applying a recommendation yourself
 
-If Zoë's edits are turned off, or you'd rather review the change before it lands, apply her snippet by hand:
+If Zoë's edits are turned off, or you'd rather review the change before it lands, apply the snippet by hand:
 
 1. Open [Context Manager](../zenlytic-ui/context_manager.md).
 2. Navigate to the file Zoë named (view, model, topic, system prompt, or skill).
@@ -106,13 +106,13 @@ Zoë's edits are on by default for workspaces that have access to the feature. Y
 **Settings → Chat → Context Editing**
 
 * When the toggle is **on**, Zoë can save changes to your data model from chat, subject to the permission rules below.
-* When the toggle is **off**, Zoë will still draft snippets when you ask, but she will not write them to your repository.
+* When the toggle is **off**, Zoë will still draft snippets when you ask but will not write them to your repository.
 
 ## Zoë inherits your permissions
 
 When edits are turned on, Zoë's editing permissions match your own. The data model is governed by the same role-based rules whether you edit by hand in Context Manager or ask Zoë to do it from chat:
 
-* If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. She'll draft recommendations and explain that you or a workspace admin needs to apply them.
+* If you are an **Explore**, **View**, or **Restricted** user (or any role without `data_model_edit`), Zoë cannot edit the data model. Instead, you'll get draft recommendations and an explanation that you or a workspace admin needs to apply them.
 * If you are **Develop**, **Develop without Deploy**, or **Admin**, Zoë can edit the data model on the branch you're currently on, as long as that branch isn't the production branch.
 * Only workspace **Admins** and users with the **Develop** role can deploy a development branch to the production branch. Deployment happens in [Context Manager](../zenlytic-ui/context_manager.md), not from chat.
 
@@ -120,23 +120,23 @@ See [User Roles](../zenlytic-ui/user_roles.md) for the full role and permission 
 
 ### Editing the production branch directly
 
-You can allow Zoë to save edits on the production branch by turning on the **Allow Edit Production** toggle at **Settings → Git → Allow Edit Production**. With the toggle on, Zoë will save changes on the production branch for **Admin** and **Develop** users. With it off, she'll refuse production edits and ask you to switch to a development branch. The toggle is on by default and uses the same setting that controls manual production edits in Context Manager. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
+You can allow Zoë to save edits on the production branch by turning on the **Allow Edit Production** toggle at **Settings → Git → Allow Edit Production**. With the toggle on, Zoë will save changes on the production branch for **Admin** and **Develop** users. With it off, Zoë will refuse production edits and ask you to switch to a development branch. The toggle is on by default and uses the same setting that controls manual production edits in Context Manager. See [Work with branches safely](../zenlytic-ui/context_manager.md#work-with-branches-safely) for more on the toggle.
 
 ## What Zoë won't do
 
 Even with edits turned on, Zoë holds the line on a few things:
 
-* Save changes she isn't allowed to. If your role lacks `data_model_edit`, or you're on the production branch without the right permission and toggle, Zoë will recommend the change and tell you who can apply it instead.
+* Save changes your role or workspace settings don't allow. If your role lacks `data_model_edit`, or you're on the production branch without the right permission and toggle, Zoë will recommend the change and tell you who can apply it instead.
 * Recommend Memories or Topics for new context. Memories are legacy and being retired in favor of Skills. Topics are legacy and kept only for backwards compatibility. Zoë routes new context to view and field properties, skills, or the system prompt instead.
 * Rewrite a whole file when a small edit will do. Zoë makes the smallest correct change to fix the issue you reported, rather than restructuring on speculation.
 
 ## Iterate based on what goes wrong
 
-Zoë's edits and recommendations aren't always perfect on the first try. If a change doesn't produce the right answer when you test it, tell her what's wrong (for example, "that measure gave the wrong number, the denominator should exclude internal test accounts"). She'll refine the change, re-validate it, and commit the fix when you ask her to. This is the same iterative philosophy the whole data model is built on: add context to fix the specific error you observed, rather than trying to anticipate every edge case up front. See [Progressive Enrichment](../getting-started/progressive-enrichment.md) for the broader playbook.
+Zoë's edits and recommendations aren't always perfect on the first try. If a change doesn't produce the right answer when you test it, explain what's wrong (for example, "that measure gave the wrong number, the denominator should exclude internal test accounts"). Zoë refines the change, re-validates it, and commits the fix when you ask. This is the same iterative philosophy the whole data model is built on: add context to fix the specific error you observed, rather than trying to anticipate every edge case up front. See [Progressive Enrichment](../getting-started/progressive-enrichment.md) for the broader playbook.
 
 ## Related
 
-* [Context Manager](../zenlytic-ui/context_manager.md): where you apply Zoë's recommendations or review her commits
+* [Context Manager](../zenlytic-ui/context_manager.md): where you apply Zoë's recommendations or review the resulting commits
 * [Context Surfaces](../getting-started/context-surfaces.md): when to use `description`, `zoe_description`, synonyms, or the system prompt
 * [User Roles](../zenlytic-ui/user_roles.md): the role and permission reference Zoë inherits from
 * [Fixing Zoë's Mistakes](../getting-started/fixing-zoes-mistakes.md) — diagnostic flow when Zoë gives a wrong answer

@@ -35,6 +35,12 @@ For each workspace, you can:
 * **Set a seat limit** — Controls the maximum number of members who can belong to the workspace.
 * **Delete a workspace** — Removes the workspace from active use. You'll be asked to type the workspace name to confirm. Deleted workspaces are deactivated and hidden but not permanently destroyed. You cannot delete the workspace you are currently signed into.
 
+### Renaming an Existing Workspace
+
+A Workspace Admin can rename a workspace from **Settings → Workspace Settings → Primary Settings**. Edit **Workspace Name**, then save.
+
+Renaming changes the display name only; the workspace ID remains the same. Existing artifacts, public links, permissions, and scheduled report deliveries continue unchanged. Future UI labels and emails that display the workspace name use the new name.
+
 ### Setting Workspace Seat Limits
 
 Enter a number in the **Seat Limit** column and press **Enter**, or click outside the field, to save it. The current member count appears beside the field.

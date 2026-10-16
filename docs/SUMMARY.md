@@ -154,6 +154,7 @@
   * [Terms of Service Agreement](legal-and-support/legal/terms-of-service-agreement.md)
   * [Data Processing Addendum](legal-and-support/legal/data-processing-addendum.md)
   * [Subprocessors](legal-and-support/legal/subprocessors.md)
+  * [LLM Data Use and Retention Policy](legal-and-support/legal/llm-data-use-and-retention.md)
 * [Customer Support Policy](legal-and-support/customer-support-policy.md)
 * [Privacy Policy](https://app.zenlytic.com/privacy-policy)
 * [License](legal-and-support/license-doc.md)

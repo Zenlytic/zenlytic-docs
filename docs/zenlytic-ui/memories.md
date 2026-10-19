@@ -24,7 +24,7 @@ Use memories to teach Zoë about your company, your data preferences, and how yo
 
 ### How memories work
 
-Click "Add to memory" on helpful responses in chat, or create and manage memories in the memory management portal. When you ask Zoë a question, she automatically finds and uses relevant memories to provide more accurate, consistent answers tailored to your business context and preferences.
+Click "Add to memory" on helpful responses in chat, or create and manage memories in the memory management portal. When you ask Zoë a question, the answer automatically draws on relevant memories to be more accurate, consistent, and tailored to your business context and preferences.
 
 ### Create a memory
 

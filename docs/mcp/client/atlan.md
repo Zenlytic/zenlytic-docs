@@ -6,7 +6,7 @@ description: >-
 
 # Atlan
 
-Connect Zoë to [Atlan's hosted remote MCP server](https://docs.atlan.com/product/capabilities/atlan-ai/how-tos/atlan-mcp-overview) so she can search assets, explore lineage, read and update metadata, and create glossary terms in Atlan — without leaving Zenlytic. This integration uses **API-key authentication** against Atlan's hosted MCP endpoint.
+Connect Zoë to [Atlan's hosted remote MCP server](https://docs.atlan.com/product/capabilities/atlan-ai/how-tos/atlan-mcp-overview) to search assets, explore lineage, read and update metadata, and create glossary terms in Atlan — without leaving Zenlytic. This integration uses **API-key authentication** against Atlan's hosted MCP endpoint.
 
 ## What Zoë can access
 

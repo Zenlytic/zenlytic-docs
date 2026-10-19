@@ -42,7 +42,7 @@ Both are capped at 10,000 characters per view. See [Views](../data-modeling/view
 
 Default time ranges, terminology definitions, data freshness, join-routing preferences — anything that applies to **every** question, not just questions about a specific table.
 
-The system prompt is always visible to Zoë, so putting something here guarantees she'll consider it. The tradeoff is that everything here costs attention on every question, so keep it focused on truly universal rules.
+The system prompt is always visible to Zoë, so anything you put here is guaranteed to be considered. The tradeoff is that everything here costs attention on every question, so keep it focused on truly universal rules.
 
 See [Context Surfaces](context-surfaces.md).
 

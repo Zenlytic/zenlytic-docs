@@ -32,7 +32,7 @@ Writing good descriptions will help your end users better understand what they'r
 
 ## Synonyms help Zoë find metrics
 
-You can use the `synonyms` tag to specify keywords for Zoë so she can find the the right field. For example, you might have a LOT of "customers" fields but you want to make sure Zoë always sees the `new_vs_repeat` field on order lines , even though the name of the view doesn't have a reference to a customer by name.
+You can use the `synonyms` tag to specify keywords that help Zoë find the right field. For example, you might have a LOT of "customers" fields but you want to make sure Zoë always sees the `new_vs_repeat` field on order lines , even though the name of the view doesn't have a reference to a customer by name.
 
 In this example, we've added the synonyms `customer` and `loyalty` to the `new_vs_repeat` field to make sure if Zoë users are asking about "existing customers" or repeat behavior like "loyalty" this field will show up in context for Zoë.
 

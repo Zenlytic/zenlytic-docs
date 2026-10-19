@@ -6,21 +6,21 @@ description: >-
 
 # Zoë
 
-Zoë is an AI data analyst who uses your data to answer questions for you. This section will describe some of her capabilities, and how to get best results.
+Zoë is an AI data analyst that uses your data to answer questions for you. This section describes what Zoë can do and how to get the best results.
 
 ## Just ask!
 
-To get started using Zoë, just ask her a question. If you don't know what you can ask about, simply ask what data she can see, or what would be a great question to ask next. She will be even more helpful if you share your job title and more context about what you're trying to accomplish.
+To get started, just ask Zoë a question. If you don't know what you can ask about, simply ask what data Zoë can see, or what would be a great question to ask next. For even more helpful answers, share your job title and some context about what you're trying to accomplish.
 
 <figure><img src="../.gitbook/assets/zoe-welcome.png" alt=""><figcaption><p>Starting a new chat with Zoë</p></figcaption></figure>
 
-When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). Zoë can handle both type of questions, and will ask you follow up questions if she isn't able to make reasonable assumptions about what you intend from your question.
+When you're asking for data, you can be specific (e.g. "Show me sales YTD compared to the prior YTD, broken out by product type") or general (e.g. "I don't really know what I want to see, but tell me about channel and campaign performance"). Zoë can handle both types of questions, and asks you follow-up questions when your intent isn't clear enough to make reasonable assumptions.
 
 By pressing the Microphone icon, Zoë will listen through the web browser to capture your prompt through realtime voice transcription. The Lightning icon opens a panel for selecting a Proactive Agent to run. The Plus icon supports adding file or query attachments to the message, like images, CSVs, and PDFs (limit 5). A dropdown on the right side of the user input supports changing the LLM model that will be used for the new conversation. Press "Enter" or click the Up Arrow button to submit the message.
 
 ## Querying
 
-Zoë searches across the governed measures and dimensions to use existing fields and know when to create new ones to answer your data questions with compelling summaries and insightful visualizations. She was built on an agentic architecture that gives her ability to plan approaches to problems, to use tools to answer questions on your behalf, and memory to get better over time: all in service of helping you understand complex data. At times she may misunderstand what you are asking about, but you can see exactly what steps she is taking to respond, the reasoning behind her thinking, and the data she queries.
+Zoë searches across the governed measures and dimensions to use existing fields and know when to create new ones to answer your data questions with compelling summaries and insightful visualizations. Built on an agentic architecture, Zoë can plan approaches to problems, use tools to answer questions on your behalf, and draw on memory to get better over time: all in service of helping you understand complex data. If a question is ever misunderstood, you can see exactly which steps go into the response, the reasoning behind each one, and the data queried.
 
 <figure><img src="../.gitbook/assets/querying.png" alt="Ask Zoë for a bar chart"><figcaption><p>Asking Zoë for a bar chart</p></figcaption></figure>
 
@@ -74,7 +74,7 @@ Zoë can write and evaluate Python code in a secure sandbox and delivers the res
 
 ## Web Search
 
-Zoë can search the web for real-time information to supplement her data analysis — for example, comparing your metrics against industry benchmarks or referencing recent market trends. Web Search is currently available only with Anthropic models (e.g. Sonnet 4.6, Opus 4.6). An admin must first enable it in **Settings > Zoë**, after which users can toggle it on per conversation via the **Globe icon** in the Chat input toolbar. See [Web Search](web-search.md) for full setup instructions and details on how cited sources work.
+Zoë can search the web for real-time information to supplement the analysis — for example, comparing your metrics against industry benchmarks or referencing recent market trends. Web Search is currently available only with Anthropic models (e.g. Sonnet 4.6, Opus 4.6). An admin must first enable it in **Settings > Zoë**, after which users can toggle it on per conversation via the **Globe icon** in the Chat input toolbar. See [Web Search](web-search.md) for full setup instructions and details on how cited sources work.
 
 ## Edit and Retry Messages
 
@@ -90,7 +90,7 @@ Dashboards have been replaced by [Artifacts](artifacts.md) for new visual output
 
 ## Slack & Teams
 
-Zoë integrates with both Slack and Microsoft Teams. You can ask questions, and she will respond to them in either interface.
+Zoë integrates with both Slack and Microsoft Teams, so you can ask questions and get answers in either interface.
 
 ### Slack
 

@@ -6,7 +6,7 @@ description: Add a warehouse table or CSV to your workspace context
 
 ## Adding new tables to your workspace can be done two ways.&#x20;
 
-1. Just ask Zoë - she can now find tables in your house by asking her in chat (depends on the service account permissions she is using)
+1. Just ask Zoë in chat to find tables in your warehouse (results depend on the service account's permissions)
 2. Manually by the steps outlined below
 
 ## Step 1 - Go to Context Manager

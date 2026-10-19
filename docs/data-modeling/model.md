@@ -119,7 +119,7 @@ relationships:
 #### When to Use Relationships
 
 * Non-obvious joins where column names don't match across views, or where the join requires multiple columns or type casting.
-* Joins you want Zoë to know about so she can generate correct SQL when users ask questions spanning multiple tables.
+* Joins Zoë needs to know about to generate correct SQL when users ask questions spanning multiple tables.
 * You do not need to add relationships for obvious joins where column names match naturally between views (e.g., both views have a customer\_id column with matching identifiers). Over-documenting obvious concepts can decrease Zoë's performance.
 
 #### Relationship Types

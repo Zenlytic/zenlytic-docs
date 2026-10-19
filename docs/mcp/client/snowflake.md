@@ -6,7 +6,7 @@ description: >-
 
 # Snowflake
 
-Connect Zoë to a [Snowflake-managed MCP server](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp) — a server object you create directly inside your Snowflake account — so she can query Cortex Analyst semantic views, search Cortex Search services, run SQL, invoke Cortex Agents, and call your own UDFs or stored procedures, all without leaving Zenlytic. Authenticate with a static `Authorization` header containing a Snowflake [Programmatic Access Token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens) (PAT).
+Connect Zoë to a [Snowflake-managed MCP server](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp) — a server object you create directly inside your Snowflake account — to query Cortex Analyst semantic views, search Cortex Search services, run SQL, invoke Cortex Agents, and call your own UDFs or stored procedures, all without leaving Zenlytic. Authenticate with a static `Authorization` header containing a Snowflake [Programmatic Access Token](https://docs.snowflake.com/en/user-guide/programmatic-access-tokens) (PAT).
 
 ## What Zoë can access
 

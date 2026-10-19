@@ -6,7 +6,7 @@ description: >-
 
 # Github
 
-Connect Zoë to the [GitHub-hosted remote MCP server](https://github.com/github/github-mcp-server) — GitHub's official endpoint for AI tools — so she can browse repositories, read code, triage issues and pull requests, monitor GitHub Actions, and investigate security alerts directly from Zenlytic chats. Authenticate with a static `Authorization` header containing a GitHub [Personal Access Token](https://github.com/settings/personal-access-tokens/new) (PAT).
+Connect Zoë to the [GitHub-hosted remote MCP server](https://github.com/github/github-mcp-server) — GitHub's official endpoint for AI tools — to browse repositories, read code, triage issues and pull requests, monitor GitHub Actions, and investigate security alerts directly from Zenlytic chats. Authenticate with a static `Authorization` header containing a GitHub [Personal Access Token](https://github.com/settings/personal-access-tokens/new) (PAT).
 
 ## What Zoë can access
 

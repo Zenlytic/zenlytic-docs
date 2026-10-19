@@ -58,7 +58,7 @@ A concrete example — a `description` that encodes both the user-facing meaning
       should be used when someone asks about AOV, generally speaking.
 ```
 
-With that description, Zoë can answer "what's the magic this month?" or a generic "what's our AOV?" and pick `gross_aov` — the description gives her both the synonym (`magic`) and the default-pick rule.
+With that description, Zoë can answer "what's the magic this month?" or a generic "what's our AOV?" and pick `gross_aov` — the description supplies both the synonym (`magic`) and the default-pick rule.
 
 ### `synonyms` — what users actually call the field
 
@@ -101,7 +101,7 @@ Memories are retained for backward compatibility and will be migrated to skills 
 
 ## Letting Zoë edit context for you
 
-Zoë can also write to these surfaces, not just read them. When enabled for your workspace, you can ask her to add a field, update a view or field description, edit the system prompt, or create and update skills, and she'll commit the change to your repository for you.
+Zoë can also write to these surfaces, not just read them. When enabled for your workspace, you can ask Zoë to add a field, update a view or field description, edit the system prompt, or create and update skills, and the change is committed to your repository for you.
 
 The full feature, including how to turn it on or off, the role-based permission rules, and how production-branch edits are handled, is documented in [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md).
 

@@ -1,22 +1,22 @@
 ---
 description: >-
-  How Zoë answers data questions end to end — the agentic loop, the tools she
-  uses, and how every query stays governed and auditable.
+  How Zoë answers data questions end to end — the agentic loop, the tools
+  behind each answer, and how every query stays governed and auditable.
 ---
 
 # How Zoë Works
 
-Zoë answers data questions by writing and running SQL against your warehouse in real time. Every query is grounded in **governed, verified field definitions** from your semantic model rather than free-form generation, so answers stay accurate, auditable, and consistent. The output isn't just numbers — she can deliver rich documents, spreadsheets, presentations, and interactive dashboards as [Artifacts](../zenlytic-ui/artifacts.md).
+Zoë answers data questions by writing and running SQL against your warehouse in real time. Every query is grounded in **governed, verified field definitions** from your semantic model rather than free-form generation, so answers stay accurate, auditable, and consistent. The output isn't just numbers — you can also get rich documents, spreadsheets, presentations, and interactive dashboards, delivered as [Artifacts](../zenlytic-ui/artifacts.md).
 
 Dashboards, charts, and other HTML Artifacts don't store the numbers Zoë pulled. They use [Live Queries](../zenlytic-ui/artifacts.md#live-queries): they store the queries and re-run them through the same permission-enforced path every time someone opens the artifact, so the data is current and scoped to whoever is looking at it.
 
-This page walks through the architecture: the agentic loop she runs on every question, the tools she has access to, and why the result is trustworthy.
+This page walks through the architecture: the agentic loop that runs on every question, the tools available at each step, and why the result is trustworthy.
 
 ## The agentic loop
 
-Zoë operates with an **agentic architecture**. At each step of answering a question, she chooses between calling a tool from her toolset and responding directly to the user.
+Zoë operates with an **agentic architecture**. Each step of answering a question is a choice: call a tool from the toolset, or respond directly to the user.
 
-When Zoë calls a tool, Zenlytic runs the tool and returns the result to her. She then makes a new decision — call another tool, or respond. The loop continues until she responds directly.
+When Zoë calls a tool, Zenlytic runs the tool and returns the result. That result informs the next decision — call another tool, or respond. The loop continues until Zoë responds directly.
 
 <figure><img src="../.gitbook/assets/zoe-architecture.png" alt="Zoë's agentic question-answering architecture: a user question feeds the agentic loop where Zoë picks a tool, reads the response, and decides whether to call another tool. Tools include Search fields (reads the Context layer), Update context (writes back learnings to the Context layer), SQL query (governed data requests routed through the Clarity Engine to the customer warehouse), and Code interpreter (runs in an isolated sandbox that builds rich outputs)."><figcaption><p>Zoë's end-to-end question-answering architecture. The agentic loop runs until Zoë decides to respond directly.</p></figcaption></figure>
 
@@ -24,14 +24,14 @@ Three things keep this loop trustworthy:
 
 * **Field definitions are governed.** Every measure, dimension, and join Zoë uses comes from your semantic model — the **Context layer** — not from improvisation.
 * **SQL goes through the [Clarity Engine](../zenlytic-ui/clarity_engine.md).** Every query Zoë writes is validated against your model and your row- and column-level security rules before it ever reaches the warehouse.
-* **Every step is visible.** You can see which tools Zoë called, the SQL she ran, and the fields she referenced. Citations on her output link back to the underlying definitions.
+* **Every step is visible.** You can see which tools Zoë called, the SQL that ran, and the fields referenced. Citations on the output link back to the underlying definitions.
 
 ## Zoë's tools
 
 The toolset Zoë chooses from on every step. The four shown in the diagram cover most question-answering work:
 
 * **`search fields`** — reads the Context layer to find measures, dimensions, and joins relevant to the question. Returns SQL definitions and metadata so Zoë can build a correct query rather than guess at field names.
-* **`update context`** — writes back to the Context layer. When Zoë learns something new — a better synonym, a clearer description, a new measure that should exist — she can persist it so future questions benefit. See [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) for the user-facing workflow this powers.
+* **`update context`** — writes back to the Context layer. When Zoë learns something new — a better synonym, a clearer description, a new measure that should exist — this tool can save the learning so future questions benefit. See [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) for the user-facing workflow this powers.
 * **`sql query`** — sends a SQL request to the warehouse. The query is routed through the [Clarity Engine](../zenlytic-ui/clarity_engine.md), which enforces permissions and validates against the semantic model before execution.
 * **`code interpreter`** — runs Python in an isolated sandbox. This is what builds the rich, interactive outputs that get delivered to you as [Artifacts](../zenlytic-ui/artifacts.md) (dashboards, documents, spreadsheets, presentations).
 
@@ -49,20 +49,20 @@ Take a non-trivial question:
 
 Here's the loop Zoë runs end to end:
 
-1. **Zoë reads the question** and decides she needs to find the relevant fields. She calls `search fields` with search terms `"gross revenue"`, `"ytd"`, `"product"`.
+1. **Zoë reads the question** and starts by finding the relevant fields, calling `search fields` with search terms `"gross revenue"`, `"ytd"`, `"product"`.
 2. **The tool returns matches** like `order_lines.total_gross_revenue`, `order_lines.order_date`, and `products.product_title`, along with their metadata and SQL definitions.
 3. **Zoë constructs SQL** referencing those field definitions and calls `sql query`.
 4. **The Clarity Engine checks the SQL** for permissions, validates it against the semantic model, and produces a step-by-step breakdown so business users can see exactly what was queried.
 5. **The query runs** on the customer warehouse (Snowflake, BigQuery, Redshift, etc.) and the result is returned to Zoë.
-6. **Zoë decides to visualize the result.** She writes Python code that builds an interactive dashboard and passes it to `code interpreter`.
+6. **Zoë decides to visualize the result** and writes Python code that builds an interactive dashboard, then passes the code to `code interpreter`.
 7. **The sandbox runs the code** in isolation, builds the rich output, and Zenlytic delivers it to you as an [Artifact](../zenlytic-ui/artifacts.md).
-8. **Zoë writes a text summary** of what she found, decides she's done, and responds — ending the loop.
+8. **Zoë writes a text summary** of the findings, decides the work is done, and responds — ending the loop.
 
 Throughout, you can inspect every tool call, every SQL query, and every field reference. Nothing about Zoë's reasoning is hidden.
 
 ## Why this architecture matters
 
-The agentic loop gives Zoë **flexibility** — she can decompose complex questions and pick the right tool for each piece, in any order, as many times as needed. The governance layer keeps her **grounded** — every answer ties back to definitions your data team has reviewed, and every query passes through the same row- and column-level security rules that govern the rest of the platform. Together they're what make Zoë both useful for ad-hoc analytical questions and safe to deploy across an organization.
+The agentic loop gives Zoë **flexibility** — the freedom to decompose complex questions and pick the right tool for each piece, in any order, as many times as needed. The governance layer keeps the output **grounded** — every answer ties back to definitions your data team has reviewed, and every query passes through the same row- and column-level security rules that govern the rest of the platform. Together they're what make Zoë both useful for ad-hoc analytical questions and safe to deploy across an organization.
 
 ## Related
 

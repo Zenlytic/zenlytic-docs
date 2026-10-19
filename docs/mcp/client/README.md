@@ -1,7 +1,6 @@
 ---
 description: >-
-  Connect Zoë to remote MCP servers so she can call external tools directly from
-  chat.
+  Connect Zoë to remote MCP servers to call external tools directly from chat.
 ---
 
 # MCP Client
@@ -14,7 +13,7 @@ Zenlytic acts as an **MCP client**: point Zoë at a compatible remote MCP server
 
 * Pull live metadata, schemas, and lineage from your data warehouse or transformation layer.
 * Read workbook, dataset, and report context from your BI tools so Zoë can ground answers in published assets.
-* Expose internal APIs and operational workflows to Zoë through your own MCP server, with per-tool control over what she can call.
+* Expose internal APIs and operational workflows to Zoë through your own MCP server, with per-tool control over what's callable.
 * Mix and match connections per conversation, so different chats can pull from different combinations of systems.
 
 ## How MCP works in Zenlytic
@@ -32,7 +31,7 @@ Zenlytic supports two kinds of MCP connector:
 
 OAuth connectors behave differently from custom connections in a few ways:
 
-* **Each user connects their own account.** Creating the connector does not authorize anyone. In the chat tool menu, an OAuth connector appears as a **Connect** row until the user signs in with the provider in a popup. After that it becomes a normal toggle. Zoë calls tools with that user's token, so she sees exactly what the user can see.
+* **Each user connects their own account.** Creating the connector does not authorize anyone. In the chat tool menu, an OAuth connector appears as a **Connect** row until the user signs in with the provider in a popup. After that it becomes a normal toggle. Zoë calls tools with that user's token and sees exactly what the user can see.
 * **Credentials are fixed at creation.** Client credentials and tenant IDs cannot be edited. To rotate them, delete the connector and create it again. Name, access grants, and the enabled-by-default setting remain editable.
 * **Enabled by default applies only to connected users.** A user who has not connected their account must connect before the connector turns on in their chats.
 
@@ -109,4 +108,4 @@ These guides are provided for general reference, be prepared for some details to
 
 End-to-end walkthroughs that combine an MCP connection with Zoë to solve a specific problem:
 
-* [Audit a semantic layer with a repo MCP](../audit-semantic-layer.md) — point Zoë at the repo that holds your Zenlytic data model so she can read every view at once and recommend the highest-leverage additions. Uses the GitHub MCP for a practical example, with DeepWiki as a read-only alternative for public repos.
+* [Audit a semantic layer with a repo MCP](../audit-semantic-layer.md) — point Zoë at the repo that holds your Zenlytic data model to read every view at once and get recommendations for the highest-leverage additions. Uses the GitHub MCP for a practical example, with DeepWiki as a read-only alternative for public repos.

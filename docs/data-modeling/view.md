@@ -20,7 +20,7 @@ Views, like all files in Zenlytic, are YAML text files.
 
 `label`: The label of the view is what shows up to the end users of your data model. If not specified it defaults to the name of the view.
 
-`description`: The description of the view. This can help business users understand what the view represents and how it is created. This is also sent to Zoë (Zenlytic's AI Analyst) to give her context on how to use different views in your data model. Use this to provide Zoë view or table-level context.
+`description`: The description of the view. This can help business users understand what the view represents and how it is created. This is also sent to Zoë (Zenlytic's AI Analyst) as context on how to use different views in your data model. Use this to provide Zoë view or table-level context.
 
 `zoe_description`: The description of the view shown to Zoë. If not set, Zoë uses `description` instead. If set, this replaces `description` for Zoë only. End users will still see `description` in the UI. Use this to provide context to Zoë on how to use the view correctly.
 

@@ -8,7 +8,7 @@ description: >-
 
 Let Zoë know about categorical values
 
-Zoë will _never_ index your data unless you explicitly tell her to. This protects your privacy and makes sure we never index sensitive or regulated data.
+Zoë will _never_ index your data unless you explicitly ask. This protects your privacy and makes sure we never index sensitive or regulated data.
 
 Many times you'll want to be able to ask questions like "How many orders do we have in fulfillment placed more than a week ago?" But if the `fulfillment` category is hidden in a field nebulously called `status`, Zoë won't know how to find the right filter.
 

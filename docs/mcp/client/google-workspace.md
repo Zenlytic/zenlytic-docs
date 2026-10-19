@@ -6,7 +6,7 @@ description: >-
 
 # Google Workspace
 
-Connect Zoë to Google's hosted Workspace MCP servers for **Drive**, **Docs**, **Sheets**, and **Slides** so she can search files, read and edit documents, and update spreadsheets and presentations directly from Zenlytic chats. Google Workspace is an **OAuth connector**: you register an OAuth client in your own Google Cloud project and paste its Client ID and Client Secret into Zenlytic. Every user then signs in with their own Google account, and Zoë acts as that user.
+Connect Zoë to Google's hosted Workspace MCP servers for **Drive**, **Docs**, **Sheets**, and **Slides** to search files, read and edit documents, and update spreadsheets and presentations directly from Zenlytic chats. Google Workspace is an **OAuth connector**: you register an OAuth client in your own Google Cloud project and paste its Client ID and Client Secret into Zenlytic. Every user then signs in with their own Google account, and Zoë acts as that user.
 
 > Looking for BigQuery instead? See [Google](google.md). That guide covers Google's BigQuery MCP server, which uses a static bearer token rather than per-user OAuth.
 
@@ -119,7 +119,7 @@ A few specifics to share with your users:
 
 * **Your files, your permissions.** Zoë sees exactly what your Google account can see. Another user connecting the same connector sees their own files, not yours.
 * **Name the file.** Prompts that include the file name or a Drive link produce more reliable tool calls than vague references. For example: "Read the `Q3 Planning` doc and summarize the open decisions."
-* **Write tools make real changes.** With Docs, Sheets, or Slides enabled, Zoë can edit your documents. Review changes she makes.
+* **Write tools make real changes.** With Docs, Sheets, or Slides enabled, Zoë can edit your documents. Review every change.
 
 ## Troubleshoot
 

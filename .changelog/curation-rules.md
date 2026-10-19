@@ -421,6 +421,9 @@ scheduled-task prompt remains the executable spec.
   emojis, no hashtags. Surface tag in parentheses only when the item is not
   the web app (e.g. "(Slack)", "(API)", "(Data Model Editor)").
 
+- **Zoë by name, never "she".** Use the name or restructure the sentence;
+  "it" only as a last resort. Use "they" for people.
+
 - **Attribute changes to their exact surface.** When a change applies to a
   specific feature area (e.g. Proactive Agent configuration), name that
   surface in the bullet — don't describe it generically as "chat" or

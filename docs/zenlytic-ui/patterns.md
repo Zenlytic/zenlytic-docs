@@ -44,7 +44,7 @@ Zenlytic connects to your data warehouse and pulls recent analytical queries. Qu
 {% step %}
 **Search**
 
-During a conversation, when Zoë determines that the data model fields alone can't answer a question, she automatically searches the indexed patterns for similar queries. She selects the most relevant matches, adapts them to the current question, and uses them to generate SQL.
+During a conversation, when the data model fields alone can't answer a question, Zoë automatically searches the indexed patterns for similar queries. From there, the most relevant matches are adapted to the current question and used to generate SQL.
 {% endstep %}
 {% endstepper %}
 
@@ -105,7 +105,7 @@ Sync status options:
 
 ### How Zoë uses Patterns in chat
 
-When Patterns is active, Zoë automatically decides when to use it — no prompting required. If she determines that the data model fields available aren't sufficient to answer the question, she searches your indexed patterns.
+When Patterns is active, Zoë automatically decides when to use it — no prompting required. If the available data model fields aren't sufficient to answer the question, Zoë searches your indexed patterns.
 
 In the chat thread, this appears as an interactive tool call labeled **Searching for \[topic] queries and definitions**. Click it to expand and see which keywords Zoë searched for, which patterns were returned, and a plain-language description of what each query does.
 

@@ -23,6 +23,6 @@ Your own AI tools (Claude.ai, Claude Code, ChatGPT) connect _in_ to Zenlytic's M
 
 ### [**MCP Client**](client/)
 
-Zoë connects _out_ to external MCP servers (Google Workspace, Tableau, Snowflake, dbt, GitHub, and more), so she can pull data and trigger workflows from other systems directly from the Zenlytic chat experience.
+Zoë connects _out_ to external MCP servers (Google Workspace, Tableau, Snowflake, dbt, GitHub, and more) to pull data and trigger workflows from other systems directly from the Zenlytic chat experience.
 
 <figure><img src="../.gitbook/assets/mcp-client.png" alt=""><figcaption></figcaption></figure>

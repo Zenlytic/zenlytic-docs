@@ -6,7 +6,7 @@ description: >-
 
 # Reltio
 
-Connect Zoë to the [Reltio AgentFlow MCP server](https://docs.reltio.com/developer-resources/ai-integrations/reltio-model-context-protocol-mcp-server-at-a-glance/reltio-agentflow-mcp-server) — Reltio's hosted MCP endpoint for AgentFlow tool orchestration — so she can search entities, explore relationships, and invoke other AgentFlow tools against your Reltio tenant directly from Zenlytic chats. Authenticate with a static `Authorization` header containing a Reltio OAuth 2.0 access token minted from a service account's client credentials.
+Connect Zoë to the [Reltio AgentFlow MCP server](https://docs.reltio.com/developer-resources/ai-integrations/reltio-model-context-protocol-mcp-server-at-a-glance/reltio-agentflow-mcp-server) — Reltio's hosted MCP endpoint for AgentFlow tool orchestration — to search entities, explore relationships, and invoke other AgentFlow tools against your Reltio tenant directly from Zenlytic chats. Authenticate with a static `Authorization` header containing a Reltio OAuth 2.0 access token minted from a service account's client credentials.
 
 ## What Zoë can access
 

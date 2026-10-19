@@ -45,7 +45,7 @@ Because the queries are parameterized rather than rewritten, you're exploring in
 
 Live Queries are the default for HTML artifacts. Unless you say otherwise, Zoë builds dashboards, charts, and apps to re-query when they open.
 
-If you'd rather have fixed numbers, ask Zoë to make the query static. She bakes the results into the artifact when she builds it, so it shows the same numbers every time anyone opens it. Reach for this when you want a snapshot that can't move underneath you — a month-end figure you're circulating for review, or an artifact you want to [publish to the web](artifacts.md#publishing-to-the-web), which only works without Live Queries.
+If you'd rather have fixed numbers, ask Zoë to make the query static. Static queries bake their results into the artifact at build time, so it shows the same numbers every time anyone opens it. Reach for this when you want a snapshot that can't move underneath you — a month-end figure you're circulating for review, or an artifact you want to [publish to the web](artifacts.md#publishing-to-the-web), which only works without Live Queries.
 
 Asking Zoë to make a static query live again works the same way. Either change is an edit to the artifact, so it creates a new version in the [update history](artifacts.md#update-history).
 
@@ -63,7 +63,7 @@ For more on how folders work, see [Artifact Folders](artifact-folders.md). For a
 
 ## Artifacts in chat
 
-Zoë creates artifacts automatically whenever a visual output would be helpful — or when you ask her to build something. Artifacts appear inline in the chat, and you can click on one to expand it in the side drawer.
+Zoë creates artifacts automatically whenever a visual output would be helpful — or whenever you ask for one. Artifacts appear inline in the chat, and you can click on one to expand it in the side drawer.
 
 <figure><img src="../.gitbook/assets/artifact-in-chat.png" alt=""><figcaption></figcaption></figure>
 
@@ -232,7 +232,7 @@ If you edit a published artifact and the new version starts using Live Queries, 
 
 ## Artifact memory
 
-Every artifact has an artifact memory — a detailed summary of the artifact's purpose, your instructions, version history, and key context. Zoë references this memory whenever you work with the artifact in a chat, so she understands what the artifact is, what you like and dislike about it, and how it has evolved over time.
+Every artifact has an artifact memory — a detailed summary of the artifact's purpose, your instructions, version history, and key context. Zoë references this memory whenever you work with the artifact in a chat, for context on what the artifact is, what you like and dislike about it, and how it has evolved over time.
 
 To view an artifact's memory, click the three-dot menu in the artifact drawer header and select **View Artifact Memory**.
 

@@ -6,7 +6,7 @@ description: >-
 
 # Web Search
 
-Zoë can search the web for real-time information to supplement her data analysis. This is useful when you need external context alongside your internal data — for example, comparing your metrics against industry benchmarks, understanding market trends, or referencing recent events.
+Zoë can search the web for real-time information to supplement the analysis. This is useful when you need external context alongside your internal data — for example, comparing your metrics against industry benchmarks, understanding market trends, or referencing recent events.
 
 > **Note:** Web Search is currently available only when using Anthropic models (e.g. Sonnet 4.6, Opus 4.6). If a non-Anthropic model is selected for the conversation, the Web Search toggle will not appear.
 
@@ -18,7 +18,7 @@ Web Search must first be enabled at the workspace level by an admin. Navigate to
 
 ## Enabling Web Search per Conversation
 
-Once the workspace-level setting is enabled, Web Search can be toggled on or off for each individual conversation. Click the **Globe icon** in the toolbar below the Chat input to reveal the Web Search toggle, then switch it on for that conversation. When enabled, Zoë will be able to search the web as part of her response.
+Once the workspace-level setting is enabled, Web Search can be toggled on or off for each individual conversation. Click the **Globe icon** in the toolbar below the Chat input to reveal the Web Search toggle, then switch it on for that conversation. When enabled, Zoë can search the web as part of the response.
 
 <figure><img src="../.gitbook/assets/web-search-conversation.png" alt="Toggling Web Search on for an individual conversation"><figcaption><p>Toggling Web Search on for an individual conversation</p></figcaption></figure>
 
@@ -26,7 +26,7 @@ The toggle is persistent for the conversation — once turned on, Zoë will have
 
 ## How It Works
 
-When Web Search is active and Zoë determines that external information would help answer your question, she will search the web before composing her response. You will see a "Searching the web for..." indicator in the chat while the search is in progress. Zoë synthesizes the search results into a coherent answer, combining external context with any data she pulls from your governed data model.
+When Web Search is active, Zoë decides whether external information would help answer your question and, if so, searches the web before composing a response. You will see a "Searching the web for..." indicator in the chat while the search is in progress. Zoë synthesizes the search results into a coherent answer, combining external context with any data pulled from your governed data model.
 
 Common use cases include:
 
@@ -37,7 +37,7 @@ Common use cases include:
 
 ## Cited Sources
 
-When Zoë uses web search to answer a question, she cites the sources she found directly in her response. Each piece of externally sourced information is accompanied by a domain-level citation badge (e.g. `docs.zenlytic.com`, `snowflake.com`) so you can see exactly where the information came from and verify it yourself.
+When Zoë uses web search to answer a question, the response cites each web source directly. Each piece of externally sourced information is accompanied by a domain-level citation badge (e.g. `docs.zenlytic.com`, `snowflake.com`) so you can see exactly where the information came from and verify it yourself.
 
 <figure><img src="../.gitbook/assets/web-search-response.png" alt="Zoë citing web sources in a response"><figcaption><p>Zoë citing web sources in a response</p></figcaption></figure>
 

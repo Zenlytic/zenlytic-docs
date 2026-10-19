@@ -10,8 +10,8 @@ Welcome to Zenlytic. The shortest path from a blank workspace to a working AI an
 
 1. **Connect** your data warehouse.
 2. **Import a few tables** — or ask Zoë which ones to start with.
-3. **Ask Zoë a real question** — and check her work.
-4. **Ask Zoë how to make herself better** — and let her recommend (or apply) the changes.
+3. **Ask Zoë a real question** — and check the work.
+4. **Ask Zoë how to improve** — and get recommended changes, or let Zoë apply them.
 
 The whole onboarding is a conversation. You don't need to build a finished data model before getting value, and you don't have to author context from scratch — Zoë can recommend, and with permission save, most of the changes you'd otherwise write by hand.
 
@@ -29,7 +29,7 @@ For a reference, see the [demo data model](https://github.com/Zenlytic/demo-data
 
 The traditional path: open [Context Manager](../zenlytic-ui/context_manager.md), click **Add → Add view → Add from a database connection**, and pick the tables you want.
 
-The faster path: **just ask Zoë.** Once your warehouse is connected, Zoë can read your `information_schema` — she sees every table available through that connection, not just the ones already imported. Try:
+The faster path: **just ask Zoë.** Once your warehouse is connected, Zoë can read your `information_schema`, which lists every table available through that connection, not just the ones already imported. Try:
 
 * "Which tables should I import to answer questions about retention?"
 * "Add the orders, customers, and shipments tables to my model."
@@ -37,7 +37,7 @@ The faster path: **just ask Zoë.** Once your warehouse is connected, Zoë can r
 
 ### Migrating from another BI tool
 
-If you're moving from Power BI, Tableau, Looker, or another reporting platform, you don't have to figure out the mapping yourself. **Paste a screenshot of an existing report into chat and ask Zoë what data she'd need to recreate it.** She'll match the report's metrics and dimensions to your warehouse tables, tell you what to import, and — with edits enabled — do the import.
+If you're moving from Power BI, Tableau, Looker, or another reporting platform, you don't have to figure out the mapping yourself. **Paste a screenshot of an existing report into chat and ask Zoë what data you need to recreate it.** You'll get the report's metrics and dimensions mapped to your warehouse tables, a list of what to import, and — with edits enabled — the import itself.
 
 You can also describe the question without a screenshot — _"what data would I need to track new vs. repeat customer revenue by channel?"_ — and Zoë will identify the relevant tables and fields the same way.
 
@@ -49,7 +49,7 @@ Each imported table becomes a [view](../data-modeling/view.md) with dimensions a
 
 You don't need to define every metric or write every description before testing. Raw tables with decent names will get you surprisingly far. The full walkthrough for the editor, branch workflows, diffs, and deployment lives on the [Context Manager](../zenlytic-ui/context_manager.md) page.
 
-## Step 3 — Ask Zoë a real question (and check her work)
+## Step 3 — Ask Zoë a real question (and check the work)
 
 Open Zoë and ask something you actually want answered:
 
@@ -57,13 +57,13 @@ Open Zoë and ask something you actually want answered:
 * "Which products had the biggest YoY drop in margin?"
 * "Show me sessions by channel for the last 30 days."
 
-When she responds, **check her work**. Every chart and table has citations showing which fields and joins backed the answer. Click into them. Does the SQL match what you expected? Is she using the right field? Joining the right tables?
+When the answer comes back, **check the work**. Every chart and table has citations showing which fields and joins backed the answer. Click into them. Does the SQL match what you expected? Does it use the right field? Join the right tables?
 
 If something looks off, that's the signal for Step 4.
 
 ## Step 4 — Ask Zoë how to improve
 
-When Zoë gets something wrong — and she will, at first — **don't guess at a fix**. Ask her:
+When Zoë gets something wrong — expect some misses at first — **don't guess at a fix**. Ask instead:
 
 * "Why did you pick that field?"
 * "What context would help you answer this correctly next time?"
@@ -71,7 +71,7 @@ When Zoë gets something wrong — and she will, at first — **don't guess at a
 * "Add a measure for repeat purchase rate."
 * "Create a skill for our fiscal calendar."
 
-She'll diagnose the specific cause and recommend the smallest change that prevents the same mistake — a better `zoe_description`, a synonym, a missing measure, a new relationship, a system-prompt rule, or a skill for complex domain logic. With edits enabled, she can apply the change directly to your repo on the current branch.
+The response diagnoses the specific cause and recommends the smallest change that prevents the same mistake — a better `zoe_description`, a synonym, a missing measure, a new relationship, a system-prompt rule, or a skill for complex domain logic. With edits enabled, Zoë can apply the change directly to your repo on the current branch.
 
 This is the loop:
 

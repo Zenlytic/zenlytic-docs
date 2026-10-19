@@ -6,7 +6,7 @@ description: >-
 
 # Skills
 
-Skills let you give Zoë persistent instructions, reference material, and complex analysis patterns that she loads on demand. Use skills for anything that's sometimes relevant — a fiscal calendar, a brand style guide, a multi-step reporting workflow — rather than context that needs to apply to every question.
+Skills let you give Zoë persistent instructions, reference material, and complex analysis patterns that load on demand. Use skills for anything that's sometimes relevant — a fiscal calendar, a brand style guide, a multi-step reporting workflow — rather than context that needs to apply to every question.
 
 Skills are the recommended replacement for Memories. Memories you already have will migrate to skills automatically in a future release; for new context, prefer skills from the start. See [Migrating from Memories and Topics](../migrations/migrating-from-memories-and-topics.md) for side-by-side examples.
 
@@ -47,7 +47,7 @@ For example, you might write:
 
 > Use a dark navy (#1B2A4A) and gold (#D4A843) color palette with clean, modern typography and minimal borders.
 
-Once saved, Zoë will apply your brand style to dashboards, presentations, apps, and every other artifact she builds.
+Once saved, your brand style applies to dashboards, presentations, apps, and every other artifact Zoë builds.
 
 <figure><img src="../.gitbook/assets/skills-brand-style-guide.png" alt=""><figcaption></figcaption></figure>
 
@@ -65,7 +65,7 @@ To create a new skill:
 2. Click **Create Skill** (or the equivalent button).
 3. Give the skill a **name** — something descriptive like "Weekly Report Format" or "Brand Style Guide."
 4. Write a **description** — a short summary of what the skill does. Zoë uses the description to decide when to load the skill, so be specific about the kinds of questions or requests that should trigger it.
-5. Add **instructions** — detailed directions for Zoë on what she should do when this skill is active. Be as specific as you like.
+5. Add **instructions** — detailed directions on what Zoë should do when this skill is active. Be as specific as you like.
 6. Optionally, upload up to 5 reference files.
 7. Save the skill.
 

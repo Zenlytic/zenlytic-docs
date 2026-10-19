@@ -65,7 +65,7 @@ views:
 ```
 {% endcode %}
 
-Zoë uses topics to understand what data can be joined together and how those relationships work, making her responses more accurate and contextually appropriate.
+Zoë uses topics to understand what data can be joined together and how those relationships work, making responses more accurate and contextually appropriate.
 
 ## Join As: How to join a table in more than once to a topic
 

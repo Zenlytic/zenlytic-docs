@@ -5,7 +5,7 @@ description: >-
 ---
 
 {% hint style="danger" %}
-**This page describes a legacy interface that no longer exists.** The standalone Explore UI has been replaced by [Zoë](zoe.md) — ask her directly in chat to slice, filter, or drill into a metric, and she'll build the query for you. The rest of this page is kept for historical reference only.
+**This page describes a legacy interface that no longer exists.** The standalone Explore UI has been replaced by [Zoë](zoe.md) — ask directly in chat to slice, filter, or drill into a metric, and Zoë builds the query for you. The rest of this page is kept for historical reference only.
 {% endhint %}
 
 # Exploring (legacy)

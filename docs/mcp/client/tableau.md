@@ -6,7 +6,7 @@ description: >-
 
 # Tableau
 
-Connect Zoë to a self-hosted [Tableau MCP server](https://github.com/tableau/tableau-mcp) so she can browse Tableau content and query data sources in natural language, right inside Zenlytic. Zenlytic acts as an MCP client and forwards your Tableau credentials to the server on every call, so Zoë's actions inherit the underlying Tableau identity's permissions. Authenticate with a Tableau Personal Access Token (PAT) or a static `Authorization` header.
+Connect Zoë to a self-hosted [Tableau MCP server](https://github.com/tableau/tableau-mcp) to browse Tableau content and query data sources in natural language, right inside Zenlytic. Zenlytic acts as an MCP client and forwards your Tableau credentials to the server on every call, so Zoë's actions inherit the underlying Tableau identity's permissions. Authenticate with a Tableau Personal Access Token (PAT) or a static `Authorization` header.
 
 > For Tableau Cloud customers, as part of the 2026.2 release, Tableau is planning to roll out a cloud-hosted service, available to all editions. The release will unlock the ability for Tableau Cloud customers to self-host Tableau MCP at scale using OAuth. A Tableau MCP deployment guide for Tableau Cloud customers will also be made available with the release.
 

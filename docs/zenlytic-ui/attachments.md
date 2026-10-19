@@ -12,7 +12,7 @@ Attachments let you bring external files and structured queries directly into yo
 
 Click the **+** icon in the chat input to open the attachments dropdown. From here, choose one of two options:
 
-* **Upload a file** — Attach CSVs, images, PDFs, and other supported file types (up to 5 files per message, 25 MB each).
+* **Upload a file** — Attach CSVs, images, PDFs, YAML files (.yml and .yaml), and other supported file types (up to 5 files per message, 25 MB each).
 * **Run a query** — Build a query from your data model's metrics and slices, or write raw SQL, and attach the results.
 
 <figure><img src="../.gitbook/assets/attachments-dropdown.png" alt=""><figcaption><p>The attachments dropdown in the chat input</p></figcaption></figure>

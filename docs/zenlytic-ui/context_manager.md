@@ -52,9 +52,9 @@ Use an existing connection or create a new connection during setup.
 
 ## Edit, validate, and review changes
 
-Edit files directly in the text editor. Use the validation panel to review errors and warnings, then fix issues before deployment.
+Edit files directly in the text editor. In Compare Changes or Deploy Changes, review the changed files and their counts of additions, changes, and removals. Select a file in the file tree to inspect it. For an edited view, use **Show only changed** to focus on modified rows, or switch to **Code** to inspect the YAML diff.
 
-Open the diff view to compare branch changes against production before deployment.
+Validation issues appear in the branch banner and beside affected files. Open **Validation** in the banner to review issues, or use an affected file’s issue indicator to see what needs fixing. Deleted files show a summary; select **Show what's being removed** to inspect their previous contents.
 
 ![Editor with validation panel](../.gitbook/assets/context-manager-editor-validation.png) ![Diff view](../.gitbook/assets/context-manager-diff-view.png)
 
@@ -74,6 +74,6 @@ Disable the workspace setting that allows direct edits on the production branch 
 
 After you commit changes on a development branch, use the deploy action to publish to production.
 
-You must resolve validation errors before deployment.
+If the branch has validation errors, **Commit Changes** is unavailable in Deploy Changes. Fix the errors, then review and deploy the changes.
 
 ![Deploy action](../.gitbook/assets/context-manager-deploy.png)

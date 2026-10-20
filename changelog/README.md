@@ -27,6 +27,24 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-10-18" tags="new-features,improvements,fixes" %}
+## YAML attachments in chat and clearer Artifact schedule ownership
+
+Chat now accepts YAML files, and Artifact schedules pause cleanly and can be taken over when their owner loses workspace access.
+
+### New features
+
+* **YAML attachments in chat** — You can now attach `.yml` and `.yaml` files to a chat.
+
+### Improvements
+
+* **Take over paused Artifact schedules** — Artifact schedules now show when they are paused because their owner lost workspace access, and eligible workspace admins can take them over with a confirmed Take over action. Auto-Rebuild save errors are now shown.
+
+### Bug fixes
+
+* **Artifact schedules pause when their owner loses access** — Artifact Auto-Rebuilds and scheduled deliveries now pause when their owner loses workspace access. Queued runs and Run now return a clear ownership error instead of failing repeatedly or silently, and an admin can take ownership when saving.
+* **Attribute templates in raw SQL** — Raw SQL that uses derived-table views, and view previews, now apply the current user's attribute templates correctly. Saved dynamic-field SQL keeps its templates for whoever views it.
+{% endupdate %}
 {% update date="2026-10-11" tags="new-features,fixes" %}
 ## Claude Sonnet 5.5 in the model picker
 

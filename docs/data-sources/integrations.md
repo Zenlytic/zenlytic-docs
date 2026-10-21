@@ -22,3 +22,4 @@ Zenlytic integrates with the following data warehouses:
 * Trino
 * SQL Server
 * Azure Synapse Analytics
+* Teradata

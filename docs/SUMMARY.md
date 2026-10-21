@@ -103,6 +103,7 @@
 * [Mysql Setup](data-sources/mysql_setup.md)
 * [Sql Server Setup](data-sources/sql_server_setup.md)
 * [Azure Synapse Setup](data-sources/azure_synapse_setup.md)
+* [Teradata Setup](data-sources/teradata_setup.md)
 * [Databricks Setup](data-sources/databricks_setup.md)
 * [Druid Setup](data-sources/druid_setup.md)
 * [Trino Onboarding](data-sources/trino_onboarding.md)

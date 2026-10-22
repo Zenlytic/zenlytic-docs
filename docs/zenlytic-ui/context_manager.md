@@ -21,14 +21,12 @@ Use the file tree to organize and maintain your data model:
 * Create files and folders
 * Rename files and folders
 * Open view and model files in the editor
-* Access file actions beside the path or by right-clicking a folder in the file tree.
+* Access file actions from the three-dot menu
 
 Use the three-dot menu to:
 
 * Show documentation for view and model files
 * Open database preview for view files
-
-To rename a folder on a writable branch, open the three-dot menu beside its path or right-click it in the file tree, select **Rename**, enter the new name, and select **Commit Changes**. If the folder is referenced by `zenlytic_project.yml`, update those paths too; otherwise, the files it contains may no longer load.
 
 ![Context tab file tree](../.gitbook/assets/context-manager-file-tree.png) ![Three-dot menu actions](../.gitbook/assets/context-manager-file-menu.png)
 
@@ -56,7 +54,7 @@ Use an existing connection or create a new connection during setup.
 
 Edit files directly in the text editor. In Compare Changes or Deploy Changes, review the changed files and their counts of additions, changes, and removals. Select a file in the file tree to inspect it. For an edited view, use **Show only changed** to focus on modified rows, or switch to **Code** to inspect the YAML diff.
 
-Validation issues appear in the branch banner and beside affected files. Open **Validation** in the banner to review issues, or use an affected file’s issue indicator to see what needs fixing. Deleted files show **This change deletes this file**; select **Show what it was** to inspect the previous contents.
+Validation issues appear in the branch banner and beside affected files. Open **Validation** in the banner to review issues, or use an affected file’s issue indicator to see what needs fixing. Deleted files show a summary; select **Show what's being removed** to inspect their previous contents.
 
 ![Editor with validation panel](../.gitbook/assets/context-manager-editor-validation.png) ![Diff view](../.gitbook/assets/context-manager-diff-view.png)
 

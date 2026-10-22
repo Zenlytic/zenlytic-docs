@@ -69,8 +69,6 @@ ZoÃ« creates artifacts automatically whenever a visual output would be helpful â
 
 If an artifact is something you'd like to keep and come back to, click **Save to my artifacts**. The artifact will then appear in your Artifacts gallery alongside everything else you've saved.
 
-If the chat uses a development branch with changes that have not been deployed to production, Zenlytic asks you to deploy the branch before saving the artifact. Deploy it from Context Manager, then try saving again. This keeps the saved artifact from running against a different data model than the chat.
-
 <figure><img src="../.gitbook/assets/artifact-save-to-gallery.png" alt=""><figcaption></figcaption></figure>
 
 ## Creating a new artifact

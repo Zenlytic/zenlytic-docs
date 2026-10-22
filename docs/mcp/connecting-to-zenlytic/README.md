@@ -42,6 +42,8 @@ You'll need the MCP URL that matches your Zenlytic instance:
 * If your organization uses a company-specific URL on the US instance, use `https://<company>.mcp.zenlytic.com/mcp`. For example, Acme would use `https://acme.mcp.zenlytic.com/mcp`.
 * If your organization uses a company-specific URL on the EU instance, use `https://<company>.mcp-eu.zenlytic.com/mcp`. For example, Acme would use `https://acme.mcp-eu.zenlytic.com/mcp`.
 
+If your organization uses a separately hosted Zenlytic instance, open **Settings → MCP** and copy the server URL shown there instead of using one of the examples above. If you cannot access that page, ask your Zenlytic administrator for the URL.
+
 If you're unsure which Zenlytic instance your organization uses, ask your Zenlytic administrator.
 {% endhint %}
 

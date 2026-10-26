@@ -32,7 +32,7 @@ The toolset Zoë chooses from on every step. The four shown in the diagram cover
 
 * **`search fields`** — reads the Context layer to find measures, dimensions, and joins relevant to the question. Returns SQL definitions and metadata so Zoë can build a correct query rather than guess at field names.
 * **`update context`** — writes back to the Context layer. When Zoë learns something new — a better synonym, a clearer description, a new measure that should exist — this tool can save the learning so future questions benefit. See [Ask Zoë for Data Model Recommendations](../data-modeling/asking-zoe-for-recommendations.md) for the user-facing workflow this powers.
-* **`sql query`** — sends a SQL request to the warehouse. The query is routed through the [Clarity Engine](../zenlytic-ui/clarity_engine.md), which enforces permissions and validates against the semantic model before execution.
+* **`sql query`** — sends a SQL request to the warehouse. Each call targets one [model](../data-modeling/model.md) and runs on that model's connection. The query is routed through the [Clarity Engine](../zenlytic-ui/clarity_engine.md), which enforces permissions and validates against the semantic model before execution.
 * **`code interpreter`** — runs Python in an isolated sandbox. This is what builds the rich, interactive outputs that get delivered to you as [Artifacts](../zenlytic-ui/artifacts.md) (dashboards, documents, spreadsheets, presentations).
 
 Other tools exist for searching workspace content, web search, and similar — but the four above are the load-bearing ones for analytical questions.

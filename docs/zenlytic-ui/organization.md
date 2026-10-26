@@ -113,6 +113,7 @@ The Organization section has two related SSO controls:
 
 * **SSO User Provisioning**, under **Settings → Workspaces**, controls which workspaces automatically add users who sign in through SSO. Automatic provisioning still respects each workspace's seat limit.
 * **Require SSO**, under **Settings → SSO**, requires access to the organization's workspaces through one of its configured SSO providers. Username/password and unconfigured social logins are rejected, including already signed-in sessions, and the username/password option is removed from the login page.
+* **Account linking**, when enabled for your organization, lets an SSO sign-in link to an existing password account instead of creating a second account.
 
 ***
 

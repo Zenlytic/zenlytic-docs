@@ -114,6 +114,8 @@ The Organization section has two related SSO controls:
 * **SSO User Provisioning**, under **Settings → Workspaces**, controls which workspaces automatically add users who sign in through SSO. Automatic provisioning still respects each workspace's seat limit.
 * **Require SSO**, under **Settings → SSO**, requires access to the organization's workspaces through one of its configured SSO providers. Username/password and unconfigured social logins are rejected, including already signed-in sessions, and the username/password option is removed from the login page.
 
+**Verified Email Domains** on an SSO provider identify domains that provider can verify. Invitation eligibility is governed separately by the organization’s allowed invite domains; that list is not currently editable in Settings.
+
 ***
 
 ## Creating a New Workspace

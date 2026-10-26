@@ -12,6 +12,8 @@ description: >-
 
 You don't have to author your data model alone. Zoë can recommend changes directly from chat: new measures, new dimensions, new relationships, calculation logic, view and field documentation, workspace skills, updates to the system prompt, or restructuring something that isn't answering questions well. [If you've turned on context editing](asking-zoe-for-recommendations.md#turning-context-editing-on-or-off), Zoë can also make those changes for you and save them to your repository on the current branch.
 
+In a branch chat, Zoë’s questions and model guidance use the branch as pushed to your repository; charts run within that chat use it too. Push local edits before rerunning a question so the updated model is available. Saved artifacts continue to use the production model.
+
 Ask in plain English. Either ask Zoë to draft a snippet for you to paste in [Context Manager](../zenlytic-ui/context_manager.md), or to make the change for you.
 
 ## When to ask Zoë instead of authoring from scratch

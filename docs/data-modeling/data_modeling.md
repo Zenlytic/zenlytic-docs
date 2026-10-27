@@ -17,7 +17,7 @@ Note: You can also use our automatic LookML -> ZenML converter [here](https://lo
 ## Key concepts
 
 * [Models](model.md)
-  * Models are references to a database connection. They serve as the data model's reference to the warehouse itself. They give your data model the ability to reference multiple data warehouses, one per model, and set some high level properties like the week start day or the timezone. Each query runs against one model's connection; see [Using more than one connection](model.md#using-more-than-one-connection).
+  * Models are references to a database connection. They serve as the data model's reference to the warehouses itself. They give your data model the ability to reference multiple data warehouses, and set some high level properties like the week start day or the timezone.
 * [Views](view.md)
   * Views directly represent an underlying database table. They contain both the [dimensions (columns)](dimension.md) and [measures (aggregates)](measure.md) inside of the table they reference. Views are organized into [topics](topic.md) which define how they join together.
 * [Dimensions](dimension.md)

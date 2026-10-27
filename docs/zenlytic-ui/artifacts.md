@@ -21,8 +21,6 @@ Each artifact bundles together four components:
 
 Live Queries keep an artifact's numbers current. Dashboards, charts, and other HTML artifacts don't store the results Zoë pulled — they store the queries behind them and re-run those queries against your warehouse every time you open the artifact. Open a dashboard Zoë built last month and you see this morning's data, with no action on your part.
 
-Each Live Query runs against the connection of the [model](../data-modeling/model.md#using-more-than-one-connection) it targets, so one artifact can draw on more than one connection, one query at a time.
-
 Artifacts created before Live Queries were available don't gain them on their own, and rebuilding one won't convert it. To add Live Queries to an existing artifact, ask Zoë to do it.
 
 {% hint style="info" %}

@@ -19,8 +19,6 @@ The whole onboarding is a conversation. You don't need to build a finished data 
 
 Click **+ Add Connection** under **Database Connections** in the Settings menu. Pick your warehouse type, give the connection a name, and fill in the credentials.
 
-This adds the workspace's first connection. To attach more than one, create the workspace in [Workspace Manager](../zenlytic-ui/organization.md#step-2-add-database-connections), where you can copy connections from other workspaces in your organization or create new ones. To add a connection to an existing workspace, contact support.
-
 The name matters. It's how Zenlytic links your credentials to your data model — the name here must match the `connection` property on your [model](../data-modeling/model.md) file (or your dbt `profile` if you're integrating via dbt MetricFlow without a Zenlytic model file).
 
 For a reference, see the [demo data model](https://github.com/Zenlytic/demo-data-model). It uses the connection name `demo` because that's the value of `connection` on the [model file](https://github.com/Zenlytic/demo-data-model/blob/master/models/pure_organics_model.yml).

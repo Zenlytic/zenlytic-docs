@@ -1186,8 +1186,8 @@ paths:
         seat limit, its billing subscription isn't set up yet, or its subscription status doesn't
         currently allow billing changes (e.g. past due).
 
-        Returns 400 if the workspace's SSO provider restricts allowed email domains and ``email``'s
-        domain isn't one of them.
+        Returns 400 if the workspace's ``allowed_invite_email_domains`` org setting is set and
+        ``email``'s domain isn't one of them.
       operationId: create_invite_workspaces__workspace_id__invites_post
       security:
       - HTTPBearer: []

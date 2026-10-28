@@ -27,6 +27,15 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-10-25" tags="fixes" %}
+## Slack delivery destinations no longer disappear
+
+Private and previously saved Slack channels now stay visible in delivery forms.
+
+### Bug fixes
+
+* **Slack delivery destinations stay visible** — Private channels and channels you saved earlier no longer vanish from delivery forms when Slack's channel list loads incompletely, and a loading indicator explains longer waits. (Slack)
+{% endupdate %}
 {% update date="2026-10-18" tags="new-features,improvements,fixes" %}
 ## YAML attachments in chat and clearer Artifact schedule ownership
 

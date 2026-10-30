@@ -384,8 +384,9 @@ stays the canonical rule set it reads every run.
   `main`, existing content untouched, file allowlist). No ad hoc git or API
   writes; never work around a guard; never edit the script mid-run. If the token
   is rejected or the script fails for a reason the staged files can't fix: leave
-  the kit in the working directory, post nothing to Slack, alert Greg privately,
-  stop without advancing state.
+  the kit in the working directory, post nothing else to Slack, alert the
+  operator per the skill's `OPERATOR_ALERT` (one message in the review channel
+  tagging the operator), stop without advancing state.
 
 - **Branch/PR conventions and evidence chain.** Branch
   `changelog/{week-start}-to-{week-end}`; commit "docs: change log — week of
@@ -405,7 +406,8 @@ stays the canonical rule set it reads every run.
 
 - **Notifications.** The source and review channels are the Chord channels in
   state.json (`source_channel`, `notify_channel`). Nobody is tagged in the review channel; the
-  only mention anywhere is Aime in the source channel, and only in `delegate` mode. No-change and
+  only mentions anywhere are Aime in the source channel (only in `delegate`
+  mode) and the operator in a failure alert (`OPERATOR_ALERT`). No-change and
   Aime-no-response notices go to the review channel untagged. Aime requests go
   to the source channel; watchlist re-checks are ONE batched message per run.
   Blocked or failed runs post nothing to Slack. The retired Notion "TEST Change

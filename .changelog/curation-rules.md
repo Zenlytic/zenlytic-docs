@@ -405,12 +405,14 @@ stays the canonical rule set it reads every run.
   draft copy of each week's entry is also saved to the working folder.
 
 - **Notifications.** The source and review channels are the Chord channels in
-  state.json (`source_channel`, `notify_channel`). Nobody is tagged in the review channel; the
+  state.json (`source_channel`, `notify_channel`). Nobody is tagged in the review channel except the
+  operator in a failure alert; the
   only mentions anywhere are Aime in the source channel (only in `delegate`
   mode) and the operator in a failure alert (`OPERATOR_ALERT`). No-change and
   Aime-no-response notices go to the review channel untagged. Aime requests go
   to the source channel; watchlist re-checks are ONE batched message per run.
-  Blocked or failed runs post nothing to Slack. The retired Notion "TEST Change
+  Blocked or failed runs post nothing else to Slack (only the one operator
+  alert). The retired Notion "TEST Change
   Log" page is never written to.
 
 - **Feedback loop.** The reviewer's PR feedback is applied as commits to the same

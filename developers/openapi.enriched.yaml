@@ -2073,6 +2073,84 @@ paths:
             body: JSON.stringify({"user_attribute_definition_id": "uad_123", "value": "west"}),
           });
           const data = await response.json();
+  /workspaces/{workspace_id}/members/{user_id}/idp_attributes:
+    get:
+      tags:
+      - User Attribute Values
+      summary: List Identity Provider Attribute Values
+      description: |-
+        List the attribute values the user's identity provider set for them.
+
+        These are read-only: the identity provider rewrites them at each sign-in, so they are as of
+        the user's last sign-in. Empty when the workspace has no organization or the user has no
+        mapped values. ``overrides_workspace_value`` is true when a value set on the user or inherited
+        from a group has the same name, in which case the identity provider value replaces it.
+      operationId: get_member_idp_attributes_workspaces__workspace_id__members__user_id__idp_attributes_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_IdpAttributeSchema_'
+              example:
+                data:
+                - name: department
+                  value: finance
+                  overrides_workspace_value: false
+                - name: region
+                  value: west
+                  overrides_workspace_value: true
+                meta:
+                  status: success
+                  errors: []
+                  warnings: []
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/idp_attributes \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/idp_attributes',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/members/<user_id>/idp_attributes', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
   /workspaces/{workspace_id}/members/{user_id}/user_attributes/{user_attribute_id}:
     delete:
       tags:
@@ -2262,6 +2340,20 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[GroupResponseSchema]
+    ApiV2CollectionResponse_IdpAttributeSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/IdpAttributeSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[IdpAttributeSchema]
     ApiV2CollectionResponse_InviteSchema_:
       properties:
         data:
@@ -2604,6 +2696,20 @@ components:
           type: array
           title: Users
           description: IDs of the group's members.
+        organization_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Organization Id
+          description: Set for an organization group listed in this workspace (its workspace_id is the
+            workspace it is listed in). Null for a workspace group.
+        editable:
+          type: boolean
+          title: Editable
+          description: 'False for an organization group: it is managed in the organization settings, and
+            workspace routes that change it return 409 ORGANIZATION_GROUP_READ_ONLY. Its users are the
+            members who belong to this workspace.'
+          default: true
       type: object
       required:
       - id
@@ -2622,12 +2728,38 @@ components:
         - usr_111
         - usr_222
         workspace_id: ws_456
+    IdpAttributeSchema:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The attribute name, as mapped on the identity provider.
+        value:
+          type: string
+          title: Value
+          description: The value the identity provider set at the person's last sign-in.
+        overrides_workspace_value:
+          type: boolean
+          title: Overrides Workspace Value
+          description: True when a workspace value (set on the user or inherited from a group) with the
+            same name applies to the person. The identity provider value replaces it.
+      type: object
+      required:
+      - name
+      - value
+      - overrides_workspace_value
+      title: IdpAttributeSchema
+      examples:
+      - name: region
+        overrides_workspace_value: true
+        value: west
     InferredProviderType:
       type: string
       enum:
       - Okta
       - Entra
       - Google
+      - SAML
       - Email
       - Unknown
       title: InferredProviderType

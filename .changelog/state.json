@@ -1,8 +1,8 @@
 {
   "_comment": "Production state for the weekly change log job. Lives at .changelog/state.json in zenlytic/zenlytic-docs; the repo copy is the single source of truth. cutoff_sha tracks origin/main of the product repo as of end of the last covered week (per Aime).",
-  "last_entry_date": "2026-10-25",
+  "last_entry_date": "2026-11-01",
   "backfill_window_start": "2026-06-01",
-  "cutoff_sha": "c2d0565efa9282ba8562f0eb46396588f53659a7",
+  "cutoff_sha": "b45f8b51ad2367f00cbe428f06906cf5921a899a",
   "held_items_file": "held-items.json",
   "branch": "main",
   "changelog_path": "changelog/README.md",

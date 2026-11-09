@@ -291,22 +291,26 @@ run that ignores these rules fails visibly instead of publishing quietly.
 ## Sourcing and authority (previously only in the job prompt)
 
 These rules governed every run but lived in the scheduled-task prompt rather
-than this file. Recorded here (2026-07-31) so the repo is self-describing; the
-scheduled-task prompt remains the executable spec.
+than this file. Recorded here (2026-07-31) so the repo is self-describing. Since
+2026-10-30 the executable procedure is the `zenlytic-change-log` skill; this file
+stays the canonical rule set it reads every run.
 
-- **Aime is the sole authority for inputs.** The weekly commit list, every GA
-  determination (LaunchDarkly production flag state), and the end-of-week
-  cutoff SHA all come from Aime (Slack agent in the source channel).
-  Never compute a diff independently, never infer GA from anything but Aime's
-  answer. No Aime reply = no entry and no state change — never a best-effort
-  draft.
-  **Why:** Aime reads the product repo and LaunchDarkly directly; anything
-  else is guesswork, and a guessed GA call publishes features customers can't
-  see.
-  **How to apply:** if Aime doesn't answer within the polling window (~40s
-  intervals, ~8 minutes), post the no-response notice to the review channel
-  (no mentions) and stop without advancing state — the unadvanced cutoff folds
-  the week into the next run automatically.
+- **One source of record per run: Aime.** The weekly commit list, every GA
+  determination (LaunchDarkly effective state in `prod` and `prodeu`), and the
+  end-of-week cutoff SHA come from Aime, in one of two ways: Aime runs the job
+  itself and reads the product repo and LaunchDarkly directly (`self` mode), or
+  another agent runs the job and asks Aime in the source channel (`delegate`
+  mode). Never infer GA from the product UI, commit messages, or memory, and
+  never mix the two modes in one run. No answer from the source = no entry and
+  no state change, never a best-effort draft.
+  **Why:** a guessed GA call publishes features customers can't see.
+  **How to apply:** in `self` mode Aime posts ONE evidence message in the source
+  channel (watchlist results and the diff table: SHA, title, flag, prod/prodeu
+  state, GA) before drafting, and the PR body links it; this is the audit trail
+  now that the drafter and the GA source are the same agent. In `delegate` mode,
+  if Aime doesn't answer within the polling window (~40s intervals, ~8 minutes),
+  post the no-response notice to the review channel (no mentions) and stop
+  without advancing state.
 
 - **Curation subtracts; it never adds.** These rules may exclude or hold items
   Aime reported — including overriding an Aime GA-yes (engineering's beta-MCP rule) —
@@ -319,7 +323,8 @@ scheduled-task prompt remains the executable spec.
   `master` in Oct 2026). Never `dev`.
   Unrelated to the docs repo's `main`.
   **Why:** diffing the wrong branch reports unshipped work.
-  **How to apply:** every Aime diff request names `origin/main` explicitly.
+  **How to apply:** every diff (Aime's own, or a request to Aime) names
+  `origin/main` explicitly.
 
 - **Diff window and cutoff discipline.** Covered week = the most recent
   complete Mon–Sun. Window = state.json `cutoff_sha` → last Sunday 23:59
@@ -328,8 +333,9 @@ scheduled-task prompt remains the executable spec.
   delivered; every failure path stops without advancing state.
   **Why:** commits after Sunday belong to next week; advancing state on a
   failed run silently drops a week.
-  **How to apply:** ask Aime for the end-of-Sunday SHA in the same request as
-  the diff; on any failure, post the notice and leave state untouched.
+  **How to apply:** compute (or ask Aime for) the end-of-Sunday SHA with the
+  diff, using the correct Pacific offset for that Sunday (PDT -0700 / PST
+  -0800); on any failure, post the notice and leave state untouched.
 
 - **Cadence.** Mondays 02:00 America/Los_Angeles, covering the prior Mon–Sun,
   open-ended. No-change weeks still run: post the one-line notice and commit
@@ -372,19 +378,23 @@ scheduled-task prompt remains the executable spec.
   unreviewed: notify the review channel (no mentions) that it's awaiting review, skip the run, and let the
   unadvanced cutoff fold the week forward. One PR in flight at a time.
 
-- **GitHub access is MCP-connector only for the automated run.** No raw git
-  or curl fallback. If MCP is unavailable or blocked: draft locally to the
-  working folder, post nothing to Slack, rely on the scheduled task's own
-  notification to reach Greg, stop without advancing state. (Interim exception while the org grant is pending: Greg
-  runs a prepared push script under his own credentials; the automation
-  itself still never falls back.)
+- **GitHub writes go through the skill's push script only.** Every write runs
+  `scripts/push-changelog.sh` from the `zenlytic-change-log` skill, which enforces
+  the guards (branch must not exist, no open `changelog/*` PR, week not already on
+  `main`, existing content untouched, file allowlist). No ad hoc git or API
+  writes; never work around a guard; never edit the script mid-run. If the token
+  is rejected or the script fails for a reason the staged files can't fix: leave
+  the kit in the working directory, post nothing else to Slack, alert the
+  operator per the skill's `OPERATOR_ALERT` (one message in the review channel
+  tagging the operator), stop without advancing state.
 
 - **Branch/PR conventions and evidence chain.** Branch
   `changelog/{week-start}-to-{week-end}`; commit "docs: change log — week of
   {range}". PR body carries: item counts by category, the cutoff line (old →
   new SHA), the Held (not GA) list, the Recovered list (merge + flip dates),
-  any reviewer-ruling requests, and permalinks to the Aime watchlist and diff
-  threads plus each published item's GA determination as Aime reported it.
+  any reviewer-ruling requests, and the evidence chain: permalinks to the
+  evidence post (`self`) or Aime's watchlist and diff threads (`delegate`),
+  plus each published item's GA determination as recorded there.
   After pushing, re-read the branch's changelog/README.md and confirm the new
   entry is present and nothing was lost; fix and recommit if not.
 
@@ -394,12 +404,15 @@ scheduled-task prompt remains the executable spec.
   is logged to `held-items.json` `open` — never silently dropped. A markdown
   draft copy of each week's entry is also saved to the working folder.
 
-- **Notifications.** The source and review channels are the Chord channels named
-  in the scheduled-task prompt. Nobody is tagged in the review channel; the
-  only mention anywhere is Aime in the source channel. No-change and
+- **Notifications.** The source and review channels are the Chord channels in
+  state.json (`source_channel`, `notify_channel`). Nobody is tagged in the review channel except the
+  operator in a failure alert; the
+  only mentions anywhere are Aime in the source channel (only in `delegate`
+  mode) and the operator in a failure alert (`OPERATOR_ALERT`). No-change and
   Aime-no-response notices go to the review channel untagged. Aime requests go
   to the source channel; watchlist re-checks are ONE batched message per run.
-  Blocked or failed runs post nothing to Slack. The retired Notion "TEST Change
+  Blocked or failed runs post nothing else to Slack (only the one operator
+  alert). The retired Notion "TEST Change
   Log" page is never written to.
 
 - **Feedback loop.** The reviewer's PR feedback is applied as commits to the same

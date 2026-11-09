@@ -27,6 +27,15 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-11-01" tags="fixes" %}
+## Clear feedback when an Artifact cannot be saved
+
+Chat now reports failed Artifact saves instead of leaving them unresolved.
+
+### Bug fixes
+
+* **Artifact save errors** — When saving an Artifact fails, Zoë receives the error instead of reporting a successful save, and the chat drawer shows the failure instead of continuing to load.
+{% endupdate %}
 {% update date="2026-10-25" tags="fixes" %}
 ## Slack delivery destinations no longer disappear
 

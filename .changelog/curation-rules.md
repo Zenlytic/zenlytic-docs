@@ -505,7 +505,7 @@ stays the canonical rule set it reads every run.
   Merging the PR publishes to the docs site via GitBook." No change list,
   counts, or held/recovered summaries — all detail lives in the PR body, whose
   top line is the merging-publishes reminder. The job never @-mentions anyone;
-  Greg tags the reviewer manually.
+  GitHub requests reviewers through `.github/CODEOWNERS`.
 
   **Why:** the reviewer reads the PR itself, and a long Slack digest duplicates
   the PR body and gets skipped (2026-08-03). The reviewer is also no longer in

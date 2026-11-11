@@ -1498,7 +1498,7 @@
       "excluded_since": "2026-10-26",
       "last_checked": "2026-11-02",
       "last_checked_status": "Re-checked 2026-11-02: prod off, prodeu off. GA: no.",
-      "notes": "New flag on the watchlist - add lambda-link-enabled to the batched watchlist query going forward. SSO-adjacent; engineering should confirm it is not custom-SAML handling before any publish."
+      "notes": "New flag on the watchlist - add lambda-link-enabled to the batched watchlist query going forward. SSO-adjacent. Ruled 2026-11-11: account linking covers each organization's own SSO providers on SaaS, not VPC-only connections, so it is publishable under the narrowed SAML/SSO rule. Flag serves true to everyone in prod and prodeu since 2026-11-06."
     },
     {
       "flag": "lambda-link-enabled",

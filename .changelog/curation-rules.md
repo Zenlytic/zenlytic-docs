@@ -11,11 +11,16 @@ refactors, tests, CI/CD, infra, dependency bumps, and no-impact changes).
   day produces no entry. Also state this exclusion in the Aime request so Aime
   omits VPC changes up front.
 
-- **Custom SAML/SSO connections** — Changes to custom SAML/SSO connection
-  handling (token lifetimes, redirect behavior, connection setup, etc.) only
-  affect in-VPC customers, even when the item isn't explicitly labeled VPC.
-  Treat these as covered by the VPC exclusion above and drop them entirely.
-  (Reviewer rule, 2026-07-07. Example: "Longer SAML sessions" — a SAML
+- **SAML/SSO changes that only affect VPC deployments** — Drop SAML/SSO
+  changes (token lifetimes, redirect behavior, connection setup, etc.) that
+  only affect in-VPC customers, even when the item isn't explicitly labeled
+  VPC; they're covered by the VPC exclusion above. Native SAML also runs on
+  Zenlytic-hosted (SaaS) workspaces, so SAML/SSO changes that apply there are
+  not excluded: publish them like any other change, worded so they don't
+  imply anything about VPC deployments. Account linking (`lambda-link-enabled`)
+  is SaaS SSO and publishable. (Reviewer rule, 2026-11-11, narrowing the
+  2026-07-07 rule, which assumed custom SAML only ran in VPC.)
+  (Original rule, 2026-07-07. Example: "Longer SAML sessions" — a SAML
   access-token-lifetime change — was pulled from the July 6, 2026 entry
   after publishing; it only affects custom SAML connections used by
   in-VPC customers, and describing it without that context implied it

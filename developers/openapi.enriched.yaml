@@ -2313,6 +2313,1957 @@ paths:
             body: JSON.stringify({"value": "east"}),
           });
           const data = await response.json();
+  /organizations/{organization_id}/groups:
+    get:
+      tags:
+      - Organization Groups
+      summary: List Organization Groups
+      description: |-
+        List the organization's groups, with member and workspace counts.
+
+        Use a group's ``id`` as ``group_id`` when mapping an identity provider group to it.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: list_organization_groups_organizations__organization_id__groups_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+            maximum: 100
+            exclusiveMinimum: 0
+          - type: 'null'
+          title: Limit
+      - name: search
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Search
+      - name: sort
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sort
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2PaginatedCollectionResponse_OrgGroupSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    post:
+      tags:
+      - Organization Groups
+      summary: Create Organization Group
+      description: |-
+        Create a manual group. Returns 403 ``MANUAL_GROUP_CREATION_DISABLED`` when the organization
+        only allows groups that come from identity provider mappings, and 409 on a duplicate name.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: create_organization_group_organizations__organization_id__groups_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrgGroupSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_OrgGroupSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/groups/{group_id}:
+    get:
+      tags:
+      - Organization Groups
+      summary: Get Organization Group
+      description: |-
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: get_organization_group_organizations__organization_id__groups__group_id__get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_OrgGroupSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    patch:
+      tags:
+      - Organization Groups
+      summary: Rename Organization Group
+      description: |-
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: update_organization_group_organizations__organization_id__groups__group_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrgGroupSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_OrgGroupSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.patch(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>', {
+            method: 'PATCH',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    delete:
+      tags:
+      - Organization Groups
+      summary: Delete Organization Group
+      description: |-
+        Delete the group with its memberships, workspace grants, IdP mappings and access controls.
+        Workspace access members had only through this group is removed. Returns 409
+        ``LAST_ORGANIZATION_ADMIN`` or ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` when the change would
+        leave no org admin or remove the caller's own org admin.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: delete_organization_group_organizations__organization_id__groups__group_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+  /organizations/{organization_id}/groups/{group_id}/members:
+    get:
+      tags:
+      - Organization Groups
+      summary: List Organization Group Members
+      description: |-
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: list_organization_group_members_organizations__organization_id__groups__group_id__members_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+            maximum: 100
+            exclusiveMinimum: 0
+          - type: 'null'
+          title: Limit
+      - name: search
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Search
+      - name: sort
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sort
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2PaginatedCollectionResponse_OrgGroupMemberSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    put:
+      tags:
+      - Organization Groups
+      summary: Replace Organization Group Members
+      description: |-
+        Set the group's members. Every user must belong to the organization (422 otherwise).
+        Returns 409 ``GROUP_IDP_MANAGED`` when the identity provider manages the group, and 409
+        ``LAST_ORGANIZATION_ADMIN`` / ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` for an org admin lockout.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: replace_organization_group_members_organizations__organization_id__groups__group_id__members_put
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceOrgGroupMembersSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_OrgGroupMemberSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PUT https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.put(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members', {
+            method: 'PUT',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/groups/{group_id}/members/{user_id}:
+    delete:
+      tags:
+      - Organization Groups
+      summary: Remove Organization Group Member
+      description: |-
+        Remove one member. Returns 409 ``GROUP_IDP_MANAGED`` when the identity provider manages the
+        group, or ``LAST_ORGANIZATION_ADMIN`` / ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` for an org admin
+        lockout.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: remove_organization_group_member_organizations__organization_id__groups__group_id__members__user_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members/<user_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members/<user_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/members/<user_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+  /organizations/{organization_id}/groups/{group_id}/workspaces:
+    get:
+      tags:
+      - Organization Groups
+      summary: List Organization Group Workspace Grants
+      description: |-
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: list_organization_group_workspaces_organizations__organization_id__groups__group_id__workspaces_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+            maximum: 100
+            exclusiveMinimum: 0
+          - type: 'null'
+          title: Limit
+      - name: search
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Search
+      - name: sort
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sort
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2PaginatedCollectionResponse_OrgGroupWorkspaceGrantSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    put:
+      tags:
+      - Organization Groups
+      summary: Replace Organization Group Workspace Grants
+      description: |-
+        Set the workspaces the group grants and the role for each. Returns 422 for a workspace outside
+        the organization, a role a group can't grant (embedded roles), or a self-service workspace
+        (``SELF_SERVICE_WORKSPACE_NOT_GRANTABLE``; org groups never grant self-service workspaces, and an
+        org admin grant expands only to the others), and 409 ``LAST_ORGANIZATION_ADMIN`` /
+        ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` for an org admin lockout. Members' access is updated.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: replace_organization_group_workspaces_organizations__organization_id__groups__group_id__workspaces_put
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceOrgGroupWorkspaceGrantsSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_OrgGroupWorkspaceGrantSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PUT https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.put(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces', {
+            method: 'PUT',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/groups/{group_id}/workspaces/{workspace_id}:
+    delete:
+      tags:
+      - Organization Groups
+      summary: Remove Organization Group Workspace Grant
+      description: |-
+        Remove one workspace grant. Returns 409 ``LAST_ORGANIZATION_ADMIN`` /
+        ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` for an org admin lockout.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: remove_organization_group_workspace_organizations__organization_id__groups__group_id__workspaces__workspace_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces/<workspace_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces/<workspace_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces/<workspace_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+  /organizations/{organization_id}/auth-providers/{auth_provider_id}/group-mappings:
+    get:
+      tags:
+      - IdP Mappings
+      summary: List IdP Group Mappings
+      description: |-
+        List the identity provider groups this provider maps to organization groups.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization.
+      operationId: list_group_mappings_organizations__organization_id__auth_providers__auth_provider_id__group_mappings_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+            maximum: 100
+            exclusiveMinimum: 0
+          - type: 'null'
+          title: Limit
+      - name: search
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Search
+      - name: sort
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sort
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2PaginatedCollectionResponse_GroupMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    post:
+      tags:
+      - IdP Mappings
+      summary: Create IdP Group Mapping
+      description: |-
+        Map an identity provider group to an organization group, which makes the group IdP-managed.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization.
+
+        Give exactly one of ``group_id`` (an existing group of this organization, from
+        ``GET /organizations/{organization_id}/groups``) or ``group_name`` (a new organization group,
+        created in the same request; 409 ``GROUP_NAME_EXISTS`` when the name is taken). Any group may be
+        mapped, including one
+        whose workspace grants make its members organization admins: users the IdP puts in that group
+        get that access at their next sign-in.
+
+        Returns 422 ``GROUP_NOT_IN_ORGANIZATION`` when ``group_id`` is not a group of this organization
+        and 409 ``GROUP_MAPPING_EXISTS`` when this provider already maps ``idp_group_name``. The group's
+        current members are left as they are; membership follows the IdP from each user's next sign-in.
+      operationId: create_group_mapping_organizations__organization_id__auth_providers__auth_provider_id__group_mappings_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupMappingSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_GroupMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings \
+            -H 'Authorization: Bearer YOUR_TOKEN' \
+            -H 'Content-Type: application/json' \
+            -d '{"group_id": "group_123", "idp_group_name": "Verizon Analysts"}'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'},
+              json={'group_id': 'group_123', 'idp_group_name': 'Verizon Analysts'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN', 'Content-Type': 'application/json' },
+            body: JSON.stringify({"group_id": "group_123", "idp_group_name": "Verizon Analysts"}),
+          });
+          const data = await response.json();
+    put:
+      tags:
+      - IdP Mappings
+      summary: Replace IdP Group Mappings
+      description: |-
+        Replace the provider's group mappings with the given set (a convenience for table editing).
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization.
+
+        Mappings are matched by ``idp_group_name``: listed names are kept (and re-pointed when the group
+        differs), new names are created and names not listed are deleted, all in one transaction. The
+        same 422 and 409 rules as the item routes apply, including a name listed twice. A group whose
+        last mapping is removed becomes manual again with its members left as they are; no membership or
+        access changes until each user's next sign-in.
+      operationId: replace_group_mappings_organizations__organization_id__auth_providers__auth_provider_id__group_mappings_put
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceGroupMappingsSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_GroupMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PUT https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.put(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings', {
+            method: 'PUT',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/auth-providers/{auth_provider_id}/group-mappings/{mapping_id}:
+    get:
+      tags:
+      - IdP Mappings
+      summary: Get IdP Group Mapping
+      description: |-
+        Get one group mapping of the provider.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization or ``{mapping_id}`` is not one of its group mappings.
+      operationId: get_group_mapping_organizations__organization_id__auth_providers__auth_provider_id__group_mappings__mapping_id__get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: mapping_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Mapping Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_GroupMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id>', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    patch:
+      tags:
+      - IdP Mappings
+      summary: Update IdP Group Mapping
+      description: |-
+        Rename the IdP group or re-point the mapping to another organization group.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization or ``{mapping_id}`` is not one of its group mappings.
+
+        Give at most one of ``group_id`` (an existing group of this organization, from
+        ``GET /organizations/{organization_id}/groups``) or ``group_name`` (a new organization group,
+        created in the same request; 409 ``GROUP_NAME_EXISTS`` when the name is taken). Any group may be
+        mapped, including one that grants organization admin.
+
+        Same 422 ``GROUP_NOT_IN_ORGANIZATION`` and 409 ``GROUP_MAPPING_EXISTS`` rules as creating one.
+        Re-pointing a group's last mapping makes it manual again; no one is added to or removed from
+        either group until their next sign-in.
+      operationId: update_group_mapping_organizations__organization_id__auth_providers__auth_provider_id__group_mappings__mapping_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: mapping_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Mapping Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupMappingSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_GroupMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN' \
+            -H 'Content-Type: application/json' \
+            -d '{"group_id": "group_456"}'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.patch(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'},
+              json={'group_id': 'group_456'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id>', {
+            method: 'PATCH',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN', 'Content-Type': 'application/json' },
+            body: JSON.stringify({"group_id": "group_456"}),
+          });
+          const data = await response.json();
+    delete:
+      tags:
+      - IdP Mappings
+      summary: Delete IdP Group Mapping
+      description: |-
+        Delete the mapping. When it was the group's last one the group becomes manual again, with its
+        members left as they are.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization or ``{mapping_id}`` is not one of its group mappings.
+      operationId: delete_group_mapping_organizations__organization_id__auth_providers__auth_provider_id__group_mappings__mapping_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: mapping_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Mapping Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/group-mappings/<mapping_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+  /organizations/{organization_id}/auth-providers/{auth_provider_id}/attribute-mappings:
+    get:
+      tags:
+      - IdP Mappings
+      summary: List IdP Attribute Mappings
+      description: |-
+        List the IdP attributes or claims this provider exposes as user attributes.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization.
+      operationId: list_attribute_mappings_organizations__organization_id__auth_providers__auth_provider_id__attribute_mappings_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+            maximum: 100
+            exclusiveMinimum: 0
+          - type: 'null'
+          title: Limit
+      - name: search
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Search
+      - name: sort
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sort
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2PaginatedCollectionResponse_AttributeMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    post:
+      tags:
+      - IdP Mappings
+      summary: Create IdP Attribute Mapping
+      description: |-
+        Expose an IdP attribute or claim as a user attribute in every workspace of the organization.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization.
+
+        Returns 422 ``RESERVED_ATTRIBUTE_NAME`` for a reserved ``target_name`` (``email``,
+        ``zenlytic_connection_*``, in any letter case) and 409 ``ATTRIBUTE_MAPPING_EXISTS`` when this
+        provider already maps ``target_name``. Users' stored values change at their next sign-in.
+      operationId: create_attribute_mapping_organizations__organization_id__auth_providers__auth_provider_id__attribute_mappings_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAttributeMappingSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_AttributeMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    put:
+      tags:
+      - IdP Mappings
+      summary: Replace IdP Attribute Mappings
+      description: |-
+        Replace the provider's attribute mappings with the given set (a convenience for table editing).
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization.
+
+        Mappings are matched by ``target_name``: listed names are kept (and get the new source attribute),
+        new names are created and names not listed are deleted, all in one transaction. The same 422 and
+        409 rules as the item routes apply, including a name listed twice. Users' stored values change at
+        their next sign-in.
+      operationId: replace_attribute_mappings_organizations__organization_id__auth_providers__auth_provider_id__attribute_mappings_put
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceAttributeMappingsSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_AttributeMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PUT https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.put(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings', {
+            method: 'PUT',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/auth-providers/{auth_provider_id}/attribute-mappings/{mapping_id}:
+    get:
+      tags:
+      - IdP Mappings
+      summary: Get IdP Attribute Mapping
+      description: |-
+        Get one attribute mapping of the provider.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization or ``{mapping_id}`` is not one of its attribute mappings.
+      operationId: get_attribute_mapping_organizations__organization_id__auth_providers__auth_provider_id__attribute_mappings__mapping_id__get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: mapping_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Mapping Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_AttributeMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id>', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    patch:
+      tags:
+      - IdP Mappings
+      summary: Update IdP Attribute Mapping
+      description: |-
+        Change the source attribute or the target name.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization or ``{mapping_id}`` is not one of its attribute mappings.
+
+        Same 422 ``RESERVED_ATTRIBUTE_NAME`` and 409 ``ATTRIBUTE_MAPPING_EXISTS`` rules as creating one.
+      operationId: update_attribute_mapping_organizations__organization_id__auth_providers__auth_provider_id__attribute_mappings__mapping_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: mapping_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Mapping Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAttributeMappingSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_AttributeMappingSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.patch(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id>', {
+            method: 'PATCH',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    delete:
+      tags:
+      - IdP Mappings
+      summary: Delete IdP Attribute Mapping
+      description: |-
+        Delete the mapping. Users keep the stored value until their next sign-in rewrites it.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization or ``{mapping_id}`` is not one of its attribute mappings.
+      operationId: delete_attribute_mapping_organizations__organization_id__auth_providers__auth_provider_id__attribute_mappings__mapping_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: mapping_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Mapping Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/attribute-mappings/<mapping_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+  /organizations/{organization_id}/auth-providers/{auth_provider_id}/identities/{user_id}:
+    get:
+      tags:
+      - IdP Mappings
+      summary: Get User Identity At Provider
+      description: |-
+        The user's external id at the provider and the attributes from their last sign-in through it,
+        so mapping screens can offer real attribute and group names.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403. ``{auth_provider_id}`` is an ``id`` from
+        ``GET /organizations/{organization_id}/auth-providers``; returns 404 when it is not a
+        provider of this organization.
+
+        Returns 404 when the user has no identity at this provider. Only SAML sign-ins store their
+        attributes; OIDC sign-ins don't, so an OIDC provider returns 404.
+      operationId: get_provider_identity_organizations__organization_id__auth_providers__auth_provider_id__identities__user_id__get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: auth_provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Auth Provider Id
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_ProviderIdentitySchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/identities/<user_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/identities/<user_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers/<auth_provider_id>/identities/<user_id>', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/auth-providers:
+    get:
+      tags:
+      - IdP Mappings
+      summary: List Auth Providers
+      description: |-
+        List the organization's identity providers, to find the ``auth_provider_id`` that the IdP
+        mapping routes take.
+
+        A personal access token must belong to an organization admin, be minted for this organization
+        (``{organization_id}`` must match the token's organization) and be scoped to all workspaces;
+        otherwise 403. Such a token gets what the same organization admin gets in a session: in a
+        customer-VPC deployment every field of a native SAML provider (one with a SAML config) and the
+        reduced ``OrgAdminAuthProviderSchema`` (no verified domains or default-provider flag) for the
+        others; elsewhere the reduced schema for all. Zenlytic staff sessions get every field; anyone
+        else 404.
+      operationId: list_auth_providers_organizations__organization_id__auth_providers_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_Union_AuthProviderSchema__OrgAdminAuthProviderSchema__'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/auth-providers', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
 components:
   schemas:
     AddGroupMemberSchema:
@@ -2326,6 +4277,34 @@ components:
       title: AddGroupMemberSchema
       examples:
       - user_id: usr_111
+    ApiV2CollectionResponse_AttributeMappingSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/AttributeMappingSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[AttributeMappingSchema]
+    ApiV2CollectionResponse_GroupMappingSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/GroupMappingSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[GroupMappingSchema]
     ApiV2CollectionResponse_GroupResponseSchema_:
       properties:
         data:
@@ -2382,6 +4361,50 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[MemberSchema]
+    ApiV2CollectionResponse_OrgGroupMemberSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OrgGroupMemberSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[OrgGroupMemberSchema]
+    ApiV2CollectionResponse_OrgGroupWorkspaceGrantSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OrgGroupWorkspaceGrantSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[OrgGroupWorkspaceGrantSchema]
+    ApiV2CollectionResponse_Union_AuthProviderSchema__OrgAdminAuthProviderSchema__:
+      properties:
+        data:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/AuthProviderSchema'
+            - $ref: '#/components/schemas/OrgAdminAuthProviderSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[Union[AuthProviderSchema, OrgAdminAuthProviderSchema]]
     ApiV2CollectionResponse_UserAttributeDefinitionSchema_:
       properties:
         data:
@@ -2432,6 +4455,87 @@ components:
       required:
       - meta
       title: ApiV2ErrorResponse
+    ApiV2PaginatedCollectionResponse_AttributeMappingSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/AttributeMappingSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/PaginatedMetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2PaginatedCollectionResponse[AttributeMappingSchema]
+    ApiV2PaginatedCollectionResponse_GroupMappingSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/GroupMappingSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/PaginatedMetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2PaginatedCollectionResponse[GroupMappingSchema]
+    ApiV2PaginatedCollectionResponse_OrgGroupMemberSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OrgGroupMemberSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/PaginatedMetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2PaginatedCollectionResponse[OrgGroupMemberSchema]
+    ApiV2PaginatedCollectionResponse_OrgGroupSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OrgGroupSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/PaginatedMetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2PaginatedCollectionResponse[OrgGroupSchema]
+    ApiV2PaginatedCollectionResponse_OrgGroupWorkspaceGrantSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OrgGroupWorkspaceGrantSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/PaginatedMetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2PaginatedCollectionResponse[OrgGroupWorkspaceGrantSchema]
+    ApiV2Response_AttributeMappingSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/AttributeMappingSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[AttributeMappingSchema]
     ApiV2Response_CreateWorkspaceResponseSchema_:
       properties:
         data:
@@ -2443,6 +4547,17 @@ components:
       - data
       - meta
       title: ApiV2Response[CreateWorkspaceResponseSchema]
+    ApiV2Response_GroupMappingSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/GroupMappingSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[GroupMappingSchema]
     ApiV2Response_GroupResponseSchema_:
       properties:
         data:
@@ -2476,6 +4591,28 @@ components:
       - data
       - meta
       title: ApiV2Response[MeSchema]
+    ApiV2Response_OrgGroupSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/OrgGroupSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[OrgGroupSchema]
+    ApiV2Response_ProviderIdentitySchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/ProviderIdentitySchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[ProviderIdentitySchema]
     ApiV2Response_UserAttributeDefinitionSchema_:
       properties:
         data:
@@ -2498,10 +4635,155 @@ components:
       - data
       - meta
       title: ApiV2Response[UserAttributeSchema]
+    AttributeMappingInputSchema:
+      properties:
+        source_attribute:
+          type: string
+          title: Source Attribute
+          description: SAML attribute name or OIDC claim key.
+        target_name:
+          type: string
+          title: Target Name
+          description: User attribute name. Reserved names (email, zenlytic_connection_*) are rejected.
+      type: object
+      required:
+      - source_attribute
+      - target_name
+      title: AttributeMappingInputSchema
+    AttributeMappingSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        auth_provider_id:
+          type: string
+          title: Auth Provider Id
+        source_attribute:
+          type: string
+          title: Source Attribute
+          description: SAML attribute name or OIDC claim key.
+        target_name:
+          type: string
+          title: Target Name
+          description: User attribute name it appears as in every workspace of the org.
+      type: object
+      required:
+      - id
+      - auth_provider_id
+      - source_attribute
+      - target_name
+      title: AttributeMappingSchema
+      examples:
+      - auth_provider_id: authentication-provider_123
+        id: idp-attribute-mapping_123
+        source_attribute: GSAM
+        target_name: gsam
+    AuthProviderSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        workspace_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workspace Id
+        organization_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Organization Id
+        provider_type:
+          type: string
+          title: Provider Type
+        provider_name:
+          type: string
+          title: Provider Name
+        subdomain:
+          type: string
+          title: Subdomain
+        include_default_provider:
+          type: boolean
+          title: Include Default Provider
+        verified_email_domains:
+          items:
+            type: string
+          type: array
+          title: Verified Email Domains
+        groups_claim:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Groups Claim
+          description: OIDC claim carrying the user's IdP group names. Null means "groups". The groups
+            sync runs at sign-in when this is set or the provider maps any IdP group.
+        button_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Button Label
+          description: Login button text, shown as "Continue With <label>". Null means the login page's
+            default for the provider type.
+      type: object
+      required:
+      - id
+      - organization_id
+      - provider_type
+      - provider_name
+      - subdomain
+      - include_default_provider
+      - verified_email_domains
+      title: AuthProviderSchema
     BaseErrorMetadata:
       properties: {}
       type: object
       title: BaseErrorMetadata
+    CreateAttributeMappingSchema:
+      properties:
+        source_attribute:
+          type: string
+          title: Source Attribute
+          description: SAML attribute name or OIDC claim key.
+        target_name:
+          type: string
+          title: Target Name
+          description: User attribute name. Reserved names (email, zenlytic_connection_*) are rejected.
+      type: object
+      required:
+      - source_attribute
+      - target_name
+      title: CreateAttributeMappingSchema
+    CreateGroupMappingSchema:
+      properties:
+        idp_group_name:
+          type: string
+          title: Idp Group Name
+          description: Group name exactly as the identity provider sends it.
+        group_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group Id
+          description: An existing organization group of this organization. Give this or group_name.
+        group_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group Name
+          description: Name of a new organization group to create for this mapping, in the same request.
+            Give this or group_id. Creating a group through a mapping is not blocked by the manual group
+            creation setting; 409 if the organization already has a group with this name.
+      type: object
+      required:
+      - idp_group_name
+      title: CreateGroupMappingSchema
+      description: 'Same body as one entry of the bulk replace: ``group_id`` or ``group_name``, exactly
+        one.'
+      examples:
+      - group_id: group_123
+        idp_group_name: Verizon Analysts
+      - group_name: Finance
+        idp_group_name: Verizon Finance
     CreateGroupSchema:
       properties:
         name:
@@ -2546,6 +4828,15 @@ components:
       required:
       - email
       title: CreateInviteSchema
+    CreateOrgGroupSchema:
+      properties:
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: CreateOrgGroupSchema
     CreateUserAttributeDefinitionSchema:
       properties:
         name:
@@ -2669,6 +4960,68 @@ components:
       - message: Workspace not found
         occurred_at: '2026-08-05T12:00:00Z'
         status_code: 404
+    GroupMappingInputSchema:
+      properties:
+        idp_group_name:
+          type: string
+          title: Idp Group Name
+          description: Group name exactly as the identity provider sends it.
+        group_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group Id
+          description: An existing organization group of this organization. Give this or group_name.
+        group_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group Name
+          description: Name of a new organization group to create for this mapping, in the same request.
+            Give this or group_id. Creating a group through a mapping is not blocked by the manual group
+            creation setting; 409 if the organization already has a group with this name.
+      type: object
+      required:
+      - idp_group_name
+      title: GroupMappingInputSchema
+      examples:
+      - group_id: group_123
+        idp_group_name: Verizon Analysts
+      - group_name: Finance
+        idp_group_name: Verizon Finance
+    GroupMappingSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        auth_provider_id:
+          type: string
+          title: Auth Provider Id
+        idp_group_name:
+          type: string
+          title: Idp Group Name
+          description: Group name exactly as the identity provider sends it.
+        group_id:
+          type: string
+          title: Group Id
+        group_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group Name
+      type: object
+      required:
+      - id
+      - auth_provider_id
+      - idp_group_name
+      - group_id
+      title: GroupMappingSchema
+      examples:
+      - auth_provider_id: authentication-provider_123
+        group_id: group_123
+        group_name: Analysts
+        id: group-idp-mapping_123
+        idp_group_name: Verizon Analysts
     GroupResponseSchema:
       properties:
         id:
@@ -2974,12 +5327,340 @@ components:
       examples:
       - id: ws_456
         name: acme-prod
+    OrgAdminAuthProviderSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        provider_type:
+          type: string
+          title: Provider Type
+        provider_name:
+          type: string
+          title: Provider Name
+        subdomain:
+          type: string
+          title: Subdomain
+        button_label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Button Label
+          description: Login button text, shown as "Continue With <label>". Null means the login page's
+            default for the provider type.
+        groups_claim:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Groups Claim
+          description: OIDC claim carrying the user's IdP group names. Null means "groups". The groups
+            sync runs at sign-in when this is set or the provider maps any IdP group.
+        is_saml:
+          type: boolean
+          title: Is Saml
+          description: Whether the provider signs users in through native SAML.
+        attribute_mapping:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Attribute Mapping
+          description: SAML attribute mapping (its `groups` key names the group attribute); null if not
+            SAML.
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - provider_type
+      - provider_name
+      - subdomain
+      - is_saml
+      title: OrgAdminAuthProviderSchema
+      description: |-
+        An auth provider as an organization admin (not Zenlytic staff) sees it: only what the group
+        mapping setup needs. Verified domains and SAML certificates and endpoints are staff-only.
+    OrgGroupMemberSchema:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+      type: object
+      required:
+      - user_id
+      title: OrgGroupMemberSchema
+    OrgGroupSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        organization_id:
+          type: string
+          title: Organization Id
+        name:
+          type: string
+          title: Name
+        idp_managed:
+          type: boolean
+          title: Idp Managed
+          description: True when an identity-provider group maps to this group. Its membership then comes
+            from the identity provider at sign-in and can't be edited here.
+        member_count:
+          type: integer
+          title: Member Count
+        workspace_count:
+          type: integer
+          title: Workspace Count
+        created_date:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Created Date
+        last_modified:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Last Modified
+      type: object
+      required:
+      - id
+      - organization_id
+      - name
+      - idp_managed
+      - member_count
+      - workspace_count
+      title: OrgGroupSchema
+      examples:
+      - created_date: '2026-01-01T00:00:00Z'
+        id: group_123
+        idp_managed: false
+        last_modified: '2026-01-01T00:00:00Z'
+        member_count: 12
+        name: Analysts
+        organization_id: org_123
+        workspace_count: 2
+    OrgGroupWorkspaceGrantInputSchema:
+      properties:
+        workspace_id:
+          type: string
+          title: Workspace Id
+        role_id:
+          type: string
+          title: Role Id
+      type: object
+      required:
+      - workspace_id
+      - role_id
+      title: OrgGroupWorkspaceGrantInputSchema
+    OrgGroupWorkspaceGrantSchema:
+      properties:
+        workspace_id:
+          type: string
+          title: Workspace Id
+        workspace_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workspace Name
+        role_id:
+          type: string
+          title: Role Id
+        role_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Role Name
+      type: object
+      required:
+      - workspace_id
+      - role_id
+      title: OrgGroupWorkspaceGrantSchema
+    PaginatedMetaSchema:
+      properties:
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorSchema'
+          type: array
+          title: Errors
+          description: Non-empty exactly when `status` is "error".
+        warnings:
+          items:
+            $ref: '#/components/schemas/WarningSchema'
+          type: array
+          title: Warnings
+          description: Can be non-empty even when `status` is "success" - a non-fatal issue with an otherwise-successful
+            request.
+        pagination:
+          $ref: '#/components/schemas/PaginationSchema'
+      type: object
+      required:
+      - status
+      - pagination
+      title: PaginatedMetaSchema
+      examples:
+      - errors: []
+        pagination:
+          limit: 50
+          offset: 0
+          total: 137
+        status: success
+        warnings: []
+    PaginationSchema:
+      properties:
+        offset:
+          type: integer
+          title: Offset
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Limit
+        total:
+          type: integer
+          title: Total
+      type: object
+      required:
+      - offset
+      - limit
+      - total
+      title: PaginationSchema
+      examples:
+      - limit: 50
+        offset: 0
+        total: 137
+    ProviderIdentitySchema:
+      properties:
+        external_id:
+          type: string
+          title: External Id
+          description: The user's id at the identity provider.
+        last_attributes:
+          additionalProperties: true
+          type: object
+          title: Last Attributes
+          description: Attributes from the user's last sign-in through this provider, as received.
+      type: object
+      required:
+      - external_id
+      - last_attributes
+      title: ProviderIdentitySchema
+    ReplaceAttributeMappingsSchema:
+      properties:
+        mappings:
+          items:
+            $ref: '#/components/schemas/AttributeMappingInputSchema'
+          type: array
+          title: Mappings
+          description: Every attribute mapping the provider should have. Mappings whose target name is
+            not listed are deleted.
+      type: object
+      required:
+      - mappings
+      title: ReplaceAttributeMappingsSchema
+    ReplaceGroupMappingsSchema:
+      properties:
+        mappings:
+          items:
+            $ref: '#/components/schemas/GroupMappingInputSchema'
+          type: array
+          title: Mappings
+          description: Every group mapping the provider should have. Mappings whose IdP group name is
+            not listed are deleted.
+      type: object
+      required:
+      - mappings
+      title: ReplaceGroupMappingsSchema
+    ReplaceOrgGroupMembersSchema:
+      properties:
+        user_ids:
+          items:
+            type: string
+          type: array
+          title: User Ids
+          description: Every member the group should have. Organization users not listed are removed.
+      type: object
+      required:
+      - user_ids
+      title: ReplaceOrgGroupMembersSchema
+    ReplaceOrgGroupWorkspaceGrantsSchema:
+      properties:
+        grants:
+          items:
+            $ref: '#/components/schemas/OrgGroupWorkspaceGrantInputSchema'
+          type: array
+          title: Grants
+          description: Every workspace the group should grant, with the role its members get there. Workspaces
+            not listed lose the grant.
+      type: object
+      required:
+      - grants
+      title: ReplaceOrgGroupWorkspaceGrantsSchema
     ResponseStatus:
       type: string
       enum:
       - success
       - error
       title: ResponseStatus
+    UpdateAttributeMappingSchema:
+      properties:
+        source_attribute:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Source Attribute
+        target_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Target Name
+      type: object
+      title: UpdateAttributeMappingSchema
+    UpdateGroupMappingSchema:
+      properties:
+        idp_group_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Idp Group Name
+          description: Group name exactly as the identity provider sends it.
+        group_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group Id
+          description: Re-point the mapping to an existing organization group of this organization. Give
+            this or group_name, not both.
+        group_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Group Name
+          description: Re-point the mapping to a new organization group created in the same request. Give
+            this or group_id, not both. Creating a group through a mapping is not blocked by the manual
+            group creation setting; 409 if the organization already has a group with this name.
+      type: object
+      title: UpdateGroupMappingSchema
+      examples:
+      - group_id: group_456
+      - group_name: Finance
     UpdateGroupSchema:
       properties:
         name:
@@ -2998,6 +5679,15 @@ components:
       examples:
       - name: Sales Team
         user_attribute_precedence: 2
+    UpdateOrgGroupSchema:
+      properties:
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: UpdateOrgGroupSchema
     UpdateUserAttributeDefinitionSchema:
       properties:
         label:
@@ -3202,6 +5892,21 @@ tags:
   x-page-title: Workspaces
   x-page-icon: layer-group
   x-page-description: Create, list, and archive workspaces in your organization.
+- name: Organization Groups
+  x-parent: Organization Administration
+  x-page-title: Organization Groups
+  x-page-icon: people-group
+  x-page-description: Create, list, rename and delete your organization's groups, and manage their members
+    and workspace grants. Requires a personal access token of an organization admin, minted for the organization
+    and scoped to all workspaces.
+- name: IdP Mappings
+  x-parent: Organization Administration
+  x-page-title: IdP Mappings
+  x-page-icon: arrows-left-right
+  x-page-description: List your organization's identity providers to find the auth_provider_id, map identity
+    provider groups to organization groups, and map identity provider attributes to user attributes. Changes
+    apply at each user's next sign-in. Requires a personal access token of an organization admin, scoped
+    to all workspaces.
 - name: Invites
   x-parent: Workspace Administration
   x-page-title: Invites

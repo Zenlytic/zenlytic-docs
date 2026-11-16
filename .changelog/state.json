@@ -7,7 +7,7 @@
   "branch": "main",
   "changelog_path": "changelog/README.md",
   "notify_channel": "C0C75K2C15E",
-  "source_channel": "C0C8CSA22E9",
+  "source_channel": "C0C75K2C15E",
   "source_agent_user": "U0C62GA94H5",
   "cadence": "weekly, Monday 02:00 America/Los_Angeles, covers prior Mon-Sun, open-ended until Greg disables the task"
 }

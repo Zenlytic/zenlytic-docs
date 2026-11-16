@@ -789,6 +789,209 @@ paths:
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
           });
+  /workspaces/{workspace_id}/groups/{group_id}/org_group_links:
+    get:
+      tags:
+      - Groups
+      summary: List Group Organization Group Links
+      description: |-
+        List the organization groups linked to this workspace group. Their members who belong to the
+        workspace are members of the group (``synced_from`` on the group's ``members``). Returns 404 for
+        another workspace's group or an organization group.
+      operationId: list_group_org_group_links_workspaces__workspace_id__groups__group_id__org_group_links_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_WorkspaceGroupLinkSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    post:
+      tags:
+      - Groups
+      summary: Link Organization Group To Group
+      description: |-
+        Link an organization group that grants this workspace to this workspace group: its members who
+        belong to the workspace become members of the group and stay in step with it. Members added by
+        hand are kept. Returns 404 for another workspace's group, or an organization group that isn't
+        listed in or doesn't grant this workspace; 400 for the All Users group; 409 when already linked;
+        403 ``ORG_GROUP_MANAGEMENT_DISABLED`` when the organization doesn't let workspace admins manage
+        org groups and the user isn't an org admin.
+      operationId: create_group_org_group_link_workspaces__workspace_id__groups__group_id__org_group_links_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkspaceGroupLinkSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_WorkspaceGroupLinkSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links \
+            -H 'Authorization: Bearer YOUR_TOKEN' \
+            -H 'Content-Type: application/json' \
+            -d '{"org_group_id": "grp_123"}'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'},
+              json={'org_group_id': 'grp_123'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN', 'Content-Type': 'application/json' },
+            body: JSON.stringify({"org_group_id": "grp_123"}),
+          });
+          const data = await response.json();
+  /workspaces/{workspace_id}/groups/{group_id}/org_group_links/{link_id}:
+    delete:
+      tags:
+      - Groups
+      summary: Unlink Organization Group From Group
+      description: |-
+        Remove the link. Members the group had only through it leave the group; members added by hand
+        stay. Returns 404 unless the link is into this workspace group; 403
+        ``ORG_GROUP_MANAGEMENT_DISABLED`` as for creating a link.
+      operationId: delete_group_org_group_link_workspaces__workspace_id__groups__group_id__org_group_links__link_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Workspace Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: link_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Link Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links/<link_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links/<link_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/workspaces/<workspace_id>/groups/<group_id>/org_group_links/<link_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
   /workspaces/{workspace_id}/groups/{group_id}/members:
     get:
       tags:
@@ -877,7 +1080,8 @@ paths:
 
         Returns 404 if ``user_id`` is not already a member of the workspace.
 
-        Returns 409 if the user is already in the group.
+        Returns 409 if the user is already in the group. A member synced from a linked organization
+        group is made a manual member instead, with 200.
 
         Returns 400 if the group is the built-in "All Users" group, whose membership always
         tracks the workspace roster instead and can't be modified directly.
@@ -969,6 +1173,9 @@ paths:
         Remove a member from the group.
 
         Returns 404 if the user is not currently a member of the group.
+
+        Returns 409 ``GROUP_MEMBER_SYNCED`` if the user is a member only through a linked organization
+        group. A manual member a link also covers stays as a synced member.
 
         Returns 400 if the group is the built-in "All Users" group, whose membership always
         tracks the workspace roster instead and can't be modified directly.
@@ -1412,7 +1619,9 @@ paths:
       description: |-
         Delete a user attribute definition and every value assigned against it.
 
-        This removes the attribute from all users and groups in the workspace.
+        This removes the attribute from all users and groups in the workspace. Returns 403
+        ``ORG_GROUP_MANAGEMENT_DISABLED`` when an organization group has a value for it, the organization
+        doesn't let workspace admins manage org groups and the user isn't an organization admin.
       operationId: delete_user_attribute_definition_workspaces__workspace_id__user_attribute_definitions__user_attribute_definition_id__delete
       security:
       - HTTPBearer: []
@@ -1583,10 +1792,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiV2CollectionResponse_UserAttributeSchema_'
+                $ref: '#/components/schemas/ApiV2CollectionResponse_WorkspaceGroupUserAttributeSchema_'
               example:
                 data:
                 - id: ua_789
+                  workspace_id: ws_456
+                  workspace_name: Sales
                   user_attribute_definition_id: uad_123
                   value: west
                   data_type: string
@@ -1595,6 +1806,12 @@ paths:
                   source_id: grp_123
                   user_attribute_precedence: 1
                   is_overridden: false
+                  idp_mapped: false
+                  updated_by:
+                    user_id: user_42
+                    first_name: Ana
+                    last_name: Diaz
+                  updated_at: '2026-11-12T16:38:12'
                 meta:
                   status: success
                   errors: []
@@ -1673,10 +1890,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
+                $ref: '#/components/schemas/ApiV2Response_WorkspaceGroupUserAttributeSchema_'
               example:
                 data:
                   id: ua_789
+                  workspace_id: ws_456
+                  workspace_name: Sales
                   user_attribute_definition_id: uad_123
                   value: west
                   data_type: string
@@ -1685,6 +1904,12 @@ paths:
                   source_id: grp_123
                   user_attribute_precedence: 1
                   is_overridden: false
+                  idp_mapped: false
+                  updated_by:
+                    user_id: user_42
+                    first_name: Ana
+                    last_name: Diaz
+                  updated_at: '2026-11-12T16:38:12'
                 meta:
                   status: success
                   errors: []
@@ -1734,6 +1959,10 @@ paths:
         Remove a user attribute value from a group.
 
         The definition itself is untouched — only this group's value for it is deleted.
+
+        Returns 403 ``ORG_GROUP_MANAGEMENT_DISABLED`` for an organization group's value when the organization
+        doesn't let workspace admins manage org groups and the user isn't an organization admin. The same holds
+        for creating and updating a value.
       operationId: delete_group_user_attribute_workspaces__workspace_id__groups__group_id__user_attributes__user_attribute_id__delete
       security:
       - HTTPBearer: []
@@ -1835,10 +2064,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiV2Response_UserAttributeSchema_'
+                $ref: '#/components/schemas/ApiV2Response_WorkspaceGroupUserAttributeSchema_'
               example:
                 data:
                   id: ua_789
+                  workspace_id: ws_456
+                  workspace_name: Sales
                   user_attribute_definition_id: uad_123
                   value: east
                   data_type: string
@@ -1847,6 +2078,12 @@ paths:
                   source_id: grp_123
                   user_attribute_precedence: 1
                   is_overridden: false
+                  idp_mapped: false
+                  updated_by:
+                    user_id: user_42
+                    first_name: Ana
+                    last_name: Diaz
+                  updated_at: '2026-11-12T16:38:12'
                 meta:
                   status: success
                   errors: []
@@ -3012,7 +3249,8 @@ paths:
         the organization, a role a group can't grant (embedded roles), or a self-service workspace
         (``SELF_SERVICE_WORKSPACE_NOT_GRANTABLE``; org groups never grant self-service workspaces, and an
         org admin grant expands only to the others), and 409 ``LAST_ORGANIZATION_ADMIN`` /
-        ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` for an org admin lockout. Members' access is updated.
+        ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` for an org admin lockout. Members' access is updated, and
+        the group's attribute values in workspaces that lose their grant are deleted.
 
         Organization admins only. A personal access token must belong to an organization admin, be
         minted for this organization (``{organization_id}`` must match the token's organization) and
@@ -3084,7 +3322,8 @@ paths:
       - Organization Groups
       summary: Remove Organization Group Workspace Grant
       description: |-
-        Remove one workspace grant. Returns 409 ``LAST_ORGANIZATION_ADMIN`` /
+        Remove one workspace grant, with the group's attribute values in that workspace. Returns 409
+        ``LAST_ORGANIZATION_ADMIN`` /
         ``CANNOT_REMOVE_OWN_ORGANIZATION_ADMIN`` for an org admin lockout.
 
         Organization admins only. A personal access token must belong to an organization admin, be
@@ -3142,6 +3381,512 @@ paths:
       - lang: JavaScript
         source: |
           const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspaces/<workspace_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+  /organizations/{organization_id}/groups/{group_id}/user_attributes:
+    get:
+      tags:
+      - Organization Groups
+      summary: List Organization Group Attribute Values
+      description: |-
+        List the group's attribute values in every workspace. Each value applies to the group's members
+        in its own workspace only. ``idp_mapped`` is true when one of the organization's identity providers
+        maps an attribute to the same name; for a user who signs in through it, the identity provider's
+        value wins.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: list_organization_group_user_attributes_organizations__organization_id__groups__group_id__user_attributes_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_GroupUserAttributeSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    post:
+      tags:
+      - Organization Groups
+      summary: Create Organization Group Attribute Value
+      description: |-
+        Set a value for one of a workspace's attribute definitions on the group, in that workspace.
+        Returns 404 for a workspace outside the organization or a definition outside the workspace, 400
+        when the group doesn't grant the workspace or the value doesn't match the definition's
+        ``data_type``, and 409 when the group already sets that definition.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: create_organization_group_user_attribute_organizations__organization_id__groups__group_id__user_attributes_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrgGroupUserAttributeSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_GroupUserAttributeSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes \
+            -H 'Authorization: Bearer YOUR_TOKEN' \
+            -H 'Content-Type: application/json' \
+            -d '{"user_attribute_definition_id": "uad_123", "value": "west", "workspace_id": "ws_456"}'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'},
+              json={'user_attribute_definition_id': 'uad_123', 'value': 'west', 'workspace_id': 'ws_456'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN', 'Content-Type': 'application/json' },
+            body: JSON.stringify({"user_attribute_definition_id": "uad_123", "value": "west", "workspace_id": "ws_456"}),
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/groups/{group_id}/user_attributes/{user_attribute_id}:
+    patch:
+      tags:
+      - Organization Groups
+      summary: Update Organization Group Attribute Value
+      description: |-
+        Change the value. Returns 404 unless the value belongs to this group, and 400 when it doesn't
+        match the definition's ``data_type``.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: update_organization_group_user_attribute_organizations__organization_id__groups__group_id__user_attributes__user_attribute_id__patch
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: user_attribute_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Attribute Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserAttributeSchema'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_GroupUserAttributeSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X PATCH https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes/<user_attribute_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN' \
+            -H 'Content-Type: application/json' \
+            -d '{"value": "east"}'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.patch(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes/<user_attribute_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'},
+              json={'value': 'east'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes/<user_attribute_id>', {
+            method: 'PATCH',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN', 'Content-Type': 'application/json' },
+            body: JSON.stringify({"value": "east"}),
+          });
+          const data = await response.json();
+    delete:
+      tags:
+      - Organization Groups
+      summary: Delete Organization Group Attribute Value
+      description: |-
+        Returns 404 unless the value belongs to this group.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: delete_organization_group_user_attribute_organizations__organization_id__groups__group_id__user_attributes__user_attribute_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: user_attribute_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: User Attribute Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes/<user_attribute_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes/<user_attribute_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/user_attributes/<user_attribute_id>', {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+  /organizations/{organization_id}/groups/{group_id}/workspace_group_links:
+    get:
+      tags:
+      - Organization Groups
+      summary: List Organization Group Workspace Group Links
+      description: |-
+        List the workspace groups the group is linked to. The group's members who belong to a linked
+        group's workspace are members of that group.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: list_organization_group_workspace_group_links_organizations__organization_id__groups__group_id__workspace_group_links_get
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2CollectionResponse_OrgGroupLinkSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.get(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links', {
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
+          });
+          const data = await response.json();
+    post:
+      tags:
+      - Organization Groups
+      summary: Link Organization Group To Workspace Group
+      description: |-
+        Link the group to a workspace group: the group's members who belong to that workspace become
+        members of the workspace group and stay in step with it. Members added there by hand are kept.
+        Returns 404 for a workspace group outside the organization, 400 ``ORG_GROUP_NOT_GRANTED`` when the
+        group doesn't grant the workspace, 400 for the All Users group, an organization group or a
+        self-service workspace's group, and 409 when already linked.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: create_organization_group_workspace_group_link_organizations__organization_id__groups__group_id__workspace_group_links_post
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrgGroupWorkspaceGroupLinkSchema'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2Response_OrgGroupLinkSchema_'
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X POST https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links \
+            -H 'Authorization: Bearer YOUR_TOKEN' \
+            -H 'Content-Type: application/json' \
+            -d '{"workspace_group_id": "grp_789"}'
+      - lang: Python
+        source: |
+          import requests
+          r = requests.post(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'},
+              json={'workspace_group_id': 'grp_789'}
+          )
+          print(r.json())
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer YOUR_TOKEN', 'Content-Type': 'application/json' },
+            body: JSON.stringify({"workspace_group_id": "grp_789"}),
+          });
+          const data = await response.json();
+  /organizations/{organization_id}/groups/{group_id}/workspace_group_links/{link_id}:
+    delete:
+      tags:
+      - Organization Groups
+      summary: Unlink Organization Group From Workspace Group
+      description: |-
+        Remove the link. Members the workspace group had only through it leave that group; members
+        added there by hand stay. Returns 404 unless the link is from this group.
+
+        Organization admins only. A personal access token must belong to an organization admin, be
+        minted for this organization (``{organization_id}`` must match the token's organization) and
+        be scoped to all workspaces; otherwise 403.
+      operationId: delete_organization_group_workspace_group_link_organizations__organization_id__groups__group_id__workspace_group_links__link_id__delete
+      security:
+      - HTTPBearer: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Group Id
+      - name: link_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Link Id
+      responses:
+        '204':
+          description: Successful Response
+        4XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Client Error
+        5XX:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiV2ErrorResponse'
+          description: Server Error
+      x-codeSamples:
+      - lang: cURL
+        source: |
+          curl -L -X DELETE https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links/<link_id> \
+            -H 'Authorization: Bearer YOUR_TOKEN'
+      - lang: Python
+        source: |
+          import requests
+          requests.delete(
+              'https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links/<link_id>',
+              headers={'Authorization': 'Bearer YOUR_TOKEN'}
+          )
+      - lang: JavaScript
+        source: |
+          const response = await fetch('https://api-external.zenlytic.com/api/v2/organizations/<organization_id>/groups/<group_id>/workspace_group_links/<link_id>', {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer YOUR_TOKEN' },
           });
@@ -4319,6 +5064,20 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[GroupResponseSchema]
+    ApiV2CollectionResponse_GroupUserAttributeSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/GroupUserAttributeSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[GroupUserAttributeSchema]
     ApiV2CollectionResponse_IdpAttributeSchema_:
       properties:
         data:
@@ -4361,6 +5120,20 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[MemberSchema]
+    ApiV2CollectionResponse_OrgGroupLinkSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/OrgGroupLinkSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[OrgGroupLinkSchema]
     ApiV2CollectionResponse_OrgGroupMemberSchema_:
       properties:
         data:
@@ -4433,6 +5206,34 @@ components:
       - data
       - meta
       title: ApiV2CollectionResponse[UserAttributeSchema]
+    ApiV2CollectionResponse_WorkspaceGroupLinkSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/WorkspaceGroupLinkSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[WorkspaceGroupLinkSchema]
+    ApiV2CollectionResponse_WorkspaceGroupUserAttributeSchema_:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/WorkspaceGroupUserAttributeSchema'
+          type: array
+          title: Data
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2CollectionResponse[WorkspaceGroupUserAttributeSchema]
     ApiV2CollectionResponse_WorkspaceSchema_:
       properties:
         data:
@@ -4569,6 +5370,17 @@ components:
       - data
       - meta
       title: ApiV2Response[GroupResponseSchema]
+    ApiV2Response_GroupUserAttributeSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/GroupUserAttributeSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[GroupUserAttributeSchema]
     ApiV2Response_InviteSchema_:
       properties:
         data:
@@ -4591,6 +5403,17 @@ components:
       - data
       - meta
       title: ApiV2Response[MeSchema]
+    ApiV2Response_OrgGroupLinkSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/OrgGroupLinkSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[OrgGroupLinkSchema]
     ApiV2Response_OrgGroupSchema_:
       properties:
         data:
@@ -4635,6 +5458,28 @@ components:
       - data
       - meta
       title: ApiV2Response[UserAttributeSchema]
+    ApiV2Response_WorkspaceGroupLinkSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/WorkspaceGroupLinkSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[WorkspaceGroupLinkSchema]
+    ApiV2Response_WorkspaceGroupUserAttributeSchema_:
+      properties:
+        data:
+          $ref: '#/components/schemas/WorkspaceGroupUserAttributeSchema'
+        meta:
+          $ref: '#/components/schemas/MetaSchema'
+      type: object
+      required:
+      - data
+      - meta
+      title: ApiV2Response[WorkspaceGroupUserAttributeSchema]
     AttributeMappingInputSchema:
       properties:
         source_attribute:
@@ -4837,6 +5682,45 @@ components:
       required:
       - name
       title: CreateOrgGroupSchema
+    CreateOrgGroupUserAttributeSchema:
+      properties:
+        user_attribute_definition_id:
+          type: string
+          title: User Attribute Definition Id
+          description: ID of an existing definition in `workspace_id` - see `GET /workspaces/{workspace_id}/user_attribute_definitions`.
+        value:
+          type: string
+          title: Value
+          description: 'Must match the referenced definition''s `data_type` format: "string" allows free
+            text, "number" requires a parseable number, "date" requires `YYYY-MM-DD`.'
+        workspace_id:
+          type: string
+          title: Workspace Id
+          description: The workspace the value applies in. It must be in this organization and the group
+            must grant it.
+      type: object
+      required:
+      - user_attribute_definition_id
+      - value
+      - workspace_id
+      title: CreateOrgGroupUserAttributeSchema
+      examples:
+      - user_attribute_definition_id: uad_123
+        value: west
+        workspace_id: ws_456
+    CreateOrgGroupWorkspaceGroupLinkSchema:
+      properties:
+        workspace_group_id:
+          type: string
+          title: Workspace Group Id
+          description: A group of a workspace in this organization that the group grants. Not the All
+            Users group or an organization group.
+      type: object
+      required:
+      - workspace_group_id
+      title: CreateOrgGroupWorkspaceGroupLinkSchema
+      examples:
+      - workspace_group_id: grp_789
     CreateUserAttributeDefinitionSchema:
       properties:
         name:
@@ -4882,6 +5766,20 @@ components:
       examples:
       - user_attribute_definition_id: uad_123
         value: west
+    CreateWorkspaceGroupLinkSchema:
+      properties:
+        org_group_id:
+          type: string
+          title: Org Group Id
+          description: An organization group that grants this workspace (see the organization group's
+            workspaces). Its members who belong to the workspace become members of this group.
+      type: object
+      required:
+      - org_group_id
+      title: CreateWorkspaceGroupLinkSchema
+      description: 'Body of the workspace route: the organization group to link to this workspace group.'
+      examples:
+      - org_group_id: grp_123
     CreateWorkspaceResponseSchema:
       properties:
         id:
@@ -4960,6 +5858,51 @@ components:
       - message: Workspace not found
         occurred_at: '2026-08-05T12:00:00Z'
         status_code: 404
+    GroupLinkCreatedBySchema:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+      type: object
+      required:
+      - user_id
+      title: GroupLinkCreatedBySchema
+      description: 'Who created a link, with their email: what an organization admin sees.'
+    GroupLinkCreatorNameSchema:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+      type: object
+      required:
+      - user_id
+      title: GroupLinkCreatorNameSchema
+      description: 'Who created a link, by name only: what a workspace admin sees.'
     GroupMappingInputSchema:
       properties:
         idp_group_name:
@@ -5022,6 +5965,44 @@ components:
         group_name: Analysts
         id: group-idp-mapping_123
         idp_group_name: Verizon Analysts
+    GroupMemberSourceRefSchema:
+      properties:
+        org_group_id:
+          type: string
+          title: Org Group Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - org_group_id
+      - name
+      title: GroupMemberSourceRefSchema
+    GroupMemberSourceSchema:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+        manual:
+          type: boolean
+          title: Manual
+          description: True when the user was added to the group directly. False when they are a member
+            only through linked organization groups; such a member can't be removed from the group directly
+            (409 GROUP_MEMBER_SYNCED).
+        synced_from:
+          items:
+            $ref: '#/components/schemas/GroupMemberSourceRefSchema'
+          type: array
+          title: Synced From
+          description: The linked organization groups that make the user a member, by name. A manual member
+            can be listed here too; removing them by hand then leaves them as a synced member.
+      type: object
+      required:
+      - user_id
+      - manual
+      - synced_from
+      title: GroupMemberSourceSchema
+      description: How a user is a member of a group.
     GroupResponseSchema:
       properties:
         id:
@@ -5048,7 +6029,21 @@ components:
             type: string
           type: array
           title: Users
-          description: IDs of the group's members.
+          description: 'IDs of the group''s members: those added by hand and those who are members through
+            a linked organization group.'
+        members:
+          items:
+            $ref: '#/components/schemas/GroupMemberSourceSchema'
+          type: array
+          title: Members
+          description: 'The members in ``users``, each with how they are a member: added by hand (``manual``)
+            and/or through linked organization groups (``synced_from``). For All Users and organization
+            groups, every member is listed with ``manual: true``.'
+        linked_org_group_count:
+          type: integer
+          title: Linked Org Group Count
+          description: How many organization groups are linked to this group (see its org_group_links).
+          default: 0
         organization_id:
           anyOf:
           - type: string
@@ -5063,6 +6058,13 @@ components:
             workspace routes that change it return 409 ORGANIZATION_GROUP_READ_ONLY. Its users are the
             members who belong to this workspace.'
           default: true
+        attributes_editable:
+          type: boolean
+          title: Attributes Editable
+          description: Whether this workspace's admins can set the group's attribute values through the
+            group's user_attributes routes. Always true for a workspace group. For an organization group,
+            true only when the group grants this workspace; without a grant those routes return 404.
+          default: true
       type: object
       required:
       - id
@@ -5075,12 +6077,127 @@ components:
       examples:
       - id: grp_123
         is_all_users: false
+        linked_org_group_count: 1
+        members:
+        - manual: true
+          synced_from: []
+          user_id: usr_111
+        - manual: false
+          synced_from:
+          - name: LOOKER_USERS
+            org_group_id: grp_999
+          user_id: usr_222
         name: Sales
         user_attribute_precedence: 1
         users:
         - usr_111
         - usr_222
         workspace_id: ws_456
+    GroupUserAttributeSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        user_attribute_definition_id:
+          type: string
+          title: User Attribute Definition Id
+          description: ID of the definition this value is set against - see `GET .../user_attribute_definitions`.
+        value:
+          type: string
+          title: Value
+          description: 'Formatted per `data_type`: "string" allows free text, "number" requires a parseable
+            number, "date" requires `YYYY-MM-DD`.'
+        data_type:
+          $ref: '#/components/schemas/UserAttributeDataType'
+          description: 'Determines `value`''s format: "string" allows free text, "number" requires a parseable
+            number, "date" requires `YYYY-MM-DD`.'
+        name:
+          type: string
+          title: Name
+          description: The referenced `user_attribute_definition_id`'s `name`.
+        source:
+          $ref: '#/components/schemas/UserAttributeSource'
+          description: Whether this value is set directly on the user ("user") or inherited from a group
+            ("group").
+        source_id:
+          type: string
+          title: Source Id
+          description: ID of the group or user (matching `source`) this value comes from.
+        user_attribute_precedence:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: User Attribute Precedence
+          description: The source group's precedence; null when `source` is "user" - only groups carry
+            a precedence.
+        is_overridden:
+          type: boolean
+          title: Is Overridden
+          description: True if a higher-precedence group value, or a directly-set user value, takes effect
+            instead of this one.
+        workspace_id:
+          type: string
+          title: Workspace Id
+          description: The workspace this value applies in.
+        workspace_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workspace Name
+        idp_mapped:
+          type: boolean
+          title: Idp Mapped
+          description: True when one of the workspace's organization's identity providers maps an attribute
+            to this `name`. For a user who signs in through it, the identity provider's value wins.
+        updated_by:
+          anyOf:
+          - $ref: '#/components/schemas/UserAttributeUpdatedBySchema'
+          - type: 'null'
+          description: Who last created or changed the value (for a personal access token, its owner).
+            Null for values set before this was recorded, or by a user since deleted.
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: When the value was last created or changed.
+      type: object
+      required:
+      - id
+      - user_attribute_definition_id
+      - value
+      - data_type
+      - name
+      - source
+      - source_id
+      - user_attribute_precedence
+      - is_overridden
+      - workspace_id
+      - idp_mapped
+      - updated_by
+      - updated_at
+      title: GroupUserAttributeSchema
+      description: |-
+        A value set on a group, applied to the group's members in one workspace. The workspace and the
+        organization group routes return the same shape, and org and workspace admins edit the same row.
+      examples:
+      - data_type: string
+        id: ua_789
+        idp_mapped: false
+        is_overridden: false
+        name: region
+        source: group
+        source_id: grp_123
+        updated_at: '2026-11-12T16:38:12'
+        updated_by:
+          email: ana@example.com
+          first_name: Ana
+          last_name: Diaz
+          user_id: user_42
+        user_attribute_definition_id: uad_123
+        user_attribute_precedence: 1
+        value: west
+        workspace_id: ws_456
+        workspace_name: Sales
     IdpAttributeSchema:
       properties:
         name:
@@ -5379,6 +6496,71 @@ components:
       description: |-
         An auth provider as an organization admin (not Zenlytic staff) sees it: only what the group
         mapping setup needs. Verified domains and SAML certificates and endpoints are staff-only.
+    OrgGroupLinkSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        workspace_id:
+          type: string
+          title: Workspace Id
+        workspace_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workspace Name
+        workspace_group_id:
+          type: string
+          title: Workspace Group Id
+        workspace_group_name:
+          type: string
+          title: Workspace Group Name
+        synced_member_count:
+          type: integer
+          title: Synced Member Count
+          description: Members of the workspace group that this link covers and who were not added by
+            hand (their membership is synced). Includes members another link also covers.
+        leaving_member_count:
+          type: integer
+          title: Leaving Member Count
+          description: 'Members who leave the workspace group if this link is deleted: synced members
+            that no other link into the group covers. Members added by hand stay.'
+        created_by:
+          anyOf:
+          - $ref: '#/components/schemas/GroupLinkCreatedBySchema'
+          - type: 'null'
+          description: Who created the link (for a personal access token, its owner). Null if since deleted.
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Created At
+      type: object
+      required:
+      - id
+      - workspace_id
+      - workspace_group_id
+      - workspace_group_name
+      - synced_member_count
+      - leaving_member_count
+      - created_by
+      title: OrgGroupLinkSchema
+      description: A link from the organization group to one workspace group (organization routes).
+      examples:
+      - created_at: '2026-11-12T16:38:12'
+        created_by:
+          email: ana@acme.com
+          first_name: Ana
+          last_name: Diaz
+          user_id: user_42
+        id: group-link_123
+        leaving_member_count: 10
+        synced_member_count: 12
+        workspace_group_id: grp_789
+        workspace_group_name: salespeople
+        workspace_id: ws_456
+        workspace_name: Sales
     OrgGroupMemberSchema:
       properties:
         user_id:
@@ -5425,6 +6607,31 @@ components:
         workspace_count:
           type: integer
           title: Workspace Count
+          description: How many of the organization's workspaces this group is granted, the same workspaces
+            workspace_names lists.
+        workspace_group_count:
+          type: integer
+          title: Workspace Group Count
+          description: How many workspace groups this group is linked to. Linked workspace groups include
+            this group's members who belong to their workspace.
+        attribute_count:
+          type: integer
+          title: Attribute Count
+          description: How many user attributes this group sets values for, across the organization's
+            workspaces.
+        workspace_names:
+          items:
+            type: string
+          type: array
+          title: Workspace Names
+          description: The names of the organization's workspaces this group is granted, sorted.
+        attribute_names:
+          items:
+            type: string
+          type: array
+          title: Attribute Names
+          description: The names of the user attributes this group sets values for, across the organization's
+            workspaces, sorted.
         created_date:
           anyOf:
           - type: string
@@ -5445,9 +6652,15 @@ components:
       - idp_managed
       - member_count
       - workspace_count
+      - workspace_group_count
+      - attribute_count
       title: OrgGroupSchema
       examples:
-      - created_date: '2026-01-01T00:00:00Z'
+      - attribute_count: 2
+        attribute_names:
+        - region
+        - team
+        created_date: '2026-01-01T00:00:00Z'
         id: group_123
         idp_managed: false
         last_modified: '2026-01-01T00:00:00Z'
@@ -5455,6 +6668,10 @@ components:
         name: Analysts
         organization_id: org_123
         workspace_count: 2
+        workspace_group_count: 3
+        workspace_names:
+        - Marketing
+        - Sales
     OrgGroupWorkspaceGrantInputSchema:
       properties:
         workspace_id:
@@ -5608,7 +6825,8 @@ components:
           type: array
           title: Grants
           description: Every workspace the group should grant, with the role its members get there. Workspaces
-            not listed lose the grant.
+            not listed lose the grant. The group's attribute values in a workspace that loses its grant
+            are deleted.
       type: object
       required:
       - grants
@@ -5743,6 +6961,13 @@ components:
           title: Label
           description: The human-facing display text for this definition; unlike `name`, this can be changed
             at any time.
+        organization_definition_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Organization Definition Id
+          description: Set when the attribute is a locked copy of an organization attribute; that organization
+            attribute isn't addressable through this API.
       type: object
       required:
       - id
@@ -5750,6 +6975,7 @@ components:
       - name
       - data_type
       - label
+      - organization_definition_id
       title: UserAttributeDefinitionSchema
       examples:
       - data_type: string
@@ -5827,6 +7053,51 @@ components:
       - user
       - group
       title: UserAttributeSource
+    UserAttributeUpdatedBySchema:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+      type: object
+      required:
+      - user_id
+      title: UserAttributeUpdatedBySchema
+      description: 'Who last changed a value, with their email: what an organization admin sees.'
+    UserAttributeUpdaterNameSchema:
+      properties:
+        user_id:
+          type: string
+          title: User Id
+        first_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: First Name
+        last_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Name
+      type: object
+      required:
+      - user_id
+      title: UserAttributeUpdaterNameSchema
+      description: 'Who last changed a value, by name only: what a workspace admin sees.'
     WarningSchema:
       properties:
         message:
@@ -5838,6 +7109,170 @@ components:
       title: WarningSchema
       examples:
       - message: 3 rows were skipped due to invalid formatting
+    WorkspaceGroupLinkSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        org_group_id:
+          type: string
+          title: Org Group Id
+        org_group_name:
+          type: string
+          title: Org Group Name
+        idp_managed:
+          type: boolean
+          title: Idp Managed
+          description: True when an identity-provider group maps to the organization group, so its members
+            come from the identity provider.
+        synced_member_count:
+          type: integer
+          title: Synced Member Count
+          description: Members of the workspace group that this link covers and who were not added by
+            hand (their membership is synced). Includes members another link also covers.
+        leaving_member_count:
+          type: integer
+          title: Leaving Member Count
+          description: 'Members who leave the workspace group if this link is deleted: synced members
+            that no other link into the group covers. Members added by hand stay.'
+        created_by:
+          anyOf:
+          - $ref: '#/components/schemas/GroupLinkCreatorNameSchema'
+          - type: 'null'
+          description: Who created the link (for a personal access token, its owner). Null if since deleted.
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Created At
+      type: object
+      required:
+      - id
+      - org_group_id
+      - org_group_name
+      - idp_managed
+      - synced_member_count
+      - leaving_member_count
+      - created_by
+      title: WorkspaceGroupLinkSchema
+      description: A link into the workspace group from one organization group (workspace routes).
+      examples:
+      - created_at: '2026-11-12T16:38:12'
+        created_by:
+          first_name: Ana
+          last_name: Diaz
+          user_id: user_42
+        id: group-link_123
+        idp_managed: true
+        leaving_member_count: 10
+        org_group_id: grp_123
+        org_group_name: LOOKER_USERS
+        synced_member_count: 12
+    WorkspaceGroupUserAttributeSchema:
+      properties:
+        id:
+          type: string
+          title: Id
+        user_attribute_definition_id:
+          type: string
+          title: User Attribute Definition Id
+          description: ID of the definition this value is set against - see `GET .../user_attribute_definitions`.
+        value:
+          type: string
+          title: Value
+          description: 'Formatted per `data_type`: "string" allows free text, "number" requires a parseable
+            number, "date" requires `YYYY-MM-DD`.'
+        data_type:
+          $ref: '#/components/schemas/UserAttributeDataType'
+          description: 'Determines `value`''s format: "string" allows free text, "number" requires a parseable
+            number, "date" requires `YYYY-MM-DD`.'
+        name:
+          type: string
+          title: Name
+          description: The referenced `user_attribute_definition_id`'s `name`.
+        source:
+          $ref: '#/components/schemas/UserAttributeSource'
+          description: Whether this value is set directly on the user ("user") or inherited from a group
+            ("group").
+        source_id:
+          type: string
+          title: Source Id
+          description: ID of the group or user (matching `source`) this value comes from.
+        user_attribute_precedence:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: User Attribute Precedence
+          description: The source group's precedence; null when `source` is "user" - only groups carry
+            a precedence.
+        is_overridden:
+          type: boolean
+          title: Is Overridden
+          description: True if a higher-precedence group value, or a directly-set user value, takes effect
+            instead of this one.
+        workspace_id:
+          type: string
+          title: Workspace Id
+          description: The workspace this value applies in.
+        workspace_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workspace Name
+        idp_mapped:
+          type: boolean
+          title: Idp Mapped
+          description: True when one of the workspace's organization's identity providers maps an attribute
+            to this `name`. For a user who signs in through it, the identity provider's value wins.
+        updated_by:
+          anyOf:
+          - $ref: '#/components/schemas/UserAttributeUpdaterNameSchema'
+          - type: 'null'
+          description: Who last created or changed the value (for a personal access token, its owner),
+            by name. Null for values set before this was recorded, or by a user since deleted.
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: When the value was last created or changed.
+      type: object
+      required:
+      - id
+      - user_attribute_definition_id
+      - value
+      - data_type
+      - name
+      - source
+      - source_id
+      - user_attribute_precedence
+      - is_overridden
+      - workspace_id
+      - idp_mapped
+      - updated_by
+      - updated_at
+      title: WorkspaceGroupUserAttributeSchema
+      description: |-
+        A group value as the workspace group routes return it: ``updated_by`` names the user without
+        their email, which only organization admins see.
+      examples:
+      - data_type: string
+        id: ua_789
+        idp_mapped: false
+        is_overridden: false
+        name: region
+        source: group
+        source_id: grp_123
+        updated_at: '2026-11-12T16:38:12'
+        updated_by:
+          first_name: Ana
+          last_name: Diaz
+          user_id: user_42
+        user_attribute_definition_id: uad_123
+        user_attribute_precedence: 1
+        value: west
+        workspace_id: ws_456
+        workspace_name: Sales
     WorkspaceSchema:
       properties:
         id:

@@ -27,6 +27,28 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-11-15" tags="new-features,improvements,fixes" %}
+## Linked SSO accounts, model choice, and steadier chats
+
+You can use linked SSO and password identities, choose GPT 6 Luna, and keep working through several chat and Artifact fixes.
+
+### New features
+
+* **Linked SSO and password identities** — Use your organization's SSO provider and a linked password identity without creating duplicate accounts. Password and MFA settings remain available for linked accounts, subject to your organization's SSO requirement.
+
+### Improvements
+
+* **GPT 6 Luna in the model picker** — Choose OpenAI's GPT 6 Luna reasoning model alongside GPT 5.6 Luna.
+* **Workspace settings warning** — Organization settings now show which workspaces will be affected before changes to web search and related chat settings propagate.
+
+### Bug fixes
+
+* **Web search in existing chats** — Chats remain usable after an admin disables web search for the workspace; subsequent messages run without web search instead of failing.
+* **Native SAML sessions** — Signing in through a native SAML provider now keeps your session across page reloads.
+* **Empty Artifact query results** — Live Artifacts treat SQL queries returning no rows as empty data instead of a failed source.
+* **Workspace-scoped questions and fields** — Questions and fields stay associated with their workspace when used in chat and dashboards.
+* **Group access after workspace moves** — Group-based access is removed when a workspace leaves its organization.
+{% endupdate %}
 {% update date="2026-11-01" tags="fixes" %}
 ## Clear feedback when an Artifact cannot be saved
 

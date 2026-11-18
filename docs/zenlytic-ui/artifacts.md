@@ -142,7 +142,7 @@ Use it to keep [output types without Live Queries](artifacts.md#output-types-wit
 Click the **Auto-Rebuild Off** button in the artifact drawer header to open the Auto-Rebuild settings. Toggle **Enable Auto-Rebuild**, then configure:
 
 * **Frequency** — How often to rebuild (daily, weekly, monthly, or a custom cron expression).
-* **Time** — What time of day to run the rebuild, shown in your local timezone.
+* **Time** — What time of day to rebuild, in your workspace's timezone (shown next to the field label). Each rebuild can start up to 20 minutes before this time, so the new version is ready by then.
 * **Instructions** — Optional directions for Zoë to follow during each rebuild. For example: "Highlight any outliers in the data and write short blurbs about their trends."
 
 Click **Save** to apply the schedule.
@@ -158,6 +158,8 @@ Every rebuild appears in the artifact's [update history](artifacts.md#update-his
 Artifacts can be delivered on a recurring schedule to **email** or **Slack**. A single artifact can have multiple delivery schedules — for example, email to leadership on Mondays and Slack to #data-team daily.
 
 Before each delivery, Zenlytic re-runs any Live Queries in the artifact and renders it with the results, so recipients get current data. Those queries run as the person who owns the delivery schedule, using that person's permissions — so everyone on the schedule sees the schedule owner's view of the data. Keep that in mind when adding recipients whose own access is narrower.
+
+Each delivery schedule has a recurrence (daily, weekly, monthly, or a custom cron expression) and a time. Times, including cron expressions, use your workspace's timezone, which the **Time** field shows. A delivery can start up to 20 minutes before its set time so it's ready by then, which means recipients may get it a few minutes early.
 
 ### Email delivery
 

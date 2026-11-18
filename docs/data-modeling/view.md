@@ -28,7 +28,7 @@ Views, like all files in Zenlytic, are YAML text files.
 **View-level `description` and `zoe_description` are capped at 10,000 characters each** — plenty of room for join-path guidance, data caveats, and edge cases. Use `description` for user-facing documentation and `zoe_description` for agent-only instructions like which joins to prefer or pitfalls to avoid. See [Context Surfaces](../getting-started/context-surfaces.md) for when to use views vs. fields vs. the system prompt vs. skills.
 {% endhint %}
 
-`sql_table_name`: This is the table name in the database that the view references. For example, `prod.customers` would be a valid `sql_table_name`.
+`sql_table_name`: This is the table name in the database that the view references. For example, `prod.customers` would be a valid `sql_table_name`. To point different users at different tables, see [Choose a table or value by user attribute](referenceable_attributes.md#choose-a-table-or-value-by-user-attribute).
 
 `derived_table`: This is a property that you can use to define transformed tables using a SQL statement. This SQL statement is run and is considered to be the "base" of the view. Note, we generally prefer using [dbt](https://getdbt.com) over derived tables for better testing and maintainability. This property has a nested property `sql` inside of the `derived_table` property that you use to define the SQL statement.
 

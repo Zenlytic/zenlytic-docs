@@ -64,11 +64,15 @@ An earlier model, still available for workspaces that standardized on it.
 
 ## Additional Available Models
 
-### GPT-5.6 Luna
+### GPT 6 Luna
 
-The current OpenAI model in the picker, replacing GPT-5.5. Available for teams that prefer or require an OpenAI model.
+OpenAI's most efficient GPT-6 reasoning model for high-volume tasks. Available for teams that prefer or require an OpenAI model.
 
 **Best for:** Teams with a policy or preference for OpenAI models.
+
+### GPT 5.6 Luna
+
+The previous OpenAI Luna model, still available in the model dropdown alongside GPT 6 Luna.
 
 {% hint style="info" %}
 **Claude Opus is no longer offered for new chats.** Existing conversations and Proactive Agents pinned to an Opus model continue to work.
@@ -79,5 +83,5 @@ The current OpenAI model in the picker, replacing GPT-5.5. Available for teams t
 | Scenario                                                              | Recommended Model        |
 | --------------------------------------------------------------------- | ------------------------ |
 | Almost everything                                                     | **Sonnet 5.5** (default) |
-| Your team requires an OpenAI model                                    | **GPT-5.6 Luna**         |
+| Your team requires an OpenAI model                                    | **GPT 6 Luna** or **GPT 5.6 Luna** |
 | Your workspace is pinned to an earlier model by its own credentials   | **Sonnet 5** or **Sonnet 4.6** |

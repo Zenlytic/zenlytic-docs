@@ -27,6 +27,24 @@ tags:
 # Product updates
 
 {% updates format="full" %}
+{% update date="2026-11-22" tags="improvements,fixes" %}
+## Expired sign-ins and interrupted chats now recover
+
+Expired sign-ins renew or sign you out instead of showing network errors, interrupted chats unlock with a Try again option, and scheduled runs start early enough to be ready on time.
+
+### Improvements
+
+* **Earlier scheduled starts** — Scheduled Proactive Agent runs, Artifact refreshes, and Artifact deliveries can now start up to 20 minutes before their set time, so results are ready by then. The scheduling settings show this note.
+
+### Bug fixes
+
+* **Expired sign-ins** — If you leave Zenlytic open past the end of your sign-in, the app now renews your sign-in or signs you out, instead of showing network errors.
+* **Interrupted chats** — A chat whose response was interrupted no longer stays locked behind a spinner. After 30 minutes without progress, it stops and offers Try again.
+* **Long responses on Claude models** — When a response reaches the model's output limit, Zoë retries once. If it still can't finish, the chat says so and suggests splitting the request into smaller steps, instead of ending without an answer.
+* **Default role for new SAML users** — People signing in through SAML for the first time to a workspace with a default role now join with that role instead of being refused access. Workspace settings also check that the default role is valid before saving.
+* **Hidden columns in charts** — Columns you hide are now left out of grouped bar and multi-line charts.
+* **MotherDuck queries** — Fixed an error ("Can't find the home directory") that made queries on MotherDuck connections fail.
+{% endupdate %}
 {% update date="2026-11-15" tags="new-features,improvements,fixes" %}
 ## Linked SSO accounts, model choice, and steadier chats
 

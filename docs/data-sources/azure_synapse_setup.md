@@ -55,6 +55,13 @@ Make sure your Azure Synapse firewall allows connections from Zenlytic's IP addr
 2. If successful, click "Save"
 3. You should now be able to see your Azure Synapse tables in Zenlytic
 
+## Query Timeout and Query History
+
+These apply to Azure Synapse connections, including Microsoft Fabric:
+
+* **Query timeout:** Zenlytic cancels a query that runs longer than 240 seconds (4 minutes) by default.
+* **Identifying Zenlytic activity:** Zenlytic's sessions show the application name `Zenlytic workspace=<workspace ID>`. Queries that start with `SELECT` or `WITH` also include a comment with the Zenlytic workspace ID and, when available, the dashboard and user IDs. Use these to attribute Zenlytic activity in your query history, for example in Fabric's query insights.
+
 ## Troubleshooting
 
 If you encounter connection issues:

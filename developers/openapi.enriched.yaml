@@ -1395,6 +1395,9 @@ paths:
 
         Returns 400 if the workspace's ``allowed_invite_email_domains`` org setting is set and
         ``email``'s domain isn't one of them.
+
+        Returns 403 with error code ``MEMBER_MANAGEMENT_DISABLED`` if the organization has turned off member
+        management for workspace admins and the caller is neither an organization admin nor Zenlytic staff.
       operationId: create_invite_workspaces__workspace_id__invites_post
       security:
       - HTTPBearer: []
